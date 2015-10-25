@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.mydsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.example.mydsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types,
+ org.eclipse.emf.mwe2.launch,
+ org.eclipse.equinox.common,
+ org.eclipse.xtext.xbase.lib,
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ org.eclipse.xtext.xbase
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.xtext.example.mydsl,
+ org.xtext.example.mydsl.services,
+ org.xtext.example.mydsl.myDsl,
+ org.xtext.example.mydsl.myDsl.impl,
+ org.xtext.example.mydsl.myDsl.util,
+ org.xtext.example.mydsl.serializer,
+ org.xtext.example.mydsl.parser.antlr,
+ org.xtext.example.mydsl.parser.antlr.internal,
+ org.xtext.example.mydsl.validation,
+ org.xtext.example.mydsl.scoping,
+ org.xtext.example.mydsl.generator,
+ org.xtext.example.mydsl.formatting

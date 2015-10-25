@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="org.dslforge.tooling.product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="DSLFORGE Tooling IDE">
+         <property
+               name="windowImages"
+               value="icons/flameIcon16.gif,icons/flameIcon32.gif,icons/flameIcon48.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="Welcome to DSLFORGE 1.0.0!">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/flameIcon48.gif">
+         </property>
+         <property
+               name="Tooling"
+               value="DSLFORGE Tooling IDE">
+         </property>
+         <property
+               name="dslforge"
+               value="DSLFORGE Tooling IDE">
+         </property>
+         <property
+               name="appName"
+               value="DSLFORGE Tooling IDE">
+         </property>
+      </product>
+   </extension>
+   <extension
+         id="Tooling"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="DSLFORGE Tooling IDE">
+         <property
+               name="windowImages"
+               value="icons/flameIcon16.gif,icons/flameIcon32.gif,icons/flameIcon48.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="Welcome to DSLFORGE 1.0.0!">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/flameIcon48.gif">
+         </property>
+         <property
+               name="appName"
+               value="DSLFORGE Tooling IDE">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

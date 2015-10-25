@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='2'>
+  <artifact classifier='osgi.bundle' id='org.dslforge.example.java.web' version='1.0.0.201510162336'>
+    <properties size='5'>
+      <property name='artifact.size' value='344889'/>
+      <property name='download.size' value='344889'/>
+      <property name='maven-groupId' value='dslforge.plugins'/>
+      <property name='maven-artifactId' value='org.dslforge.example.java.web'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+  </artifact>
+  <artifact classifier='osgi.bundle' id='org.dslforge.example.java.web.source' version='1.0.0.201510162336'>
+    <properties size='6'>
+      <property name='artifact.size' value='172787'/>
+      <property name='download.size' value='172787'/>
+      <property name='maven-groupId' value='dslforge.plugins'/>
+      <property name='maven-artifactId' value='org.dslforge.example.java.web'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      <property name='maven-classifier' value='sources'/>
+    </properties>
+  </artifact>
+</artifacts>

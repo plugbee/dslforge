@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.sphinx.examples.xtext.hummingbird.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.eclipse.sphinx.examples.xtext.hummingbird.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.sphinx.examples.xtext.hummingbird;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.eclipse.sphinx.examples.xtext.hummingbird.ui.quickfix,
+ org.eclipse.sphinx.examples.xtext.hummingbird.ui.contentassist,
+ org.eclipse.sphinx.examples.xtext.hummingbird.ui.contentassist.antlr
+Bundle-Activator: org.eclipse.sphinx.examples.xtext.hummingbird.ui.internal.HummingbirdActivator

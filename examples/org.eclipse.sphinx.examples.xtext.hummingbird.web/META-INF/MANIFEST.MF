@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.sphinx.examples.xtext.hummingbird.web
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.eclipse.sphinx.examples.xtext.hummingbird.web; singleton:=true
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.eclipse.sphinx.examples.xtext.hummingbird.web.internal.Activator
+Require-Bundle: org.eclipse.rap.ui,
+ org.eclipse.emf.rap.common.ui,
+ org.eclipse.emf.rap.edit.ui,
+ org.eclipse.xtext,
+ org.eclipse.sphinx.examples.xtext.hummingbird,
+ org.eclipse.core.jobs,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore,
+ org.eclipse.rap.ui.navigator,
+ com.google.inject,
+ org.eclipse.equinox.security,
+ org.dslforge.xtext.common,
+ org.dslforge.workbench,
+ org.dslforge.workspace
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

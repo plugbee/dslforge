@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+  version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  
+  <persistence-unit name="dslforge" transaction-type="RESOURCE_LOCAL">
+<!--	 <persistence-unit name="codegame" transaction-type="RESOURCE_LOCAL"> -->
+ 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+ 		<class>org.dslforge.database.pu.tables.User</class>
+		<class>org.dslforge.database.pu.tables.Folder</class>
+		<class>org.dslforge.database.pu.tables.Project</class>
+		<class>org.dslforge.database.pu.tables.Resource</class>
+
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+		<properties>
+		    <property name="eclipselink.target-database" value="Derby"/>
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		
+		<!-- DSLFORGE PROD  --><property name="javax.persistence.jdbc.url" value="jdbc:derby:D:/www/dslforge/database;create=true" />
+		<!-- DSLFORGE DEVELOPMENT<property name="javax.persistence.jdbc.url" value="jdbc:derby:E:/dev/www/home/clean/database;create=true" />  --> 
+		
+			<property name="javax.persistence.jdbc.user" value="admin" />
+			<property name="javax.persistence.jdbc.password" value="admin" />
+
+			<!-- EclipseLink should create the database schema automatically -->
+			
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode"	value="database" />
+			<property name="eclipselink.deploy-on-startup" value="true" />
+			<property name="eclipselink.logging.level" value="OFF" />
+ 			<property name="eclipselink.logging.timestamp" value="false" />
+			<property name="eclipselink.logging.thread" value="false" />
+			<property name="eclipselink.logging.exceptions" value="true" />
+			<property name="eclipselink.orm.throw.exceptions" value="true" /> 
+			<property name="eclipselink.weaving" value="false"/>
+		
+		</properties>
+	</persistence-unit>
+
+</persistence> 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>org.dslforge.runtime.releng</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>./parent</module>
+		<module>../org.dslforge.runtime.target/${platform.version.name}</module>
+
+		<!-- Plug-ins -->
+		<module>../../plugins/org.dslforge.workbench</module>
+		<module>../../plugins/org.dslforge.workspace</module>
+		<module>../../plugins/org.dslforge.xtext.common</module>
+		
+		<!-- Examples 
+		<module>../../examples/org.dslforge.example.java.web</module>
+		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird</module>
+		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird.web</module>
+		<module>../../examples/org.eclipse.xtext.example.arithmetics</module>
+		<module>../../examples/org.eclipse.xtext.example.arithmetics.web</module>
+		<module>../../examples/org.eclipse.xtext.example.fowlerdsl</module>
+		<module>../../examples/org.eclipse.xtext.example.fowlerdsl.web</module>
+		<module>../../examples/org.xtext.example.domainmodel</module>
+		<module>../../examples/org.xtext.example.domainmodel.web</module>
+		<module>../../examples/org.xtext.example.mydsl</module>
+		<module>../../examples/org.xtext.example.mydsl.web</module>
+		-->
+		<!-- Tests -->
+
+		<!-- Documentation -->
+
+		<!-- Features -->
+		<module>../../features/org.dslforge.runtime.feature</module>
+
+		<!-- Update Site -->
+		<module>./repository</module>
+	</modules>
+	<profiles>
+		<profile>
+			<id>platform-kepler</id>
+			<properties>
+				<platform.version.name>kepler</platform.version.name>
+			</properties>
+		</profile>
+		<profile>
+			<id>platform-luna</id>
+			<properties>
+				<platform.version.name>luna</platform.version.name>
+			</properties>
+		</profile>
+		<profile>
+			<id>platform-mars</id>
+			<properties>
+				<platform.version.name>mars</platform.version.name>
+			</properties>
+		</profile>
+	</profiles>
+	<groupId>dslforge.releng</groupId>
+	<name>org.dslforge.runtime.releng</name>
+	<parent>
+		<groupId>dslforge.releng</groupId>
+		<artifactId>org.dslforge.runtime.releng.parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>./parent/pom.xml</relativePath>
+	</parent>
+</project>

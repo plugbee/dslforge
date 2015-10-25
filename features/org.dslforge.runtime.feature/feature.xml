@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.dslforge.runtime.feature"
+      label="DSLFORGE Runtime Feature"
+      version="1.0.0.qualifier">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="com.google.inject"/>
+      <import plugin="com.google.guava"/>
+      <import plugin="org.eclipse.rap.ui"/>
+      <import plugin="org.eclipse.rap.ui.forms"/>
+      <import plugin="org.eclipse.rap.ui.navigator"/>
+      <import plugin="org.eclipse.rap.jface"/>
+      <import plugin="org.eclipse.emf.rap.common.ui"/>
+      <import plugin="org.eclipse.emf.rap.edit.ui"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.equinox.security"/>
+      <import plugin="org.eclipse.xtext"/>
+      <import plugin="org.eclipse.core.jobs"/>
+      <import plugin="org.eclipse.rap.ui.cheatsheets"/>
+      <import plugin="org.eclipse.equinox.common"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="javax.mail"/>
+      <import plugin="javax.activation"/>
+      <import plugin="javax.persistence"/>
+      <import plugin="org.eclipse.rap.ui.workbench"/>
+      <import plugin="org.eclipse.gemini.jpa"/>
+      <import plugin="org.eclipse.persistence.core"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.rap.rwt"/>
+      <import plugin="org.apache.log4j"/>
+   </requires>
+
+   <plugin
+         id="org.dslforge.workbench"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.dslforge.workspace"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.dslforge.xtext.common"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.dslforge.example.java.web"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.fowlerdsl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.fowlerdsl.web"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xtext.example.mydsl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xtext.example.mydsl.web"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sphinx.examples.xtext.hummingbird"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sphinx.examples.xtext.hummingbird.web"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xtext.example.domainmodel"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xtext.example.domainmodel.web"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.arithmetics.web"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.example.arithmetics"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

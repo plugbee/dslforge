@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.xtext.example.conf/src-gen" editDirectory="/org.xtext.example.conf.edit/src"
+    editorDirectory="/org.xtext.example.conf.editor/src" modelPluginID="org.xtext.example.conf"
+    forceOverwrite="true" modelName="Conf" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.xtext.example.conf.edit"
+    editorPluginID="org.xtext.example.conf.editor" runtimeVersion="2.9">
+  <genPackages prefix="Conf" basePackage="org.xtext.example.conf" disposableProviderFactory="true"
+      fileExtensions="conf" ecorePackage="Conf.ecore#/">
+    <genClasses ecoreClass="Conf.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Conf.ecore#//Model/info"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Conf.ecore#//Model/dates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Model/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Model/topics"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Model/committee"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Model/organizers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Model/submDetails"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Conf.ecore#//Model/previous"/>
+    </genClasses>
+    <genClasses ecoreClass="Conf.ecore#//BasicConfInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//BasicConfInfo/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//BasicConfInfo/acronym"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//BasicConfInfo/year"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Conf.ecore#//BasicConfInfo/conjunction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//BasicConfInfo/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//BasicConfInfo/url"/>
+    </genClasses>
+    <genClasses ecoreClass="Conf.ecore#//Dates">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Dates/confDates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Dates/submDates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Dates/extSubmDates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Dates/notiDates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Dates/extNotiDates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Conf.ecore#//Dates/cameDates"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.dslforge.runtime.feature_1.0.0.qualifier.jar" id="org.dslforge.runtime.feature" version="1.0.0.qualifier">
+      <category name="org.dslforge.category"/>
+   </feature>
+   <category-def name="org.dslforge.category" label="DSLFORGE Runtime (Incubation)">
+      <description>
+         Integrated modeling tool platform that eases the development of IDE-like tool support for developing web-based IDEs
+      </description>
+   </category-def>
+</site>

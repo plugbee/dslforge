@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+      <extension
+         point="org.eclipse.rap.ui.resources">
+      <resource
+          class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.widget.HummingbirdResource">
+      </resource>
+      <resource
+          class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.widget.GlobalIndexResource">
+      </resource>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.themeableWidgets">
+      <widget
+            class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.widget.Hummingbird"
+            id="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.widget.Hummingbird"
+            name="Hummingbird">
+      </widget>
+   </extension>
+      <!-- @generated dslforge -->
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor"
+            name="Hummingbird Model Editor"
+	            icon="icons/model.png"
+		            extensions="hbtext"
+           class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdEditor"
+            contributorClass="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdActionBarContributor">
+      </editor>
+   </extension>
+      <!-- @generated dslforge -->
+   <extension point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Hummingbird Action Set"
+            visible="true"
+            id="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.actionset">
+         <action
+               class="org.eclipse.sphinx.examples.xtext.hummingbird.web.actions.NewHummingbirdAction"
+               icon="icons/model.png"
+               id="org.eclipse.sphinx.examples.xtext.hummingbird.web.wizard.newHummingbirdAction"
+               label="Hummingbird file"
+               menubarPath="file/new/additions"/>
+      </actionSet>
+   </extension>
+   
+    <extension
+         point="org.dslforge.workbench.contribution">
+      <generator
+            class="org.eclipse.sphinx.examples.xtext.hummingbird.web.HummingbirdExecutableExtensionFactory"
+            extension="hbtext"
+            label="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird">
+      </generator>
+   </extension>  
+</plugin>

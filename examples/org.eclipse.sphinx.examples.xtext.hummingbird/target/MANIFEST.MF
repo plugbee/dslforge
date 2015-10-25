@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Export-Package: org.eclipse.sphinx.examples.xtext.hummingbird,org.ecli
+ pse.sphinx.examples.xtext.hummingbird.services,org.eclipse.sphinx.exa
+ mples.xtext.hummingbird.hummingbird,org.eclipse.sphinx.examples.xtext
+ .hummingbird.hummingbird.impl,org.eclipse.sphinx.examples.xtext.hummi
+ ngbird.hummingbird.util,org.eclipse.sphinx.examples.xtext.hummingbird
+ .serializer,org.eclipse.sphinx.examples.xtext.hummingbird.parser.antl
+ r,org.eclipse.sphinx.examples.xtext.hummingbird.parser.antlr.internal
+ ,org.eclipse.sphinx.examples.xtext.hummingbird.validation,org.eclipse
+ .sphinx.examples.xtext.hummingbird.scoping,org.eclipse.sphinx.example
+ s.xtext.hummingbird.generator,org.eclipse.sphinx.examples.xtext.hummi
+ ngbird.formatting
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,org.eclipse.xte
+ xt.generator;resolution:=optional,org.apache.commons.logging;bundle-v
+ ersion="1.0.4";resolution:=optional,org.eclipse.emf.codegen.ecore;res
+ olution:=optional,org.eclipse.emf.mwe.utils;resolution:=optional,org.
+ eclipse.xtext.util,org.eclipse.emf.ecore,org.eclipse.emf.common,org.a
+ ntlr.runtime,org.eclipse.xtext.common.types
+Bundle-Vendor: My Company
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 1.0.0.201510162336
+Bundle-Name: org.eclipse.sphinx.examples.xtext.hummingbird
+Bundle-ManifestVersion: 2
+Import-Package: org.apache.log4j,org.eclipse.xtext.xbase.lib
+Bundle-SymbolicName: org.eclipse.sphinx.examples.xtext.hummingbird; si
+ ngleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

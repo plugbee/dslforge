@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DSLFORGE RAP Xtext Generator
+Bundle-SymbolicName: org.dslforge.xtext.generator
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.dslforge.xtext.generator.internal.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext,
+ org.eclipse.xtext.generator,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.emf.mwe2.language;resolution:=optional
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: org.dslforge.xtext.generator,
+ org.dslforge.xtext.generator.setup,
+ org.dslforge.xtext.generator.util
+Bundle-ClassPath: xtend-gen/,
+ .
+

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+ <!--
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.dslforge.xtext.generator"
+            name="GenerateRapXtextEditor">
+      </command>
+   </extension>
+   
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="org.dslforge.xtext.generator"
+               icon="icons/generate_editor.png"
+               label="Generate Web Editor"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <and>
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <or>
+                        <instanceof
+                              value="org.eclipse.core.resources.IFile">
+                        </instanceof>
+                     </or></iterate>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.dslforge.xtext.generator.ui.handlers.WebProjectGeneratorHandler"
+            commandId="org.dslforge.xtext.generator">
+      </handler>
+   </extension>
+
+      <extension
+          point="org.eclipse.ui.popupMenus">
+       <viewerContribution
+             id="org.dslforge.xtext.generator.action"
+             targetID="org.dslforge.xtext.generator.action.target">
+          <action
+                class=""
+                icon="icons/generate_editor.png"
+                id="org.dslforge.xtext.generator.action.generate.editor"
+                label="Generate Web Editor"
+                menubarPath="additions">
+          </action>
+       </viewerContribution>
+    </extension>   
+-->
+
+
+  <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.dslforge.xtext.generator.contribution.id"
+            nameFilter="*.xtext"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="org.dslforge.xtext.generator.ui.actions.GenerateWebProjectAction"
+               enablesFor="1"
+               icon="icons/generate_editor.png"
+               id="org.dslforge.xtext.generator.contribution.action.id"
+               label="Generate Web Editor"
+               menubarPath="additions">
+         </action>
+
+      </objectContribution>
+   </extension>
+
+
+
+
+</plugin>

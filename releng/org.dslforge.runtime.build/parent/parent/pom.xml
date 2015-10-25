@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>dslforge.releng</groupId>
+  <artifactId>org.dslforge.runtime.build.parent.parent</artifactId>
+  <packaging>pom</packaging>
+
+  <properties>
+    <tycho-version>0.20.0</tycho-version>
+    <tycho.showEclipseLog>true</tycho.showEclipseLog>
+    <assembly-version>2.4</assembly-version>
+    <replacer-version>1.4.1</replacer-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <rap-repository>http://download.eclipse.org/rt/rap/3.0/</rap-repository>
+    <rap-incubator-repository>http://download.eclipse.org/rt/rap/incubator/nightly/</rap-incubator-repository>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>rap-repository</id>
+      <layout>p2</layout>
+      <url>${rap-repository}</url>
+    </repository>
+    <repository>
+      <id>rap-incubator-repository</id>
+      <layout>p2</layout>
+      <url>${rap-incubator-repository}</url>
+    </repository>
+    
+    <repository>
+      <id>xtext-repository</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+    </repository>
+   
+   <repository>
+      <id>orbit-repository</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</url>
+    </repository> 
+    
+     <repository>
+      <id>eclipselink-repository</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/rt/eclipselink/updates/</url>
+    </repository> 
+   
+    <repository>
+      <id>gemini-repository</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/gemini/jpa/updates/</url>
+    </repository>  
+    <!-- 
+    <repository>
+      <id>dslforge-repository</id>
+      <layout>p2</layout>
+      <url>http://www.plugbee.com/downloads/repository/</url>
+    </repository>  
+-->
+    <repository>
+      <id>mars-repository</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/releases/mars</url>
+    </repository>  
+  </repositories>
+
+  <build>
+    <plugins>
+
+      <!-- Enable Tycho -->
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+
+      <!-- Configure qualifier replacement -->
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-packaging-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <format>yyyyMMdd-HHmm</format>
+        </configuration>
+      </plugin>
+
+      <!-- Restrict to environment to enable platform independent war-build -->
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <resolver>p2</resolver>
+          <environments>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch>
+            </environment>
+           </environments>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <version>1.0.0-SNAPSHOT</version>
+</project>

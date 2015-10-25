@@ -1,0 +1,115 @@
+<project name="org.dslforge.runtime.target" default="all">
+
+	<property environment="env" />
+
+	<property name="env.BUILD_ID" value="yyyymmdd-hhmm" />
+
+	<property file="./ant-config/${user.name}.build.properties" />
+	<property file="./ant-config/default.build.properties" />
+
+	<condition property="runs.under.windows">
+		<os family="windows" />
+	</condition>
+
+	<condition property="runs.under.unix">
+		<os family="unix" />
+	</condition>
+
+	<condition property="build.eclipse.available">
+		<available file="./eclipse" />
+	</condition>
+	<target name="detect-eclipse-downloads-drops-folder-name">
+		<condition property="eclipse.downloads.drops.folder.name" value="drops4" else="drops">
+			<matches string="${build.eclipse.version}" pattern="4\.\d" />
+		</condition>
+	</target>
+
+	<target name="detect-arch-suffix" depends="detect-arch-suffix-under-windows, detect-arch-suffix-under-unix" />
+
+	<!-- Test under MS/Windows -->
+	<target name="detect-arch-suffix-under-windows" if="runs.under.windows">
+		<!-- 64 bit Windows versions have the variable "ProgramFiles(x86)" -->
+		<exec dir="." executable="cmd" outputproperty="result">
+			<arg line="/c SET ProgramFiles(x86)" />
+		</exec>
+
+		<!-- String ends in "Program Files (x86)" -->
+		<condition property="x64">
+			<matches string="${result}" pattern="^.*=.*Program Files \(x86\)" />
+		</condition>
+
+		<condition property="arch.suffix" value="-x86_64" else="">
+			<isset property="x64" />
+		</condition>
+	</target>
+
+	<!-- Test under GNU/Linux -->
+	<target name="detect-arch-suffix-under-unix" if="runs.under.unix">
+		<exec dir="." executable="uname" outputproperty="result">
+			<arg line="-m" />
+		</exec>
+
+		<!-- String ends in 64 -->
+		<condition property="x64">
+			<matches string="${result}" pattern="^.*64$" />
+		</condition>
+
+		<condition property="arch.suffix" value="-x86_64" else="">
+			<isset property="x64" />
+		</condition>
+	</target>
+
+	<target name="echoprops" description="Echos configuration properties to console" depends="detect-eclipse-downloads-drops-folder-name, detect-arch-suffix">
+		<echo>ant.version=${ant.version}</echo>
+		<echo>ant.home=${ant.home}</echo>
+		<echo>ant.project.name=${ant.project.name}</echo>
+		<echo>ant.file=${ant.file}</echo>
+		<echo>basedir=${basedir}</echo>
+		<echo>user.name=${user.name}</echo>
+		<echo>user.home=${user.home}</echo>
+
+		<echo>build.eclipse.version=${build.eclipse.version}</echo>
+		<echo>build.eclipse.version.name=${build.eclipse.version.name}</echo>
+		<echo>build.eclipse.revision=${build.eclipse.revision}</echo>
+		<echo>build.eclipse.timestamp=${build.eclipse.timestamp}</echo>
+
+		<echo>runs.under.windows=${runs.under.windows}</echo>
+		<echo>runs.under.unix=${runs.under.unix}</echo>
+
+		<echo>eclipse.downloads.drops.folder.name=${eclipse.downloads.drops.folder.name}</echo>
+		<echo>arch.suffix=${arch.suffix}</echo>
+		
+		<echo>target.eclipse.version=${target.eclipse.version}</echo>
+		<echo>target.os=${target.os}</echo>
+		<echo>target.ws=${target.ws}</echo>
+		<echo>target.arch=${target.arch}</echo>
+	</target>
+
+	<target name="all" depends="echoprops, weaving" />
+
+	
+	<target name="build-target">
+		<echo>Building someting!</echo>
+		
+	</target>
+	
+	
+	<target name="define.task" description="New task definition for EclipseLink static weaving"> 
+		<echo>Inside define task</echo>
+	 <!--   <taskdef name="weave" classname="org.eclipse.persistence.tools.weaving.jpa.StaticWeaveAntTask"/> -->
+	</target>
+	
+	<target name="weaving" description="perform weaving" depends="define.task">
+		<echo>Inside weaving target</echo>
+	    <weave  source="C:\Users\lajmi\git\dslforge\plugins\org.dslforge.database.pu.weaver\source\org.dslforge.database.pu.jar"
+	            target="C:\Users\lajmi\git\dslforge\plugins\org.dslforge.database.pu.weaver\target\org.dslforge.database.pu.jar"
+				persistenceinfo="${basedir}/META-INF/persistence.xml">
+	        <classpath>
+	       <!--     <pathelement path="c:\myjar-dependent.jar"/>-->
+	       <!-- 	org.eclipse.persistence.tools.weaving.jpa;version="2.5.2" -->
+	        </classpath>
+
+	    </weave>
+	</target>
+
+</project>

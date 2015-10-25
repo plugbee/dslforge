@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="contribution" name="org.dslforge.rap.workbench.contribution" schema="schema/contribution.exsd"/>
+<!-- @generated dslforge -->
+<extension point="org.eclipse.rap.ui.entrypoint">
+	<entrypoint
+       brandingId="org.dslforge.workbench.branding"
+       class="org.dslforge.workbench.BasicWorkbench"
+       id="org.dslforge.core.ui.entrypoint"
+       path="/workbench">
+		</entrypoint>
+	</extension>
+<extension
+      point="org.eclipse.rap.ui.branding">
+   <branding
+         favicon="icons/dslforge.png"
+         id="org.dslforge.workbench.branding"
+         title="DSLFORGE Workbench">
+      <presentationFactory
+            id="org.eclipse.ui.presentations.default"
+            name="DSLFORGE">
+      </presentationFactory>
+   </branding>
+</extension>
+	
+	<extension
+		id="org.dslforge.core.ui.application"
+				point="org.eclipse.core.runtime.applications">
+		<application>
+			<run
+				class="org.dslforge.workbench.BasicWorkbenchApplication">
+			</run>
+		</application>
+	</extension>
+
+	<extension
+		point="org.eclipse.ui.perspectives">
+		<perspective
+			name="DSLFORGE Modeling Workbench"
+			class="org.dslforge.workbench.parts.BasicWorkbenchPerspective"
+				id="org.dslforge.workbench.ui.parts.perspective">
+		</perspective>
+	</extension>
+
+	<extension
+				point="org.eclipse.ui.views">
+		<view
+			name="Basic Workbench View"
+			class="org.dslforge.workbench.parts.BasicWorkbenchView"
+			id="org.dslforge.views.basicworkbenchview">
+		</view>
+	</extension>
+	
+    <extension point="org.eclipse.ui.commands">
+    	<command
+           categoryId="org.eclipse.ui.category.file"
+          description="Opens an Xtext model loading it from a URI"
+           id="org.dslforge.core.ui.actions.commands.OpenURICommand"
+           name="Open URI..."/>
+     <command
+           defaultHandler="org.dslforge.workbench.commands.NewProjectCommandHandler"
+           description="Create a new DSL Project"
+           helpContextId="Create a new DSL Project"
+           id="org.dslforge.core.ui.actions.commands.newProject"
+           name="Create a new DSL Project">
+     </command>
+     <command
+           defaultHandler="org.dslforge.workbench.commands.NewModelCommandHandler"
+           description="Create a new DSL File"
+           helpContextId="Create a new DSL File"
+           id="org.dslforge.core.ui.actions.commands.newModel"
+           name="Create a new DSL File">
+     </command>
+     
+     <command
+           defaultHandler="org.dslforge.workbench.commands.ChangePasswordHandler"
+           description="Manage Account"
+           helpContextId="Manage Account"
+           id="org.dslforge.core.ui.actions.commands.changePwd"
+           name="Manage Account">
+     </command>
+     <command
+           defaultHandler="org.dslforge.workbench.commands.AddUserCommandHandler"
+           description="Add User"
+           helpContextId="Add User"
+           id="org.dslforge.core.ui.actions.commands.addUser"
+           name="Add User">
+     </command>
+     <command
+           defaultHandler="org.dslforge.workbench.commands.RemoveUserCommandHandler"
+           description="Remove User"
+           id="org.dslforge.core.ui.actions.commands.removeUser"
+           name="Remove User">
+     </command>
+     
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Basic Action Set"
+            visible="true"
+            id="org.dslforge.core.ui.actionset">
+         <action
+               label="About..."
+               class="org.dslforge.workbench.actions.AboutAction"
+               menubarPath="help/additions"
+               id="org.dslforge.core.ui.actions.aboutaction"/>
+         <action
+               label="Open URI..."
+               definitionId="org.dslforge.core.ui.actions.commands.OpenURICommand"
+               class="org.dslforge.workbench.actions.OpenURIAction"
+               menubarPath="file/additions"
+               id="org.dslforge.core.ui.actions.openuriaction"/>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.rap.navigator.view.actions.contribution.new"
+            nameFilter="*"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workbench.actions.NewModelAction"
+               definitionId="org.dslforge.core.ui.actions.commands.newModel"
+               enablesFor="*"
+               icon="icons/model.png"
+               id="org.dslforge.rap.navigator.actions.new.model"
+               label="Model"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push"
+               tooltip="Create a new model file">
+         </action>
+         <action
+               class="org.dslforge.workbench.actions.NewFolderAction"
+               enablesFor="*"
+               icon="icons/folder.png"
+               id="org.dslforge.rap.navigator.actions.new.folder"
+               label="Folder"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push"
+               tooltip="Create a new folder">
+         </action>
+         <!--
+         <action
+               class="org.dslforge.rap.workbench.actions.NewProjectAction"
+               icon="icons/project.png"
+               id="org.dslforge.rap.navigator.actions.new.project"
+               label="Project"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push">
+         </action>
+        --> 
+         <menu
+               id="org.dslforge.workspace.menu.new"
+               label="New"
+               path="main">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+         
+      </objectContribution>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.rap.navigator.view.actions.contribution.delete"
+            nameFilter="*"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workbench.actions.DeleteResourceAction"
+               enablesFor="*"
+               icon="icons/delete.png"
+               id="org.dslforge.workspace.menu.delete"
+               label="Delete"
+               style="push">
+         </action>
+      </objectContribution>
+   </extension>
+  
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.rap.navigator.view.actions.contribution.generate"
+            nameFilter="*"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workbench.actions.BasicGenerateAction"
+               enablesFor="*"
+               icon="icons/generate.png"
+               id="org.dslforge.workspace.menu.generate"
+               label="Generate"
+               style="push">
+         </action>
+      </objectContribution>
+   </extension>
+   
+      <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.rap.navigator.view.actions.contribution.compile"
+            nameFilter="*.java"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workbench.actions.CompileAction"
+               enablesFor="*"
+               icon="icons/compile.png"
+               id="org.dslforge.workspace.menu.compile"
+               label="Compile"
+               style="push">
+         </action>
+      </objectContribution>
+   </extension>
+  
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.rap.navigator.view.actions.contribution.run"
+            nameFilter="*.class"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workbench.actions.RunAction"
+               enablesFor="*"
+               icon="icons/run_exec.png"
+               id="org.dslforge.workspace.menu.run"
+               label="Run"
+               style="push">
+         </action>
+      </objectContribution>
+   </extension>
+    
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            id="org.dslforge.rap.navigator.view.actions.contribution.another"
+            targetID="org.dslforge.rap.navigator.view">
+            <!--
+         <action
+               class="org.dslforge.rap.workbench.actions.NewModelAction"
+               icon="icons/model.png"
+               id="org.dslforge.rap.navigator.actions.new.model"
+               label="Model"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push">
+         </action>
+         <action
+               class="org.dslforge.rap.workbench.actions.NewFolderAction"
+               icon="icons/folder.png"
+               id="org.dslforge.rap.navigator.actions.new.folder"
+               label="Folder"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push">
+         </action>
+         -->
+         <action
+               class="org.dslforge.workbench.actions.NewProjectDelegateAction"
+               definitionId="org.dslforge.core.ui.actions.commands.newProject"
+               icon="icons/project.png"
+               id="org.dslforge.rap.navigator.actions.new.project"
+               label="Project"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push"
+               tooltip="Create a new DSL Project">
+         </action>
+         <menu
+               id="org.dslforge.workspace.menu.new"
+               label="New"
+               path="main">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+      </viewerContribution>
+   </extension>
+   <!--
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="org.dslforge.rap.workbench.actionSet1"
+            label="Help"
+            visible="true">
+         <action
+               class="org.eclipse.ui.cheatsheets.CheatSheetExtensionFactory:helpMenuAction"
+               id="org.dslforge.rap.workbench.action1"
+               label="Help me"
+               menubarPath="help/group.tutorials"
+               style="push">
+         </action>
+      </actionSet>
+   </extension>
+   -->
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="org.dslforge.rap.workbench.category2"
+            name="Tutorials">
+      </category>
+      <cheatsheet
+            category="org.dslforge.rap.workbench.category2"
+            composite="false"
+            contentFile="cheatsheets/BasicTutorial.xml"
+            id="org.dslforge.rap.workbench.cheatsheet2"
+            name="Basic Tutorial">
+      </cheatsheet>
+   </extension>
+   <!--
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.eclipse.ui.internal.cheatsheets.views.CheatSheetView"
+            id="org.eclipse.ui.cheatsheets.views.CheatSheetView"
+            name="Help"
+            restorable="true">
+      </view>
+   </extension>
+   -->
+   <!--
+   <extension
+         point="org.eclipse.ui.helpSupport">
+      <config
+            class="org.dslforge.rap.workbench.help.HelpUI">
+      </config>
+   </extension>
+   -->
+
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="org.dslforge.rap.workbench.toolbar.project"
+               label="New Project">
+            <command
+                  commandId="org.dslforge.core.ui.actions.commands.newProject"
+                  helpContextId="Create a new DSL project"
+                  icon="icons/project.png"
+                  label="New Project"
+                  style="push"
+                  tooltip="Create a new DSL project">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>   
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="org.dslforge.rap.workbench.toolbar.model"
+               label="New Model">
+            <command
+                  commandId="org.dslforge.core.ui.actions.commands.newModel"
+                  helpContextId="Create a new DSL file"
+                  icon="icons/model.png"
+                  label="New Model"
+                  style="push"
+                  tooltip="Create a new DSL file">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension> 
+
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewer
+            viewerId="org.dslforge.rap.navigator.view">
+      </viewer>
+      <viewerContentBinding
+            viewerId="org.dslforge.rap.navigator.view">
+         <includes>
+            <contentExtension
+                  isRoot="true"
+                  pattern="org.dslforge.rap.navigator.fileContent">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.dslforge.rap.navigator.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.dslforge.workbench.navigator.BasicWokspaceNavigator"
+            icon="icons/earth_view.png"
+            id="org.dslforge.rap.navigator.view"
+            name="Project Explorer"
+            restorable="false">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.dslforge.workbench.navigator.FileSystemContentProvider"
+            id="org.dslforge.rap.navigator.fileContent"
+            labelProvider="org.dslforge.workbench.navigator.FileSystemLabelProvider"
+            name="Workspace Content"
+            priority="high">
+
+         <triggerPoints>
+            <instanceof
+                  value="java.io.File">
+            </instanceof>
+         </triggerPoints>
+
+      </navigatorContent>
+      <commonFilter
+            activeByDefault="false"
+            class="org.dslforge.workbench.navigator.BasicWorkspaceFilter"
+            description="a filter example"
+            id="org.dslforge.workspace.commonFilter2"
+            name=".* resources"
+            visibleInUI="true">
+      </commonFilter>
+   </extension>
+
+   <extension
+         id="databaseLoginModule"
+         point="org.eclipse.equinox.security.loginModule">
+      <loginModule
+            class="org.dslforge.workbench.authentication.database.DatabaseLoginModule"
+            description="Database-based Login Module">
+      </loginModule>
+   </extension>
+   <extension
+         id="databaseCallbackHandler"
+         point="org.eclipse.equinox.security.callbackHandler">
+      <callbackHandler
+            class="org.dslforge.workbench.authentication.BasicCallbackHandler">
+      </callbackHandler>
+   </extension>
+   <extension
+         point="org.eclipse.equinox.security.callbackHandlerMapping">
+      <callbackHandlerMapping
+            callbackHandlerId="org.dslforge.workbench.databaseCallbackHandler"
+            configName="DATABASE">
+      </callbackHandlerMapping>
+   </extension>
+   <extension
+         point="org.eclipse.ui.presentationFactories">
+      <factory
+            class="org.dslforge.workbench.presentation.BasicPresentationFactory"
+            id="org.dslforge.workbench.presentation.factory"
+            name="Basic">
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.dslforge.workbench.internal.WorkbenchStartup">
+      </startup>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?after=edit">
+         <menu
+               label="Tools">
+            <command
+                  commandId="org.dslforge.core.ui.actions.commands.changePwd"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.dslforge.core.ui.actions.commands.addUser"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.dslforge.core.ui.actions.commands.removeUser"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>

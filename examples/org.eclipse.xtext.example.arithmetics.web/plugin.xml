@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+      <extension
+         point="org.eclipse.rap.ui.resources">
+      <resource
+            class="org.eclipse.xtext.example.arithmetics.web.editor.widget.ArithmeticsResource"
+            id="org.eclipse.xtext.example.arithmetics.web.editor">
+      </resource>
+      <resource
+          class="org.eclipse.xtext.example.arithmetics.web.editor.widget.GlobalIndexResource">
+      </resource>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.themeableWidgets">
+      <widget
+            class="org.eclipse.xtext.example.arithmetics.web.editor.widget.Arithmetics"
+            id="org.eclipse.xtext.example.arithmetics.web.editor.widget.Arithmetics"
+            name="Arithmetics">
+      </widget>
+   </extension>
+      <!-- @generated dslforge -->
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.xtext.example.arithmetics.web.editor"
+            name="Arithmetics Model Editor"
+	            icon="icons/model.png"
+		            extensions="calc"
+           class="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsEditor"
+            contributorClass="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsActionBarContributor">
+      </editor>
+   </extension>
+      <!-- @generated dslforge -->
+   <extension point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Arithmetics Action Set"
+            visible="true"
+            id="org.xtext.example.arithmetics.web.editor.actionset">
+         <action
+               class="org.eclipse.xtext.example.arithmetics.web.actions.NewArithmeticsAction"
+               icon="icons/model.png"
+               id="org.eclipse.xtext.example.arithmetics.web.wizard.newArithmeticsAction"
+               label="Arithmetics file"
+               menubarPath="file/new/additions"/>
+      </actionSet>
+   </extension>
+   
+      <extension
+         point="org.dslforge.workbench.contribution">
+      <generator
+            class="org.eclipse.xtext.example.arithmetics.web.ArithmeticsExecutableExtensionFactory"
+            extension="calc"
+            label="org.eclipse.xtext.example.arithmetics.Arithmetics">
+      </generator>
+   </extension>
+</plugin>

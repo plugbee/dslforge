@@ -1,0 +1,38 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.xtext.example.fowlerdsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.eclipse.xtext.example.fowlerdsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types,
+ org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.emf.mwe2.launch,
+ org.eclipse.equinox.common,
+ org.objectweb.asm
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.eclipse.xtext.example.fowlerdsl,
+ org.eclipse.xtext.example.fowlerdsl.services,
+ org.eclipse.xtext.example.fowlerdsl.statemachine,
+ org.eclipse.xtext.example.fowlerdsl.statemachine.impl,
+ org.eclipse.xtext.example.fowlerdsl.statemachine.util,
+ org.eclipse.xtext.example.fowlerdsl.serializer,
+ org.eclipse.xtext.example.fowlerdsl.parser.antlr,
+ org.eclipse.xtext.example.fowlerdsl.parser.antlr.internal,
+ org.eclipse.xtext.example.fowlerdsl.validation,
+ org.eclipse.xtext.example.fowlerdsl.scoping,
+ org.eclipse.xtext.example.fowlerdsl.generator,
+ org.eclipse.xtext.example.fowlerdsl.formatting
+

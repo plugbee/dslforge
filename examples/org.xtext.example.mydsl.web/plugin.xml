@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+      <extension
+         point="org.eclipse.rap.ui.resources">
+      <resource
+          class="org.xtext.example.mydsl.web.editor.widget.MyDslResource">
+      </resource>
+      <resource
+          class="org.xtext.example.mydsl.web.editor.widget.GlobalIndexResource">
+      </resource>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.themeableWidgets">
+      <widget
+            class="org.xtext.example.mydsl.web.editor.widget.MyDsl"
+            id="org.xtext.example.mydsl.web.editor.widget.MyDsl"
+            name="MyDsl">
+      </widget>
+   </extension>
+      <!-- @generated dslforge -->
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.xtext.example.mydsl.web.editor"
+            name="MyDsl Model Editor"
+	            icon="icons/model.png"
+		            extensions="mydsl"
+           class="org.xtext.example.mydsl.web.editor.MyDslEditor"
+            contributorClass="org.xtext.example.mydsl.web.editor.MyDslActionBarContributor">
+      </editor>
+   </extension>
+      <!-- @generated dslforge -->
+   <extension point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="MyDsl Action Set"
+            visible="true"
+            id="org.xtext.example.mydsl.web.editor.actionset">
+         <action
+               class="org.xtext.example.mydsl.web.actions.NewMyDslAction"
+               icon="icons/model.png"
+               id="org.xtext.example.mydsl.web.wizard.newMyDslAction"
+               label="MyDsl file"
+               menubarPath="file/new/additions"/>
+      </actionSet>
+   </extension>
+   
+   	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="org.xtext.example.mydsl.web.MyDslExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="mydsl">
+		</parser>
+	</extension>
+    <extension
+          point="org.dslforge.workbench.contribution">
+       <generator
+             class="org.xtext.example.mydsl.web.MyDslExecutableExtensionFactory"
+             extension="mydsl"
+             label="org.xtext.example.mydsl.MyDsl">
+       </generator>
+    </extension>
+   
+</plugin>

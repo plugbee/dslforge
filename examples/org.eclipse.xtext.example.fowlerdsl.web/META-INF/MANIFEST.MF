@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.xtext.example.fowlerdsl.web
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.eclipse.xtext.example.fowlerdsl.web; singleton:=true
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.eclipse.xtext.example.fowlerdsl.web.internal.Activator
+Require-Bundle: org.eclipse.rap.ui,
+ org.eclipse.rap.ui.navigator,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.rap.common.ui,
+ org.eclipse.emf.rap.edit.ui,
+ com.google.inject,
+ org.eclipse.xtext,
+ org.dslforge.xtext.common,
+ org.dslforge.workspace,
+ org.dslforge.workbench,
+ org.eclipse.xtext.example.fowlerdsl
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.eclipse.xtext.example.fowlerdsl.web.actions,
+ org.eclipse.xtext.example.fowlerdsl.web.editor,
+ org.eclipse.xtext.example.fowlerdsl.web.editor.widget,
+ org.eclipse.xtext.example.fowlerdsl.web.internal,
+ org.eclipse.xtext.example.fowlerdsl.web.module,
+ org.eclipse.xtext.example.fowlerdsl.web.wizards

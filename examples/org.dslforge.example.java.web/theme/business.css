@@ -1,0 +1,10 @@
+  Button[PUSH], Button[TOGGLE] {
+    border: 2px solid blue;
+    color: rgb( 117, 23, 10 );
+    background-color: #f9f6f2;
+  }
+  
+  Button[PUSH]:hover, Button[TOGGLE]:hover {
+    background-color: white;
+  }
+  

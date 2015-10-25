@@ -1,0 +1,10 @@
+DATABASE {
+    org.eclipse.equinox.security.auth.module.ExtensionLoginModule required
+        extensionId="org.dslforge.workbench.databaseLoginModule";
+};
+
+BASIC {
+    org.eclipse.equinox.security.auth.module.ExtensionLoginModule required
+        extensionId="org.dslforge.workbench.basicLoginModule";
+};
+

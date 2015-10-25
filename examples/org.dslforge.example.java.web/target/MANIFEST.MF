@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Export-Package: org.dslforge.example.java.web.actions,org.dslforge.exa
+ mple.java.web.editor,org.dslforge.example.java.web.editor.widget,org.
+ dslforge.example.java.web.module
+Require-Bundle: org.eclipse.rap.ui,org.eclipse.emf.rap.common.ui,org.e
+ clipse.emf.rap.edit.ui,org.eclipse.xtext,org.eclipse.core.jobs,org.ec
+ lipse.emf.common,org.eclipse.emf.ecore,org.eclipse.rap.ui.navigator,c
+ om.google.inject,org.eclipse.equinox.security,org.dslforge.workbench,
+ org.dslforge.xtext.common,org.dslforge.workspace
+Bundle-Vendor: My Company
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 1.0.0.201510162336
+Bundle-Name: org.dslforge.example.java.web
+Bundle-Activator: org.dslforge.example.java.web.internal.Activator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.dslforge.example.java.web; singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

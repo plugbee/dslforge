@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DSLFORGE Database Persistency Unit
+Bundle-SymbolicName: org.dslforge.database.pu
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: DSLFORGE
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: javax.persistence,
+ javax.persistence.criteria,
+ javax.persistence.metamodel,
+ org.eclipse.persistence.tools,
+ org.eclipse.persistence.tools.weaving.jpa,
+ org.osgi.framework,
+ org.osgi.service.jpa
+Export-Package: org.apache.derby.jdbc,
+ org.dslforge.database.pu.tables
+Bundle-ClassPath: lib/derby.jar,.
+Meta-Persistence: META-INF/persistence.xml
+JPA-PersistenceUnits: dslforge
+ZZZ-Require-Capability: osgi.extender;
+ filter:="(&(osgi.extender=osgi.jpa)(version>=1.0))"

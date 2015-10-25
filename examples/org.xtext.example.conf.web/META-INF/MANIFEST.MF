@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.conf.web
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.example.conf.web; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.rap.ui,
+ org.eclipse.emf.rap.common.ui,
+ org.eclipse.emf.rap.edit.ui,
+ org.eclipse.xtext,
+ org.xtext.example.conf,
+ org.eclipse.core.jobs,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore,
+ org.dslforge.rap.xtext.common,
+ org.eclipse.rap.rwt,
+ org.eclipse.rap.jface,
+ org.eclipse.rap.addons.filedialog,
+ org.eclipse.rap.ui.navigator,
+ org.dslforge.rap.workspace
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
