@@ -6,7 +6,6 @@ Bundle-Version: 2.8.3.qualifier
 Bundle-SymbolicName: org.eclipse.xtext.example.fowlerdsl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
- org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.util,
  org.eclipse.emf.ecore;bundle-version="2.10.2",
  org.eclipse.emf.common;bundle-version="2.10.1",
