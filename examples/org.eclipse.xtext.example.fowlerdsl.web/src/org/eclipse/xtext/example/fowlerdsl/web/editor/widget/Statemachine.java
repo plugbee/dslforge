@@ -10,8 +10,8 @@ import org.eclipse.rap.rwt.service.ResourceManager;
 import org.eclipse.swt.widgets.Composite;
 
 public class Statemachine extends BasicText {
-
-	private static final long serialVersionUID = 6753764806478767769L;
+	
+	private static final long serialVersionUID = 1L;
 	
 	private static final String REMOTE_TYPE = "org.eclipse.xtext.example.fowlerdsl.web.editor.widget.Statemachine";
 	
@@ -60,7 +60,7 @@ public class Statemachine extends BasicText {
 		getAntlrFiles().add("InternalStatemachineParser.js");
 		getAntlrFiles().add("InternalStatemachineLexer.js");
 	}
-
+	
 	@Override
 	protected void loadTemplateScripts(JavaScriptLoader jsLoader, ResourceManager resourceManager) {
 		jsLoader.require(resourceManager.getLocation(getTemplatePath()+ "statemachine.js"));
@@ -70,7 +70,7 @@ public class Statemachine extends BasicText {
 	protected void registerTemplateResources(ResourceManager resourceManager) throws IOException {
 		register(resourceManager, "statemachine.js", getTemplatePath());
 	}
-	
+
 	@Override
 	protected ClassLoader getClassLoader() {
 		ClassLoader classLoader = Statemachine.class.getClassLoader();

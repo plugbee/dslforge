@@ -5,11 +5,11 @@ package org.eclipse.xtext.example.fowlerdsl.validation
 
 import org.eclipse.xtext.example.fowlerdsl.statemachine.StatemachinePackage
 import org.eclipse.xtext.validation.Check
-import org.eclipse.xtext.example.fowlerdsl.statemachine.State;
+
 /**
  * Custom validation rules. 
  *
- * see http://www.eclipse.org/Xtext/documentation.html#validation
+ * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class StatemachineValidator extends AbstractStatemachineValidator {
 

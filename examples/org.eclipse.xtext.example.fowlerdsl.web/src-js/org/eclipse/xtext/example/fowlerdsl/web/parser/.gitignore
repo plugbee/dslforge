@@ -1,2 +1,3 @@
-[^.]*
-/org
+/InternalStatemachine.tokens
+/InternalStatemachineLexer.js
+/InternalStatemachineParser.js

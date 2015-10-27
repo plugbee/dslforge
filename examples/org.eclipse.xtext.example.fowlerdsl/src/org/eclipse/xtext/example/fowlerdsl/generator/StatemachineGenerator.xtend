@@ -13,12 +13,12 @@ import org.eclipse.xtext.generator.IGenerator
 /**
  * Generates code from your model files on save.
  * 
- * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
+ * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class StatemachineGenerator implements IGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		fsa.generateFile(resource.className+".java", toJavaCodeForWeb(resource.contents.head as Statemachine))
+		fsa.generateFile(resource.className+".java", toJavaCode(resource.contents.head as Statemachine))
 	}
 	
 	def className(Resource res) {
@@ -26,81 +26,11 @@ class StatemachineGenerator implements IGenerator {
 		return name.substring(0, name.indexOf('.'))
 	}
 	
-	def toJavaCodeForWeb(Statemachine sm) '''
-		import org.eclipse.jface.dialogs.InputDialog;
-
-		public class «sm.eResource.className» {
-			
-			boolean exit = false;
-			
-			public static void main(String[] args) {
-				new «sm.eResource.className»().run();
-			}
-			
-			«FOR c : sm.commands»
-				«c.declareCommand»
-			«ENDFOR»
-			
-			public void run() {
-				boolean executeActions = true;
-				String currentState = "«sm.states.head?.name»";
-				String lastEvent = null;
-				while (!exit) {
-					«FOR state : sm.states»
-						«state.generateCodeForWeb»
-					«ENDFOR»
-					«FOR resetEvent : sm.resetEvents»
-						if ("«resetEvent.name»".equals(lastEvent)) {
-							System.out.println("Resetting state machine.");
-							currentState = "«sm.states.head?.name»";
-							executeActions = true;
-						}
-					«ENDFOR»
-					
-				}
-			}
-			
-			
-			public String receiveEvent(String request) {
-				InputDialog input = new InputDialog(null, "Request event", request,	null, null);
-				input.open();
-				String value = input.getValue();
-				if (value == null)
-					exit = true;
-				return value;
-			}
-		}
-		'''
-
-		def generateCodeForWeb(State state) '''
-		if (currentState.equals("«state.name»")) {
-			if (executeActions) {
-				«FOR c : state.actions»
-					do«c.name.toFirstUpper»();
-				«ENDFOR»
-				executeActions = false;
-			}
-			String request = "Your are now in state '«state.name»'. Possible events are [«
-				state.transitions.map(t | t.event.name).join(', ')»].";
-			lastEvent = receiveEvent(request);
-			«FOR t : state.transitions»
-				if ("«t.event.name»".equals(lastEvent)) {
-					currentState = "«t.state.name»";
-					executeActions = true;
-				}
-			«ENDFOR»
-		}
-	'''
-	
-	
 	def toJavaCode(Statemachine sm) '''
 		import java.io.BufferedReader;
 		import java.io.IOException;
 		import java.io.InputStreamReader;
-		import org.eclipse.jface.dialogs.InputDialog;
-		import org.eclipse.swt.widgets.Display;
-		import org.eclipse.swt.widgets.Shell;
-
+		
 		public class «sm.eResource.className» {
 			
 			public static void main(String[] args) {
@@ -111,7 +41,7 @@ class StatemachineGenerator implements IGenerator {
 				«c.declareCommand»
 			«ENDFOR»
 			
-			public void run() {
+			protected void run() {
 				boolean executeActions = true;
 				String currentState = "«sm.states.head?.name»";
 				String lastEvent = null;

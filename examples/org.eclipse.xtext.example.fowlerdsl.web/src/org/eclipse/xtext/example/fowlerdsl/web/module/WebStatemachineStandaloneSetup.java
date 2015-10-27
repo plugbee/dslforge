@@ -31,7 +31,7 @@ public class WebStatemachineStandaloneSetup extends StatemachineStandaloneSetup 
 		org.eclipse.xtext.common.TerminalsStandaloneSetup.doSetup();
 		StatemachineRuntimeModule original = new StatemachineRuntimeModule();
 		WebStatemachineRuntimeModule module = new WebStatemachineRuntimeModule();
-		Module mergedModule = Modules2.mixin(original, module);
+		Module mergedModule = Modules2.mixin((Module) original, module);
 		return mergedModule;
 	}
 }

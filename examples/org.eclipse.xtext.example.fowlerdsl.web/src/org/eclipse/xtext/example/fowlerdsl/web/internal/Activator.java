@@ -19,8 +19,9 @@ import com.google.inject.Injector;
  */
 public class Activator extends AbstractUIPlugin {
 
+	// The Language Name
 	public static final String LANGUAGE_NAME = "org.eclipse.xtext.example.fowlerdsl.Statemachine";
-
+	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.xtext.example.fowlerdsl.web"; //$NON-NLS-1$
 
@@ -33,7 +34,7 @@ public class Activator extends AbstractUIPlugin {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = new WebStatemachineStandaloneSetup().createInjector(LANGUAGE_NAME));
+				injectors.put(language, injector = new WebStatemachineStandaloneSetup().createInjector("org.eclipse.xtext.example.fowlerdsl.Statemachine"));
 			}
 			return injector;
 		}
@@ -75,7 +76,6 @@ public class Activator extends AbstractUIPlugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
-
 
 	@Override
 	protected void initializeImageRegistry(ImageRegistry reg) {

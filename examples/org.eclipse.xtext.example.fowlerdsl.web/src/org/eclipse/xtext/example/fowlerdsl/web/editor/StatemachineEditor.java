@@ -24,7 +24,7 @@ public class StatemachineEditor extends BasicXtextEditor {
 		injector = Activator.getInstance().getInjector(getLanguageName());
 		injector.injectMembers(this);
 	}
-
+	
 	@Override
 	protected void createWidget(Composite parent, Font font) {
 		statemachineWidget = new Statemachine(parent, SWT.FILL);

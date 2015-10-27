@@ -10,12 +10,10 @@
 		properties : [ "url", "text", "command", "status", "issue", "scope" ],
 		
 		events : ["Modify", "Save"]
- 		
 	});
 
 	rwt.qx.Class.define("org.eclipse.xtext.example.fowlerdsl.web.editor.widget.Statemachine", {
 		extend : rwt.widgets.Composite,
-
 		construct : function(properties) {
 			this.base(arguments);
 			bindAll(this, [ "layout", "onModify", "onReady", "onSend", "onRender", "onSave" ]);
@@ -162,17 +160,17 @@
 			setStatus : function(status) {
 			   	if (this.ready) {
 			   		if (this._status=="invalid") {
-//			   			var annotations = this.editor.session.getAnnotations();
-//			   			var filtered = [];
-//			   			this.editor.session.clearAnnotations();
-//			   			for (var i = 0; i < annotations.length; i++) {
-//			   				var annotation = annotations[i];
-//			   				var type = annotation.type;
-//			   				if (type != "warning") {
-//			   					filtered.push(annotation)
-//			   				}
-//			   			}
-//			   			this.editor.session.setAnnotations(filtered);
+			   			var annotations = this.editor.session.getAnnotations();
+			   			var filtered = [];
+			   			this.editor.session.clearAnnotations();
+			   			for (var i = 0; i < annotations.length; i++) {
+			   				var annotation = annotations[i];
+			   				var type = annotation.type;
+			   				if (type != "warning") {
+			   					filtered.push(annotation)
+			   				}
+			   			}
+			   			this.editor.session.setAnnotations(filtered);
 			   		}
 				} else {
 					this._status = status;
@@ -250,12 +248,12 @@
 				    editor.getSession().setUseSoftTabs(true);
 
 					editor.getSession().setMode("ace/mode/statemachine");	
-					editor.setFontSize(15);
+					editor.setFontSize(17);
 					editor.getSession().getUndoManager().reset();
 					
 					editor.setShowPrintMargin(false);
 					 
-					//editor.$blockScrolling = Infinity;
+					editor.$blockScrolling = Infinity;
 					
 					//bind content assist
 					this.langTools = ace.require("ace/ext/language_tools");
@@ -281,6 +279,7 @@
 						}
 					}
 
+
 					//Add completer and enable content assist
 					this.langTools.addCompleter(this.globalScope);
 					
@@ -300,12 +299,13 @@
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 					editor.tokenTooltip = new TokenTooltip(editor);
 					
-					//Handle the index
+					
+					//Handle the global index
 					if (typeof SharedWorker == 'undefined') {	
-						alert("Your current browser does not support JavaScript shared workers.");
+						alert("Your browser does not support JavaScript shared workers.");
 					} else {
 						//Compute worker's http URL
-					    var filePath = 'rwt-resources/src-js/org/eclipse/xtext/example/fowlerdsl/web/global-index.js';
+						var filePath = 'rwt-resources/src-js/org/eclipse/xtext/example/fowlerdsl/web/global-index.js';
 					    var httpURL = computeWorkerPath(filePath);
 						//Create the index
 						var worker = this.worker = new SharedWorker(httpURL);	 	
@@ -323,7 +323,7 @@
 
 						editor.on("change", function() {			
 							//editor.session.dirty = true;							
-							//alert("editor on change: index: " + index);
+							//console.log("posting message: index: " + index);
 					        worker.port.postMessage({
 					           	message: editor.getValue(), 
 					           	guid: guid, 
@@ -395,7 +395,7 @@
 		else suffix = "object";
 		return cls + "completion " + cls + "completion-" + suffix;
 	};
-	
+
 	var bind = function(context, method) {
 		return function() {
 			return method.apply(context, arguments);
@@ -425,3 +425,5 @@
     };
     
 }());
+
+

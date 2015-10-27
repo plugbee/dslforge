@@ -4,8 +4,7 @@
       <extension
          point="org.eclipse.rap.ui.resources">
       <resource
-            class="org.eclipse.xtext.example.fowlerdsl.web.editor.widget.StatemachineResource"
-            id="org.eclipse.xtext.example.fowlerdsl.web.editor.widget">
+          class="org.eclipse.xtext.example.fowlerdsl.web.editor.widget.StatemachineResource">
       </resource>
       <resource
           class="org.eclipse.xtext.example.fowlerdsl.web.editor.widget.GlobalIndexResource">
@@ -35,22 +34,20 @@
       <actionSet
             label="Statemachine Action Set"
             visible="true"
-            id="org.eclipse.xtext.example.fowlerdsl.web.editor.actionset">
+            id="org.dslforge.core.ui.model.actionset">
          <action
-               class="org.eclipse.xtext.example.fowlerdsl.web.actions.NewStatemachineAction"
-               icon="icons/model.png"
-               id="org.eclipse.xtext.example.fowlerdsl.web.wizard.newStatemachineAction"
                label="Statemachine file"
-               menubarPath="file/new/additions"/>
+               class="org.eclipse.xtext.example.fowlerdsl.web.actions.NewStatemachineAction"
+              menubarPath="file/new/additions"
+               id="org.eclipse.xtext.example.fowlerdsl.web.wizard.newStatemachineAction"/>
       </actionSet>
    </extension>
-   
-      <extension
-         point="org.dslforge.workbench.contribution">
-      <generator
-            class="org.eclipse.xtext.example.fowlerdsl.web.StatemachineExecutableExtensionFactory"
-            extension="statemachine"
-            label="org.eclipse.xtext.example.fowlerdsl.Statemachine">
-      </generator>
-   </extension>
+   <extension
+     point="org.dslforge.workbench.contribution">
+  <generator
+       class="org.eclipse.xtext.example.fowlerdsl.web.StatemachineExecutableExtensionFactory"
+         extension="statemachine"
+        label="org.eclipse.xtext.example.fowlerdsl.Statemachine">
+  </generator>
+</extension>
 </plugin>
