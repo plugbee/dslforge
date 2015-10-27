@@ -19,7 +19,7 @@ import static org.eclipse.xtext.example.arithmetics.arithmetics.ArithmeticsPacka
 /**
  * Custom validation rules. 
  *
- * see http://www.eclipse.org/Xtext/documentation.html#validation
+ * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class ArithmeticsValidator extends AbstractArithmeticsValidator {
 
@@ -27,14 +27,9 @@ class ArithmeticsValidator extends AbstractArithmeticsValidator {
 
 	@Check
 	def checkDivByZero(Div div) {
-		try {
-			val bigDecimal = calculator.evaluate(div.right)
-			if (bigDecimal.doubleValue() == 0.0)
-				error("Division by zero detected.", DIV__RIGHT)
-		} catch (Exception ex) {
-			//polymorphic dispatcher error
-			//BUG?
-		}
+		val bigDecimal = calculator.evaluate(div.right)
+		if (bigDecimal.doubleValue()==0.0) 
+			error("Division by zero detected.", DIV__RIGHT)
 	}
 	
 	public static val String NORMALIZABLE = "normalizable-expression"
@@ -54,19 +49,14 @@ class ArithmeticsValidator extends AbstractArithmeticsValidator {
 			if (next instanceof FunctionCall) 
 				return
 		}
-		try{
-			val decimal = calculator.evaluate(expr)
-			if (decimal.toString().length()<=8) {
-				warning(
-						"Expression could be normalized to constant '"+decimal+"'", 
-						null,
-						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-						NORMALIZABLE,
-						decimal.toString())
-			}	
-		} catch (Exception ex) {
-			//polymorphic dispatcher error
-			//BUG?
+		val decimal = calculator.evaluate(expr)
+		if (decimal.toString().length()<=8) {
+			warning(
+					"Expression could be normalized to constant '"+decimal+"'", 
+					null,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					NORMALIZABLE,
+					decimal.toString())
 		}
 	}
 }

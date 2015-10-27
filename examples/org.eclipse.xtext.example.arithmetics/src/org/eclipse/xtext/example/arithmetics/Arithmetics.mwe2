@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2010-2015 itemis AG (http://www.itemis.eu) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ var fileExtensions = "calc"
 var projectName = "org.eclipse.xtext.example.arithmetics"
 var runtimeProject = "../${projectName}"
 var generateXtendStub = true
+var lineDelimiter = '\n'
 
 Workflow {
     bean = StandaloneSetup {
@@ -34,7 +35,7 @@ Workflow {
     	directory = "${runtimeProject}.ui/src-gen"
     }
     
-    component = Generator {
+    component = Generator auto-inject {
     	pathRtProject = runtimeProject
     	pathUiProject = "${runtimeProject}.ui"
     	pathTestProject = "${runtimeProject}.tests"
@@ -47,9 +48,7 @@ Workflow {
     		fragment = grammarAccess.GrammarAccessFragment auto-inject {}
     
     		// generates Java API for the generated EPackages
-    		fragment = ecore.EcoreGeneratorFragment auto-inject {
-    			emfRuntimeVersion = "2.9"
-    		}
+    		fragment = ecore.EMFGeneratorFragment auto-inject {}
     
     		// the old serialization component
     		// fragment = parseTreeConstructor.ParseTreeConstructorFragment auto-inject {}    
@@ -104,7 +103,9 @@ Workflow {
     		fragment = contentAssist.JavaBasedContentAssistFragment auto-inject {}
     
     		// generates a more lightweight Antlr parser and lexer tailored for content assist
-    		fragment = parser.antlr.XtextAntlrUiGeneratorFragment auto-inject {}
+    		fragment = parser.antlr.XtextAntlrUiGeneratorFragment auto-inject {
+    			partialParsing = true
+    		}
     
     		// generates junit test support classes into Generator#pathTestProject
     		fragment = junit.Junit4Fragment auto-inject {}
@@ -118,10 +119,10 @@ Workflow {
     		fragment = refactoring.RefactorElementNameFragment auto-inject {}
     
     		// provides the necessary bindings for java types integration
-    		fragment = types.TypesGeneratorFragment auto-inject {}
+    		// fragment = types.TypesGeneratorFragment auto-inject {}
     
     		// generates the required bindings only if the grammar inherits from Xbase
-    		fragment = xbase.XbaseGeneratorFragment auto-inject {}
+    		// fragment = xbase.XbaseGeneratorFragment auto-inject {}
     
     		// provides a preference page for template proposals
     		fragment = templates.CodetemplatesGeneratorFragment auto-inject {}

@@ -7,21 +7,15 @@ Bundle-SymbolicName: org.eclipse.xtext.example.arithmetics.web; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.xtext.example.arithmetics.web.internal.Activator
 Require-Bundle: org.eclipse.rap.ui,
+ org.eclipse.rap.ui.navigator,
  org.eclipse.emf.rap.common.ui,
  org.eclipse.emf.rap.edit.ui,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
- org.eclipse.xtext,
- org.eclipse.rap.ui.navigator,
  com.google.inject,
- org.eclipse.equinox.security,
- org.eclipse.xtext.example.arithmetics,
- org.dslforge.xtext.common,
+ org.eclipse.xtext,
  org.dslforge.workbench,
- org.dslforge.workspace
+ org.dslforge.workspace,
+ org.dslforge.xtext.common,
+ org.eclipse.xtext.example.arithmetics
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.eclipse.xtext.example.arithmetics.web.actions,
- org.eclipse.xtext.example.arithmetics.web.editor,
- org.eclipse.xtext.example.arithmetics.web.editor.widget,
- org.eclipse.xtext.example.arithmetics.web.internal,
- org.eclipse.xtext.example.arithmetics.web.module

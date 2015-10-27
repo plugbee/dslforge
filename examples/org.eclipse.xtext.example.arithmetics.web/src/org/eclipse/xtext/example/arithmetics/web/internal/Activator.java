@@ -9,7 +9,6 @@ import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.example.arithmetics.web.module.WebArithmeticsStandaloneSetup;
-import org.eclipse.xtext.resource.XtextResourceSet;
 import org.osgi.framework.BundleContext;
 
 import com.google.common.collect.Maps;
@@ -20,8 +19,9 @@ import com.google.inject.Injector;
  */
 public class Activator extends AbstractUIPlugin {
 
+	// The Language Name
 	public static final String LANGUAGE_NAME = "org.eclipse.xtext.example.arithmetics.Arithmetics";
-
+	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.xtext.example.arithmetics.web"; //$NON-NLS-1$
 
@@ -29,23 +29,15 @@ public class Activator extends AbstractUIPlugin {
 	private static Activator plugin;
 	
 	private Map<String, Injector> injectors = Collections.synchronizedMap(Maps.<String, Injector> newHashMapWithExpectedSize(1));
-
-	private XtextResourceSet resourceSet;
 	
 	public Injector getInjector(String language) {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = new WebArithmeticsStandaloneSetup().createInjector(LANGUAGE_NAME));
+				injectors.put(language, injector = new WebArithmeticsStandaloneSetup().createInjector("org.eclipse.xtext.example.arithmetics.Arithmetics"));
 			}
 			return injector;
 		}
-	}
-	
-	public XtextResourceSet getResourceSet() {
-		if (resourceSet==null)
-			resourceSet = new XtextResourceSet();
-		return resourceSet;
 	}
 
 	public static Activator getInstance() {

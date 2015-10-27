@@ -31,7 +31,7 @@ public class WebArithmeticsStandaloneSetup extends ArithmeticsStandaloneSetup {
 		org.eclipse.xtext.common.TerminalsStandaloneSetup.doSetup();
 		ArithmeticsRuntimeModule original = new ArithmeticsRuntimeModule();
 		WebArithmeticsRuntimeModule module = new WebArithmeticsRuntimeModule();
-		Module mergedModule = Modules2.mixin(original, module);
+		Module mergedModule = Modules2.mixin((Module) original, module);
 		return mergedModule;
 	}
 }

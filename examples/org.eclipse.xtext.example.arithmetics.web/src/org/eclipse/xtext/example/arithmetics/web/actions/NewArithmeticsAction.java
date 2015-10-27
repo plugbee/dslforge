@@ -13,13 +13,8 @@ import org.eclipse.jface.wizard.WizardDialog;
 
 public class NewArithmeticsAction extends WorkbenchWindowActionDelegate  {
 
-	//@Override
-	public void run(IAction action) {		
-//		NewArithmeticsWizard wizard = new NewArithmeticsWizard();
-//		wizard.init(getWindow().getWorkbench(), StructuredSelection.EMPTY);
-//		WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
-//		wizardDialog.open();
-
+	@Override
+	public void run(IAction action) {
 		File rootFoler = WorkspaceManager.INSTANCE.getRootFoler();
 		StructuredSelection selection = new StructuredSelection(rootFoler);
 		if (!selection.isEmpty()) {

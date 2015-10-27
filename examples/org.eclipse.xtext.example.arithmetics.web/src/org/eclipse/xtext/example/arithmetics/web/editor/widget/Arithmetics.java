@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.Composite;
 
 public class Arithmetics extends BasicText {
 	
-	private static final long serialVersionUID = 8457313039887782878L;
+	private static final long serialVersionUID = 1L;
 	
 	private static final String REMOTE_TYPE = "org.eclipse.xtext.example.arithmetics.web.editor.widget.Arithmetics";
 	
@@ -60,7 +60,7 @@ public class Arithmetics extends BasicText {
 		getAntlrFiles().add("InternalArithmeticsParser.js");
 		getAntlrFiles().add("InternalArithmeticsLexer.js");
 	}
-
+	
 	@Override
 	protected void loadTemplateScripts(JavaScriptLoader jsLoader, ResourceManager resourceManager) {
 		jsLoader.require(resourceManager.getLocation(getTemplatePath()+ "arithmetics.js"));
@@ -70,7 +70,7 @@ public class Arithmetics extends BasicText {
 	protected void registerTemplateResources(ResourceManager resourceManager) throws IOException {
 		register(resourceManager, "arithmetics.js", getTemplatePath());
 	}
-	
+
 	@Override
 	protected ClassLoader getClassLoader() {
 		ClassLoader classLoader = Arithmetics.class.getClassLoader();
