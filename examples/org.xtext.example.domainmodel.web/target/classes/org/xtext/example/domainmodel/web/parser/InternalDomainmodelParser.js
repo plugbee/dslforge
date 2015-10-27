@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g 2015-04-22 16:59:02
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g 2015-10-27 14:47:27
 
 
 
@@ -86,7 +86,7 @@ org.antlr.lang.extend(InternalDomainmodelParser, org.antlr.runtime.Parser, {
     },
 
     getTokenNames: function() { return InternalDomainmodelParser.tokenNames; },
-    getGrammarFileName: function() { return "C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g"; }
+    getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g"; }
 });
 org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
@@ -101,7 +101,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:17:1: rule_domainModel : (importsection= rule_importSection )? (elements+= rule_abstractElement )* EOF ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:17:1: rule_domainModel : (importsection= rule_importSection )? (elements+= rule_abstractElement )* EOF ;
     // $ANTLR start "rule_domainModel"
     rule_domainModel: function() {
         var retval = new InternalDomainmodelParser.rule_domainModel_return();
@@ -116,11 +116,11 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var EOF1_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:18:3: ( (importsection= rule_importSection )? (elements+= rule_abstractElement )* EOF )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:3: (importsection= rule_importSection )? (elements+= rule_abstractElement )* EOF
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:18:3: ( (importsection= rule_importSection )? (elements+= rule_abstractElement )* EOF )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:3: (importsection= rule_importSection )? (elements+= rule_abstractElement )* EOF
             root_0 = this.adaptor.nil();
 
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:16: (importsection= rule_importSection )?
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:16: (importsection= rule_importSection )?
             var alt1=2;
             var LA1_0 = this.input.LA(1);
 
@@ -129,7 +129,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             }
             switch (alt1) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:16: importsection= rule_importSection
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:16: importsection= rule_importSection
                     this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_importSection_in_rule_domainModel76);
                     importsection=this.rule_importSection();
 
@@ -142,7 +142,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
             }
 
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:45: (elements+= rule_abstractElement )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:45: (elements+= rule_abstractElement )*
             loop2:
             do {
                 var alt2=2;
@@ -155,7 +155,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                 switch (alt2) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:45: elements+= rule_abstractElement
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:45: elements+= rule_abstractElement
                     this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_abstractElement_in_rule_domainModel81);
                     elements=this.rule_abstractElement();
 
@@ -209,7 +209,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:22:1: rule_abstractElement : ( rule_packageDeclaration | rule_entity );
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:22:1: rule_abstractElement : ( rule_packageDeclaration | rule_entity );
     // $ANTLR start "rule_abstractElement"
     rule_abstractElement: function() {
         var retval = new InternalDomainmodelParser.rule_abstractElement_return();
@@ -222,7 +222,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:23:3: ( rule_packageDeclaration | rule_entity )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:23:3: ( rule_packageDeclaration | rule_entity )
             var alt3=2;
             var LA3_0 = this.input.LA(1);
 
@@ -240,7 +240,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             }
             switch (alt3) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:24:3: rule_packageDeclaration
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:24:3: rule_packageDeclaration
                     root_0 = this.adaptor.nil();
 
                     this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_packageDeclaration_in_rule_abstractElement100);
@@ -253,7 +253,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                     break;
                 case 2 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:25:5: rule_entity
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:25:5: rule_entity
                     root_0 = this.adaptor.nil();
 
                     this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_entity_in_rule_abstractElement106);
@@ -298,7 +298,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:28:1: rule_packageDeclaration : 'package' name= rule_qualifiedName '{' (elements+= rule_abstractElement )* '}' ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:28:1: rule_packageDeclaration : 'package' name= rule_qualifiedName '{' (elements+= rule_abstractElement )* '}' ;
     // $ANTLR start "rule_packageDeclaration"
     rule_packageDeclaration: function() {
         var retval = new InternalDomainmodelParser.rule_packageDeclaration_return();
@@ -317,8 +317,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var char_literal6_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:29:3: ( 'package' name= rule_qualifiedName '{' (elements+= rule_abstractElement )* '}' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:30:3: 'package' name= rule_qualifiedName '{' (elements+= rule_abstractElement )* '}'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:29:3: ( 'package' name= rule_qualifiedName '{' (elements+= rule_abstractElement )* '}' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:30:3: 'package' name= rule_qualifiedName '{' (elements+= rule_abstractElement )* '}'
             root_0 = this.adaptor.nil();
 
             string_literal4=this.match(this.input,10,InternalDomainmodelParser.FOLLOW_10_in_rule_packageDeclaration121); 
@@ -335,7 +335,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             char_literal5_tree = this.adaptor.create(char_literal5);
             this.adaptor.addChild(root_0, char_literal5_tree);
 
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:30:49: (elements+= rule_abstractElement )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:30:49: (elements+= rule_abstractElement )*
             loop4:
             do {
                 var alt4=2;
@@ -348,7 +348,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                 switch (alt4) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:30:49: elements+= rule_abstractElement
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:30:49: elements+= rule_abstractElement
                     this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_abstractElement_in_rule_packageDeclaration131);
                     elements=this.rule_abstractElement();
 
@@ -405,7 +405,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:33:1: rule_entity : 'entity' name= rule_validID ( 'extends' supertype= rule_qualifiedName )? '{' (features+= rule_feature )* '}' ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:33:1: rule_entity : 'entity' name= rule_validID ( 'extends' supertype= rule_qualifiedName )? '{' (features+= rule_feature )* '}' ;
     // $ANTLR start "rule_entity"
     rule_entity: function() {
         var retval = new InternalDomainmodelParser.rule_entity_return();
@@ -427,8 +427,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var char_literal10_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:34:3: ( 'entity' name= rule_validID ( 'extends' supertype= rule_qualifiedName )? '{' (features+= rule_feature )* '}' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:35:3: 'entity' name= rule_validID ( 'extends' supertype= rule_qualifiedName )? '{' (features+= rule_feature )* '}'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:34:3: ( 'entity' name= rule_validID ( 'extends' supertype= rule_qualifiedName )? '{' (features+= rule_feature )* '}' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:35:3: 'entity' name= rule_validID ( 'extends' supertype= rule_qualifiedName )? '{' (features+= rule_feature )* '}'
             root_0 = this.adaptor.nil();
 
             string_literal7=this.match(this.input,13,InternalDomainmodelParser.FOLLOW_13_in_rule_entity149); 
@@ -441,7 +441,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             this.state._fsp--;
 
             this.adaptor.addChild(root_0, name.getTree());
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:35:30: ( 'extends' supertype= rule_qualifiedName )?
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:35:30: ( 'extends' supertype= rule_qualifiedName )?
             var alt5=2;
             var LA5_0 = this.input.LA(1);
 
@@ -450,7 +450,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             }
             switch (alt5) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:35:31: 'extends' supertype= rule_qualifiedName
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:35:31: 'extends' supertype= rule_qualifiedName
                     string_literal8=this.match(this.input,14,InternalDomainmodelParser.FOLLOW_14_in_rule_entity156); 
                     string_literal8_tree = this.adaptor.create(string_literal8);
                     this.adaptor.addChild(root_0, string_literal8_tree);
@@ -471,7 +471,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             char_literal9_tree = this.adaptor.create(char_literal9);
             this.adaptor.addChild(root_0, char_literal9_tree);
 
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:35:84: (features+= rule_feature )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:35:84: (features+= rule_feature )*
             loop6:
             do {
                 var alt6=2;
@@ -484,7 +484,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                 switch (alt6) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:35:84: features+= rule_feature
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:35:84: features+= rule_feature
                     this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_feature_in_rule_entity168);
                     features=this.rule_feature();
 
@@ -541,7 +541,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:38:1: rule_feature : ( rule_property | rule_operation );
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:38:1: rule_feature : ( rule_property | rule_operation );
     // $ANTLR start "rule_feature"
     rule_feature: function() {
         var retval = new InternalDomainmodelParser.rule_feature_return();
@@ -554,7 +554,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:39:3: ( rule_property | rule_operation )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:39:3: ( rule_property | rule_operation )
             var alt7=2;
             var LA7_0 = this.input.LA(1);
 
@@ -572,7 +572,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             }
             switch (alt7) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:40:3: rule_property
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:40:3: rule_property
                     root_0 = this.adaptor.nil();
 
                     this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_property_in_rule_feature186);
@@ -585,7 +585,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                     break;
                 case 2 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:41:5: rule_operation
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:41:5: rule_operation
                     root_0 = this.adaptor.nil();
 
                     this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_operation_in_rule_feature192);
@@ -630,7 +630,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:44:1: rule_property : name= rule_validID ':' type= rule_qualifiedName ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:44:1: rule_property : name= rule_validID ':' type= rule_qualifiedName ;
     // $ANTLR start "rule_property"
     rule_property: function() {
         var retval = new InternalDomainmodelParser.rule_property_return();
@@ -645,8 +645,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var char_literal13_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:45:3: (name= rule_validID ':' type= rule_qualifiedName )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:46:3: name= rule_validID ':' type= rule_qualifiedName
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:45:3: (name= rule_validID ':' type= rule_qualifiedName )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:46:3: name= rule_validID ':' type= rule_qualifiedName
             root_0 = this.adaptor.nil();
 
             this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_validID_in_rule_property209);
@@ -699,7 +699,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:49:1: rule_operation : 'op' name= rule_validID '(' (params+= ID ( ',' params+= ID )* )? ')' ( ':' type= rule_qualifiedName )? ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:49:1: rule_operation : 'op' name= rule_validID '(' (params+= ID ( ',' params+= ID )* )? ')' ( ':' type= rule_qualifiedName )? ;
     // $ANTLR start "rule_operation"
     rule_operation: function() {
         var retval = new InternalDomainmodelParser.rule_operation_return();
@@ -725,8 +725,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var params_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:50:3: ( 'op' name= rule_validID '(' (params+= ID ( ',' params+= ID )* )? ')' ( ':' type= rule_qualifiedName )? )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:3: 'op' name= rule_validID '(' (params+= ID ( ',' params+= ID )* )? ')' ( ':' type= rule_qualifiedName )?
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:50:3: ( 'op' name= rule_validID '(' (params+= ID ( ',' params+= ID )* )? ')' ( ':' type= rule_qualifiedName )? )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:3: 'op' name= rule_validID '(' (params+= ID ( ',' params+= ID )* )? ')' ( ':' type= rule_qualifiedName )?
             root_0 = this.adaptor.nil();
 
             string_literal14=this.match(this.input,16,InternalDomainmodelParser.FOLLOW_16_in_rule_operation230); 
@@ -743,7 +743,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             char_literal15_tree = this.adaptor.create(char_literal15);
             this.adaptor.addChild(root_0, char_literal15_tree);
 
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:30: (params+= ID ( ',' params+= ID )* )?
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:30: (params+= ID ( ',' params+= ID )* )?
             var alt9=2;
             var LA9_0 = this.input.LA(1);
 
@@ -752,7 +752,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             }
             switch (alt9) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:31: params+= ID ( ',' params+= ID )*
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:31: params+= ID ( ',' params+= ID )*
                     params=this.match(this.input,ID,InternalDomainmodelParser.FOLLOW_ID_in_rule_operation241); 
                     params_tree = this.adaptor.create(params);
                     this.adaptor.addChild(root_0, params_tree);
@@ -760,7 +760,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
                     if (org.antlr.lang.isNull(list_params)) list_params = [];
                     list_params.push(params);
 
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:42: ( ',' params+= ID )*
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:42: ( ',' params+= ID )*
                     loop8:
                     do {
                         var alt8=2;
@@ -773,7 +773,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                         switch (alt8) {
                         case 1 :
-                            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:43: ',' params+= ID
+                            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:43: ',' params+= ID
                             char_literal16=this.match(this.input,18,InternalDomainmodelParser.FOLLOW_18_in_rule_operation244); 
                             char_literal16_tree = this.adaptor.create(char_literal16);
                             this.adaptor.addChild(root_0, char_literal16_tree);
@@ -804,7 +804,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             char_literal17_tree = this.adaptor.create(char_literal17);
             this.adaptor.addChild(root_0, char_literal17_tree);
 
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:66: ( ':' type= rule_qualifiedName )?
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:66: ( ':' type= rule_qualifiedName )?
             var alt10=2;
             var LA10_0 = this.input.LA(1);
 
@@ -813,7 +813,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             }
             switch (alt10) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:67: ':' type= rule_qualifiedName
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:51:67: ':' type= rule_qualifiedName
                     char_literal18=this.match(this.input,15,InternalDomainmodelParser.FOLLOW_15_in_rule_operation257); 
                     char_literal18_tree = this.adaptor.create(char_literal18);
                     this.adaptor.addChild(root_0, char_literal18_tree);
@@ -864,7 +864,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:54:1: rule_blockExpression : '{' (expresison+= rule_expression ';' )* '}' ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:54:1: rule_blockExpression : '{' (expresison+= rule_expression ';' )* '}' ;
     // $ANTLR start "rule_blockExpression"
     rule_blockExpression: function() {
         var retval = new InternalDomainmodelParser.rule_blockExpression_return();
@@ -882,15 +882,15 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var char_literal21_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:55:3: ( '{' (expresison+= rule_expression ';' )* '}' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:56:3: '{' (expresison+= rule_expression ';' )* '}'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:55:3: ( '{' (expresison+= rule_expression ';' )* '}' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:56:3: '{' (expresison+= rule_expression ';' )* '}'
             root_0 = this.adaptor.nil();
 
             char_literal19=this.match(this.input,11,InternalDomainmodelParser.FOLLOW_11_in_rule_blockExpression280); 
             char_literal19_tree = this.adaptor.create(char_literal19);
             this.adaptor.addChild(root_0, char_literal19_tree);
 
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:56:7: (expresison+= rule_expression ';' )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:56:7: (expresison+= rule_expression ';' )*
             loop11:
             do {
                 var alt11=2;
@@ -903,7 +903,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                 switch (alt11) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:56:8: expresison+= rule_expression ';'
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:56:8: expresison+= rule_expression ';'
                     this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_expression_in_rule_blockExpression285);
                     expresison=this.rule_expression();
 
@@ -964,7 +964,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:59:1: rule_expression : rule_addition ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:59:1: rule_expression : rule_addition ;
     // $ANTLR start "rule_expression"
     rule_expression: function() {
         var retval = new InternalDomainmodelParser.rule_expression_return();
@@ -976,8 +976,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:60:3: ( rule_addition )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:61:3: rule_addition
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:60:3: ( rule_addition )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:61:3: rule_addition
             root_0 = this.adaptor.nil();
 
             this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_addition_in_rule_expression305);
@@ -1020,7 +1020,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:64:1: rule_addition : rule_multiplication ( ( '+' | '-' ) right= rule_multiplication )* ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:64:1: rule_addition : rule_multiplication ( ( '+' | '-' ) right= rule_multiplication )* ;
     // $ANTLR start "rule_addition"
     rule_addition: function() {
         var retval = new InternalDomainmodelParser.rule_addition_return();
@@ -1035,8 +1035,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var set24_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:65:3: ( rule_multiplication ( ( '+' | '-' ) right= rule_multiplication )* )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:66:3: rule_multiplication ( ( '+' | '-' ) right= rule_multiplication )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:65:3: ( rule_multiplication ( ( '+' | '-' ) right= rule_multiplication )* )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:66:3: rule_multiplication ( ( '+' | '-' ) right= rule_multiplication )*
             root_0 = this.adaptor.nil();
 
             this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_multiplication_in_rule_addition320);
@@ -1045,7 +1045,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             this.state._fsp--;
 
             this.adaptor.addChild(root_0, rule_multiplication23.getTree());
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:67:3: ( ( '+' | '-' ) right= rule_multiplication )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:67:3: ( ( '+' | '-' ) right= rule_multiplication )*
             loop12:
             do {
                 var alt12=2;
@@ -1058,7 +1058,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                 switch (alt12) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:68:5: ( '+' | '-' ) right= rule_multiplication
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:68:5: ( '+' | '-' ) right= rule_multiplication
                     set24=this.input.LT(1);
                     if ( (this.input.LA(1)>=21 && this.input.LA(1)<=22) ) {
                         this.input.consume();
@@ -1119,7 +1119,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:78:1: rule_multiplication : rule_primaryExpression ( ( '*' | '/' ) right= rule_primaryExpression )* ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:78:1: rule_multiplication : rule_primaryExpression ( ( '*' | '/' ) right= rule_primaryExpression )* ;
     // $ANTLR start "rule_multiplication"
     rule_multiplication: function() {
         var retval = new InternalDomainmodelParser.rule_multiplication_return();
@@ -1134,8 +1134,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var set26_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:79:3: ( rule_primaryExpression ( ( '*' | '/' ) right= rule_primaryExpression )* )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:80:3: rule_primaryExpression ( ( '*' | '/' ) right= rule_primaryExpression )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:79:3: ( rule_primaryExpression ( ( '*' | '/' ) right= rule_primaryExpression )* )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:80:3: rule_primaryExpression ( ( '*' | '/' ) right= rule_primaryExpression )*
             root_0 = this.adaptor.nil();
 
             this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_primaryExpression_in_rule_multiplication390);
@@ -1144,7 +1144,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             this.state._fsp--;
 
             this.adaptor.addChild(root_0, rule_primaryExpression25.getTree());
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:81:3: ( ( '*' | '/' ) right= rule_primaryExpression )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:81:3: ( ( '*' | '/' ) right= rule_primaryExpression )*
             loop13:
             do {
                 var alt13=2;
@@ -1157,7 +1157,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                 switch (alt13) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:82:5: ( '*' | '/' ) right= rule_primaryExpression
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:82:5: ( '*' | '/' ) right= rule_primaryExpression
                     set26=this.input.LT(1);
                     if ( (this.input.LA(1)>=23 && this.input.LA(1)<=24) ) {
                         this.input.consume();
@@ -1218,7 +1218,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:91:1: rule_primaryExpression : ( '(' rule_expression ')' | value= NUMBER | func= ID ( '(' args+= rule_expression ( ',' args+= rule_expression )* ')' )? );
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:91:1: rule_primaryExpression : ( '(' rule_expression ')' | value= NUMBER | func= ID ( '(' args+= rule_expression ( ',' args+= rule_expression )* ')' )? );
     // $ANTLR start "rule_primaryExpression"
     rule_primaryExpression: function() {
         var retval = new InternalDomainmodelParser.rule_primaryExpression_return();
@@ -1245,7 +1245,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var char_literal32_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:92:3: ( '(' rule_expression ')' | value= NUMBER | func= ID ( '(' args+= rule_expression ( ',' args+= rule_expression )* ')' )? )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:92:3: ( '(' rule_expression ')' | value= NUMBER | func= ID ( '(' args+= rule_expression ( ',' args+= rule_expression )* ')' )? )
             var alt16=3;
             switch ( this.input.LA(1) ) {
             case 17:
@@ -1266,7 +1266,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
             switch (alt16) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:93:3: '(' rule_expression ')'
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:93:3: '(' rule_expression ')'
                     root_0 = this.adaptor.nil();
 
                     char_literal27=this.match(this.input,17,InternalDomainmodelParser.FOLLOW_17_in_rule_primaryExpression459); 
@@ -1287,7 +1287,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                     break;
                 case 2 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:95:3: value= NUMBER
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:95:3: value= NUMBER
                     root_0 = this.adaptor.nil();
 
                     value=this.match(this.input,NUMBER,InternalDomainmodelParser.FOLLOW_NUMBER_in_rule_primaryExpression474); 
@@ -1298,14 +1298,14 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                     break;
                 case 3 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:97:3: func= ID ( '(' args+= rule_expression ( ',' args+= rule_expression )* ')' )?
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:97:3: func= ID ( '(' args+= rule_expression ( ',' args+= rule_expression )* ')' )?
                     root_0 = this.adaptor.nil();
 
                     func=this.match(this.input,ID,InternalDomainmodelParser.FOLLOW_ID_in_rule_primaryExpression485); 
                     func_tree = this.adaptor.create(func);
                     this.adaptor.addChild(root_0, func_tree);
 
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:97:11: ( '(' args+= rule_expression ( ',' args+= rule_expression )* ')' )?
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:97:11: ( '(' args+= rule_expression ( ',' args+= rule_expression )* ')' )?
                     var alt15=2;
                     var LA15_0 = this.input.LA(1);
 
@@ -1314,7 +1314,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
                     }
                     switch (alt15) {
                         case 1 :
-                            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:97:12: '(' args+= rule_expression ( ',' args+= rule_expression )* ')'
+                            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:97:12: '(' args+= rule_expression ( ',' args+= rule_expression )* ')'
                             char_literal30=this.match(this.input,17,InternalDomainmodelParser.FOLLOW_17_in_rule_primaryExpression488); 
                             char_literal30_tree = this.adaptor.create(char_literal30);
                             this.adaptor.addChild(root_0, char_literal30_tree);
@@ -1328,7 +1328,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
                             if (org.antlr.lang.isNull(list_args)) list_args = [];
                             list_args.push(args.getTree());
 
-                            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:97:38: ( ',' args+= rule_expression )*
+                            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:97:38: ( ',' args+= rule_expression )*
                             loop14:
                             do {
                                 var alt14=2;
@@ -1341,7 +1341,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                                 switch (alt14) {
                                 case 1 :
-                                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:97:39: ',' args+= rule_expression
+                                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:97:39: ',' args+= rule_expression
                                     char_literal31=this.match(this.input,18,InternalDomainmodelParser.FOLLOW_18_in_rule_primaryExpression495); 
                                     char_literal31_tree = this.adaptor.create(char_literal31);
                                     this.adaptor.addChild(root_0, char_literal31_tree);
@@ -1410,7 +1410,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:102:1: rule_importSection : (importdeclarations+= rule_importDeclaration )+ ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:102:1: rule_importSection : (importdeclarations+= rule_importDeclaration )+ ;
     // $ANTLR start "rule_importSection"
     rule_importSection: function() {
         var retval = new InternalDomainmodelParser.rule_importSection_return();
@@ -1422,11 +1422,11 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var importdeclarations = null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:103:3: ( (importdeclarations+= rule_importDeclaration )+ )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:104:3: (importdeclarations+= rule_importDeclaration )+
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:103:3: ( (importdeclarations+= rule_importDeclaration )+ )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:104:3: (importdeclarations+= rule_importDeclaration )+
             root_0 = this.adaptor.nil();
 
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:104:21: (importdeclarations+= rule_importDeclaration )+
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:104:21: (importdeclarations+= rule_importDeclaration )+
             var cnt17=0;
             loop17:
             do {
@@ -1440,7 +1440,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                 switch (alt17) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:104:21: importdeclarations+= rule_importDeclaration
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:104:21: importdeclarations+= rule_importDeclaration
                     this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_importDeclaration_in_rule_importSection524);
                     importdeclarations=this.rule_importDeclaration();
 
@@ -1498,7 +1498,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:107:1: rule_importDeclaration : 'import' importednamespace= rule_qualifiedNameWithWildcard ( ';' )? ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:107:1: rule_importDeclaration : 'import' importednamespace= rule_qualifiedNameWithWildcard ( ';' )? ;
     // $ANTLR start "rule_importDeclaration"
     rule_importDeclaration: function() {
         var retval = new InternalDomainmodelParser.rule_importDeclaration_return();
@@ -1514,8 +1514,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var char_literal34_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:108:3: ( 'import' importednamespace= rule_qualifiedNameWithWildcard ( ';' )? )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:109:3: 'import' importednamespace= rule_qualifiedNameWithWildcard ( ';' )?
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:108:3: ( 'import' importednamespace= rule_qualifiedNameWithWildcard ( ';' )? )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:109:3: 'import' importednamespace= rule_qualifiedNameWithWildcard ( ';' )?
             root_0 = this.adaptor.nil();
 
             string_literal33=this.match(this.input,25,InternalDomainmodelParser.FOLLOW_25_in_rule_importDeclaration540); 
@@ -1528,7 +1528,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             this.state._fsp--;
 
             this.adaptor.addChild(root_0, importednamespace.getTree());
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:109:61: ( ';' )?
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:109:61: ( ';' )?
             var alt18=2;
             var LA18_0 = this.input.LA(1);
 
@@ -1537,7 +1537,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             }
             switch (alt18) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:109:61: ';'
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:109:61: ';'
                     char_literal34=this.match(this.input,20,InternalDomainmodelParser.FOLLOW_20_in_rule_importDeclaration546); 
                     char_literal34_tree = this.adaptor.create(char_literal34);
                     this.adaptor.addChild(root_0, char_literal34_tree);
@@ -1582,7 +1582,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:112:1: rule_qualifiedName : rule_validID ( '.' rule_validID )* ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:112:1: rule_qualifiedName : rule_validID ( '.' rule_validID )* ;
     // $ANTLR start "rule_qualifiedName"
     rule_qualifiedName: function() {
         var retval = new InternalDomainmodelParser.rule_qualifiedName_return();
@@ -1597,8 +1597,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var char_literal36_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:113:3: ( rule_validID ( '.' rule_validID )* )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:114:3: rule_validID ( '.' rule_validID )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:113:3: ( rule_validID ( '.' rule_validID )* )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:114:3: rule_validID ( '.' rule_validID )*
             root_0 = this.adaptor.nil();
 
             this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_validID_in_rule_qualifiedName562);
@@ -1607,7 +1607,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
             this.state._fsp--;
 
             this.adaptor.addChild(root_0, rule_validID35.getTree());
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:114:16: ( '.' rule_validID )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:114:16: ( '.' rule_validID )*
             loop19:
             do {
                 var alt19=2;
@@ -1626,7 +1626,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
 
                 switch (alt19) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:114:17: '.' rule_validID
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:114:17: '.' rule_validID
                     char_literal36=this.match(this.input,26,InternalDomainmodelParser.FOLLOW_26_in_rule_qualifiedName565); 
                     char_literal36_tree = this.adaptor.create(char_literal36);
                     this.adaptor.addChild(root_0, char_literal36_tree);
@@ -1680,7 +1680,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:117:1: rule_qualifiedNameWithWildcard : rule_qualifiedName '.' '*' ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:117:1: rule_qualifiedNameWithWildcard : rule_qualifiedName '.' '*' ;
     // $ANTLR start "rule_qualifiedNameWithWildcard"
     rule_qualifiedNameWithWildcard: function() {
         var retval = new InternalDomainmodelParser.rule_qualifiedNameWithWildcard_return();
@@ -1696,8 +1696,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var char_literal40_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:118:3: ( rule_qualifiedName '.' '*' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:119:3: rule_qualifiedName '.' '*'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:118:3: ( rule_qualifiedName '.' '*' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:119:3: rule_qualifiedName '.' '*'
             root_0 = this.adaptor.nil();
 
             this.pushFollow(InternalDomainmodelParser.FOLLOW_rule_qualifiedName_in_rule_qualifiedNameWithWildcard584);
@@ -1748,7 +1748,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         return;
     })(),
 
-    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:122:1: rule_validID : ID ;
+    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:122:1: rule_validID : ID ;
     // $ANTLR start "rule_validID"
     rule_validID: function() {
         var retval = new InternalDomainmodelParser.rule_validID_return();
@@ -1761,8 +1761,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelParser.prototype, {
         var ID41_tree=null;
 
         try {
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:123:3: ( ID )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:124:3: ID
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:123:3: ( ID )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:124:3: ID
             root_0 = this.adaptor.nil();
 
             ID41=this.match(this.input,ID,InternalDomainmodelParser.FOLLOW_ID_in_rule_validID603); 

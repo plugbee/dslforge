@@ -181,7 +181,9 @@ class GenGrammar implements IWebProjectGenerator {
 		
 		WS:  (' '|'\r'|'\t'|'\u000C'|'\n') {$channel=HIDDEN;} ;
 		
-		NUMBER: ('0'..'9')+ ('.' ('0'..'9')+)?;
+		//NUMBER: INT ('.' INT)?;
+		
+		INT: ('0'..'9')+;
 	'''
 
 	def StringAppendable createAppendable(EObject context) {

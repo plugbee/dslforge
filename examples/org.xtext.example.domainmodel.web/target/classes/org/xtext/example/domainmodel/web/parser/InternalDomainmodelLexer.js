@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g 2015-04-22 16:59:02
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g 2015-10-27 14:47:27
 
 
 
@@ -75,7 +75,7 @@ org.antlr.lang.extend(InternalDomainmodelLexer, org.antlr.runtime.Lexer, {
     STRING : 7,
     COMMENT : 8,
     WS : 9,
-    getGrammarFileName: function() { return "C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g"; }
+    getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g"; }
 });
 org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
     // $ANTLR start T__10
@@ -83,8 +83,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__10;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:11:7: ( 'package' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:11:9: 'package'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:11:7: ( 'package' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:11:9: 'package'
             this.match("package"); 
 
 
@@ -103,8 +103,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__11;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:12:7: ( '{' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:12:9: '{'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:12:7: ( '{' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:12:9: '{'
             this.match('{'); 
 
 
@@ -122,8 +122,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__12;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:13:7: ( '}' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:13:9: '}'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:13:7: ( '}' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:13:9: '}'
             this.match('}'); 
 
 
@@ -141,8 +141,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__13;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:14:7: ( 'entity' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:14:9: 'entity'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:14:7: ( 'entity' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:14:9: 'entity'
             this.match("entity"); 
 
 
@@ -161,8 +161,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__14;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:15:7: ( 'extends' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:15:9: 'extends'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:15:7: ( 'extends' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:15:9: 'extends'
             this.match("extends"); 
 
 
@@ -181,8 +181,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__15;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:16:7: ( ':' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:16:9: ':'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:16:7: ( ':' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:16:9: ':'
             this.match(':'); 
 
 
@@ -200,8 +200,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__16;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:17:7: ( 'op' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:17:9: 'op'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:17:7: ( 'op' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:17:9: 'op'
             this.match("op"); 
 
 
@@ -220,8 +220,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__17;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:18:7: ( '(' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:18:9: '('
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:18:7: ( '(' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:18:9: '('
             this.match('('); 
 
 
@@ -239,8 +239,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__18;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:7: ( ',' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:9: ','
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:7: ( ',' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:19:9: ','
             this.match(','); 
 
 
@@ -258,8 +258,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__19;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:20:7: ( ')' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:20:9: ')'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:20:7: ( ')' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:20:9: ')'
             this.match(')'); 
 
 
@@ -277,8 +277,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__20;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:21:7: ( ';' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:21:9: ';'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:21:7: ( ';' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:21:9: ';'
             this.match(';'); 
 
 
@@ -296,8 +296,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__21;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:22:7: ( '+' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:22:9: '+'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:22:7: ( '+' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:22:9: '+'
             this.match('+'); 
 
 
@@ -315,8 +315,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__22;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:23:7: ( '-' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:23:9: '-'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:23:7: ( '-' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:23:9: '-'
             this.match('-'); 
 
 
@@ -334,8 +334,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__23;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:24:7: ( '*' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:24:9: '*'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:24:7: ( '*' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:24:9: '*'
             this.match('*'); 
 
 
@@ -353,8 +353,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__24;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:25:7: ( '/' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:25:9: '/'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:25:7: ( '/' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:25:9: '/'
             this.match('/'); 
 
 
@@ -372,8 +372,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__25;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:26:7: ( 'import' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:26:9: 'import'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:26:7: ( 'import' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:26:9: 'import'
             this.match("import"); 
 
 
@@ -392,8 +392,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.T__26;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:27:7: ( '.' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:27:9: '.'
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:27:7: ( '.' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:27:9: '.'
             this.match('.'); 
 
 
@@ -411,8 +411,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.ID;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:128:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:129:3: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:128:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:129:3: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             if ( (this.input.LA(1)>='A' && this.input.LA(1)<='Z')||this.input.LA(1)=='_'||(this.input.LA(1)>='a' && this.input.LA(1)<='z') ) {
                 this.input.consume();
 
@@ -422,7 +422,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
                 this.recover(mse);
                 throw mse;}
 
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:134:3: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:134:3: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop1:
             do {
                 var alt1=2;
@@ -435,7 +435,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                 switch (alt1) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:
                     if ( (this.input.LA(1)>='0' && this.input.LA(1)<='9')||(this.input.LA(1)>='A' && this.input.LA(1)<='Z')||this.input.LA(1)=='_'||(this.input.LA(1)>='a' && this.input.LA(1)<='z') ) {
                         this.input.consume();
 
@@ -470,9 +470,9 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.INT;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:143:3: ( ( '0' .. '9' )+ )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:144:3: ( '0' .. '9' )+
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:144:3: ( '0' .. '9' )+
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:143:3: ( ( '0' .. '9' )+ )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:144:3: ( '0' .. '9' )+
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:144:3: ( '0' .. '9' )+
             var cnt2=0;
             loop2:
             do {
@@ -486,7 +486,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                 switch (alt2) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:144:4: '0' .. '9'
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:144:4: '0' .. '9'
                     this.matchRange('0','9'); 
 
 
@@ -518,9 +518,9 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.STRING;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:148:3: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:149:3: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:149:3: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:148:3: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:149:3: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:149:3: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             var alt5=2;
             var LA5_0 = this.input.LA(1);
 
@@ -538,9 +538,9 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
             }
             switch (alt5) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:150:5: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:150:5: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     this.match('\"'); 
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:151:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:151:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop3:
                     do {
                         var alt3=3;
@@ -556,7 +556,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                         switch (alt3) {
                         case 1 :
-                            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:152:7: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:152:7: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                             this.match('\\'); 
                             if ( this.input.LA(1)=='\"'||this.input.LA(1)=='\''||this.input.LA(1)=='\\'||this.input.LA(1)=='b'||this.input.LA(1)=='f'||this.input.LA(1)=='n'||this.input.LA(1)=='r'||(this.input.LA(1)>='t' && this.input.LA(1)<='u') ) {
                                 this.input.consume();
@@ -571,7 +571,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                             break;
                         case 2 :
-                            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:165:7: ~ ( ( '\\\\' | '\"' ) )
+                            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:165:7: ~ ( ( '\\\\' | '\"' ) )
                             if ( (this.input.LA(1)>='\u0000' && this.input.LA(1)<='!')||(this.input.LA(1)>='#' && this.input.LA(1)<='[')||(this.input.LA(1)>=']' && this.input.LA(1)<='\uFFFF') ) {
                                 this.input.consume();
 
@@ -595,9 +595,9 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                     break;
                 case 2 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:173:7: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:173:7: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     this.match('\''); 
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:174:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:174:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop4:
                     do {
                         var alt4=3;
@@ -613,7 +613,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                         switch (alt4) {
                         case 1 :
-                            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:175:7: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:175:7: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                             this.match('\\'); 
                             if ( this.input.LA(1)=='\"'||this.input.LA(1)=='\''||this.input.LA(1)=='\\'||this.input.LA(1)=='b'||this.input.LA(1)=='f'||this.input.LA(1)=='n'||this.input.LA(1)=='r'||(this.input.LA(1)>='t' && this.input.LA(1)<='u') ) {
                                 this.input.consume();
@@ -628,7 +628,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                             break;
                         case 2 :
-                            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:188:7: ~ ( ( '\\\\' | '\\'' ) )
+                            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:188:7: ~ ( ( '\\\\' | '\\'' ) )
                             if ( (this.input.LA(1)>='\u0000' && this.input.LA(1)<='&')||(this.input.LA(1)>='(' && this.input.LA(1)<='[')||(this.input.LA(1)>=']' && this.input.LA(1)<='\uFFFF') ) {
                                 this.input.consume();
 
@@ -670,9 +670,9 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.COMMENT;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:200:3: ( ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* ) )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:201:3: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:201:3: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:200:3: ( ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* ) )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:201:3: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:201:3: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
             var alt8=2;
             var LA8_0 = this.input.LA(1);
 
@@ -700,10 +700,10 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
             }
             switch (alt8) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:202:5: '/*' ( . )* '*/'
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:202:5: '/*' ( . )* '*/'
                     this.match("/*"); 
 
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:202:10: ( . )*
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:202:10: ( . )*
                     loop6:
                     do {
                         var alt6=2;
@@ -728,7 +728,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                         switch (alt6) {
                         case 1 :
-                            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:202:10: .
+                            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:202:10: .
                             this.matchAny(); 
 
 
@@ -745,10 +745,10 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                     break;
                 case 2 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:203:7: '//' (~ ( '\\r' | '\\n' ) )*
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:203:7: '//' (~ ( '\\r' | '\\n' ) )*
                     this.match("//"); 
 
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:204:5: (~ ( '\\r' | '\\n' ) )*
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:204:5: (~ ( '\\r' | '\\n' ) )*
                     loop7:
                     do {
                         var alt7=2;
@@ -761,7 +761,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                         switch (alt7) {
                         case 1 :
-                            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:204:5: ~ ( '\\r' | '\\n' )
+                            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:204:5: ~ ( '\\r' | '\\n' )
                             if ( (this.input.LA(1)>='\u0000' && this.input.LA(1)<='\t')||(this.input.LA(1)>='\u000B' && this.input.LA(1)<='\f')||(this.input.LA(1)>='\u000E' && this.input.LA(1)<='\uFFFF') ) {
                                 this.input.consume();
 
@@ -805,8 +805,8 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.WS;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:216:3: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:217:3: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:216:3: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:217:3: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
             if ( (this.input.LA(1)>='\t' && this.input.LA(1)<='\n')||(this.input.LA(1)>='\f' && this.input.LA(1)<='\r')||this.input.LA(1)==' ' ) {
                 this.input.consume();
 
@@ -835,9 +835,9 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
         try {
             var _type = this.NUMBER;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:7: ( ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )? )
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:9: ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )?
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:9: ( '0' .. '9' )+
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:7: ( ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )? )
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:9: ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )?
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:9: ( '0' .. '9' )+
             var cnt9=0;
             loop9:
             do {
@@ -851,7 +851,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                 switch (alt9) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:10: '0' .. '9'
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:10: '0' .. '9'
                     this.matchRange('0','9'); 
 
 
@@ -867,7 +867,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
                 cnt9++;
             } while (true);
 
-            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:21: ( '.' ( '0' .. '9' )+ )?
+            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:21: ( '.' ( '0' .. '9' )+ )?
             var alt11=2;
             var LA11_0 = this.input.LA(1);
 
@@ -876,9 +876,9 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
             }
             switch (alt11) {
                 case 1 :
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:22: '.' ( '0' .. '9' )+
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:22: '.' ( '0' .. '9' )+
                     this.match('.'); 
-                    // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:26: ( '0' .. '9' )+
+                    // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:26: ( '0' .. '9' )+
                     var cnt10=0;
                     loop10:
                     do {
@@ -892,7 +892,7 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
 
                         switch (alt10) {
                         case 1 :
-                            // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:27: '0' .. '9'
+                            // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:230:27: '0' .. '9'
                             this.matchRange('0','9'); 
 
 
@@ -926,144 +926,144 @@ org.antlr.lang.augmentObject(InternalDomainmodelLexer.prototype, {
     // $ANTLR end "NUMBER",
 
     mTokens: function() {
-        // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:8: ( T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | ID | INT | STRING | COMMENT | WS | NUMBER )
+        // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:8: ( T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | ID | INT | STRING | COMMENT | WS | NUMBER )
         var alt12=23;
         alt12 = this.dfa12.predict(this.input);
         switch (alt12) {
             case 1 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:10: T__10
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:10: T__10
                 this.mT__10(); 
 
 
                 break;
             case 2 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:16: T__11
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:16: T__11
                 this.mT__11(); 
 
 
                 break;
             case 3 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:22: T__12
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:22: T__12
                 this.mT__12(); 
 
 
                 break;
             case 4 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:28: T__13
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:28: T__13
                 this.mT__13(); 
 
 
                 break;
             case 5 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:34: T__14
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:34: T__14
                 this.mT__14(); 
 
 
                 break;
             case 6 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:40: T__15
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:40: T__15
                 this.mT__15(); 
 
 
                 break;
             case 7 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:46: T__16
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:46: T__16
                 this.mT__16(); 
 
 
                 break;
             case 8 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:52: T__17
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:52: T__17
                 this.mT__17(); 
 
 
                 break;
             case 9 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:58: T__18
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:58: T__18
                 this.mT__18(); 
 
 
                 break;
             case 10 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:64: T__19
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:64: T__19
                 this.mT__19(); 
 
 
                 break;
             case 11 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:70: T__20
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:70: T__20
                 this.mT__20(); 
 
 
                 break;
             case 12 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:76: T__21
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:76: T__21
                 this.mT__21(); 
 
 
                 break;
             case 13 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:82: T__22
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:82: T__22
                 this.mT__22(); 
 
 
                 break;
             case 14 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:88: T__23
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:88: T__23
                 this.mT__23(); 
 
 
                 break;
             case 15 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:94: T__24
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:94: T__24
                 this.mT__24(); 
 
 
                 break;
             case 16 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:100: T__25
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:100: T__25
                 this.mT__25(); 
 
 
                 break;
             case 17 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:106: T__26
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:106: T__26
                 this.mT__26(); 
 
 
                 break;
             case 18 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:112: ID
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:112: ID
                 this.mID(); 
 
 
                 break;
             case 19 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:115: INT
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:115: INT
                 this.mINT(); 
 
 
                 break;
             case 20 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:119: STRING
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:119: STRING
                 this.mSTRING(); 
 
 
                 break;
             case 21 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:126: COMMENT
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:126: COMMENT
                 this.mCOMMENT(); 
 
 
                 break;
             case 22 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:134: WS
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:134: WS
                 this.mWS(); 
 
 
                 break;
             case 23 :
-                // C:\\Users\\lajmi\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:137: NUMBER
+                // D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\target\\classes\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g:1:137: NUMBER
                 this.mNUMBER(); 
 
 
