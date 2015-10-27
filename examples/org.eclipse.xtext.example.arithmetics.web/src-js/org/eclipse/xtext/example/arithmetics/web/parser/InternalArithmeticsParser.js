@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g 2015-10-27 14:47:21
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g 2015-10-27 15:24:07
 
 
 
@@ -75,7 +75,7 @@ org.antlr.lang.extend(InternalArithmeticsParser, org.antlr.runtime.Parser, {
     },
 
     getTokenNames: function() { return InternalArithmeticsParser.tokenNames; },
-    getGrammarFileName: function() { return "D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g"; }
+    getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g"; }
 });
 org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
@@ -90,7 +90,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:16:1: rule_Module : 'module' name= ID (imports+= rule_Import )* (statements+= rule_Statement )* EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:16:1: rule_Module : 'module' name= ID (imports+= rule_Import )* (statements+= rule_Statement )* EOF ;
     // $ANTLR start "rule_Module"
     rule_Module: function() {
         var retval = new InternalArithmeticsParser.rule_Module_return();
@@ -110,8 +110,8 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         var EOF2_tree=null;
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:16:12: ( 'module' name= ID (imports+= rule_Import )* (statements+= rule_Statement )* EOF )
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:17:2: 'module' name= ID (imports+= rule_Import )* (statements+= rule_Statement )* EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:16:12: ( 'module' name= ID (imports+= rule_Import )* (statements+= rule_Statement )* EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:17:2: 'module' name= ID (imports+= rule_Import )* (statements+= rule_Statement )* EOF
             root_0 = this.adaptor.nil();
 
             string_literal1=this.match(this.input,9,InternalArithmeticsParser.FOLLOW_9_in_rule_Module55); 
@@ -122,7 +122,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
             name_tree = this.adaptor.create(name);
             this.adaptor.addChild(root_0, name_tree);
 
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:17:26: (imports+= rule_Import )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:17:26: (imports+= rule_Import )*
             loop1:
             do {
                 var alt1=2;
@@ -135,7 +135,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
                 switch (alt1) {
                 case 1 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:17:26: imports+= rule_Import
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:17:26: imports+= rule_Import
                     this.pushFollow(InternalArithmeticsParser.FOLLOW_rule_Import_in_rule_Module63);
                     imports=this.rule_Import();
 
@@ -154,7 +154,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
                 }
             } while (true);
 
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:17:51: (statements+= rule_Statement )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:17:51: (statements+= rule_Statement )*
             loop2:
             do {
                 var alt2=2;
@@ -167,7 +167,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
                 switch (alt2) {
                 case 1 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:17:51: statements+= rule_Statement
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:17:51: statements+= rule_Statement
                     this.pushFollow(InternalArithmeticsParser.FOLLOW_rule_Statement_in_rule_Module68);
                     statements=this.rule_Statement();
 
@@ -221,7 +221,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:20:1: rule_Import : 'import' importednamespace= rule_ImportName ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:20:1: rule_Import : 'import' importednamespace= rule_ImportName ;
     // $ANTLR start "rule_Import"
     rule_Import: function() {
         var retval = new InternalArithmeticsParser.rule_Import_return();
@@ -235,8 +235,8 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         var string_literal3_tree=null;
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:20:12: ( 'import' importednamespace= rule_ImportName )
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:21:2: 'import' importednamespace= rule_ImportName
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:20:12: ( 'import' importednamespace= rule_ImportName )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:21:2: 'import' importednamespace= rule_ImportName
             root_0 = this.adaptor.nil();
 
             string_literal3=this.match(this.input,10,InternalArithmeticsParser.FOLLOW_10_in_rule_Import81); 
@@ -283,7 +283,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:24:1: rule_ImportName : ID ( '.' '*' )? ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:24:1: rule_ImportName : ID ( '.' '*' )? ;
     // $ANTLR start "rule_ImportName"
     rule_ImportName: function() {
         var retval = new InternalArithmeticsParser.rule_ImportName_return();
@@ -300,15 +300,15 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         var char_literal6_tree=null;
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:24:16: ( ID ( '.' '*' )? )
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:25:2: ID ( '.' '*' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:24:16: ( ID ( '.' '*' )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:25:2: ID ( '.' '*' )?
             root_0 = this.adaptor.nil();
 
             ID4=this.match(this.input,ID,InternalArithmeticsParser.FOLLOW_ID_in_rule_ImportName94); 
             ID4_tree = this.adaptor.create(ID4);
             this.adaptor.addChild(root_0, ID4_tree);
 
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:25:5: ( '.' '*' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:25:5: ( '.' '*' )?
             var alt3=2;
             var LA3_0 = this.input.LA(1);
 
@@ -317,7 +317,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
             }
             switch (alt3) {
                 case 1 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:25:6: '.' '*'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:25:6: '.' '*'
                     char_literal5=this.match(this.input,11,InternalArithmeticsParser.FOLLOW_11_in_rule_ImportName97); 
                     char_literal5_tree = this.adaptor.create(char_literal5);
                     this.adaptor.addChild(root_0, char_literal5_tree);
@@ -366,7 +366,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:28:1: rule_Statement : ( rule_Definition | rule_Evaluation );
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:28:1: rule_Statement : ( rule_Definition | rule_Evaluation );
     // $ANTLR start "rule_Statement"
     rule_Statement: function() {
         var retval = new InternalArithmeticsParser.rule_Statement_return();
@@ -379,7 +379,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:28:15: ( rule_Definition | rule_Evaluation )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:28:15: ( rule_Definition | rule_Evaluation )
             var alt4=2;
             var LA4_0 = this.input.LA(1);
 
@@ -397,7 +397,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
             }
             switch (alt4) {
                 case 1 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:29:2: rule_Definition
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:29:2: rule_Definition
                     root_0 = this.adaptor.nil();
 
                     this.pushFollow(InternalArithmeticsParser.FOLLOW_rule_Definition_in_rule_Statement110);
@@ -410,7 +410,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
                     break;
                 case 2 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:29:20: rule_Evaluation
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:29:20: rule_Evaluation
                     root_0 = this.adaptor.nil();
 
                     this.pushFollow(InternalArithmeticsParser.FOLLOW_rule_Evaluation_in_rule_Statement114);
@@ -455,7 +455,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:32:1: rule_Definition : 'def' name= ID ( '(' args+= rule_DeclaredParameter ( ',' args+= rule_DeclaredParameter )* ')' )? ':' expr= rule_Expression ';' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:32:1: rule_Definition : 'def' name= ID ( '(' args+= rule_DeclaredParameter ( ',' args+= rule_DeclaredParameter )* ')' )? ':' expr= rule_Expression ';' ;
     // $ANTLR start "rule_Definition"
     rule_Definition: function() {
         var retval = new InternalArithmeticsParser.rule_Definition_return();
@@ -482,8 +482,8 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         var char_literal14_tree=null;
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:32:16: ( 'def' name= ID ( '(' args+= rule_DeclaredParameter ( ',' args+= rule_DeclaredParameter )* ')' )? ':' expr= rule_Expression ';' )
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:33:2: 'def' name= ID ( '(' args+= rule_DeclaredParameter ( ',' args+= rule_DeclaredParameter )* ')' )? ':' expr= rule_Expression ';'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:32:16: ( 'def' name= ID ( '(' args+= rule_DeclaredParameter ( ',' args+= rule_DeclaredParameter )* ')' )? ':' expr= rule_Expression ';' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:33:2: 'def' name= ID ( '(' args+= rule_DeclaredParameter ( ',' args+= rule_DeclaredParameter )* ')' )? ':' expr= rule_Expression ';'
             root_0 = this.adaptor.nil();
 
             string_literal9=this.match(this.input,13,InternalArithmeticsParser.FOLLOW_13_in_rule_Definition123); 
@@ -494,7 +494,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
             name_tree = this.adaptor.create(name);
             this.adaptor.addChild(root_0, name_tree);
 
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:33:16: ( '(' args+= rule_DeclaredParameter ( ',' args+= rule_DeclaredParameter )* ')' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:33:16: ( '(' args+= rule_DeclaredParameter ( ',' args+= rule_DeclaredParameter )* ')' )?
             var alt6=2;
             var LA6_0 = this.input.LA(1);
 
@@ -503,7 +503,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
             }
             switch (alt6) {
                 case 1 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:33:17: '(' args+= rule_DeclaredParameter ( ',' args+= rule_DeclaredParameter )* ')'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:33:17: '(' args+= rule_DeclaredParameter ( ',' args+= rule_DeclaredParameter )* ')'
                     char_literal10=this.match(this.input,14,InternalArithmeticsParser.FOLLOW_14_in_rule_Definition130); 
                     char_literal10_tree = this.adaptor.create(char_literal10);
                     this.adaptor.addChild(root_0, char_literal10_tree);
@@ -517,7 +517,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
                     if (org.antlr.lang.isNull(list_args)) list_args = [];
                     list_args.push(args.getTree());
 
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:33:50: ( ',' args+= rule_DeclaredParameter )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:33:50: ( ',' args+= rule_DeclaredParameter )*
                     loop5:
                     do {
                         var alt5=2;
@@ -530,7 +530,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
                         switch (alt5) {
                         case 1 :
-                            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:33:51: ',' args+= rule_DeclaredParameter
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:33:51: ',' args+= rule_DeclaredParameter
                             char_literal11=this.match(this.input,15,InternalArithmeticsParser.FOLLOW_15_in_rule_Definition137); 
                             char_literal11_tree = this.adaptor.create(char_literal11);
                             this.adaptor.addChild(root_0, char_literal11_tree);
@@ -611,7 +611,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:36:1: rule_DeclaredParameter : name= ID ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:36:1: rule_DeclaredParameter : name= ID ;
     // $ANTLR start "rule_DeclaredParameter"
     rule_DeclaredParameter: function() {
         var retval = new InternalArithmeticsParser.rule_DeclaredParameter_return();
@@ -624,8 +624,8 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         var name_tree=null;
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:36:23: (name= ID )
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:37:2: name= ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:36:23: (name= ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:37:2: name= ID
             root_0 = this.adaptor.nil();
 
             name=this.match(this.input,ID,InternalArithmeticsParser.FOLLOW_ID_in_rule_DeclaredParameter166); 
@@ -666,7 +666,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:40:1: rule_AbstractDefinition : ( rule_Definition | rule_DeclaredParameter );
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:40:1: rule_AbstractDefinition : ( rule_Definition | rule_DeclaredParameter );
     // $ANTLR start "rule_AbstractDefinition"
     rule_AbstractDefinition: function() {
         var retval = new InternalArithmeticsParser.rule_AbstractDefinition_return();
@@ -679,7 +679,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:40:24: ( rule_Definition | rule_DeclaredParameter )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:40:24: ( rule_Definition | rule_DeclaredParameter )
             var alt7=2;
             var LA7_0 = this.input.LA(1);
 
@@ -697,7 +697,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
             }
             switch (alt7) {
                 case 1 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:41:2: rule_Definition
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:41:2: rule_Definition
                     root_0 = this.adaptor.nil();
 
                     this.pushFollow(InternalArithmeticsParser.FOLLOW_rule_Definition_in_rule_AbstractDefinition175);
@@ -710,7 +710,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
                     break;
                 case 2 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:41:20: rule_DeclaredParameter
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:41:20: rule_DeclaredParameter
                     root_0 = this.adaptor.nil();
 
                     this.pushFollow(InternalArithmeticsParser.FOLLOW_rule_DeclaredParameter_in_rule_AbstractDefinition179);
@@ -755,7 +755,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:44:1: rule_Evaluation : expression= rule_Expression ';' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:44:1: rule_Evaluation : expression= rule_Expression ';' ;
     // $ANTLR start "rule_Evaluation"
     rule_Evaluation: function() {
         var retval = new InternalArithmeticsParser.rule_Evaluation_return();
@@ -769,8 +769,8 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         var char_literal17_tree=null;
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:44:16: (expression= rule_Expression ';' )
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:45:2: expression= rule_Expression ';'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:44:16: (expression= rule_Expression ';' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:45:2: expression= rule_Expression ';'
             root_0 = this.adaptor.nil();
 
             this.pushFollow(InternalArithmeticsParser.FOLLOW_rule_Expression_in_rule_Evaluation190);
@@ -817,7 +817,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:48:1: rule_Expression : rule_Addition ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:48:1: rule_Expression : rule_Addition ;
     // $ANTLR start "rule_Expression"
     rule_Expression: function() {
         var retval = new InternalArithmeticsParser.rule_Expression_return();
@@ -829,8 +829,8 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:48:16: ( rule_Addition )
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:49:2: rule_Addition
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:48:16: ( rule_Addition )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:49:2: rule_Addition
             root_0 = this.adaptor.nil();
 
             this.pushFollow(InternalArithmeticsParser.FOLLOW_rule_Addition_in_rule_Expression201);
@@ -873,7 +873,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:52:1: rule_Addition : rule_Multiplication ( ( '+' | '-' ) right= rule_Multiplication )* ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:52:1: rule_Addition : rule_Multiplication ( ( '+' | '-' ) right= rule_Multiplication )* ;
     // $ANTLR start "rule_Addition"
     rule_Addition: function() {
         var retval = new InternalArithmeticsParser.rule_Addition_return();
@@ -888,8 +888,8 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         var set20_tree=null;
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:52:14: ( rule_Multiplication ( ( '+' | '-' ) right= rule_Multiplication )* )
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:53:2: rule_Multiplication ( ( '+' | '-' ) right= rule_Multiplication )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:52:14: ( rule_Multiplication ( ( '+' | '-' ) right= rule_Multiplication )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:53:2: rule_Multiplication ( ( '+' | '-' ) right= rule_Multiplication )*
             root_0 = this.adaptor.nil();
 
             this.pushFollow(InternalArithmeticsParser.FOLLOW_rule_Multiplication_in_rule_Addition210);
@@ -898,7 +898,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
             this.state._fsp--;
 
             this.adaptor.addChild(root_0, rule_Multiplication19.getTree());
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:53:22: ( ( '+' | '-' ) right= rule_Multiplication )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:53:22: ( ( '+' | '-' ) right= rule_Multiplication )*
             loop8:
             do {
                 var alt8=2;
@@ -911,7 +911,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
                 switch (alt8) {
                 case 1 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:53:23: ( '+' | '-' ) right= rule_Multiplication
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:53:23: ( '+' | '-' ) right= rule_Multiplication
                     set20=this.input.LT(1);
                     if ( (this.input.LA(1)>=19 && this.input.LA(1)<=20) ) {
                         this.input.consume();
@@ -972,7 +972,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:56:1: rule_Multiplication : rule_PrimaryExpression ( ( '*' | '/' ) right= rule_PrimaryExpression )* ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:56:1: rule_Multiplication : rule_PrimaryExpression ( ( '*' | '/' ) right= rule_PrimaryExpression )* ;
     // $ANTLR start "rule_Multiplication"
     rule_Multiplication: function() {
         var retval = new InternalArithmeticsParser.rule_Multiplication_return();
@@ -987,8 +987,8 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         var set22_tree=null;
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:56:20: ( rule_PrimaryExpression ( ( '*' | '/' ) right= rule_PrimaryExpression )* )
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:57:2: rule_PrimaryExpression ( ( '*' | '/' ) right= rule_PrimaryExpression )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:56:20: ( rule_PrimaryExpression ( ( '*' | '/' ) right= rule_PrimaryExpression )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:57:2: rule_PrimaryExpression ( ( '*' | '/' ) right= rule_PrimaryExpression )*
             root_0 = this.adaptor.nil();
 
             this.pushFollow(InternalArithmeticsParser.FOLLOW_rule_PrimaryExpression_in_rule_Multiplication236);
@@ -997,7 +997,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
             this.state._fsp--;
 
             this.adaptor.addChild(root_0, rule_PrimaryExpression21.getTree());
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:57:25: ( ( '*' | '/' ) right= rule_PrimaryExpression )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:57:25: ( ( '*' | '/' ) right= rule_PrimaryExpression )*
             loop9:
             do {
                 var alt9=2;
@@ -1010,7 +1010,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
                 switch (alt9) {
                 case 1 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:57:26: ( '*' | '/' ) right= rule_PrimaryExpression
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:57:26: ( '*' | '/' ) right= rule_PrimaryExpression
                     set22=this.input.LT(1);
                     if ( this.input.LA(1)==12||this.input.LA(1)==21 ) {
                         this.input.consume();
@@ -1071,7 +1071,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         return;
     })(),
 
-    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:60:1: rule_PrimaryExpression : ( '(' rule_Expression ')' | value= NUMBER | func= ID ( '(' args+= rule_Expression ( ',' args+= rule_Expression )* ')' )? );
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:60:1: rule_PrimaryExpression : ( '(' rule_Expression ')' | value= NUMBER | func= ID ( '(' args+= rule_Expression ( ',' args+= rule_Expression )* ')' )? );
     // $ANTLR start "rule_PrimaryExpression"
     rule_PrimaryExpression: function() {
         var retval = new InternalArithmeticsParser.rule_PrimaryExpression_return();
@@ -1098,7 +1098,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
         var char_literal28_tree=null;
 
         try {
-            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:60:23: ( '(' rule_Expression ')' | value= NUMBER | func= ID ( '(' args+= rule_Expression ( ',' args+= rule_Expression )* ')' )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:60:23: ( '(' rule_Expression ')' | value= NUMBER | func= ID ( '(' args+= rule_Expression ( ',' args+= rule_Expression )* ')' )? )
             var alt12=3;
             switch ( this.input.LA(1) ) {
             case 14:
@@ -1119,7 +1119,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
             switch (alt12) {
                 case 1 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:61:2: '(' rule_Expression ')'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:61:2: '(' rule_Expression ')'
                     root_0 = this.adaptor.nil();
 
                     char_literal23=this.match(this.input,14,InternalArithmeticsParser.FOLLOW_14_in_rule_PrimaryExpression262); 
@@ -1140,7 +1140,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
                     break;
                 case 2 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:62:3: value= NUMBER
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:62:3: value= NUMBER
                     root_0 = this.adaptor.nil();
 
                     value=this.match(this.input,NUMBER,InternalArithmeticsParser.FOLLOW_NUMBER_in_rule_PrimaryExpression274); 
@@ -1151,14 +1151,14 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
                     break;
                 case 3 :
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:63:3: func= ID ( '(' args+= rule_Expression ( ',' args+= rule_Expression )* ')' )?
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:63:3: func= ID ( '(' args+= rule_Expression ( ',' args+= rule_Expression )* ')' )?
                     root_0 = this.adaptor.nil();
 
                     func=this.match(this.input,ID,InternalArithmeticsParser.FOLLOW_ID_in_rule_PrimaryExpression282); 
                     func_tree = this.adaptor.create(func);
                     this.adaptor.addChild(root_0, func_tree);
 
-                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:63:11: ( '(' args+= rule_Expression ( ',' args+= rule_Expression )* ')' )?
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:63:11: ( '(' args+= rule_Expression ( ',' args+= rule_Expression )* ')' )?
                     var alt11=2;
                     var LA11_0 = this.input.LA(1);
 
@@ -1167,7 +1167,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
                     }
                     switch (alt11) {
                         case 1 :
-                            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:63:12: '(' args+= rule_Expression ( ',' args+= rule_Expression )* ')'
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:63:12: '(' args+= rule_Expression ( ',' args+= rule_Expression )* ')'
                             char_literal26=this.match(this.input,14,InternalArithmeticsParser.FOLLOW_14_in_rule_PrimaryExpression285); 
                             char_literal26_tree = this.adaptor.create(char_literal26);
                             this.adaptor.addChild(root_0, char_literal26_tree);
@@ -1181,7 +1181,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
                             if (org.antlr.lang.isNull(list_args)) list_args = [];
                             list_args.push(args.getTree());
 
-                            // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:63:38: ( ',' args+= rule_Expression )*
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:63:38: ( ',' args+= rule_Expression )*
                             loop10:
                             do {
                                 var alt10=2;
@@ -1194,7 +1194,7 @@ org.antlr.lang.augmentObject(InternalArithmeticsParser.prototype, {
 
                                 switch (alt10) {
                                 case 1 :
-                                    // D:\\dev\\www\\Mars\\win32-x86_64\\runtime\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:63:39: ',' args+= rule_Expression
+                                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\InternalArithmetics.g:63:39: ',' args+= rule_Expression
                                     char_literal27=this.match(this.input,15,InternalArithmeticsParser.FOLLOW_15_in_rule_PrimaryExpression292); 
                                     char_literal27_tree = this.adaptor.create(char_literal27);
                                     this.adaptor.addChild(root_0, char_literal27_tree);

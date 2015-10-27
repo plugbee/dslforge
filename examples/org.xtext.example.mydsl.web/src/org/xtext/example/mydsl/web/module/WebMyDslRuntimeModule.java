@@ -18,4 +18,3 @@ public class WebMyDslRuntimeModule extends AbstractModule {
 		System.out.println("[DSLFORGE] - Configuring module " + this.getClass().getName());
 	}
 }
-	
