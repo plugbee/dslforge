@@ -1,2 +1,3 @@
-[^.]*
-/org
+/InternalMyDsl.tokens
+/InternalMyDslLexer.js
+/InternalMyDslParser.js

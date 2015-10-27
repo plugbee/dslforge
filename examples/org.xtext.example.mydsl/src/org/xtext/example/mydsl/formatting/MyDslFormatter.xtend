@@ -9,10 +9,10 @@ import org.eclipse.xtext.formatting.impl.FormattingConfig
 // import org.xtext.example.mydsl.services.MyDslGrammarAccess
 
 /**
- * This class contains custom formatting description.
+ * This class contains custom formatting declarations.
  * 
- * see : http://www.eclipse.org/Xtext/documentation.html#formatting
- * on how and when to use it 
+ * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#formatting
+ * on how and when to use it.
  * 
  * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an example
  */

@@ -1,1 +1,0 @@
-var b=0,d=[];onconnect=function(a){a&&(a=a.ports[0],a.onmessage=function(a){b++;var e=a.data.a;a=a.data.index;for(var c=0;c<d.length;c++)d[c].postMessage({b:b,message:"index",a:e,index:a})},a.start(),d.push(a))};

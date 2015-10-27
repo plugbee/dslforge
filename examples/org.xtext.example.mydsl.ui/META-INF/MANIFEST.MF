@@ -17,9 +17,9 @@ Require-Bundle: org.xtext.example.mydsl;visibility:=reexport,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.xtext.example.mydsl.ui.quickfix,
  org.xtext.example.mydsl.ui.contentassist,
- org.xtext.example.mydsl.ui.contentassist.antlr,
- org.xtext.example.mydsl.ui.internal
+ org.xtext.example.mydsl.ui.internal,
+ org.xtext.example.mydsl.ui.contentassist.antlr
 Bundle-Activator: org.xtext.example.mydsl.ui.internal.MyDslActivator

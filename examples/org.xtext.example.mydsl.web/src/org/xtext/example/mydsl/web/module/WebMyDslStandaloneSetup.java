@@ -31,7 +31,7 @@ public class WebMyDslStandaloneSetup extends MyDslStandaloneSetup {
 		org.eclipse.xtext.common.TerminalsStandaloneSetup.doSetup();
 		MyDslRuntimeModule original = new MyDslRuntimeModule();
 		WebMyDslRuntimeModule module = new WebMyDslRuntimeModule();
-		Module mergedModule = Modules2.mixin(original, module);
+		Module mergedModule = Modules2.mixin((Module) original, module);
 		return mergedModule;
 	}
 }

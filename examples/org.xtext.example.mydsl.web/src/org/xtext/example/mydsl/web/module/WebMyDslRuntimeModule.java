@@ -15,7 +15,7 @@ public class WebMyDslRuntimeModule extends AbstractModule {
 		bind(ILinkingService.class).to(BasicTextLinkingService.class);
 		bind(IGlobalScopeProvider.class).to(BasicTextGlobalScopeProvider.class);
 		bind(org.eclipse.xtext.resource.IContainer.Manager.class).to(BasicTextContainerManager.class);
-		System.out.println("*welcome to dslforge*");
+		System.out.println("[DSLFORGE] - Configuring module " + this.getClass().getName());
 	}
 }
 	

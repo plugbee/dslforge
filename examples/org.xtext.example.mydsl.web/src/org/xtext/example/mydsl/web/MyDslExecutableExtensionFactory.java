@@ -6,10 +6,6 @@ import org.xtext.example.mydsl.web.internal.Activator;
 
 import com.google.inject.Injector;
 
-/**
- * This class was generated. Customizations should only happen in a newly
- * introduced subclass. 
- */
 public class MyDslExecutableExtensionFactory extends AbstractGuiceAwareWebExecutableExtensionFactory {
 
 	@Override
@@ -21,5 +17,4 @@ public class MyDslExecutableExtensionFactory extends AbstractGuiceAwareWebExecut
 	public Injector getInjector() {
 		return Activator.getInstance().getInjector(Activator.LANGUAGE_NAME);
 	}
-	
 }

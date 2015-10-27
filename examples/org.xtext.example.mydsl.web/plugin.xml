@@ -34,30 +34,20 @@
       <actionSet
             label="MyDsl Action Set"
             visible="true"
-            id="org.xtext.example.mydsl.web.editor.actionset">
+            id="org.dslforge.core.ui.model.actionset">
          <action
-               class="org.xtext.example.mydsl.web.actions.NewMyDslAction"
-               icon="icons/model.png"
-               id="org.xtext.example.mydsl.web.wizard.newMyDslAction"
                label="MyDsl file"
-               menubarPath="file/new/additions"/>
+               class="org.xtext.example.mydsl.web.actions.NewMyDslAction"
+              menubarPath="file/new/additions"
+               id="org.xtext.example.mydsl.web.wizard.newMyDslAction"/>
       </actionSet>
    </extension>
-   
-   	<extension
-		point="org.eclipse.emf.ecore.extension_parser">
-		<parser
-			class="org.xtext.example.mydsl.web.MyDslExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="mydsl">
-		</parser>
-	</extension>
-    <extension
-          point="org.dslforge.workbench.contribution">
-       <generator
-             class="org.xtext.example.mydsl.web.MyDslExecutableExtensionFactory"
-             extension="mydsl"
-             label="org.xtext.example.mydsl.MyDsl">
-       </generator>
-    </extension>
-   
+   <extension
+     point="org.dslforge.workbench.contribution">
+  <generator
+       class="org.xtext.example.mydsl.web.MyDslExecutableExtensionFactory"
+         extension="mydsl"
+        label="org.xtext.example.mydsl.MyDsl">
+  </generator>
+</extension>
 </plugin>
