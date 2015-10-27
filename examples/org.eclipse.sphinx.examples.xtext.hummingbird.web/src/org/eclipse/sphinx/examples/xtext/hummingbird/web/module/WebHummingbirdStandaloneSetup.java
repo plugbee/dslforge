@@ -1,8 +1,8 @@
 package org.eclipse.sphinx.examples.xtext.hummingbird.web.module;
 
 import org.eclipse.xtext.util.Modules2;
-import org.eclipse.sphinx.examples.xtext.hummingbird.HummingbirdRuntimeModule;
-import org.eclipse.sphinx.examples.xtext.hummingbird.HummingbirdStandaloneSetup;
+import org.eclipse.sphinx.examples.xtext.HummingbirdRuntimeModule;
+import org.eclipse.sphinx.examples.xtext.HummingbirdStandaloneSetup;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -31,7 +31,7 @@ public class WebHummingbirdStandaloneSetup extends HummingbirdStandaloneSetup {
 		org.eclipse.xtext.common.TerminalsStandaloneSetup.doSetup();
 		HummingbirdRuntimeModule original = new HummingbirdRuntimeModule();
 		WebHummingbirdRuntimeModule module = new WebHummingbirdRuntimeModule();
-		Module mergedModule = Modules2.mixin(original, module);
+		Module mergedModule = Modules2.mixin((Module) original, module);
 		return mergedModule;
 	}
 }

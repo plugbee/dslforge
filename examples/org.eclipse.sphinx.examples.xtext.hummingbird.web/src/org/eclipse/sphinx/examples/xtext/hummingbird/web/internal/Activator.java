@@ -6,9 +6,9 @@ import java.util.Map;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
-import org.eclipse.sphinx.examples.xtext.hummingbird.web.module.WebHummingbirdStandaloneSetup;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.sphinx.examples.xtext.hummingbird.web.module.WebHummingbirdStandaloneSetup;
 import org.osgi.framework.BundleContext;
 
 import com.google.common.collect.Maps;
@@ -19,8 +19,9 @@ import com.google.inject.Injector;
  */
 public class Activator extends AbstractUIPlugin {
 
+	// The Language Name
 	public static final String LANGUAGE_NAME = "org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird";
-
+	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.sphinx.examples.xtext.hummingbird.web"; //$NON-NLS-1$
 
@@ -33,7 +34,7 @@ public class Activator extends AbstractUIPlugin {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = new WebHummingbirdStandaloneSetup().createInjector(LANGUAGE_NAME));
+				injectors.put(language, injector = new WebHummingbirdStandaloneSetup().createInjector("org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird"));
 			}
 			return injector;
 		}

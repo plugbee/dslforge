@@ -12,14 +12,14 @@ Require-Bundle: org.eclipse.sphinx.examples.xtext.hummingbird;visibility:=reexpo
  org.eclipse.xtext.ui.shared,
  org.eclipse.ui,
  org.eclipse.xtext.builder,
- org.antlr.runtime,
+ org.eclipse.xtext.xbase.lib,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare
-Import-Package: org.apache.log4j,
- org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.sphinx.examples.xtext.hummingbird.ui.quickfix,
- org.eclipse.sphinx.examples.xtext.hummingbird.ui.contentassist,
- org.eclipse.sphinx.examples.xtext.hummingbird.ui.contentassist.antlr
-Bundle-Activator: org.eclipse.sphinx.examples.xtext.hummingbird.ui.internal.HummingbirdActivator
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.eclipse.sphinx.examples.xtext.ui.quickfix,
+ org.eclipse.sphinx.examples.xtext.ui.contentassist,
+ org.eclipse.sphinx.examples.xtext.ui.internal,
+ org.eclipse.sphinx.examples.xtext.ui.contentassist.antlr
+Bundle-Activator: org.eclipse.sphinx.examples.xtext.ui.internal.HummingbirdActivator

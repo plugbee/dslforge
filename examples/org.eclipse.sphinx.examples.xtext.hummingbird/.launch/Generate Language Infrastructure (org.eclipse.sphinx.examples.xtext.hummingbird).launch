@@ -12,7 +12,7 @@
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="src/org/eclipse/sphinx/examples/xtext/hummingbird/GenerateHummingbird.mwe2"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="src/org/eclipse/sphinx/examples/xtext/GenerateHummingbird.mwe2"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.eclipse.sphinx.examples.xtext.hummingbird"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m"/>
 </launchConfiguration>

@@ -7,17 +7,20 @@ Bundle-SymbolicName: org.eclipse.sphinx.examples.xtext.hummingbird.web; singleto
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.sphinx.examples.xtext.hummingbird.web.internal.Activator
 Require-Bundle: org.eclipse.rap.ui,
+ org.eclipse.rap.ui.navigator,
  org.eclipse.emf.rap.common.ui,
  org.eclipse.emf.rap.edit.ui,
- org.eclipse.xtext,
- org.eclipse.sphinx.examples.xtext.hummingbird,
- org.eclipse.core.jobs,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
- org.eclipse.rap.ui.navigator,
  com.google.inject,
- org.eclipse.equinox.security,
- org.dslforge.xtext.common,
+ org.eclipse.xtext,
  org.dslforge.workbench,
- org.dslforge.workspace
+ org.dslforge.workspace,
+ org.dslforge.xtext.common,
+ org.eclipse.sphinx.examples.xtext.hummingbird
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.eclipse.sphinx.examples.xtext.hummingbird.web.actions,
+ org.eclipse.sphinx.examples.xtext.hummingbird.web.editor,
+ org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.widget,
+ org.eclipse.sphinx.examples.xtext.hummingbird.web.internal,
+ org.eclipse.sphinx.examples.xtext.hummingbird.web.module

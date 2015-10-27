@@ -6,48 +6,48 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="hbtext"
-            id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird"
+            id="org.eclipse.sphinx.examples.xtext.Hummingbird"
             name="Hummingbird Editor">
         </editor>
     </extension>
     <extension
         point="org.eclipse.ui.handlers">
         <handler
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened">
+                    definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.validate">
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="org.eclipse.sphinx.examples.xtext.Hummingbird.validate">
          <activeWhen>
             <reference
-                    definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened">
+                    definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened">
             </reference>
          </activeWhen>
       	</handler>
       	<!-- copy qualified name -->
         <handler
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
             <activeWhen>
-				<reference definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened" />
+				<reference definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened" />
             </activeWhen>
         </handler>
         <handler
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
             <activeWhen>
             	<and>
-            		<reference definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.XtextEditor.opened" />
+            		<reference definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.XtextEditor.opened" />
 	                <iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -56,22 +56,22 @@
         </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened">
+        <definition id="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird" 
+                        value="org.eclipse.sphinx.examples.xtext.Hummingbird" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
         </definition>
-        <definition id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.XtextEditor.opened">
+        <definition id="org.eclipse.sphinx.examples.xtext.Hummingbird.XtextEditor.opened">
             <and>
                 <reference definitionId="isXtextEditorActive"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird" 
+                        value="org.eclipse.sphinx.examples.xtext.Hummingbird" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
@@ -80,33 +80,33 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.eclipse.sphinx.examples.xtext.Hummingbird"
             name="Hummingbird">
-            <keywordReference id="org.eclipse.sphinx.examples.xtext.hummingbird.ui.keyword_Hummingbird"/>
+            <keywordReference id="org.eclipse.sphinx.examples.xtext.ui.keyword_Hummingbird"/>
         </page>
         <page
-            category="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird"
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.coloring"
+            category="org.eclipse.sphinx.examples.xtext.Hummingbird"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="org.eclipse.sphinx.examples.xtext.Hummingbird.coloring"
             name="Syntax Coloring">
-            <keywordReference id="org.eclipse.sphinx.examples.xtext.hummingbird.ui.keyword_Hummingbird"/>
+            <keywordReference id="org.eclipse.sphinx.examples.xtext.ui.keyword_Hummingbird"/>
         </page>
         <page
-            category="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird"
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.templates"
+            category="org.eclipse.sphinx.examples.xtext.Hummingbird"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="org.eclipse.sphinx.examples.xtext.Hummingbird.templates"
             name="Templates">
-            <keywordReference id="org.eclipse.sphinx.examples.xtext.hummingbird.ui.keyword_Hummingbird"/>
+            <keywordReference id="org.eclipse.sphinx.examples.xtext.ui.keyword_Hummingbird"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.eclipse.sphinx.examples.xtext.Hummingbird"
             name="Hummingbird">
-            <keywordReference id="org.eclipse.sphinx.examples.xtext.hummingbird.ui.keyword_Hummingbird"/>
+            <keywordReference id="org.eclipse.sphinx.examples.xtext.ui.keyword_Hummingbird"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -116,14 +116,14 @@
     <extension
         point="org.eclipse.ui.keywords">
         <keyword
-            id="org.eclipse.sphinx.examples.xtext.hummingbird.ui.keyword_Hummingbird"
+            id="org.eclipse.sphinx.examples.xtext.ui.keyword_Hummingbird"
             label="Hummingbird"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.validate"
+            id="org.eclipse.sphinx.examples.xtext.Hummingbird.validate"
             name="Validate">
       </command>
       <!-- copy qualified name -->
@@ -144,12 +144,12 @@
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.validate"
+                 commandId="org.eclipse.sphinx.examples.xtext.Hummingbird.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened">
+                    definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -159,7 +159,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
          		style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened" />
+                	<reference definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -167,7 +167,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
             	style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened" />
+                	<reference definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -176,7 +176,7 @@
 				style="push" tooltip="Copy Qualified Name">
          		<visibleWhen checkEnabled="false">
 	            	<and>
-	            		<reference definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.XtextEditor.opened" />
+	            		<reference definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -189,7 +189,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened">
+                	<reference definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -197,11 +197,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 	    <handler
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened">
+                    definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
@@ -212,19 +212,19 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="hbtext">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
             uriExtension="hbtext">
         </resourceServiceProvider>
     </extension>
 
 
-	<!-- marker definitions for org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird -->
+	<!-- marker definitions for org.eclipse.sphinx.examples.xtext.Hummingbird -->
 	<extension
 	        id="hummingbird.check.fast"
 	        name="Hummingbird Problem"
@@ -250,43 +250,66 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+            fileExtensions="hbtext"
+            >
       </participant>
    </extension>
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            category="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird"
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.compiler.preferencePage"
+            category="org.eclipse.sphinx.examples.xtext.Hummingbird"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.eclipse.sphinx.examples.xtext.Hummingbird.compiler.preferencePage"
             name="Compiler">
-            <keywordReference id="org.eclipse.sphinx.examples.xtext.hummingbird.ui.keyword_Hummingbird"/>
+            <keywordReference id="org.eclipse.sphinx.examples.xtext.ui.keyword_Hummingbird"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            category="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird"
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.compiler.propertyPage"
+            category="org.eclipse.sphinx.examples.xtext.Hummingbird"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.eclipse.sphinx.examples.xtext.Hummingbird.compiler.propertyPage"
             name="Compiler">
-            <keywordReference id="org.eclipse.sphinx.examples.xtext.hummingbird.ui.keyword_Hummingbird"/>
+            <keywordReference id="org.eclipse.sphinx.examples.xtext.ui.keyword_Hummingbird"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
 	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
         </page>
     </extension>
+    <extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
+			<command
+				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
+				id="org.eclipse.sphinx.examples.xtext.Hummingbird.OpenGeneratedCode"
+				style="push">
+					<visibleWhen checkEnabled="false">
+						<reference definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened" />
+					</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
+				<activeWhen>
+					<reference definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened" />
+				</activeWhen>
+		</handler>
+	</extension>
 
 	<!-- Quick Outline -->
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened">
+					definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -306,33 +329,33 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened"/>
+					<reference definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-    <!-- quickfix marker resolution generator for org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird -->
+    <!-- quickfix marker resolution generator for org.eclipse.sphinx.examples.xtext.Hummingbird -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.eclipse.sphinx.examples.xtext.hummingbird.ui.hummingbird.check.fast">
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.eclipse.sphinx.examples.xtext.ui.hummingbird.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.eclipse.sphinx.examples.xtext.hummingbird.ui.hummingbird.check.normal">
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.eclipse.sphinx.examples.xtext.ui.hummingbird.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="org.eclipse.sphinx.examples.xtext.hummingbird.ui.hummingbird.check.expensive">
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.eclipse.sphinx.examples.xtext.ui.hummingbird.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -342,11 +365,11 @@
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened">
+					definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -358,7 +381,7 @@
                style="push">
             <visibleWhen checkEnabled="false">
                <reference
-                     definitionId="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.Editor.opened">
+                     definitionId="org.eclipse.sphinx.examples.xtext.Hummingbird.Editor.opened">
                </reference>
             </visibleWhen>
          </command>
@@ -366,31 +389,37 @@
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
 	    <page
-	        category="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird"
-	        class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.refactoring"
+	        category="org.eclipse.sphinx.examples.xtext.Hummingbird"
+	        class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="org.eclipse.sphinx.examples.xtext.Hummingbird.refactoring"
 	        name="Refactoring">
-	        <keywordReference id="org.eclipse.sphinx.examples.xtext.hummingbird.ui.keyword_Hummingbird"/>
+	        <keywordReference id="org.eclipse.sphinx.examples.xtext.ui.keyword_Hummingbird"/>
 	    </page>
 	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.compare.contentViewers"
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="org.eclipse.sphinx.examples.xtext.Hummingbird.compare.contentViewers"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="hbtext">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.compare.contentMergeViewers"
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="org.eclipse.sphinx.examples.xtext.Hummingbird.compare.contentMergeViewers"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="hbtext" label="Hummingbird Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird.editors.documentProviders"
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+    <provider id="org.eclipse.sphinx.examples.xtext.Hummingbird.editors.documentProviders"
+            class="org.eclipse.sphinx.examples.xtext.ui.HummingbirdExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="hbtext">
     </provider>
+  </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="hbtext"
+            type="text">
+    </fileTypes>
   </extension>
 
 </plugin>

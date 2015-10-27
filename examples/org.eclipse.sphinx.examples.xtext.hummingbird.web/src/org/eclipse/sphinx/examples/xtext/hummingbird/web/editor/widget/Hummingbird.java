@@ -23,7 +23,7 @@ public class Hummingbird extends BasicText {
 	protected RemoteObject createRemoteObject(Connection connection) {
 		return connection.createRemoteObject(REMOTE_TYPE);
 	}
-
+	
 	@Override
 	protected String getBasePath() {
 		return "src-js/org/eclipse/sphinx/examples/xtext/hummingbird/web/";

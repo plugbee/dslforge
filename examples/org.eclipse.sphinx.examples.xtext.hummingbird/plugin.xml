@@ -5,8 +5,8 @@
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http://www.eclipse.org/sphinx/examples/xtext/hummingbird/Hummingbird" 
-       class = "org.eclipse.sphinx.examples.xtext.hummingbird.hummingbird.HummingbirdPackage"
+       uri = "http://www.eclipse.org/sphinx/examples/xtext/Hummingbird" 
+       class = "org.eclipse.sphinx.examples.xtext.hummingbird.HummingbirdPackage"
        genModel = "model/generated/Hummingbird.genmodel" /> 
 	
   </extension>

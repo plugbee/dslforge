@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.dslforge.example.java.web
-Bundle-Vendor: My Company
+Bundle-Vendor: PLUGBEE
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.dslforge.example.java.web; singleton:=true
 Bundle-ActivationPolicy: lazy

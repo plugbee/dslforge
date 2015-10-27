@@ -1,2 +1,3 @@
-[^.]*
-/org
+/InternalHummingbird.tokens
+/InternalHummingbirdLexer.js
+/InternalHummingbirdParser.js

@@ -44,4 +44,3 @@ public class HummingbirdEditor extends BasicXtextEditor {
 		return hummingbirdWidget;
 	}
 }
-

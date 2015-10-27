@@ -4,72 +4,15 @@
     editDirectory="/org.eclipse.sphinx.examples.xtext.hummingbird.edit/src" editorDirectory="/org.eclipse.sphinx.examples.xtext.hummingbird.editor/src"
     modelPluginID="org.eclipse.sphinx.examples.xtext.hummingbird" forceOverwrite="true"
     modelName="Hummingbird" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.sphinx.examples.xtext.hummingbird.edit"
-    editorPluginID="org.eclipse.sphinx.examples.xtext.hummingbird.editor" runtimeVersion="2.9">
-  <genPackages prefix="Hummingbird" basePackage="org.eclipse.sphinx.examples.xtext.hummingbird"
+    complianceLevel="6.0" copyrightFields="false" editPluginID="org.eclipse.sphinx.examples.xtext.hummingbird.edit"
+    editorPluginID="org.eclipse.sphinx.examples.xtext.hummingbird.editor" runtimeVersion="2.11">
+  <genPackages prefix="Hummingbird" basePackage="org.eclipse.sphinx.examples.xtext"
       disposableProviderFactory="true" fileExtensions="hbtext" ecorePackage="Hummingbird.ecore#/">
-    <genClasses ecoreClass="Hummingbird.ecore#//EntryPoint">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//EntryPoint/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//EntryPoint/description"/>
+    <genClasses ecoreClass="Hummingbird.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Model/greetings"/>
     </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//Application">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Application/components"/>
-    </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//Component">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Component/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Component/type"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Component/incomingConnections"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Component/description"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Component/outgoingConnections"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Component/parameterValues"/>
-    </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//Connection">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Connection/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Connection/sourcePort"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Connection/targetComponent"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Connection/description"/>
-    </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//ParameterValue">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//ParameterValue/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//ParameterValue/value"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//ParameterValue/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//ParameterValue/description"/>
-    </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//Platform">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Platform/componentTypes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Platform/interfaces"/>
-    </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//ComponentType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//ComponentType/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//ComponentType/providedInterfaces"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//ComponentType/description"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//ComponentType/ports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//ComponentType/parameters"/>
-    </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//Interface">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Interface/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Interface/providingComponentTypes"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Interface/requiringPorts"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Interface/description"/>
-    </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//Port">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Port/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Port/minProviderCount"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Port/maxProviderCount"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Port/requiredInterface"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Port/description"/>
-    </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//Parameter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Parameter/optional"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Parameter/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Parameter/dataType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hummingbird.ecore#//Parameter/description"/>
-    </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//Identifiable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Identifiable/idantifiable"/>
-    </genClasses>
-    <genClasses ecoreClass="Hummingbird.ecore#//Description">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Description/description"/>
+    <genClasses ecoreClass="Hummingbird.ecore#//Greeting">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hummingbird.ecore#//Greeting/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

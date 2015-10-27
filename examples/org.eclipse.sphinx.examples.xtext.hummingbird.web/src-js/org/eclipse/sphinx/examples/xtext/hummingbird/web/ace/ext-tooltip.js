@@ -54,51 +54,8 @@ function TokenTooltip (editor) {
 }
 
 function getDocumentation(token, before) {
-	var doc = "";
-	if (before!=null) {
-		if (before.type=="keyword" && (before.value=="entity" || before.value=="extends")) {
-			doc = token.value + " : "
-			doc += "Entity"+ "\n" ;
-			doc+="\n@see: http://www.xtext.org/example/Domainmodel";
-		}
-		else if (before.type=="keyword" && before.value=="op") {
-			doc = token.value + " : "
-			doc += "Operation" + "\n" ;
-			doc+="\n@see: http://www.xtext.org/example/Domainmodel";
-		}
-		else if (before.type=="keyword" && (before.value=="state" || before.value=="=>")) {
-			doc = token.value + " : "
-			doc += "State"+ "\n" ;
-			doc+="\n@see: http://www.eclipse.org/xtext/example/fowlerdsl/Statemachine"
-		}
-		
-		else if (before.type=="keyword" && (before.value=="ComponentType")) {
-			doc = token.value + " : "
-			doc += "ComponentType"+ "\n" ;
-			doc+="\n@see: http://www.eclipse.org/sphinx/examples/xtext/hummingbird/Hummingbird"
-		}
-		else if (before.type=="keyword" && (before.value=="Platform")) {
-			doc = token.value + " : "
-			doc += "Platform"+ "\n" ;
-			doc+="\n@see: http://www.eclipse.org/sphinx/examples/xtext/hummingbird/Hummingbird"
-		}
-		else if (before.type=="keyword" && (before.value=="Port")) {
-			doc = token.value + " : "
-			doc += "Port"+ "\n" ;
-			doc+="\n@see: http://www.eclipse.org/sphinx/examples/xtext/hummingbird/Hummingbird"
-		}
-		else if (before.type=="keyword" && (before.value=="Parameter")) {
-			doc = token.value + " : "
-			doc += "Parameter"+ "\n" ;
-			doc+="\n@see: http://www.eclipse.org/sphinx/examples/xtext/hummingbird/Hummingbird"
-		}
-		else if (before.type=="keyword" && (before.value=="module")) {
-			doc = token.value + " : "
-			doc += "Module"+ "\n" ;
-			doc+="\n@see: http://www.eclipse.org/xtext/example/Arithmetics"
-		}
-		
-	}
+	var doc = "//TODO";
+	doc+="\n\n@see: http://www.dslforge.com/documentation"
 	return doc;
 }
 
