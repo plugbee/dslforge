@@ -163,7 +163,7 @@ public class BasicWorkbenchRegistry {
 										}
 									}	
 								} catch (ConfigurationException ex) {
-									//do nothing, there is no generatoor contributed.
+									//do nothing, there is no generator contributed.
 								}
 								//Done.
 								LanguageContribution contribution = new LanguageContribution(label, fileExtension, injector, generators);	

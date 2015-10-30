@@ -1,113 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>dslforge.releng</groupId>
-  <artifactId>org.dslforge.runtime.build.parent.parent</artifactId>
-  <packaging>pom</packaging>
+	<groupId>dslforge.releng</groupId>
+	<artifactId>org.dslforge.runtime.build.parent.parent</artifactId>
+	<packaging>pom</packaging>
 
-  <properties>
-    <tycho-version>0.20.0</tycho-version>
-    <tycho.showEclipseLog>true</tycho.showEclipseLog>
-    <assembly-version>2.4</assembly-version>
-    <replacer-version>1.4.1</replacer-version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <rap-repository>http://download.eclipse.org/rt/rap/3.0/</rap-repository>
-    <rap-incubator-repository>http://download.eclipse.org/rt/rap/incubator/nightly/</rap-incubator-repository>
-  </properties>
+	<properties>
+		<tycho-version>0.20.0</tycho-version>
+		<tycho.showEclipseLog>true</tycho.showEclipseLog>
+		<assembly-version>2.4</assembly-version>
+		<replacer-version>1.4.1</replacer-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<rap-repository>http://download.eclipse.org/rt/rap/3.0/</rap-repository>
+		<rap-incubator-repository>http://download.eclipse.org/rt/rap/incubator/nightly/</rap-incubator-repository>
+		<xtend.maven.plugin.version>2.7.2</xtend.maven.plugin.version>
+	</properties>
 
-  <repositories>
-    <repository>
-      <id>rap-repository</id>
-      <layout>p2</layout>
-      <url>${rap-repository}</url>
-    </repository>
-    <repository>
-      <id>rap-incubator-repository</id>
-      <layout>p2</layout>
-      <url>${rap-incubator-repository}</url>
-    </repository>
-    
-    <repository>
-      <id>xtext-repository</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
-    </repository>
-   
-   <repository>
-      <id>orbit-repository</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</url>
-    </repository> 
-    
-     <repository>
-      <id>eclipselink-repository</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/rt/eclipselink/updates/</url>
-    </repository> 
-   
-    <repository>
-      <id>gemini-repository</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/gemini/jpa/updates/</url>
-    </repository>  
-    <!-- 
-    <repository>
-      <id>dslforge-repository</id>
-      <layout>p2</layout>
-      <url>http://www.plugbee.com/downloads/repository/</url>
-    </repository>  
--->
-    <repository>
-      <id>mars-repository</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/releases/mars</url>
-    </repository>  
-  </repositories>
+	<pluginRepositories>	
+		<pluginRepository>
+			<id>sonatype</id>
+			<url>http://repository.sonatype.org/content/groups/sonatype-public-grid/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<!-- Fornax Workflow Runner plugin -->
+		<pluginRepository>
+			<id>fornax</id>
+			<url>http://www.fornax-platform.org/m2/repository</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	
+		<pluginRepository>
+			<id>xtend</id>
+			<url>http://build.eclipse.org/common/xtend/maven/</url>
+		</pluginRepository>
+		
+	</pluginRepositories>
 
-  <build>
-    <plugins>
+	<repositories>
+		<repository>
+			<id>rap-repository</id>
+			<layout>p2</layout>
+			<url>${rap-repository}</url>
+		</repository>
+		<repository>
+			<id>rap-incubator-repository</id>
+			<layout>p2</layout>
+			<url>${rap-incubator-repository}</url>
+		</repository>
 
-      <!-- Enable Tycho -->
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-maven-plugin</artifactId>
-        <version>${tycho-version}</version>
-        <extensions>true</extensions>
-      </plugin>
+		<repository>
+			<id>xtext-repository</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+		</repository>
 
-      <!-- Configure qualifier replacement -->
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-packaging-plugin</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <format>yyyyMMdd-HHmm</format>
-        </configuration>
-      </plugin>
+		<repository>
+			<id>orbit-repository</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</url>
+		</repository>
 
-      <!-- Restrict to environment to enable platform independent war-build -->
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>target-platform-configuration</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <resolver>p2</resolver>
-          <environments>
-            <environment>
-              <os>win32</os>
-              <ws>win32</ws>
-              <arch>x86_64</arch>
-            </environment>
-           </environments>
-        </configuration>
-      </plugin>
+		<repository>
+			<id>eclipselink-repository</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/rt/eclipselink/updates/</url>
+		</repository>
 
-    </plugins>
-  </build>
+		<repository>
+			<id>gemini-repository</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/gemini/jpa/updates/</url>
+		</repository>
+		<!-- <repository> <id>dslforge-repository</id> <layout>p2</layout> <url>http://www.plugbee.com/downloads/repository/</url> 
+			</repository> -->
+		<repository>
+			<id>mars-repository</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/mars</url>
+		</repository>
+		
+		<!-- Xtend maven plugin -->
+		<repository>
+			<id>xtend</id>
+			<url>http://build.eclipse.org/common/xtend/maven/</url>
+		</repository>
 
-  <version>1.0.0-SNAPSHOT</version>
+	</repositories>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>ISO-8859-1</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- Enable Tycho -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<!-- Configure xtend for maven -->
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+				<version>2.4.0</version>
+				<configuration>
+					<!-- need to prefix by basedir to generate to currently built module -->
+					<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+				</configuration>
+			</plugin>
+
+			<!-- Configure qualifier replacement -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<format>yyyyMMdd-HHmm</format>
+				</configuration>
+			</plugin>
+
+			<!-- Restrict to environment to enable platform independent war-build -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.build.directory}/src-gen</source>
+							</sources>
+							<sources>
+								<source>${project.build.directory}/xtend-gen</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<version>1.0.0-SNAPSHOT</version>
 </project>
