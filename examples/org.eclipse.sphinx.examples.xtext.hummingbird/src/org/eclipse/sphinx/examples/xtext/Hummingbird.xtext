@@ -1,4 +1,4 @@
-grammar org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird with org.eclipse.xtext.common.Terminals
+grammar org.eclipse.sphinx.examples.xtext.Hummingbird with org.eclipse.xtext.common.Terminals
 
 generate hummingbird "http://www.eclipse.org/sphinx/examples/xtext/hummingbird/Hummingbird"
 
