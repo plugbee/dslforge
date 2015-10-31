@@ -18,7 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<rap-repository>http://download.eclipse.org/rt/rap/3.0/</rap-repository>
 		<rap-incubator-repository>http://download.eclipse.org/rt/rap/incubator/nightly/</rap-incubator-repository>
-		<xtend.maven.plugin.version>2.7.2</xtend.maven.plugin.version>
+	<!-- <xtend.maven.plugin.version>2.8.4</xtend.maven.plugin.version> -->	
 	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -110,7 +110,7 @@
 						<configuration>
 							<includeBinaryFeature>false</includeBinaryFeature>
 							<!-- Non-breakable space, as normal spaces are trimmed. -->
-							<labelSuffix>&nbsp;Source
+							<labelSuffix>Source
 							</labelSuffix>
 						</configuration>
 					</execution>
@@ -139,58 +139,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho.version}</version>
-				<configuration>
-					<testFailureIgnore>true</testFailureIgnore>
-					<includes>
-						<include>**/*Test.java</include>
-						<include>**/*Test2.java</include>
-					</includes>
-					<excludes>
-						<!-- Test mojo matches TestProject be default and treats it as PojoTest -->
-						<exclude>**/Test*.class</exclude>
-					</excludes>
-					<useUIHarness>false</useUIHarness>
-					<useUIThread>false</useUIThread>
-					<argLine>${tycho.surefire.extra.vmargs}</argLine>
-
-					<!-- Uncomment to remote debug tests run by Maven/Tycho build -->
-					<!-- <argLine>${tycho.surefire.extra.vmargs} -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=y</argLine> -->
-				</configuration>
-			</plugin>
-
-
-			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-				<version>2.8.4</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<!-- need to prefix by basedir to generate to currently built module -->
-					<outputDirectory>${basedir}/xtend-gen</outputDirectory>
-					<encoding>ISO-8859-1</encoding>
-				</configuration>
-				<dependencies>
-					<!-- these dependencies are contributed in Eclipse by the "Xtend Library" 
-						classpath container -->
-					<dependency>
-						<groupId>org.eclipse.xtend</groupId>
-						<artifactId>org.eclipse.xtend.lib</artifactId>
-						<version>2.8.4</version>
-						<type>pom</type>
-					</dependency>
-				</dependencies>
-			</plugin>
-
 
 		</plugins>
 	</build>
