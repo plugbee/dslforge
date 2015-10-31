@@ -18,7 +18,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<rap-repository>http://download.eclipse.org/rt/rap/3.0/</rap-repository>
 		<rap-incubator-repository>http://download.eclipse.org/rt/rap/incubator/nightly/</rap-incubator-repository>
-	<!-- <xtend.maven.plugin.version>2.8.4</xtend.maven.plugin.version> -->	
 	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -270,21 +269,3 @@
 	</profiles>
 	<version>1.0.0-SNAPSHOT</version>
 </project>
-<!-- <pluginRepositories> <pluginRepository> <id>sonatype</id> <url>http://repository.sonatype.org/content/groups/sonatype-public-grid/</url> 
-	<releases> <enabled>true</enabled> </releases> <snapshots> <enabled>true</enabled> 
-	</snapshots> </pluginRepository> <pluginRepository> <id>fornax</id> <url>http://www.fornax-platform.org/m2/repository</url> 
-	<releases> <enabled>true</enabled> </releases> <snapshots> <enabled>false</enabled> 
-	</snapshots> </pluginRepository> <pluginRepository> <id>xtend</id> <url>http://build.eclipse.org/common/xtend/maven/</url> 
-	</pluginRepository> </pluginRepositories> <repositories> <repository> <id>rap-repository</id> 
-	<layout>p2</layout> <url>${rap-repository}</url> </repository> <repository> 
-	<id>rap-incubator-repository</id> <layout>p2</layout> <url>${rap-incubator-repository}</url> 
-	</repository> <repository> <id>xtext-repository</id> <layout>p2</layout> 
-	<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url> 
-	</repository> <repository> <id>orbit-repository</id> <layout>p2</layout> 
-	<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</url> 
-	</repository> <repository> <id>eclipselink-repository</id> <layout>p2</layout> 
-	<url>http://download.eclipse.org/rt/eclipselink/updates/</url> </repository> 
-	<repository> <id>gemini-repository</id> <layout>p2</layout> <url>http://download.eclipse.org/gemini/jpa/updates/</url> 
-	</repository> <repository> <id>mars-repository</id> <layout>p2</layout> <url>http://download.eclipse.org/releases/mars</url> 
-	</repository> <repository> <id>xtend</id> <url>http://build.eclipse.org/common/xtend/maven/</url> 
-	</repository> </repositories> -->

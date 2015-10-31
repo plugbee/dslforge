@@ -14,35 +14,94 @@
 	<packaging>eclipse-plugin</packaging>
 	<name>org.eclipse.sphinx.examples.xtext.hummingbird</name>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<xtext-version>2.8.4</xtext-version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.xtend</groupId>
+			<artifactId>org.eclipse.xtend.lib</artifactId>
+			<version>${xtext-version}</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-				<version>2.8.4</version>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.8</version>
 				<executions>
 					<execution>
 						<goals>
-							<goal>compile</goal>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.basedir}/src-gen</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>${project.basedir}/src-gen</directory>
+								</fileset>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>xtext-maven-plugin</artifactId>
+				<version>${xtext-version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<!-- need to prefix by basedir to generate to currently built module -->
-					<outputDirectory>${basedir}/xtend-gen</outputDirectory>
-					<encoding>ISO-8859-1</encoding>
+					<languages>
+						<language>
+							<setup>org.eclipse.sphinx.examples.xtext.HummingbirdStandaloneSetup</setup>
+							<outputConfigurations>
+							    <outputConfiguration>
+							        <outputDirectory>${project.basedir}/src-gen</outputDirectory>
+							    </outputConfiguration>
+							</outputConfigurations>
+						</language>
+					</languages>
 				</configuration>
-				<dependencies>
-					<!-- these dependencies are contributed in Eclipse by the "Xtend Library" 
-						classpath container -->
-					<dependency>
-						<groupId>org.eclipse.xtend</groupId>
-						<artifactId>org.eclipse.xtend.lib</artifactId>
-						<version>2.8.4</version>
-						<type>pom</type>
-					</dependency>
-				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+				<version>${xtext-version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>xtend-install-debug-info</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
