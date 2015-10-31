@@ -122,7 +122,7 @@
 				<version>${tycho.version}</version>
 				<executions>
 					<execution>
-						<!-- Don't attach (default) metadata before the "generate-source-feature"
+						<!-- Don't attach (default) metadata before the "generate-source-feature" 
 							execution. -->
 						<id>default-p2-metadata-default</id>
 						<configuration>
@@ -161,6 +161,37 @@
 					<!-- <argLine>${tycho.surefire.extra.vmargs} -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=y</argLine> -->
 				</configuration>
 			</plugin>
+
+
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+				<version>2.8.4</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- need to prefix by basedir to generate to currently built module -->
+					<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+					<encoding>ISO-8859-1</encoding>
+				</configuration>
+				<dependencies>
+					<!-- these dependencies are contributed in Eclipse by the "Xtend Library" 
+						classpath container -->
+					<dependency>
+						<groupId>org.eclipse.xtend</groupId>
+						<artifactId>org.eclipse.xtend.lib</artifactId>
+						<version>2.8.4</version>
+						<type>pom</type>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+
 		</plugins>
 	</build>
 	<profiles>
@@ -190,10 +221,12 @@
 				</os>
 			</activation>
 			<properties>
-				<!-- !!! Important Note !!! The following element MUST be written in a single line. Otherwise the build will fail under Max OS X
-				(see https://bugs.eclipse.org/bugs/show_bug.cgi?id=427693). In particular, be careful when auto formatting this file with Ctrl+Shift+F
-				as it tends to break up this line into several pieces. -->
-				<tycho.surefire.extra.vmargs>-Xmx512m -XX:MaxPermSize=256m -XstartOnFirstThread</tycho.surefire.extra.vmargs>
+				<!-- !!! Important Note !!! The following element MUST be written in 
+					a single line. Otherwise the build will fail under Max OS X (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=427693). 
+					In particular, be careful when auto formatting this file with Ctrl+Shift+F 
+					as it tends to break up this line into several pieces. -->
+				<tycho.surefire.extra.vmargs>-Xmx512m -XX:MaxPermSize=256m
+					-XstartOnFirstThread</tycho.surefire.extra.vmargs>
 			</properties>
 		</profile>
 		<profile>
@@ -287,77 +320,23 @@
 			</build>
 		</profile>
 	</profiles>
-<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 </project>
-<!-- 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>sonatype</id>
-			<url>http://repository.sonatype.org/content/groups/sonatype-public-grid/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>fornax</id>
-			<url>http://www.fornax-platform.org/m2/repository</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-
-		<pluginRepository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</pluginRepository>
-
-	</pluginRepositories>
-
-	<repositories>
-		<repository>
-			<id>rap-repository</id>
-			<layout>p2</layout>
-			<url>${rap-repository}</url>
-		</repository>
-		<repository>
-			<id>rap-incubator-repository</id>
-			<layout>p2</layout>
-			<url>${rap-incubator-repository}</url>
-		</repository>
-		<repository>
-			<id>xtext-repository</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
-		</repository>
-		<repository>
-			<id>orbit-repository</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</url>
-		</repository>
-		<repository>
-			<id>eclipselink-repository</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/rt/eclipselink/updates/</url>
-		</repository>
-		<repository>
-			<id>gemini-repository</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/gemini/jpa/updates/</url>
-		</repository>
-		<repository>
-			<id>mars-repository</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/mars</url>
-		</repository>
-		<repository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</repository>
-	</repositories>
--->
+<!-- <pluginRepositories> <pluginRepository> <id>sonatype</id> <url>http://repository.sonatype.org/content/groups/sonatype-public-grid/</url> 
+	<releases> <enabled>true</enabled> </releases> <snapshots> <enabled>true</enabled> 
+	</snapshots> </pluginRepository> <pluginRepository> <id>fornax</id> <url>http://www.fornax-platform.org/m2/repository</url> 
+	<releases> <enabled>true</enabled> </releases> <snapshots> <enabled>false</enabled> 
+	</snapshots> </pluginRepository> <pluginRepository> <id>xtend</id> <url>http://build.eclipse.org/common/xtend/maven/</url> 
+	</pluginRepository> </pluginRepositories> <repositories> <repository> <id>rap-repository</id> 
+	<layout>p2</layout> <url>${rap-repository}</url> </repository> <repository> 
+	<id>rap-incubator-repository</id> <layout>p2</layout> <url>${rap-incubator-repository}</url> 
+	</repository> <repository> <id>xtext-repository</id> <layout>p2</layout> 
+	<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url> 
+	</repository> <repository> <id>orbit-repository</id> <layout>p2</layout> 
+	<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/</url> 
+	</repository> <repository> <id>eclipselink-repository</id> <layout>p2</layout> 
+	<url>http://download.eclipse.org/rt/eclipselink/updates/</url> </repository> 
+	<repository> <id>gemini-repository</id> <layout>p2</layout> <url>http://download.eclipse.org/gemini/jpa/updates/</url> 
+	</repository> <repository> <id>mars-repository</id> <layout>p2</layout> <url>http://download.eclipse.org/releases/mars</url> 
+	</repository> <repository> <id>xtend</id> <url>http://build.eclipse.org/common/xtend/maven/</url> 
+	</repository> </repositories> -->
