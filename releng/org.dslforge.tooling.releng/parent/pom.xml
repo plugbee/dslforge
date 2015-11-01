@@ -18,19 +18,11 @@
 	</organization>
 	<properties>
 		<tycho.version>0.20.0</tycho.version>
-		<xtend.maven.plugin.version>2.7.2</xtend.maven.plugin.version>
+		<xtext.version>2.8.4</xtext.version>
 	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<encoding>ISO-8859-1</encoding>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
@@ -109,9 +101,7 @@
 						</goals>
 						<configuration>
 							<includeBinaryFeature>false</includeBinaryFeature>
-							<!-- Non-breakable space, as normal spaces are trimmed. -->
-							<labelSuffix>&nbsp;Source
-							</labelSuffix>
+							<labelSuffix>Source</labelSuffix>
 						</configuration>
 					</execution>
 				</executions>
@@ -122,7 +112,7 @@
 				<version>${tycho.version}</version>
 				<executions>
 					<execution>
-						<!-- Don't attach (default) metadata before the "generate-source-feature"
+						<!-- Don't attach (default) metadata before the "generate-source-feature" 
 							execution. -->
 						<id>default-p2-metadata-default</id>
 						<configuration>
@@ -162,7 +152,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		
+
 		<pluginManagement>
 			<plugins>
 				<!-- TYCHO -->
@@ -176,15 +166,15 @@
 						<target>6.0</target>
 					</configuration>
 				</plugin>
-	      		<plugin>
-	      			<groupId>org.eclipse.tycho</groupId>
-	      			<artifactId>tycho-packaging-plugin</artifactId>
-	      			<version>${tycho.version}</version>
-	      			<configuration>
-	        			<archiveSite>true</archiveSite>
-	      			</configuration>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<configuration>
+						<archiveSite>true</archiveSite>
+					</configuration>
 				</plugin>
-	      		
+
 				<!-- enable source bundle generation -->
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
@@ -205,7 +195,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.4.1</version>
+					<version>2.6</version>
 					<configuration>
 						<encoding>UTF-8</encoding>
 					</configuration>
@@ -230,19 +220,6 @@
 					<artifactId>maven-assembly-plugin</artifactId>
 					<version>2.2-beta-4</version>
 				</plugin>
-				<!--
-				<plugin>
-					<artifactId>maven-release-plugin</artifactId>
-					<configuration>
-						<preparationGoals>clean -DnewVersion=${releaseVersion}
-							-Dprudent=true
-							org.eclipse.tycho:tycho-versions-plugin:set-version
-							verify
-							scm:checkin</preparationGoals>
-						<arguments>-Prelease</arguments>
-					</configuration>
-				</plugin>
-				-->
 				<!-- OTHER PLUGINS -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -292,26 +269,31 @@
 					<artifactId>fornax-oaw-m2-plugin</artifactId>
 					<version>3.3.0</version>
 				</plugin>
+
+				<!-- XTEND PLUGINS -->
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtend.maven.plugin.version}</version>
+					<version>${xtext.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>xtend-install-debug-info</goal>
+								<goal>testCompile</goal>
+								<goal>xtend-test-install-debug-info</goal>
+							</goals>
+						</execution>
+					</executions>
 					<configuration>
-						<!-- need to prefix by basedir to generate to currently built module -->
-						<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+						<outputDirectory>xtend-gen</outputDirectory>
 					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>com.google.code.maven-replacer-plugin</groupId>
-					<artifactId>replacer</artifactId>
-					<version>1.5.3</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		
 	</build>
-	
-	<pluginRepositories>	
+
+	<pluginRepositories>
 		<pluginRepository>
 			<id>sonatype</id>
 			<url>http://repository.sonatype.org/content/groups/sonatype-public-grid/</url>
@@ -322,7 +304,6 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</pluginRepository>
-		<!-- Fornax Workflow Runner plugin -->
 		<pluginRepository>
 			<id>fornax</id>
 			<url>http://www.fornax-platform.org/m2/repository</url>
@@ -342,8 +323,19 @@
 			<url>http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/</url>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
+<!-- 
 	<repositories>
+		<repository>
+			<id>eclipse</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/mars/</url>
+		</repository>
+		<repository>
+			<id>Xtext Update Site</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext.version}/</url>
+		</repository>
 		<repository>
 			<id>mwe2</id>
 			<url>http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/</url>
@@ -356,8 +348,8 @@
 			<id>xtend</id>
 			<url>http://build.eclipse.org/common/xtend/maven/</url>
 		</repository>
-	</repositories>		
-	
+	</repositories>
+ -->
 	<profiles>
 		<profile>
 			<id>platform-mars</id>
@@ -385,10 +377,12 @@
 				</os>
 			</activation>
 			<properties>
-				<!-- !!! Important Note !!! The following element MUST be written in a single line. Otherwise the build will fail under Max OS X
-				(see https://bugs.eclipse.org/bugs/show_bug.cgi?id=427693). In particular, be careful when auto formatting this file with Ctrl+Shift+F
-				as it tends to break up this line into several pieces. -->
-				<tycho.surefire.extra.vmargs>-Xmx512m -XX:MaxPermSize=256m -XstartOnFirstThread</tycho.surefire.extra.vmargs>
+				<!-- !!! Important Note !!! The following element MUST be written in 
+					a single line. Otherwise the build will fail under Max OS X (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=427693). 
+					In particular, be careful when auto formatting this file with Ctrl+Shift+F 
+					as it tends to break up this line into several pieces. -->
+				<tycho.surefire.extra.vmargs>-Xmx512m -XX:MaxPermSize=256m
+					-XstartOnFirstThread</tycho.surefire.extra.vmargs>
 			</properties>
 		</profile>
 		<profile>

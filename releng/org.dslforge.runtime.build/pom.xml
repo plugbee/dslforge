@@ -25,9 +25,9 @@
 		<module>../../plugins/org.dslforge.workspace</module>
 		<module>../../plugins/org.dslforge.xtext.common</module>
 		
+		<!-- Examples
 		<module>../../examples/org.eclipse.xtext.example.arithmetics</module>
 		<module>../../examples/org.eclipse.xtext.example.arithmetics.web</module>
-		<!-- Examples
 		<module>../../examples/org.dslforge.example.java.web</module>
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird</module>
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird.web</module>

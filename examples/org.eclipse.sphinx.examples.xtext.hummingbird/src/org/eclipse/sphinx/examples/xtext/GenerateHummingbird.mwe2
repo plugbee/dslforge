@@ -60,7 +60,9 @@ Workflow {
     		fragment = grammarAccess.GrammarAccessFragment auto-inject {}
     
     		// generates Java API for the generated EPackages
-    		fragment = ecore.EMFGeneratorFragment auto-inject {}
+    		fragment = ecore.EMFGeneratorFragment auto-inject {
+    			javaModelDirectory = "/${projectName}/src-gen"
+    		}
     
     		// the old serialization component
     		// fragment = parseTreeConstructor.ParseTreeConstructorFragment auto-inject {}    

@@ -2,25 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
-	<!-- 		 
-		<parent>
-		<groupId>dslforge.releng</groupId>
-		<artifactId>org.dslforge.runtime.build.parent.parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../../releng/org.dslforge.runtime.build/parent/parent/pom.xml</relativePath>
-	</parent>
-	 -->
-	 
+
+	<!-- <parent> <groupId>dslforge.releng</groupId> <artifactId>org.dslforge.runtime.build.parent.parent</artifactId> 
+		<version>1.0.0-SNAPSHOT</version> <relativePath>../../releng/org.dslforge.runtime.build/parent/parent/pom.xml</relativePath> 
+		</parent> -->
+
 	<parent>
 		<groupId>dslforge.releng</groupId>
 		<artifactId>org.dslforge.tooling.releng.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>./parent/pom.xml</relativePath>
+		<relativePath>../../releng/org.dslforge.tooling.releng/parent/pom.xml</relativePath>
 	</parent>
 
-
-	
 	<groupId>dslforge.plugins</groupId>
 	<artifactId>org.eclipse.sphinx.examples.xtext.hummingbird</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
@@ -29,82 +22,38 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<xtext-version>2.8.4</xtext-version>
+		<xtext.version>2.8.4</xtext.version>
 	</properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.eclipse.xtend</groupId>
-			<artifactId>org.eclipse.xtend.lib</artifactId>
-			<version>${xtext-version}</version>
-		</dependency>
-	</dependencies>
 	<build>
-	  <resources>
-            <resource>
-            	<directory>src</directory>
-				<includes>
-					<include>**/*.xtext</include>
-				</includes>
-            </resource>
-        </resources>
-        
 		<plugins>
-		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.5</version>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>${basedir}/src-gen</directory>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/xtend-gen</directory>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/../${project.artifactId}.ui/src-gen</directory>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/../${project.artifactId}.ui/xtend-gen</directory>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>
-
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
+						<id>gen-clean</id>
+						<phase>clean</phase>
+						<!-- Clean up generated files in all projects -->
 						<configuration>
-							<sources>
-								<source>src-gen</source>
-								<source>xtend-gen</source>
-							</sources>
+							<filesets combine.children="append">
+								<fileset>
+									<directory>${basedir}/src-gen/</directory>
+								</fileset>
+								<fileset>
+									<directory>${basedir}/model/generated/</directory>
+								</fileset>
+								<fileset>
+									<directory>${basedir}/../${project.artifactId}.ui/src-gen/</directory>
+								</fileset>
+	<!-- <fileset> <directory>${basedir}/../${project.artifactId}.tests/src-gen/</directory> 
+		</fileset> -->
+							</filesets>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.fornax.toolsupport</groupId>
-				<artifactId>fornax-oaw-m2-plugin</artifactId>
-				<configuration>
-					<workflowDescriptor>src/org/eclipse/sphinx/examples/xtext/GenerateHummingbird.mwe2</workflowDescriptor>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-			</plugin>
-			<!-- 
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -122,9 +71,7 @@
 					<includePluginDependencies>true</includePluginDependencies>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>
-							file://${project.basedir}/src/org/eclipse/sphinx/examples/xtext/GenerateHummingbird.mwe2
-						</argument>
+						<argument>file://${project.basedir}/src/org/eclipse/sphinx/examples/xtext/GenerateHummingbird.mwe2</argument>
 						<argument>
 							-p
 						</argument>
@@ -137,65 +84,22 @@
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xtext</artifactId>
-						<version>${xtext-version}</version>
+						<version>${xtext.version}</version>
 					</dependency>
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xbase</artifactId>
-						<version>${xtext-version}</version>
+						<version>${xtext.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
-			 -->
-			
+
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+			</plugin>
+
 		</plugins>
 	</build>
-	
-		<pluginRepositories>	
-		<pluginRepository>
-			<id>sonatype</id>
-			<url>http://repository.sonatype.org/content/groups/sonatype-public-grid/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-		<!-- Fornax Workflow Runner plugin -->
-		<pluginRepository>
-			<id>fornax</id>
-			<url>http://www.fornax-platform.org/m2/repository</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>mwe2</id>
-			<url>http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/</url>
-		</pluginRepository>
-	</pluginRepositories>
-	
-	<repositories>
-		<repository>
-			<id>mwe2</id>
-			<url>http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/</url>
-		</repository>
-		<repository>
-			<id>maven.eclipse.org</id>
-			<url>http://maven.eclipse.org/nexus/content/groups/public/</url>
-		</repository>
-		<repository>
-			<id>xtend</id>
-			<url>http://build.eclipse.org/common/xtend/maven/</url>
-		</repository>
-	</repositories>	
-	
+
 </project>
