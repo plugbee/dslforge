@@ -17,10 +17,6 @@
 		<!-- Plug-ins -->
 		<module>../../plugins/org.dslforge.xtext.generator</module>
 		<module>../../plugins/org.dslforge.xtext.generator.ui</module>
-
-		<!-- Examples -->
-		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird</module>
-		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird.web</module>
 		
 		<!-- Features -->
 		<module>../../features/org.dslforge.tooling.feature</module>
