@@ -2,5 +2,5 @@ bin/
 target/
 xtend-gen/*/
 src-gen/*/
-[^src-gen]*
-[^xtend-gen]*
+[^src-gen]
+[^xtend-gen]
