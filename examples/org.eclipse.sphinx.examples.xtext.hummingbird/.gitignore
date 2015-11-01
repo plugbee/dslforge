@@ -1,6 +1,2 @@
 bin/
 target/
-xtend-gen/*/
-src-gen/*/
-[^src-gen]
-[^xtend-gen]
