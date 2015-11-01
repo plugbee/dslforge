@@ -91,7 +91,7 @@ public class BasicWorkbenchRegistry {
 	}
 	
 	public List<String> getMetamodels() {
-		return new ArrayList<>(languageToContributionMap.keySet());
+		return new ArrayList<String>(languageToContributionMap.keySet());
 	}
 	
 	public String getFileExtensionFor(String metamodel) {

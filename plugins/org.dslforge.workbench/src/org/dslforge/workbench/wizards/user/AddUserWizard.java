@@ -60,7 +60,9 @@ public class AddUserWizard extends AbstractNewResourceWizard {
 			};
 		try {
 			getContainer().run(false, false, operation);
-		} catch (InvocationTargetException | InterruptedException e) {
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		return true;

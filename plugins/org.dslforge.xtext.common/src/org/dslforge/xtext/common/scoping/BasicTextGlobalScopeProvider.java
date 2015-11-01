@@ -84,7 +84,7 @@ public class BasicTextGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	}
 
 	private List<URI> getAllResourceURs(ResourceSet resourceSet) {
-		List<URI> list = new ArrayList<>();
+		List<URI> list = new ArrayList<URI>();
 		EList<Resource> resources = resourceSet.getResources();
 		for (Resource r : resources) {
 			URI uri = r.getURI();

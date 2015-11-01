@@ -14,6 +14,7 @@
 		<module>../../plugins/org.dslforge.workspace</module>
 		<module>../../plugins/org.dslforge.xtext.common</module>
 		
+
 		<!-- Examples -->
 		<module>../../examples/org.dslforge.example.java.web</module>
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird</module>
@@ -26,7 +27,7 @@
 		<module>../../examples/org.xtext.example.domainmodel.web</module>
 		<module>../../examples/org.xtext.example.mydsl</module>
 		<module>../../examples/org.xtext.example.mydsl.web</module>
-		
+
 		<!-- Tests -->
 
 		<!-- Documentation -->
