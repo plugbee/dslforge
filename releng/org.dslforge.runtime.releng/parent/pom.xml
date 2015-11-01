@@ -140,28 +140,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho.version}</version>
-				<configuration>
-					<testFailureIgnore>true</testFailureIgnore>
-					<includes>
-						<include>**/*Test.java</include>
-						<include>**/*Test2.java</include>
-					</includes>
-					<excludes>
-						<!-- Test mojo matches TestProject be default and treats it as PojoTest -->
-						<exclude>**/Test*.class</exclude>
-					</excludes>
-					<useUIHarness>false</useUIHarness>
-					<useUIThread>false</useUIThread>
-					<argLine>${tycho.surefire.extra.vmargs}</argLine>
-
-					<!-- Uncomment to remote debug tests run by Maven/Tycho build -->
-					<!-- <argLine>${tycho.surefire.extra.vmargs} -Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=y</argLine> -->
-				</configuration>
-			</plugin>
 		</plugins>
 
 		<pluginManagement>

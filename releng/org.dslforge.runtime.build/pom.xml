@@ -25,7 +25,7 @@
 		<module>../../plugins/org.dslforge.workspace</module>
 		<module>../../plugins/org.dslforge.xtext.common</module>
 		
-		<!-- Examples
+		<!-- Examples -->
 		<module>../../examples/org.eclipse.xtext.example.arithmetics</module>
 		<module>../../examples/org.eclipse.xtext.example.arithmetics.web</module>
 		<module>../../examples/org.dslforge.example.java.web</module>
@@ -38,7 +38,7 @@
 		<module>../../examples/org.xtext.example.domainmodel.web</module>
 		<module>../../examples/org.xtext.example.mydsl</module>
 		<module>../../examples/org.xtext.example.mydsl.web</module>
-		  -->
+		 
 		<!-- Product -->
     	<module>workbench</module>
   </modules>

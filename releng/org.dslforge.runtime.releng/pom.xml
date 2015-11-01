@@ -16,7 +16,7 @@
 		
 
 		<!-- Examples -->
-		<module>../../examples/org.dslforge.example.java.web</module>
+<!-- 		<module>../../examples/org.dslforge.example.java.web</module>
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird</module>
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird.web</module>
 		<module>../../examples/org.eclipse.xtext.example.arithmetics</module>
@@ -26,7 +26,7 @@
 		<module>../../examples/org.xtext.example.domainmodel</module>
 		<module>../../examples/org.xtext.example.domainmodel.web</module>
 		<module>../../examples/org.xtext.example.mydsl</module>
-		<module>../../examples/org.xtext.example.mydsl.web</module>
+		<module>../../examples/org.xtext.example.mydsl.web</module> -->
 
 		<!-- Tests -->
 
