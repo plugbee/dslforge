@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.sphinx.examples.xtext.hummingbird
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: org.eclipse.sphinx.examples.xtext.hummingbird; singleton:=true
+Bundle-SymbolicName: org.eclipse.sphinx.examples.xtext.hummingbird;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.equinox.common;bundle-version="3.5.0",
@@ -18,15 +18,15 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.eclipse.sphinx.examples.xtext,
- org.eclipse.sphinx.examples.xtext.services,
+ org.eclipse.sphinx.examples.xtext.formatting,
+ org.eclipse.sphinx.examples.xtext.generator,
  org.eclipse.sphinx.examples.xtext.hummingbird,
  org.eclipse.sphinx.examples.xtext.hummingbird.impl,
  org.eclipse.sphinx.examples.xtext.hummingbird.util,
- org.eclipse.sphinx.examples.xtext.serializer,
  org.eclipse.sphinx.examples.xtext.parser.antlr,
  org.eclipse.sphinx.examples.xtext.parser.antlr.internal,
- org.eclipse.sphinx.examples.xtext.validation,
  org.eclipse.sphinx.examples.xtext.scoping,
- org.eclipse.sphinx.examples.xtext.generator,
- org.eclipse.sphinx.examples.xtext.formatting
+ org.eclipse.sphinx.examples.xtext.serializer,
+ org.eclipse.sphinx.examples.xtext.services,
+ org.eclipse.sphinx.examples.xtext.validation
 
