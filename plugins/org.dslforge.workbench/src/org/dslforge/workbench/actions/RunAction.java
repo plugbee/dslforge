@@ -28,7 +28,7 @@ public class RunAction extends AbstractWorkbenchAction {
 	private DynamicClassRunner runner;
 	
 	public RunAction() {
-		this.runner = new DynamicClassRunner(IWorkbenchConstants.CLASS_PATH);
+		this.runner = new DynamicClassRunner(IWorkbenchConstants.BOOT_CLASS_PATH);
 	}
 
 	@Override

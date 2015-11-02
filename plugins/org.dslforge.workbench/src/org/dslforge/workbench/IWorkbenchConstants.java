@@ -41,7 +41,7 @@ public interface IWorkbenchConstants {
 	public static final String SECURITY_CONFIG_FILE = "data/config.txt";
 	public static final String DATABASE_AUTHENTICATION = "DATABASE";
 		
-	public static String CLASS_PATH = 
+	public static String BOOT_CLASS_PATH = 
 	System.getProperty("java.class.path") + ";" +
 			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.jface.databinding_3.0.1.20150709-1405.jar;"+
 			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.jface_3.0.1.20150709-1405.jar;"+

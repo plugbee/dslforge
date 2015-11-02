@@ -136,7 +136,9 @@ public class DynamicClassRunner {
 							for (Method m : declaredMethods) {
 								if (m.getName().equals("run")) {
 									paramsObj[0] = null;
-									m.invoke(object, null);
+									m.setAccessible(true);
+									m.invoke(object);
+									System.out.println("[DSLFORGE] - Generated class run method successfully invoked.");
 								}
 							}
 						} catch (IllegalArgumentException e) {

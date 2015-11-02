@@ -30,7 +30,7 @@ public class CompileAction extends AbstractWorkbenchAction {
 	private org.dslforge.workbench.tools.ICompiler compiler;
 	
 	public CompileAction() {
-		this.compiler = new DynamicCompiler(IWorkbenchConstants.CLASS_PATH);
+		this.compiler = new DynamicCompiler(IWorkbenchConstants.BOOT_CLASS_PATH);
 	}
 	
 	public CompileAction(ICompiler compiler) {
