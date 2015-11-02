@@ -15,6 +15,7 @@
  */
 package org.dslforge.workbench.mail;
 
+import java.net.UnknownHostException;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -61,7 +62,7 @@ public class MailUtil {
 			Transport.send(message);
 			System.out.println("[DSLFORGE] Sent notification successfully....");
 		} catch (MessagingException mex) {
-			mex.printStackTrace();
+			//ignore exception.
 		}
 		return true;
 	}
