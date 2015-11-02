@@ -8,21 +8,23 @@ import org.eclipse.swt.widgets.Composite;
 import org.xtext.example.domainmodel.web.editor.widget.Domainmodel;
 import org.xtext.example.domainmodel.web.internal.Activator;
 
-
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 
 public class DomainmodelEditor extends BasicXtextEditor {
 
-	private static final String LANGUAGE_NAME = "org.xtext.example.Domainmodel";
-	
 	private Domainmodel domainmodelWidget;
-	
+
+	@Inject
+	private Injector injector;
+
 	public DomainmodelEditor() {
 		super();
-		setLanguageName(LANGUAGE_NAME);
+		setLanguageName("org.xtext.example.Domainmodel");
 		injector = Activator.getInstance().getInjector(getLanguageName());
 		injector.injectMembers(this);
 	}
-
+	
 	@Override
 	protected void createWidget(Composite parent, Font font) {
 		domainmodelWidget = new Domainmodel(parent, SWT.FILL);

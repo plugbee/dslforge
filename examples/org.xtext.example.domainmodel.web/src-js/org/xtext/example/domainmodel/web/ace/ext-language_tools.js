@@ -41,22 +41,18 @@ var keyWordCompleter = {
     getCompletions: function(editor, session, pos, prefix, callback) {
         var state = editor.session.getState(pos.row);
         var completions = session.$mode.getCompletions(state, session, pos, prefix);
-
-        var keywords = ["op", "extends", "entity", "package","import"];
         var enhancedCompletions = [];
         for (var i = completions.length; i--;) {
             var s = completions[i];
             var caption = s.name;
             if (!caption)
                 continue;
-            if (keywords.indexOf(s.name)>-1) {
-                enhancedCompletions.push({
-                    iconClass: " " + "ace-completion ace-completion-keyword",
-                    name: s.name,
-                    value: s.value,
-                    meta: "keyword"
-                 });
-            }
+            enhancedCompletions.push({
+                iconClass: " " + "ace-completion ace-completion-keyword",
+                name: s.name,
+                value: s.value,
+                meta: "keyword"
+             });
         }
         
         callback(null, enhancedCompletions);
@@ -69,29 +65,6 @@ var keyWordCompleter = {
 	        ].join("");
 	    }
 	 }
-};
-
-this.getKeywords = function(mode) {
-    var rules = mode.$tokenizer.rules;
-    var completionKeywords = [];
-    for (var rule in rules) {
-        var ruleItr = rules[rule];
-        for (var r = 0, l = ruleItr.length; r < l; r++) {
-            if (typeof ruleItr[r].token === "string") {
-                if (/keyword/.test(ruleItr[r].token))
-                    completionKeywords.push(ruleItr[r].regex);
-            }
-            else if (typeof ruleItr[r].token === "object") {
-                for (var a = 0, aLength = ruleItr[r].token.length; a < aLength; a++) {    
-                    if (/keyword/.test(ruleItr[r].token[a])) {
-                        var rule = ruleItr[r].regex.match(/\(.+?\)/g)[a];
-                        completionKeywords.push(rule.substr(1, rule.length - 2));
-                    }
-                }
-            }
-        }
-    }
-    return completionKeywords.concat(this.$keywordList || []);
 };
 
 var snippetCompleter = {

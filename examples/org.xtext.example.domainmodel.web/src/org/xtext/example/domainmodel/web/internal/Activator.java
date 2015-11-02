@@ -8,9 +8,8 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.resource.XtextResourceSet;
-import org.osgi.framework.BundleContext;
 import org.xtext.example.domainmodel.web.module.WebDomainmodelStandaloneSetup;
+import org.osgi.framework.BundleContext;
 
 import com.google.common.collect.Maps;
 import com.google.inject.Injector;
@@ -20,8 +19,9 @@ import com.google.inject.Injector;
  */
 public class Activator extends AbstractUIPlugin {
 
+	// The Language Name
 	public static final String LANGUAGE_NAME = "org.xtext.example.Domainmodel";
-
+	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.xtext.example.domainmodel.web"; //$NON-NLS-1$
 
@@ -34,25 +34,15 @@ public class Activator extends AbstractUIPlugin {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = new WebDomainmodelStandaloneSetup().createInjector(language));
+				injectors.put(language, injector = new WebDomainmodelStandaloneSetup().createInjector("org.xtext.example.Domainmodel"));
 			}
 			return injector;
 		}
 	}
-	
-	private XtextResourceSet resourceSet;
-	
-	public XtextResourceSet getResourceSet() {
-		if (resourceSet==null)
-			resourceSet = new XtextResourceSet();
-		return resourceSet;
-	}
-	
+
 	public static Activator getInstance() {
 		return plugin;
 	}
-	
-
 
 	/**
 	 * The constructor
@@ -60,15 +50,13 @@ public class Activator extends AbstractUIPlugin {
 	public Activator() {
 	}
 
-	
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
-	public void start(BundleContext bundleContext) throws Exception {
-		super.start(bundleContext);
+	public void start(BundleContext context) throws Exception {
+		super.start(context);
 		plugin = this;
-
 	}
 
 	/*

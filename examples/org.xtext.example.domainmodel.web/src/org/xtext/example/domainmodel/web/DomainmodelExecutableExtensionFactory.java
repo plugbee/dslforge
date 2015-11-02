@@ -6,10 +6,6 @@ import org.xtext.example.domainmodel.web.internal.Activator;
 
 import com.google.inject.Injector;
 
-/**
- * This class was generated. Customizations should only happen in a newly
- * introduced subclass. 
- */
 public class DomainmodelExecutableExtensionFactory extends AbstractGuiceAwareWebExecutableExtensionFactory {
 
 	@Override
@@ -21,5 +17,4 @@ public class DomainmodelExecutableExtensionFactory extends AbstractGuiceAwareWeb
 	public Injector getInjector() {
 		return Activator.getInstance().getInjector(Activator.LANGUAGE_NAME);
 	}
-	
 }

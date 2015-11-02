@@ -10,10 +10,10 @@ import org.eclipse.rap.rwt.service.ResourceManager;
 import org.eclipse.swt.widgets.Composite;
 
 public class Domainmodel extends BasicText {
-
-	private static final long serialVersionUID = 3375229591119356098L;
 	
-	public static final String REMOTE_TYPE = "org.xtext.example.domainmodel.web.editor.widget.Domainmodel";
+	private static final long serialVersionUID = 1L;
+	
+	private static final String REMOTE_TYPE = "org.xtext.example.domainmodel.web.editor.widget.Domainmodel";
 	
 	public Domainmodel(Composite parent, int style) {
 		super(parent, style);
@@ -23,7 +23,7 @@ public class Domainmodel extends BasicText {
 	protected RemoteObject createRemoteObject(Connection connection) {
 		return connection.createRemoteObject(REMOTE_TYPE);
 	}
-
+	
 	@Override
 	protected String getBasePath() {
 		return "src-js/org/xtext/example/domainmodel/web/";
@@ -53,7 +53,7 @@ public class Domainmodel extends BasicText {
 		getAceFiles().add("ext-documentation.js");
 		getAceFiles().add("ext-tooltip.js");
 	}
-	
+
 	@Override 
 	protected void initAntlr() {
 		super.initAntlr();
@@ -70,7 +70,7 @@ public class Domainmodel extends BasicText {
 	protected void registerTemplateResources(ResourceManager resourceManager) throws IOException {
 		register(resourceManager, "domainmodel.js", getTemplatePath());
 	}
-	
+
 	@Override
 	protected ClassLoader getClassLoader() {
 		ClassLoader classLoader = Domainmodel.class.getClassLoader();

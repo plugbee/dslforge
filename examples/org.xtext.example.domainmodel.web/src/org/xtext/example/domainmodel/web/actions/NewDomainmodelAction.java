@@ -14,7 +14,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 public class NewDomainmodelAction extends WorkbenchWindowActionDelegate  {
 
 	@Override
-	public void run(IAction action) {		
+	public void run(IAction action) {
 		File rootFoler = WorkspaceManager.INSTANCE.getRootFoler();
 		StructuredSelection selection = new StructuredSelection(rootFoler);
 		if (!selection.isEmpty()) {

@@ -1,28 +1,21 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.xtext.example.domainmodel.web
-Bundle-Vendor: PLUGBEE
+Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.xtext.example.domainmodel.web; singleton:=true
 Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.xtext.example.domainmodel.web.internal.Activator
 Require-Bundle: org.eclipse.rap.ui,
+ org.eclipse.rap.ui.navigator,
  org.eclipse.emf.rap.common.ui,
  org.eclipse.emf.rap.edit.ui,
- org.eclipse.xtext,
- org.xtext.example.domainmodel,
- org.eclipse.core.jobs,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
- org.eclipse.rap.ui.navigator,
  com.google.inject,
- org.eclipse.equinox.security,
+ org.eclipse.xtext,
  org.dslforge.workbench,
+ org.dslforge.workspace,
  org.dslforge.xtext.common,
- org.dslforge.workspace
+ org.xtext.example.domainmodel
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Bundle-Activator: org.xtext.example.domainmodel.web.internal.Activator
-Export-Package: org.xtext.example.domainmodel.web.actions,
- org.xtext.example.domainmodel.web.editor,
- org.xtext.example.domainmodel.web.editor.widget,
- org.xtext.example.domainmodel.web.module
- 

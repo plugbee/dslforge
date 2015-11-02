@@ -14,7 +14,7 @@ public class WebDomainmodelRuntimeModule extends AbstractModule {
 	protected void configure() {
 		bind(ILinkingService.class).to(BasicTextLinkingService.class);
 		bind(IGlobalScopeProvider.class).to(BasicTextGlobalScopeProvider.class);
-		bind(org.eclipse.xtext.resource.IContainer.Manager.class).to(
-				BasicTextContainerManager.class);
+		bind(org.eclipse.xtext.resource.IContainer.Manager.class).to(BasicTextContainerManager.class);
+		System.out.println("[DSLFORGE] - Configuring module " + this.getClass().getName());
 	}
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DomainModel Parser Tester</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
+    <script src="antlr3-all.js" type="text/javascript"></script>
+    <script src="InternalDomainmodelLexer.js" type="text/javascript"></script>
+    <script src="InternalDomainmodelParser.js" type="text/javascript"></script>
+    <script src="DomainModelParserWrapper.js" type="text/javascript"></script>
+    <script src="prettyprint.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        org.antlr.runtime.BaseRecognizer.prototype.emitErrorMessage = function (msg) {
+            console.log(msg);
+            alert("error: "+msg);
+            var positions = msg.match(/\d+/g);
+            alert("line: "+ positions[0]);
+            alert("position in line: " + positions[1]);
+        };
+
+        function convertToObject(node, parser) {
+        	alert("converting " + node)
+            var current =
+            {
+                text: node.getToken().getText(),
+                type: node.getToken().getType(),
+                typeName: parser.getTokenNames()[node.getToken().getType()],
+                children: new Array()
+            };
+
+            //Add children
+            if (node.getChildCount() > 0) {
+                var children = node.getChildren();
+                for (i in children) {
+                    current.children.push(convertToObject(children[i], parser));
+                }
+            }
+           // alert("current: " + current);
+            return current;
+        }
+
+        $(document).ready(function () {
+            $("#btnRun").click(function () {
+                var input = $("#domainModelInput").val();
+                alert("input : " + input);
+                cstream = new org.antlr.runtime.ANTLRStringStream(input);
+                lexer = new InternalDomainModelLexer(cstream);
+                tstream = new org.antlr.runtime.CommonTokenStream(lexer);
+                parser = new InternalDomainModelParser(tstream);
+                var foo = parser.domainModel();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-17377827-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+    <h1>
+        DomainModel Parser Tester
+    </h1>
+    <input type="text" value="" id="domainModelInput" />
+    <input type="button" value="RUN" id="btnRun" /><br />
+    <br />
+    <div>
+    </div>
+</body>
+</html>

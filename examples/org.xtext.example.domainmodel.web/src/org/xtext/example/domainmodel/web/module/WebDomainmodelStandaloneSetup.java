@@ -31,7 +31,7 @@ public class WebDomainmodelStandaloneSetup extends DomainmodelStandaloneSetup {
 		org.eclipse.xtext.common.TerminalsStandaloneSetup.doSetup();
 		DomainmodelRuntimeModule original = new DomainmodelRuntimeModule();
 		WebDomainmodelRuntimeModule module = new WebDomainmodelRuntimeModule();
-		Module mergedModule = Modules2.mixin((Module)original, module);
+		Module mergedModule = Modules2.mixin((Module) original, module);
 		return mergedModule;
 	}
 }

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-    <extension
+      <extension
          point="org.eclipse.rap.ui.resources">
       <resource
-            class="org.xtext.example.domainmodel.web.editor.widget.DomainmodelResource"
-            id="org.xtext.example.domainmodel.web.editor">
+          class="org.xtext.example.domainmodel.web.editor.widget.DomainmodelResource">
       </resource>
       <resource
           class="org.xtext.example.domainmodel.web.editor.widget.GlobalIndexResource">
@@ -35,21 +34,20 @@
       <actionSet
             label="Domainmodel Action Set"
             visible="true"
-            id="org.xtext.example.domainmodel.web.editor.actionset">
+            id="org.dslforge.core.ui.model.actionset">
          <action
-               class="org.xtext.example.domainmodel.web.actions.NewDomainmodelAction"
-               icon="icons/model.png"
-               id="org.xtext.example.domainmodel.web.wizard.newDomainmodelAction"
                label="Domainmodel file"
-               menubarPath="file/new/additions"/>
+               class="org.xtext.example.domainmodel.web.actions.NewDomainmodelAction"
+              menubarPath="file/new/additions"
+               id="org.xtext.example.domainmodel.web.wizard.newDomainmodelAction"/>
       </actionSet>
    </extension>
    <extension
-         point="org.dslforge.workbench.contribution">
-      <generator
-            class="org.xtext.example.domainmodel.web.DomainmodelExecutableExtensionFactory"
-            extension="dmodel"
-            label="org.xtext.example.Domainmodel">
-      </generator>
-   </extension>
+     point="org.dslforge.workbench.contribution">
+  <generator
+       class="org.xtext.example.domainmodel.web.DomainmodelExecutableExtensionFactory"
+         extension="dmodel"
+        label="org.xtext.example.Domainmodel">
+  </generator>
+</extension>
 </plugin>
