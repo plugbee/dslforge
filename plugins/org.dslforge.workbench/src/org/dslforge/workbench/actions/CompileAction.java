@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2015 DSLFORGE. All rights reserved.
+ * Copyright (c) 2015 PlugBee. All rights reserved.
  * 
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
@@ -18,7 +18,6 @@ package org.dslforge.workbench.actions;
 import java.io.File;
 import java.util.Iterator;
 
-import org.dslforge.workbench.IWorkbenchConstants;
 import org.dslforge.workbench.tools.DynamicCompiler;
 import org.dslforge.workbench.tools.ICompiler;
 import org.eclipse.jface.action.IAction;
@@ -30,7 +29,7 @@ public class CompileAction extends AbstractWorkbenchAction {
 	private org.dslforge.workbench.tools.ICompiler compiler;
 	
 	public CompileAction() {
-		this.compiler = new DynamicCompiler(IWorkbenchConstants.BOOT_CLASS_PATH);
+		this.compiler = new DynamicCompiler();
 	}
 	
 	public CompileAction(ICompiler compiler) {

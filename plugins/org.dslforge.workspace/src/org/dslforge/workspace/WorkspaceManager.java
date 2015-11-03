@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2015 DSLFORGE. All rights reserved.
+ * Copyright (c) 2015 PlugBee. All rights reserved.
  * 
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
@@ -124,7 +124,7 @@ public class WorkspaceManager {
 				}
 			});
 		}
-		System.out.println("[dslforge] " + userId + " created project " + file.getAbsolutePath().toString());
+		System.out.println("[DSLFORGE] - " + userId + " created project " + file.getAbsolutePath().toString());
 	}
 	
 	private void createProject(String projectName, String description, String path, String userName, String visibility) {
@@ -264,7 +264,7 @@ public class WorkspaceManager {
 //						});
 
 						String userId = (String) RWT.getUISession().getAttribute("user");
-						System.out.println("[dslforge] " + userId + " deleted file " + file.getPath());
+						System.out.println("[DSLFORGE] - " + userId + " deleted file " + file.getPath());
 					} else {
 						MessageDialog.openInformation(null
 								, "Forbidden Operation"
@@ -405,10 +405,6 @@ public class WorkspaceManager {
 		}
 	}
 
-//	private void deleteUser(String firstName, String lastName) {
-//		DatabaseService.getInstance().deleteUser(firstName, lastName);
-//	}
-	
 	public void deleteAllUsers() {
 		DatabaseService.getInstance().deleteAllUsers();
 	}
@@ -452,7 +448,7 @@ public class WorkspaceManager {
 			String projectName = computeProjectName(absoluteURI);
 			createResource(projectName, path);
 			String userId = (String) RWT.getUISession().getAttribute("user");
-			System.out.println("[dslforge] " + userId + " created file " + file.getPath());
+			System.out.println("[DSLFORGE] - " + userId + " created file " + file.getPath());
 			Display.getCurrent().syncExec(new Runnable() {
 				@Override
 				public void run() {
@@ -495,7 +491,7 @@ public class WorkspaceManager {
 					}
 				});
 				String userId = (String) RWT.getUISession().getAttribute("user");
-				System.out.println("[dslforge] " + userId + " deleted file " + file.getPath());
+				System.out.println("[DSLFORGE] - " + userId + " deleted file " + file.getPath());
 				return true;
 			} else {
 				MessageDialog.openInformation(null, "Forbidden Operation", "File "

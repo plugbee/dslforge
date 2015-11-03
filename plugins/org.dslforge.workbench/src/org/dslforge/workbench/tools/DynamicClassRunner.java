@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2015 DSLFORGE. All rights reserved.
+ * Copyright (c) 2015 PlugBee. All rights reserved.
  * 
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
@@ -29,10 +29,8 @@ public class DynamicClassRunner {
 
 	private static final Class<?>[] parameters = new Class[] { URL.class };
 	
-	private final String classpath;
-	
-	public DynamicClassRunner(String classpath) {
-		this.classpath = classpath;
+
+	public DynamicClassRunner() {
 	}
 
 	private ClassLoader getClassLoader(File file) {
@@ -51,7 +49,7 @@ public class DynamicClassRunner {
 		return null;
 	}
 
-	protected void addExternalJars() {
+	protected void addExternalJars(String classpath) {
 		String[] split = classpath.split(";");
 		for (String fileName : split) {
 			System.out.println("[DSLFORGE] adding jar file: " + fileName);

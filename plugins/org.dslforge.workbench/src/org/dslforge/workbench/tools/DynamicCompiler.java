@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2015 DSLFORGE. All rights reserved.
+ * Copyright (c) 2015 PlugBee. All rights reserved.
  * 
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
@@ -27,6 +27,7 @@ import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 
 import org.dslforge.workbench.IWorkbenchConstants;
+import org.eclipse.core.runtime.Platform;
 
 /**
  * Live Java compiler used to run generated Java classes on the server.
@@ -38,8 +39,22 @@ public class DynamicCompiler implements ICompiler{
 	
 	private final String classpath;
 	
-	public DynamicCompiler(String classpath) {
-		this.classpath = classpath;
+	public DynamicCompiler() {
+		this.classpath = computeBootClassPath();
+	}
+	
+	static String computeBootClassPath() {
+		String location = System.getProperty("java.class.path") + ";";
+		for (String entry: IWorkbenchConstants.COMPILER_CLASSPATH_ENTRIES) {
+			location += getRelativePath(entry)+ ";";
+		}
+		return location;
+	}
+
+	static String getRelativePath(String symbolicName) {;
+		final String prefix = "initial@reference:file:";
+		String osgiRef = Platform.getBundle(symbolicName).getLocation().replace("/", "\\");
+		return IWorkbenchConstants.WAR_DEPLOYMENT_PATH + osgiRef.substring(prefix.length(), osgiRef.length());
 	}
 	
 	/**
@@ -82,7 +97,7 @@ public class DynamicCompiler implements ICompiler{
 		List<File> files = new ArrayList<File>();
 		String[] split = classpath.split(";");
 		for (String fileName: split) {
-			System.out.println("[DSLFORGE] adding jar file: " + fileName + "\n");
+			System.out.println("[DSLFORGE] adding jar file: " + fileName);
 			files.add(new File(fileName));
 		}
 		fileManager.setLocation(StandardLocation.CLASS_PATH, files);

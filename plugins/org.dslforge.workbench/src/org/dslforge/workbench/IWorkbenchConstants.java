@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2015 DSLFORGE. All rights reserved.
+ * Copyright (c) 2015 PlugBee. All rights reserved.
  * 
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
@@ -40,21 +40,14 @@ public interface IWorkbenchConstants {
 	public static final String PLATFORM_PRESENTATION = "org.eclipse.ui.presentations.default";	
 	public static final String SECURITY_CONFIG_FILE = "data/config.txt";
 	public static final String DATABASE_AUTHENTICATION = "DATABASE";
-		
-	public static String BOOT_CLASS_PATH = 
-	System.getProperty("java.class.path") + ";" +
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.jface.databinding_3.0.1.20150709-1405.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.jface_3.0.1.20150709-1405.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.rwt.osgi_3.0.1.20150709-1405.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.rwt_3.0.1.20150908-1130.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.ui.cheatsheets_3.0.1.20150709-1405.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.ui.forms_3.0.1.20150709-1405.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.ui.navigator_1.4.0.20120709-1436.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.ui.views_3.0.1.20150709-1405.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.ui.workbench_3.0.1.20150709-1405.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.rap.ui_3.0.1.20150709-1405.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.core.runtime_3.11.1.v20150903-1804.jar;"+
-			IWorkspaceConstants.TOMCAT_PATH +"webapps\\workbench\\WEB-INF\\plugins\\org.eclipse.equinox.common_3.7.0.v20150402-1709.jar"
-	;
+	
+	
+	public static final String TOMCAT_INSTANCE_PATH = "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\";
+	public static final String WAR_DEPLOYMENT_PATH=	TOMCAT_INSTANCE_PATH + "webapps\\workbench\\WEB-INF\\";
+	public static final String[] COMPILER_CLASSPATH_ENTRIES = new String[] { 
+			"org.eclipse.rap.jface.databinding", "org.eclipse.rap.jface", "org.eclipse.rap.rwt.osgi",
+			"org.eclipse.rap.rwt", "org.eclipse.rap.ui.cheatsheets", "org.eclipse.rap.ui.forms",
+			"org.eclipse.rap.ui.navigator", "org.eclipse.rap.ui.views", "org.eclipse.rap.ui.workbench",
+			"org.eclipse.rap.ui", "org.eclipse.core.runtime", "org.eclipse.equinox.common" };
 
 }
