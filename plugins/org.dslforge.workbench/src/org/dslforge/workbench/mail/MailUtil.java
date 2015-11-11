@@ -38,7 +38,7 @@ public class MailUtil {
 		Session session = Session.getInstance(properties,
 				  new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication("postmaster@dslforge.com", "xu3p5wcb");
+						return new PasswordAuthentication("development@dslforge.org", "Welc0me01");
 					}
 				  });
 		
@@ -62,6 +62,7 @@ public class MailUtil {
 			Transport.send(message);
 			System.out.println("[DSLFORGE] Sent notification successfully....");
 		} catch (MessagingException mex) {
+			mex.printStackTrace();
 			//ignore exception.
 		}
 		return true;

@@ -31,7 +31,6 @@ import javax.security.auth.login.LoginException;
 import org.dslforge.database.pu.tables.User;
 import org.dslforge.workbench.mail.MailUtil;
 import org.dslforge.workspace.WorkspaceManager;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -91,20 +90,12 @@ public class DatabaseLoginModule implements javax.security.auth.spi.LoginModule 
 				@Override
 				public void run() {
 					String subject = "[DSLFORGE] " + username + " connected to the Workbench!";
-					String from = "postmaster@dslforge.com";
+					String from = "postmaster@dslforge.org";
 					String to = "aminelajmi@gmail.com";
 					String message = "[DSLFORGE] "+username + " connected @: " + dateFormat.format(date);
 					MailUtil.sendEMail(from, to, subject,message);
 				}
 			});
-				//kick out the spy guys
-			if (username.equals("sven") || username.equals("franz")) {
-				System.out.println("[DSLFORGE] "+username + " has been kicked out! " + dateFormat.format(date));
-				MessageDialog.openInformation(null, "Ooops, you've been kicked out","It seems you've done something wrong!");
-				return false;
-			}
-			
-			
 		}
 		return loggedIn;
 	}
