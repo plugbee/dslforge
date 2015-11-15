@@ -106,8 +106,8 @@ public class GenerateWebProjectOperation extends GenerateProjectOperation {
 	@Override
 	protected void execute(IProgressMonitor monitor) throws CoreException {
 		SubMonitor progress = SubMonitor.convert(monitor, 20);
-		final boolean generatorOption = (boolean) settings.get("UseGenerator");
-		final boolean option = (boolean) settings.get("UseNavigator");
+		final boolean generatorOption = ((Boolean)settings.get("UseGenerator")).booleanValue();
+		final boolean option = ((Boolean) settings.get("UseNavigator")).booleanValue();
 		final String navigatorRoot = (String) settings.get("NavigatorRoot");
 		final IFile grammarFile = (IFile) settings.get("Grammar");
 		EObject root = loadGrammar(grammarFile, progress.newChild(5));
