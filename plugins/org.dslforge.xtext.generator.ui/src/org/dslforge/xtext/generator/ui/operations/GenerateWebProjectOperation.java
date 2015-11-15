@@ -17,7 +17,6 @@ package org.dslforge.xtext.generator.ui.operations;
 
 import static com.google.common.collect.Maps.uniqueIndex;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -51,7 +50,6 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfiguration;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.util.PluginProjectFactory;
-
 import com.google.common.base.Charsets;
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
@@ -124,11 +122,11 @@ public class GenerateWebProjectOperation extends GenerateProjectOperation {
 					setNavigatorRoot(navigatorRoot);
 			}
 			setUseGenerator(generatorOption);
-			doGenerate(project, progress.newChild(5));	
+			doGenerate(project, progress.newChild(5));
+			progress.done();
 		}
 	}
-	
-	//path	/org.xtext.example.domainmodel.web/src/org/xtext/example/domainmodel/web/actions/AboutAction.java
+
 	private void setOutputs(IProject project) {	
 		IFolder javaSource = project.getFolder(SRC);
 		outlets.put(SRC, javaSource.getLocation().toString());

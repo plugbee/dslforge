@@ -22,13 +22,11 @@ import java.util.Map;
 import org.dslforge.xtext.generator.ui.factories.WARProjectFactory;
 import org.dslforge.xtext.generator.ui.operations.GenerateProjectOperation;
 import org.dslforge.xtext.generator.ui.operations.GenerateWebProjectOperation;
-import org.dslforge.xtext.generator.util.GeneratorUtil;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IDialogSettings;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.WorkbenchPlugin;
@@ -38,17 +36,10 @@ public class WebProjectGeneratorWizard extends Wizard {
     
 	private WebProjectGeneratorWizardPage page = null;
 	
-	private GenerateWebProjectOperation webProjectGeneratorHandler;
-	
 	private IProject project;
 	
-	public WebProjectGeneratorWizard(GenerateWebProjectOperation webProjectGeneratorHandler) {
-		this();
-		this.webProjectGeneratorHandler = webProjectGeneratorHandler;
-		setWindowTitle("DSLFORGE Web Editor Generator");
-	}
-	
 	protected WebProjectGeneratorWizard() {
+		setWindowTitle("DSLFORGE Web Editor Generator");
 		IDialogSettings workbenchSettings = WorkbenchPlugin.getDefault().getDialogSettings();
         IDialogSettings section = workbenchSettings.getSection(page.STORE_DIRECTORIES);//$NON-NLS-1$
         if (section == null) {
@@ -101,30 +92,6 @@ public class WebProjectGeneratorWizard extends Wizard {
 		settings.put("UseGenerator", generatorOption);
 		GenerateWebProjectOperation operation = new GenerateWebProjectOperation(settings);
 		return operation;
-	}
-
-	private String getWarProjectName() {
-		String webProjectName = project.getName();
-		return webProjectName + ".product";
-	}
-	
-	private String getWarFileName() {
-		return GeneratorUtil.getGrammarShortName(webProjectGeneratorHandler.getGrammar()).toLowerCase();
-	}
-	
-	private IRunnableWithProgress getOperation() {
-		IRunnableWithProgress result = null;
-		IProject warProject;
-//		try {
-//			warProject = createProject(getWarProjectName(), new NullProgressMonitor());
-//			IFile file = warProject.getFile(getWarFileName() + ".warproduct");
-//			if (!file.exists()) {
-//				result = new BaseWARProductCreationOperation(file);
-//			}
-//		} catch (CoreException e) {
-//			e.printStackTrace();
-//		}
-		return result;
 	}
 
 	public IProject createProject(String projectName, final IProgressMonitor monitor) throws CoreException {
