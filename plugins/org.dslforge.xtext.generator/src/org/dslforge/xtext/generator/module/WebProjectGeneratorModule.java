@@ -19,12 +19,6 @@ import org.dslforge.xtext.generator.IWebProjectGenerator;
 import org.dslforge.xtext.generator.WebProjectGenerator;
 import org.eclipse.xtext.resource.generic.AbstractGenericResourceRuntimeModule;
 
-
-/**
- * 
- * @author Amine Lajmi
- *
- */
 public class WebProjectGeneratorModule extends AbstractGenericResourceRuntimeModule {
 
 	@Override

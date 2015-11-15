@@ -88,5 +88,4 @@ public class «grammarShortName»Application implements IApplication {
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
-	
 }

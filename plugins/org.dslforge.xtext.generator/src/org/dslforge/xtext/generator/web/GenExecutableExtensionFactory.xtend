@@ -63,5 +63,4 @@ public class «grammarShortName.toFirstUpper»ExecutableExtensionFactory extends A
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
-	
 }

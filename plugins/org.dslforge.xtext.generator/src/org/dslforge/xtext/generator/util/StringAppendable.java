@@ -20,12 +20,10 @@ import org.eclipse.emf.ecore.EObject;
 
 public class StringAppendable implements IAppendable, CharSequence {
 
-	private final String indentation;
 	private final String lineSeparator;
 	private StringBuilder builder;
 	
 	public StringAppendable(EObject source, String indentation, String lineSeparator) {
-		this.indentation = indentation;
 		this.lineSeparator = lineSeparator;
 		this.builder = new StringBuilder(8*1024);
 	}

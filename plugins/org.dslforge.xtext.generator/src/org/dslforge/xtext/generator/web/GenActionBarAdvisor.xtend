@@ -143,11 +143,6 @@ public class «grammarShortName»ActionBarAdvisor extends ActionBarAdvisor {
 	protected IMenuManager createToolsMenu(IWorkbenchWindow window) {
 		IMenuManager menu = new MenuManager("Tools", IWorkbenchActionConstants.M_EDIT);
 		menu.add(new GroupMarker(TOOLS_START));
-		// To hook a global action handler, a view should use the following
-		// code:
-		// IAction copyHandler = ...;
-		// view.getSite().getActionBars().setGlobalActionHandler(IWorkbenchActionConstants.COPY,// copyHandler);
-		//getActionBarConfigurer().registerGlobalAction(action);
 		«IF generatorAvailable»
 		IAction generate = new GenerateAction();
 		addToMenuAndRegister(menu, generate);
@@ -168,9 +163,6 @@ public class «grammarShortName»ActionBarAdvisor extends ActionBarAdvisor {
 	 */
 	protected IMenuManager createHelpMenu(IWorkbenchWindow window) {
 		IMenuManager menu = new MenuManager("Help", IWorkbenchActionConstants.M_HELP);
-		// Welcome or intro page would go here
-		// Help contents would go here
-		// Tips and tricks page would go here
 		menu.add(new GroupMarker(IWorkbenchActionConstants.HELP_START));
 		menu.add(new GroupMarker(IWorkbenchActionConstants.HELP_END));
 		menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));

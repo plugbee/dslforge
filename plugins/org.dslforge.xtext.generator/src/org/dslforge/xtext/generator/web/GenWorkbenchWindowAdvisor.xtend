@@ -61,7 +61,6 @@ public class «grammarShortName»WorkbenchWindowAdvisor extends WorkbenchWindowAdv
 		configurer.setShowCoolBar(false);
 		configurer.setShowStatusLine(true);
 		configurer.setTitle("«grammarShortName» Editor");
-	//	configurer.setShellStyle(SWT.TITLE | SWT.RESIZE);
 	}
 	
 		@Override

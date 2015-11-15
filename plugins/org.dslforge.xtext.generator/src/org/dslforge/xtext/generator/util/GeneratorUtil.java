@@ -17,6 +17,7 @@ package org.dslforge.xtext.generator.util;
 
 import java.util.Set;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -50,7 +51,7 @@ public class GeneratorUtil {
 	public static String getBasePath(Grammar grammar) {
 		String[] split = getDslProjectName(grammar).split("\\.");
 		String path = split[0];
-		for (int i = 1; i < split.length/*-1*/; i++) {
+		for (int i = 1; i < split.length; i++) {
 			path += "/" + split[i];
 		}
 		return path+"/"+PLUGIN_SUFFIX;
@@ -58,8 +59,7 @@ public class GeneratorUtil {
 
 	public static String getGrammarShortName(Grammar grammar) {
 		String[] split = grammar.getName().split("\\.");
-		if (split.length<1)
-			throw new UnsupportedOperationException("GENERATOR ERROR: gramar qualified name split length should exceed 1." );
+		Assert.isTrue(split.length>=1);
 		return split[split.length-1];
 	}
 
@@ -112,7 +112,7 @@ public class GeneratorUtil {
 		String grammarName = grammar.getName();
 		String[] split = grammarName.split("\\.");
 		String path = split[0];
-		for (int i = 1; i < split.length/*-1*/; i++) {
+		for (int i = 1; i < split.length; i++) {
 			path += "." + toFirstLower(split[i]);
 		}
 		return path;

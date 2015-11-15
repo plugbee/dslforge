@@ -66,7 +66,6 @@ public class «grammarShortName»WorkbenchAdvisor extends WorkbenchAdvisor {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }
 	'''
 

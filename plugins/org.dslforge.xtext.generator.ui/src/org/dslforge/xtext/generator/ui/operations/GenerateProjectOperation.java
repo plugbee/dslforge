@@ -1,37 +1,25 @@
-/**
- * <copyright>
- *
- * Copyright (c) 2015 PlugBee. All rights reserved.
- * 
- * This program and the accompanying materials are made available 
- * under the terms of the Eclipse Public License v1.0 which 
- * accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     Amine Lajmi - Initial API and implementation
- *
- * </copyright>
- */
-package org.dslforge.xtext.generator.ui.handlers;
+package org.dslforge.xtext.generator.ui.operations;
 
 import static com.google.common.collect.Maps.newHashMap;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
 import java.util.Map;
 
 import org.dslforge.xtext.generator.IWebProjectGenerator;
 import org.dslforge.xtext.generator.setup.WebProjectGeneratorSetup;
-import org.eclipse.core.commands.AbstractHandler;
-import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.XtextStandaloneSetup;
 import org.eclipse.xtext.generator.IGenerator;
 
 import com.google.inject.Injector;
 
+public abstract class GenerateProjectOperation extends WorkspaceModifyOperation implements IGenerateOperation {
 
-public abstract class AbstractGeneratorHandler extends AbstractHandler {
+	Map<String, Object> settings = Collections.emptyMap();
 	
 	protected Injector xtextInjector;
 
@@ -43,8 +31,6 @@ public abstract class AbstractGeneratorHandler extends AbstractHandler {
 	
 	protected Map<String, String> outlets = newHashMap();
 
-	public AbstractGeneratorHandler() {
-	}
 
 	protected Injector getXtextInjector() {
 		if (xtextInjector == null)
@@ -65,9 +51,12 @@ public abstract class AbstractGeneratorHandler extends AbstractHandler {
 	public Grammar getGrammar() {
 		return this.grammar;
 	}
+	
+	public GenerateProjectOperation(Map<String, Object> settings) {
+		this.settings = settings;
+	}
 
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
-		return null;
-	}
+	protected abstract void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException;
+
 }
