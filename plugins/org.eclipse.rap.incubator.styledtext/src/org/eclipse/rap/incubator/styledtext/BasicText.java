@@ -43,11 +43,19 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Listener;
-
+/**
+ * A basic implementation of a styled text widget.
+ * 
+ * @author Amine Lajmi
+ *
+ */
 public class BasicText extends Composite {
 
-	private static final long serialVersionUID = 1L;	
+	static final long serialVersionUID = 1L;	
 	static final String REMOTE_TYPE = "org.eclipse.rap.incubator.styledtext.BasicText";
+	static final int TextChanged = 47;
+	static final int Save = 48;
+	
 	final BasicTextOperationHandler operationHandler = new BasicTextOperationHandler(this);
 	RemoteObject remoteObject;
 	List<IPath> resources = new ArrayList<IPath>();
@@ -58,18 +66,15 @@ public class BasicText extends Composite {
 	List<String> scope = new ArrayList<String>();
 	boolean editable;
 	boolean isDirty=false;
-	static final int TextChanged = 47;
-	static final int Save = 48;
 	Listener listener;
-	ITextChangeListener textChangeListener;
 
-	public class StyledTextListener implements Listener {
+	public class BasicTextListener implements Listener {
 
 		private static final long serialVersionUID = 1L;
 
 		EventListener eventListener;
 
-		public StyledTextListener(EventListener listener) {
+		public BasicTextListener(EventListener listener) {
 			this.eventListener = listener;
 		}
 
@@ -97,6 +102,12 @@ public class BasicText extends Composite {
 		}
 	}
 
+	/**
+	 * Creates a fresh Basic Text widget
+	 * 
+	 * @param parent
+	 * @param style
+	 */
 	public BasicText(Composite parent, int style) {
 		super(parent, style);
 		super.setForeground(getForeground());
@@ -107,8 +118,7 @@ public class BasicText extends Composite {
 		registerClientResources();
 		loadJavaScript();
 		createConnection();
-
-		installDefaultContent();
+		
 		installListeners();
 	}
 
@@ -133,22 +143,10 @@ public class BasicText extends Composite {
 	}
 
 	/**
-	 * Creates content change listeners and set the default content model.
+	 * Handles a text changed event.
+	 * 
+	 * @param event
 	 */
-	void installDefaultContent() {
-//		textChangeListener = new ITextChangeListener() {
-//
-//			@Override
-//			public void handleTextChanged(String text) {
-//				System.out.println("Text changed");
-//			}
-//
-//		};
-		text = "";
-//		addTextChangeListener(textChangeListener);
-		setDirty(false);
-	}
-
 	void handleTextChanged(Event event) {
 		System.out.println("[BasicText] handleTextChanged");
 		setDirty(true);
@@ -164,24 +162,12 @@ public class BasicText extends Composite {
 			private static final long serialVersionUID = 1L;
 			public void handleEvent(Event event) {
 				switch (event.type) {
-				case SWT.Dispose:
-					handleDispose(event);
-					break;
-				case SWT.MenuDetect:
-					handleMenuDetect(event);
-					break;
-				case Save:
-					handleTextSave(event);
-					break;
-				case SWT.Modify:
-					handleTextModify(event);
-					break;
-				case TextChanged:
-					handleTextChanged(event);
-					break;
-				case SWT.FocusOut:
-					handleFocusLost(event);
-					break;
+				case SWT.Dispose: handleDispose(event); break;
+				case SWT.MenuDetect: handleMenuDetect(event); break;
+				case Save: handleTextSave(event); break;
+				case SWT.Modify: handleTextModify(event); break;
+				case TextChanged: handleTextChanged(event);	break;
+				case SWT.FocusOut: handleFocusLost(event); break;
 				}
 			}
 		};
@@ -191,16 +177,22 @@ public class BasicText extends Composite {
 		addListener(SWT.FocusOut, listener);
 	}
 
+	/**
+	 * Handles a text modify event
+	 * 
+	 * @param event
+	 */
 	void handleTextModify(Event event) {
 		setDirty(true);
 		text = event.text;
 		notifyListeners(TextChanged, event);
 	}
 
-	void setDirty(boolean value) {
-		isDirty=value;
-	}
-
+	/**
+	 * Handles a text save event
+	 * 
+	 * @param event
+	 */
 	void handleTextSave(Event event) {
 		if (event.text!=null){
 			setText(event.text, false);
@@ -210,28 +202,35 @@ public class BasicText extends Composite {
 	}
 
 	/**
-	 * Update the event location for focus-based context menu triggers.
-	 *
+	 * Handles a menu detect event
+	 * 
 	 * @param event
-	 *            menu detect event
 	 */
 	void handleMenuDetect(Event event) {
-		//notifyListeners(SWT.MenuDetect, event);
+		//do nothing.
 	}
 
+	/**
+	 * Handles a focus lost event
+	 * 
+	 * @param event
+	 */
 	void handleFocusLost(Event event) {
 		if (event.text!=null){
 			setText(event.text, false);
 		}
 	}
 	
+	/**
+	 * Handles dispose event
+	 * 
+	 * @param event
+	 */
 	void handleDispose(Event event) {
 		removeListener(SWT.Dispose, listener);
 		notifyListeners(SWT.Dispose, event);
 		event.type = SWT.None;
-		//removeTextChangeListener(textChangeListener);
 		text = null;
-		textChangeListener = null;
 		listener = null;
 	}
 
@@ -252,7 +251,7 @@ public class BasicText extends Composite {
 		System.out.println("[DSLFORGE] - Adding TextChangeListener");
 		if (listener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		StyledTextListener typedListener = new StyledTextListener(listener);
+		BasicTextListener typedListener = new BasicTextListener(listener);
 		addListener(TextChanged, typedListener);
 	}
 
@@ -279,24 +278,59 @@ public class BasicText extends Composite {
 		checkWidget();
 		if (modifyListener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		StyledTextListener typedListener = new StyledTextListener(modifyListener);
+		BasicTextListener typedListener = new BasicTextListener(modifyListener);
 		addListener(SWT.Modify, typedListener);
 	}
 
+	/**
+	 * Adds a save listener. A Text save event is sent by the widget when the
+	 * client emits a save request.
+	 *
+	 * @param modifyListener
+	 *            the listener
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 * @exception IllegalArgumentException
+	 *                <ul>
+	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
+	 *                </ul>
+	 */
 	public void addTextSaveListener(ITextSaveListener iTextSaveListener) {
 		System.out.println("[DSLFORGE] - Adding TextSaveListener");
 		checkWidget();
 		if (iTextSaveListener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		StyledTextListener typedListener = new StyledTextListener(iTextSaveListener);
+		BasicTextListener typedListener = new BasicTextListener(iTextSaveListener);
 		addListener(Save, typedListener);
 	}
 
+	/**
+	 * Adds a focus listener.
+	 *
+	 * @param modifyListener
+	 *            the listener
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 * @exception IllegalArgumentException
+	 *                <ul>
+	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
+	 *                </ul>
+	 */
 	public void addFocusListener(FocusListener focusListener) {
 		System.out.println("[DSLFORGE] - Adding FocusListener");
 		checkWidget();
 		if (focusListener == null) SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		StyledTextListener typedListener = new StyledTextListener(focusListener);
+		BasicTextListener typedListener = new BasicTextListener(focusListener);
 		addListener(SWT.FocusOut, typedListener);
 		addListener(SWT.FocusIn, typedListener);
 	}
@@ -308,7 +342,7 @@ public class BasicText extends Composite {
 		boolean isListening = isListening(eventType);
 		String remoteType = eventTypeToString(eventType);
 		if (remoteType != null && !wasListening && isListening) {
-			System.out.println("	[DSLFORGE] - Adding listener for: " + remoteType);
+			System.out.println("	- Adding listener for: " + remoteType);
 			getRemoteObject().listen(remoteType, true);
 		}
 	}
@@ -320,22 +354,25 @@ public class BasicText extends Composite {
 		event.text = (value != null ? value.asString() : "");
 		listener.handleEvent(event);
 	}
-	
-	/**
-	 * Informs all registered element state listeners about a change in the
-	 * dirty state of the given element.
-	 *
-	 * @param element the element
-	 * @param isDirty the new dirty state
-	 * @see IElementStateListener#elementDirtyStateChanged(Object, boolean)
-	 */
-	protected void fireDirtyStateChanged(Object element) {
-//		Iterator e= new ArrayList(listener).iterator();
-//		while (e.hasNext()) {
-//			l.elementDirtyStateChanged(element, isDirty);
-//		}
-	}
 
+	/**
+	 * Removes the specified text change listener.
+	 *
+	 * @param modifyListener
+	 *            the listener which should no longer be notified
+	 * 
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 * @exception IllegalArgumentException
+	 *                <ul>
+	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
+	 *                </ul>
+	 */
 	public void removeTextChangeListener(ITextChangeListener listener) {
 		if (listener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
@@ -367,6 +404,24 @@ public class BasicText extends Composite {
 		removeListener(SWT.Modify, modifyListener);
 	}
 
+	/**
+	 * Removes the specified save listener.
+	 *
+	 * @param modifyListener
+	 *            the listener which should no longer be notified
+	 * 
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 * @exception IllegalArgumentException
+	 *                <ul>
+	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
+	 *                </ul>
+	 */
 	public void removeTextSaveListener(ITextSaveListener iTextSaveListener) {
 		checkWidget();
 		if (iTextSaveListener == null)
@@ -374,6 +429,24 @@ public class BasicText extends Composite {
 		removeListener(Save, iTextSaveListener);
 	}
 
+	/**
+	 * Removes the specified focus listener.
+	 *
+	 * @param modifyListener
+	 *            the listener which should no longer be notified
+	 * 
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 * @exception IllegalArgumentException
+	 *                <ul>
+	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
+	 *                </ul>
+	 */
 	public void removeFocusListener(FocusListener focusListener) {
 		checkWidget();
 		if (focusListener == null)
@@ -393,6 +466,12 @@ public class BasicText extends Composite {
 		}
 	}
 
+	/**
+	 * Get the event type string given its integer identifier
+	 * 
+	 * @param eventType
+	 * @return
+	 */
 	String eventTypeToString(int eventType) {
 		if (eventType == TextChanged)
 			return ITextOperationConstants.EVENT_TEXT_CHANGED;
@@ -407,6 +486,12 @@ public class BasicText extends Composite {
 		return null;
 	}
 
+	/**
+	 * Get the event type given its String name
+	 * 
+	 * @param eventName
+	 * @return
+	 */
 	int stringToTypeEvent(String eventName) {
 		if (eventName.equals(ITextOperationConstants.EVENT_TEXT_CHANGED))
 			return TextChanged;
@@ -447,12 +532,18 @@ public class BasicText extends Composite {
 		return RWT.getResourceManager();
 	}
 
+	/**
+	 * Loads the JavaScript files
+	 */
 	private void loadJavaScript() {
 		for (int i = 0; i < getResources().size(); i++) {
 			getJavaScriptLoader().require(getResourceManager().getLocation(getResources().get(i).toOSString()));
 		}
 	}
 
+	/**
+	 * Register the contributed JavaScript resources
+	 */
 	private void registerClientResources() {
 		ResourceManager resourceManager = getResourceManager();
 		boolean isRegistered = resourceManager.isRegistered(getResources().get(0).toOSString());
@@ -467,6 +558,13 @@ public class BasicText extends Composite {
 		}
 	}
 
+	/**
+	 * Register JavaScript resource with the given <em>filePath</em>
+	 * 
+	 * @param resourceManager
+	 * @param filePath
+	 * @throws IOException
+	 */
 	private void registerResource(ResourceManager resourceManager, String filePath) throws IOException {
 		System.out.println("[DSLFORGE] - Registering file: " + filePath);
 		ClassLoader classLoader = getClassLoader();
@@ -483,6 +581,15 @@ public class BasicText extends Composite {
 		return classLoader;
 	}
 
+	/**
+	 * Sets the widget text. If <em>propagate</em> is true, the client is
+	 * notified otherwise the setting is not propagated to the client. The
+	 * latter is used to avoid infinite notification loop between the client and
+	 * the server.
+	 * 
+	 * @param text
+	 * @param propagate
+	 */
 	public void setText(String text, boolean propagate) {
 		checkWidget();
 		if (text == null) {
@@ -490,26 +597,23 @@ public class BasicText extends Composite {
 		}
 		this.text = text;
 		if (propagate)
-			propagateText(text);
+			getRemoteObject().set("text", text);
 	}
 
+	/**
+	 * Sets the widget text.
+	 * 
+	 * @param text
+	 */
 	public void setText(String text) {
 		setText(text, true);
 	}
 
-	private void propagateText(String text) {
-		getRemoteObject().set("text", text);
-	}
-
-	public void setCommand(String command) {
-		checkWidget();
-		if (command == null) {
-			SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		}
-		this.command = command;
-		getRemoteObject().set("command", command);
-	}
-
+	/**
+	 * Sets the validation status
+	 * 
+	 * @param status
+	 */
 	public void setStatus(String status) {
 		checkWidget();
 		if (status == null) {
@@ -519,6 +623,11 @@ public class BasicText extends Composite {
 		getRemoteObject().set("status", status);
 	}
 
+	/**
+	 * Sets the validation issue
+	 * 
+	 * @param issue
+	 */
 	public void setIssue(JsonObject issue) {
 		checkWidget();
 		if (issue == null) {
@@ -530,6 +639,11 @@ public class BasicText extends Composite {
 		getRemoteObject().set("issue", issue);
 	}
 
+	/**
+	 * Sets the language scope
+	 * 
+	 * @param scope
+	 */
 	public void setLanguageScope(List<String> scope) {
 		checkWidget();
 		if (scope == null) {
@@ -543,36 +657,64 @@ public class BasicText extends Composite {
 		getRemoteObject().set("scope", array);
 	}
 
+	void setDirty(boolean value) {
+		isDirty=value;
+	}
+	
+	/**
+	 * Get the text value
+	 * 
+	 * @return
+	 */
 	public String getText() {
 		checkWidget();
 		return text;
 	}
 
+	/**
+	 * Get the validation status
+	 * 
+	 * @return
+	 */
 	public String getStatus() {
 		checkWidget();
 		return status;
 	}
 
-	public String getCommand() {
-		checkWidget();
-		return command;
-	}
-
+	/**
+	 * Get the language scope
+	 * 
+	 * @return
+	 */
 	public List<String> getScope() {
 		checkWidget();
 		return scope;
 	}
 
+	/**
+	 * Get the validation issue
+	 * 
+	 * @return
+	 */
 	public String getIssue() {
 		checkWidget();
 		return issue;
 	}
 
+	/**
+	 * Returns whether the widget is dirty
+	 * @return
+	 */
 	public boolean isDirty() {
-		//checkWidget();
+		checkWidget();
 		return isDirty;
 	}
 
+	/**
+	 * Get the text font
+	 * 
+	 * @return
+	 */
 	private String getCssFont() {
 		StringBuilder result = new StringBuilder();
 		if (getFont() != null) {
@@ -596,6 +738,9 @@ public class BasicText extends Composite {
 		return resources;
 	}
 
+	/**
+	 * Add the initial JavaScript files for setting up ACE editor
+	 */
 	void addResources() {
 		addResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/ace.js"));
 		addResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/theme-eclipse.js"));
@@ -606,17 +751,29 @@ public class BasicText extends Composite {
 		addResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/global-index.js"));
 	}
 
+	/**
+	 * Use this to add additional script files on startup
+	 * 
+	 * @param path
+	 */
 	void addResource(IPath path) {
 		getResources().add(path);
 	}
 
+
+	/**
+	 * Opens a RAP client/server connection.
+	 */
 	void createConnection() {
 		Connection connection = RWT.getUISession().getConnection();
 		setRemoteObject(createRemoteObject(connection));
 		getRemoteObject().setHandler(operationHandler);
 		getRemoteObject().set("parent", WidgetUtil.getId(this));
 	}
-
+	
+	/**
+	 * Create a RAP Remote object which will handle the client/server interaction
+	 */
 	RemoteObject createRemoteObject(Connection connection) {
 		return connection.createRemoteObject(REMOTE_TYPE);
 	}
