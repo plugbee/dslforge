@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: RAP Text Editor
+Bundle-SymbolicName: org.eclipse.rap.incubator.texteditor;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.rap.incubator.texteditor.internal.Activator
+Require-Bundle: org.eclipse.rap.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.osgi,
+ com.google.inject,
+ org.eclipse.rap.rwt,
+ org.eclipse.rap.incubator.styledtext,
+ org.eclipse.rap.ui.views,
+ org.eclipse.rap.ui.workbench,
+ org.eclipse.rap.jface,
+ org.eclipse.equinox.registry
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: org.eclipse.rap.incubator.texteditor,
+ org.eclipse.rap.incubator.texteditor.internal
+Import-Package: org.apache.log4j,
+ org.eclipse.persistence.sessions.coordination;version="2.5.2"

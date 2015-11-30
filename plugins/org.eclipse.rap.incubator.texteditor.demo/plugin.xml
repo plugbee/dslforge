@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<!-- @generated dslforge -->
+<extension point="org.eclipse.rap.ui.entrypoint">
+	<entrypoint
+       brandingId="org.eclipse.rap.incubator.texteditor.demo.branding"
+       class="org.eclipse.rap.incubator.texteditor.demo.BasicWorkbench"
+       id="org.eclipse.rap.incubator.texteditor.demo.entrypoint"
+       path="/texteditor">
+		</entrypoint>
+	</extension>
+	<extension
+		id="org.eclipse.rap.incubator.texteditor.demo.application"
+				point="org.eclipse.core.runtime.applications">
+		<application
+        cardinality="singleton-global"
+        thread="main"
+        visible="true">
+			<run
+				class="org.eclipse.rap.incubator.texteditor.demo.BasicWorkbenchApplication">
+			</run>
+		</application>
+	</extension>
+	   <extension
+         point="org.eclipse.ui.presentationFactories">
+      <factory
+            class="org.eclipse.rap.incubator.texteditor.demo.presentation.BasicPresentationFactory"
+            id="org.eclipse.rap.incubator.texteditor.demo.presentation"
+            name="demoPresentation">
+      </factory>
+   </extension>
+	<extension
+	      point="org.eclipse.rap.ui.branding">
+	   <branding
+	         favicon="icons/dslforge.png"
+	         id="org.eclipse.rap.incubator.texteditor.demo.branding"
+	         title="Text Editor Basic Workbench">
+	      <presentationFactory
+	            id="org.eclipse.ui.presentations.default"
+	            name="Text Editor Demo">
+	      </presentationFactory>
+	   </branding>
+	</extension>
+	
+	<extension
+		point="org.eclipse.ui.perspectives">
+		<perspective
+			name="Text Editor Demo Perspective"
+			class="org.eclipse.rap.incubator.texteditor.demo.parts.BasicWorkbenchPerspective"
+				id="org.eclipse.rap.incubator.texteditor.demo.ui.parts.perspective">
+		</perspective>
+	</extension>
+
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewer
+            viewerId="org.dslforge.rap.navigator.view">
+      </viewer>
+      <viewerContentBinding
+            viewerId="org.dslforge.rap.navigator.view">
+         <includes>
+            <contentExtension
+                  isRoot="true"
+                  pattern="org.dslforge.rap.navigator.fileContent">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.dslforge.rap.navigator.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+</plugin>
