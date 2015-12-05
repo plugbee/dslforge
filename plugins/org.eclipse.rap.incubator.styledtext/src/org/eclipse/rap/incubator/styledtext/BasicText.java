@@ -62,12 +62,12 @@ public class BasicText extends Composite {
 	String text = "";
 	String status = "";
 	String command = "";
-	String issue = "";
+	List<Annotation> annotations = new ArrayList<Annotation>();
 	List<String> scope = new ArrayList<String>();
-	boolean editable;
 	boolean isDirty=false;
+	int style;
 	Listener listener;
-
+	
 	public class BasicTextListener implements Listener {
 
 		private static final long serialVersionUID = 1L;
@@ -111,35 +111,16 @@ public class BasicText extends Composite {
 	public BasicText(Composite parent, int style) {
 		super(parent, style);
 		super.setForeground(getForeground());
+		this.style = style;
 		if ((style & SWT.READ_ONLY) != 0) {
 			setEditable(false);
 		}
-		addResources();
+		addClientResources();
 		registerClientResources();
-		loadJavaScript();
-		createConnection();
+		loadClientResources();
+		createRemoteObject();
 		
 		installListeners();
-	}
-
-	/**
-	 * Sets whether the widget content can be edited.
-	 * </p>
-	 *
-	 * @param editable
-	 *            if true content can be edited, if false content can not be
-	 *            edited
-	 * @exception SWTException
-	 *                <ul>
-	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
-	 *                disposed</li>
-	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
-	 *                thread that created the receiver</li>
-	 *                </ul>
-	 */
-	public void setEditable(boolean editable) {
-		checkWidget();
-		this.editable = editable;
 	}
 
 	/**
@@ -164,10 +145,10 @@ public class BasicText extends Composite {
 				switch (event.type) {
 				case SWT.Dispose: handleDispose(event); break;
 				case SWT.MenuDetect: handleMenuDetect(event); break;
-				case Save: handleTextSave(event); break;
 				case SWT.Modify: handleTextModify(event); break;
-				case TextChanged: handleTextChanged(event);	break;
 				case SWT.FocusOut: handleFocusLost(event); break;
+				case TextChanged: handleTextChanged(event);	break;
+				case Save: handleTextSave(event); break;
 				}
 			}
 		};
@@ -507,17 +488,6 @@ public class BasicText extends Composite {
 	}
 
 	@Override
-	public void setLayout(Layout layout) {
-		super.setLayout(layout);
-	}
-
-	@Override
-	public void setFont(Font font) {
-		super.setFont(font);
-		getRemoteObject().set("font", getCssFont());
-	}
-
-	@Override
 	public void dispose() {
 		if (getRemoteObject() != null)
 			getRemoteObject().destroy();
@@ -535,7 +505,7 @@ public class BasicText extends Composite {
 	/**
 	 * Loads the JavaScript files
 	 */
-	private void loadJavaScript() {
+	private void loadClientResources() {
 		for (int i = 0; i < getResources().size(); i++) {
 			getJavaScriptLoader().require(getResourceManager().getLocation(getResources().get(i).toOSString()));
 		}
@@ -582,6 +552,42 @@ public class BasicText extends Composite {
 	}
 
 	/**
+	 * Sets whether the widget content can be edited.
+	 * </p>
+	 *
+	 * @param editable
+	 *            if true content can be edited, if false content can not be
+	 *            edited
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 */
+	public void setEditable(boolean editable) {
+		checkWidget();
+	    this.style &= ~SWT.READ_ONLY;
+	    if( !editable ) {
+	      this.style |= SWT.READ_ONLY;
+	    }
+		getRemoteObject().set("editable", editable);
+	    
+	}
+
+	@Override
+	public void setLayout(Layout layout) {
+		super.setLayout(layout);
+	}
+
+	@Override
+	public void setFont(Font font) {
+		super.setFont(font);
+		getRemoteObject().set("font", getCssFont());
+	}
+
+	/**
 	 * Sets the widget text. If <em>propagate</em> is true, the client is
 	 * notified otherwise the setting is not propagated to the client. The
 	 * latter is used to avoid infinite notification loop between the client and
@@ -622,21 +628,23 @@ public class BasicText extends Composite {
 		this.status = status;
 		getRemoteObject().set("status", status);
 	}
-
+	
 	/**
-	 * Sets the validation issue
+	 * Sets an annotation on the text widget
 	 * 
-	 * @param issue
+	 * @param annotation
 	 */
-	public void setIssue(JsonObject issue) {
+	public void setAnnotations(List<Annotation> annotations) {
 		checkWidget();
-		if (issue == null) {
+		if (annotations == null) {
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
 		}
-		JsonValue jsonValue = issue.get("info");
-		if (jsonValue != null)
-			this.issue = jsonValue.asString();
-		getRemoteObject().set("issue", issue);
+		this.annotations = annotations;
+		JsonArray array = new JsonArray();
+		for (Annotation  a : annotations) {
+			array.add(a.getValue());
+		}
+		getRemoteObject().set("annotations", array);
 	}
 
 	/**
@@ -661,6 +669,21 @@ public class BasicText extends Composite {
 		isDirty=value;
 	}
 	
+	/**
+	   * Returns the editable state.
+	   *
+	   * @return whether or not the receiver is editable
+	   *
+	   * @exception SWTException <ul>
+	   *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+	   *    <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
+	   * </ul>
+	   */
+	  public boolean getEditable() {
+	    checkWidget();
+	    return (style & SWT.READ_ONLY) == 0;
+	  }
+
 	/**
 	 * Get the text value
 	 * 
@@ -696,9 +719,9 @@ public class BasicText extends Composite {
 	 * 
 	 * @return
 	 */
-	public String getIssue() {
+	public List<Annotation> getAnnotations() {
 		checkWidget();
-		return issue;
+		return annotations;
 	}
 
 	/**
@@ -708,6 +731,30 @@ public class BasicText extends Composite {
 	public boolean isDirty() {
 		checkWidget();
 		return isDirty;
+	}
+	
+	public void highlightRange() {
+		int rowStart = 1;
+		int columnStart = 1;
+		int rowEnd = 2;
+		int columnEnd = 5;
+		TextRange range = new TextRange(rowStart, columnStart, rowEnd, columnEnd);
+		addMarker(range,"ace_selected_word", "text");
+	}
+
+	private void addMarker(TextRange range, String string, String string2) {
+		checkWidget();
+		if (status == null) {
+			SWT.error(SWT.ERROR_NULL_ARGUMENT);
+		}
+		getRemoteObject().call("addMarker", null);
+		
+//		this.annotations = annotations;
+//		JsonArray array = new JsonArray();
+//		for (Annotation  a : annotations) {
+//			array.add(a.getValue());
+//		}
+//		getRemoteObject().set("annotations", array);
 	}
 
 	/**
@@ -741,14 +788,15 @@ public class BasicText extends Composite {
 	/**
 	 * Add the initial JavaScript files for setting up ACE editor
 	 */
-	void addResources() {
-		addResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/ace.js"));
-		addResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/theme-eclipse.js"));
-		addResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/ext-language_tools.js"));
-		addResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/ext-documentation.js"));
-		addResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/ext-tooltip.js"));
-		addResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/snippets/text.js"));
-		addResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/global-index.js"));
+	void addClientResources() {
+		addJavaScriptResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/ace.js"));
+		addJavaScriptResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/theme-eclipse.js"));
+		addJavaScriptResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/ext-language_tools.js"));
+		addJavaScriptResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/ext-documentation.js"));
+		addJavaScriptResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/ext-tooltip.js"));
+		addJavaScriptResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/ext-searchbox.js"));
+		addJavaScriptResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/ace/snippets/text.js"));
+		addJavaScriptResource(new Path("src-js/org/eclipse/rap/incubator/styledtext/global-index.js"));
 	}
 
 	/**
@@ -756,7 +804,7 @@ public class BasicText extends Composite {
 	 * 
 	 * @param path
 	 */
-	void addResource(IPath path) {
+	void addJavaScriptResource(IPath path) {
 		getResources().add(path);
 	}
 
@@ -764,7 +812,7 @@ public class BasicText extends Composite {
 	/**
 	 * Opens a RAP client/server connection.
 	 */
-	void createConnection() {
+	void createRemoteObject() {
 		Connection connection = RWT.getUISession().getConnection();
 		setRemoteObject(createRemoteObject(connection));
 		getRemoteObject().setHandler(operationHandler);

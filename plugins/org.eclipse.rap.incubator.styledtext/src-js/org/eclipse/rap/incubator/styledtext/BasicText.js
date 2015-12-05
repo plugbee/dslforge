@@ -16,14 +16,15 @@
 (function() {
 	rap.registerTypeHandler("org.eclipse.rap.incubator.styledtext.BasicText", {
 		factory : function(properties) {
-			return new org.dslforge.xtext.common.BasicText(properties);
+			return new org.eclipse.rap.incubator.styledtext.BasicText(properties);
 		},
 		destructor : "destroy",	 
-		properties : [ "url", "text", "command", "status", "issue", "scope", "font", "dirty" ],
-		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut"]
+		properties : [ "url", "text", "editable", "status", "annotations", "scope", "font", "dirty" ],
+		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut"],
+		methods : ["addMarker"]
 	});
 
-	rwt.qx.Class.define("org.dslforge.xtext.common.BasicText", {
+	rwt.qx.Class.define("org.eclipse.rap.incubator.styledtext.BasicText", {
 		extend : rwt.widgets.Composite,
 		construct : function(properties) {
 			this.base(arguments);
@@ -53,11 +54,12 @@
 		members : {
 			ready: false,
 			editor: null,
+			editable: true,
 			isFocused: false,
 			initialContent: true,
+			useCompleter: false,
 			langTools: null,
 			globalScope: null,
-			useCompleter: false,
 			
 			onReady : function() {
 				this.ready = true;
@@ -66,9 +68,9 @@
 					this.setUrl(this._url);
 					delete this._url;
 				}
-				if (this._command) {
-					this.setCommand(this._command);
-					delete this._command;
+				if (this._editable) {
+					this.setEditable(this._editable);
+					delete this._editable;
 				}
 				if (this._text) {
 					this.editor.setValue(this._text);
@@ -84,9 +86,9 @@
 					this.setStatus(this._status);
 					delete this._status;
 				}
-				if (this._issue) {
-					this.setIssue(this._issue);
-					delete this._issue;
+				if (this._annotations) {
+					this.setAnnotations(this._annotations);
+					delete this._annotations;
 				}
 				if (this._scope) {
 					this.setScope(this._scope);
@@ -136,15 +138,17 @@
 				if (remoteObject && !this.initialContent) {
 					remoteObject.notify("TextChanged");
 				} else {
-					//initial setting, avoid notify back the server.
-					this.initialContent=false;
-					this.editor.getSession().getUndoManager().reset();	
+					if (this.editable) {
+						//initial setting, avoid notify back the server.
+						this.initialContent=false;
+						this.editor.getSession().getUndoManager().reset();		
+					}
 				}
 			},
 
 			onSave: function() {
 				var remoteObject = rap.getRemoteObject(this);
-				if (remoteObject) {
+				if (remoteObject && this.editable) {
 					remoteObject.set("text",this.editor.getValue());
 					remoteObject.notify("Save", { value : this.editor.getValue()});
 				}
@@ -162,10 +166,15 @@
 			    }
 			},
 		
-			setCommand : function(command) {
-				this._command = command;
+			setEditable : function(editable) {
+			   	if (this.ready) {
+			   		this._editable = editable;
+			   		this.editor.setReadOnly(!editable);
+				} else {
+					this._editable = editable;
+				}
 			},
-				
+			
 			setStatus : function(status) {
 			   	if (this.ready) {
 			   		if (this._status=="invalid") {
@@ -186,26 +195,29 @@
 				}
 			},
 
-			setIssue : function(issue) {
+			setAnnotations : function(annotations) {
 				if (this.ready) {
-					if (issue) {
-						this._issue = issue;
-						var annotations = [];
-						for (var key in issue) {
-							var positions = this._issue[key].match(/\d+/g);
-							if (key=="ERROR")
-								annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: issue[key], type:"error", server: true});
-							else if (key=="WARNING")
-								annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: issue[key], type:"warning", server: true});
-							else if (key=="INFO")
-								annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: issue[key], type:"info", server: true});
-						}
-						this.editor.session.setAnnotations(annotations);
+					if (annotations) {
+						this._annotations = annotations;
+						var editorAnnotations = this.editor.session.getAnnotations();
+						for (var i = this._annotations.length; i--;) {
+							var annotation = this._annotations[i];
+							for (var key in annotation) {
+								var positions = annotation[key].match(/\d+/g);
+								if (key=="error")
+									editorAnnotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"error", server: true});
+								else if (key=="warning")
+									editorAnnotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"warning", server: true});
+								else if (key=="info")
+									editorAnnotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"info", server: true});
+							}	
+			           }
+						this.editor.session.setAnnotations(editorAnnotations);
 					} else {
 						 this.editor.session.clearAnnotations();
 					}
 				} else {
-					this._issue = issue;
+					this._annotations = annotations;
 				}
 			},
 
@@ -242,14 +254,36 @@
 			
 			setDirty : function(dirty) {
 				if (this.ready) {
-					if (!dirty)
-						this.editor.getSession().getUndoManager().markClean();	
+					if (!dirty && this._editable) {
+						this.editor.getSession().getUndoManager().markClean();
+					}
+				}
+			},
+			
+			addMarker : function() {
+				console.log("adding marker");
+				if(this.editor) {
+
+					
+//					var aceRange = require('ace/range').Range;
+//					editor.session.addMarker(new aceRange(0,1,2,10), "some_custom_class", "line");
+//					require("ace/lib/dom").importCssString('.some_custom_class {\
+//					    background-color: aquamarine;\
+//					    position: absolute;\
+//					}')
+					
+					//var marker = this.editor.getSession().addMarker(range,"ace_selected_word", "text");
+					
+						
 				}
 			},
 			
 			addEditor : function() {
 				var guid = this._url;
 				var editor = this.editor = ace.edit(this.element);
+				var editable = this.editable;
+				
+				
 				if (editor != null) {					
 					editor.setTheme("ace/theme/eclipse");				
 					editor.getSession().setUseWrapMode(true);
@@ -257,6 +291,8 @@
 				    editor.getSession().setUseSoftTabs(true);
 					editor.getSession().getUndoManager().reset();
 					editor.setShowPrintMargin(false);		 
+					editor.setReadOnly(!editable);
+										
 					editor.$blockScrolling = Infinity;
 					
 					//bind content assist
@@ -297,6 +333,15 @@
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 					editor.tokenTooltip = new TokenTooltip(editor);
 		 	
+					var Range = ace.require("ace/range").Range;
+					var range = new Range(1, 1, 2, 6);
+					//this.editor.getSession().addMarker(new Range(1,0,1,2),"ace_active-line","fullLine");
+					this.editor.getSession().addMarker(new Range(4,0,0,0), "some_custom_class", "line");
+					ace.require("ace/lib/dom").importCssString('.some_custom_class {\
+					    background-color: aquamarine;\
+					    position: absolute;\
+					}')
+					
 					//Get this
 					var self = this;
 					

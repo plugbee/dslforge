@@ -12455,7 +12455,9 @@ right: 0;\
 bottom: 0;\
 z-index: 6;\
 }\
-.ace_scrollbar-inner {\
+.ace-exec-code-highlight {\
+     background-color: yellow;\
+}.ace_scrollbar-inner {\
 position: absolute;\
 cursor: text;\
 left: 0;\

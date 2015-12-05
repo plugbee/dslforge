@@ -48,6 +48,8 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.rap.incubator.styledtext.Annotation;
+import org.eclipse.rap.incubator.styledtext.AnnotationType;
 import org.eclipse.rap.incubator.styledtext.BasicText;
 import org.eclipse.rap.incubator.styledtext.IBasicTextEditor;
 import org.eclipse.rap.incubator.styledtext.ITextChangeListener;
@@ -56,7 +58,6 @@ import org.eclipse.rap.incubator.styledtext.ITextSaveListener;
 import org.eclipse.rap.incubator.styledtext.TextChangedEvent;
 import org.eclipse.rap.incubator.styledtext.TextSavedEvent;
 import org.eclipse.rap.incubator.texteditor.internal.Activator;
-import org.eclipse.rap.json.JsonObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
@@ -216,11 +217,25 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		textLayoutData.grabExcessHorizontalSpace = true;
 		textLayoutData.grabExcessVerticalSpace = true;
 		getWidget().setLayoutData(textLayoutData);
+		
+		//set font
 		getWidget().setFont(font);
-		// getWidget().setBackground(new Color(getWidget().getDisplay(), new
-		// RGB(120, 120, 120)));
-	}
+		
+		//set r/w access
+		getWidget().setEditable(true);
+		
+		//add annotations
+		List<Annotation> annotations = new ArrayList<Annotation>();
+		annotations.add(new Annotation(AnnotationType.error, 1, 1, "This is an error"));
+		annotations.add(new Annotation(AnnotationType.warning, 3, 1, "This is a warning"));
+		annotations.add(new Annotation(AnnotationType.info, 5, 1, "This is an info"));
+		getWidget().setAnnotations(annotations);
+		
 
+		
+		//getWidget().setBackground(new Color(getWidget().getDisplay(), new RGB(120, 120, 120)));
+	}
+	
 	@Override
 	protected void setInput(IEditorInput input) {
 		super.setInput(input);
@@ -302,6 +317,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 				@Override
 				public void handleTextSaved(TextSavedEvent event) {
+					firePropertyChange(PROP_DIRTY);
 					System.out.println("[BasicTextEditor] handleTextSaved");
 					IRunnableWithProgress runnable = new IRunnableWithProgress() {
 						public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
@@ -342,6 +358,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 				@Override
 				public void focusGained(FocusEvent event) {
 					System.out.println("[BasicTextEditor] focusGained");
+
 				}
 			});
 			getWidget().addMenuDetectListener(menuDetectListener);
@@ -366,8 +383,8 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		getWidget().setStatus(status);
 	}
 
-	protected void setIssue(JsonObject issue) {
-		getWidget().setIssue(issue);
+	protected void setAnnotations(List<Annotation> annotations) {
+		getWidget().setAnnotations(annotations);
 	}
 
 	protected void setScope(List<String> scope) {
@@ -410,16 +427,6 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 			// do noting for now, forbid propagating exception
 		} finally {
 			progress.done();
-			Display display = getWidget().getDisplay();
-			if (display!=null) {
-				display.asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						//FIXME: putting this into a runnable sounds weird
-						firePropertyChange(PROP_DIRTY);
-					}
-				});	
-			}
 		}
 	}
 
@@ -527,6 +534,16 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		 */
 		public void doSave(IProgressMonitor monitor) throws CoreException {
 			fTextEditor.doSave(monitor);
+			Display display = Display.getCurrent();
+			if (display!=null) {
+				display.asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						((BasicTextEditor)fTextEditor).firePropertyChange(PROP_DIRTY);
+					}
+				});	
+			}
+
 
 		}
 
