@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.rap.navigator.view.actions.contribution.new"
+            nameFilter="*"
+            objectClass="java.io.File">
+         <menu
+               id="org.dslforge.workspace.menu.new"
+               label="New"
+               path="main">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+         
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.dslforge.workspace.ui.BasicWokspaceNavigator"
+            icon="icons/earth_view.png"
+            id="org.dslforge.rap.navigator.view"
+            name="Project Explorer"
+            restorable="false">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.dslforge.workspace.ui.FileSystemContentProvider"
+            id="org.dslforge.rap.navigator.fileContent"
+            labelProvider="org.dslforge.workspace.ui.FileSystemLabelProvider"
+            name="Workspace Content"
+            priority="high">
+
+         <triggerPoints>
+            <instanceof
+                  value="java.io.File">
+            </instanceof>
+         </triggerPoints>
+
+      </navigatorContent>
+      <commonFilter
+            activeByDefault="false"
+            class="org.dslforge.workspace.ui.BasicWorkspaceFilter"
+            description="a filter example"
+            id="org.dslforge.workspace.commonFilter2"
+            name=".* resources"
+            visibleInUI="true">
+      </commonFilter>
+   </extension>
+
+</plugin>
