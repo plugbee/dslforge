@@ -28,20 +28,20 @@ public class WorkbenchStartup implements IStartup {
 
 	@Override
 	public void earlyStartup() {
-		Job job = new Job("Registering contributions") {
-			protected IStatus run(IProgressMonitor monitor) {
-				try {
-					List<String> metamodels = BasicWorkbenchRegistry.INSTANCE.getMetamodels();
-					for (String m : metamodels) {
-						System.out.println("[DSLFORGE] - Registering DSL: " + m);
-					}
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-				return Status.OK_STATUS;
-			}
-		};
-		job.schedule();
+//		Job job = new Job("Registering contributions") {
+//			protected IStatus run(IProgressMonitor monitor) {
+//				try {
+//					List<String> metamodels = BasicWorkbenchRegistry.INSTANCE.getMetamodels();
+//					for (String m : metamodels) {
+//						System.out.println("[DSLFORGE] - Registering DSL: " + m);
+//					}
+//				} catch (Exception ex) {
+//					ex.printStackTrace();
+//				}
+//				return Status.OK_STATUS;
+//			}
+//		};
+//		job.schedule();
 	}
 
 }

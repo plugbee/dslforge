@@ -199,7 +199,6 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 	
 	@Override
 	public void dispose() {
-		super.dispose();
 		pushSession.stop();
 		directoryWatcher.stop();
 		directoryWatcher.removeListener(this);
@@ -226,6 +225,7 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 			}
 		};
 		job.schedule();
+		super.dispose();
 	}
 
 	public String getWorkspaceRoot() {

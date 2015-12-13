@@ -57,9 +57,9 @@ public class BasicWorkbench implements EntryPoint {
 	}
 	
 	public int createUIWithoutAuthentication() {
-		ScopedPreferenceStore prefStore = (ScopedPreferenceStore) PrefUtil.getAPIPreferenceStore();
-		String keyPresentationId = IWorkbenchPreferenceConstants.PRESENTATION_FACTORY_ID;
-		String presentationId = prefStore.getString(keyPresentationId);
+		//ScopedPreferenceStore prefStore = (ScopedPreferenceStore) PrefUtil.getAPIPreferenceStore();
+		//String keyPresentationId = IWorkbenchPreferenceConstants.PRESENTATION_FACTORY_ID;
+		//String presentationId = prefStore.getString(keyPresentationId);
 		WorkbenchAdvisor worbenchAdvisor = new BasicWorkbenchAdvisor();
 		// if (IWorkbenchConstants.PLATFORM_PRESENTATION.equals(presentationId))
 		// {

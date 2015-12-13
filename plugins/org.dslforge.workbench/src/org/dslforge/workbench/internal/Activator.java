@@ -16,7 +16,13 @@
 package org.dslforge.workbench.internal;
 
 import java.net.URL;
+import java.util.List;
 
+import org.dslforge.xtext.common.registry.BasicWorkbenchRegistry;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
@@ -60,41 +66,16 @@ public class Activator extends AbstractUIPlugin /*implements ServiceTrackerCusto
 		System.out.println("[DSLFORGE] " + plugin.getBundle().getSymbolicName() + " : started!");
 
 	    bundleContext = context;
-	    
-//		emfTracker = new ServiceTracker(context, EntityManagerFactory.class.getName(), this);
-//		emfTracker.open();
 	}
 
-//	public Object addingService(ServiceReference ref) {
-//        Bundle b = ref.getBundle();
-//        Object service = b.getBundleContext().getService(ref);
-//        String unitName = (String)ref.getProperty(EntityManagerFactoryBuilder.JPA_UNIT_NAME);
-//        if (unitName.equals(IWorkspaceConstants.PERSISTENCE_UNIT_NAME)) {
-//        	if (!DatabaseService.getInstance().isStarted())
-//        		DatabaseService.getInstance().start((EntityManagerFactory) service, b.getBundleContext());
-//        }
-//        return service;
-//    }
-//    public void modifiedService(ServiceReference ref, Object service) {
-//    	//TODO
-//    }
-//    
-//    public void removedService(ServiceReference ref, Object service) {
-//    	//TODO
-//    }  
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
-		super.stop(context);
-		
+		super.stop(context);		
 	    bundleContext = context;
-		//plugin = null;
-		
 		System.out.println("[DSLFORGE] " + "org.dslforge.workbench : stopped!");		
-		
-//	/	emfTracker.close();
 	}
 	
 	public static BundleContext getBundleContext() {

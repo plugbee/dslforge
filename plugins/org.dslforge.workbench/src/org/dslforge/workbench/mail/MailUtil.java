@@ -61,8 +61,9 @@ public class MailUtil {
 			// Send message
 			Transport.send(message);
 			System.out.println("[DSLFORGE] Sent notification successfully....");
-		} catch (MessagingException mex) {
-			mex.printStackTrace();
+		} catch (Exception ex) {
+			System.err.println("[DSLFORGE] Could not send email notification: check internet connection");
+			//ex.printStackTrace();
 			//ignore exception.
 		}
 		return true;

@@ -35,7 +35,6 @@ public class BasicWorkbenchPerspective implements IPerspectiveFactory {
 		layout.addStandaloneView(IWorkbenchConstants.NAVIGATOR_VIEW_ID, true, IPageLayout.LEFT, 0.25f, editorArea);
 		layout.getViewLayout(IWorkbenchConstants.NAVIGATOR_VIEW_ID).setCloseable(false);	
 		layout.addStandaloneView(IPageLayout.ID_PROP_SHEET, true, IPageLayout.BOTTOM, 0.66f, editorArea);
-		
 		//layout.getViewLayout(ICheatSheetResource.CHEAT_SHEET_VIEW_ID).setCloseable(false);
 		//IPlaceholderFolderLayout rightFolder = layout.getFolderForView(ICheatSheetResource.CHEAT_SHEET_VIEW_ID);
 		//rightFolder.addPlaceholder(IWorkbenchConstants.BASIC_CHAT_VIEW_ID);		
@@ -45,6 +44,5 @@ public class BasicWorkbenchPerspective implements IPerspectiveFactory {
 		//layout.getViewLayout(BasicWorkbenchView.ID).setCloseable(false);
 		//layout.addShowViewShortcut(ICheatSheetResource.CHEAT_SHEET_VIEW_ID); 		
 		//layout.addStandaloneView(ICheatSheetResource.CHEAT_SHEET_VIEW_ID, true, IPageLayout.RIGHT, 0.66f, editorArea);
-
 	}
 }

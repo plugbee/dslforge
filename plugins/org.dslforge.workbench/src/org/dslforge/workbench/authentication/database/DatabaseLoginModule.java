@@ -18,6 +18,7 @@ package org.dslforge.workbench.authentication.database;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.security.auth.Subject;
@@ -31,6 +32,11 @@ import javax.security.auth.login.LoginException;
 import org.dslforge.database.pu.tables.User;
 import org.dslforge.workbench.mail.MailUtil;
 import org.dslforge.workspace.WorkspaceManager;
+import org.dslforge.xtext.common.registry.BasicWorkbenchRegistry;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -77,25 +83,29 @@ public class DatabaseLoginModule implements javax.security.auth.spi.LoginModule 
 		if (passwordCallback.getPassword() != null) {
 			password = String.valueOf(passwordCallback.getPassword());
 		}
-		
-		//authenticate user
+
+		// authenticate user
 		User user = WorkspaceManager.INSTANCE.authenticateUser(username, password);
-		loggedIn = (user!=null);
+		loggedIn = (user != null);
 		if (loggedIn) {
 			final DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			final Date date = new Date();
-			System.out.println("[DSLFORGE] "+username + " connected @: " + dateFormat.format(date));
-			
-			Display.getDefault().asyncExec(new Runnable() {		
-				@Override
-				public void run() {
-					String subject = "[DSLFORGE] " + username + " connected to the Workbench!";
-					String from = "postmaster@dslforge.org";
-					String to = "aminelajmi@gmail.com";
-					String message = "[DSLFORGE] "+username + " connected @: " + dateFormat.format(date);
-					MailUtil.sendEMail(from, to, subject,message);
+			System.out.println("[DSLFORGE] " + username + " connected @: " + dateFormat.format(date));
+			Job job = new Job("Sending notification...") {
+				protected IStatus run(IProgressMonitor monitor) {
+					try {
+						String subject = "[DSLFORGE] " + username + " connected to the Workbench!";
+						String from = "postmaster@dslforge.org";
+						String to = "aminelajmi@gmail.com";
+						String message = "[DSLFORGE] " + username + " connected @: " + dateFormat.format(date);
+						MailUtil.sendEMail(from, to, subject, message);
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
+					return Status.OK_STATUS;
 				}
-			});
+			};
+			job.schedule();
 		}
 		return loggedIn;
 	}
