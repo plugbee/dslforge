@@ -29,7 +29,7 @@ public abstract class AbstractWorkbenchAction implements IObjectActionDelegate{
 	
 	@Override
 	public void run(IAction action) {
-		// TODO Auto-generated method stub
+		//Implement in subclasses.
 	}
 
 	@Override

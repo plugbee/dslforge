@@ -19,14 +19,13 @@ import java.net.URL;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin /*implements ServiceTrackerCustomizer*/ {
+public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.rap.incubator.texteditor.demo"; //$NON-NLS-1$
@@ -45,11 +44,7 @@ public class Activator extends AbstractUIPlugin /*implements ServiceTrackerCusto
 	 */
 	public Activator() {
 	}
-	
-    public static final int MAX_EVENT_COLLISION_TRIES = 3;
-    
-    //ServiceTracker emfTracker;
-    
+
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
@@ -57,8 +52,6 @@ public class Activator extends AbstractUIPlugin /*implements ServiceTrackerCusto
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		System.out.println("[DSLFORGE] " + plugin.getBundle().getSymbolicName() + " : started!");
-
 	    bundleContext = context;
 	}
 
@@ -69,7 +62,6 @@ public class Activator extends AbstractUIPlugin /*implements ServiceTrackerCusto
 	public void stop(BundleContext context) throws Exception {
 		super.stop(context);		
 	    bundleContext = context;
-		System.out.println("[DSLFORGE] " + "org.eclipse.rap.incubator.texteditor.demo : stopped!");		
 	}
 	
 	public static BundleContext getBundleContext() {
@@ -85,31 +77,30 @@ public class Activator extends AbstractUIPlugin /*implements ServiceTrackerCusto
 		return plugin;
 	}
 
-	@Override
-	protected void initializeImageRegistry(ImageRegistry reg) {
-		System.out.println("[DSLFORGE] Adding images to registry");
-		addImageFilePath(BasicWorkbenchImageProvider.USER);
-		addImageFilePath(BasicWorkbenchImageProvider.FILE);
-		addImageFilePath(BasicWorkbenchImageProvider.MODEL);
-		addImageFilePath(BasicWorkbenchImageProvider.FOLDER);
-		addImageFilePath(BasicWorkbenchImageProvider.PROJECT);
-		addImageFilePath(BasicWorkbenchImageProvider.UNKNOWN);
-		addImageFilePath(BasicWorkbenchImageProvider.DELETE_RESOURCE);
-		addImageFilePath(BasicWorkbenchImageProvider.RUN_EXEC);
-		addImageFilePath(BasicWorkbenchImageProvider.COMPILE);
-		addImageFilePath(BasicWorkbenchImageProvider.JAVA);
-		addImageFilePath(BasicWorkbenchImageProvider.BINARY);		
-	}
+//	@Override
+//	protected void initializeImageRegistry(ImageRegistry reg) {
+//		addImageFilePath(BasicWorkbenchImageProvider.USER);
+//		addImageFilePath(BasicWorkbenchImageProvider.FILE);
+//		addImageFilePath(BasicWorkbenchImageProvider.MODEL);
+//		addImageFilePath(BasicWorkbenchImageProvider.FOLDER);
+//		addImageFilePath(BasicWorkbenchImageProvider.PROJECT);
+//		addImageFilePath(BasicWorkbenchImageProvider.UNKNOWN);
+//		addImageFilePath(BasicWorkbenchImageProvider.DELETE_RESOURCE);
+//		addImageFilePath(BasicWorkbenchImageProvider.RUN_EXEC);
+//		addImageFilePath(BasicWorkbenchImageProvider.COMPILE);
+//		addImageFilePath(BasicWorkbenchImageProvider.JAVA);
+//		addImageFilePath(BasicWorkbenchImageProvider.BINARY);		
+//	}
 
-	private void addImageFilePath(String relativeURL) {
-		Image image = plugin.getImageRegistry().get(relativeURL);
-		if (image == null) {
-			URL imageURL = plugin.getBundle().getEntry(relativeURL);
-			ImageDescriptor descriptor = ImageDescriptor.createFromURL(imageURL);
-			image = descriptor.createImage();
-			plugin.getImageRegistry().put(relativeURL, image);
-		}
-	}
+//	private void addImageFilePath(String relativeURL) {
+//		Image image = plugin.getImageRegistry().get(relativeURL);
+//		if (image == null) {
+//			URL imageURL = plugin.getBundle().getEntry(relativeURL);
+//			ImageDescriptor descriptor = ImageDescriptor.createFromURL(imageURL);
+//			image = descriptor.createImage();
+//			plugin.getImageRegistry().put(relativeURL, image);
+//		}
+//	}
 
 	public static ImageDescriptor getImageDescriptor(String relativeURL) {
 		URL entry = plugin.getBundle().getEntry(relativeURL);

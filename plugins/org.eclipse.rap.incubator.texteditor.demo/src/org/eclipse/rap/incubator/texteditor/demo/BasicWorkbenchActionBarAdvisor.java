@@ -23,6 +23,7 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 
@@ -48,6 +49,12 @@ public class BasicWorkbenchActionBarAdvisor extends ActionBarAdvisor {
 		menuBar.add(createHelpMenu(window));		
 	}
 	
+	/**
+	 * Creates the 'File' menu
+	 * 
+	 * @param window
+	 * @return
+	 */
 	protected IMenuManager createFileMenu(IWorkbenchWindow window) {
 		IMenuManager menu = new MenuManager("  File  ",
 		IWorkbenchActionConstants.M_FILE);    
@@ -72,22 +79,24 @@ public class BasicWorkbenchActionBarAdvisor extends ActionBarAdvisor {
 
 	/**
 	 * Creates the 'Edit' menu.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * 
+	 * @param window
+	 * @return
 	 */
 	protected IMenuManager createEditMenu(IWorkbenchWindow window) {
 		IMenuManager menu = new MenuManager("  Edit  ",
 		IWorkbenchActionConstants.M_EDIT);
-		menu.add(new GroupMarker(IWorkbenchActionConstants.EDIT_START));
 
+		menu.add(new GroupMarker(IWorkbenchActionConstants.EDIT_START));
 		addToMenuAndRegister(menu, ActionFactory.UNDO.create(window));
 		addToMenuAndRegister(menu, ActionFactory.REDO.create(window));
 		menu.add(new GroupMarker(IWorkbenchActionConstants.UNDO_EXT));
 		menu.add(new Separator());
 
 		addToMenuAndRegister(menu, ActionFactory.CUT.create(window));
-		addToMenuAndRegister(menu, ActionFactory.COPY.create(window));
+		IWorkbenchAction copyAction = ActionFactory.COPY.create(window);
+		
+		addToMenuAndRegister(menu, copyAction);
 		addToMenuAndRegister(menu, ActionFactory.PASTE.create(window));
 		menu.add(new GroupMarker(IWorkbenchActionConstants.CUT_EXT));
 		menu.add(new Separator());
@@ -103,6 +112,12 @@ public class BasicWorkbenchActionBarAdvisor extends ActionBarAdvisor {
 		return menu;
 	}
 
+	/**
+	 * Creates the 'Tools'menu.
+	 * 
+	 * @param window
+	 * @return
+	 */
 	protected IMenuManager createToolsMenu(IWorkbenchWindow window) {
 		IMenuManager menu = new MenuManager("  Tools  ", IWorkbenchActionConstants.M_EDIT);
 		menu.add(new GroupMarker(TOOLS_START));
@@ -111,9 +126,9 @@ public class BasicWorkbenchActionBarAdvisor extends ActionBarAdvisor {
 
 	/**
 	 * Creates the 'Help' menu.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * 
+	 * @param window
+	 * @return
 	 */
 	protected IMenuManager createHelpMenu(IWorkbenchWindow window) {
 		IMenuManager menu = new MenuManager("  Help  ", IWorkbenchActionConstants.M_HELP);
@@ -126,9 +141,9 @@ public class BasicWorkbenchActionBarAdvisor extends ActionBarAdvisor {
 	/**
 	 * Adds the specified action to the given menu and also registers the action with the
 	 * action bar configurer, in order to activate its key binding.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * 
+	 * @param menuManager
+	 * @param action
 	 */
 	protected void addToMenuAndRegister(IMenuManager menuManager, IAction action) {
 		menuManager.add(action);

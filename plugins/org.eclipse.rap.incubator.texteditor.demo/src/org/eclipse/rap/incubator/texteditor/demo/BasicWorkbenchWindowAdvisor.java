@@ -45,7 +45,7 @@ public class BasicWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	
 	@Override
 	public void postWindowOpen() {
-		//getWindowConfigurer().getWindow().getShell().setMaximized(true);
+		getWindowConfigurer().getWindow().getShell().setMaximized(true);
 	}
 	
 	public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {

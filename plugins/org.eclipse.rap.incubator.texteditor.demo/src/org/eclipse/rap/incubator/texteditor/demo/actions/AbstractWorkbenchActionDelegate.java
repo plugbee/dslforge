@@ -54,5 +54,4 @@ public abstract class AbstractWorkbenchActionDelegate implements IViewActionDele
 	public void setWindow(IWorkbenchWindow window) {
 		this.window = window;
 	}
-
 }
