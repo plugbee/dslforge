@@ -18,12 +18,12 @@ package org.dslforge.workspace;
 public interface IWorkspaceConstants {
 	
 	//DEV DSLFORGE
-//	public static final String DEFAULT_WORKING_DIRECTORY = "D:\\dev\\www\\home\\clean\\workspace";
-//	public static final String JDBC_TEST_URL = "jdbc:derby:D:/www/dslforge/database;create=true";
+	public static final String DEFAULT_WORKING_DIRECTORY = "D:\\dev\\www\\home\\clean\\workspace";
+	public static final String JDBC_TEST_URL = "jdbc:derby:D:/www/dslforge/database;create=true";
 	
 	//PROD DSLFORGE
-	public static final String DEFAULT_WORKING_DIRECTORY = "D:\\www\\dslforge\\workspace";  
-	public static final String JDBC_TEST_URL = "jdbc:derby:D:/www/dslforge/database;create=true";
+//	public static final String DEFAULT_WORKING_DIRECTORY = "D:\\www\\dslforge\\workspace";  
+//	public static final String JDBC_TEST_URL = "jdbc:derby:D:/www/dslforge/database;create=true";
 	
 	public static final boolean INJECT_USERS = false;
     public static final String JDBC_TEST_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";

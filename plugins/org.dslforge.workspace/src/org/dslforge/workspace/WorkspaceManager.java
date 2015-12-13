@@ -41,7 +41,7 @@ public class WorkspaceManager {
 	public static final String LOCKED = "locked";
 	public static final String UNLOCKED = "unlocked";
 	
-	public static final WorkspaceManager INSTANCE = new WorkspaceManager();
+	public static WorkspaceManager INSTANCE = new WorkspaceManager();
 
 	private WorkspaceManager() {
 		setWorkspaceRoot(IWorkspaceConstants.DEFAULT_WORKING_DIRECTORY);
@@ -50,15 +50,7 @@ public class WorkspaceManager {
 	public String getWorkspaceRoot() {
 		return workspaceRoot;
 	}
-
-	public void clean() {
-		DatabaseService.getInstance().clean();
-	}
-
-	public void stop() {
-		DatabaseService.getInstance().stop();
-	}
-
+	
 	public File getRootFoler() {
 		return new File(workspaceRoot);
 	}
@@ -66,15 +58,10 @@ public class WorkspaceManager {
 	public void setWorkspaceRoot(String workspaceRoot) {
 		this.workspaceRoot = workspaceRoot;
 	}
-	
-	public void dumpDatabase() {
-		DatabaseService.getInstance().dumpDatabase();
-	}
 
 	private String computeResourceName(URI absoluteURI) {
 		URI rootURI = URI.createFileURI(getWorkspaceRoot() + PATH_SEPARATOR);
 		URI relativeURI = absoluteURI.deresolve(rootURI);
-		
 		String[] segments = relativeURI.segments();
 		if (segments.length==0) {
 			throw new RuntimeException("Problem when computing relative path for " + absoluteURI);
@@ -137,28 +124,22 @@ public class WorkspaceManager {
 	
 	public void deleteProject(final File file) {
 		if (file.exists()) {
-//			if(file.list().length==0){
-//				//project is empty
-//				boolean x = file.delete();
-//				System.out.println("[DSLFORGE] - Project " + x  + " deleted.");
-//			} else {
-				boolean isDeleted = deleteProject(file.getName());
-				if (isDeleted) {
-					Display.getCurrent().syncExec(new Runnable() {
-						@Override
-						public void run() {
-							try {
-								delete(file);
-							} catch (IOException e) {
-								e.printStackTrace();
-								System.out.println("[DSLFORGE] - Project " + file.getName()  + " cold not be deleted.");
-							}
-							System.out.println("[DSLFORGE] - Project " + file.getName()  + " deleted.");
+			boolean isDeleted = deleteProject(file.getName());
+			if (isDeleted) {
+				Display.getCurrent().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							delete(file);
+						} catch (IOException e) {
+							e.printStackTrace();
+							System.out.println("[DSLFORGE] - Project " + file.getName() + " cold not be deleted.");
 						}
-					});
-				}
+						System.out.println("[DSLFORGE] - Project " + file.getName() + " deleted.");
+					}
+				});
 			}
-//		}
+		}
 	}
 	
 	public void delete(File file) throws IOException {
@@ -245,8 +226,7 @@ public class WorkspaceManager {
 					, "Project " + projectName + " contains public samples, it cannot be deleted ;)");	
 			return false;
 		}
-		try{
-			
+		try{			
 			//delete files in the porject
 			List<Resource> allResourcesInProject = DatabaseService.getInstance().getAllResourcesInProject(projectName);
 			for (Resource r: allResourcesInProject) {
@@ -255,14 +235,6 @@ public class WorkspaceManager {
 				if (file.exists()) {
 					if (!isLocked(file)) {
 						WorkspaceManager.INSTANCE.deleteResource(projectName, r.getPath());
-//						Display.getCurrent().syncExec(new Runnable() {
-//							@Override
-//							public void run() {
-//								boolean isDeleted = file.delete();
-//								System.out.println("[DSLFORGE] - Resource " + filePath + " deleted");
-//							}
-//						});
-
 						String userId = (String) RWT.getUISession().getAttribute("user");
 						System.out.println("[DSLFORGE] - " + userId + " deleted file " + file.getPath());
 					} else {
@@ -282,13 +254,6 @@ public class WorkspaceManager {
 				if (file.exists()) {
 					if (!isLocked(file)) {
 						WorkspaceManager.INSTANCE.deleteFolder(folder.getPath());
-//						Display.getCurrent().syncExec(new Runnable() {
-//							@Override
-//							public void run() {
-//								boolean isDeleted = file.delete();
-//								System.out.println("[DSLFORGE] - folder " + filePath + " deleted");
-//							}
-//						});
 					}
 				}
 			}
@@ -306,13 +271,6 @@ public class WorkspaceManager {
 		return true;
 	}
 
-	private void dumpProjects() {
-		DatabaseService.getInstance().dumpProjects();
-	}
-
-	public void createFolder(File file) {
-	}
-	
 	public void createFolder(URI uri) {
 		String folderName = computeResourceName(uri);
 		String path = computeRelativePath(uri);
@@ -390,10 +348,6 @@ public class WorkspaceManager {
 		DatabaseService.getInstance().deleteFolder(projectName, path);
 	}
 
-	private void dumpFolders() {
-		DatabaseService.getInstance().dumpFolders();
-	}
-
 	public void createUser(String userName, String firstName, String lastName, String organization, String email, String pwd) {
 		DatabaseService.getInstance().createUser(userName, firstName, lastName, organization, email, pwd);
 	}
@@ -435,10 +389,6 @@ public class WorkspaceManager {
 
 	public User updateUserAccount(String userName,String firstName, String lastName, String organization, String email, String pwd){
 		return DatabaseService.getInstance().updateUserAccount(userName, firstName, lastName, organization, email, pwd);
-	}
-	
-	private void dumpUsers() {
-		DatabaseService.getInstance().dumpUsers();
 	}
 
 	public void createResource(URI absoluteURI) {

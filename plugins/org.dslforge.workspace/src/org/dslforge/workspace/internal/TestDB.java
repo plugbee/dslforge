@@ -63,7 +63,7 @@ public class TestDB {
 		
 		factory = Persistence.createEntityManagerFactory(IWorkspaceConstants.PERSISTENCE_UNIT_NAME);
 		DatabaseService.getInstance().setEntityManagerFactory(factory);
-		DatabaseService.getInstance().clean();
+		//DatabaseService.getInstance().clean();
 		
 		System.out.println("[DSLFORGE]              SUCCESS                  [DSLFORGE]");
 		System.out.println("[DSLFORGE] ------------------------------------- [DSLFORGE]");		
@@ -121,7 +121,7 @@ public class TestDB {
 		DatabaseService.getInstance().createResource("www", "Test.calc");
 		System.out.println("[DSLFORGE] ------------------------------------- [DSLFORGE]");
 		System.out.println("[DSLFORGE] Stopping...");
-		DatabaseService.getInstance().stop();
+	//	DatabaseService.getInstance().stop();
 
 		System.out.println("[DSLFORGE] ------------------------------------------ [DSLFORGE]");
 		System.out.println("[DSLFORGE] *Workspace Metadata successfully recovered*");

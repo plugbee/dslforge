@@ -25,8 +25,6 @@ import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.BundleEvent;
-import org.osgi.framework.BundleListener;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.jpa.EntityManagerFactoryBuilder;
 import org.osgi.util.tracker.ServiceTracker;
@@ -48,6 +46,8 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 
 	private ServiceTracker emfTracker;
 
+	EntityManagerFactory emf;
+	
 	public static Activator getDefault() {
 		return plugin;
 	}
@@ -76,6 +76,8 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 		System.out.println("[DSLFORGE] " + "org.dslforge.rap.workspace" + " : stopping!");
 		plugin = null;
 		emfTracker.close();
+		if (emf!=null && emf.isOpen())
+			emf.close();
 		ctx = null;
 	}
 
@@ -85,14 +87,9 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 		final Object service = b.getBundleContext().getService(ref);
 		String unitName = (String) ref.getProperty(EntityManagerFactoryBuilder.JPA_UNIT_NAME);
 		if (unitName.equals(IWorkspaceConstants.PERSISTENCE_UNIT_NAME)) {
-
-			EntityManagerFactory emf = (EntityManagerFactory) service;
+			emf = (EntityManagerFactory) service;
 			DatabaseService.getInstance().setEntityManagerFactory(emf);
-			DatabaseService.getInstance().dumpDatabase();
-			if (IWorkspaceConstants.INJECT_USERS) {
-				System.out.println("[DSLFORGE] INJECTING  USERS...");
-				DatabaseService.getInstance().inject();
-			}
+			//DatabaseService.getInstance().dumpDatabase();
 		}
 		return service;
 	}
@@ -106,7 +103,6 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 		props.put("eclipselink.logging.level", "OFF");
 		props.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
 		props.put(PersistenceUnitProperties.WEAVING, "false");
-		// props.put(GeminiSystemProperties.REFRESH_BUNDLES_PROPERTY, "FALSE");
 		return props;
 	}
 

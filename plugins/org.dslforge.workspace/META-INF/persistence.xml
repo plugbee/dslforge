@@ -18,8 +18,8 @@
 		    <property name="eclipselink.target-database" value="Derby"/>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
 		
-		<!-- DSLFORGE PROD  --><property name="javax.persistence.jdbc.url" value="jdbc:derby:D:/www/dslforge/database;create=true" />
-		<!-- DSLFORGE DEVELOPMENT<property name="javax.persistence.jdbc.url" value="jdbc:derby:E:/dev/www/home/clean/database;create=true" />  --> 
+		<!-- DSLFORGE PROD   --><property name="javax.persistence.jdbc.url" value="jdbc:derby:D:/www/dslforge/database;create=true" />
+		<!-- DSLFORGE DEVELOPMENT <property name="javax.persistence.jdbc.url" value="jdbc:derby:E:/dev/www/home/clean/database;create=true" />--> 
 		
 			<property name="javax.persistence.jdbc.user" value="admin" />
 			<property name="javax.persistence.jdbc.password" value="admin" />

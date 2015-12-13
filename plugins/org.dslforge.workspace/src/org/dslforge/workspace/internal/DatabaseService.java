@@ -40,6 +40,7 @@ public class DatabaseService {
     private EntityManagerFactory emf;
     
 	public static final String LOCKED = "locked";
+	
 	public static final String UNLOCKED = "unlocked";
     	
     private static DatabaseService INSTANCE;
@@ -82,124 +83,6 @@ public class DatabaseService {
         System.out.println("[DSLFORGE] EMF Service refs looked up from registry: " + refs);
         return (refs == null) ? null : (EntityManagerFactory) context.getService(refs[0]);
     }
-    
-	public void inject() {
-		System.out.println("[DSLFORGE] ----------------------------------------- [DSLFORGE]");
-		System.out.println("[DSLFORGE]      DATABASE RECOVERY BATCH MODULE       [DSLFORGE]");
-		System.out.println("[DSLFORGE]                                           [DSLFORGE]");
-		System.out.println("[DSLFORGE]                                           [DSLFORGE]");
-		System.out.println("[DSLFORGE] (c) Copyright DSLFORGE.COM     2011-2014  [DSLFORGE]");
-		System.out.println("[DSLFORGE] ----------------------------------------- [DSLFORGE]");		
-		System.out.println("[DSLFORGE] Dumping database...                       [DSLFORGE]");
-		
-		dumpDatabase();
-		System.out.println("[DSLFORGE] ------------------------------------------[DSLFORGE]");
-		System.out.println("[DSLFORGE] Injecting users...                        [DSLFORGE]");
-		
-		
-		User user = getUser("admin");
-		if (user==null) {
-			createUser("admin", "admin", "admin", "dslforge", "admin@dslforge.com", "admin");		
-		}
-		User user1 = getUser("amine");
-		if (user1==null) {
-			createUser("amine", "amine", "lajmi", "dslforge", "amine.lajmi@dslforge.com", "lajmi");		
-		}
-		User user2 = getUser("jabier");
-		if (user2==null) {
-			createUser("jabier", "jabier", "martinez", "lip6", "jabimail@gmail.com", "martinez");		
-		}
-		User user3 = getUser("tewfik");
-		if (user3==null) {
-			createUser("tewfik", "tewfik", "ziadi", "lip6", "tewfik.ziadi@lip6.fr", "ziadi");		
-		}
-		User user4 = getUser("skander");
-		if (user4==null) {
-			createUser("skander", "skander", "turki", "NaN", "skander.turki@gmail.com", "turki");		
-		}
-		User user5 = getUser("tarek");
-		if (user5==null) {
-			createUser("tarek", "tarek", "turki", "NaN", "tarek.turki@gmail.com", "turki");		
-		}
-		User user6 = getUser("hamza");
-		if (user6==null) {
-			createUser("hamza", "hamza", "ben mansour", "NaN", "hamza.benmansour@gmail.com", "ben mansour");		
-		}
-		User user7 = getUser("cristina");
-		if (user7==null) {
-			createUser("cristina", "cristina", "ferreira", "Total", "ferreira.cls@gmail.com", "ferreira");		
-		}
-		User user8 = getUser("matthieu");
-		if (user8==null) {
-			createUser("matthieu", "matthieu", "helleboid", "Thales", "matthieu.helleboid@thales.com", "helleboid");		
-		}
-		User user9 = getUser("samir");
-		if (user9==null) {
-			createUser("samir", "touzani", "touzani", "Berkley", "samir.touzani@outlook.com", "touzani");		
-		}
-		User user10 = getUser("paul");
-		if (user10==null) {
-			createUser("paul", "feuto", "feuto", "GDE", "paul@blabla.com", "feuto");		
-		}
-		User user11 = getUser("idrissa");
-		if (user11==null) {
-			createUser("idrissa", "dieng", "dieng", "itemis", "idieng@blabla.com", "dieng");		
-		}
-		User user13 = getUser("ali");
-		if (user13==null) {
-			createUser("ali", "akar", "akar", "itemis", "ali@blabla.com", "akar");		
-		}
-		User user14 = getUser("klaus");
-		if (user14==null) {
-			createUser("klaus", "birken", "birken", "itemis", "klaus.birken@itemis.com", "birken");		
-		}
-		User user15 = getUser("benoit");
-		if (user15==null) {
-			createUser("benoit", "langlois", "langlois", "Thales", "benoit.langlois@thalesgroup.com", "langlois");		
-		}
-		User user16 = getUser("omar");
-		if (user16==null) {
-			createUser("omar", "merroune", "merroune", "independant", "omar.merroune@blabla.com", "merroune");		
-		}
-		User user17 = getUser("michele");
-		if (user17==null) {
-			createUser("michele", "dibiase", "dibiase", "unknown", "omar.@blabla.com", "merroune");		
-		}
-		User user18 = getUser("sven");
-		if (user18==null) {
-			createUser("sven", "eftinge", "eftinge", "itemis", "sven.eftinge@itemis.com", "eftinge");		
-		}
-		User user19 = getUser("frank");
-		if (user19==null) {
-			createUser("frank", "tagne", "tagne", "Obeo", "tagne.frank@obeo.fr", "tagne");		
-		}	
-		User user20 = getUser("franz");
-		if (user20==null) {
-			createUser("franz", "becker", "becker", "itemis", "franz.becker@itemis.com", "becker");		
-		}
-		User user21 = getUser("mohamed");
-		if (user21==null) {
-			createUser("mohamed", "lamine", "lamine", "Obeo", "mohamed.lamine@obeo.fr", "lamine");		
-		}
-		User user22 = getUser("mohamed");
-		if (user22==null) {
-			createUser("john", "unknown", "unknown", "unknown", "johnemail@mailinator.com", "unknown");		
-		}
-		User user23 = getUser("klark");
-		if (user23==null) {
-			createUser("klark", "unknown", "unknown", "unknown", "derby451@hotmail.com", "unknown");		
-		}
-
-		System.out.println("[DSLFORGE] ----------------------------------------- [DSLFORGE]");
-		System.out.println("[DSLFORGE] Metadata successfully recovered           [DSLFORGE] ");
-		System.out.println("[DSLFORGE] ----------------------------------------- [DSLFORGE]");
-	}
-	
-	public void stop() {
-		System.out.println("[DSLFORGE] ----------------------------------------- [DSLFORGE]");
-		System.out.println("[DSLFORGE]             STOPPING DATABASE             [DSLFORGE] ");
-		System.out.println("[DSLFORGE] ----------------------------------------- [DSLFORGE]");
-	}
 	
 	public void dumpDatabase() {
 		dumpUsers();
@@ -207,14 +90,7 @@ public class DatabaseService {
 		dumpFolders();
 		dumpResources();
 	}
-	
-	public void clean() {
-		deleteAllResources();
-		deleteAllProjects();
-		deleteAllFolders();
-		deleteAllUsers();
-	}
-	
+
 //////////////////////////////////////////
 //USERS
 //////////////////////////////////////////
@@ -225,8 +101,7 @@ public class DatabaseService {
 		user.setLastName(lastName);
 		user.setOrganization(organization);
 		user.setEmail(email);
-		user.setPassword(pwd);
-		
+		user.setPassword(pwd);		
 		EntityManager em=getEmf().createEntityManager();
 		em.getTransaction().begin();
 		em.persist(user);
@@ -322,7 +197,6 @@ public class DatabaseService {
 		if(users.isEmpty()) {
 			return null;
 		}
-		
 		User user = users.get(0);
 		user.setPassword(pwd);
 		em.getTransaction().begin();
@@ -343,7 +217,6 @@ public class DatabaseService {
 		if(users.isEmpty()) {
 			return null;
 		}
-		
 		User user = users.get(0);
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
@@ -378,7 +251,6 @@ public class DatabaseService {
 		project.setPath(path);
 		project.setUser(getUser(userName));
 		project.setVisibility(visibility);
-		
 		EntityManager em=getEmf().createEntityManager();
 		em.getTransaction().begin();
 		em.persist(project);
@@ -535,8 +407,7 @@ public class DatabaseService {
 		
 		EntityManager em=getEmf().createEntityManager();
 		em.getTransaction().begin();
-		
-		//Project project = getProject(projectName);
+
 		Project project = null;
 		Query q = em.createQuery("select p from Project p");
 		List<Project> projects = q.getResultList();
@@ -549,17 +420,13 @@ public class DatabaseService {
 			}
 			i++;
 		}
-		
 		if (project==null)
 			throw new RuntimeException("Could not find project " + projectName);
 		
 		resource.setProject(project);
 		project.getResources().add(resource);
-		
-		//em.persist(project);
 		em.persist(resource);
 		em.getTransaction().commit();
-		
 		em.close();
 		dumpDatabase();
 	}
@@ -610,10 +477,7 @@ public class DatabaseService {
 			}
 		}
 		//verify resource is not null
-		if (resource==null) {
-			//throw new RuntimeException("Could not find resource " + path);
-		} else {
-			//Project p = getProject(projectName);
+		if (resource!=null) {
 			Project project =null;
 			q = em.createQuery("select p from Project p");
 			List<Project> projects = q.getResultList();
@@ -642,7 +506,6 @@ public class DatabaseService {
 		}
 		em.getTransaction().commit();
 		em.close();
-		//dumpDatabase();
 	}
 	
 	public void deleteAllResources() {
@@ -656,8 +519,6 @@ public class DatabaseService {
 	
 	public void lockResource(String userName, String projectName,  String path) {
 		EntityManager em=getEmf().createEntityManager();
-		
-		//Resource resource = getResource(projectName, path);
 		Resource resource = null;
 		Query q = em.createQuery("select r from Resource r where r.path='" + path + "'");
 		List<Resource> resources = q.getResultList();
@@ -689,7 +550,6 @@ public class DatabaseService {
 		EntityManager em=getEmf().createEntityManager();
 		em.getTransaction().begin();
 		
-		//Resource resource = getResource(projectName, path);
 		Resource resource = null;
 		Query q = em.createQuery("select r from Resource r where r.path='" + path + "'");
 		List<Resource> resources = q.getResultList();
