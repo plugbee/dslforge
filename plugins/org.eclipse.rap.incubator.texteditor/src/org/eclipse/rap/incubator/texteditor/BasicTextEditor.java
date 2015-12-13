@@ -47,7 +47,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.rap.incubator.styledtext.Annotation;
 import org.eclipse.rap.incubator.styledtext.AnnotationType;
 import org.eclipse.rap.incubator.styledtext.BasicText;
@@ -56,7 +55,9 @@ import org.eclipse.rap.incubator.styledtext.ITextChangeListener;
 import org.eclipse.rap.incubator.styledtext.ITextModifyListener;
 import org.eclipse.rap.incubator.styledtext.ITextSaveListener;
 import org.eclipse.rap.incubator.styledtext.TextChangedEvent;
+import org.eclipse.rap.incubator.styledtext.TextRange;
 import org.eclipse.rap.incubator.styledtext.TextSavedEvent;
+import org.eclipse.rap.incubator.styledtext.TextSelection;
 import org.eclipse.rap.incubator.texteditor.internal.Activator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
@@ -65,7 +66,10 @@ import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MenuDetectEvent;
 import org.eclipse.swt.events.MenuDetectListener;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -98,7 +102,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	IPath filePath;
 	ArrayList<String> index;
 	TextEditorSavable fSavable;
-
+	
 	MenuDetectListener menuDetectListener = new MenuDetectListener() {
 
 		private static final long serialVersionUID = 1L;
@@ -111,6 +115,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 			System.out.println("[BasicTextEditor] Menu detected");
 		}
 	};
+	private boolean isDirty;
 
 	private void initContextMenu() {
 		MenuManager menuMgr = new MenuManager("#PopupMenu"); //$NON-NLS-1$
@@ -152,6 +157,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		setPartName(((IPathEditorInput) input).getPath().lastSegment());
 		getSite().setSelectionProvider(this);
 		setInput(input);
+		setDirty(false);
 	}
 
 	/**
@@ -190,7 +196,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	@Override
 	public ISelection getSelection() {
 		if (selection == null) {
-			selection = new StructuredSelection(getEditorInput());
+			selection = getWidget().getSelection();
 		}
 		return selection;
 	}
@@ -221,19 +227,25 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		//set font
 		getWidget().setFont(font);
 		
-		//set r/w access
+		//set background
+		getWidget().setBackground(new Color(getWidget().getDisplay(), new RGB(180, 200, 250)));
+		
+		//set read/write access
 		getWidget().setEditable(true);
 		
 		//add annotations
 		List<Annotation> annotations = new ArrayList<Annotation>();
-		annotations.add(new Annotation(AnnotationType.error, 1, 1, "This is an error"));
+		annotations.add(new Annotation(AnnotationType.error, 1, 3, "This is an error"));
 		annotations.add(new Annotation(AnnotationType.warning, 3, 1, "This is a warning"));
 		annotations.add(new Annotation(AnnotationType.info, 5, 1, "This is an info"));
 		getWidget().setAnnotations(annotations);
 		
-
-		
-		//getWidget().setBackground(new Color(getWidget().getDisplay(), new RGB(120, 120, 120)));
+		//highlight text ranges
+		List<TextRange> ranges = new ArrayList<TextRange>();
+		ranges.add(new TextRange(1, 1, 0, 1));
+		ranges.add(new TextRange(2, 3, 0, 5));
+		ranges.add(new TextRange(4, 4, 0, 4));
+		getWidget().setMarkers(ranges);
 	}
 	
 	@Override
@@ -243,6 +255,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 			loadContentFromFile();
 			setFilePath(((IPathEditorInput) input).getPath());
 		}
+		firePropertyChange(PROP_INPUT);
 	}
 
 	private void loadContentFromFile() {
@@ -289,7 +302,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 				@Override
 				public void handleTextChanged(TextChangedEvent e) {
 					System.out.println("[BasicTextEditor] handleTextChanged");
-					firePropertyChange(PROP_DIRTY);
+					setDirty(true);
 				}
 			});
 
@@ -308,7 +321,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 			getWidget().addTextModifyListener(new ITextModifyListener() {
 
 				@Override
-				public void handleTextModified(String text) {
+				public void handleTextModified(ModifyEvent event) {
 					System.out.println("[BasicTextEditor] handleTextModified");
 				}
 			});
@@ -317,7 +330,6 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 				@Override
 				public void handleTextSaved(TextSavedEvent event) {
-					firePropertyChange(PROP_DIRTY);
 					System.out.println("[BasicTextEditor] handleTextSaved");
 					IRunnableWithProgress runnable = new IRunnableWithProgress() {
 						public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
@@ -388,12 +400,19 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	}
 
 	protected void setScope(List<String> scope) {
-		getWidget().setLanguageScope(scope);
+		getWidget().setScope(scope);
 	}
 
 	@Override
 	public boolean isDirty() {
-		return getWidget().isDirty();
+		return this.isDirty;
+	}
+
+	protected void setDirty(boolean b) {
+		if (this.isDirty!=b) {
+			this.isDirty=b;
+			firePropertyChange(PROP_DIRTY);
+		}
 	}
 
 	@Override
@@ -427,6 +446,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 			// do noting for now, forbid propagating exception
 		} finally {
 			progress.done();
+			setDirty(false);
 		}
 	}
 
@@ -534,28 +554,17 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		 */
 		public void doSave(IProgressMonitor monitor) throws CoreException {
 			fTextEditor.doSave(monitor);
-			Display display = Display.getCurrent();
-			if (display!=null) {
-				display.asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						((BasicTextEditor)fTextEditor).firePropertyChange(PROP_DIRTY);
-					}
-				});	
-			}
-
-
 		}
 
 		public boolean isDirty() {
-			return fTextEditor.getWidget().isDirty();
+			return fTextEditor.isDirty();
 		}
 
 		/*
 		 * @see org.eclipse.ui.Saveable#supportsBackgroundSave()
 		 */
 		public boolean supportsBackgroundSave() {
-			return false;
+			return true;
 		}
 
 		/*
@@ -579,6 +588,24 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 				return false;
 			return false;
 		}
+	}
+
+	@Override
+	public void performCopy(TextSelection selection) {
+		if (!selection.isEmpty())
+			getWidget().copy(selection.getText());
+	}
+
+	@Override
+	public void performPaste() {
+		getWidget().paste();
+		System.out.println("paste");
+	}
+
+	@Override
+	public void performCut(TextSelection selection) {
+		if (!selection.isEmpty())
+			getWidget().cut(selection);
 	}
 
 	// private KeyAdapter keyListener = new KeyAdapter() {

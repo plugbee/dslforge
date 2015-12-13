@@ -17,6 +17,7 @@ Require-Bundle: org.eclipse.rap.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.rap.incubator.texteditor,
+ org.eclipse.rap.incubator.texteditor.actions,
  org.eclipse.rap.incubator.texteditor.internal
 Import-Package: org.apache.log4j,
  org.eclipse.persistence.sessions.coordination;version="2.5.2"
