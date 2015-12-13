@@ -38,6 +38,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -110,19 +111,29 @@ public class GenerateWebProjectOperation extends GenerateProjectOperation {
 		final boolean option = ((Boolean) settings.get("UseNavigator")).booleanValue();
 		final String navigatorRoot = (String) settings.get("NavigatorRoot");
 		final IFile grammarFile = (IFile) settings.get("Grammar");
-		EObject root = loadGrammar(grammarFile, progress.newChild(5));
-		if (root!=null && root instanceof Grammar) {
-			setGrammar((Grammar) root);
-			IProject project = createProject(monitor, progress.newChild(5));
-			setOutputs(project);
-			if (option) {
-				setUseNavigator(option);
-				// if navigator root not specified, use default one
-				if (navigatorRoot.length() != 0)
-					setNavigatorRoot(navigatorRoot);
-			}
-			setUseGenerator(generatorOption);
-			doGenerate(project, progress.newChild(5));
+		try {
+			EObject root = loadGrammar(grammarFile, progress.newChild(5));
+			if (root!=null && root instanceof Grammar) {
+				setGrammar((Grammar) root);
+				IProject project = createProject(monitor, progress.newChild(5));
+				if (progress.isCanceled())
+					throw new OperationCanceledException();
+				//setting generator parameters
+				setOutputs(project);
+				if (option) {
+					setUseNavigator(option);
+					// if navigator root not specified, use default one
+					if (navigatorRoot.length() != 0)
+						setNavigatorRoot(navigatorRoot);
+				}
+				setUseGenerator(generatorOption);
+				if (progress.isCanceled())
+					throw new OperationCanceledException();
+				doGenerate(project, progress.newChild(5));
+			}	
+		} catch(OperationCanceledException ex) {
+			//do noting for now, forbid propagating exception
+		} finally {
 			progress.done();
 		}
 	}

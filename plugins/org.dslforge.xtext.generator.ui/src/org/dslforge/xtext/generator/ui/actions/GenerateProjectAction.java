@@ -21,15 +21,11 @@ import java.util.Map;
 
 import org.dslforge.xtext.generator.ui.operations.GenerateWebProjectOperation;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.mwe.core.monitor.NullProgressMonitor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
@@ -40,7 +36,7 @@ public class GenerateProjectAction extends BaseSelectionListenerAction implement
 	protected ISelection selection;
 	
 	public GenerateProjectAction() {
-		super("Generate RAP Xtext Editor");
+		super("Generate Web Editor");
 	}
 
 	@Override
