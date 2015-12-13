@@ -15,6 +15,7 @@
  */
 package org.eclipse.rap.incubator.styledtext;
 
+import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.internal.SWTEventListener;
 
 @SuppressWarnings("restriction")
@@ -23,7 +24,7 @@ public interface ITextModifyListener extends SWTEventListener {
 	/**
 	 * Handle text modified event
 	 * 
-	 * @param text
+	 * @param modifyEvent
 	 */
-	void handleTextModified(String text);
+	void handleTextModified(ModifyEvent modifyEvent);
 }

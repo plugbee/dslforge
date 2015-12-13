@@ -18,10 +18,12 @@ public class TextRange {
 	
 	//var range = new Range(rowStart, columnStart, rowEnd, columnEnd);
 	//var marker = editor.getSession().addMarker(range,"ace_selected_word", "text");
-	public JsonObject getValue() {
-		
-		JsonObject range = new JsonObject();
-	//	range.add("range", row + ":" + text);
-		return range;
+	public JsonObject getValue() {	
+		JsonObject properties = new JsonObject();
+		properties.add("rowStart", rowStart);
+		properties.add("rowEnd", rowEnd);
+		properties.add("columnStart", columnStart);
+		properties.add("columnEnd", columnEnd);	
+		return properties;
 	}
 }

@@ -19,9 +19,9 @@
 			return new org.eclipse.rap.incubator.styledtext.BasicText(properties);
 		},
 		destructor : "destroy",	 
-		properties : [ "url", "text", "editable", "status", "annotations", "scope", "font", "dirty" ],
-		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut"],
-		methods : ["addMarker"]
+		properties : [ "url", "text", "editable", "status", "annotations", "scope", "font", "dirty", "markers", "background"],
+		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut", "Selection", "CaretEvent"],
+		methods : ["addMarker", "insertText", "removeText"]
 	});
 
 	rwt.qx.Class.define("org.eclipse.rap.incubator.styledtext.BasicText", {
@@ -60,6 +60,8 @@
 			useCompleter: false,
 			langTools: null,
 			globalScope: null,
+			selectionStart: -1,
+			selectionEnd:-1,
 			
 			onReady : function() {
 				this.ready = true;
@@ -90,6 +92,14 @@
 					this.setAnnotations(this._annotations);
 					delete this._annotations;
 				}
+				if (this._markers) {
+					this.setMarkers(this._markers);
+					delete this._markers;
+				}
+				if (this._backgroundColor) {
+					this.setBackground(this._backgroundColor);
+					delete this._backgroundColor;
+				}
 				if (this._scope) {
 					this.setScope(this._scope);
 					delete this._scope;
@@ -109,14 +119,33 @@
 			onFocus: function() {
 				var remoteObject = rap.getRemoteObject(this);
 				if (remoteObject) {
-					remoteObject.notify("FocusIn", { value : this.editor.getValue()});
+					remoteObject.notify("FocusIn", { value : this.editor.getCursorPosition()});
+					this.onChangeCursor();
 				}
 			},
 
+			onChangeCursor: function() {
+				var remoteObject = rap.getRemoteObject(this);
+				if (remoteObject) {
+					remoteObject.notify("CaretEvent", { value : this.editor.getCursorPosition()});
+				}				
+			},
+			
 			onBlur: function() {
 				var remoteObject = rap.getRemoteObject(this);
 				if (remoteObject) {
-					remoteObject.notify("FocusOut", { value : this.editor.getValue()});
+					remoteObject.notify("FocusOut", { value : this.editor.getValue()});					
+					var range = this.editor.getSelection().getRange();
+					if (range.start.row != range.end.row || range.start.column !=range.end.column) {
+						//there is a selection
+						remoteObject.notify("Selection", {
+							value: this.editor.getSession().doc.getTextRange(range),
+							rowStart: range.start.row, 
+							rowEnd: range.end.row,
+							columnStart: range.start.column,
+							columnEnd: range.end.column 
+						});
+					}
 				}
 			},
 
@@ -154,7 +183,10 @@
 				}
 			},
 
-			//TODO: cache issue: http://stackoverflow.com/questions/4390134/failed-to-load-resource-under-chrome
+			setUrl : function(url) {
+				this._url = url;
+			},	
+			
 			setText : function(text) {
 				if (this.ready) {
 					this.editor.setValue(text);	
@@ -235,10 +267,6 @@
 					 this._scope = scope;	
 				}
 			},
-			
-			setUrl : function(url) {
-				this._url = url;
-			},	
 
 			//'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro'
 			//font = 14px Verdana, "Lucida Sans", Arial, Helvetica, sans-serif
@@ -251,6 +279,18 @@
 			        this._font = font;
 			    }
 			},
+
+			setBackground : function(color) {
+				if (this.ready) {
+			        this._backgroundColor = color;
+					ace.require("ace/lib/dom").importCssString('.ace-eclipse {\
+						    background-color: rgb('+color.R+', '+color.G+', '+color.B+');\
+						}');
+				}
+				else {
+			        this._backgroundColor = color;
+			    }
+			},
 			
 			setDirty : function(dirty) {
 				if (this.ready) {
@@ -260,21 +300,55 @@
 				}
 			},
 			
-			addMarker : function() {
+			setMarkers : function(markers) {
+				if (this.ready) {
+					this._markers = markers;
+					for (var i = this._markers.length; i--;) {
+						var marker = this._markers[i];
+						var Range = ace.require("ace/range").Range;
+						var range = new Range(marker.rowStart, marker.rowEnd, marker.columnStart, marker.columnEnd);
+						this.editor.getSession().addMarker(range, "ace_debug_line", "line");
+						ace.require("ace/lib/dom").importCssString('.ace_debug_line {\
+						    background-color: aquamarine;\
+						    position: absolute;\
+						}');
+		           }
+				}
+				else {
+			        this._markers = markers;
+			    }
+			},
+			
+			addMarker : function(marker) {
 				console.log("adding marker");
 				if(this.editor) {
+					var Range = ace.require("ace/range").Range;
+					var range = new Range(marker.rowStart,marker.rowEnd,marker.columnStart,marker.columnEnd);
+					this.editor.getSession().addMarker(range, "ace_debug_line", "line");
+					ace.require("ace/lib/dom").importCssString('.ace_debug_line {\
+					    background-color: aquamarine;\
+					    position: absolute;\
+					}');	
+				}
+			},
 
-					
-//					var aceRange = require('ace/range').Range;
-//					editor.session.addMarker(new aceRange(0,1,2,10), "some_custom_class", "line");
-//					require("ace/lib/dom").importCssString('.some_custom_class {\
-//					    background-color: aquamarine;\
-//					    position: absolute;\
-//					}')
-					
-					//var marker = this.editor.getSession().addMarker(range,"ace_selected_word", "text");
-					
-						
+			insertText : function(properties) {
+				console.log("inserting text");
+				if (this.editor) {
+					var position = { row:properties.rowStart, column:properties.columnStart};
+					var text = properties.text;
+					this.editor.getSession().insert(position, text); //where position is an object of the form {row:number, column:number}
+				}
+			},
+
+			removeText : function(properties) {
+				console.log("removing text");
+				if (this.editor) {			        
+					var range = this.editor.getSelectionRange();
+					if (range.start.row != range.end.row || range.start.column !=range.end.column) {
+			            this.editor.getSession().remove(range);
+			            this.editor.clearSelection();
+			        }
 				}
 			},
 			
@@ -282,8 +356,7 @@
 				var guid = this._url;
 				var editor = this.editor = ace.edit(this.element);
 				var editable = this.editable;
-				
-				
+		
 				if (editor != null) {					
 					editor.setTheme("ace/theme/eclipse");				
 					editor.getSession().setUseWrapMode(true);
@@ -322,26 +395,14 @@
 						    enableSnippets: true
 						});
 						
-						//FIXME: completers are not relased for some reason
 						completers = editor.completers.length;
-						//if (completers>4) {
-						//	this.langTools.removeCompleter(this.globalScope);
-						//}
 					}					
 					
 					//add documentation hover
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 					editor.tokenTooltip = new TokenTooltip(editor);
 		 	
-					var Range = ace.require("ace/range").Range;
-					var range = new Range(1, 1, 2, 6);
-					//this.editor.getSession().addMarker(new Range(1,0,1,2),"ace_active-line","fullLine");
-					this.editor.getSession().addMarker(new Range(4,0,0,0), "some_custom_class", "line");
-					ace.require("ace/lib/dom").importCssString('.some_custom_class {\
-					    background-color: aquamarine;\
-					    position: absolute;\
-					}')
-					
+
 					//Get this
 					var self = this;
 					
@@ -362,7 +423,6 @@
 						editor.on("focus", function() {
 					 		this._isFocused=true;
 					 		self.onFocus();
-					 		
 					 	});
 						
 						//on focus lost
@@ -375,20 +435,30 @@
 					 	editor.on("input", function() {
 							if (!editor.getSession().getUndoManager().isClean())
 								self.onModify();
-//					        var delta = event.data;
-//					        var range = delta.range;
-//					        if(range.start.row !== range.end.row) 
-//					        	return;
-//					        var lengthDiff;
-//					        if(delta.action === "insertText") {
-//					        	lengthDiff = range.end.column - range.start.column;
-//					        }
-//				            else if(delta.action === "removeText") {
-//				            	lengthDiff = range.start.column - range.end.column;
-//				            }
-//					        if (lengthDiff>0)
-//					        	self.onModify();
 					 	});
+					 	
+					 	editor.on("mousedown", function() { 
+					 	    // Store the Row/column values 
+					 		console.log("mouse down");
+					 	}) 
+
+					 	editor.getSession().getSelection().on('changeCursor', function() { 
+					 	    if (editor.$mouseHandler.isMousePressed)  {
+					 	      // the cursor changed using the mouse
+					 	      //self.onChangeCursor();
+					 	    }
+					 	    // the cursor changed
+					 	    self.onChangeCursor();
+					 	}); 
+					 	
+					 	editor.getSession().on('changeCursor', function() { 
+					 	    if (editor.$mouseHandler.isMousePressed)  {
+					 	      // remove last stored values 
+					 	     console.log("remove last stored values");
+					 	    }
+					 	    // Store the Row/column values 
+					 	    console.log("store the row/column values");
+					 	}); 
 					 	
 					 	//on change
 						editor.on("change", function(event) {					        

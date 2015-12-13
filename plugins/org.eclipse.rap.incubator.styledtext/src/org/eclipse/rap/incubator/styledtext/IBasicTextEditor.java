@@ -15,23 +15,28 @@
  */
 package org.eclipse.rap.incubator.styledtext;
 
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.ui.IEditorPart;
 
 public interface IBasicTextEditor extends IEditorPart {
-
-	/**
-	 * Returns the file path backed by this editor
-	 * 
-	 * @return the file path
-	 */
-	IPath getFilePath();
-
 	/**
 	 * Returns the text widget of this editor
 	 * 
 	 * @return the text widget
 	 */
 	BasicText getWidget();
-	
+
+    /**
+     * copies the current selection to the clipboard. 
+     */
+	void performCopy(TextSelection selection);
+ 
+    /**
+     * pastes the clipboard contents over the current selection. 
+     */
+    void performPaste();
+
+    /**
+     * cuts the current selection to the clipboard. 
+     */
+	void performCut(TextSelection selection);
 }

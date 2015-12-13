@@ -37,12 +37,14 @@ import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Listener;
+
 /**
  * A basic implementation of a styled text widget.
  * 
@@ -51,10 +53,20 @@ import org.eclipse.swt.widgets.Listener;
  */
 public class BasicText extends Composite {
 
-	static final long serialVersionUID = 1L;	
+	static final long serialVersionUID = 1L;
 	static final String REMOTE_TYPE = "org.eclipse.rap.incubator.styledtext.BasicText";
 	static final int TextChanged = 47;
 	static final int Save = 48;
+	static final int CaretEvent = 49;
+
+	class Position {
+		int row;
+		int column;
+		public Position(int newRow, int newColumn) {
+			this.row = newRow;
+			this.column = newColumn;
+		}
+	}
 	
 	final BasicTextOperationHandler operationHandler = new BasicTextOperationHandler(this);
 	RemoteObject remoteObject;
@@ -64,10 +76,13 @@ public class BasicText extends Composite {
 	String command = "";
 	List<Annotation> annotations = new ArrayList<Annotation>();
 	List<String> scope = new ArrayList<String>();
-	boolean isDirty=false;
+	List<TextRange> markers = new ArrayList<TextRange>();
 	int style;
 	Listener listener;
-	
+	TextSelection selection;
+	String clipboard;
+	Position cursorPosition;
+
 	public class BasicTextListener implements Listener {
 
 		private static final long serialVersionUID = 1L;
@@ -88,7 +103,7 @@ public class BasicText extends Composite {
 			switch (e.type) {
 			case SWT.Modify:
 				ModifyEvent modifyEvent = new ModifyEvent(e);
-				((ModifyListener) eventListener).modifyText(modifyEvent);
+				((ITextModifyListener) eventListener).handleTextModified(modifyEvent);
 				break;
 			case Save:
 				TextSavedEvent textSavedEvent = new TextSavedEvent(e);
@@ -119,7 +134,7 @@ public class BasicText extends Composite {
 		registerClientResources();
 		loadClientResources();
 		createRemoteObject();
-		
+
 		installListeners();
 	}
 
@@ -130,7 +145,7 @@ public class BasicText extends Composite {
 	 */
 	void handleTextChanged(Event event) {
 		System.out.println("[BasicText] handleTextChanged");
-		setDirty(true);
+		notifyListeners(SWT.Modify, event);
 		notifyListeners(TextChanged, event);
 	}
 
@@ -141,14 +156,36 @@ public class BasicText extends Composite {
 
 		listener = new Listener() {
 			private static final long serialVersionUID = 1L;
+
 			public void handleEvent(Event event) {
 				switch (event.type) {
-				case SWT.Dispose: handleDispose(event); break;
-				case SWT.MenuDetect: handleMenuDetect(event); break;
-				case SWT.Modify: handleTextModify(event); break;
-				case SWT.FocusOut: handleFocusLost(event); break;
-				case TextChanged: handleTextChanged(event);	break;
-				case Save: handleTextSave(event); break;
+				case SWT.Dispose:
+					handleDispose(event);
+					break;
+				case SWT.MenuDetect:
+					handleMenuDetect(event);
+					break;
+				case SWT.Modify:
+					handleTextModify(event);
+					break;
+				case SWT.Selection:
+					handleTextSelected(event);
+					break;
+				case SWT.FocusIn:
+					handleFocusGained(event);
+					break;
+				case SWT.FocusOut:
+					handleFocusLost(event);
+					break;
+				case TextChanged:
+					handleTextChanged(event);
+					break;
+				case CaretEvent:
+					handleCaretChanged(event);
+					break;
+				case Save:
+					handleTextSave(event);
+					break;
 				}
 			}
 		};
@@ -156,6 +193,29 @@ public class BasicText extends Composite {
 		addListener(SWT.MenuDetect, listener);
 		addListener(SWT.FocusIn, listener);
 		addListener(SWT.FocusOut, listener);
+		addListener(SWT.Selection, listener);
+		addListener(CaretEvent, listener);
+	}
+
+	protected void handleCaretChanged(Event event) {
+		JsonObject data = (JsonObject) event.data;
+		if (data != null && data instanceof JsonObject) {
+			JsonObject position = (JsonObject) data.get("value");
+			int row = position.get("row").asInt();
+			int column = position.get("column").asInt();
+			this.cursorPosition = new Position(row, column);
+			System.out.println("Position: row:" + row + ", column: " + column);
+		}
+	}
+
+	protected void handleTextSelected(Event event) {
+		String selection = event.text;
+		JsonObject coordinates = (JsonObject) event.data;
+		int rowStart =  coordinates.get("rowStart").asInt();
+		int rowEnd = coordinates.get("rowEnd").asInt();
+		int columnStart = coordinates.get("columnStart").asInt();
+		int columnEnd = coordinates.get("columnEnd").asInt();
+		this.selection = new TextSelection(selection, rowStart, rowEnd, columnStart, columnEnd);
 	}
 
 	/**
@@ -164,7 +224,6 @@ public class BasicText extends Composite {
 	 * @param event
 	 */
 	void handleTextModify(Event event) {
-		setDirty(true);
 		text = event.text;
 		notifyListeners(TextChanged, event);
 	}
@@ -175,11 +234,10 @@ public class BasicText extends Composite {
 	 * @param event
 	 */
 	void handleTextSave(Event event) {
-		if (event.text!=null){
+		if (event.text != null) {
 			setText(event.text, false);
 		}
 		notifyListeners(Save, event);
-		setDirty(false);
 	}
 
 	/**
@@ -188,20 +246,31 @@ public class BasicText extends Composite {
 	 * @param event
 	 */
 	void handleMenuDetect(Event event) {
-		//do nothing.
+		// do nothing.
 	}
 
+	void handleFocusGained(Event event) {
+		JsonObject data = (JsonObject) event.data;
+		if (data != null && data instanceof JsonObject) {
+			JsonObject position = (JsonObject) data.get("value");
+			int row = position.get("row").asInt();
+			int column = position.get("column").asInt();
+			this.cursorPosition = new Position(row, column);
+			System.out.println("Position: row:" + row + ", column: " + column);
+		}
+	}
+	
 	/**
 	 * Handles a focus lost event
 	 * 
 	 * @param event
 	 */
 	void handleFocusLost(Event event) {
-		if (event.text!=null){
+		if (event.text != null) {
 			setText(event.text, false);
 		}
 	}
-	
+
 	/**
 	 * Handles dispose event
 	 * 
@@ -310,7 +379,8 @@ public class BasicText extends Composite {
 	public void addFocusListener(FocusListener focusListener) {
 		System.out.println("[DSLFORGE] - Adding FocusListener");
 		checkWidget();
-		if (focusListener == null) SWT.error(SWT.ERROR_NULL_ARGUMENT);
+		if (focusListener == null)
+			SWT.error(SWT.ERROR_NULL_ARGUMENT);
 		BasicTextListener typedListener = new BasicTextListener(focusListener);
 		addListener(SWT.FocusOut, typedListener);
 		addListener(SWT.FocusIn, typedListener);
@@ -332,7 +402,8 @@ public class BasicText extends Composite {
 		JsonValue value = properties.get("value");
 		Event event = new Event();
 		event.type = stringToTypeEvent(eventName);
-		event.text = (value != null ? value.asString() : "");
+		event.text = (value != null && value.isString() ? value.asString() : "");
+		event.data = properties;		
 		listener.handleEvent(event);
 	}
 
@@ -456,6 +527,8 @@ public class BasicText extends Composite {
 	String eventTypeToString(int eventType) {
 		if (eventType == TextChanged)
 			return ITextOperationConstants.EVENT_TEXT_CHANGED;
+		if (eventType == CaretEvent)
+			return ITextOperationConstants.EVENT_CARET_CHANGED;
 		if (eventType == Save)
 			return ITextOperationConstants.EVENT_SAVE;
 		if (eventType == SWT.Modify)
@@ -464,6 +537,8 @@ public class BasicText extends Composite {
 			return ITextOperationConstants.EVENT_FOCUS_OUT;
 		if (eventType == SWT.FocusIn)
 			return ITextOperationConstants.EVENT_FOCUS_IN;
+		if (eventType == SWT.Selection)
+			return ITextOperationConstants.EVENT_SELECTION;
 		return null;
 	}
 
@@ -476,6 +551,8 @@ public class BasicText extends Composite {
 	int stringToTypeEvent(String eventName) {
 		if (eventName.equals(ITextOperationConstants.EVENT_TEXT_CHANGED))
 			return TextChanged;
+		if (eventName.equals(ITextOperationConstants.EVENT_CARET_CHANGED))
+			return CaretEvent;
 		if (eventName.equals(ITextOperationConstants.EVENT_SAVE))
 			return Save;
 		if (eventName.equals(ITextOperationConstants.EVENT_MODIFY))
@@ -484,6 +561,8 @@ public class BasicText extends Composite {
 			return SWT.FocusOut;
 		if (eventName.equals(ITextOperationConstants.EVENT_FOCUS_IN))
 			return SWT.FocusIn;
+		if (eventName.equals(ITextOperationConstants.EVENT_SELECTION))
+			return SWT.Selection;
 		return -1;
 	}
 
@@ -568,12 +647,12 @@ public class BasicText extends Composite {
 	 */
 	public void setEditable(boolean editable) {
 		checkWidget();
-	    this.style &= ~SWT.READ_ONLY;
-	    if( !editable ) {
-	      this.style |= SWT.READ_ONLY;
-	    }
+		this.style &= ~SWT.READ_ONLY;
+		if (!editable) {
+			this.style |= SWT.READ_ONLY;
+		}
 		getRemoteObject().set("editable", editable);
-	    
+
 	}
 
 	@Override
@@ -583,7 +662,8 @@ public class BasicText extends Composite {
 
 	@Override
 	public void setFont(Font font) {
-		super.setFont(font);
+		// super.setFont(font); //setting font from default won't work as the
+		// font which is displayed is hidden by the font of the client script
 		getRemoteObject().set("font", getCssFont());
 	}
 
@@ -628,7 +708,7 @@ public class BasicText extends Composite {
 		this.status = status;
 		getRemoteObject().set("status", status);
 	}
-	
+
 	/**
 	 * Sets an annotation on the text widget
 	 * 
@@ -641,7 +721,7 @@ public class BasicText extends Composite {
 		}
 		this.annotations = annotations;
 		JsonArray array = new JsonArray();
-		for (Annotation  a : annotations) {
+		for (Annotation a : annotations) {
 			array.add(a.getValue());
 		}
 		getRemoteObject().set("annotations", array);
@@ -652,7 +732,7 @@ public class BasicText extends Composite {
 	 * 
 	 * @param scope
 	 */
-	public void setLanguageScope(List<String> scope) {
+	public void setScope(List<String> scope) {
 		checkWidget();
 		if (scope == null) {
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
@@ -665,24 +745,107 @@ public class BasicText extends Composite {
 		getRemoteObject().set("scope", array);
 	}
 
-	void setDirty(boolean value) {
-		isDirty=value;
+	public void setMarkers(List<TextRange> ranges) {
+		checkWidget();
+		if (ranges == null) {
+			SWT.error(SWT.ERROR_NULL_ARGUMENT);
+		}
+		this.markers = ranges;
+		JsonArray values = new JsonArray();
+		for (TextRange range : ranges) {
+			values.add(range.getValue());
+		}
+		// getRemoteObject().call("addMarker", properties);
+		getRemoteObject().set("markers", values);
 	}
-	
+
 	/**
-	   * Returns the editable state.
+	 * Sets the receiver's background color to the color specified by the
+	 * argument, or to the default system color for the control if the argument
+	 * is null.
+	 *
+	 * @param color
+	 *            the new color (or null)
+	 *
+	 * @exception IllegalArgumentException
+	 *                <ul>
+	 *                <li>ERROR_INVALID_ARGUMENT - if the argument has been
+	 *                disposed</li>
+	 *                </ul>
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 */
+	public void setBackground(Color color) {
+		// super.setBackground(color); // This has no effect as the background
+		// will
+		// be hidden by the client script
+		JsonObject properties = new JsonObject();
+		properties.add("R", color.getRed());
+		properties.add("G", color.getGreen());
+		properties.add("B", color.getBlue());
+		getRemoteObject().set("background", properties);
+	}
+
+	/**
+	   * Sets the selection to the range specified
+	   * by the given start and end indices.
+	   * <p>
+	   * Indexing is zero based.  The range of
+	   * a selection is from 0..N where N is
+	   * the number of characters in the widget.
+	   * </p><p>
+	   * Text selections are specified in terms of
+	   * caret positions.  In a text widget that
+	   * contains N characters, there are N+1 caret
+	   * positions, ranging from 0..N.  This differs
+	   * from other functions that address character
+	   * position such as getText () that use the
+	   * usual array indexing rules.
+	   * </p>
 	   *
-	   * @return whether or not the receiver is editable
+	   * @param start the start of the range
+	   * @param end the end of the range
 	   *
 	   * @exception SWTException <ul>
 	   *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
 	   *    <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
 	   * </ul>
 	   */
-	  public boolean getEditable() {
+	  public void setSelection(String value, int rowStart, int rowEnd, int columnStart, int columnEnd) {
 	    checkWidget();
-	    return (style & SWT.READ_ONLY) == 0;
+	    this.selection = new TextSelection(value, rowStart, rowEnd, columnStart, columnEnd);
+	    getRemoteObject().set("selection", selection.getValue());
 	  }
+
+	public TextSelection getSelection() {
+		checkWidget();
+		if (selection!=null)
+			return this.selection;
+		return TextSelection.EMPTY;
+	}
+
+	/**
+	 * Returns the editable state.
+	 *
+	 * @return whether or not the receiver is editable
+	 *
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 */
+	public boolean getEditable() {
+		checkWidget();
+		return (style & SWT.READ_ONLY) == 0;
+	}
 
 	/**
 	 * Get the text value
@@ -725,36 +888,13 @@ public class BasicText extends Composite {
 	}
 
 	/**
-	 * Returns whether the widget is dirty
+	 * Get the current markers
+	 * 
 	 * @return
 	 */
-	public boolean isDirty() {
+	public List<TextRange> getMarkers() {
 		checkWidget();
-		return isDirty;
-	}
-	
-	public void highlightRange() {
-		int rowStart = 1;
-		int columnStart = 1;
-		int rowEnd = 2;
-		int columnEnd = 5;
-		TextRange range = new TextRange(rowStart, columnStart, rowEnd, columnEnd);
-		addMarker(range,"ace_selected_word", "text");
-	}
-
-	private void addMarker(TextRange range, String string, String string2) {
-		checkWidget();
-		if (status == null) {
-			SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		}
-		getRemoteObject().call("addMarker", null);
-		
-//		this.annotations = annotations;
-//		JsonArray array = new JsonArray();
-//		for (Annotation  a : annotations) {
-//			array.add(a.getValue());
-//		}
-//		getRemoteObject().set("annotations", array);
+		return markers;
 	}
 
 	/**
@@ -808,7 +948,6 @@ public class BasicText extends Composite {
 		getResources().add(path);
 	}
 
-
 	/**
 	 * Opens a RAP client/server connection.
 	 */
@@ -818,9 +957,10 @@ public class BasicText extends Composite {
 		getRemoteObject().setHandler(operationHandler);
 		getRemoteObject().set("parent", WidgetUtil.getId(this));
 	}
-	
+
 	/**
-	 * Create a RAP Remote object which will handle the client/server interaction
+	 * Create a RAP Remote object which will handle the client/server
+	 * interaction
 	 */
 	RemoteObject createRemoteObject(Connection connection) {
 		return connection.createRemoteObject(REMOTE_TYPE);
@@ -829,10 +969,39 @@ public class BasicText extends Composite {
 	/**
 	 * Clients may trigger method calls on the server
 	 * 
-	 * @param method : the method to call
-	 * @param properties : the method arguments
+	 * @param method
+	 *            : the method to call
+	 * @param properties
+	 *            : the method arguments
 	 */
 	void invoke(String method, JsonObject properties) {
 		System.out.println("[BasicText] Invoking method " + method);
+	}
+
+	public void copy(String toCopy) {
+		this.clipboard = toCopy;
+	}
+
+	public void paste() {
+		JsonObject properties = new JsonObject();
+		properties.add("rowStart", this.cursorPosition.row);
+		properties.add("columnStart", this.cursorPosition.column);
+		properties.add("text", this.clipboard);
+		getRemoteObject().call("insertText", properties);
+	}
+	
+	public Position getCursorPosition() {
+		return cursorPosition;
+	}
+
+	public void cut(TextSelection selection) {
+		checkWidget ();
+		if ((style & SWT.READ_ONLY) != 0) return;
+		this.clipboard = selection.getText();
+		JsonObject properties = new JsonObject();
+		properties.add("rowStart", this.cursorPosition.row);
+		properties.add("columnStart", this.cursorPosition.column);
+		properties.add("text", this.clipboard);
+		getRemoteObject().call("removeText", properties);
 	}
 }
