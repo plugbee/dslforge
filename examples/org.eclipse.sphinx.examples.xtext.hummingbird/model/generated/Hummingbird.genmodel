@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.sphinx.examples.xtext.hummingbird/src-gen"
-    editDirectory="/D:\git\dslforge\examples\org.eclipse.sphinx.examples.xtext.hummingbird.edit/src"
-    editorDirectory="/D:\git\dslforge\examples\org.eclipse.sphinx.examples.xtext.hummingbird.editor/src"
+    editDirectory="/org.eclipse.sphinx.examples.xtext.hummingbird.edit/src" editorDirectory="/org.eclipse.sphinx.examples.xtext.hummingbird.editor/src"
     modelPluginID="org.eclipse.sphinx.examples.xtext.hummingbird" forceOverwrite="true"
     modelName="Hummingbird" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="6.0" copyrightFields="false" editPluginID="org.eclipse.sphinx.examples.xtext.hummingbird.edit"
-    editorPluginID="org.eclipse.sphinx.examples.xtext.hummingbird.editor" runtimeVersion="2.10">
+    editorPluginID="org.eclipse.sphinx.examples.xtext.hummingbird.editor" runtimeVersion="2.11">
   <genPackages prefix="Hummingbird" basePackage="org.eclipse.sphinx.examples.xtext"
       disposableProviderFactory="true" fileExtensions="hbtext" ecorePackage="Hummingbird.ecore#/">
     <genClasses ecoreClass="Hummingbird.ecore#//EntryPoint">
