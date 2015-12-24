@@ -33,10 +33,10 @@ public class TestDB {
 
     public static Map<String,Object> defaultProperties() {
         Map<String,Object> props = new HashMap<String,Object>();
-        props.put("javax.persistence.jdbc.driver", IWorkspaceConstants.JDBC_TEST_DRIVER);
-        props.put("javax.persistence.jdbc.url", IWorkspaceConstants.JDBC_TEST_URL);
-        props.put("javax.persistence.jdbc.user", IWorkspaceConstants.JDBC_TEST_USER);
-        props.put("javax.persistence.jdbc.password", IWorkspaceConstants.JDBC_TEST_PASSWORD);
+        props.put("javax.persistence.jdbc.driver", IWorkspaceConstants.JDBC_DATABASE_DRIVER);
+        props.put("javax.persistence.jdbc.url", IWorkspaceConstants.JDBC_DATABASE_URL);
+        props.put("javax.persistence.jdbc.user", IWorkspaceConstants.JDBC_DATABASE_USER);
+        props.put("javax.persistence.jdbc.password", IWorkspaceConstants.JDBC_DATABASE_PASSWORD);
         props.put("eclipselink.logging.level", "FINE");
         props.put(PersistenceUnitProperties.CLASSLOADER,  TestDB.class.getClass().getClassLoader());    
     //    props.put(PersistenceUnitProperties.WEAVING, "false");

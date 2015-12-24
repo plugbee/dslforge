@@ -6,9 +6,6 @@
       <resource
           class="org.eclipse.xtext.example.fowlerdsl.web.editor.widget.StatemachineResource">
       </resource>
-      <resource
-          class="org.eclipse.xtext.example.fowlerdsl.web.editor.widget.GlobalIndexResource">
-      </resource>
    </extension>
    <extension
          point="org.eclipse.rap.ui.themeableWidgets">
@@ -30,6 +27,7 @@
       </editor>
    </extension>
       <!-- @generated dslforge -->
+      <!--
    <extension point="org.eclipse.ui.actionSets">
       <actionSet
             label="Statemachine Action Set"
@@ -40,8 +38,9 @@
                class="org.eclipse.xtext.example.fowlerdsl.web.actions.NewStatemachineAction"
               menubarPath="file/new/additions"
                id="org.eclipse.xtext.example.fowlerdsl.web.wizard.newStatemachineAction"/>
-      </actionSet>
+      </actionSet> 
    </extension>
+
    <extension
      point="org.dslforge.workbench.contribution">
   <generator
@@ -50,4 +49,5 @@
         label="org.eclipse.xtext.example.fowlerdsl.Statemachine">
   </generator>
 </extension>
+   -->
 </plugin>

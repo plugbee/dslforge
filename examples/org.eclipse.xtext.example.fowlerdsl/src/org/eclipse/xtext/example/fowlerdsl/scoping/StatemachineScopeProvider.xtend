@@ -3,6 +3,15 @@
  */
 package org.eclipse.xtext.example.fowlerdsl.scoping
 
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.scoping.IScope
+import com.google.common.base.Predicate
+import org.eclipse.xtext.resource.IEObjectDescription
+import org.eclipse.xtext.scoping.impl.FilteringScope
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.example.fowlerdsl.statemachine.Event
+import org.eclipse.xtext.example.fowlerdsl.statemachine.State
+
 /**
  * This class contains custom scoping description.
  * 
@@ -12,4 +21,30 @@ package org.eclipse.xtext.example.fowlerdsl.scoping
  */
 class StatemachineScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider {
 
+	def IScope scope_Statemachine_events(EObject context, EReference reference) {
+		return new FilteringScope(delegateGetScope(context, reference),
+				new Predicate<IEObjectDescription>() {
+					 override apply(IEObjectDescription d) {
+						return (d.getEObjectOrProxy() instanceof Event);
+					}
+				});
+	}
+
+	def IScope scope_Transition_event(EObject context, EReference reference) {
+		return new FilteringScope(delegateGetScope(context, reference),
+				new Predicate<IEObjectDescription>() {
+					 override apply(IEObjectDescription d) {
+						return (d.getEObjectOrProxy() instanceof Event);
+					}
+				});
+	}
+
+	def IScope scope_Transition_state(EObject context, EReference reference) {
+		return new FilteringScope(delegateGetScope(context, reference),
+				new Predicate<IEObjectDescription>() {
+					 override apply(IEObjectDescription d) {
+						return (d.getEObjectOrProxy() instanceof State);
+					}
+				});
+	}	
 }

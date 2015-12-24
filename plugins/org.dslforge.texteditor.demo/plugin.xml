@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<!-- @generated dslforge -->
+<extension point="org.eclipse.rap.ui.entrypoint">
+	<entrypoint
+       brandingId="org.dslforge.texteditor.demo.branding"
+       class="org.dslforge.texteditor.demo.BasicWorkbench"
+       id="org.dslforge.texteditor.demo.entrypoint"
+       path="/texteditor">
+		</entrypoint>
+	</extension>
+	<extension
+		id="org.dslforge.texteditor.demo.application"
+				point="org.eclipse.core.runtime.applications">
+		<application
+        cardinality="singleton-global"
+        thread="main"
+        visible="true">
+			<run
+				class="org.dslforge.texteditor.demo.BasicWorkbenchApplication">
+			</run>
+		</application>
+	</extension>
+	<extension
+	      point="org.eclipse.rap.ui.branding">
+	   <branding
+	         favicon="icons/dslforge.png"
+	         id="org.dslforge.texteditor.demo.branding"
+	         title="Text Editor Basic Workbench">
+	      <presentationFactory
+	            id="org.eclipse.ui.presentations.default"
+	            name="Text Editor Demo">
+	      </presentationFactory>
+	   </branding>
+	</extension>
+	
+	<extension
+		point="org.eclipse.ui.perspectives">
+		<perspective
+			name="Text Editor Demo Perspective"
+			class="org.dslforge.texteditor.demo.parts.BasicWorkbenchPerspective"
+				id="org.dslforge.texteditor.demo.ui.parts.perspective">
+		</perspective>
+	</extension>
+
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewer
+            viewerId="org.dslforge.navigator.view">
+      </viewer>
+      <viewerContentBinding
+            viewerId="org.dslforge.navigator.view">
+         <includes>
+            <contentExtension
+                  isRoot="true"
+                  pattern="org.dslforge.navigator.fileContent">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.dslforge.navigator.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+</plugin>

@@ -46,14 +46,11 @@ public class BasicTextLinkingService extends DefaultLinkingService {
 		final EClass requiredType = ref.getEReferenceType();
 		if (requiredType == null)
 			return Collections.<EObject> emptyList();
-
 		final String crossRefString = getCrossRefNodeAsString(node);
 		if (crossRefString != null && !crossRefString.equals("")) {
-			//System.out.println("before getLinkedObjects: node: '" + crossRefString + "'");
 			final IScope scope = getScope(context, ref);
 			QualifiedName qualifiedLinkName =  qualifiedNameConverter.toQualifiedName(crossRefString);
 			IEObjectDescription eObjectDescription = scope.getSingleElement(qualifiedLinkName);
-			//System.out.println("after getLinkedObjects: node: '" + crossRefString + "' result: " + eObjectDescription);
 			if (eObjectDescription != null) 
 				return Collections.singletonList(eObjectDescription.getEObjectOrProxy());
 		}

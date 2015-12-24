@@ -28,245 +28,203 @@ import org.dslforge.database.pu.tables.Resource;
 import org.dslforge.database.pu.tables.User;
 import org.dslforge.workspace.IWorkspaceConstants;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.util.SafeRunnable;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({ "unchecked", "serial" })
 public class DatabaseService {
 
 	public BundleContext context;
+	private EntityManagerFactory entityManagerFactory;
+	private static DatabaseService INSTANCE;
 
-    private EntityManagerFactory emf;
-    
-	public static final String LOCKED = "locked";
-	
-	public static final String UNLOCKED = "unlocked";
-    	
-    private static DatabaseService INSTANCE;
-	
-    public static synchronized DatabaseService getInstance() {
-    	if (INSTANCE==null) {
-    		INSTANCE = new DatabaseService();
-    	}
-    	return INSTANCE;
-    }
-    
+	public static synchronized DatabaseService getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new DatabaseService();
+		}
+		return INSTANCE;
+	}
+
 	private DatabaseService() {
 		System.out.println("[DSLFORGE] Starting DatabaseService...");
 	}
-    
-    public void setEntityManagerFactory(EntityManagerFactory emf) {
-    	this.emf = emf;
-    }
-    
-    public void setContext(BundleContext context) {
-    	this.context = context;
-    }
+
+	public void setEntityManagerFactory(EntityManagerFactory emf) {
+		this.entityManagerFactory = emf;
+	}
+
+	public void setContext(BundleContext context) {
+		this.context = context;
+	}
 
 	public EntityManagerFactory getEmf() {
-		if (emf==null) {
-			emf = lookupEntityManagerFactory(IWorkspaceConstants.PERSISTENCE_UNIT_NAME);
+		if (entityManagerFactory == null) {
+			entityManagerFactory = lookupEntityManagerFactory(IWorkspaceConstants.PERSISTENCE_UNIT_NAME);
 		}
-		return emf;
+		return entityManagerFactory;
 	}
 
-    public EntityManagerFactory lookupEntityManagerFactory(String puName) {
-        String filter = "(osgi.unit.name="+puName+")";
+	public EntityManagerFactory lookupEntityManagerFactory(String puName) {
+		String filter = "(osgi.unit.name=" + puName + ")";
 		@SuppressWarnings("rawtypes")
 		ServiceReference[] refs = null;
-        try {
-            refs = context.getServiceReferences(EntityManagerFactory.class.getName(), filter);
-        } catch (InvalidSyntaxException isEx) {
-            new RuntimeException("[DSLFORGE] Bad filter", isEx);
-        }
-        System.out.println("[DSLFORGE] EMF Service refs looked up from registry: " + refs);
-        return (refs == null) ? null : (EntityManagerFactory) context.getService(refs[0]);
-    }
-	
-	public void dumpDatabase() {
-		dumpUsers();
-		dumpProjects();
-		dumpFolders();
-		dumpResources();
+		try {
+			refs = context.getServiceReferences(EntityManagerFactory.class.getName(), filter);
+		} catch (InvalidSyntaxException isEx) {
+			new RuntimeException("[DSLFORGE] Bad filter", isEx);
+		}
+		System.out.println("[DSLFORGE] EMF Service refs looked up from registry: " + refs);
+		return (refs == null) ? null : (EntityManagerFactory) context.getService(refs[0]);
 	}
 
-//////////////////////////////////////////
-//USERS
-//////////////////////////////////////////
-	public void createUser(String userName, String firstName, String lastName, String organization, String email, String pwd) {
-		User user = new User();
-		user.setId(userName);
-		user.setFirstName(firstName);
-		user.setLastName(lastName);
-		user.setOrganization(organization);
-		user.setEmail(email);
-		user.setPassword(pwd);		
-		EntityManager em=getEmf().createEntityManager();
-		em.getTransaction().begin();
-		em.persist(user);
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
+	//////////////////////////////////////////
+	// USERS
+	//////////////////////////////////////////
+	public void createUser(final String userName, final String firstName, final String lastName,
+			final String organization, final String email, final String pwd) {
+		SafeRunnable.run(new SafeRunnable() {
+			public void run() {
+				User user = new User();
+				user.setId(userName);
+				user.setFirstName(firstName);
+				user.setLastName(lastName);
+				user.setOrganization(organization);
+				user.setEmail(email);
+				user.setPassword(pwd);
+				EntityManager em = getEmf().createEntityManager();
+				em.getTransaction().begin();
+				em.persist(user);
+				em.getTransaction().commit();
+				em.close();
+				dumpDatabase();
+			}
+		});
 	}
-	
+
+	//////////////////////////////////////////
+	// PROJECTS
+	//////////////////////////////////////////
+
+	public void createProject(final String projectName, final String description, final String path,
+			final String userName, final String visibility) {
+		SafeRunnable.run(new SafeRunnable() {
+			public void run() {
+				Project project = new Project();
+				project.setId(EcoreUtil.generateUUID());
+				project.setName(projectName);
+				project.setDescription(description);
+				project.setPath(path);
+				project.setUser(getUser(userName));
+				project.setVisibility(visibility);
+				EntityManager em = getEmf().createEntityManager();
+				em.getTransaction().begin();
+				em.persist(project);
+				em.getTransaction().commit();
+				em.close();
+				dumpDatabase();
+			}
+		});
+
+	}
+
+	public void createFolder(final String folderPath, final String folderName) {
+		SafeRunnable.run(new SafeRunnable() {
+			public void run() {
+				EntityManager em = getEmf().createEntityManager();
+				Folder folder = new Folder();
+				folder.setId(EcoreUtil.generateUUID());
+				folder.setName(folderName);
+				folder.setPath(folderPath);
+				em.getTransaction().begin();
+				em.persist(folder);
+				em.getTransaction().commit();
+				em.close();
+				dumpDatabase();
+			}
+		});
+	}
+
+	//////////////////////////////////////////
+	// RESOURCES
+	//////////////////////////////////////////
+	public void createResource(final String projectName, final String path) {
+		SafeRunnable.run(new SafeRunnable() {
+			public void run() {
+				Resource resource = new Resource();
+				resource.setGuid(EcoreUtil.generateUUID());
+				resource.setPath(path);
+				resource.setStatus(IWorkspaceConstants.UNLOCKED);
+				EntityManager em = getEmf().createEntityManager();
+				em.getTransaction().begin();
+				Project project = null;
+				Query q = em.createQuery("select p from Project p");
+				List<Project> projects = q.getResultList();
+				int i = 0;
+				while (i < projects.size()) {
+					Project p = projects.get(i);
+					if (p.getName().equals(projectName)) {
+						project = p;
+						break;
+					}
+					i++;
+				}
+				if (project == null)
+					throw new RuntimeException("Could not find project " + projectName);
+				resource.setProject(project);
+				project.getResources().add(resource);
+				em.persist(resource);
+				em.getTransaction().commit();
+				em.close();
+				dumpDatabase();
+			}
+		});
+	}
+
 	public User getUser(String userName) {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		User user = em.find(User.class, userName);
 		em.close();
 		return user;
 	}
 
 	public User getUser(String firstName, String lastName) {
-		EntityManager em=getEmf().createEntityManager();
-		Query q = em.createQuery("select u from User u where u.firstName = '" + firstName + "' and u.lastName = '" + lastName + "'");
+		EntityManager em = getEmf().createEntityManager();
+		Query q = em.createQuery(
+				"select u from User u where u.firstName = '" + firstName + "' and u.lastName = '" + lastName + "'");
 		List<User> users = q.getResultList();
-		if (users.size()>1)
+		if (users.size() > 1)
 			throw new RuntimeException("Duplicate user with name: " + firstName + " " + lastName);
 		em.close();
 		return users.get(0);
 	}
 
 	public User getUserById(String userId) {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		User user = em.find(User.class, userId);
-		if (user==null)
+		if (user == null)
 			throw new RuntimeException("Could not find user with id: " + userId);
 		em.close();
 		return user;
 	}
 
 	public List<User> getAllUsers() {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery("select u from User u");
 		List<User> usersList = q.getResultList();
 		em.close();
 		return usersList;
 	}
 
-	public void deleteUser(String userName) {
-		EntityManager em=getEmf().createEntityManager();
-		Query q = em.createQuery("delete from User u where u.id ='" + userName + "'");
-		em.getTransaction().begin();
-		q.executeUpdate();
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
-	}
-
-	public void deleteUser(String firstName, String lastName) {
-		EntityManager em=getEmf().createEntityManager();
-		Query q = em.createQuery("delete from User u where u.firstName ='" + firstName + "' and u.lastName='" + lastName + "'");
-		em.getTransaction().begin();
-		q.executeUpdate();
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
-	}
-	
-	public void deleteAllUsers() {
-		EntityManager em=getEmf().createEntityManager();
-		em.getTransaction().begin();
-		Query q = em.createQuery("delete from User");
-		q.executeUpdate();
-		em.getTransaction().commit();
-		em.close();
-	}
-	
-	public User authenticateUser(String login, String password) {
-		EntityManager em=getEmf().createEntityManager();
-		Query q = em.createQuery("select u from User u where u.id = '" + login + "' and u.password = '" + password + "'");
-		List<User> users = q.getResultList();
-		if (users.size()>1)
-			throw new RuntimeException("Duplicate user with the same credentials");
-		if(users.isEmpty()) {
-			return null;
-		}
-		em.close();
-		return users.get(0);
-	}
-	
-	public User changePwd(String userName, String pwd) {
-		EntityManagerFactory emf = getEmf();
-		EntityManager em=emf.createEntityManager();
-		//dumpUsers();
-		Query q = em.createQuery("select u from User u where u.id = '" + userName + "'");
-		List<User> users = q.getResultList();
-		if (users.size()>1)
-			throw new RuntimeException("Duplicate user with the same credentials");
-		if(users.isEmpty()) {
-			return null;
-		}
-		User user = users.get(0);
-		user.setPassword(pwd);
-		em.getTransaction().begin();
-		em.persist(user);
-		em.getTransaction().commit();
-		em.close();
-		return users.get(0);
-	}
-	
-	public User updateUserAccount(String userName, String firstName, String lastName, String organization, String email, String pwd) {
-		EntityManagerFactory emf = getEmf();
-		EntityManager em=emf.createEntityManager();
-		//dumpUsers();
-		Query q = em.createQuery("select u from User u where u.id = '" + userName + "'");
-		List<User> users = q.getResultList();
-		if (users.size()>1)
-			throw new RuntimeException("Duplicate user with the same credentials");
-		if(users.isEmpty()) {
-			return null;
-		}
-		User user = users.get(0);
-		user.setFirstName(firstName);
-		user.setLastName(lastName);
-		user.setOrganization(organization);
-		user.setEmail(email);
-		user.setPassword(pwd);
-		em.getTransaction().begin();
-		em.persist(user);
-		em.getTransaction().commit();
-		em.close();
-		return users.get(0);
-	}
-	
-	public void dumpUsers() {
-		List<User> users = getAllUsers();
-		for (User user : users) {
-			System.out.println(user);
-		}
-		System.out.println("Size: " + users.size());
-	}
-
-	
-//////////////////////////////////////////
-//PROJECTS
-//////////////////////////////////////////
-	
-	public void createProject(String projectName, String description, String path, String userName, String visibility) {
-		Project project = new Project();
-		project.setId(EcoreUtil.generateUUID());
-		project.setName(projectName);
-		project.setDescription(description);
-		project.setPath(path);
-		project.setUser(getUser(userName));
-		project.setVisibility(visibility);
-		EntityManager em=getEmf().createEntityManager();
-		em.getTransaction().begin();
-		em.persist(project);
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
-	}
-	
 	public Project getProject(String projectName) {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery("select p from Project p");
 		List<Project> projects = q.getResultList();
 		int i = 0;
-		while(i<projects.size()) {
+		while (i < projects.size()) {
 			Project p = projects.get(i);
-			if(p.getName().equals(projectName)) {
+			if (p.getName().equals(projectName)) {
 				return p;
 			}
 			i++;
@@ -276,7 +234,7 @@ public class DatabaseService {
 	}
 
 	public List<Project> getAllProjects() {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery("select p from Project p");
 		List<Project> projects = q.getResultList();
 		em.close();
@@ -285,9 +243,9 @@ public class DatabaseService {
 
 	public List<Project> getAllProjectsForUser(String userName) {
 		List<Project> filtered = new ArrayList<Project>();
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery("select p from Project p");
-		List<Project> projects = q.getResultList(); 
+		List<Project> projects = q.getResultList();
 		for (Project p : projects) {
 			String candidate = p.getUser().getId();
 			if (candidate.equals(userName)) {
@@ -298,54 +256,14 @@ public class DatabaseService {
 		return projects;
 	}
 
-	public void deleteProject(String projectName) {
-		EntityManager em=getEmf().createEntityManager();
-		em.getTransaction().begin();
-		Query q = em.createQuery("delete from Project p where p.name ='" + projectName + "'");
-		q.executeUpdate();	
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
-	}
-
-	public void deleteAllProjects() {
-		EntityManager em=getEmf().createEntityManager();
-		em.getTransaction().begin();
-		Query q = em.createQuery("delete from Project");
-		q.executeUpdate();	
-		em.getTransaction().commit();
-		em.close();
-	}
-
-	public void dumpProjects() {
-		List<Project> projectsList = getAllProjects();
-		for (Project project : projectsList) {
-			System.out.println(project);
-		}
-		System.out.println("Size: " + projectsList.size());
-	}
-
-	public void createFolder(String folderPath, String folderName) {
-		EntityManager em=getEmf().createEntityManager();
-		Folder folder = new Folder();
-		folder.setId(EcoreUtil.generateUUID());
-		folder.setName(folderName);
-		folder.setPath(folderPath);
-		em.getTransaction().begin();
-		em.persist(folder);
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
-	}
-
 	public Folder getFolder(String path) {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery("select f from Folder f where f.path='" + path + "'");
 		List<Folder> folders = q.getResultList();
-		if (folders.size()>1){
+		if (folders.size() > 1) {
 			throw new RuntimeException("Duplicate folder found with path " + path);
 		}
-		if (folders.isEmpty()){
+		if (folders.isEmpty()) {
 			return null;
 		}
 		em.close();
@@ -353,7 +271,7 @@ public class DatabaseService {
 	}
 
 	public List<Folder> getAllFolders() {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery("select f from Folder f");
 		List<Folder> folders = q.getResultList();
 		em.close();
@@ -361,81 +279,18 @@ public class DatabaseService {
 	}
 
 	public List<Folder> getAllFoldersInProject(String projectName) {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery("select r from Folder r where r.path like '" + projectName + "%'");
 		List<Folder> resources = q.getResultList();
 		em.close();
 		return resources;
 	}
-	
-	public void deleteFolder(String projectName, String path) {
-		EntityManager em=getEmf().createEntityManager();
-		em.getTransaction().begin();
-		Query q = em.createQuery("delete from Folder p where p.path ='" + path + "'");
-		q.executeUpdate();	
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
-	}
-	
-	public void deleteAllFolders() {
-		EntityManager em=getEmf().createEntityManager();
-		em.getTransaction().begin();
-		Query q = em.createQuery("delete from Folder");
-		q.executeUpdate();	
-		em.getTransaction().commit();
-		em.close();
-	}
-	
-	public void dumpFolders() {
-		List<Folder> folderList = getAllFolders();
-		for (Folder folder : folderList) {
-			System.out.println(folder);
-		}
-		System.out.println("Size: " + folderList.size());
-	}
-
-	
-//////////////////////////////////////////
-//				RESOURCES
-//////////////////////////////////////////
-	public void createResource(String projectName, String path) {
-		Resource resource = new Resource();
-		resource.setGuid(EcoreUtil.generateUUID());
-		resource.setPath(path);
-		resource.setStatus(UNLOCKED);
-		
-		EntityManager em=getEmf().createEntityManager();
-		em.getTransaction().begin();
-
-		Project project = null;
-		Query q = em.createQuery("select p from Project p");
-		List<Project> projects = q.getResultList();
-		int i = 0;
-		while(i<projects.size()) {
-			Project p = projects.get(i);
-			if(p.getName().equals(projectName)) {
-				project = p;
-				break;
-			}
-			i++;
-		}
-		if (project==null)
-			throw new RuntimeException("Could not find project " + projectName);
-		
-		resource.setProject(project);
-		project.getResources().add(resource);
-		em.persist(resource);
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
-	}
 
 	public Resource getResource(String projectName, String path) {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery("select r from Resource r where r.path='" + path + "'");
 		List<Resource> resources = q.getResultList();
-		for (Resource r: resources) {
+		for (Resource r : resources) {
 			Project project = r.getProject();
 			if (project.getName().equals(projectName)) {
 				return r;
@@ -446,7 +301,7 @@ public class DatabaseService {
 	}
 
 	public List<Resource> getAllResources() {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery("select r from Resource r");
 		List<Resource> resources = q.getResultList();
 		em.close();
@@ -454,49 +309,118 @@ public class DatabaseService {
 	}
 
 	public List<Resource> getAllResourcesInProject(String projectName) {
-		EntityManager em=getEmf().createEntityManager();
-		Query q = em.createQuery("select r from Resource r where r.project in (select p from Project p where p.name = '" + projectName + "')");
+		EntityManager em = getEmf().createEntityManager();
+		Query q = em.createQuery("select r from Resource r where r.project in (select p from Project p where p.name = '"
+				+ projectName + "')");
 		List<Resource> resources = q.getResultList();
 		em.close();
 		return resources;
 	}
 
-	public void deleteResource(String projectName, String path) {
-		EntityManager em=getEmf().createEntityManager();
+	public void deleteUser(String userName) {
+		EntityManager em = getEmf().createEntityManager();
+		Query q = em.createQuery("delete from User u where u.id ='" + userName + "'");
 		em.getTransaction().begin();
-		
-		//Resource r = getResource(projectName, path);
+		q.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+		dumpDatabase();
+	}
+
+	public void deleteUser(String firstName, String lastName) {
+		EntityManager em = getEmf().createEntityManager();
+		Query q = em.createQuery(
+				"delete from User u where u.firstName ='" + firstName + "' and u.lastName='" + lastName + "'");
+		em.getTransaction().begin();
+		q.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+		dumpDatabase();
+	}
+
+	public void deleteAllUsers() {
+		EntityManager em = getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Query q = em.createQuery("delete from User");
+		q.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public void deleteProject(String projectName) {
+		EntityManager em = getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Query q = em.createQuery("delete from Project p where p.name ='" + projectName + "'");
+		q.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+		dumpDatabase();
+	}
+
+	public void deleteAllProjects() {
+		EntityManager em = getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Query q = em.createQuery("delete from Project");
+		q.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public void deleteFolder(String projectName, String path) {
+		EntityManager em = getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Query q = em.createQuery("delete from Folder p where p.path ='" + path + "'");
+		q.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+		dumpDatabase();
+	}
+
+	public void deleteAllFolders() {
+		EntityManager em = getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Query q = em.createQuery("delete from Folder");
+		q.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public void deleteResource(String projectName, String path) {
+		EntityManager em = getEmf().createEntityManager();
+		em.getTransaction().begin();
+
+		// Resource r = getResource(projectName, path);
 		Resource resource = null;
 		Query q = em.createQuery("select r from Resource r where r.path='" + path + "'");
 		List<Resource> resources = q.getResultList();
-		for (Resource r: resources) {
+		for (Resource r : resources) {
 			Project project = r.getProject();
 			if (project.getName().equals(projectName)) {
 				resource = r;
 				break;
 			}
 		}
-		//verify resource is not null
-		if (resource!=null) {
-			Project project =null;
+		// verify resource is not null
+		if (resource != null) {
+			Project project = null;
 			q = em.createQuery("select p from Project p");
 			List<Project> projects = q.getResultList();
 			int i = 0;
-			while(i<projects.size()) {
+			while (i < projects.size()) {
 				Project p = projects.get(i);
-				if(p.getName().equals(projectName)) {
+				if (p.getName().equals(projectName)) {
 					project = p;
 					break;
 				}
 				i++;
 			}
-			
-			//verify project is not null
-			if (project==null) {
+
+			// verify project is not null
+			if (project == null) {
 				return;
 			}
-			
-			//update project
+
+			// update project
 			project.getResources().remove(resource);
 			em.persist(project);
 
@@ -507,36 +431,70 @@ public class DatabaseService {
 		em.getTransaction().commit();
 		em.close();
 	}
-	
+
 	public void deleteAllResources() {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		em.getTransaction().begin();
 		Query q = em.createQuery("delete from Resource");
 		q.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
 	}
-	
-	public void lockResource(String userName, String projectName,  String path) {
-		EntityManager em=getEmf().createEntityManager();
+
+	public User authenticateUser(String login, String password) {
+		EntityManager em = getEmf().createEntityManager();
+		Query q = em
+				.createQuery("select u from User u where u.id = '" + login + "' and u.password = '" + password + "'");
+		List<User> users = q.getResultList();
+		if (users.size() > 1)
+			throw new RuntimeException("Duplicate user with the same credentials");
+		if (users.isEmpty()) {
+			return null;
+		}
+		em.close();
+		return users.get(0);
+	}
+
+	public User changePwd(String userName, String pwd) {
+		EntityManagerFactory emf = getEmf();
+		EntityManager em = emf.createEntityManager();
+		// dumpUsers();
+		Query q = em.createQuery("select u from User u where u.id = '" + userName + "'");
+		List<User> users = q.getResultList();
+		if (users.size() > 1)
+			throw new RuntimeException("Duplicate user with the same credentials");
+		if (users.isEmpty()) {
+			return null;
+		}
+		User user = users.get(0);
+		user.setPassword(pwd);
+		em.getTransaction().begin();
+		em.persist(user);
+		em.getTransaction().commit();
+		em.close();
+		return users.get(0);
+	}
+
+	public void lockResource(String userName, String projectName, String path) {
+		EntityManager em = getEmf().createEntityManager();
 		Resource resource = null;
 		Query q = em.createQuery("select r from Resource r where r.path='" + path + "'");
 		List<Resource> resources = q.getResultList();
-		for (Resource r: resources) {
+		for (Resource r : resources) {
 			Project project = r.getProject();
 			if (project.getName().equals(projectName)) {
-				resource =  r;
+				resource = r;
 				break;
 			}
 		}
-		
-		//ignore resources out of scope
-		if (resource==null) {
+
+		// ignore resources out of scope
+		if (resource == null) {
 			return;
 		}
-		resource.setStatus(LOCKED);
+		resource.setStatus(IWorkspaceConstants.LOCKED);
 
-		User user = em.find(User.class, userName);		
+		User user = em.find(User.class, userName);
 		resource.setLocker(user);
 
 		em.getTransaction().begin();
@@ -547,26 +505,27 @@ public class DatabaseService {
 	}
 
 	public void unlockResource(String userId, String projectName, String path) {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		em.getTransaction().begin();
-		
+
 		Resource resource = null;
 		Query q = em.createQuery("select r from Resource r where r.path='" + path + "'");
 		List<Resource> resources = q.getResultList();
-		for (Resource r: resources) {
+		for (Resource r : resources) {
 			Project project = r.getProject();
 			if (project.getName().equals(projectName)) {
-				resource =  r;
+				resource = r;
 				break;
 			}
 		}
-		//resource out of the scope
-		if (resource==null) {
+		// resource out of the scope
+		if (resource == null) {
 			return;
 		}
-		resource.setStatus(UNLOCKED);		
+		resource.setStatus(IWorkspaceConstants.UNLOCKED);
 
-		q = em.createQuery("update Resource r set r.status ='" + UNLOCKED + "' where r.path = '" + path + "'");
+		q = em.createQuery(
+				"update Resource r set r.status ='" + IWorkspaceConstants.UNLOCKED + "' where r.path = '" + path + "'");
 		q.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
@@ -574,35 +533,67 @@ public class DatabaseService {
 	}
 
 	public void unlockAll(String userId) {
-		EntityManager em=getEmf().createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		em.getTransaction().begin();
-		Query q = em.createQuery("update Resource r set r.status ='" + UNLOCKED + "' where r.locker in (select u from User u where u.id = '" + userId + "')");
+		Query q = em.createQuery("update Resource r set r.status ='" + IWorkspaceConstants.UNLOCKED
+				+ "' where r.locker in (select u from User u where u.id = '" + userId + "')");
 		q.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
 		dumpDatabase();
 	}
-	
-	public User getLocker(String projectName,  String path) {
+
+	public User getLocker(String projectName, String path) {
 		Resource resource = getResource(projectName, path);
 		return resource.getLocker();
 	}
-	
+
 	public boolean isLocked(String projectName, String path) {
 		Resource resource = getResource(projectName, path);
-		//ignore resources out of database scope
-		if (resource==null) {
+		// ignore resources out of database scope
+		if (resource == null) {
 			return false;
 		}
-		if (resource.getStatus().equals(LOCKED))
+		if (resource.getStatus().equals(IWorkspaceConstants.LOCKED))
 			return true;
 		return false;
+	}
+
+	public void dumpDatabase() {
+		dumpUsers();
+		dumpProjects();
+		dumpFolders();
+		dumpResources();
+	}
+
+	public void dumpUsers() {
+		List<User> users = getAllUsers();
+		for (User user : users) {
+			System.out.println(user);
+		}
+		System.out.println("Size: " + users.size());
+	}
+
+	public void dumpProjects() {
+		List<Project> projectsList = getAllProjects();
+		for (Project project : projectsList) {
+			System.out.println(project);
+		}
+		System.out.println("Size: " + projectsList.size());
+	}
+
+	public void dumpFolders() {
+		List<Folder> folderList = getAllFolders();
+		for (Folder folder : folderList) {
+			System.out.println(folder);
+		}
+		System.out.println("Size: " + folderList.size());
 	}
 
 	public void dumpResources() {
 		List<Resource> resources = getAllResources();
 		for (Resource r : resources) {
-			if (r!=null) {
+			if (r != null) {
 				System.out.println(r);
 			}
 		}

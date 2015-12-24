@@ -31,10 +31,6 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
-/**
- * See: http://codingjunkie.net/java-7-watchservice/
- *
- */
 public class WorkspaceEventWatcher extends AbstractWorkspaceEventWatcher {
 	
     private FutureTask<Integer> watchTask;

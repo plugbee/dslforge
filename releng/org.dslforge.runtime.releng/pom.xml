@@ -10,8 +10,11 @@
 		<module>../org.dslforge.runtime.target/${platform.version.name}</module>
 
 		<!-- Plug-ins -->
-		<module>../../plugins/org.dslforge.workbench</module>
+		<module>../../plugins/org.dslforge.styledtext</module>
+		<module>../../plugins/org.dslforge.texteditor</module>
+		<module>../../plugins/org.dslforge.texteditor.demo</module>
 		<module>../../plugins/org.dslforge.workspace</module>
+		<module>../../plugins/org.dslforge.workspace.ui</module>
 		<module>../../plugins/org.dslforge.xtext.common</module>
 		
 

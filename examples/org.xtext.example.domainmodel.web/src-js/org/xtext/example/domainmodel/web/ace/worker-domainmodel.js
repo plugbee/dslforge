@@ -876,9 +876,9 @@ var oop = require("../lib/oop");
 var Mirror = require("../worker/mirror").Mirror;
 var domainmodelparse = require("../mode/domainmodel/domainmodelparse");
 
-importScripts("../parser/antlr-all-min.js");
-importScripts("../parser/InternalDomainmodelLexer.js");
-importScripts("../parser/InternalDomainmodelParser.js");
+importScripts("./antlr-all-min.js");
+importScripts("./InternalDomainmodelLexer.js");
+importScripts("./InternalDomainmodelParser.js");
 
 var Worker = exports.Worker = function(sender) {
     Mirror.call(this, sender);

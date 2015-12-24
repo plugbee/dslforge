@@ -918,9 +918,9 @@ var oop = require("../lib/oop");
 var Mirror = require("../worker/mirror").Mirror;
 var «grammarShortName.toLowerCase»parse = require("../mode/«grammarShortName.toLowerCase»/«grammarShortName.toLowerCase»parse");
 
-importScripts("../parser/antlr-all-min.js");
-importScripts("../parser/Internal«grammarShortName»Lexer.js");
-importScripts("../parser/Internal«grammarShortName»Parser.js");
+importScripts("./antlr-all-min.js");
+importScripts("./Internal«grammarShortName»Lexer.js");
+importScripts("./Internal«grammarShortName»Parser.js");
 
 var Worker = exports.Worker = function(sender) {
     Mirror.call(this, sender);

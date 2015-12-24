@@ -6,9 +6,6 @@
       <resource
           class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.widget.HummingbirdResource">
       </resource>
-      <resource
-          class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.widget.GlobalIndexResource">
-      </resource>
    </extension>
    <extension
          point="org.eclipse.rap.ui.themeableWidgets">
@@ -29,7 +26,16 @@
             contributorClass="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdActionBarContributor">
       </editor>
    </extension>
+   <extension
+         point="org.dslforge.xtext.common.contribution">
+      <contribution
+            class="org.eclipse.sphinx.examples.xtext.hummingbird.web.HummingbirdExecutableExtensionFactory"
+            extension="hbtext"
+            label="Humingbird">
+      </contribution>
+   </extension>
       <!-- @generated dslforge -->
+      <!--
    <extension point="org.eclipse.ui.actionSets">
       <actionSet
             label="Hummingbird Action Set"
@@ -43,6 +49,7 @@
                menubarPath="file/new/additions"/>
       </actionSet>
    </extension>
+
    
     <extension
          point="org.dslforge.workbench.contribution">
@@ -52,4 +59,5 @@
             label="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird">
       </generator>
    </extension>  
+      -->
 </plugin>

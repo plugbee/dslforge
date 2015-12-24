@@ -21,7 +21,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.dslforge.xtext.common.helpers.ResourceHelper;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -37,6 +36,7 @@ import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 /**
  * 
@@ -52,9 +52,7 @@ public class BasicTextGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	IResourceDescription.Manager descriptionManager;
 
 	@Override
-	protected IScope getScope(IScope parent, final Resource context,
-			boolean ignoreCase, EClass type,
-			Predicate<IEObjectDescription> filter) {
+	protected IScope getScope(IScope parent, final Resource context, boolean ignoreCase, EClass type, Predicate<IEObjectDescription> filter) {
 		ResourceSet resourceSet = context.getResourceSet();
 		Iterable<IEObjectDescription> exportedObjects = Collections.emptyList();
 		IScope result = parent;
@@ -63,45 +61,40 @@ public class BasicTextGlobalScopeProvider extends DefaultGlobalScopeProvider {
 		while (iter.hasNext()) {
 			IContainer container = iter.next();
 			if (container instanceof BasicTextContainer) {
-				result = createVpspecContainerScope(context, result, container,
-						filter, type, ignoreCase);
+				result = createContainerScope(context, result, container, filter, type, ignoreCase);
 			}
 		}
-		return BasicTextMultimapBasedScope.createScope(result, exportedObjects,
-				ignoreCase, getAllResourceURs(resourceSet));
+		return BasicTextMultimapBasedScope.createScope(result, exportedObjects,	ignoreCase, getAllResourceURs(resourceSet));
 	}
 
-	protected IScope createVpspecContainerScope(Resource eResource,
-			IScope parent, IContainer container,
-			Predicate<IEObjectDescription> filter, EClass type,
+	protected IScope createContainerScope(Resource eResource, IScope parent, IContainer container, Predicate<IEObjectDescription> filter, EClass type,
 			boolean ignoreCase) {
 		Iterable<IEObjectDescription> exportedObjects = Collections.emptyList();
 		ResourceSet resourceSet = eResource.getResourceSet();
-		exportedObjects = getAllAspectsObjectDescriptions(resourceSet,
+		exportedObjects = getExportedObjects(resourceSet,
 				exportedObjects);
-		return BasicTextMultimapBasedScope.createScope(parent, exportedObjects,
-				ignoreCase, getAllResourceURs(resourceSet));
+		return BasicTextMultimapBasedScope.createScope(parent, exportedObjects,	ignoreCase, getAllResourceURs(resourceSet));
 	}
 
 	private List<URI> getAllResourceURs(ResourceSet resourceSet) {
 		List<URI> list = new ArrayList<URI>();
 		EList<Resource> resources = resourceSet.getResources();
-		for (Resource r : resources) {
-			URI uri = r.getURI();
+		for (Resource resource : resources) {
+			URI uri = resource.getURI();
 			list.add(uri);
 		}
 		return list;
 	}
 
-	private Iterable<IEObjectDescription> getAllAspectsObjectDescriptions(
+	private Iterable<IEObjectDescription> getExportedObjects(
 			ResourceSet resourceSet,
 			Iterable<IEObjectDescription> exportedObjects) {
 		EList<Resource> resources = resourceSet.getResources();
-		for (Resource r : resources) {
-			URI uri = r.getURI();
+		for (Resource resource : resources) {
+			URI uri = resource.getURI();
 			IResourceDescription.Manager manager = getResourceDescriptionManager(uri);
 			IResourceDescription description = manager
-					.getResourceDescription(r);
+					.getResourceDescription(resource);
 			exportedObjects = Iterables.concat(exportedObjects,
 					description.getExportedObjects());
 		}
@@ -111,11 +104,54 @@ public class BasicTextGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	private IResourceDescription.Manager getResourceDescriptionManager(URI uri) {
 		Map<String, Object> extensionToFactoryMap = registry
 				.getExtensionToFactoryMap();
-		IResourceServiceProvider resourceServiceProvider = ResourceHelper
-				.getServiceProvider(uri, extensionToFactoryMap,
-						ResourceHelper.getFileExtension(uri));
+		IResourceServiceProvider resourceServiceProvider = getServiceProvider(uri, extensionToFactoryMap,	getFileExtension(uri));
 		return resourceServiceProvider != null ? resourceServiceProvider
 				.getResourceDescriptionManager() : null;
 	}
 
+	/**
+	 * Returns the service provider of the resource with the given uri and the given extension from the extension to factory map
+	 * 
+	 * @param uri
+	 * @param extensionToFactoryMap
+	 * @param extension
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static IResourceServiceProvider getServiceProvider(URI uri, Map<String, Object> extensionToFactoryMap, String extension) {
+		Object object = getFactory(uri, extensionToFactoryMap, extension);
+		if (object instanceof Provider<?>) {
+			return ((Provider<IResourceServiceProvider>) object).get();
+		}
+		return (IResourceServiceProvider) object;
+	}
+	
+	/**
+	 * Returns the resource factory of the resource with the given uri and the given extension from the extension to factory map
+	 * 
+	 * @param uri
+	 * @param extensionToFactoryMap
+	 * @param extension
+	 * @return
+	 */
+	public static Object getFactory (URI uri, Map<String, Object> extensionToFactoryMap, String extension) {
+		Object resourceFactory = null;
+		boolean extensionToFactoryMapIsEmpty = extensionToFactoryMap.isEmpty();
+		if (!extensionToFactoryMapIsEmpty) {
+			resourceFactory = extensionToFactoryMap.get(extension);
+		}
+		if (resourceFactory == null) {
+			throw new RuntimeException("Unresolved proxy: " + uri.toString());
+		}
+		return resourceFactory;
+	}
+	
+	public  String getFileExtension(URI uri) {
+		String[] segments = uri.segments();
+		int len = segments.length;
+		if (len == 0) return null;
+		String lastSegment = segments[len - 1];
+		int i = lastSegment.indexOf('.');
+		return i < 0 ? null : lastSegment.substring(i + 1);
+	}
 }

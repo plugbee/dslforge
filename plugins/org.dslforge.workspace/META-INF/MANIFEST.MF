@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: DSLFORGE Workspace
+Bundle-Name: Eclipse RAP Workspace
 Bundle-SymbolicName: org.dslforge.workspace;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.rap.jface,
@@ -8,14 +8,12 @@ Require-Bundle: org.eclipse.rap.jface,
  org.eclipse.emf.common,
  org.eclipse.emf.rap.edit.ui,
  org.eclipse.emf.ecore,
- org.eclipse.xtext,
  org.eclipse.rap.ui.navigator,
  org.eclipse.rap.ui.workbench,
  org.eclipse.gemini.jpa
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.dslforge.database.pu.tables,
  org.dslforge.workspace,
- org.dslforge.workspace.generators,
  org.dslforge.workspace.internal
 Import-Package: javax.persistence;version="2.1.0",
  org.dslforge.database.pu.tables,

@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: DSLFORGE RAP Xtext Common
+Bundle-Name: Eclipse RAP Xtext Integration
 Bundle-SymbolicName: org.dslforge.xtext.common;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.dslforge.xtext.common.internal.Activator
@@ -12,14 +12,18 @@ Require-Bundle: org.eclipse.rap.ui,
  com.google.inject,
  org.eclipse.rap.rwt,
  org.eclipse.rap.ui.views,
- org.eclipse.rap.ui.navigator
+ org.eclipse.rap.ui.navigator,
+ org.dslforge.texteditor,
+ org.dslforge.styledtext,
+ org.eclipse.xtext.xbase.lib,
+ com.google.guava
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.xtext.common,
- org.dslforge.xtext.common.compiler,
  org.dslforge.xtext.common.guice,
  org.dslforge.xtext.common.internal,
  org.dslforge.xtext.common.registry,
  org.dslforge.xtext.common.scoping,
  org.dslforge.xtext.common.shared
 Import-Package: org.apache.log4j
+Bundle-Vendor: PlugBee

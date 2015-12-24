@@ -64,8 +64,8 @@ public class WebProjectGeneratorWizard extends Wizard {
 	
 	@Override
 	public boolean performFinish() {
-		boolean result = true;
 		page.saveWidgetValues();
+		boolean result = true;
 		final boolean generatorOption = (page.getCodeGenerator().length()>0);
 		final boolean option = page.getNavigatorOption();
 		final String navigatorRoot = page.getNavigatorRoot();

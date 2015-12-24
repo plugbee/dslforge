@@ -1,3 +1,4 @@
+package org.dslforge.workbench.parts;
 ///**
 // * <copyright>
 // *
@@ -10,13 +11,10 @@
 // *
 // * Contributors:
 // *     Amine Lajmi - Initial API and implementation
-// *
-// * </copyright>
-// */
-//package org.dslforge.workbench.parts;
-//
-//import org.dslforge.workbench.chat.ChatContent;
-//import org.dslforge.workbench.chat.ChatForm;
+// org.dslforge.workbench/
+//package org.dslfoorg.dslforge.workbench//
+//import org.dslforge.raporg.dslforge.workbencht;
+//import org.dslforge.rap.workbench.chat.ChatForm;
 //import org.eclipse.rap.rwt.lifecycle.UICallBack;
 //import org.eclipse.swt.SWT;
 //import org.eclipse.swt.layout.GridData;

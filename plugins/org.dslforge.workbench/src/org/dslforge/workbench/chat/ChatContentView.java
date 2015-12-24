@@ -1,3 +1,4 @@
+package org.dslforge.workbench.chat;
 ///**
 // * <copyright>
 // *
@@ -10,10 +11,8 @@
 // *
 // * Contributors:
 // *     Amine Lajmi - Initial API and implementation
-// *
-// * </copyright>
-// */
-//package org.dslforge.workbench.chat;
+// *org.dslforge.workbench
+//package org.dslforge.rap.workbench.chat;
 //
 //import org.eclipse.swt.widgets.Composite;
 //import org.eclipse.ui.part.ViewPart;

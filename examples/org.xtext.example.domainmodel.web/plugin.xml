@@ -6,9 +6,6 @@
       <resource
           class="org.xtext.example.domainmodel.web.editor.widget.DomainmodelResource">
       </resource>
-      <resource
-          class="org.xtext.example.domainmodel.web.editor.widget.GlobalIndexResource">
-      </resource>
    </extension>
    <extension
          point="org.eclipse.rap.ui.themeableWidgets">
@@ -30,6 +27,7 @@
       </editor>
    </extension>
       <!-- @generated dslforge -->
+      <!--
    <extension point="org.eclipse.ui.actionSets">
       <actionSet
             label="Domainmodel Action Set"
@@ -42,6 +40,7 @@
                id="org.xtext.example.domainmodel.web.wizard.newDomainmodelAction"/>
       </actionSet>
    </extension>
+
    <extension
      point="org.dslforge.workbench.contribution">
   <generator
@@ -50,4 +49,5 @@
         label="org.xtext.example.Domainmodel">
   </generator>
 </extension>
+   -->
 </plugin>

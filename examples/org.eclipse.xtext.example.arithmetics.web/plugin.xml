@@ -6,9 +6,6 @@
       <resource
           class="org.eclipse.xtext.example.arithmetics.web.editor.widget.ArithmeticsResource">
       </resource>
-      <resource
-          class="org.eclipse.xtext.example.arithmetics.web.editor.widget.GlobalIndexResource">
-      </resource>
    </extension>
    <extension
          point="org.eclipse.rap.ui.themeableWidgets">
@@ -26,10 +23,11 @@
 	            icon="icons/model.png"
 		            extensions="calc"
            class="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsEditor"
-            contributorClass="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsActionBarContributor">
+            contributorClass="org.eclipse.xtext.example.arithmetics.web.editor.AbstractArithmeticsActionBarContributor">
       </editor>
    </extension>
       <!-- @generated dslforge -->
+      <!--
    <extension point="org.eclipse.ui.actionSets">
       <actionSet
             label="Arithmetics Action Set"
@@ -42,6 +40,7 @@
                id="org.eclipse.xtext.example.arithmetics.web.wizard.newArithmeticsAction"/>
       </actionSet>
    </extension>
+
    <extension
      point="org.dslforge.workbench.contribution">
   <generator
@@ -50,4 +49,5 @@
         label="org.eclipse.xtext.example.arithmetics.Arithmetics">
   </generator>
 </extension>
+   -->
 </plugin>

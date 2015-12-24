@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="contribution" name="org.dslforge.rap.workbench.contribution" schema="schema/contribution.exsd"/>
+   <extension-point id="contribution" name="org.dslforge.workbench.contribution" schema="schema/contribution.exsd"/>
 <!-- @generated dslforge -->
 <extension point="org.eclipse.rap.ui.entrypoint">
 	<entrypoint
+       applicationId="org.dslforge.workbench.application"
        brandingId="org.dslforge.workbench.branding"
        class="org.dslforge.workbench.BasicWorkbench"
-       id="org.dslforge.core.ui.entrypoint"
+       id="org.dslforge.workbench.entrypoint"
        path="/workbench">
 		</entrypoint>
 	</extension>
@@ -25,7 +26,7 @@
 </extension>
 	
 	<extension
-		id="org.dslforge.core.ui.application"
+		id="org.dslforge.workbench.application"
 				point="org.eclipse.core.runtime.applications">
 		<application>
 			<run
@@ -118,7 +119,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
-            id="org.dslforge.rap.navigator.view.actions.contribution.new"
+            id="org.dslforge.navigator.view.actions.contribution.new"
             nameFilter="*"
             objectClass="java.io.File">
          <action
@@ -126,7 +127,7 @@
                definitionId="org.dslforge.core.ui.actions.commands.newModel"
                enablesFor="*"
                icon="icons/model.png"
-               id="org.dslforge.rap.navigator.actions.new.model"
+               id="org.dslforge.navigator.actions.new.model"
                label="Model"
                menubarPath="org.dslforge.workspace.menu.new/group"
                style="push"
@@ -136,7 +137,7 @@
                class="org.dslforge.workbench.actions.NewFolderAction"
                enablesFor="*"
                icon="icons/folder.png"
-               id="org.dslforge.rap.navigator.actions.new.folder"
+               id="org.dslforge.navigator.actions.new.folder"
                label="Folder"
                menubarPath="org.dslforge.workspace.menu.new/group"
                style="push"
@@ -144,9 +145,9 @@
          </action>
          <!--
          <action
-               class="org.dslforge.rap.workbench.actions.NewProjectAction"
+               class="org.dslforge.workbench.actions.NewProjectAction"
                icon="icons/project.png"
-               id="org.dslforge.rap.navigator.actions.new.project"
+               id="org.dslforge.navigator.actions.new.project"
                label="Project"
                menubarPath="org.dslforge.workspace.menu.new/group"
                style="push">
@@ -168,7 +169,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
-            id="org.dslforge.rap.navigator.view.actions.contribution.delete"
+            id="org.dslforge.navigator.view.actions.contribution.delete"
             nameFilter="*"
             objectClass="java.io.File">
          <action
@@ -186,7 +187,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
-            id="org.dslforge.rap.navigator.view.actions.contribution.generate"
+            id="org.dslforge.navigator.view.actions.contribution.generate"
             nameFilter="*"
             objectClass="java.io.File">
          <action
@@ -204,7 +205,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
-            id="org.dslforge.rap.navigator.view.actions.contribution.compile"
+            id="org.dslforge.navigator.view.actions.contribution.compile"
             nameFilter="*.java"
             objectClass="java.io.File">
          <action
@@ -222,7 +223,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
-            id="org.dslforge.rap.navigator.view.actions.contribution.run"
+            id="org.dslforge.navigator.view.actions.contribution.run"
             nameFilter="*.class"
             objectClass="java.io.File">
          <action
@@ -239,21 +240,21 @@
    <extension
          point="org.eclipse.ui.popupMenus">
       <viewerContribution
-            id="org.dslforge.rap.navigator.view.actions.contribution.another"
-            targetID="org.dslforge.rap.navigator.view">
+            id="org.dslforge.navigator.view.actions.contribution.another"
+            targetID="org.dslforge.navigator.view">
             <!--
          <action
-               class="org.dslforge.rap.workbench.actions.NewModelAction"
+               class="org.dslforge.workbench.actions.NewModelAction"
                icon="icons/model.png"
-               id="org.dslforge.rap.navigator.actions.new.model"
+               id="org.dslforge.navigator.actions.new.model"
                label="Model"
                menubarPath="org.dslforge.workspace.menu.new/group"
                style="push">
          </action>
          <action
-               class="org.dslforge.rap.workbench.actions.NewFolderAction"
+               class="org.dslforge.workbench.actions.NewFolderAction"
                icon="icons/folder.png"
-               id="org.dslforge.rap.navigator.actions.new.folder"
+               id="org.dslforge.navigator.actions.new.folder"
                label="Folder"
                menubarPath="org.dslforge.workspace.menu.new/group"
                style="push">
@@ -263,7 +264,7 @@
                class="org.dslforge.workbench.actions.NewProjectDelegateAction"
                definitionId="org.dslforge.core.ui.actions.commands.newProject"
                icon="icons/project.png"
-               id="org.dslforge.rap.navigator.actions.new.project"
+               id="org.dslforge.navigator.actions.new.project"
                label="Project"
                menubarPath="org.dslforge.workspace.menu.new/group"
                style="push"
@@ -283,12 +284,12 @@
    <extension
          point="org.eclipse.ui.actionSets">
       <actionSet
-            id="org.dslforge.rap.workbench.actionSet1"
+            id="org.dslforge.workbench.actionSet1"
             label="Help"
             visible="true">
          <action
                class="org.eclipse.ui.cheatsheets.CheatSheetExtensionFactory:helpMenuAction"
-               id="org.dslforge.rap.workbench.action1"
+               id="org.dslforge.workbench.action1"
                label="Help me"
                menubarPath="help/group.tutorials"
                style="push">
@@ -299,14 +300,14 @@
    <extension
          point="org.eclipse.ui.cheatsheets.cheatSheetContent">
       <category
-            id="org.dslforge.rap.workbench.category2"
+            id="org.dslforge.workbench.category2"
             name="Tutorials">
       </category>
       <cheatsheet
-            category="org.dslforge.rap.workbench.category2"
+            category="org.dslforge.workbench.category2"
             composite="false"
             contentFile="cheatsheets/BasicTutorial.xml"
-            id="org.dslforge.rap.workbench.cheatsheet2"
+            id="org.dslforge.workbench.cheatsheet2"
             name="Basic Tutorial">
       </cheatsheet>
    </extension>
@@ -325,7 +326,7 @@
    <extension
          point="org.eclipse.ui.helpSupport">
       <config
-            class="org.dslforge.rap.workbench.help.HelpUI">
+            class="org.dslforge.workbench.help.HelpUI">
       </config>
    </extension>
    -->
@@ -337,7 +338,7 @@
             allPopups="false"
             locationURI="toolbar:org.eclipse.ui.main.toolbar">
          <toolbar
-               id="org.dslforge.rap.workbench.toolbar.project"
+               id="org.dslforge.workbench.toolbar.project"
                label="New Project">
             <command
                   commandId="org.dslforge.core.ui.actions.commands.newProject"
@@ -357,7 +358,7 @@
             allPopups="false"
             locationURI="toolbar:org.eclipse.ui.main.toolbar">
          <toolbar
-               id="org.dslforge.rap.workbench.toolbar.model"
+               id="org.dslforge.workbench.toolbar.model"
                label="New Model">
             <command
                   commandId="org.dslforge.core.ui.actions.commands.newModel"
@@ -374,37 +375,39 @@
    <extension
          point="org.eclipse.ui.navigator.viewer">
       <viewer
-            viewerId="org.dslforge.rap.navigator.view">
+            viewerId="org.dslforge.navigator.view">
       </viewer>
       <viewerContentBinding
-            viewerId="org.dslforge.rap.navigator.view">
+            viewerId="org.dslforge.navigator.view">
          <includes>
             <contentExtension
                   isRoot="true"
-                  pattern="org.dslforge.rap.navigator.fileContent">
+                  pattern="org.dslforge.navigator.fileContent">
             </contentExtension>
             <contentExtension
-                  pattern="org.dslforge.rap.navigator.*">
+                  pattern="org.dslforge.navigator.*">
             </contentExtension>
          </includes>
       </viewerContentBinding>
    </extension>
+   <!--
    <extension
          point="org.eclipse.ui.views">
       <view
             class="org.dslforge.workbench.navigator.BasicWokspaceNavigator"
             icon="icons/earth_view.png"
-            id="org.dslforge.rap.navigator.view"
+            id="org.dslforge.navigator.view"
             name="Project Explorer"
             restorable="false">
       </view>
    </extension>
+
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
             activeByDefault="true"
             contentProvider="org.dslforge.workbench.navigator.FileSystemContentProvider"
-            id="org.dslforge.rap.navigator.fileContent"
+            id="org.dslforge.navigator.fileContent"
             labelProvider="org.dslforge.workbench.navigator.FileSystemLabelProvider"
             name="Workspace Content"
             priority="high">
@@ -425,7 +428,7 @@
             visibleInUI="true">
       </commonFilter>
    </extension>
-
+   -->
    <extension
          id="databaseLoginModule"
          point="org.eclipse.equinox.security.loginModule">

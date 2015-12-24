@@ -60,9 +60,10 @@ public class GenerateWebProjectOperation extends GenerateProjectOperation {
 
 	protected static final String PLUGIN_SUFFIX = "web";
 	protected static final String SRC = "src";
+	protected static final String SRC_GEN = "src-gen";
 	protected static final String SRC_JS = "src-js";
 	protected static final String DATA = "data";
-	protected static final List<String> SRC_FOLDER_LIST = ImmutableList.of(SRC, SRC_JS);
+	protected static final List<String> SRC_FOLDER_LIST = ImmutableList.of(SRC, SRC_GEN, SRC_JS);
 	
 	protected static final String[] DSL_PROJECT_NATURES = new String[] { 
 		"org.eclipse.pde.PluginNature",
@@ -88,9 +89,10 @@ public class GenerateWebProjectOperation extends GenerateProjectOperation {
 				"org.eclipse.emf.ecore",
 				"com.google.inject",
 				"org.eclipse.xtext", 
-				"org.dslforge.workbench",
 				"org.dslforge.workspace",
 				"org.dslforge.xtext.common",
+				"org.dslforge.texteditor",
+				"org.dslforge.styledtext",
 				dslProjectName);
 		return requiredBundles;
 	}
@@ -141,6 +143,8 @@ public class GenerateWebProjectOperation extends GenerateProjectOperation {
 	private void setOutputs(IProject project) {	
 		IFolder javaSource = project.getFolder(SRC);
 		outlets.put(SRC, javaSource.getLocation().toString());
+		IFolder javaGeneratedSource = project.getFolder(SRC_GEN);
+		outlets.put(SRC_GEN, javaGeneratedSource.getLocation().toString());
 		IFolder javaScriptSource = project.getFolder(SRC_JS);
 		outlets.put(SRC_JS, javaScriptSource.getLocation().toString());
 		IFolder dataFolder = project.getFolder(DATA);

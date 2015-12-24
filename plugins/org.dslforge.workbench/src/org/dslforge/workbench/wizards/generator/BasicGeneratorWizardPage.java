@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.dslforge.workspace.WorkspaceManager;
-import org.dslforge.xtext.common.registry.BasicWorkbenchRegistry;
+import org.dslforge.xtext.common.registry.LanguageRegistry;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
@@ -219,7 +219,7 @@ public class BasicGeneratorWizardPage extends WizardPage {
 		File file =(File) getInitialElementSelection().getFirstElement();
 		String fileName = file.getName();
 		String extension = fileName.substring(fileName.indexOf(".")+1, fileName.length());
-	    List<String> metamodels = BasicWorkbenchRegistry.INSTANCE.getMetamodelsByExtension(extension);
+	    List<String> metamodels = LanguageRegistry.INSTANCE.getMetamodelsByExtension(extension);
 	    if (!metamodels.isEmpty()) {
 			for (String m: metamodels) {
 				languageNameCombo.add(m);
@@ -232,7 +232,7 @@ public class BasicGeneratorWizardPage extends WizardPage {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				generatorComboField.removeAll();
-				List<IGenerator> generators = BasicWorkbenchRegistry.INSTANCE.getGeneratorsForMetamodel(languageNameCombo.getText());
+				List<IGenerator> generators = LanguageRegistry.INSTANCE.getGeneratorsForMetamodel(languageNameCombo.getText());
 				for (IGenerator g: generators) {
 					generatorComboField.add(g.getClass().getName());
 				}
@@ -263,7 +263,7 @@ public class BasicGeneratorWizardPage extends WizardPage {
 		templateLayoutData.grabExcessHorizontalSpace=true;
 		generatorComboField.setLayoutData(templateLayoutData);
 
-		List<IGenerator> generators = BasicWorkbenchRegistry.INSTANCE.getGeneratorsForMetamodel(languageNameCombo.getText());
+		List<IGenerator> generators = LanguageRegistry.INSTANCE.getGeneratorsForMetamodel(languageNameCombo.getText());
 		for (IGenerator g: generators) {
 			generatorComboField.add(g.getClass().getName());
 		}

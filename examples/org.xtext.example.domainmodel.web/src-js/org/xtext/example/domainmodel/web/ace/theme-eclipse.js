@@ -139,6 +139,10 @@ color:rgb(25, 118, 116);\
 .ace-eclipse .ace_invisible {\
 color: #ddd;\
 }\
+.ace_debug_line {\
+background-color: aquamarine;\
+position: absolute;\
+}\
 .ace-eclipse .ace_entity.ace_other.ace_attribute-name {\
 color:rgb(127, 0, 127);\
 }\

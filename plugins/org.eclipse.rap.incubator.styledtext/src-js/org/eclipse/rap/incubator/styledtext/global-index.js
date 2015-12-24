@@ -1,1 +1,0 @@
-//var counter=0,connections=[],index=[];onconnect=function(a){a&&(a=a.ports[0],a.onmessage=function(a){counter++;var c=a.data.guid;a=a.data.index;for(var b=0;b<connections.length;b++)connections[b].postMessage({counter:counter,message:"index",guid:c,index:a})},a.start(),connections.push(a))};

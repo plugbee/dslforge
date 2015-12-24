@@ -20,12 +20,6 @@ import java.io.File;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-/**
- * see: http://code.google.com/p/roboworkbench/source/browse/trunk/uk.co.dancowan.robots.ui/src/uk/co/dancowan/robots/ui/views/filebrowser/FileBrowserView.java?r=204
- * 
- * @author lajmi
- *
- */
 public class FileSystemContentProvider implements ITreeContentProvider {
 
 	private static final long serialVersionUID = 1L;

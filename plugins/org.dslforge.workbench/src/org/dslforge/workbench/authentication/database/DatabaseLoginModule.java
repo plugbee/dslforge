@@ -18,7 +18,6 @@ package org.dslforge.workbench.authentication.database;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import javax.security.auth.Subject;
@@ -32,7 +31,6 @@ import javax.security.auth.login.LoginException;
 import org.dslforge.database.pu.tables.User;
 import org.dslforge.workbench.mail.MailUtil;
 import org.dslforge.workspace.WorkspaceManager;
-import org.dslforge.xtext.common.registry.BasicWorkbenchRegistry;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;

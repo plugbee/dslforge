@@ -45,13 +45,6 @@
    </requires>
 
    <plugin
-         id="org.dslforge.workbench"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.dslforge.workspace"
          download-size="0"
          install-size="0"
@@ -60,6 +53,34 @@
 
    <plugin
          id="org.dslforge.xtext.common"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.dslforge.styledtext"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.dslforge.texteditor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.dslforge.texteditor.demo"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.dslforge.workspace.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

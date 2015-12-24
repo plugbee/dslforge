@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.dslforge.rap.workbench
+Bundle-Name: org.dslforge.workbench
 Bundle-Vendor: DSLFORGE Workbench
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.dslforge.workbench;singleton:=true
@@ -25,7 +25,8 @@ Require-Bundle: com.google.inject,
  javax.persistence,
  org.eclipse.xtext,
  org.dslforge.xtext.common,
- org.dslforge.workspace
+ org.dslforge.workspace,
+ org.dslforge.workspace.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.dslforge.workbench,
  org.dslforge.workbench.actions,

@@ -28,5 +28,4 @@ public class FilePropertySourceProvider implements IPropertySourceProvider {
 			return new FilePropertySource((File)object);
 		return null;
 	}
-
 }

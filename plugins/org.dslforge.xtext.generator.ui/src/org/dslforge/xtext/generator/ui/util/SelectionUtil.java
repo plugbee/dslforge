@@ -31,19 +31,15 @@ public class SelectionUtil {
 		if (o instanceof ExecutionEvent) {
 			o = HandlerUtil.getCurrentSelection((ExecutionEvent) o);
 		}
-		
 		if (o instanceof IStructuredSelection) {
 			o = ((IStructuredSelection) o).getFirstElement();
 		}
-		
 		if (o instanceof IAdaptable) {
 			o = ((IAdaptable) o).getAdapter(clazz);
 		}
-		
 		if (clazz.isInstance(o)) {
 			return clazz.cast(o);
 		}
-		
 		return null;
 	}
 	
@@ -51,7 +47,6 @@ public class SelectionUtil {
 		if (o instanceof ExecutionEvent) {
 			o = HandlerUtil.getCurrentSelection((ExecutionEvent) o);
 		}
-		
 		if (o instanceof IStructuredSelection) {
 			List<T> list = new ArrayList<T>();
 			IStructuredSelection selection = (IStructuredSelection) o;
@@ -63,13 +58,10 @@ public class SelectionUtil {
 			}
 			return list;
 		}
-		
 		T element = unwrap(o, clazz);
 		if (element != null) {
 			return Collections.singletonList(element);
 		}
-		
 		return Collections.emptyList();
 	}
-
 }

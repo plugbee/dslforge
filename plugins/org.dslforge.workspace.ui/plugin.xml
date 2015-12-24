@@ -3,29 +3,11 @@
 <plugin>
 
    <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.rap.navigator.view.actions.contribution.new"
-            nameFilter="*"
-            objectClass="java.io.File">
-         <menu
-               id="org.dslforge.workspace.menu.new"
-               label="New"
-               path="main">
-            <separator
-                  name="group">
-            </separator>
-         </menu>
-         
-      </objectContribution>
-   </extension>
-   <extension
          point="org.eclipse.ui.views">
       <view
             class="org.dslforge.workspace.ui.BasicWokspaceNavigator"
             icon="icons/earth_view.png"
-            id="org.dslforge.rap.navigator.view"
+            id="org.dslforge.navigator.view"
             name="Project Explorer"
             restorable="false">
       </view>
@@ -35,7 +17,7 @@
       <navigatorContent
             activeByDefault="true"
             contentProvider="org.dslforge.workspace.ui.FileSystemContentProvider"
-            id="org.dslforge.rap.navigator.fileContent"
+            id="org.dslforge.navigator.fileContent"
             labelProvider="org.dslforge.workspace.ui.FileSystemLabelProvider"
             name="Workspace Content"
             priority="high">
@@ -56,5 +38,189 @@
             visibleInUI="true">
       </commonFilter>
    </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.navigator.view.actions.contribution.new"
+            nameFilter="*"
+            objectClass="java.io.File">
+         <menu
+               id="org.dslforge.workspace.menu.new"
+               label="New"
+               path="main">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+      </objectContribution>
+   </extension>
 
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.navigator.view.actions.contribution.new"
+            nameFilter="*"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workspace.ui.actions.NewModelAction"
+               definitionId="org.dslforge.core.ui.actions.commands.newModel"
+               enablesFor="*"
+               icon="icons/model.png"
+               id="org.dslforge.navigator.actions.new.model"
+               label="Model"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push"
+               tooltip="Create a new model file">
+         </action>
+         <action
+               class="org.dslforge.workspace.ui.actions.NewFolderAction"
+               enablesFor="*"
+               icon="icons/folder.png"
+               id="org.dslforge.navigator.actions.new.folder"
+               label="Folder"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push"
+               tooltip="Create a new folder">
+         </action>
+         <!--
+         <action
+               class="org.dslforge.workbench.actions.NewProjectAction"
+               icon="icons/project.png"
+               id="org.dslforge.navigator.actions.new.project"
+               label="Project"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push">
+         </action>
+        --> 
+         <menu
+               id="org.dslforge.workspace.menu.new"
+               label="New"
+               path="main">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+         
+      </objectContribution>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.navigator.view.actions.contribution.delete"
+            nameFilter="*"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workspace.ui.actions.DeleteResourceAction"
+               enablesFor="*"
+               icon="icons/delete.png"
+               id="org.dslforge.workspace.menu.delete"
+               label="Delete"
+               style="push">
+         </action>
+      </objectContribution>
+   </extension>
+  
+  <!--
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.navigator.view.actions.contribution.generate"
+            nameFilter="*"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workbench.actions.BasicGenerateAction"
+               enablesFor="*"
+               icon="icons/generate.png"
+               id="org.dslforge.workspace.menu.generate"
+               label="Generate"
+               style="push">
+         </action>
+      </objectContribution>
+   </extension>
+
+      <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.navigator.view.actions.contribution.compile"
+            nameFilter="*.java"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workbench.actions.CompileAction"
+               enablesFor="*"
+               icon="icons/compile.png"
+               id="org.dslforge.workspace.menu.compile"
+               label="Compile"
+               style="push">
+         </action>
+      </objectContribution>
+   </extension>
+     -->
+  <!--
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.navigator.view.actions.contribution.run"
+            nameFilter="*.class"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workbench.actions.RunAction"
+               enablesFor="*"
+               icon="icons/run_exec.png"
+               id="org.dslforge.workspace.menu.run"
+               label="Run"
+               style="push">
+         </action>
+      </objectContribution>
+   </extension>
+  -->  
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            id="org.dslforge.navigator.view.actions.contribution.another"
+            targetID="org.dslforge.navigator.view">
+            <!--
+         <action
+               class="org.dslforge.workbench.actions.NewModelAction"
+               icon="icons/model.png"
+               id="org.dslforge.navigator.actions.new.model"
+               label="Model"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push">
+         </action>
+         <action
+               class="org.dslforge.workbench.actions.NewFolderAction"
+               icon="icons/folder.png"
+               id="org.dslforge.navigator.actions.new.folder"
+               label="Folder"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push">
+         </action>
+         -->
+         <action
+               class="org.dslforge.workspace.ui.wizards.NewProjectDelegateAction"
+               definitionId="org.dslforge.core.ui.actions.commands.newProject"
+               icon="icons/project.png"
+               id="org.dslforge.navigator.actions.new.project"
+               label="Project"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push"
+               tooltip="Create a new DSL Project">
+         </action>
+         <menu
+               id="org.dslforge.workspace.menu.new"
+               label="New"
+               path="main">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+      </viewerContribution>
+   </extension>
 </plugin>

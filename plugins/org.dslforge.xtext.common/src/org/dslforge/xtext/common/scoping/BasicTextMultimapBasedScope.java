@@ -93,7 +93,6 @@ public class BasicTextMultimapBasedScope extends AbstractScope {
 				objectDescriptions = Iterables.concat(objectDescriptions, result);
 			}
 		}
-		//objectDescriptions = Iterables.concat(objectDescriptions, getDefaultLocalElementsByName(name));
 		objectDescriptions = getDefaultLocalElementsByName(name);
 		objectDescriptions =  Iterables.concat(objectDescriptions, super.getLocalElementsByName(name));
 		return objectDescriptions;

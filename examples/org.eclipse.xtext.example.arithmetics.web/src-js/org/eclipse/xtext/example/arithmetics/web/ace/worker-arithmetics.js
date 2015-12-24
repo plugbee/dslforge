@@ -876,9 +876,9 @@ var oop = require("../lib/oop");
 var Mirror = require("../worker/mirror").Mirror;
 var arithmeticsparse = require("../mode/arithmetics/arithmeticsparse");
 
-importScripts("../parser/antlr-all-min.js");
-importScripts("../parser/InternalArithmeticsLexer.js");
-importScripts("../parser/InternalArithmeticsParser.js");
+importScripts("./antlr-all-min.js");
+importScripts("./InternalArithmeticsLexer.js");
+importScripts("./InternalArithmeticsParser.js");
 
 var Worker = exports.Worker = function(sender) {
     Mirror.call(this, sender);

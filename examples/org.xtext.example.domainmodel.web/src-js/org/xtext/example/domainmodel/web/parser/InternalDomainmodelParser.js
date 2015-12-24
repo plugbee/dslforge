@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g 2015-11-15 16:37:03
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.domainmodel.web\\src-js\\org\\xtext\\example\\domainmodel\\web\\parser\\InternalDomainmodel.g 2015-12-23 16:38:42
 
 
 

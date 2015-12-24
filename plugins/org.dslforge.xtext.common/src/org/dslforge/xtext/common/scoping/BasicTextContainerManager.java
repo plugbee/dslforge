@@ -43,23 +43,16 @@ public class BasicTextContainerManager extends StateBasedContainerManager {
 	}
 	
 	protected List<IContainer> getVisibleContainers(List<String> handles, IResourceDescriptions resourceDescriptions) {
-		//Default containers
 		if (handles.isEmpty())
 			return Collections.emptyList();
 		List<IContainer> result = Lists.newArrayListWithExpectedSize(handles.size() + 1);	
-		for(String handle: handles) {
-			IContainer container = createContainer(handle, resourceDescriptions);
-			if (!container.isEmpty() || result.isEmpty())
-				result.add(container);
-		}
-		//Aspects container
 		String handle = internalGetContainerHandle(description, resourceDescriptions);
-		IContainer container = createVpspecContainer(handle, resourceDescriptions);
+		IContainer container = newContainer(handle, resourceDescriptions);
 		result.add(container);
 		return result;
 	}
 	
-	protected IContainer createVpspecContainer(String handle, IResourceDescriptions resourceDescriptions) {
+	protected IContainer newContainer(String handle, IResourceDescriptions resourceDescriptions) {
 		IAllContainersState state = getState(resourceDescriptions);
 		IContainerState containerState = new BasicTextContainerState(handle, state);
 		BasicTextContainer result = new BasicTextContainer(resourceDescriptions, containerState);

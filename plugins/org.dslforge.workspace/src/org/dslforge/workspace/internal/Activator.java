@@ -59,7 +59,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 
 		ctx = context;
 
-		System.out.println("[DSLFORGE] " + "org.dslforge.rap.workspace : started!");
+		System.out.println("[DSLFORGE] " + "org.dslforge.workspace : started!");
 		/*
 		 * We are in the same bundle as the persistence unit so the services
 		 * should be available when we start up (if nothing bad happened) and
@@ -73,7 +73,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("[DSLFORGE] " + "org.dslforge.rap.workspace" + " : stopping!");
+		System.out.println("[DSLFORGE] " + "org.dslforge.workspace" + " : stopping!");
 		plugin = null;
 		emfTracker.close();
 		if (emf!=null && emf.isOpen())
@@ -96,10 +96,10 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 
 	public Map<String, Object> defaultProperties() {
 		Map<String, Object> props = new HashMap<String, Object>();
-		props.put("javax.persistence.jdbc.driver", IWorkspaceConstants.JDBC_TEST_DRIVER);
-		props.put("javax.persistence.jdbc.url", IWorkspaceConstants.JDBC_TEST_URL);
-		props.put("javax.persistence.jdbc.user", IWorkspaceConstants.JDBC_TEST_USER);
-		props.put("javax.persistence.jdbc.password", IWorkspaceConstants.JDBC_TEST_PASSWORD);
+		props.put("javax.persistence.jdbc.driver", IWorkspaceConstants.JDBC_DATABASE_DRIVER);
+		props.put("javax.persistence.jdbc.url", IWorkspaceConstants.JDBC_DATABASE_URL);
+		props.put("javax.persistence.jdbc.user", IWorkspaceConstants.JDBC_DATABASE_USER);
+		props.put("javax.persistence.jdbc.password", IWorkspaceConstants.JDBC_DATABASE_PASSWORD);
 		props.put("eclipselink.logging.level", "OFF");
 		props.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
 		props.put(PersistenceUnitProperties.WEAVING, "false");

@@ -15,8 +15,6 @@
  */
 package org.dslforge.workbench;
 
-import org.dslforge.workspace.IWorkspaceConstants;
-
 public interface IWorkbenchConstants {
 	
 	public enum Mode {
@@ -33,9 +31,9 @@ public interface IWorkbenchConstants {
 	
 	public static final String BASIC_WORKBENCH_VIEW_ID = "org.dslforge.workbench.ui.parts.view";	
 	public static final String ID_PERSPECTIVE = "org.dslforge.workbench.ui.parts.perspective";
-	public static final String NAVIGATOR_VIEW_ID = "org.dslforge.rap.navigator.view";
+	public static final String NAVIGATOR_VIEW_ID = "org.dslforge.navigator.view";
 	public static final String CHAT_CONTENT_VIEW_ID = "org.dslforge.workbench.chat.view";
-	public static final String CHEAT_SHEET_VIEW_ID = "org.dslforge.rap.workbench.cheatsheet2";
+	public static final String CHEAT_SHEET_VIEW_ID = "org.dslforge.workbench.cheatsheet2";
 	
 	public static final String PLATFORM_PRESENTATION = "org.eclipse.ui.presentations.default";	
 	public static final String SECURITY_CONFIG_FILE = "data/config.txt";

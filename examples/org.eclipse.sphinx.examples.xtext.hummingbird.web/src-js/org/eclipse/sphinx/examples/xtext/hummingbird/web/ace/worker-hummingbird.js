@@ -876,9 +876,9 @@ var oop = require("../lib/oop");
 var Mirror = require("../worker/mirror").Mirror;
 var hummingbirdparse = require("../mode/hummingbird/hummingbirdparse");
 
-importScripts("../parser/antlr-all-min.js");
-importScripts("../parser/InternalHummingbirdLexer.js");
-importScripts("../parser/InternalHummingbirdParser.js");
+importScripts("./antlr-all-min.js");
+importScripts("./InternalHummingbirdLexer.js");
+importScripts("./InternalHummingbirdParser.js");
 
 var Worker = exports.Worker = function(sender) {
     Mirror.call(this, sender);

@@ -55,15 +55,9 @@ public class BasicWorkspaceSorter extends TreePathViewerSorter {
 		sorterService = contentService.getSorterService();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.jface.viewers.ViewerSorter#category(java.lang.Object)
-	 */
 	public int category(Object element) {
 		if (contentService == null)
 			return 0;
-
 		INavigatorContentDescriptor source = getSource(element);
 		return source != null ? source.getSequenceNumber() : Priority.NORMAL_PRIORITY_VALUE;
 	}
@@ -138,9 +132,6 @@ public class BasicWorkspaceSorter extends TreePathViewerSorter {
 		return categoryDelta;
 	}
 
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.ViewerComparator#isSorterProperty(java.lang.Object, java.lang.String)
-     */
     public boolean isSorterProperty(Object element, String property) {
     	// Have to get the parent path from the content provider
     	NavigatorContentServiceContentProvider cp = (NavigatorContentServiceContentProvider) contentService.createCommonContentProvider();
@@ -152,9 +143,6 @@ public class BasicWorkspaceSorter extends TreePathViewerSorter {
     	return false;
     }
 
-    /* (non-Javadoc)
-     * @see org.eclipse.jface.viewers.TreePathViewerSorter#isSorterProperty(org.eclipse.jface.viewers.TreePath, java.lang.Object, java.lang.String)
-     */
     public boolean isSorterProperty(TreePath parentPath, Object element, String property) {
 		INavigatorContentDescriptor contentDesc = getSource(element);
 		if (parentPath.getSegmentCount() == 0)
@@ -167,7 +155,6 @@ public class BasicWorkspaceSorter extends TreePathViewerSorter {
 
     
 	private INavigatorContentDescriptor getSource(Object o) {
-		// Fast path - just an optimization for the common case
 		INavigatorContentDescriptor ncd = contentService.getSourceOfContribution(o);
 		if (ncd != null) {
 			if (Policy.DEBUG_SORT)
@@ -175,7 +162,7 @@ public class BasicWorkspaceSorter extends TreePathViewerSorter {
 			return ncd;
 		}
 
-		Set descriptors = contentService.findDescriptorsByTriggerPoint(o, NavigatorContentService.CONSIDER_OVERRIDES);
+		Set<?> descriptors = contentService.findDescriptorsByTriggerPoint(o, NavigatorContentService.CONSIDER_OVERRIDES);
 		if (descriptors != null && descriptors.size() > 0) {
 			ncd = (INavigatorContentDescriptor) descriptors.iterator().next();
 			if (Policy.DEBUG_SORT)

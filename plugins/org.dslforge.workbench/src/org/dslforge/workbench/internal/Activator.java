@@ -16,13 +16,7 @@
 package org.dslforge.workbench.internal;
 
 import java.net.URL;
-import java.util.List;
 
-import org.dslforge.xtext.common.registry.BasicWorkbenchRegistry;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
@@ -35,7 +29,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin /*implements ServiceTrackerCustomizer*/ {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.dslforge.rap.workbench"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.dslforge.workbench"; //$NON-NLS-1$
 	
 	private static BundleContext bundleContext;
 	  

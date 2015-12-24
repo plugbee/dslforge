@@ -32,8 +32,7 @@ import org.eclipse.xtext.ui.util.PluginProjectFactory;
 public class WebProjectFactory extends PluginProjectFactory implements IWebProjectFactory{
 
 	private final Grammar grammar;
-	
-	//We don't care about injection
+
 	public WebProjectFactory(Grammar grammar) {
 		super();
 		workspace = ResourcesPlugin.getWorkspace();
@@ -46,7 +45,7 @@ public class WebProjectFactory extends PluginProjectFactory implements IWebProje
 		super.enhanceProject(project, subMonitor, shell);
 		createPluginXml(project, subMonitor.newChild(1));
 	}
-
+	
 	@Override
 	protected void createManifest(IProject project, IProgressMonitor progressMonitor) throws CoreException {
 		final StringBuilder content = new StringBuilder("Manifest-Version: 1.0\n");
@@ -105,14 +104,12 @@ public class WebProjectFactory extends PluginProjectFactory implements IWebProje
 		String fileExtension = GeneratorUtil.getFileExtension(grammar);
 		final StringBuilder content = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 		content.append("<?eclipse version=\"3.4\"?>\n");
+		content.append("<!-- @generated dslforge -->\n");
 		content.append("<plugin>\n");
 		content.append("      <extension\n");
 		content.append("         point=\"org.eclipse.rap.ui.resources\">\n");
 		content.append("      <resource\n");
 		content.append("          class=\"" + project.getName() + ".editor.widget." + grammarShortName + "Resource\">\n");
-		content.append("      </resource>\n");
-		content.append("      <resource\n");
-		content.append("          class=\"" + project.getName() + ".editor.widget." + "GlobalIndexResource\">\n");
 		content.append("      </resource>\n");
 		content.append("   </extension>\n");
 		content.append("   <extension\n");
@@ -123,7 +120,6 @@ public class WebProjectFactory extends PluginProjectFactory implements IWebProje
 		content.append("            name=\"" + grammarShortName + "\">\n");
 		content.append("      </widget>\n");
 		content.append("   </extension>\n");
-		content.append("      <!-- @generated dslforge -->\n");
 		content.append("   <extension point=\"org.eclipse.ui.editors\">\n");
 		content.append("      <editor\n");
 		content.append("            id=\"" + project.getName() + ".editor"+"\"\n");
@@ -134,27 +130,26 @@ public class WebProjectFactory extends PluginProjectFactory implements IWebProje
 		content.append("            contributorClass=\"" + project.getName() + ".editor." + grammarShortName + "ActionBarContributor\">\n");
 		content.append("      </editor>\n");
 		content.append("   </extension>\n");
-		content.append("      <!-- @generated dslforge -->\n");
-		content.append("   <extension point=\"org.eclipse.ui.actionSets\">\n");
-		content.append("      <actionSet\n");
-		content.append("            label=\"" + grammarShortName + " Action Set\"\n");
-		content.append("            visible=\"true\"\n");
-		content.append("            id=\"org.dslforge.core.ui.model.actionset\">\n");
-		content.append("         <action\n");
-		content.append("               label=\""+ grammarShortName + " file" + "\"\n");
-		content.append("               class=\"" + project.getName() + ".actions.New" + grammarShortName + "Action\"\n");
-		content.append("              menubarPath=\"file/new/additions\"\n");
-		content.append("               id=\"" + project.getName() + ".wizard.new" + grammarShortName + "Action\"/>\n");
-		content.append("      </actionSet>\n");
-		content.append("   </extension>\n");
-		content.append("   <extension\n");
-		content.append("     point=\"org.dslforge.workbench.contribution\">\n");
-		content.append("  <generator\n");
-		content.append("       class=\"" + project.getName() + "." + grammarShortName + "ExecutableExtensionFactory\"\n");
-		content.append("         extension=\"" + fileExtension + "\"\n");
-		content.append("        label=\""+ grammar.getName() + "\">\n");
-		content.append("  </generator>\n");
-		content.append("</extension>\n");		
+//		content.append("   <extension point=\"org.eclipse.ui.actionSets\">\n");
+//		content.append("      <actionSet\n");
+//		content.append("            label=\"" + grammarShortName + " Action Set\"\n");
+//		content.append("            visible=\"true\"\n");
+//		content.append("            id=\"org.dslforge.core.ui.model.actionset\">\n");
+//		content.append("         <action\n");
+//		content.append("               label=\""+ grammarShortName + " file" + "\"\n");
+//		content.append("               class=\"" + project.getName() + ".actions.New" + grammarShortName + "Action\"\n");
+//		content.append("              menubarPath=\"file/new/additions\"\n");
+//		content.append("               id=\"" + project.getName() + ".wizard.new" + grammarShortName + "Action\"/>\n");
+//		content.append("      </actionSet>\n");
+//		content.append("   </extension>\n");
+//		content.append("   <extension\n");
+//		content.append("     point=\"org.dslforge.workbench.contribution\">\n");
+//		content.append("  <generator\n");
+//		content.append("       class=\"" + project.getName() + "." + grammarShortName + "ExecutableExtensionFactory\"\n");
+//		content.append("         extension=\"" + fileExtension + "\"\n");
+//		content.append("        label=\""+ grammar.getName() + "\">\n");
+//		content.append("  </generator>\n");
+//		content.append("</extension>\n");		
 		content.append("</plugin>\n");
 		SubMonitor subMonitor = SubMonitor.convert(progressMonitor, 2);
 		try {

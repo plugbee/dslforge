@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.dslforge.workbench.wizards.AbstractNewResourceWizardPage;
-import org.dslforge.xtext.common.registry.BasicWorkbenchRegistry;
+import org.dslforge.xtext.common.registry.LanguageRegistry;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -61,7 +61,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage{
 	private final Map<String, String> languageToFileExtension = new HashMap<String, String>();
 	
 	private List<String> getAvailableDSLNames() {
-		List<String> list = BasicWorkbenchRegistry.INSTANCE.getMetamodels();
+		List<String> list = LanguageRegistry.INSTANCE.getMetamodels();
 		for (String m: list)
 			m = tinify(m);
 		return list;
@@ -76,9 +76,9 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage{
 	}
 	
 	private void initializeLanguageMap() {
-		List<String> list = BasicWorkbenchRegistry.INSTANCE.getMetamodels();
+		List<String> list = LanguageRegistry.INSTANCE.getMetamodels();
 		for (String m : list) {
-			languageToFileExtension.put(m, BasicWorkbenchRegistry.INSTANCE.getFileExtensionFor(m));
+			languageToFileExtension.put(m, LanguageRegistry.INSTANCE.getFileExtensionFor(m));
 		}
 	}
 	

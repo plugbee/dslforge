@@ -24,7 +24,7 @@ import java.util.Set;
 
 import org.dslforge.database.pu.tables.Folder;
 import org.dslforge.workspace.WorkspaceManager;
-import org.dslforge.xtext.common.registry.BasicWorkbenchRegistry;
+import org.dslforge.xtext.common.registry.LanguageRegistry;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.IDialogSettings;
@@ -83,7 +83,7 @@ public abstract class AbstractGeneratorWizard extends Wizard {
 		}
 		
 		String languageName = page.getLanguageName();
-		injector = BasicWorkbenchRegistry.INSTANCE.getInjector(languageName);
+		injector = LanguageRegistry.INSTANCE.getInjector(languageName);
 		IStructuredSelection initialElementSelection = page.getInitialElementSelection();
 		File file =(File) initialElementSelection.getFirstElement();
 		String fileName = file.getName();
@@ -91,7 +91,7 @@ public abstract class AbstractGeneratorWizard extends Wizard {
 
 		// Generate code
 	//	IGenerator compiler = injector.getInstance(IGenerator.class);
-		IGenerator compiler = (IGenerator) BasicWorkbenchRegistry.INSTANCE.getGeneratorsForMetamodel(languageName).get(0);
+		IGenerator compiler = (IGenerator) LanguageRegistry.INSTANCE.getGeneratorsForMetamodel(languageName).get(0);
 		
 		// Load resource
 		XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);

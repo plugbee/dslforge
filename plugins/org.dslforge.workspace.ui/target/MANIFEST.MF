@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Export-Package: org.dslforge.workspace.ui
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.rap.ui,org.dslfor
+ ge.workspace,org.eclipse.rap.ui.navigator,org.eclipse.rap.ui.views,or
+ g.eclipse.emf.common,org.eclipse.emf.rap.edit.ui,org.dslforge.xtext.c
+ ommon
+Bundle-Vendor: PlugBee
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 1.0.0.201512240110
+Bundle-Name: Eclipse RAP Workspace UI
+Bundle-Activator: org.dslforge.workspace.ui.internal.Activator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.dslforge.workspace.ui;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+

@@ -17,7 +17,7 @@ package org.dslforge.workbench.wizards;
 
 import java.util.List;
 
-import org.dslforge.xtext.common.registry.BasicWorkbenchRegistry;
+import org.dslforge.xtext.common.registry.LanguageRegistry;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
@@ -93,7 +93,7 @@ public class AboutDialog extends Dialog {
 		GridData tableData = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		table.setLayoutData(tableData);
 
-		List<String> metamodels = BasicWorkbenchRegistry.INSTANCE.getMetamodels();
+		List<String> metamodels = LanguageRegistry.INSTANCE.getMetamodels();
 		int preferredWidth = getPreferredWidth(metamodels);
 		for (int i = 0; i < columns; i++) {
 			final TableColumn column = new TableColumn(table, SWT.NONE);

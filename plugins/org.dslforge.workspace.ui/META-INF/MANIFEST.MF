@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: DSL Forge Workspace UI
+Bundle-Name: Eclipse RAP Workspace UI
 Bundle-SymbolicName: org.dslforge.workspace.ui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.dslforge.workspace.ui.internal.Activator
@@ -8,6 +8,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.rap.ui,
  org.dslforge.workspace,
  org.eclipse.rap.ui.navigator,
- org.eclipse.rap.ui.views
+ org.eclipse.rap.ui.views,
+ org.eclipse.emf.common,
+ org.eclipse.emf.rap.edit.ui,
+ org.dslforge.xtext.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
+Export-Package: org.dslforge.workspace.ui
+Bundle-Vendor: PlugBee

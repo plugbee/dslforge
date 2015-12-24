@@ -17,9 +17,9 @@ package org.dslforge.workspace.ui;
 
 import java.io.File;
 
+import org.dslforge.workspace.WorkspaceManager;
 import org.dslforge.workspace.ui.internal.Activator;
 import org.dslforge.workspace.ui.internal.BasicWorkbenchImageProvider;
-import org.dslforge.workspace.WorkspaceManager;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
