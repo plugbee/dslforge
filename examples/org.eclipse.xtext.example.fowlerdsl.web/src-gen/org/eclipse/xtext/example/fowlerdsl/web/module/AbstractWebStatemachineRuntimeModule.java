@@ -11,7 +11,6 @@ public abstract class AbstractWebStatemachineRuntimeModule extends SharedModule 
 
 	@Override
 	public void configure(Binder binder) {
-		System.out.println("[DSLFORGE] - Configuring module " + this.getClass().getName());
 		super.configure(binder);
 	}
 }
