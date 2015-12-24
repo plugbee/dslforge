@@ -47,12 +47,18 @@ public class UndoAction extends TextSelectionListenerAction {
 
 	public void update() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	public void setActiveWorkbenchPart(IEditorPart activeEditor) {
 		if (activeEditor instanceof IBasicTextEditor)
-			this.activeEditor = (IBasicTextEditor) activeEditor;
+			this.setActiveEditor((IBasicTextEditor) activeEditor);
 	}
 
+	public IBasicTextEditor getActiveEditor() {
+		return activeEditor;
+	}
+
+	public void setActiveEditor(IBasicTextEditor activeEditor) {
+		this.activeEditor = activeEditor;
+	}
 }

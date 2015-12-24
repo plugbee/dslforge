@@ -26,6 +26,14 @@
             contributorClass="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineActionBarContributor">
       </editor>
    </extension>
+   <extension
+         point="org.dslforge.xtext.common.contribution">
+      <contribution
+            class="org.eclipse.xtext.example.fowlerdsl.web.StatemachineExecutableExtensionFactory"
+            extension="statemachine"
+            label="Statemachine">
+      </contribution>
+   </extension>
       <!-- @generated dslforge -->
       <!--
    <extension point="org.eclipse.ui.actionSets">

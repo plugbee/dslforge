@@ -65,7 +65,6 @@
             objectClass="java.io.File">
          <action
                class="org.dslforge.workspace.ui.actions.NewModelAction"
-               definitionId="org.dslforge.core.ui.actions.commands.newModel"
                enablesFor="*"
                icon="icons/model.png"
                id="org.dslforge.navigator.actions.new.model"
@@ -205,7 +204,6 @@
          -->
          <action
                class="org.dslforge.workspace.ui.wizards.NewProjectDelegateAction"
-               definitionId="org.dslforge.core.ui.actions.commands.newProject"
                icon="icons/project.png"
                id="org.dslforge.navigator.actions.new.project"
                label="Project"

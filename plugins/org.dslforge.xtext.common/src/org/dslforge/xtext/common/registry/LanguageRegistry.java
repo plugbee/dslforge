@@ -27,11 +27,7 @@ import org.dslforge.xtext.common.guice.AbstractGuiceAwareWebExecutableExtensionF
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IContributor;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.osgi.framework.Bundle;
@@ -116,24 +112,7 @@ public class LanguageRegistry {
 		return toReturn;
 	}
 	
-	public void initialize() throws CoreException {
-		
-//		Job job = new Job("Registering contributions") {
-//			protected IStatus run(IProgressMonitor monitor) {
-//				try {
-//					List<String> metamodels = LanguageRegistry.INSTANCE.getMetamodels();
-//					for (String m : metamodels) {
-//						System.out.println("[DSLFORGE] - Registering DSL: " + m);
-//					}
-//				} catch (Exception ex) {
-//					ex.printStackTrace();
-//				}
-//				return Status.OK_STATUS;
-//			}
-//		};
-//		job.schedule();
-		
-		
+	public void initialize() throws CoreException {		
 		IConfigurationElement[] configElements =Platform.getExtensionRegistry().getConfigurationElementsFor(WorkbenchContribution_ExtensionPoint);
 		if (configElements.length != 0) {
 			for (IConfigurationElement configElement : configElements) {
@@ -199,20 +178,8 @@ public class LanguageRegistry {
 	private void logWarning(String msg) {
 		System.out.println("[DSLFORGE] - WARNING: " + msg);
 	}
-	
-	private Injector getInjectorForFileExtension(String fileExtension) {
-		Set<String> keySet = languageToContributionMap.keySet();
-		for (String key: keySet) {
-			LanguageContribution languageContribution = languageToContributionMap.get(key);
-			if (languageContribution.getFileExtension().equals(fileExtension)) {
-				return languageContribution.getInjector();
-			}
-		}
-		return null;
-	}
 
 	private void logError(Throwable t) {
 		t.printStackTrace();
 	}
-
 }

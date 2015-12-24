@@ -26,6 +26,14 @@
             contributorClass="org.xtext.example.domainmodel.web.editor.DomainmodelActionBarContributor">
       </editor>
    </extension>
+   <extension
+         point="org.dslforge.xtext.common.contribution">
+      <contribution
+            class="org.xtext.example.domainmodel.web.DomainmodelExecutableExtensionFactory"
+            extension="dmodel"
+            label="Domainmodel">
+      </contribution>
+   </extension>
       <!-- @generated dslforge -->
       <!--
    <extension point="org.eclipse.ui.actionSets">

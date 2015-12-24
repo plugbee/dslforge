@@ -23,8 +23,16 @@
 	            icon="icons/model.png"
 		            extensions="calc"
            class="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsEditor"
-            contributorClass="org.eclipse.xtext.example.arithmetics.web.editor.AbstractArithmeticsActionBarContributor">
+            contributorClass="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsActionBarContributor">
       </editor>
+   </extension>
+   <extension
+         point="org.dslforge.xtext.common.contribution">
+      <contribution
+            class="org.eclipse.xtext.example.arithmetics.web.ArithmeticsExecutableExtensionFactory"
+            extension="calc"
+            label="Arithmetics">
+      </contribution>
    </extension>
       <!-- @generated dslforge -->
       <!--
