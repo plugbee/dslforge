@@ -24,18 +24,31 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 
 class GenTheme implements IWebProjectGenerator{
 	
+	val EditorType type
 	val relativePath = "/ace/"
+	var defaultSlotName = "src-js"
 	var String projectName
 	var String grammarShortName
 	var String basePath
 	var Grammar grammar
+
+	new (EditorType type) {
+		switch(this.type=type) {
+			case ACE: defaultSlotName = "WebContent"
+			case RAP: defaultSlotName="src-js"
+		}
+	}
+	
+	new() {
+		this(EditorType.RAP)
+	}
 	
 	override doGenerate(EObject input, IFileSystemAccess fsa) {
 		grammar = input as Grammar
+		if(type==EditorType.RAP) basePath=GeneratorUtil::getBasePath(grammar) else basePath="";
 		projectName=GeneratorUtil::getProjectName(grammar)
 		grammarShortName= GeneratorUtil::getGrammarShortName(grammar)
-		basePath=GeneratorUtil::getBasePath(grammar)
-		fsa.generateFile(basePath + relativePath +"theme-eclipse.js", "src-js", toJavaScript())
+		fsa.generateFile(basePath + relativePath +"theme-eclipse.js", defaultSlotName, toJavaScript())
 	}
 			
 	def toJavaScript()'''

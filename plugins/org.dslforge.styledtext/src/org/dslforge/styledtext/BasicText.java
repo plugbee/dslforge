@@ -135,14 +135,12 @@ public class BasicText extends Composite {
 	}
 
 	protected void loadClientResources(List<IPath> resources) {
-		//load resources
 		for (int i = 0; i < resources.size(); i++) {
 			getJavaScriptLoader().require(getResourceManager().getLocation(resources.get(i).toOSString()));
 		}
 	}
 
 	protected void setupClient() {
-		//add resources
 		addBaseResource(new Path("src-js/org/dslforge/styledtext/ace/ace.js"));
 		addBaseResource(new Path("src-js/org/dslforge/styledtext/ace/ext-language_tools.js"));
 		addBaseResource(new Path("src-js/org/dslforge/styledtext/ace/ext-documentation.js"));
@@ -153,7 +151,6 @@ public class BasicText extends Composite {
 	}
 
 	protected void registerClientResources(List<IPath> resources, ClassLoader loader) {
-		//register resources
 		ResourceManager resourceManager = getResourceManager();
 		try {
 			for (IPath filePath : resources) {
@@ -610,46 +607,6 @@ public class BasicText extends Composite {
 		return RWT.getResourceManager();
 	}
 
-	/**
-	 * Add the initial JavaScript files for setting up ACE editor
-	 */
-//	protected void addClientResources() {
-//		addJavaScriptResource(new Path("src-js/org/dslforge/styledtext/ace/ace.js"));
-//		addJavaScriptResource(new Path("src-js/org/dslforge/styledtext/ace/theme-eclipse.js"));
-//		addJavaScriptResource(new Path("src-js/org/dslforge/styledtext/ace/ext-language_tools.js"));
-//		addJavaScriptResource(new Path("src-js/org/dslforge/styledtext/ace/ext-documentation.js"));
-//		addJavaScriptResource(new Path("src-js/org/dslforge/styledtext/ace/ext-tooltip.js"));
-//		addJavaScriptResource(new Path("src-js/org/dslforge/styledtext/ace/ext-searchbox.js"));
-//		addJavaScriptResource(new Path("src-js/org/dslforge/styledtext/ace/snippets/text.js"));
-//		addJavaScriptResource(new Path("src-js/org/dslforge/styledtext/global-index.js"));
-//	}
-
-//	/**
-//	 * Register the contributed JavaScript resources
-//	 */
-//	private void registerClientResources() {
-//		ResourceManager resourceManager = getResourceManager();
-//		boolean isRegistered = resourceManager.isRegistered(getResources().get(0).toOSString());
-//		if (!isRegistered) {
-//			try {
-//				for (IPath filePath : getResources()) {
-//					registerResource(resourceManager, getClassLoader(), filePath.toOSString());
-//				}
-//			} catch (IOException ioe) {
-//				throw new IllegalArgumentException("Failed to load resources", ioe);
-//			}
-//		}
-//	}
-//	
-//	/**
-//	 * Loads the JavaScript files
-//	 */
-//	private void loadClientResources() {
-//		for (int i = 0; i < getResources().size(); i++) {
-//			getJavaScriptLoader().require(getResourceManager().getLocation(getResources().get(i).toOSString()));
-//		}
-//	}
-//
 	/**
 	 * Register JavaScript resource with the given <em>filePath</em>
 	 * 

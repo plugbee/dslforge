@@ -81,9 +81,9 @@ public class «grammarShortName» extends BasicText {
 		languageResources.add(new Path("src-js/«basePath»/ace/snippets/«grammarShortName.toLowerCase».js"));		
 		languageResources.add(new Path("src-js/«basePath»/ace/mode-«grammarShortName.toLowerCase».js"));
 		languageResources.add(new Path("src-js/«basePath»/ace/worker-«grammarShortName.toLowerCase».js"));
-		languageResources.add(new Path("src-js/«basePath»/ace/antlr-all-min.js"));
-		languageResources.add(new Path("src-js/«basePath»/ace/Internal«grammarShortName»Parser.js"));
-		languageResources.add(new Path("src-js/«basePath»/ace/Internal«grammarShortName»Lexer.js"));
+		languageResources.add(new Path("src-js/«basePath»/parser/antlr-all-min.js"));
+		languageResources.add(new Path("src-js/«basePath»/parser/Internal«grammarShortName»Parser.js"));
+		languageResources.add(new Path("src-js/«basePath»/parser/Internal«grammarShortName»Lexer.js"));
 		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
 		loadClientResources(getBaseResources());
 		registerClientResources(languageResources, getClassLoader());
@@ -130,9 +130,9 @@ public class «grammarShortName» extends BasicText {
 				var guid = this._url;
 				var basePath = 'rwt-resources/src-js/org/dslforge/styledtext/ace';
 				ace.require("ace/config").set("basePath", basePath);
-				var workerPath = 'rwt-resources/«basePath»/ace';
+				var workerPath = 'rwt-resources/src-js/«basePath»/ace';
 				ace.require("ace/config").set("workerPath", workerPath);
-				var themePath = 'rwt-resources/«basePath»/ace';
+				var themePath = 'rwt-resources/src-js/«basePath»/ace';
 				ace.require("ace/config").set("themePath", themePath);
 
 				var editor = this.editor = ace.edit(this.element);

@@ -178,6 +178,7 @@
 				var remoteObject = rap.getRemoteObject(this);
 				if (remoteObject && !this.initialContent) {
 					remoteObject.notify("TextChanged");
+					console.log(this.getOffset(this.editor.getCursorPosition()));
 				} else {
 					if (this.editable) {
 						//initial setting, avoid notify back the server.
@@ -185,6 +186,16 @@
 						this.editor.getSession().getUndoManager().reset();		
 					}
 				}
+			},
+			
+			getOffset: function(properties) {
+				var row = properties.row;
+				var column = properties.column;
+				var offset = 0;
+				for (i=0;i<row;i++) {
+					offset+= this.editor.getSession().getLine(i).length;
+				}
+				return offset + column - 1;
 			},
 
 			onSave: function() {
@@ -241,22 +252,29 @@
 
 			setAnnotations : function(annotations) {
 				if (this.ready) {
-					if (annotations) {
-						this._annotations = annotations;
+					if (annotations.length>0) {
+						this._annotations = [];
+						//keep client-side annotations
 						var editorAnnotations = this.editor.session.getAnnotations();
-						for (var i = this._annotations.length; i--;) {
-							var annotation = this._annotations[i];
+						for (var i = 0; i < editorAnnotations.length; i++) {
+			   				if (!editorAnnotations[i].server) {
+			   					this._annotations.push(editorAnnotations[i])
+			   				}
+			   			}
+						//recompute server-side annotations
+						for (var i = annotations.length; i--;) {
+							var annotation = annotations[i];
 							for (var key in annotation) {
 								var positions = annotation[key].match(/\d+/g);
 								if (key=="error")
-									editorAnnotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"error", server: true});
+									this._annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"error", server: true});
 								else if (key=="warning")
-									editorAnnotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"warning", server: true});
+									this._annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"warning", server: true});
 								else if (key=="info")
-									editorAnnotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"info", server: true});
+									this._annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"info", server: true});
 							}	
 			           }
-						this.editor.session.setAnnotations(editorAnnotations);
+						this.editor.session.setAnnotations(this._annotations);
 					} else {
 						 this.editor.session.clearAnnotations();
 					}

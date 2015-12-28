@@ -24,20 +24,33 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 
 class GenMode implements IWebProjectGenerator{
 	
+	val EditorType type
 	val relativePath = "/ace/"
+	var defaultSlotName = "src-js"
 	var String projectName
 	var String grammarShortName
 	var String basePath
 	var String keywordList
 	var Grammar grammar
 	
+	new (EditorType type) {
+		switch(this.type=type) {
+			case ACE: defaultSlotName = "WebContent"
+			case RAP: defaultSlotName="src-js"	
+		}
+	}
+	
+	new() {
+		this(EditorType.RAP)
+	}
+	
 	override doGenerate(EObject input, IFileSystemAccess fsa) {
 		grammar = input as Grammar
+		if(type==EditorType.RAP) basePath=GeneratorUtil::getBasePath(grammar) else basePath="";
 		projectName=GeneratorUtil::getProjectName(grammar)
 		grammarShortName= GeneratorUtil::getGrammarShortName(grammar)
-		basePath=GeneratorUtil::getBasePath(grammar)
 		keywordList = GeneratorUtil::getKeywords(grammar, "|", false)
-		fsa.generateFile(basePath + relativePath + "mode-" + grammarShortName.toLowerCase + ".js", "src-js", toJavaScript())
+		fsa.generateFile(basePath + relativePath + "mode-" + grammarShortName.toLowerCase + ".js", defaultSlotName, toJavaScript())
 	}
 	
 	def toJavaScript()'''

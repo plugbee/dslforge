@@ -36,9 +36,9 @@ public class Arithmetics extends BasicText {
 		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/ace/snippets/arithmetics.js"));		
 		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/ace/mode-arithmetics.js"));
 		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/ace/worker-arithmetics.js"));
-		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/ace/antlr-all-min.js"));
-		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/ace/InternalArithmeticsParser.js"));
-		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/ace/InternalArithmeticsLexer.js"));
+		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/parser/antlr-all-min.js"));
+		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/parser/InternalArithmeticsParser.js"));
+		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/parser/InternalArithmeticsLexer.js"));
 		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
 		loadClientResources(getBaseResources());
 		registerClientResources(languageResources, getClassLoader());

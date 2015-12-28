@@ -876,9 +876,9 @@ var oop = require("../lib/oop");
 var Mirror = require("../worker/mirror").Mirror;
 var statemachineparse = require("../mode/statemachine/statemachineparse");
 
-importScripts("./antlr-all-min.js");
-importScripts("./InternalStatemachineLexer.js");
-importScripts("./InternalStatemachineParser.js");
+importScripts("../parser/antlr-all-min.js");
+importScripts("../parser/InternalStatemachineLexer.js");
+importScripts("../parser/InternalStatemachineParser.js");
 
 var Worker = exports.Worker = function(sender) {
     Mirror.call(this, sender);

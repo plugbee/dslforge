@@ -13,7 +13,7 @@
  * 
  * </copyright>
  */
-package org.dslforge.xtext.generator.web.ace
+package org.dslforge.xtext.generator.web.parser
 
 import java.util.Iterator
 import java.util.List
@@ -41,21 +41,33 @@ import org.eclipse.xtext.resource.XtextResource
 
 class GenGrammar implements IWebProjectGenerator {
 
-	val relativePath = "/ace/"
+	val EditorType type
+	val relativePath = "/parser/"
+	var defaultSlotName = "src-js"
 	var String projectName
 	var String grammarShortName
 	var String basePath
 	var Grammar grammar
-
 	val String indentation = "	"
 	val String lineSeparator = "\n"
 
+	new (EditorType type) {
+		switch(this.type=type) {
+			case ACE: defaultSlotName = "WebContent"
+			case RAP: defaultSlotName="src-js"
+		}
+	}
+	
+	new() {
+		this(EditorType.RAP)
+	}
+	
 	override doGenerate(EObject input, IFileSystemAccess fsa) {
 		grammar = input as Grammar
+		if(type==EditorType.RAP) basePath=GeneratorUtil::getBasePath(grammar) else basePath="";
 		projectName = GeneratorUtil::getProjectName(grammar)
 		grammarShortName = GeneratorUtil::getGrammarShortName(grammar)
-		basePath = GeneratorUtil::getBasePath(grammar)
-		fsa.generateFile(basePath + relativePath + "Internal" + grammarShortName + ".g", "src-js", translate())
+		fsa.generateFile(basePath + relativePath + "Internal" + grammarShortName + ".g", defaultSlotName, translate())
 	}
 
 	def CharSequence translate() {

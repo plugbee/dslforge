@@ -1,5 +1,5 @@
-define('ace/snippets/myDsl', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('ace/snippets/mydsl', ['require', 'exports', 'module' ], function(require, exports, module) {
 
 exports.snippetText = ''
-exports.scope = "myDsl";
+exports.scope = "mydsl";
 });

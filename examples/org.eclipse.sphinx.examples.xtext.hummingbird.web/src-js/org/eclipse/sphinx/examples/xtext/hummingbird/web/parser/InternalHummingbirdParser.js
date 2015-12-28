@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g 2015-12-23 16:38:29
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g 2015-12-28 01:41:59
 
 
 
@@ -125,7 +125,7 @@ org.antlr.lang.extend(InternalHummingbirdParser, org.antlr.runtime.Parser, {
     },
 
     getTokenNames: function() { return InternalHummingbirdParser.tokenNames; },
-    getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g"; }
+    getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g"; }
 });
 org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
@@ -140,7 +140,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:16:1: rule_EntryPoint : ( rule_Application | rule_Platform EOF );
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:16:1: rule_EntryPoint : ( rule_Application | rule_Platform EOF );
     // $ANTLR start "rule_EntryPoint"
     rule_EntryPoint: function() {
         var retval = new InternalHummingbirdParser.rule_EntryPoint_return();
@@ -155,7 +155,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var EOF3_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:16:16: ( rule_Application | rule_Platform EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:16:16: ( rule_Application | rule_Platform EOF )
             var alt1=2;
             var LA1_0 = this.input.LA(1);
 
@@ -173,7 +173,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt1) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:17:2: rule_Application
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:17:2: rule_Application
                     root_0 = this.adaptor.nil();
 
                     this.pushFollow(InternalHummingbirdParser.FOLLOW_rule_Application_in_rule_EntryPoint55);
@@ -186,7 +186,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                     break;
                 case 2 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:17:21: rule_Platform EOF
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:17:21: rule_Platform EOF
                     root_0 = this.adaptor.nil();
 
                     this.pushFollow(InternalHummingbirdParser.FOLLOW_rule_Platform_in_rule_EntryPoint59);
@@ -232,7 +232,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:21:1: rule_Application : 'Application' name= ID '{' ( 'description' description= rule_Description )? 'components' '{' components+= rule_Component ( ',' components+= rule_Component )* '}' '}' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:21:1: rule_Application : 'Application' name= ID '{' ( 'description' description= rule_Description )? 'components' '{' components+= rule_Component ( ',' components+= rule_Component )* '}' '}' ;
     // $ANTLR start "rule_Application"
     rule_Application: function() {
         var retval = new InternalHummingbirdParser.rule_Application_return();
@@ -263,8 +263,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var char_literal11_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:21:17: ( 'Application' name= ID '{' ( 'description' description= rule_Description )? 'components' '{' components+= rule_Component ( ',' components+= rule_Component )* '}' '}' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:22:2: 'Application' name= ID '{' ( 'description' description= rule_Description )? 'components' '{' components+= rule_Component ( ',' components+= rule_Component )* '}' '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:21:17: ( 'Application' name= ID '{' ( 'description' description= rule_Description )? 'components' '{' components+= rule_Component ( ',' components+= rule_Component )* '}' '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:22:2: 'Application' name= ID '{' ( 'description' description= rule_Description )? 'components' '{' components+= rule_Component ( ',' components+= rule_Component )* '}' '}'
             root_0 = this.adaptor.nil();
 
             string_literal4=this.match(this.input,9,InternalHummingbirdParser.FOLLOW_9_in_rule_Application72); 
@@ -279,7 +279,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             char_literal5_tree = this.adaptor.create(char_literal5);
             this.adaptor.addChild(root_0, char_literal5_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:24:6: ( 'description' description= rule_Description )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:24:6: ( 'description' description= rule_Description )?
             var alt2=2;
             var LA2_0 = this.input.LA(1);
 
@@ -288,7 +288,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt2) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:24:7: 'description' description= rule_Description
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:24:7: 'description' description= rule_Description
                     string_literal6=this.match(this.input,11,InternalHummingbirdParser.FOLLOW_11_in_rule_Application83); 
                     string_literal6_tree = this.adaptor.create(string_literal6);
                     this.adaptor.addChild(root_0, string_literal6_tree);
@@ -322,7 +322,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             if (org.antlr.lang.isNull(list_components)) list_components = [];
             list_components.push(components.getTree());
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:24:96: ( ',' components+= rule_Component )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:24:96: ( ',' components+= rule_Component )*
             loop3:
             do {
                 var alt3=2;
@@ -335,7 +335,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                 switch (alt3) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:24:97: ',' components+= rule_Component
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:24:97: ',' components+= rule_Component
                     char_literal9=this.match(this.input,13,InternalHummingbirdParser.FOLLOW_13_in_rule_Application100); 
                     char_literal9_tree = this.adaptor.create(char_literal9);
                     this.adaptor.addChild(root_0, char_literal9_tree);
@@ -400,7 +400,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:28:1: rule_Component : 'Component' name= ID '{' ( 'type' type= ID )? ( 'incomingConnections' incomingconnections= ID )? ( 'description' description= rule_Description )? ( 'outgoingConnections' '{' outgoingconnections+= rule_Connection ( ',' outgoingconnections+= rule_Connection )* '}' )? ( 'parameterValues' '{' parametervalues+= rule_ParameterValue ( ',' parametervalues+= rule_ParameterValue )* '}' )? '}' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:28:1: rule_Component : 'Component' name= ID '{' ( 'type' type= ID )? ( 'incomingConnections' incomingconnections= ID )? ( 'description' description= rule_Description )? ( 'outgoingConnections' '{' outgoingconnections+= rule_Connection ( ',' outgoingconnections+= rule_Connection )* '}' )? ( 'parameterValues' '{' parametervalues+= rule_ParameterValue ( ',' parametervalues+= rule_ParameterValue )* '}' )? '}' ;
     // $ANTLR start "rule_Component"
     rule_Component: function() {
         var retval = new InternalHummingbirdParser.rule_Component_return();
@@ -449,8 +449,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var char_literal25_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:28:15: ( 'Component' name= ID '{' ( 'type' type= ID )? ( 'incomingConnections' incomingconnections= ID )? ( 'description' description= rule_Description )? ( 'outgoingConnections' '{' outgoingconnections+= rule_Connection ( ',' outgoingconnections+= rule_Connection )* '}' )? ( 'parameterValues' '{' parametervalues+= rule_ParameterValue ( ',' parametervalues+= rule_ParameterValue )* '}' )? '}' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:29:2: 'Component' name= ID '{' ( 'type' type= ID )? ( 'incomingConnections' incomingconnections= ID )? ( 'description' description= rule_Description )? ( 'outgoingConnections' '{' outgoingconnections+= rule_Connection ( ',' outgoingconnections+= rule_Connection )* '}' )? ( 'parameterValues' '{' parametervalues+= rule_ParameterValue ( ',' parametervalues+= rule_ParameterValue )* '}' )? '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:28:15: ( 'Component' name= ID '{' ( 'type' type= ID )? ( 'incomingConnections' incomingconnections= ID )? ( 'description' description= rule_Description )? ( 'outgoingConnections' '{' outgoingconnections+= rule_Connection ( ',' outgoingconnections+= rule_Connection )* '}' )? ( 'parameterValues' '{' parametervalues+= rule_ParameterValue ( ',' parametervalues+= rule_ParameterValue )* '}' )? '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:29:2: 'Component' name= ID '{' ( 'type' type= ID )? ( 'incomingConnections' incomingconnections= ID )? ( 'description' description= rule_Description )? ( 'outgoingConnections' '{' outgoingconnections+= rule_Connection ( ',' outgoingconnections+= rule_Connection )* '}' )? ( 'parameterValues' '{' parametervalues+= rule_ParameterValue ( ',' parametervalues+= rule_ParameterValue )* '}' )? '}'
             root_0 = this.adaptor.nil();
 
             string_literal12=this.match(this.input,15,InternalHummingbirdParser.FOLLOW_15_in_rule_Component123); 
@@ -465,7 +465,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             char_literal13_tree = this.adaptor.create(char_literal13);
             this.adaptor.addChild(root_0, char_literal13_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:31:6: ( 'type' type= ID )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:31:6: ( 'type' type= ID )?
             var alt4=2;
             var LA4_0 = this.input.LA(1);
 
@@ -474,7 +474,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt4) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:31:7: 'type' type= ID
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:31:7: 'type' type= ID
                     string_literal14=this.match(this.input,16,InternalHummingbirdParser.FOLLOW_16_in_rule_Component134); 
                     string_literal14_tree = this.adaptor.create(string_literal14);
                     this.adaptor.addChild(root_0, string_literal14_tree);
@@ -489,7 +489,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:31:24: ( 'incomingConnections' incomingconnections= ID )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:31:24: ( 'incomingConnections' incomingconnections= ID )?
             var alt5=2;
             var LA5_0 = this.input.LA(1);
 
@@ -498,7 +498,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt5) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:31:25: 'incomingConnections' incomingconnections= ID
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:31:25: 'incomingConnections' incomingconnections= ID
                     string_literal15=this.match(this.input,17,InternalHummingbirdParser.FOLLOW_17_in_rule_Component143); 
                     string_literal15_tree = this.adaptor.create(string_literal15);
                     this.adaptor.addChild(root_0, string_literal15_tree);
@@ -513,7 +513,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:31:72: ( 'description' description= rule_Description )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:31:72: ( 'description' description= rule_Description )?
             var alt6=2;
             var LA6_0 = this.input.LA(1);
 
@@ -522,7 +522,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt6) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:31:73: 'description' description= rule_Description
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:31:73: 'description' description= rule_Description
                     string_literal16=this.match(this.input,11,InternalHummingbirdParser.FOLLOW_11_in_rule_Component152); 
                     string_literal16_tree = this.adaptor.create(string_literal16);
                     this.adaptor.addChild(root_0, string_literal16_tree);
@@ -539,7 +539,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:32:2: ( 'outgoingConnections' '{' outgoingconnections+= rule_Connection ( ',' outgoingconnections+= rule_Connection )* '}' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:32:2: ( 'outgoingConnections' '{' outgoingconnections+= rule_Connection ( ',' outgoingconnections+= rule_Connection )* '}' )?
             var alt8=2;
             var LA8_0 = this.input.LA(1);
 
@@ -548,7 +548,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt8) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:32:3: 'outgoingConnections' '{' outgoingconnections+= rule_Connection ( ',' outgoingconnections+= rule_Connection )* '}'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:32:3: 'outgoingConnections' '{' outgoingconnections+= rule_Connection ( ',' outgoingconnections+= rule_Connection )* '}'
                     string_literal17=this.match(this.input,18,InternalHummingbirdParser.FOLLOW_18_in_rule_Component162); 
                     string_literal17_tree = this.adaptor.create(string_literal17);
                     this.adaptor.addChild(root_0, string_literal17_tree);
@@ -566,7 +566,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
                     if (org.antlr.lang.isNull(list_outgoingconnections)) list_outgoingconnections = [];
                     list_outgoingconnections.push(outgoingconnections.getTree());
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:32:66: ( ',' outgoingconnections+= rule_Connection )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:32:66: ( ',' outgoingconnections+= rule_Connection )*
                     loop7:
                     do {
                         var alt7=2;
@@ -579,7 +579,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                         switch (alt7) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:32:67: ',' outgoingconnections+= rule_Connection
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:32:67: ',' outgoingconnections+= rule_Connection
                             char_literal19=this.match(this.input,13,InternalHummingbirdParser.FOLLOW_13_in_rule_Component171); 
                             char_literal19_tree = this.adaptor.create(char_literal19);
                             this.adaptor.addChild(root_0, char_literal19_tree);
@@ -612,7 +612,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:33:2: ( 'parameterValues' '{' parametervalues+= rule_ParameterValue ( ',' parametervalues+= rule_ParameterValue )* '}' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:33:2: ( 'parameterValues' '{' parametervalues+= rule_ParameterValue ( ',' parametervalues+= rule_ParameterValue )* '}' )?
             var alt10=2;
             var LA10_0 = this.input.LA(1);
 
@@ -621,7 +621,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt10) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:33:3: 'parameterValues' '{' parametervalues+= rule_ParameterValue ( ',' parametervalues+= rule_ParameterValue )* '}'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:33:3: 'parameterValues' '{' parametervalues+= rule_ParameterValue ( ',' parametervalues+= rule_ParameterValue )* '}'
                     string_literal21=this.match(this.input,19,InternalHummingbirdParser.FOLLOW_19_in_rule_Component185); 
                     string_literal21_tree = this.adaptor.create(string_literal21);
                     this.adaptor.addChild(root_0, string_literal21_tree);
@@ -639,7 +639,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
                     if (org.antlr.lang.isNull(list_parametervalues)) list_parametervalues = [];
                     list_parametervalues.push(parametervalues.getTree());
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:33:62: ( ',' parametervalues+= rule_ParameterValue )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:33:62: ( ',' parametervalues+= rule_ParameterValue )*
                     loop9:
                     do {
                         var alt9=2;
@@ -652,7 +652,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                         switch (alt9) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:33:63: ',' parametervalues+= rule_ParameterValue
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:33:63: ',' parametervalues+= rule_ParameterValue
                             char_literal23=this.match(this.input,13,InternalHummingbirdParser.FOLLOW_13_in_rule_Component194); 
                             char_literal23_tree = this.adaptor.create(char_literal23);
                             this.adaptor.addChild(root_0, char_literal23_tree);
@@ -723,7 +723,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:36:1: rule_Connection : 'Connection' name= ID '{' 'sourcePort' sourceport= ID 'targetComponent' targetcomponent= ID ( 'description' description= rule_Description )? '}' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:36:1: rule_Connection : 'Connection' name= ID '{' 'sourcePort' sourceport= ID 'targetComponent' targetcomponent= ID ( 'description' description= rule_Description )? '}' ;
     // $ANTLR start "rule_Connection"
     rule_Connection: function() {
         var retval = new InternalHummingbirdParser.rule_Connection_return();
@@ -753,8 +753,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var char_literal31_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:36:16: ( 'Connection' name= ID '{' 'sourcePort' sourceport= ID 'targetComponent' targetcomponent= ID ( 'description' description= rule_Description )? '}' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:37:2: 'Connection' name= ID '{' 'sourcePort' sourceport= ID 'targetComponent' targetcomponent= ID ( 'description' description= rule_Description )? '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:36:16: ( 'Connection' name= ID '{' 'sourcePort' sourceport= ID 'targetComponent' targetcomponent= ID ( 'description' description= rule_Description )? '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:37:2: 'Connection' name= ID '{' 'sourcePort' sourceport= ID 'targetComponent' targetcomponent= ID ( 'description' description= rule_Description )? '}'
             root_0 = this.adaptor.nil();
 
             string_literal26=this.match(this.input,20,InternalHummingbirdParser.FOLLOW_20_in_rule_Connection215); 
@@ -785,7 +785,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             targetcomponent_tree = this.adaptor.create(targetcomponent);
             this.adaptor.addChild(root_0, targetcomponent_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:40:67: ( 'description' description= rule_Description )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:40:67: ( 'description' description= rule_Description )?
             var alt11=2;
             var LA11_0 = this.input.LA(1);
 
@@ -794,7 +794,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt11) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:40:68: 'description' description= rule_Description
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:40:68: 'description' description= rule_Description
                     string_literal30=this.match(this.input,11,InternalHummingbirdParser.FOLLOW_11_in_rule_Connection240); 
                     string_literal30_tree = this.adaptor.create(string_literal30);
                     this.adaptor.addChild(root_0, string_literal30_tree);
@@ -849,7 +849,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:43:1: rule_ParameterValue : 'ParameterValue' name= ID '{' ( 'value' value= STRING )? 'type' type= ID ( 'description' description= rule_Description )? '}' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:43:1: rule_ParameterValue : 'ParameterValue' name= ID '{' ( 'value' value= STRING )? 'type' type= ID ( 'description' description= rule_Description )? '}' ;
     // $ANTLR start "rule_ParameterValue"
     rule_ParameterValue: function() {
         var retval = new InternalHummingbirdParser.rule_ParameterValue_return();
@@ -879,8 +879,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var char_literal37_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:43:20: ( 'ParameterValue' name= ID '{' ( 'value' value= STRING )? 'type' type= ID ( 'description' description= rule_Description )? '}' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:44:2: 'ParameterValue' name= ID '{' ( 'value' value= STRING )? 'type' type= ID ( 'description' description= rule_Description )? '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:43:20: ( 'ParameterValue' name= ID '{' ( 'value' value= STRING )? 'type' type= ID ( 'description' description= rule_Description )? '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:44:2: 'ParameterValue' name= ID '{' ( 'value' value= STRING )? 'type' type= ID ( 'description' description= rule_Description )? '}'
             root_0 = this.adaptor.nil();
 
             string_literal32=this.match(this.input,23,InternalHummingbirdParser.FOLLOW_23_in_rule_ParameterValue257); 
@@ -895,7 +895,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             char_literal33_tree = this.adaptor.create(char_literal33);
             this.adaptor.addChild(root_0, char_literal33_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:46:6: ( 'value' value= STRING )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:46:6: ( 'value' value= STRING )?
             var alt12=2;
             var LA12_0 = this.input.LA(1);
 
@@ -904,7 +904,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt12) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:46:7: 'value' value= STRING
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:46:7: 'value' value= STRING
                     string_literal34=this.match(this.input,24,InternalHummingbirdParser.FOLLOW_24_in_rule_ParameterValue268); 
                     string_literal34_tree = this.adaptor.create(string_literal34);
                     this.adaptor.addChild(root_0, string_literal34_tree);
@@ -927,7 +927,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             type_tree = this.adaptor.create(type);
             this.adaptor.addChild(root_0, type_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:46:45: ( 'description' description= rule_Description )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:46:45: ( 'description' description= rule_Description )?
             var alt13=2;
             var LA13_0 = this.input.LA(1);
 
@@ -936,7 +936,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt13) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:46:46: 'description' description= rule_Description
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:46:46: 'description' description= rule_Description
                     string_literal36=this.match(this.input,11,InternalHummingbirdParser.FOLLOW_11_in_rule_ParameterValue283); 
                     string_literal36_tree = this.adaptor.create(string_literal36);
                     this.adaptor.addChild(root_0, string_literal36_tree);
@@ -991,7 +991,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:49:1: rule_Platform : 'Platform' name= ID '{' ( 'description' description= rule_Description )? 'componentTypes' '{' componenttypes+= rule_ComponentType ( ',' componenttypes+= rule_ComponentType )* '}' ( 'interfaces' '{' interfaces+= rule_Interface ( ',' interfaces+= rule_Interface )* '}' )? '}' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:49:1: rule_Platform : 'Platform' name= ID '{' ( 'description' description= rule_Description )? 'componentTypes' '{' componenttypes+= rule_ComponentType ( ',' componenttypes+= rule_ComponentType )* '}' ( 'interfaces' '{' interfaces+= rule_Interface ( ',' interfaces+= rule_Interface )* '}' )? '}' ;
     // $ANTLR start "rule_Platform"
     rule_Platform: function() {
         var retval = new InternalHummingbirdParser.rule_Platform_return();
@@ -1032,8 +1032,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var char_literal49_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:49:14: ( 'Platform' name= ID '{' ( 'description' description= rule_Description )? 'componentTypes' '{' componenttypes+= rule_ComponentType ( ',' componenttypes+= rule_ComponentType )* '}' ( 'interfaces' '{' interfaces+= rule_Interface ( ',' interfaces+= rule_Interface )* '}' )? '}' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:50:2: 'Platform' name= ID '{' ( 'description' description= rule_Description )? 'componentTypes' '{' componenttypes+= rule_ComponentType ( ',' componenttypes+= rule_ComponentType )* '}' ( 'interfaces' '{' interfaces+= rule_Interface ( ',' interfaces+= rule_Interface )* '}' )? '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:49:14: ( 'Platform' name= ID '{' ( 'description' description= rule_Description )? 'componentTypes' '{' componenttypes+= rule_ComponentType ( ',' componenttypes+= rule_ComponentType )* '}' ( 'interfaces' '{' interfaces+= rule_Interface ( ',' interfaces+= rule_Interface )* '}' )? '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:50:2: 'Platform' name= ID '{' ( 'description' description= rule_Description )? 'componentTypes' '{' componenttypes+= rule_ComponentType ( ',' componenttypes+= rule_ComponentType )* '}' ( 'interfaces' '{' interfaces+= rule_Interface ( ',' interfaces+= rule_Interface )* '}' )? '}'
             root_0 = this.adaptor.nil();
 
             string_literal38=this.match(this.input,25,InternalHummingbirdParser.FOLLOW_25_in_rule_Platform300); 
@@ -1048,7 +1048,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             char_literal39_tree = this.adaptor.create(char_literal39);
             this.adaptor.addChild(root_0, char_literal39_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:52:6: ( 'description' description= rule_Description )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:52:6: ( 'description' description= rule_Description )?
             var alt14=2;
             var LA14_0 = this.input.LA(1);
 
@@ -1057,7 +1057,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt14) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:52:7: 'description' description= rule_Description
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:52:7: 'description' description= rule_Description
                     string_literal40=this.match(this.input,11,InternalHummingbirdParser.FOLLOW_11_in_rule_Platform311); 
                     string_literal40_tree = this.adaptor.create(string_literal40);
                     this.adaptor.addChild(root_0, string_literal40_tree);
@@ -1091,7 +1091,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             if (org.antlr.lang.isNull(list_componenttypes)) list_componenttypes = [];
             list_componenttypes.push(componenttypes.getTree());
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:52:108: ( ',' componenttypes+= rule_ComponentType )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:52:108: ( ',' componenttypes+= rule_ComponentType )*
             loop15:
             do {
                 var alt15=2;
@@ -1104,7 +1104,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                 switch (alt15) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:52:109: ',' componenttypes+= rule_ComponentType
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:52:109: ',' componenttypes+= rule_ComponentType
                     char_literal43=this.match(this.input,13,InternalHummingbirdParser.FOLLOW_13_in_rule_Platform328); 
                     char_literal43_tree = this.adaptor.create(char_literal43);
                     this.adaptor.addChild(root_0, char_literal43_tree);
@@ -1131,7 +1131,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             char_literal44_tree = this.adaptor.create(char_literal44);
             this.adaptor.addChild(root_0, char_literal44_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:52:154: ( 'interfaces' '{' interfaces+= rule_Interface ( ',' interfaces+= rule_Interface )* '}' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:52:154: ( 'interfaces' '{' interfaces+= rule_Interface ( ',' interfaces+= rule_Interface )* '}' )?
             var alt17=2;
             var LA17_0 = this.input.LA(1);
 
@@ -1140,7 +1140,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt17) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:52:155: 'interfaces' '{' interfaces+= rule_Interface ( ',' interfaces+= rule_Interface )* '}'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:52:155: 'interfaces' '{' interfaces+= rule_Interface ( ',' interfaces+= rule_Interface )* '}'
                     string_literal45=this.match(this.input,27,InternalHummingbirdParser.FOLLOW_27_in_rule_Platform339); 
                     string_literal45_tree = this.adaptor.create(string_literal45);
                     this.adaptor.addChild(root_0, string_literal45_tree);
@@ -1158,7 +1158,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
                     if (org.antlr.lang.isNull(list_interfaces)) list_interfaces = [];
                     list_interfaces.push(interfaces.getTree());
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:52:199: ( ',' interfaces+= rule_Interface )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:52:199: ( ',' interfaces+= rule_Interface )*
                     loop16:
                     do {
                         var alt16=2;
@@ -1171,7 +1171,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                         switch (alt16) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:52:200: ',' interfaces+= rule_Interface
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:52:200: ',' interfaces+= rule_Interface
                             char_literal47=this.match(this.input,13,InternalHummingbirdParser.FOLLOW_13_in_rule_Platform348); 
                             char_literal47_tree = this.adaptor.create(char_literal47);
                             this.adaptor.addChild(root_0, char_literal47_tree);
@@ -1242,7 +1242,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:56:1: rule_ComponentType : 'ComponentType' name= ID '{' ( 'providedInterfaces' '(' providedinterfaces+= ID ( ',' providedinterfaces+= ID )* ')' )? ( 'description' description= rule_Description )? ( 'ports' '{' ports+= rule_Port ( ',' ports+= rule_Port )* '}' )? ( 'parameters' '{' parameters+= rule_Parameter ( ',' parameters+= rule_Parameter )* '}' )? '}' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:56:1: rule_ComponentType : 'ComponentType' name= ID '{' ( 'providedInterfaces' '(' providedinterfaces+= ID ( ',' providedinterfaces+= ID )* ')' )? ( 'description' description= rule_Description )? ( 'ports' '{' ports+= rule_Port ( ',' ports+= rule_Port )* '}' )? ( 'parameters' '{' parameters+= rule_Parameter ( ',' parameters+= rule_Parameter )* '}' )? '}' ;
     // $ANTLR start "rule_ComponentType"
     rule_ComponentType: function() {
         var retval = new InternalHummingbirdParser.rule_ComponentType_return();
@@ -1294,8 +1294,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var providedinterfaces_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:56:19: ( 'ComponentType' name= ID '{' ( 'providedInterfaces' '(' providedinterfaces+= ID ( ',' providedinterfaces+= ID )* ')' )? ( 'description' description= rule_Description )? ( 'ports' '{' ports+= rule_Port ( ',' ports+= rule_Port )* '}' )? ( 'parameters' '{' parameters+= rule_Parameter ( ',' parameters+= rule_Parameter )* '}' )? '}' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:57:2: 'ComponentType' name= ID '{' ( 'providedInterfaces' '(' providedinterfaces+= ID ( ',' providedinterfaces+= ID )* ')' )? ( 'description' description= rule_Description )? ( 'ports' '{' ports+= rule_Port ( ',' ports+= rule_Port )* '}' )? ( 'parameters' '{' parameters+= rule_Parameter ( ',' parameters+= rule_Parameter )* '}' )? '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:56:19: ( 'ComponentType' name= ID '{' ( 'providedInterfaces' '(' providedinterfaces+= ID ( ',' providedinterfaces+= ID )* ')' )? ( 'description' description= rule_Description )? ( 'ports' '{' ports+= rule_Port ( ',' ports+= rule_Port )* '}' )? ( 'parameters' '{' parameters+= rule_Parameter ( ',' parameters+= rule_Parameter )* '}' )? '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:57:2: 'ComponentType' name= ID '{' ( 'providedInterfaces' '(' providedinterfaces+= ID ( ',' providedinterfaces+= ID )* ')' )? ( 'description' description= rule_Description )? ( 'ports' '{' ports+= rule_Port ( ',' ports+= rule_Port )* '}' )? ( 'parameters' '{' parameters+= rule_Parameter ( ',' parameters+= rule_Parameter )* '}' )? '}'
             root_0 = this.adaptor.nil();
 
             string_literal50=this.match(this.input,28,InternalHummingbirdParser.FOLLOW_28_in_rule_ComponentType370); 
@@ -1310,7 +1310,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             char_literal51_tree = this.adaptor.create(char_literal51);
             this.adaptor.addChild(root_0, char_literal51_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:6: ( 'providedInterfaces' '(' providedinterfaces+= ID ( ',' providedinterfaces+= ID )* ')' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:6: ( 'providedInterfaces' '(' providedinterfaces+= ID ( ',' providedinterfaces+= ID )* ')' )?
             var alt19=2;
             var LA19_0 = this.input.LA(1);
 
@@ -1319,7 +1319,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt19) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:7: 'providedInterfaces' '(' providedinterfaces+= ID ( ',' providedinterfaces+= ID )* ')'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:7: 'providedInterfaces' '(' providedinterfaces+= ID ( ',' providedinterfaces+= ID )* ')'
                     string_literal52=this.match(this.input,29,InternalHummingbirdParser.FOLLOW_29_in_rule_ComponentType381); 
                     string_literal52_tree = this.adaptor.create(string_literal52);
                     this.adaptor.addChild(root_0, string_literal52_tree);
@@ -1335,7 +1335,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
                     if (org.antlr.lang.isNull(list_providedinterfaces)) list_providedinterfaces = [];
                     list_providedinterfaces.push(providedinterfaces);
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:55: ( ',' providedinterfaces+= ID )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:55: ( ',' providedinterfaces+= ID )*
                     loop18:
                     do {
                         var alt18=2;
@@ -1348,7 +1348,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                         switch (alt18) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:56: ',' providedinterfaces+= ID
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:56: ',' providedinterfaces+= ID
                             char_literal54=this.match(this.input,13,InternalHummingbirdParser.FOLLOW_13_in_rule_ComponentType390); 
                             char_literal54_tree = this.adaptor.create(char_literal54);
                             this.adaptor.addChild(root_0, char_literal54_tree);
@@ -1379,7 +1379,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:91: ( 'description' description= rule_Description )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:91: ( 'description' description= rule_Description )?
             var alt20=2;
             var LA20_0 = this.input.LA(1);
 
@@ -1388,7 +1388,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt20) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:92: 'description' description= rule_Description
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:92: 'description' description= rule_Description
                     string_literal56=this.match(this.input,11,InternalHummingbirdParser.FOLLOW_11_in_rule_ComponentType403); 
                     string_literal56_tree = this.adaptor.create(string_literal56);
                     this.adaptor.addChild(root_0, string_literal56_tree);
@@ -1405,7 +1405,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:137: ( 'ports' '{' ports+= rule_Port ( ',' ports+= rule_Port )* '}' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:137: ( 'ports' '{' ports+= rule_Port ( ',' ports+= rule_Port )* '}' )?
             var alt22=2;
             var LA22_0 = this.input.LA(1);
 
@@ -1414,7 +1414,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt22) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:138: 'ports' '{' ports+= rule_Port ( ',' ports+= rule_Port )* '}'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:138: 'ports' '{' ports+= rule_Port ( ',' ports+= rule_Port )* '}'
                     string_literal57=this.match(this.input,32,InternalHummingbirdParser.FOLLOW_32_in_rule_ComponentType412); 
                     string_literal57_tree = this.adaptor.create(string_literal57);
                     this.adaptor.addChild(root_0, string_literal57_tree);
@@ -1432,7 +1432,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
                     if (org.antlr.lang.isNull(list_ports)) list_ports = [];
                     list_ports.push(ports.getTree());
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:167: ( ',' ports+= rule_Port )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:167: ( ',' ports+= rule_Port )*
                     loop21:
                     do {
                         var alt21=2;
@@ -1445,7 +1445,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                         switch (alt21) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:168: ',' ports+= rule_Port
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:168: ',' ports+= rule_Port
                             char_literal59=this.match(this.input,13,InternalHummingbirdParser.FOLLOW_13_in_rule_ComponentType421); 
                             char_literal59_tree = this.adaptor.create(char_literal59);
                             this.adaptor.addChild(root_0, char_literal59_tree);
@@ -1478,7 +1478,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:197: ( 'parameters' '{' parameters+= rule_Parameter ( ',' parameters+= rule_Parameter )* '}' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:197: ( 'parameters' '{' parameters+= rule_Parameter ( ',' parameters+= rule_Parameter )* '}' )?
             var alt24=2;
             var LA24_0 = this.input.LA(1);
 
@@ -1487,7 +1487,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt24) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:198: 'parameters' '{' parameters+= rule_Parameter ( ',' parameters+= rule_Parameter )* '}'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:198: 'parameters' '{' parameters+= rule_Parameter ( ',' parameters+= rule_Parameter )* '}'
                     string_literal61=this.match(this.input,33,InternalHummingbirdParser.FOLLOW_33_in_rule_ComponentType434); 
                     string_literal61_tree = this.adaptor.create(string_literal61);
                     this.adaptor.addChild(root_0, string_literal61_tree);
@@ -1505,7 +1505,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
                     if (org.antlr.lang.isNull(list_parameters)) list_parameters = [];
                     list_parameters.push(parameters.getTree());
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:242: ( ',' parameters+= rule_Parameter )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:242: ( ',' parameters+= rule_Parameter )*
                     loop23:
                     do {
                         var alt23=2;
@@ -1518,7 +1518,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                         switch (alt23) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:59:243: ',' parameters+= rule_Parameter
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:59:243: ',' parameters+= rule_Parameter
                             char_literal63=this.match(this.input,13,InternalHummingbirdParser.FOLLOW_13_in_rule_ComponentType443); 
                             char_literal63_tree = this.adaptor.create(char_literal63);
                             this.adaptor.addChild(root_0, char_literal63_tree);
@@ -1589,7 +1589,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:62:1: rule_Interface : 'Interface' name= ID '{' ( 'providingComponentTypes' '(' providingcomponenttypes+= ID ( ',' providingcomponenttypes+= ID )* ')' )? ( 'requiringPorts' '(' requiringports+= ID ( ',' requiringports+= ID )* ')' )? ( 'description' description= rule_Description )? '}' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:62:1: rule_Interface : 'Interface' name= ID '{' ( 'providingComponentTypes' '(' providingcomponenttypes+= ID ( ',' providingcomponenttypes+= ID )* ')' )? ( 'requiringPorts' '(' requiringports+= ID ( ',' requiringports+= ID )* ')' )? ( 'description' description= rule_Description )? '}' ;
     // $ANTLR start "rule_Interface"
     rule_Interface: function() {
         var retval = new InternalHummingbirdParser.rule_Interface_return();
@@ -1633,8 +1633,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var requiringports_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:62:15: ( 'Interface' name= ID '{' ( 'providingComponentTypes' '(' providingcomponenttypes+= ID ( ',' providingcomponenttypes+= ID )* ')' )? ( 'requiringPorts' '(' requiringports+= ID ( ',' requiringports+= ID )* ')' )? ( 'description' description= rule_Description )? '}' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:63:2: 'Interface' name= ID '{' ( 'providingComponentTypes' '(' providingcomponenttypes+= ID ( ',' providingcomponenttypes+= ID )* ')' )? ( 'requiringPorts' '(' requiringports+= ID ( ',' requiringports+= ID )* ')' )? ( 'description' description= rule_Description )? '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:62:15: ( 'Interface' name= ID '{' ( 'providingComponentTypes' '(' providingcomponenttypes+= ID ( ',' providingcomponenttypes+= ID )* ')' )? ( 'requiringPorts' '(' requiringports+= ID ( ',' requiringports+= ID )* ')' )? ( 'description' description= rule_Description )? '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:63:2: 'Interface' name= ID '{' ( 'providingComponentTypes' '(' providingcomponenttypes+= ID ( ',' providingcomponenttypes+= ID )* ')' )? ( 'requiringPorts' '(' requiringports+= ID ( ',' requiringports+= ID )* ')' )? ( 'description' description= rule_Description )? '}'
             root_0 = this.adaptor.nil();
 
             string_literal66=this.match(this.input,34,InternalHummingbirdParser.FOLLOW_34_in_rule_Interface464); 
@@ -1649,7 +1649,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             char_literal67_tree = this.adaptor.create(char_literal67);
             this.adaptor.addChild(root_0, char_literal67_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:65:6: ( 'providingComponentTypes' '(' providingcomponenttypes+= ID ( ',' providingcomponenttypes+= ID )* ')' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:65:6: ( 'providingComponentTypes' '(' providingcomponenttypes+= ID ( ',' providingcomponenttypes+= ID )* ')' )?
             var alt26=2;
             var LA26_0 = this.input.LA(1);
 
@@ -1658,7 +1658,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt26) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:65:7: 'providingComponentTypes' '(' providingcomponenttypes+= ID ( ',' providingcomponenttypes+= ID )* ')'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:65:7: 'providingComponentTypes' '(' providingcomponenttypes+= ID ( ',' providingcomponenttypes+= ID )* ')'
                     string_literal68=this.match(this.input,35,InternalHummingbirdParser.FOLLOW_35_in_rule_Interface475); 
                     string_literal68_tree = this.adaptor.create(string_literal68);
                     this.adaptor.addChild(root_0, string_literal68_tree);
@@ -1674,7 +1674,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
                     if (org.antlr.lang.isNull(list_providingcomponenttypes)) list_providingcomponenttypes = [];
                     list_providingcomponenttypes.push(providingcomponenttypes);
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:65:65: ( ',' providingcomponenttypes+= ID )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:65:65: ( ',' providingcomponenttypes+= ID )*
                     loop25:
                     do {
                         var alt25=2;
@@ -1687,7 +1687,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                         switch (alt25) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:65:66: ',' providingcomponenttypes+= ID
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:65:66: ',' providingcomponenttypes+= ID
                             char_literal70=this.match(this.input,13,InternalHummingbirdParser.FOLLOW_13_in_rule_Interface484); 
                             char_literal70_tree = this.adaptor.create(char_literal70);
                             this.adaptor.addChild(root_0, char_literal70_tree);
@@ -1718,7 +1718,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:66:2: ( 'requiringPorts' '(' requiringports+= ID ( ',' requiringports+= ID )* ')' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:66:2: ( 'requiringPorts' '(' requiringports+= ID ( ',' requiringports+= ID )* ')' )?
             var alt28=2;
             var LA28_0 = this.input.LA(1);
 
@@ -1727,7 +1727,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt28) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:66:3: 'requiringPorts' '(' requiringports+= ID ( ',' requiringports+= ID )* ')'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:66:3: 'requiringPorts' '(' requiringports+= ID ( ',' requiringports+= ID )* ')'
                     string_literal72=this.match(this.input,36,InternalHummingbirdParser.FOLLOW_36_in_rule_Interface498); 
                     string_literal72_tree = this.adaptor.create(string_literal72);
                     this.adaptor.addChild(root_0, string_literal72_tree);
@@ -1743,7 +1743,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
                     if (org.antlr.lang.isNull(list_requiringports)) list_requiringports = [];
                     list_requiringports.push(requiringports);
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:66:43: ( ',' requiringports+= ID )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:66:43: ( ',' requiringports+= ID )*
                     loop27:
                     do {
                         var alt27=2;
@@ -1756,7 +1756,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
                         switch (alt27) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:66:44: ',' requiringports+= ID
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:66:44: ',' requiringports+= ID
                             char_literal74=this.match(this.input,13,InternalHummingbirdParser.FOLLOW_13_in_rule_Interface507); 
                             char_literal74_tree = this.adaptor.create(char_literal74);
                             this.adaptor.addChild(root_0, char_literal74_tree);
@@ -1787,7 +1787,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:66:75: ( 'description' description= rule_Description )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:66:75: ( 'description' description= rule_Description )?
             var alt29=2;
             var LA29_0 = this.input.LA(1);
 
@@ -1796,7 +1796,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt29) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:66:76: 'description' description= rule_Description
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:66:76: 'description' description= rule_Description
                     string_literal76=this.match(this.input,11,InternalHummingbirdParser.FOLLOW_11_in_rule_Interface520); 
                     string_literal76_tree = this.adaptor.create(string_literal76);
                     this.adaptor.addChild(root_0, string_literal76_tree);
@@ -1851,7 +1851,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:69:1: rule_Port : 'Port' name= ID '{' 'minProviderCount' minprovidercount= rule_Integer 'maxProviderCount' maxprovidercount= rule_Integer 'requiredInterface' requiredinterface= ID ( 'description' description= rule_Description )? '}' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:69:1: rule_Port : 'Port' name= ID '{' 'minProviderCount' minprovidercount= rule_Integer 'maxProviderCount' maxprovidercount= rule_Integer 'requiredInterface' requiredinterface= ID ( 'description' description= rule_Description )? '}' ;
     // $ANTLR start "rule_Port"
     rule_Port: function() {
         var retval = new InternalHummingbirdParser.rule_Port_return();
@@ -1883,8 +1883,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var char_literal84_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:69:10: ( 'Port' name= ID '{' 'minProviderCount' minprovidercount= rule_Integer 'maxProviderCount' maxprovidercount= rule_Integer 'requiredInterface' requiredinterface= ID ( 'description' description= rule_Description )? '}' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:70:2: 'Port' name= ID '{' 'minProviderCount' minprovidercount= rule_Integer 'maxProviderCount' maxprovidercount= rule_Integer 'requiredInterface' requiredinterface= ID ( 'description' description= rule_Description )? '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:69:10: ( 'Port' name= ID '{' 'minProviderCount' minprovidercount= rule_Integer 'maxProviderCount' maxprovidercount= rule_Integer 'requiredInterface' requiredinterface= ID ( 'description' description= rule_Description )? '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:70:2: 'Port' name= ID '{' 'minProviderCount' minprovidercount= rule_Integer 'maxProviderCount' maxprovidercount= rule_Integer 'requiredInterface' requiredinterface= ID ( 'description' description= rule_Description )? '}'
             root_0 = this.adaptor.nil();
 
             string_literal78=this.match(this.input,37,InternalHummingbirdParser.FOLLOW_37_in_rule_Port537); 
@@ -1927,7 +1927,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             requiredinterface_tree = this.adaptor.create(requiredinterface);
             this.adaptor.addChild(root_0, requiredinterface_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:75:44: ( 'description' description= rule_Description )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:75:44: ( 'description' description= rule_Description )?
             var alt30=2;
             var LA30_0 = this.input.LA(1);
 
@@ -1936,7 +1936,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt30) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:75:45: 'description' description= rule_Description
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:75:45: 'description' description= rule_Description
                     string_literal83=this.match(this.input,11,InternalHummingbirdParser.FOLLOW_11_in_rule_Port572); 
                     string_literal83_tree = this.adaptor.create(string_literal83);
                     this.adaptor.addChild(root_0, string_literal83_tree);
@@ -1991,7 +1991,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:78:1: rule_Parameter : (optional= 'optional' )? 'Parameter' name= ID '{' ( 'dataType' datatype= STRING )? ( 'description' description= rule_Description )? '}' ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:78:1: rule_Parameter : (optional= 'optional' )? 'Parameter' name= ID '{' ( 'dataType' datatype= STRING )? ( 'description' description= rule_Description )? '}' ;
     // $ANTLR start "rule_Parameter"
     rule_Parameter: function() {
         var retval = new InternalHummingbirdParser.rule_Parameter_return();
@@ -2019,11 +2019,11 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var char_literal89_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:78:15: ( (optional= 'optional' )? 'Parameter' name= ID '{' ( 'dataType' datatype= STRING )? ( 'description' description= rule_Description )? '}' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:79:2: (optional= 'optional' )? 'Parameter' name= ID '{' ( 'dataType' datatype= STRING )? ( 'description' description= rule_Description )? '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:78:15: ( (optional= 'optional' )? 'Parameter' name= ID '{' ( 'dataType' datatype= STRING )? ( 'description' description= rule_Description )? '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:79:2: (optional= 'optional' )? 'Parameter' name= ID '{' ( 'dataType' datatype= STRING )? ( 'description' description= rule_Description )? '}'
             root_0 = this.adaptor.nil();
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:79:10: (optional= 'optional' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:79:10: (optional= 'optional' )?
             var alt31=2;
             var LA31_0 = this.input.LA(1);
 
@@ -2032,7 +2032,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt31) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:79:10: optional= 'optional'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:79:10: optional= 'optional'
                     optional=this.match(this.input,41,InternalHummingbirdParser.FOLLOW_41_in_rule_Parameter591); 
                     optional_tree = this.adaptor.create(optional);
                     this.adaptor.addChild(root_0, optional_tree);
@@ -2055,7 +2055,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             char_literal86_tree = this.adaptor.create(char_literal86);
             this.adaptor.addChild(root_0, char_literal86_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:81:6: ( 'dataType' datatype= STRING )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:81:6: ( 'dataType' datatype= STRING )?
             var alt32=2;
             var LA32_0 = this.input.LA(1);
 
@@ -2064,7 +2064,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt32) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:81:7: 'dataType' datatype= STRING
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:81:7: 'dataType' datatype= STRING
                     string_literal87=this.match(this.input,43,InternalHummingbirdParser.FOLLOW_43_in_rule_Parameter605); 
                     string_literal87_tree = this.adaptor.create(string_literal87);
                     this.adaptor.addChild(root_0, string_literal87_tree);
@@ -2079,7 +2079,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:81:36: ( 'description' description= rule_Description )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:81:36: ( 'description' description= rule_Description )?
             var alt33=2;
             var LA33_0 = this.input.LA(1);
 
@@ -2088,7 +2088,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt33) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:81:37: 'description' description= rule_Description
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:81:37: 'description' description= rule_Description
                     string_literal88=this.match(this.input,11,InternalHummingbirdParser.FOLLOW_11_in_rule_Parameter614); 
                     string_literal88_tree = this.adaptor.create(string_literal88);
                     this.adaptor.addChild(root_0, string_literal88_tree);
@@ -2143,7 +2143,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:84:1: rule_Integer : ( '-' )? INT ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:84:1: rule_Integer : ( '-' )? INT ;
     // $ANTLR start "rule_Integer"
     rule_Integer: function() {
         var retval = new InternalHummingbirdParser.rule_Integer_return();
@@ -2158,11 +2158,11 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var INT91_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:84:14: ( ( '-' )? INT )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:85:2: ( '-' )? INT
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:84:14: ( ( '-' )? INT )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:85:2: ( '-' )? INT
             root_0 = this.adaptor.nil();
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:85:2: ( '-' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:85:2: ( '-' )?
             var alt34=2;
             var LA34_0 = this.input.LA(1);
 
@@ -2171,7 +2171,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
             }
             switch (alt34) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:85:2: '-'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:85:2: '-'
                     char_literal90=this.match(this.input,44,InternalHummingbirdParser.FOLLOW_44_in_rule_Integer633); 
                     char_literal90_tree = this.adaptor.create(char_literal90);
                     this.adaptor.addChild(root_0, char_literal90_tree);
@@ -2220,7 +2220,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:88:1: rule_Boolean : ( 'true' | 'false' );
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:88:1: rule_Boolean : ( 'true' | 'false' );
     // $ANTLR start "rule_Boolean"
     rule_Boolean: function() {
         var retval = new InternalHummingbirdParser.rule_Boolean_return();
@@ -2233,8 +2233,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var set92_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:88:14: ( 'true' | 'false' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:88:14: ( 'true' | 'false' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:
             root_0 = this.adaptor.nil();
 
             set92=this.input.LT(1);
@@ -2282,7 +2282,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:92:1: rule_Identifiable : idantifiable= ( STRING | ID ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:92:1: rule_Identifiable : idantifiable= ( STRING | ID ) ;
     // $ANTLR start "rule_Identifiable"
     rule_Identifiable: function() {
         var retval = new InternalHummingbirdParser.rule_Identifiable_return();
@@ -2295,8 +2295,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var idantifiable_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:92:19: (idantifiable= ( STRING | ID ) )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:93:2: idantifiable= ( STRING | ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:92:19: (idantifiable= ( STRING | ID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:93:2: idantifiable= ( STRING | ID )
             root_0 = this.adaptor.nil();
 
             idantifiable=this.input.LT(1);
@@ -2344,7 +2344,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:96:1: rule_Description : description= STRING ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:96:1: rule_Description : description= STRING ;
     // $ANTLR start "rule_Description"
     rule_Description: function() {
         var retval = new InternalHummingbirdParser.rule_Description_return();
@@ -2357,8 +2357,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdParser.prototype, {
         var description_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:96:17: (description= STRING )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\ace\\InternalHummingbird.g:97:2: description= STRING
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:96:17: (description= STRING )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:97:2: description= STRING
             root_0 = this.adaptor.nil();
 
             description=this.match(this.input,STRING,InternalHummingbirdParser.FOLLOW_STRING_in_rule_Description685); 

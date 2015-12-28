@@ -12,7 +12,7 @@ options {
 @parser::header {
 }
 
-
+ 
 rule_Module:
 	'module' name=ID imports+=rule_Import* statements+=rule_Statement* EOF!;
 

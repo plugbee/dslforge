@@ -13,7 +13,7 @@
  *
  * </copyright>
  */
-package org.dslforge.xtext.generator.web.ace
+package org.dslforge.xtext.generator.web
 
 import org.dslforge.xtext.generator.IWebProjectGenerator
 import org.dslforge.xtext.generator.util.GeneratorUtil
@@ -22,8 +22,9 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.Grammar
 import org.eclipse.xtext.generator.IFileSystemAccess
 
-class GenTest implements IWebProjectGenerator{
+class GenIndex implements IWebProjectGenerator{
 	
+	var defaultSlotName = "src-js"
 	val relativePath = "/"
 	var String projectName
 	var String grammarShortName
@@ -31,13 +32,25 @@ class GenTest implements IWebProjectGenerator{
 	var String keywordList
 	var Grammar grammar
 	
+	new (EditorType type) {
+		switch(type) {
+			case ACE: {
+				defaultSlotName = "WebContent"
+				basePath=""
+			}
+			case RAP: {
+				defaultSlotName="src-js"
+				basePath=GeneratorUtil::getBasePath(grammar)
+			}	
+		}
+	}
+	
 	override doGenerate(EObject input, IFileSystemAccess fsa) {
 		grammar = input as Grammar
 		projectName=GeneratorUtil::getProjectName(grammar)
-		grammarShortName= GeneratorUtil::getGrammarShortName(grammar)
-		basePath=GeneratorUtil::getBasePath(grammar)
+		grammarShortName= GeneratorUtil::getGrammarShortName(grammar)	
 		keywordList = GeneratorUtil::getKeywords(grammar, ",", true)
-		fsa.generateFile(basePath + relativePath +"test.html", "src-js", toJavaScript())
+		fsa.generateFile(basePath + relativePath +"index.html", defaultSlotName, toJavaScript())
 	}
 	
 	def toJavaScript()'''
@@ -57,27 +70,32 @@ class GenTest implements IWebProjectGenerator{
     </style>
 </head>
 <body>
-	<button id="Reset">Reset index</button>
-
     <div id="editor">
     </div>
-
+    <script src="global-index.js" type="text/javascript"></script>
     <script src="ace/ace.js" type="text/javascript"></script>
     <script src="ace/theme-eclipse.js" type="text/javascript"></script>
     <script src="ace/ext-language_tools.js"></script>
+    <script src="ace/ext-tooltip.js"></script>
+    <script src="ace/ext-searchbox.js"></script>
+    <script src="ace/snippets/«grammarShortName.toLowerCase».js" type="text/javascript"></script>
     <script src="ace/mode-«grammarShortName.toLowerCase».js" type="text/javascript"></script>
     <script src="ace/worker-«grammarShortName.toLowerCase».js" type="text/javascript"></script>
-   
     <script type="text/javascript">
-
+    	//the guid associated to this editor
+    	var guid = Math.round(Math.random() * 1000);
   		var index = [];
 	    var editor = ace.edit("editor");
+		editor.getSession().setUseWrapMode(true);
+	    editor.getSession().setTabSize(4); 
+	    editor.getSession().setUseSoftTabs(true);
+		editor.getSession().getUndoManager().reset();
+		
+		editor.setShowPrintMargin(false);		 
+		editor.setReadOnly(false);			
+	    editor.setFontSize(14);   
 	    editor.setTheme("ace/theme/eclipse");
 	    editor.getSession().setMode("ace/mode/«grammarShortName.toLowerCase»");
-        
-	    //the guid associated to this editor
-        var guid = Math.round(Math.random() * 1000);
-    	
         var langTools = ace.require("ace/ext/language_tools");
 	    var globalScope = {
 	    		getCompletions: function(editor, session, pos, prefix, callback) {
@@ -103,17 +121,19 @@ class GenTest implements IWebProjectGenerator{
 	    	    }   
 	        }
 	    langTools.addCompleter(globalScope);
-	    
+		
 	    editor.setOptions({
-		    enableBasicAutocompletion: true
+		    enableBasicAutocompletion: true,
+		    enableSnippets: true
 		});
 		
-		//use --allow-file-access-from-files
-	    var fileURL = 'global-index.js';
-	    
+		//add documentation hover
+		var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
+		editor.tokenTooltip = new TokenTooltip(editor);		 	
+
 	    //create the shared worker
-	 	var worker = new SharedWorker(fileURL);
-	 	
+	 	var worker = new SharedWorker("global-index.js");
+	 	//"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --allow-file-access-from-files
 	 	worker.port.onmessage = function(e) {
 	 		console.log(
 	 			"call number: " + e.data.counter + "\n"+
@@ -124,62 +144,50 @@ class GenTest implements IWebProjectGenerator{
 	 		//update the index reference
 	 		index = e.data.index;
         };   
-	 		 	
-	 	//TODO: validate references against index on focus
-	 	editor.on("focus", function() {
-	 		//validate cross references
-	    	/*
-	    	editor.getSession().setAnnotations([{
-				row: 1,
-				column: 1,
-				text: "hello",
-				type: "error"
-			}]);*/
-	 	});
-	 		 	
-	    editor.on("change", function() {
-        	var splitRegex = /[^a-zA-Z_0-9\$\-]+/;
-        	var session = editor.getSession();
-        	var words = session.getValue().split(splitRegex);
-        	//Remove keywords from the list
-            var keywords = [«keywordList»];
-            var filtered = [];
-            var found = false;
-            var k = 0;
-        	for (var i=0; i<words.length;i++) {
-        		if (words[i].length>0){
-        			for (var j=0; j<keywords.length;j++) {
-        				if (words[i]==keywords[j]) {
-        					found=true;
-        				}
-        			}
-        			if (!found) {
-            			//Append the editor id to the ID
-            			filtered[k] = guid + "#" + words[i];
-            			k++;
-        			}
-        		}
-    			found=false;
-        	}
-            worker.port.postMessage({
-            	message: editor.getValue(), 
-            	guid: guid, 
-            	index: filtered
-            	});
-        });
-        
-        //TODO: manual flushing of the index
-        $("#Reset").on('click', function() { 	
-        	var splitRegex = /[^a-zA-Z_0-9\$\-]+/;
-        	var session = editor.getSession();
-        	var words = session.getValue().split(splitRegex);
-            worker.port.postMessage({
-            	message: editor.getValue(), 
-            	guid: guid, 
-            	index: []
-            	});
-        });
 
+	 	//on focus get
+		editor.on("focus", function() {
+	 		
+	 	});
+		
+		//on focus lost
+	 	editor.on("blur", function() {
+	 		
+	 	});
+	 	
+	 	//on input
+	 	editor.on("input", function() {
+
+	 	});
+	 	
+	 	//on change
+		editor.on("change", function(event) {					        
+	        //console.log("posting message: index: " + index);
+	        worker.port.postMessage({
+	           	message: editor.getValue(), 
+	           	guid: guid, 
+	           	index: index
+	        });
+	        
+	        index = [];
+        });											
+	 	worker.port.onmessage = function(e) {
+	 		//update the index reference
+	 		index = e.data.index;
+        };
+        
+		//Bind keyboard shorcuts
+		editor.commands.addCommand({
+			name: 'saveFile',
+			bindKey: {
+			win: 'Ctrl-S',
+			mac: 'Command-S',
+			sender: 'editor|cli'
+			},
+			exec: function(env, args, request) {
+				//TODO
+			}
+		});
     </script>
 </body>
 </html>

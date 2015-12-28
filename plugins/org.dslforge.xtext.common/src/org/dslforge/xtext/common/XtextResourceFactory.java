@@ -42,7 +42,7 @@ public class XtextResourceFactory implements IXtextResourceFactory {
 		ResourceSet resourceSet = getDefaultResourceSet();
 		URI resourceURI = editorInput.getURI();
 		XtextResource resource = (XtextResource) resourceSet.getResource(resourceURI, true);
-		resource.setValidationDisabled(true);
+		//resource.setValidationDisabled(false);
 		return resource;
 	}
 	

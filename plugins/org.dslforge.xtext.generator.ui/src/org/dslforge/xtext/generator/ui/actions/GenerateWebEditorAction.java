@@ -15,27 +15,25 @@
  */
 package org.dslforge.xtext.generator.ui.actions;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.dslforge.xtext.generator.ui.operations.GenerateWebProjectOperation;
+import org.dslforge.xtext.generator.ui.wizard.WebProjectGeneratorWizard;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IObjectActionDelegate;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 
-public class GenerateProjectAction extends BaseSelectionListenerAction implements IObjectActionDelegate {
+public class GenerateWebEditorAction extends BaseSelectionListenerAction implements IObjectActionDelegate {
 
 	protected ISelection selection;
 	
-	public GenerateProjectAction() {
+	public GenerateWebEditorAction() {
 		super("Generate Web Editor");
 	}
 
@@ -44,20 +42,12 @@ public class GenerateProjectAction extends BaseSelectionListenerAction implement
 		IStructuredSelection structuredSelection = (IStructuredSelection)selection;
 		Object obj = structuredSelection.getFirstElement();
 		IFile file = (IFile) Platform.getAdapterManager().getAdapter(obj, IFile.class);
-		//default values
-		Map<String, Object> settings = new HashMap<String, Object>();
-		settings.put("Grammar", file);
-		settings.put("Outputs", file.getProject());
-		settings.put("UseNavigator", IGenerateProjectConstants.USE_NAVIGATOR);
-		settings.put("NavigatorRoot", IGenerateProjectConstants.NAVIGATOR_ROOT_PATH);
-		settings.put("UseGenerator", IGenerateProjectConstants.USE_GENERATOR);
-		try {
-			PlatformUI.getWorkbench().getProgressService().run(true, true, new GenerateWebProjectOperation(settings));
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Error:", e.toString(), null);
-		}
+		
+		IWorkbench wb = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = wb.getActiveWorkbenchWindow();
+		WebProjectGeneratorWizard wizard = new WebProjectGeneratorWizard(file);
+		WizardDialog wizardDialog = new WizardDialog(window.getShell(), wizard);
+		wizardDialog.open();
 	}
 	
 	@Override

@@ -72,7 +72,7 @@
             nameFilter="*.xtext"
             objectClass="org.eclipse.core.resources.IFile">
          <action
-               class="org.dslforge.xtext.generator.ui.actions.GenerateProjectAction"
+               class="org.dslforge.xtext.generator.ui.actions.GenerateWebEditorAction" 
                enablesFor="1"
                icon="icons/generate_editor.png"
                id="org.dslforge.xtext.generator.contribution.action.id"

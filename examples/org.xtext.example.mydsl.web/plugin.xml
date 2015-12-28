@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
+<!-- @generated dslforge -->
 <plugin>
       <extension
          point="org.eclipse.rap.ui.resources">
@@ -15,7 +16,6 @@
             name="MyDsl">
       </widget>
    </extension>
-      <!-- @generated dslforge -->
    <extension point="org.eclipse.ui.editors">
       <editor
             id="org.xtext.example.mydsl.web.editor"
@@ -25,4 +25,12 @@
             contributorClass="org.xtext.example.mydsl.web.editor.MyDslActionBarContributor">
       </editor>
    </extension>
+   <extension
+     point="org.dslforge.xtext.common.contribution">
+  <contribution
+       class="org.xtext.example.mydsl.web.MyDslExecutableExtensionFactory"
+         extension="mydsl"
+        label="org.xtext.example.mydsl.MyDsl">
+  </contribution>
+</extension>
 </plugin>

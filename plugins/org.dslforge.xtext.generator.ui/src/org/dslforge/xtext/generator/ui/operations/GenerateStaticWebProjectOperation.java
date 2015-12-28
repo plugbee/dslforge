@@ -17,8 +17,6 @@ package org.dslforge.xtext.generator.ui.operations;
 
 import static com.google.common.collect.Maps.uniqueIndex;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +24,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.dslforge.xtext.generator.IWebProjectGenerator;
+import org.dslforge.xtext.generator.IWebProjectGenerator.EditorType;
 import org.dslforge.xtext.generator.WebProjectGenerator;
-import org.dslforge.xtext.generator.ui.factories.WebProjectFactory;
+import org.dslforge.xtext.generator.ui.factories.StaticWebProjectFactory;
 import org.dslforge.xtext.generator.util.GeneratorUtil;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -44,91 +43,59 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.generator.OutputConfiguration;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.eclipse.xtext.ui.util.PluginProjectFactory;
+import org.eclipse.xtext.ui.util.ProjectFactory;
+
 import com.google.common.base.Charsets;
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 
-public class GenerateWebProjectOperation extends GenerateProjectOperation {
+public class GenerateStaticWebProjectOperation extends GenerateProjectOperation {
 
-	protected static final String PLUGIN_SUFFIX = "web";
-	protected static final String SRC = "src";
-	protected static final String SRC_GEN = "src-gen";
-	protected static final String SRC_JS = "src-js";
-	protected static final String DATA = "data";
-	protected static final List<String> SRC_FOLDER_LIST = ImmutableList.of(SRC, SRC_GEN, SRC_JS);
+	protected static final String PLUGIN_SUFFIX = "ace";
+	protected static final String SRC = "WebContent";
+	protected static final List<String> SRC_FOLDER_LIST = ImmutableList.of(SRC);
 	
 	protected static final String[] DSL_PROJECT_NATURES = new String[] { 
-		"org.eclipse.pde.PluginNature",
-		"org.eclipse.jdt.core.javanature",
+		"org.eclipse.wst.common.project.facet.core.nature",
+		"org.eclipse.wst.common.modulecore.ModuleCoreNature",
+		"org.eclipse.wst.jsdt.core.jsNature",
 		"org.deved.antlride.core.nature"
 	};
-	
+
 	protected static final String[] BUILDERS = new String[] { 
-		JavaCore.BUILDER_ID, 
-		"org.eclipse.dltk.core.scriptbuilder",
-		"org.eclipse.pde.ManifestBuilder",
-		"org.eclipse.pde.SchemaBuilder"
-	};
-	
-	private List<String> getProjectRequiredBundles() {
-		String dslProjectName = GeneratorUtil.getDslProjectName(grammar);
-		requiredBundles = Lists.newArrayList(
-				"org.eclipse.rap.ui",
-				"org.eclipse.rap.ui.navigator",
-				"org.eclipse.emf.rap.common.ui", 
-				"org.eclipse.emf.rap.edit.ui",
-				"org.eclipse.emf.common", 
-				"org.eclipse.emf.ecore",
-				"com.google.inject",
-				"org.eclipse.xtext", 
-				"org.dslforge.workspace",
-				"org.dslforge.xtext.common",
-				"org.dslforge.texteditor",
-				"org.dslforge.styledtext",
-				dslProjectName);
-		return requiredBundles;
-	}
+			"org.eclipse.wst.jsdt.core.javascriptValidator",
+			"org.eclipse.wst.common.project.facet.core.builder",
+			"org.eclipse.wst.validation.validationbuilder",
+			"org.eclipse.dltk.core.scriptbuilder"
+		};
+
 	 
 	protected IWebProjectGenerator projectGenerator;
-	
-	private ArrayList<String> requiredBundles;
-	
-	public GenerateWebProjectOperation(Map<String, Object> settings) {
+
+	public GenerateStaticWebProjectOperation(Map<String, Object> settings) {
 		super(settings);
 		projectGenerator = (IWebProjectGenerator) getInstance();
 	}
 
 	@Override
 	protected void execute(IProgressMonitor monitor) throws CoreException {
-		SubMonitor progress = SubMonitor.convert(monitor, 20);
-		final boolean generatorOption = ((Boolean)settings.get("UseGenerator")).booleanValue();
-		final boolean option = ((Boolean) settings.get("UseNavigator")).booleanValue();
-		final String navigatorRoot = (String) settings.get("NavigatorRoot");
+		SubMonitor progress = SubMonitor.convert(monitor, 10);
+		final EditorType editorType = (EditorType)settings.get("EditorType");
 		final IFile grammarFile = (IFile) settings.get("Grammar");
 		try {
-			EObject root = loadGrammar(grammarFile, progress.newChild(5));
+			EObject root = loadGrammar(grammarFile, progress.newChild(1));
 			if (root!=null && root instanceof Grammar) {
 				setGrammar((Grammar) root);
-				IProject project = createProject(monitor, progress.newChild(5));
+				IProject project = createProject(editorType, progress.newChild(4));
 				if (progress.isCanceled())
 					throw new OperationCanceledException();
-				//setting generator parameters
 				setOutputs(project);
-				if (option) {
-					setUseNavigator(option);
-					// if navigator root not specified, use default one
-					if (navigatorRoot.length() != 0)
-						setNavigatorRoot(navigatorRoot);
-				}
-				setUseGenerator(generatorOption);
+				setEditorType(editorType);
 				if (progress.isCanceled())
 					throw new OperationCanceledException();
 				doGenerate(project, progress.newChild(5));
@@ -143,12 +110,6 @@ public class GenerateWebProjectOperation extends GenerateProjectOperation {
 	private void setOutputs(IProject project) {	
 		IFolder javaSource = project.getFolder(SRC);
 		outlets.put(SRC, javaSource.getLocation().toString());
-		IFolder javaGeneratedSource = project.getFolder(SRC_GEN);
-		outlets.put(SRC_GEN, javaGeneratedSource.getLocation().toString());
-		IFolder javaScriptSource = project.getFolder(SRC_JS);
-		outlets.put(SRC_JS, javaScriptSource.getLocation().toString());
-		IFolder dataFolder = project.getFolder(DATA);
-		outlets.put(DATA, dataFolder.getLocation().toString());
 	}
 	
 	private IFileSystemAccess getConfiguredFileSystemAccess() {
@@ -194,16 +155,18 @@ public class GenerateWebProjectOperation extends GenerateProjectOperation {
 		return root;
 	}
 	
-	private IProject createProject(final IProgressMonitor monitor, SubMonitor subMonitor) throws CoreException {
-		final WebProjectFactory factory = new WebProjectFactory(grammar);
-		configureProjectFactory(factory);
-		List<String> requiredBundles = getProjectRequiredBundles();
+	private IProject createProject(EditorType editorType, final IProgressMonitor monitor) throws CoreException {
+		return createStaticWebProjectFactory().createProject(monitor, null);
+	}
+
+	private ProjectFactory createStaticWebProjectFactory() {
+		StaticWebProjectFactory factory = new StaticWebProjectFactory();
+		factory.addBuilderIds(getBuilderIDs());
 		factory.setProjectName(GeneratorUtil.getProjectName(grammar));
 		factory.addProjectNatures(getProjectNatures());
-		factory.addRequiredBundles(requiredBundles);
 		factory.setLocation(getProjectLocation());
 		factory.setProjectDefaultCharset(Charsets.UTF_8.name());
-		return factory.createProject(monitor, null);
+		return factory;
 	}
 
 	private IPath getProjectLocation() {
@@ -217,28 +180,10 @@ public class GenerateWebProjectOperation extends GenerateProjectOperation {
 	private String[] getProjectNatures() {
 		return DSL_PROJECT_NATURES;
 	}
-	 
-	private void configureProjectFactory(PluginProjectFactory factory) {
-		factory.addBuilderIds(getBuilderIDs());
-		factory.addImportedPackages(getImportedPackages());
-		factory.addFolders(getAllFolders());
-	}
 
-	private void setUseNavigator(boolean value) {
+	private void setEditorType(EditorType value) {
 		if (projectGenerator instanceof WebProjectGenerator) {
-			((WebProjectGenerator)projectGenerator).useNavigator(value);
-		}
-	}
-	
-	private void setUseGenerator(boolean value) {
-		if (projectGenerator instanceof WebProjectGenerator) {
-			((WebProjectGenerator)projectGenerator).useGenerator(value);
-		}
-	}
-	
-	private void setNavigatorRoot(String navigatorRoot) {
-		if (projectGenerator instanceof WebProjectGenerator) {
-			((WebProjectGenerator)projectGenerator).setNavigatorRoot(navigatorRoot);
+			((WebProjectGenerator)projectGenerator).setEditorType(value);
 		}
 	}
 
@@ -251,14 +196,6 @@ public class GenerateWebProjectOperation extends GenerateProjectOperation {
 		} catch (CoreException ex) {
 			ex.printStackTrace();
 		}
-	}
-	
-	private List<String> getAllFolders() {
-		return SRC_FOLDER_LIST;
-	}
-
-	private List<String> getImportedPackages() {
-		return Collections.emptyList();
 	}
 
 	private String[] getBuilderIDs() {

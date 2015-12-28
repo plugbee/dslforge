@@ -24,25 +24,38 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 
 class GenSnippets implements IWebProjectGenerator{
 	
+	val EditorType type
 	val relativePath = "/ace/snippets/"
+	var defaultSlotName = "src-js"
 	var String projectName
 	var String grammarShortName
 	var String basePath
 	var Grammar grammar
+
+	new (EditorType type) {
+		switch(this.type=type) {
+			case ACE: defaultSlotName = "WebContent"
+			case RAP: defaultSlotName="src-js"
+		}
+	}
 	
+	new() {
+		this(EditorType.RAP)
+	}
+		
 	override doGenerate(EObject input, IFileSystemAccess fsa) {
 		grammar = input as Grammar
+		if(type==EditorType.RAP) basePath=GeneratorUtil::getBasePath(grammar) else basePath="";
 		projectName=GeneratorUtil::getProjectName(grammar)
 		grammarShortName= GeneratorUtil::getGrammarShortName(grammar)
-		basePath=GeneratorUtil::getBasePath(grammar)
-		fsa.generateFile(basePath + relativePath + grammarShortName.toFirstLower +".js", "src-js", toJavaScript())
+		fsa.generateFile(basePath + relativePath + grammarShortName.toLowerCase +".js", defaultSlotName, toJavaScript())
 	}
 			
 	def toJavaScript()'''
-define('ace/snippets/«grammarShortName.toFirstLower»', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('ace/snippets/«grammarShortName.toLowerCase»', ['require', 'exports', 'module' ], function(require, exports, module) {
 
 exports.snippetText = ''
-exports.scope = "«grammarShortName.toFirstLower»";
+exports.scope = "«grammarShortName.toLowerCase»";
 });
 '''
 

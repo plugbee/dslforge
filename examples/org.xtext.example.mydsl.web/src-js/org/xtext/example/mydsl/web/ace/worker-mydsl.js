@@ -876,9 +876,9 @@ var oop = require("../lib/oop");
 var Mirror = require("../worker/mirror").Mirror;
 var mydslparse = require("../mode/mydsl/mydslparse");
 
-importScripts("./antlr-all-min.js");
-importScripts("./InternalMyDslLexer.js");
-importScripts("./InternalMyDslParser.js");
+importScripts("../parser/antlr-all-min.js");
+importScripts("../parser/InternalMyDslLexer.js");
+importScripts("../parser/InternalMyDslParser.js");
 
 var Worker = exports.Worker = function(sender) {
     Mirror.call(this, sender);

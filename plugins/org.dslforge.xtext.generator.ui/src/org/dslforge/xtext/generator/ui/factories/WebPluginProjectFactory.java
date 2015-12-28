@@ -29,11 +29,11 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.ui.util.PluginProjectFactory;
 
-public class WebProjectFactory extends PluginProjectFactory implements IWebProjectFactory{
+public class WebPluginProjectFactory extends PluginProjectFactory implements IWebProjectFactory{
 
 	private final Grammar grammar;
 
-	public WebProjectFactory(Grammar grammar) {
+	public WebPluginProjectFactory(Grammar grammar) {
 		super();
 		workspace = ResourcesPlugin.getWorkspace();
 		workbench = PlatformUI.getWorkbench();
@@ -124,32 +124,19 @@ public class WebProjectFactory extends PluginProjectFactory implements IWebProje
 		content.append("      <editor\n");
 		content.append("            id=\"" + project.getName() + ".editor"+"\"\n");
 		content.append("            name=\"" + grammarShortName + " Model Editor\"\n");
-		content.append("	            icon=\"icons/model.png\"\n");
 		content.append("		            extensions=\"" + fileExtension + "\"\n");
 		content.append("           class=\"" + project.getName() + ".editor."+ grammarShortName + "Editor\"\n");
 		content.append("            contributorClass=\"" + project.getName() + ".editor." + grammarShortName + "ActionBarContributor\">\n");
 		content.append("      </editor>\n");
 		content.append("   </extension>\n");
-//		content.append("   <extension point=\"org.eclipse.ui.actionSets\">\n");
-//		content.append("      <actionSet\n");
-//		content.append("            label=\"" + grammarShortName + " Action Set\"\n");
-//		content.append("            visible=\"true\"\n");
-//		content.append("            id=\"org.dslforge.core.ui.model.actionset\">\n");
-//		content.append("         <action\n");
-//		content.append("               label=\""+ grammarShortName + " file" + "\"\n");
-//		content.append("               class=\"" + project.getName() + ".actions.New" + grammarShortName + "Action\"\n");
-//		content.append("              menubarPath=\"file/new/additions\"\n");
-//		content.append("               id=\"" + project.getName() + ".wizard.new" + grammarShortName + "Action\"/>\n");
-//		content.append("      </actionSet>\n");
-//		content.append("   </extension>\n");
-//		content.append("   <extension\n");
-//		content.append("     point=\"org.dslforge.workbench.contribution\">\n");
-//		content.append("  <generator\n");
-//		content.append("       class=\"" + project.getName() + "." + grammarShortName + "ExecutableExtensionFactory\"\n");
-//		content.append("         extension=\"" + fileExtension + "\"\n");
-//		content.append("        label=\""+ grammar.getName() + "\">\n");
-//		content.append("  </generator>\n");
-//		content.append("</extension>\n");		
+		content.append("   <extension\n");		
+		content.append("     point=\"org.dslforge.xtext.common.contribution\">\n");
+		content.append("  <contribution\n");
+		content.append("       class=\"" + project.getName() + "." + grammarShortName + "ExecutableExtensionFactory\"\n");
+		content.append("         extension=\"" + fileExtension + "\"\n");
+		content.append("        label=\""+ grammar.getName() + "\">\n");
+		content.append("  </contribution>\n");
+		content.append("</extension>\n");		
 		content.append("</plugin>\n");
 		SubMonitor subMonitor = SubMonitor.convert(progressMonitor, 2);
 		try {
@@ -163,4 +150,6 @@ public class WebProjectFactory extends PluginProjectFactory implements IWebProje
 	public Grammar getGrammar() {
 		return grammar;
 	}
+	
+	
 }

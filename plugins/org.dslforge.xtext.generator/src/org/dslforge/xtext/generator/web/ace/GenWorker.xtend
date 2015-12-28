@@ -24,19 +24,33 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 
 class GenWorker implements IWebProjectGenerator{
 	
+	val EditorType type
 	val relativePath = "/ace/"
+	var defaultSlotName = "src-js"	
 	var String projectName
 	var String grammarShortName
 	var String basePath
 	var Grammar grammar
 	var String entryRule
+	
+	new (EditorType type) {
+		switch(this.type=type) {
+			case ACE: defaultSlotName = "WebContent"
+			case RAP: defaultSlotName="src-js"
+		}
+	}
+	
+	new() {
+		this(EditorType.RAP)
+	}
+		
 	override doGenerate(EObject input, IFileSystemAccess fsa) {
 		grammar = input as Grammar
+		if(type==EditorType.RAP) basePath=GeneratorUtil::getBasePath(grammar) else basePath="";
 		projectName=GeneratorUtil::getProjectName(grammar)
 		grammarShortName= GeneratorUtil::getGrammarShortName(grammar)
-		basePath=GeneratorUtil::getBasePath(grammar)
 		entryRule = GeneratorUtil::getEntryRule(grammar).toFirstLower
-		fsa.generateFile(basePath + relativePath + "worker-" + grammarShortName.toLowerCase + ".js", "src-js", toJavaScript())
+		fsa.generateFile(basePath + relativePath + "worker-" + grammarShortName.toLowerCase + ".js", defaultSlotName, toJavaScript())
 	}
 	
 	def toJavaScript()'''
@@ -918,9 +932,9 @@ var oop = require("../lib/oop");
 var Mirror = require("../worker/mirror").Mirror;
 var «grammarShortName.toLowerCase»parse = require("../mode/«grammarShortName.toLowerCase»/«grammarShortName.toLowerCase»parse");
 
-importScripts("./antlr-all-min.js");
-importScripts("./Internal«grammarShortName»Lexer.js");
-importScripts("./Internal«grammarShortName»Parser.js");
+importScripts("../parser/antlr-all-min.js");
+importScripts("../parser/Internal«grammarShortName»Lexer.js");
+importScripts("../parser/Internal«grammarShortName»Parser.js");
 
 var Worker = exports.Worker = function(sender) {
     Mirror.call(this, sender);

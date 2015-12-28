@@ -6,7 +6,7 @@ Require-Bundle: org.eclipse.core.runtime,org.eclipse.rap.ui,org.dslfor
  ommon
 Bundle-Vendor: PlugBee
 Bundle-ActivationPolicy: lazy
-Bundle-Version: 1.0.0.201512240110
+Bundle-Version: 1.0.0.201512280055
 Bundle-Name: Eclipse RAP Workspace UI
 Bundle-Activator: org.dslforge.workspace.ui.internal.Activator
 Bundle-ManifestVersion: 2

@@ -32,18 +32,10 @@ public class WebProjectGenerator implements IWebProjectGenerator{
 		return genWebProject;
 	}
 
-	public void useNavigator(boolean value) {
-		getGenWebProject().useNavigator(value);
+	public void setEditorType(EditorType value) {
+		getGenWebProject().setEditorType(value);
 	}
 	
-	public void useGenerator(boolean value) {
-		getGenWebProject().useGenerator(value);
-	}
-	
-	public void setNavigatorRoot(String value) {
-		getGenWebProject().setNavigatorRoot(value);
-	}
-
 	@Override
 	public void doGenerate(EObject input, IFileSystemAccess fsa) {
 		getGenWebProject().doGenerate(input, fsa);
