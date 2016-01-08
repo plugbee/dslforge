@@ -103,7 +103,7 @@ public class WorkspaceManager {
 				}
 			});
 		}
-		System.out.println("[DSLFORGE] - " + userId + " created project " + file.getAbsolutePath().toString());
+		System.out.println("[INFO] - " + userId + " created project " + file.getAbsolutePath().toString());
 	}
 
 	private void createProject(String projectName, String description, String path, String userName,
@@ -126,9 +126,9 @@ public class WorkspaceManager {
 							delete(file);
 						} catch (IOException e) {
 							e.printStackTrace();
-							System.out.println("[DSLFORGE] - Project " + file.getName() + " cold not be deleted.");
+							System.out.println("[ERROR] - Project " + file.getName() + " cold not be deleted.");
 						}
-						System.out.println("[DSLFORGE] - Project " + file.getName() + " deleted.");
+						System.out.println("[INFO] - Project " + file.getName() + " deleted.");
 					}
 				});
 			}
@@ -140,7 +140,7 @@ public class WorkspaceManager {
 			// directory is empty, then delete it
 			if (file.list().length == 0) {
 				file.delete();
-				System.out.println("Directory is deleted : " + file.getAbsolutePath());
+				System.out.println("[INFO] - Directory is deleted : " + file.getAbsolutePath());
 			} else {
 
 				// list all the directory contents

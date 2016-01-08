@@ -44,7 +44,7 @@ public class Statemachine extends BasicText {
 		registerClientResources(languageResources, getClassLoader());
 		loadClientResources(languageResources);
 	}
-	
+
 	@Override
 	protected ClassLoader getClassLoader() {
 		ClassLoader classLoader = Statemachine.class.getClassLoader();

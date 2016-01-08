@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
+<!-- @generated dslforge -->
 <plugin>
       <extension
          point="org.eclipse.rap.ui.resources">
@@ -15,47 +16,21 @@
             name="Statemachine">
       </widget>
    </extension>
-      <!-- @generated dslforge -->
    <extension point="org.eclipse.ui.editors">
       <editor
             id="org.eclipse.xtext.example.fowlerdsl.web.editor"
             name="Statemachine Model Editor"
-	            icon="icons/model.png"
 		            extensions="statemachine"
            class="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineEditor"
             contributorClass="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineActionBarContributor">
       </editor>
    </extension>
    <extension
-         point="org.dslforge.xtext.common.contribution">
-      <contribution
-            class="org.eclipse.xtext.example.fowlerdsl.web.StatemachineExecutableExtensionFactory"
-            extension="statemachine"
-            label="Statemachine">
-      </contribution>
-   </extension>
-      <!-- @generated dslforge -->
-      <!--
-   <extension point="org.eclipse.ui.actionSets">
-      <actionSet
-            label="Statemachine Action Set"
-            visible="true"
-            id="org.dslforge.core.ui.model.actionset">
-         <action
-               label="Statemachine file"
-               class="org.eclipse.xtext.example.fowlerdsl.web.actions.NewStatemachineAction"
-              menubarPath="file/new/additions"
-               id="org.eclipse.xtext.example.fowlerdsl.web.wizard.newStatemachineAction"/>
-      </actionSet> 
-   </extension>
-
-   <extension
-     point="org.dslforge.workbench.contribution">
-  <generator
+     point="org.dslforge.xtext.common.contribution">
+  <contribution
        class="org.eclipse.xtext.example.fowlerdsl.web.StatemachineExecutableExtensionFactory"
          extension="statemachine"
         label="org.eclipse.xtext.example.fowlerdsl.Statemachine">
-  </generator>
+  </contribution>
 </extension>
-   -->
 </plugin>

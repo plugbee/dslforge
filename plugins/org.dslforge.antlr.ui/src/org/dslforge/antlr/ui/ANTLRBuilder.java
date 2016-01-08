@@ -230,7 +230,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 			ANTLRv3Lexer lexer = new ANTLRv3Lexer(new ANTLRStringStream(buffer.toString())) {
 				@Override
 				public void emitErrorMessage(String msg) {
-					super.emitErrorMessage("ANTLRv3Lexer: " + msg);
+					super.emitErrorMessage("[ERROR] - ANTLRv3Lexer: " + msg);
 					output.add(msg);
 				}
 			};
@@ -238,7 +238,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 			ANTLRv3Parser parser = new ANTLRv3Parser(tokens) {
 				@Override
 				public void emitErrorMessage(String msg) {
-					super.emitErrorMessage("ANTLRv3Parser: " + msg);
+					super.emitErrorMessage("[ERROR] - ANTLRv3Parser: " + msg);
 					output.add(msg);
 				}
 			};

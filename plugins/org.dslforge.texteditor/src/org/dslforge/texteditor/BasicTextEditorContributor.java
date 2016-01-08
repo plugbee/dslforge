@@ -193,6 +193,5 @@ public class BasicTextEditorContributor extends EditorActionBarContributor imple
 
 	@Override
 	public void propertyChanged(Object source, int propId) {
-		System.out.println("property changed");
 	}
 }

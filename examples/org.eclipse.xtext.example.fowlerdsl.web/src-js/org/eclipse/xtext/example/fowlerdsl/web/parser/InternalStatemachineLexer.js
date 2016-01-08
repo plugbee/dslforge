@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g 2015-11-15 16:36:59
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g 2016-01-09 00:24:36
 
 
 
@@ -13,7 +13,7 @@ var InternalStatemachineLexer = function(input, state) {
     (function(){
     }).call(this);
 
-    this.dfa11 = new InternalStatemachineLexer.DFA11(this);
+    this.dfa9 = new InternalStatemachineLexer.DFA9(this);
     InternalStatemachineLexer.superclass.constructor.call(this, input, state);
 
 
@@ -34,7 +34,7 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer, {
     STRING: 5,
     COMMENT: 6,
     WS: 7,
-    NUMBER: 8
+    INT: 8
 });
 
 (function(){
@@ -55,7 +55,7 @@ org.antlr.lang.extend(InternalStatemachineLexer, org.antlr.runtime.Lexer, {
     STRING : 5,
     COMMENT : 6,
     WS : 7,
-    NUMBER : 8,
+    INT : 8,
     getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g"; }
 });
 org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
@@ -242,8 +242,8 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
         try {
             var _type = this.ID;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:47:4: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:47:6: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:4: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:6: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             if ( (this.input.LA(1)>='A' && this.input.LA(1)<='Z')||this.input.LA(1)=='_'||(this.input.LA(1)>='a' && this.input.LA(1)<='z') ) {
                 this.input.consume();
 
@@ -253,7 +253,7 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
                 this.recover(mse);
                 throw mse;}
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:47:34: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:34: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop1:
             do {
                 var alt1=2;
@@ -301,9 +301,9 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
         try {
             var _type = this.STRING;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:8: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:10: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:10: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:8: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:10: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:10: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             var alt4=2;
             var LA4_0 = this.input.LA(1);
 
@@ -321,9 +321,9 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
             }
             switch (alt4) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:11: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:11: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     this.match('\"'); 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:15: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:15: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop2:
                     do {
                         var alt2=3;
@@ -339,7 +339,7 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 
                         switch (alt2) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:16: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:16: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                             this.match('\\'); 
                             if ( this.input.LA(1)=='\"'||this.input.LA(1)=='\''||this.input.LA(1)=='\\'||this.input.LA(1)=='b'||this.input.LA(1)=='f'||this.input.LA(1)=='n'||this.input.LA(1)=='r'||(this.input.LA(1)>='t' && this.input.LA(1)<='u') ) {
                                 this.input.consume();
@@ -354,7 +354,7 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 
                             break;
                         case 2 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:61: ~ ( ( '\\\\' | '\"' ) )
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:61: ~ ( ( '\\\\' | '\"' ) )
                             if ( (this.input.LA(1)>='\u0000' && this.input.LA(1)<='!')||(this.input.LA(1)>='#' && this.input.LA(1)<='[')||(this.input.LA(1)>=']' && this.input.LA(1)<='\uFFFF') ) {
                                 this.input.consume();
 
@@ -378,9 +378,9 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 
                     break;
                 case 2 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:81: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:81: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     this.match('\''); 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:86: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:86: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop3:
                     do {
                         var alt3=3;
@@ -396,7 +396,7 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 
                         switch (alt3) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:87: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:87: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                             this.match('\\'); 
                             if ( this.input.LA(1)=='\"'||this.input.LA(1)=='\''||this.input.LA(1)=='\\'||this.input.LA(1)=='b'||this.input.LA(1)=='f'||this.input.LA(1)=='n'||this.input.LA(1)=='r'||(this.input.LA(1)>='t' && this.input.LA(1)<='u') ) {
                                 this.input.consume();
@@ -411,7 +411,7 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 
                             break;
                         case 2 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:49:132: ~ ( ( '\\\\' | '\\'' ) )
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:132: ~ ( ( '\\\\' | '\\'' ) )
                             if ( (this.input.LA(1)>='\u0000' && this.input.LA(1)<='&')||(this.input.LA(1)>='(' && this.input.LA(1)<='[')||(this.input.LA(1)>=']' && this.input.LA(1)<='\uFFFF') ) {
                                 this.input.consume();
 
@@ -453,9 +453,9 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
         try {
             var _type = this.COMMENT;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:9: ( ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* ) )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:11: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:11: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:9: ( ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:11: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:11: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
             var alt7=2;
             var LA7_0 = this.input.LA(1);
 
@@ -483,10 +483,10 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
             }
             switch (alt7) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:12: '/*' ( . )* '*/'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:12: '/*' ( . )* '*/'
                     this.match("/*"); 
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:17: ( . )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:17: ( . )*
                     loop5:
                     do {
                         var alt5=2;
@@ -511,7 +511,7 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 
                         switch (alt5) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:17: .
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:17: .
                             this.matchAny(); 
 
 
@@ -528,10 +528,10 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 
                     break;
                 case 2 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:27: '//' (~ ( '\\r' | '\\n' ) )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:27: '//' (~ ( '\\r' | '\\n' ) )*
                     this.match("//"); 
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:32: (~ ( '\\r' | '\\n' ) )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:32: (~ ( '\\r' | '\\n' ) )*
                     loop6:
                     do {
                         var alt6=2;
@@ -544,7 +544,7 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 
                         switch (alt6) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:51:32: ~ ( '\\r' | '\\n' )
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:32: ~ ( '\\r' | '\\n' )
                             if ( (this.input.LA(1)>='\u0000' && this.input.LA(1)<='\t')||(this.input.LA(1)>='\u000B' && this.input.LA(1)<='\f')||(this.input.LA(1)>='\u000E' && this.input.LA(1)<='\uFFFF') ) {
                                 this.input.consume();
 
@@ -586,8 +586,8 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
         try {
             var _type = this.WS;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:3: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:53:6: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:55:3: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:55:6: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
             if ( (this.input.LA(1)>='\t' && this.input.LA(1)<='\n')||(this.input.LA(1)>='\f' && this.input.LA(1)<='\r')||this.input.LA(1)==' ' ) {
                 this.input.consume();
 
@@ -609,14 +609,14 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
     },
     // $ANTLR end "WS",
 
-    // $ANTLR start NUMBER
-    mNUMBER: function()  {
+    // $ANTLR start INT
+    mINT: function()  {
         try {
-            var _type = this.NUMBER;
+            var _type = this.INT;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:55:7: ( ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )? )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:55:9: ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )?
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:55:9: ( '0' .. '9' )+
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:59:4: ( ( '0' .. '9' )+ )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:59:6: ( '0' .. '9' )+
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:59:6: ( '0' .. '9' )+
             var cnt8=0;
             loop8:
             do {
@@ -630,7 +630,7 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 
                 switch (alt8) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:55:10: '0' .. '9'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:59:7: '0' .. '9'
                     this.matchRange('0','9'); 
 
 
@@ -646,53 +646,6 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
                 cnt8++;
             } while (true);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:55:21: ( '.' ( '0' .. '9' )+ )?
-            var alt10=2;
-            var LA10_0 = this.input.LA(1);
-
-            if ( (LA10_0=='.') ) {
-                alt10=1;
-            }
-            switch (alt10) {
-                case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:55:22: '.' ( '0' .. '9' )+
-                    this.match('.'); 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:55:26: ( '0' .. '9' )+
-                    var cnt9=0;
-                    loop9:
-                    do {
-                        var alt9=2;
-                        var LA9_0 = this.input.LA(1);
-
-                        if ( ((LA9_0>='0' && LA9_0<='9')) ) {
-                            alt9=1;
-                        }
-
-
-                        switch (alt9) {
-                        case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:55:27: '0' .. '9'
-                            this.matchRange('0','9'); 
-
-
-                            break;
-
-                        default :
-                            if ( cnt9 >= 1 ) {
-                                break loop9;
-                            }
-                                var eee = new org.antlr.runtime.EarlyExitException(9, this.input);
-                                throw eee;
-                        }
-                        cnt9++;
-                    } while (true);
-
-
-
-                    break;
-
-            }
-
 
 
 
@@ -702,13 +655,13 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
         finally {
         }
     },
-    // $ANTLR end "NUMBER",
+    // $ANTLR end "INT",
 
     mTokens: function() {
-        // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | ID | STRING | COMMENT | WS | NUMBER )
-        var alt11=14;
-        alt11 = this.dfa11.predict(this.input);
-        switch (alt11) {
+        // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | ID | STRING | COMMENT | WS | INT )
+        var alt9=14;
+        alt9 = this.dfa9.predict(this.input);
+        switch (alt9) {
             case 1 :
                 // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:1:10: T__9
                 this.mT__9(); 
@@ -788,8 +741,8 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 
                 break;
             case 14 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:1:84: NUMBER
-                this.mNUMBER(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:1:84: INT
+                this.mINT(); 
 
 
                 break;
@@ -801,15 +754,15 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer.prototype, {
 }, true); // important to pass true to overwrite default implementations
 
 org.antlr.lang.augmentObject(InternalStatemachineLexer, {
-    DFA11_eotS:
+    DFA9_eotS:
         "\u0001\uffff\u0005\u0009\u0008\uffff\u0007\u0009\u0001\u001b\u0005"+
     "\u0009\u0001\uffff\u0007\u0009\u0001\u0028\u0001\u0009\u0001\u002a\u0002"+
     "\u0009\u0001\uffff\u0001\u0009\u0001\uffff\u0002\u0009\u0001\u0030\u0001"+
     "\u0009\u0001\u0032\u0001\uffff\u0001\u0009\u0001\uffff\u0001\u0009\u0001"+
     "\u0035\u0001\uffff",
-    DFA11_eofS:
+    DFA9_eofS:
         "\u0036\uffff",
-    DFA11_minS:
+    DFA9_minS:
         "\u0001\u0009\u0001\u006e\u0001\u0065\u0001\u006f\u0001\u0074\u0001"+
     "\u0063\u0008\uffff\u0001\u0065\u0001\u0064\u0001\u0073\u0001\u006d\u0001"+
     "\u0061\u0001\u0074\u0001\u006e\u0001\u0030\u0001\u0065\u0001\u006d\u0001"+
@@ -818,7 +771,7 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer, {
     "\u006e\u0001\u0030\u0001\u0076\u0001\u0064\u0001\uffff\u0001\u0073\u0001"+
     "\uffff\u0001\u0065\u0001\u0073\u0001\u0030\u0001\u006e\u0001\u0030\u0001"+
     "\uffff\u0001\u0074\u0001\uffff\u0001\u0073\u0001\u0030\u0001\uffff",
-    DFA11_maxS:
+    DFA9_maxS:
         "\u0001\u007d\u0001\u0076\u0001\u0065\u0001\u006f\u0001\u0074\u0001"+
     "\u0063\u0008\uffff\u0001\u0065\u0001\u0064\u0001\u0073\u0001\u006d\u0001"+
     "\u0061\u0001\u0074\u0001\u006e\u0001\u007a\u0001\u0065\u0001\u006d\u0001"+
@@ -827,14 +780,14 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer, {
     "\u006e\u0001\u007a\u0001\u0076\u0001\u0064\u0001\uffff\u0001\u0073\u0001"+
     "\uffff\u0001\u0065\u0001\u0073\u0001\u007a\u0001\u006e\u0001\u007a\u0001"+
     "\uffff\u0001\u0074\u0001\uffff\u0001\u0073\u0001\u007a\u0001\uffff",
-    DFA11_acceptS:
+    DFA9_acceptS:
         "\u0006\uffff\u0001\u0007\u0001\u0008\u0001\u0009\u0001\u000a\u0001"+
     "\u000b\u0001\u000c\u0001\u000d\u0001\u000e\u000d\uffff\u0001\u0002\u000c"+
     "\uffff\u0001\u0005\u0001\uffff\u0001\u0001\u0005\uffff\u0001\u0006\u0001"+
     "\uffff\u0001\u0004\u0002\uffff\u0001\u0003",
-    DFA11_specialS:
+    DFA9_specialS:
         "\u0036\uffff}>",
-    DFA11_transitionS: [
+    DFA9_transitionS: [
             "\u0002\u000c\u0001\uffff\u0002\u000c\u0012\uffff\u0001\u000c"+
             "\u0001\uffff\u0001\u000a\u0004\uffff\u0001\u000a\u0007\uffff"+
             "\u0001\u000b\u000a\u000d\u0003\uffff\u0001\u0008\u0003\uffff"+
@@ -905,44 +858,44 @@ org.antlr.lang.augmentObject(InternalStatemachineLexer, {
 });
 
 org.antlr.lang.augmentObject(InternalStatemachineLexer, {
-    DFA11_eot:
-        org.antlr.runtime.DFA.unpackEncodedString(InternalStatemachineLexer.DFA11_eotS),
-    DFA11_eof:
-        org.antlr.runtime.DFA.unpackEncodedString(InternalStatemachineLexer.DFA11_eofS),
-    DFA11_min:
-        org.antlr.runtime.DFA.unpackEncodedStringToUnsignedChars(InternalStatemachineLexer.DFA11_minS),
-    DFA11_max:
-        org.antlr.runtime.DFA.unpackEncodedStringToUnsignedChars(InternalStatemachineLexer.DFA11_maxS),
-    DFA11_accept:
-        org.antlr.runtime.DFA.unpackEncodedString(InternalStatemachineLexer.DFA11_acceptS),
-    DFA11_special:
-        org.antlr.runtime.DFA.unpackEncodedString(InternalStatemachineLexer.DFA11_specialS),
-    DFA11_transition: (function() {
+    DFA9_eot:
+        org.antlr.runtime.DFA.unpackEncodedString(InternalStatemachineLexer.DFA9_eotS),
+    DFA9_eof:
+        org.antlr.runtime.DFA.unpackEncodedString(InternalStatemachineLexer.DFA9_eofS),
+    DFA9_min:
+        org.antlr.runtime.DFA.unpackEncodedStringToUnsignedChars(InternalStatemachineLexer.DFA9_minS),
+    DFA9_max:
+        org.antlr.runtime.DFA.unpackEncodedStringToUnsignedChars(InternalStatemachineLexer.DFA9_maxS),
+    DFA9_accept:
+        org.antlr.runtime.DFA.unpackEncodedString(InternalStatemachineLexer.DFA9_acceptS),
+    DFA9_special:
+        org.antlr.runtime.DFA.unpackEncodedString(InternalStatemachineLexer.DFA9_specialS),
+    DFA9_transition: (function() {
         var a = [],
             i,
-            numStates = InternalStatemachineLexer.DFA11_transitionS.length;
+            numStates = InternalStatemachineLexer.DFA9_transitionS.length;
         for (i=0; i<numStates; i++) {
-            a.push(org.antlr.runtime.DFA.unpackEncodedString(InternalStatemachineLexer.DFA11_transitionS[i]));
+            a.push(org.antlr.runtime.DFA.unpackEncodedString(InternalStatemachineLexer.DFA9_transitionS[i]));
         }
         return a;
     })()
 });
 
-InternalStatemachineLexer.DFA11 = function(recognizer) {
+InternalStatemachineLexer.DFA9 = function(recognizer) {
     this.recognizer = recognizer;
-    this.decisionNumber = 11;
-    this.eot = InternalStatemachineLexer.DFA11_eot;
-    this.eof = InternalStatemachineLexer.DFA11_eof;
-    this.min = InternalStatemachineLexer.DFA11_min;
-    this.max = InternalStatemachineLexer.DFA11_max;
-    this.accept = InternalStatemachineLexer.DFA11_accept;
-    this.special = InternalStatemachineLexer.DFA11_special;
-    this.transition = InternalStatemachineLexer.DFA11_transition;
+    this.decisionNumber = 9;
+    this.eot = InternalStatemachineLexer.DFA9_eot;
+    this.eof = InternalStatemachineLexer.DFA9_eof;
+    this.min = InternalStatemachineLexer.DFA9_min;
+    this.max = InternalStatemachineLexer.DFA9_max;
+    this.accept = InternalStatemachineLexer.DFA9_accept;
+    this.special = InternalStatemachineLexer.DFA9_special;
+    this.transition = InternalStatemachineLexer.DFA9_transition;
 };
 
-org.antlr.lang.extend(InternalStatemachineLexer.DFA11, org.antlr.runtime.DFA, {
+org.antlr.lang.extend(InternalStatemachineLexer.DFA9, org.antlr.runtime.DFA, {
     getDescription: function() {
-        return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | ID | STRING | COMMENT | WS | NUMBER );";
+        return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | ID | STRING | COMMENT | WS | INT );";
     },
     dummy: null
 });

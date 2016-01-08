@@ -76,7 +76,6 @@ public class WorkspaceEventWatcher extends AbstractWorkspaceEventWatcher {
 		@SuppressWarnings("unchecked")
 		final WatchEvent<Path> ev = (WatchEvent<Path>) event;
 		Path fileName = ev.context();				
-		System.out.println("[DSLFORGE] - Workspace Event: " + kind.name() + ": " + fileName);
 	}
 
 	private void createWatchTask() {

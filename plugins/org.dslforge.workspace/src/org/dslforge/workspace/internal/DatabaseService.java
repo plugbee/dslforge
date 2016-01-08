@@ -48,7 +48,7 @@ public class DatabaseService {
 	}
 
 	private DatabaseService() {
-		System.out.println("[DSLFORGE] Starting DatabaseService...");
+		System.out.println("[INFO] - Starting DatabaseService...");
 	}
 
 	public void setEntityManagerFactory(EntityManagerFactory emf) {
@@ -73,9 +73,8 @@ public class DatabaseService {
 		try {
 			refs = context.getServiceReferences(EntityManagerFactory.class.getName(), filter);
 		} catch (InvalidSyntaxException isEx) {
-			new RuntimeException("[DSLFORGE] Bad filter", isEx);
+			new RuntimeException("[ERROR] - Bad filter", isEx);
 		}
-		System.out.println("[DSLFORGE] EMF Service refs looked up from registry: " + refs);
 		return (refs == null) ? null : (EntityManagerFactory) context.getService(refs[0]);
 	}
 
@@ -571,7 +570,6 @@ public class DatabaseService {
 		for (User user : users) {
 			System.out.println(user);
 		}
-		System.out.println("Size: " + users.size());
 	}
 
 	public void dumpProjects() {
@@ -579,7 +577,6 @@ public class DatabaseService {
 		for (Project project : projectsList) {
 			System.out.println(project);
 		}
-		System.out.println("Size: " + projectsList.size());
 	}
 
 	public void dumpFolders() {
@@ -587,16 +584,14 @@ public class DatabaseService {
 		for (Folder folder : folderList) {
 			System.out.println(folder);
 		}
-		System.out.println("Size: " + folderList.size());
 	}
 
 	public void dumpResources() {
 		List<Resource> resources = getAllResources();
-		for (Resource r : resources) {
-			if (r != null) {
-				System.out.println(r);
+		for (Resource resource : resources) {
+			if (resource != null) {
+				System.out.println(resource);
 			}
 		}
-		System.out.println("Size: " + resources.size());
 	}
 }

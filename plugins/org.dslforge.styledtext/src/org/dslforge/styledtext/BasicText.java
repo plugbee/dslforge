@@ -170,7 +170,7 @@ public class BasicText extends Composite {
 	 * @param event
 	 */
 	void handleTextChanged(Event event) {
-		System.out.println("[BasicText] handleTextChanged");
+		System.out.println("[INFO] - handleTextChanged");
 		notifyListeners(SWT.Modify, event);
 		notifyListeners(TextChanged, event);
 	}
@@ -230,7 +230,6 @@ public class BasicText extends Composite {
 			int row = position.get("row").asInt();
 			int column = position.get("column").asInt();
 			this.cursorPosition = new Position(row, column);
-			System.out.println("Position: row:" + row + ", column: " + column);
 		}
 	}
 
@@ -282,7 +281,6 @@ public class BasicText extends Composite {
 			int row = position.get("row").asInt();
 			int column = position.get("column").asInt();
 			this.cursorPosition = new Position(row, column);
-			System.out.println("Position: row:" + row + ", column: " + column);
 		}
 	}
 	
@@ -324,7 +322,6 @@ public class BasicText extends Composite {
 	 *                </ul>
 	 */
 	public void addTextChangeListener(ITextChangeListener listener) {
-		System.out.println("[DSLFORGE] - Adding TextChangeListener");
 		if (listener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
 		BasicTextListener typedListener = new BasicTextListener(listener);
@@ -350,7 +347,6 @@ public class BasicText extends Composite {
 	 *                </ul>
 	 */
 	public void addTextModifyListener(ITextModifyListener modifyListener) {
-		System.out.println("[DSLFORGE] - Adding TextModifyListener");
 		checkWidget();
 		if (modifyListener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
@@ -377,7 +373,6 @@ public class BasicText extends Composite {
 	 *                </ul>
 	 */
 	public void addTextSaveListener(ITextSaveListener iTextSaveListener) {
-		System.out.println("[DSLFORGE] - Adding TextSaveListener");
 		checkWidget();
 		if (iTextSaveListener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
@@ -403,7 +398,6 @@ public class BasicText extends Composite {
 	 *                </ul>
 	 */
 	public void addFocusListener(FocusListener focusListener) {
-		System.out.println("[DSLFORGE] - Adding FocusListener");
 		checkWidget();
 		if (focusListener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
@@ -419,7 +413,6 @@ public class BasicText extends Composite {
 		boolean isListening = isListening(eventType);
 		String remoteType = eventTypeToString(eventType);
 		if (remoteType != null && !wasListening && isListening) {
-			System.out.println("	- Adding listener for: " + remoteType);
 			getRemoteObject().listen(remoteType, true);
 		}
 	}
@@ -615,7 +608,7 @@ public class BasicText extends Composite {
 	 * @throws IOException
 	 */
 	private void registerResource(ResourceManager resourceManager, ClassLoader classLoader, String filePath) throws IOException {
-		System.out.println("[DSLFORGE] - Registering file: " + filePath);
+		System.out.println("[INFO] - Registering file: " + filePath);
 		InputStream inputStream = classLoader.getResourceAsStream(filePath);
 		try {
 			resourceManager.register(filePath, inputStream);
@@ -960,7 +953,6 @@ public class BasicText extends Composite {
 	 *            : the method arguments
 	 */
 	protected void invoke(String method, JsonObject properties) {
-		System.out.println("[BasicText] Invoking method " + method);
 	}
 
 	public void copy(String toCopy) {

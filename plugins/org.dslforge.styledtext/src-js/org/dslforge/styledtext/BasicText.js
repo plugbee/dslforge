@@ -169,7 +169,6 @@
 					var remoteObject = rap.getRemoteObject(this);
 					if (remoteObject) {
 						var x = remoteObject.call("getScope", { pos : pos, prefix : prefix});
-						console.log(x);
 					}
 				}
 			},
@@ -178,7 +177,7 @@
 				var remoteObject = rap.getRemoteObject(this);
 				if (remoteObject && !this.initialContent) {
 					remoteObject.notify("TextChanged");
-					console.log(this.getOffset(this.editor.getCursorPosition()));
+					//console.log(this.getOffset(this.editor.getCursorPosition()));
 				} else {
 					if (this.editable) {
 						//initial setting, avoid notify back the server.
@@ -350,7 +349,6 @@
 			},
 			
 			addMarker : function(marker) {
-				console.log("adding marker");
 				if(this.editor) {
 					var Range = ace.require("ace/range").Range;
 					var range = new Range(marker.rowStart,marker.rowEnd,marker.columnStart,marker.columnEnd);
@@ -363,7 +361,7 @@
 			},
 
 			insertText : function(properties) {
-				console.log("inserting text");
+				//console.log("inserting text");
 				if (this.editor) {
 					var position = { row:properties.rowStart, column:properties.columnStart};
 					var text = properties.text;
@@ -372,7 +370,7 @@
 			},
 
 			removeText : function(properties) {
-				console.log("removing text");
+				//console.log("removing text");
 				if (this.editor) {			        
 					var range = this.editor.getSelectionRange();
 					if (range.start.row != range.end.row || range.start.column !=range.end.column) {
@@ -394,9 +392,8 @@
 				    editor.getSession().setUseSoftTabs(true);
 					editor.getSession().getUndoManager().reset();
 					editor.setShowPrintMargin(false);		 
-					editor.setReadOnly(!editable);
-										
-			//		editor.$blockScrolling = Infinity;
+					editor.setReadOnly(!editable);							
+					editor.$blockScrolling = Infinity;
 					
 					//bind content assist
 					this.langTools = ace.require("ace/ext/language_tools");
@@ -434,17 +431,13 @@
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 					editor.tokenTooltip = new TokenTooltip(editor);
 
-					//Get this
 					self = this;
-					
-					//Handle the global index
 					if (typeof SharedWorker == 'undefined') {	
-						alert("Your browser does not support JavaScript shared workers.");
+						alert("Your browser does not support JavaScript Shared Workers.");
 					} else {
-						//Compute worker's http URL
+						//create the shared worker
 						var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
 						var httpURL = computeWorkerPath(filePath);
-						//Create the index
 						var worker = this.worker = new SharedWorker(httpURL);	 	
 						
 					 	//init the index
@@ -483,10 +476,10 @@
 					 	editor.getSession().on('changeCursor', function() { 
 					 	    if (editor.$mouseHandler.isMousePressed)  {
 					 	      // remove last stored values 
-					 	     console.log("remove last stored values");
+					 	      //console.log("remove last stored values");
 					 	    }
 					 	    // Store the Row/column values 
-					 	    console.log("store the row/column values");
+					 	    //console.log("store the row/column values");
 					 	}); 
 					 	
 					 	//on change

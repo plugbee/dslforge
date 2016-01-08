@@ -111,7 +111,6 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 		@Override
 		public void handleTextChanged(TextChangedEvent e) {
-			System.out.println("[BasicTextEditor] handleTextChanged");
 			setDirty(true);
 			JsonObject object = (JsonObject) e.data;
 			BasicTextEditor.this.handleTextChanged(object);
@@ -130,7 +129,6 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 			MenuManager menuMgr = new MenuManager("#PopUp");
 			menuMgr.setRemoveAllWhenShown(true);
 			initContextMenu();
-			System.out.println("[BasicTextEditor] Menu detected");
 		}
 	};
 
@@ -298,7 +296,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	}
 
 	protected String readFromFile() throws IOException {
-		System.out.println("[BasicTextEditor] Reading from file " + filePath);
+		System.out.println("[INFO] Reading from file " + filePath);
 		StringBuilder text = new StringBuilder();
 		String NL = System.getProperty("line.separator");
 		long start = System.currentTimeMillis();
@@ -311,7 +309,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 			scanner.close();
 		}
 		long end = System.currentTimeMillis();
-		System.out.println("[BasicTextEditor] Took read in: " + ((end - start) / 1000));
+		System.out.println("[INFO] Reading took: " + ((end - start) / 1000));
 		return text.toString();
 	}
 
@@ -325,12 +323,10 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 				@Override
 				public void keyReleased(KeyEvent e) {
-					System.out.println("[BasicTextEditor] keyReleased");
 				}
 
 				@Override
 				public void keyPressed(KeyEvent e) {
-					System.out.println("[BasicTextEditor] keyPressed");
 				}
 			};
 			getWidget().addKeyListener(iKeyListener);
@@ -338,7 +334,6 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 				@Override
 				public void handleTextModified(ModifyEvent event) {
-					System.out.println("[BasicTextEditor] handleTextModified");
 				}
 			});
 
@@ -346,7 +341,6 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 				@Override
 				public void handleTextSaved(TextSavedEvent event) {
-					System.out.println("[BasicTextEditor] handleTextSaved");
 					IRunnableWithProgress runnable = new IRunnableWithProgress() {
 						public void run(IProgressMonitor monitor)
 								throws InvocationTargetException, InterruptedException {
@@ -381,13 +375,10 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 				@Override
 				public void focusLost(FocusEvent event) {
-					System.out.println("[BasicTextEditor] focusLost");
 				}
 
 				@Override
 				public void focusGained(FocusEvent event) {
-					System.out.println("[BasicTextEditor] focusGained");
-
 				}
 			});
 			getWidget().addMenuDetectListener(menuDetectListener);
@@ -617,7 +608,6 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	@Override
 	public void performPaste() {
 		getWidget().paste();
-		System.out.println("paste");
 	}
 
 	@Override

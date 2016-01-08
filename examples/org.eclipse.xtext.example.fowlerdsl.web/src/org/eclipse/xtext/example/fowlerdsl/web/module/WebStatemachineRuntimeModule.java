@@ -3,11 +3,9 @@
  */
 package org.eclipse.xtext.example.fowlerdsl.web.module;
 
-import org.dslforge.xtext.common.shared.SharedModule;
-
 import com.google.inject.Binder;
 
-public class WebStatemachineRuntimeModule extends SharedModule {
+public class WebStatemachineRuntimeModule extends AbstractWebStatemachineRuntimeModule {
 
 	@Override
 	public void configure(Binder binder) {
@@ -15,4 +13,3 @@ public class WebStatemachineRuntimeModule extends SharedModule {
 		super.configure(binder);
 	}
 }
-	

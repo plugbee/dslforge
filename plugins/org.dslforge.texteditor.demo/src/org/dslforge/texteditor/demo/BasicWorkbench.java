@@ -39,14 +39,7 @@ public class BasicWorkbench implements EntryPoint {
 	private static final String DEMO_PRESENTATION = "org.dslforge.texteditor.demo.presentation";
 
 	public int createUI() {
-	    StartupParameters service = getClient().getService( StartupParameters.class );
-	    String parameter = service.getParameter("level");
-	    System.out.println("level=" + parameter);
-	    
-	    //add default user
 	    RWT.getUISession().setAttribute("user", "default");
-	    
-		//RWT.getRequest().getParameter("level");
 		ScopedPreferenceStore prefStore = (ScopedPreferenceStore) PrefUtil.getAPIPreferenceStore();
 		String keyPresentationId = IWorkbenchPreferenceConstants.PRESENTATION_FACTORY_ID;
 		String presentationId = prefStore.getString(keyPresentationId);

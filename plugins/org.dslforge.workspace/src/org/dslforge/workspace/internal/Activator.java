@@ -56,7 +56,6 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 	@Override
 	public void start(BundleContext context) throws Exception {
 		plugin = this;
-
 		ctx = context;
 
 		System.out.println("[DSLFORGE] " + "org.dslforge.workspace : started!");
@@ -89,7 +88,6 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 		if (unitName.equals(IWorkspaceConstants.PERSISTENCE_UNIT_NAME)) {
 			emf = (EntityManagerFactory) service;
 			DatabaseService.getInstance().setEntityManagerFactory(emf);
-			//DatabaseService.getInstance().dumpDatabase();
 		}
 		return service;
 	}
