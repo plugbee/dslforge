@@ -64,11 +64,11 @@
     </extension>   
 -->
 
-
+<!--
   <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
-            id="org.dslforge.xtext.generator.contribution.id"
+            id="org.dslforge.xtext.generator.contribution.id2"
             nameFilter="*.xtext"
             objectClass="org.eclipse.core.resources.IFile">
          <action
@@ -82,8 +82,40 @@
 
       </objectContribution>
    </extension>
-
-
-
+-->
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.dslforge.xtext.generator.contribution.id"
+            nameFilter="*.xtext"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               icon="icons/generate_editor.png"
+               id="org.dslforge.xtext.generator.contribution.menu.file"
+               label="DSLFORGE"
+               path="additions">
+            <groupMarker
+                  name="group">
+            </groupMarker>
+            <separator
+                  name="separator">
+            </separator>
+         </menu>
+         <action
+               class="org.dslforge.xtext.generator.ui.actions.GenerateXtextRAPEditorAction" 
+               enablesFor="1"
+               id="org.dslforge.xtext.generator.contribution.action.rap"
+               label="Generate Xtext RAP Editor"
+               menubarPath="org.dslforge.xtext.generator.contribution.menu.file/group">
+         </action>
+         <action
+               class="org.dslforge.xtext.generator.ui.actions.GenerateACEEditorAction" 
+               enablesFor="1"
+               id="org.dslforge.xtext.generator.contribution.action.ace"
+               label="Generate ACE Editor"
+               menubarPath="org.dslforge.xtext.generator.contribution.menu.file/group">
+         </action>
+      </objectContribution>
+   </extension>
 
 </plugin>

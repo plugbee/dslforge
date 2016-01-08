@@ -11,7 +11,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.rap.ui.views,
  org.eclipse.emf.common,
  org.eclipse.emf.rap.edit.ui,
- org.dslforge.xtext.common
+ org.dslforge.xtext.common,
+ com.google.inject,
+ org.eclipse.xtext
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.workspace.ui

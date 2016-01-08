@@ -53,5 +53,7 @@ public interface ITextSelection extends ISelection {
 	 * @return the selected text or <code>null</code> if there is no valid text information
 	 */
 	String getText();
+
+	int getOffset();
 }
 

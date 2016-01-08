@@ -108,4 +108,9 @@ public class TextSelection implements ITextSelection {
 	public int getLength() {
 		return 0;
 	}
+
+	@Override
+	public int getOffset() {
+		return 0;
+	}
 }

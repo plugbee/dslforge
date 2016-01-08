@@ -19,6 +19,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jdt.core,
  org.eclipse.ui.workbench,
  org.dslforge.xtext.generator,
- org.eclipse.pde.ui
+ org.eclipse.pde.ui,
+ org.dslforge.antlr
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

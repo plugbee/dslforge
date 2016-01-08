@@ -989,4 +989,8 @@ public class BasicText extends Composite {
 		properties.add("text", this.clipboard);
 		getRemoteObject().call("removeText", properties);
 	}
+
+	public int getOffset() {
+		return 0;
+	}
 }

@@ -25,10 +25,15 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>org.dslforge.antlr.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-		<nature>org.deved.antlride.core.nature</nature>
+		<nature>org.dslforge.antlr.project.nature</nature>
 	</natures>
 </projectDescription>

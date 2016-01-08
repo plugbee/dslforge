@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension
+         id="org.dslforge.antlr.builder"
+         name="ANTLR v3 Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            callOnEmptyDelta="false"
+            hasNature="true"
+            isConfigurable="false"
+            supportsConfigurations="false">
+         <run
+               class="org.dslforge.antlr.ui.ANTLRBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="org.dslforge.antlr.project.nature"
+         name="ANTLR Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.dslforge.antlr.ui.ANTLRProjectNature">
+         </run>
+      </runtime>
+      <builder
+            id="org.dslforge.antlr.builder">
+      </builder>
+   </extension>
+   <extension
+         id="org.dslforge.antlr.problem.marker"
+         name="Bridge Mapping Marker"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.dslforge.antlr.ui.editor.BasicAntlrEditor"
+            default="true"
+            extensions="g"
+            id="org.dslforge.antlr.ui.editor"
+            name="ANTLR Editor">
+      </editor>
+   </extension>
+
+</plugin>

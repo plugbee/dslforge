@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.dslforge.antlr.AntlrTool;
 import org.dslforge.xtext.generator.IWebProjectGenerator;
 import org.dslforge.xtext.generator.IWebProjectGenerator.EditorType;
 import org.dslforge.xtext.generator.WebProjectGenerator;
@@ -70,14 +71,16 @@ public class GenerateWebPluginProjectOperation extends GenerateProjectOperation 
 	protected static final String[] DSL_PROJECT_NATURES = new String[] { 
 		"org.eclipse.pde.PluginNature",
 		"org.eclipse.jdt.core.javanature",
-		"org.deved.antlride.core.nature"
+		"org.dslforge.antlr.project.nature"
+		//"org.deved.antlride.core.nature"
 	};
 	
 	protected static final String[] BUILDERS = new String[] { 
 		JavaCore.BUILDER_ID, 
 		"org.eclipse.dltk.core.scriptbuilder",
 		"org.eclipse.pde.ManifestBuilder",
-		"org.eclipse.pde.SchemaBuilder"
+		"org.eclipse.pde.SchemaBuilder",
+		"org.dslforge.antlr.builder"
 	};
 
 	private List<String> getProjectRequiredBundles() {
@@ -224,14 +227,24 @@ public class GenerateWebPluginProjectOperation extends GenerateProjectOperation 
 	}
 
 	@Override
-	public void doGenerate(IProject project, SubMonitor subMonitor) {
+	public void doGenerate(IProject project, IProgressMonitor monitor) {
 		IFileSystemAccess fsa = getConfiguredFileSystemAccess();
-		projectGenerator.doGenerate(grammar, fsa);
+		projectGenerator.doGenerate(grammar, fsa);	
+		Map<String, OutputConfiguration> outputConfigurations = getOutputConfigurations();
+		OutputConfiguration outputConfiguration = outputConfigurations.get(SRC_JS);		
+		String outputDirectory = outputConfiguration.getOutputDirectory();
+		String basePath = GeneratorUtil.getBasePath(grammar);
+		String relativePath = "/parser";
+		String grammarShortName = GeneratorUtil.getGrammarShortName(grammar);
+		String workingDirectory = outputDirectory + "/" + basePath + relativePath;
+		String grammarFileName = workingDirectory + "/" + "Internal" + grammarShortName + ".g";
+		AntlrTool.run(workingDirectory, grammarFileName);
 		try {
-			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+			project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 		} catch (CoreException ex) {
 			ex.printStackTrace();
 		}
+		System.out.println("done");
 	}
 	
 	private List<String> getAllFolders() {

@@ -188,11 +188,11 @@ public class GenerateStaticWebProjectOperation extends GenerateProjectOperation 
 	}
 
 	@Override
-	public void doGenerate(IProject project, SubMonitor subMonitor) {
+	public void doGenerate(IProject project, IProgressMonitor monitor) {
 		IFileSystemAccess fsa = getConfiguredFileSystemAccess();
 		projectGenerator.doGenerate(grammar, fsa);
 		try {
-			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+			project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 		} catch (CoreException ex) {
 			ex.printStackTrace();
 		}

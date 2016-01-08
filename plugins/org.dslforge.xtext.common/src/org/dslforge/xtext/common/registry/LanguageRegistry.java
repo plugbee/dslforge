@@ -50,7 +50,7 @@ public class LanguageRegistry {
 	static Map<String, XtextResourceSet> languageToResourceSetMap = Collections.synchronizedMap(new LinkedHashMap<String, XtextResourceSet>());
 	
 	public XtextResourceSet getDefaultResourceSet(String fileExtension) {
-		List<String> metamodelsByExtension = getMetamodelsByExtension(fileExtension);
+		List<String> metamodelsByExtension = getLanguageByExtension(fileExtension);
 		//assume one language
 		if (metamodelsByExtension==null || metamodelsByExtension.isEmpty())
 			return new XtextResourceSet();
@@ -99,7 +99,7 @@ public class LanguageRegistry {
 		return languageContribution.getFileExtension();
 	}
 	
-	public List<String> getMetamodelsByExtension(String extension) {
+	public List<String> getLanguageByExtension(String extension) {
 		List<String> toReturn = new ArrayList<String>();
 		Set<String> keySet = languageToContributionMap.keySet();
 		for (String key: keySet) {

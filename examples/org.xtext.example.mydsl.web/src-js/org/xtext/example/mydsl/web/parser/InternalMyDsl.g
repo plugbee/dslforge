@@ -13,10 +13,10 @@ options {
 }
 
 
-rule_Model:
+rule_Mo  del:   
 	greetings+=rule_Greeting* EOF!;
-
-
+      
+ 
 rule_Greeting:
 	'Hello' name=ID '!';
 

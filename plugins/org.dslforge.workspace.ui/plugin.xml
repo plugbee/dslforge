@@ -123,7 +123,6 @@
       </objectContribution>
    </extension>
   
-  <!--
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
@@ -132,7 +131,7 @@
             nameFilter="*"
             objectClass="java.io.File">
          <action
-               class="org.dslforge.workbench.actions.BasicGenerateAction"
+               class="org.dslforge.workspace.ui.actions.BasicGenerateAction"
                enablesFor="*"
                icon="icons/generate.png"
                id="org.dslforge.workspace.menu.generate"
@@ -141,7 +140,7 @@
          </action>
       </objectContribution>
    </extension>
-
+<!--
       <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution

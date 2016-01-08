@@ -155,7 +155,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 		super.doSave(monitor);
 		try {
 			if (!xtextResource.getContents().isEmpty())
-				if (validateObject(xtextResource.getContents().get(0), xtextResource)) {
+				if (validateSyntax(xtextResource.getContents().get(0), xtextResource)) {
 					String text = getWidget().getText();
 					xtextResource.reparse(text);
 				}
@@ -204,7 +204,8 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 									int lineNumber = line.intValue();
 									String message = issue.getMessage();
 									Severity severity = issue.getSeverity();
-									annotations.add(new Annotation(convertSeverity(severity), lineNumber, offset, message));
+									annotations.add(
+											new Annotation(convertSeverity(severity), lineNumber, offset, message));
 								}
 							}
 						}
@@ -220,27 +221,23 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	}
 
 	protected void updateResource(String text) {
-		 ReplaceRegion replaceRegionToBeProcessed = new ReplaceRegion(0, text.length(), text);
-		 xtextResource.update(replaceRegionToBeProcessed.getOffset(),
-		 replaceRegionToBeProcessed.getLength(),
-		 replaceRegionToBeProcessed.getText());
+		ReplaceRegion replaceRegionToBeProcessed = new ReplaceRegion(0, text.length(), text);
+		xtextResource.update(replaceRegionToBeProcessed.getOffset(), replaceRegionToBeProcessed.getLength(),
+				replaceRegionToBeProcessed.getText());
 	}
-	protected boolean validateObject(EObject object, XtextResource hostingResource) {
-		List<Diagnostic> diagnostics = diagnose(object, hostingResource);
+
+	protected boolean validateSyntax(EObject object, XtextResource hostingResource) {
+		List<Diagnostic> diagnostics = new ArrayList<Diagnostic>();
+		IConcreteSyntaxValidator concreteSyntaxValidator = hostingResource.getConcreteSyntaxValidator();
+		concreteSyntaxValidator.validateRecursive(object,
+				new IConcreteSyntaxValidator.DiagnosticListAcceptor(diagnostics), new HashMap<Object, Object>());
 		if (!diagnostics.isEmpty()) {
 			return false;
 		}
 		return true;
 	}
-	
-	protected List<Diagnostic> diagnose(EObject object, XtextResource hostingResource) {
-		List<Diagnostic> diagnostics = new ArrayList<Diagnostic>();
-		IConcreteSyntaxValidator concreteSyntaxValidator = hostingResource.getConcreteSyntaxValidator();
-		concreteSyntaxValidator.validateRecursive(object, new IConcreteSyntaxValidator.DiagnosticListAcceptor(diagnostics), new HashMap<Object, Object>());
-		return diagnostics;
-	}
-	
-	AnnotationType convertSeverity(Severity severity) {
+
+	private AnnotationType convertSeverity(Severity severity) {
 		switch (severity) {
 		case ERROR:
 			return AnnotationType.error;

@@ -13,13 +13,15 @@
  *
  * </copyright>
  */
-package org.dslforge.xtext.common.contentassist;
+package org.dslforge.antlr.ui.editor;
 
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.editors.text.TextEditor;
 
-public interface ICompletionProposal {
+public class BasicAntlrEditor extends TextEditor {
 
-	String getDisplayString();
-
-	Image getImage();
+	public BasicAntlrEditor() {
+		super(); 
+		SourceViewerConfiguration configuration = new SourceViewerConfiguration();
+		setSourceViewerConfiguration(configuration);
+	}
 }
