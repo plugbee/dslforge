@@ -244,7 +244,7 @@ public class GenerateWebPluginProjectOperation extends GenerateProjectOperation 
 		} catch (CoreException ex) {
 			ex.printStackTrace();
 		}
-		System.out.println("done");
+		System.out.println("[INFO] - Project " + project.getName()+ " generated.");
 	}
 	
 	private List<String> getAllFolders() {

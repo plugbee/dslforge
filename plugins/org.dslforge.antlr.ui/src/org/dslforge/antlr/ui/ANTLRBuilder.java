@@ -252,10 +252,6 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		if (output.isEmpty()) {
-			
-		}
 		List<String> generatorOutput = AntlrTool.run(workingDirectory, grammaFullPath);
 		output.addAll(generatorOutput);
 		monitor.done();
