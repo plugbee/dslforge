@@ -52,11 +52,13 @@
 							<ws>win32</ws>
 							<arch>x86_64</arch>
 						</environment>
+						<!-- 
 						<environment>
 							<os>macosx</os>
 							<ws>cocoa</ws>
 							<arch>x86</arch>
 						</environment>
+						-->
 						<environment>
 							<os>macosx</os>
 							<ws>cocoa</ws>
@@ -326,13 +328,14 @@
 		-->
 	</pluginRepositories>
 
-<!-- 
+
 	<repositories>
 		<repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/mars/</url>
 		</repository>
+		<!-- 
 		<repository>
 			<id>Xtext Update Site</id>
 			<layout>p2</layout>
@@ -350,8 +353,9 @@
 			<id>xtend</id>
 			<url>http://build.eclipse.org/common/xtend/maven/</url>
 		</repository>
+		-->
 	</repositories>
- -->
+
 	<profiles>
 		<profile>
 			<id>platform-mars</id>
