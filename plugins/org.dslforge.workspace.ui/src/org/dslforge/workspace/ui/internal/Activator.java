@@ -52,7 +52,6 @@ public class Activator extends AbstractUIPlugin {
 
 	@Override
 	protected void initializeImageRegistry(ImageRegistry reg) {
-		System.out.println("[DSLFORGE] Adding images to registry");
 		addImageFilePath(BasicWorkbenchImageProvider.USER);
 		addImageFilePath(BasicWorkbenchImageProvider.FILE);
 		addImageFilePath(BasicWorkbenchImageProvider.MODEL);

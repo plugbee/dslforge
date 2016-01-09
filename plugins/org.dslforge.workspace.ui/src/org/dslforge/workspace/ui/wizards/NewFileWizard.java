@@ -102,7 +102,7 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 			e.printStackTrace();
 		}
 		final String currentUser = (String) RWT.getUISession().getAttribute("user");
-		System.out.println("[DSLFORGE] - " + currentUser + " created new model: " + fileURI);
+		System.out.println("[INFO] - " + currentUser + " created new model: " + fileURI);
 		return openEditor(getWorkbench(), fileURI);		
 	}
 	

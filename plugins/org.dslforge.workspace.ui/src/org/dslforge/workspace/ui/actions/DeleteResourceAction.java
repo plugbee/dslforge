@@ -60,8 +60,7 @@ public class DeleteResourceAction extends AbstractWorkspaceAction {
 				e.printStackTrace();
 			}
 			final String currentUser = (String) RWT.getUISession().getAttribute("user");
-			System.out.println("[DSLFORGE] - " + currentUser + " deleted resource: " + file.getAbsolutePath());
+			System.out.println("[INFO] - " + currentUser + " deleted resource: " + file.getAbsolutePath());
 		}
-		// }
 	}
 }

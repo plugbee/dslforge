@@ -52,7 +52,7 @@ public abstract class AbstractWeb«grammarShortName.toFirstUpper»RuntimeModule ex
 
 	@Override
 	public void configure(Binder binder) {
-		System.out.println("[DSLFORGE] - Configuring module " + this.getClass().getName());
+		System.out.println("[INFO] - Configuring module " + this.getClass().getName());
 		super.configure(binder);
 	}
 }

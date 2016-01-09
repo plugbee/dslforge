@@ -205,7 +205,7 @@ public class WorkspaceManager {
 					if (!isLocked(file)) {
 						WorkspaceManager.INSTANCE.deleteResource(projectName, r.getPath());
 						String userId = (String) RWT.getUISession().getAttribute("user");
-						System.out.println("[DSLFORGE] - " + userId + " deleted file " + file.getPath());
+						System.out.println("[INFO] - " + userId + " deleted file " + file.getPath());
 					} else {
 						MessageDialog.openInformation(null, "Forbidden Operation", "Project " + projectName
 								+ " contains locked files, make sure files are unlocked before deleting.");
@@ -339,7 +339,7 @@ public class WorkspaceManager {
 			String projectName = computeProjectName(absoluteURI);
 			createResource(projectName, path);
 			String userId = (String) RWT.getUISession().getAttribute("user");
-			System.out.println("[DSLFORGE] - " + userId + " created file " + file.getPath());
+			System.out.println("[INFO] - " + userId + " created file " + file.getPath());
 			Display.getCurrent().syncExec(new Runnable() {
 				@Override
 				public void run() {
@@ -374,7 +374,7 @@ public class WorkspaceManager {
 					}
 				});
 				String userId = (String) RWT.getUISession().getAttribute("user");
-				System.out.println("[DSLFORGE] - " + userId + " deleted file " + file.getPath());
+				System.out.println("[INFO] - " + userId + " deleted file " + file.getPath());
 				return true;
 			} else {
 				MessageDialog.openInformation(null, "Forbidden Operation",
@@ -421,7 +421,7 @@ public class WorkspaceManager {
 		String projectName = computeProjectName(absoluteURI);
 		String path = computeRelativePath(absoluteURI);
 		lockResource(userId, projectName, path);
-		System.out.println("[DSLFORGE] - " + userId + " locked file " + absoluteURI.toString());
+		System.out.println("[INFO] - " + userId + " locked file " + absoluteURI.toString());
 	}
 
 	public void lockResource(File file) {
@@ -439,7 +439,7 @@ public class WorkspaceManager {
 		String projectName = computeProjectName(absoluteURI);
 		String path = computeRelativePath(absoluteURI);
 		unlockResource(userId, projectName, path);
-		System.out.println("[DSLFORGE] - " + userId + " unlocked file " + absoluteURI.path());
+		System.out.println("[INFO] - " + userId + " unlocked file " + absoluteURI.path());
 	}
 
 	public void unlockResource(File file) {

@@ -68,7 +68,7 @@ public class NewProjectWizard extends AbstractNewResourceWizard{
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				System.out.println("[DSLFORGE] - " + userName + " created new project: " + projectName);
+				System.out.println("[INFO] - " + userName + " created new project: " + projectName);
 				return true;
 			}
 		}

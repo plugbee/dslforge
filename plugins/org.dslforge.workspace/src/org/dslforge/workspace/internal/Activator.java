@@ -58,7 +58,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 		plugin = this;
 		ctx = context;
 
-		System.out.println("[DSLFORGE] " + "org.dslforge.workspace : started!");
+		System.out.println("[INFO] " + "org.dslforge.workspace : started!");
 		/*
 		 * We are in the same bundle as the persistence unit so the services
 		 * should be available when we start up (if nothing bad happened) and
@@ -72,7 +72,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("[DSLFORGE] " + "org.dslforge.workspace" + " : stopping!");
+		System.out.println("[INFO] " + "org.dslforge.workspace" + " : stopping!");
 		plugin = null;
 		emfTracker.close();
 		if (emf!=null && emf.isOpen())

@@ -176,7 +176,7 @@ public class LanguageRegistry {
 	}
 
 	private void logWarning(String msg) {
-		System.out.println("[DSLFORGE] - WARNING: " + msg);
+		System.out.println("[WARNING] - " + msg);
 	}
 
 	private void logError(Throwable t) {
