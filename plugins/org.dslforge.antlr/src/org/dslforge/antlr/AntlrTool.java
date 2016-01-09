@@ -35,11 +35,15 @@ import org.osgi.framework.Bundle;
 /**
  * Run ANTLR v3 Parser Generator from command line.
  * 
- * [C:\Program Files\Java\jre7\bin\java, 
- * -classpath, D:\dev\www\Mars\win32-x86_64\workspace\org.dslforge.antlr.generator\lib\antlr-3.3-complete.jar, org.antlr.Tool, 
- * -lib, D:\git\dslforge\examples\org.xtext.example.mydsl.web\src-js\org\xtext\example\mydsl\web\parser, 
- * -o, D:\git\dslforge\examples\org.xtext.example.mydsl.web\src-js\org\xtext\example\mydsl\web\parser, 
- * D:\git\dslforge\examples\org.xtext.example.mydsl.web\src-js\org\xtext\example\mydsl\web\parser\InternalMyDsl.g]
+ * [C:\Program Files\Java\jre7\bin\java, -classpath,
+ * D:\dev\www\Mars\win32-x86_64\workspace\org.dslforge.antlr.generator\lib\antlr
+ * -3.3-complete.jar, org.antlr.Tool, -lib,
+ * D:\git\dslforge\examples\org.xtext.example.mydsl.web\src-js\org\xtext\example
+ * \mydsl\web\parser, -o,
+ * D:\git\dslforge\examples\org.xtext.example.mydsl.web\src-js\org\xtext\example
+ * \mydsl\web\parser,
+ * D:\git\dslforge\examples\org.xtext.example.mydsl.web\src-js\org\xtext\example
+ * \mydsl\web\parser\InternalMyDsl.g]
  */
 public class AntlrTool {
 
@@ -47,7 +51,56 @@ public class AntlrTool {
 	private static final String DSLFORGE_ANTLR_GENERATOR_PLUGIN = "org.dslforge.antlr.generator";
 	private static final String ANTLR_MAIN_CLASS = "org.antlr.Tool";
 
-	public static List<String> run2(String workingDirectory, String grammarFileName) {
+	private static enum RunMode {
+		FromEmbeddedJar, FromCommandLine
+	}
+	
+	public static List<String> run(String workingDirectory, String grammarFileName) {
+		return run(RunMode.FromEmbeddedJar,  workingDirectory, grammarFileName);
+	}
+
+	public static List<String> run(RunMode mode, String workingDirectory, String grammarFileName) {
+		List<String> output = new ArrayList<String>();
+		switch (mode) {
+		case FromEmbeddedJar:
+			return runFromEmbeddedJar(workingDirectory, grammarFileName);
+		case FromCommandLine:
+			return runFromCommandLine(workingDirectory, grammarFileName);
+		default:
+			return output;
+		}
+	}
+
+	private static List<String> runFromEmbeddedJar(String workingDirectory, String grammarFileName) {
+		try {
+			// final List<String> options = new ArrayList<String>();
+			// options.add("-o");
+			// options.add(workingDirectory);
+			// options.add("-lib");
+			// options.add(workingDirectory);
+			// options.add(new File(workingDirectory,
+			// grammarFileName).toString());
+			// final String[] optionsA = new String[options.size()];
+			// options.toArray(optionsA);
+			List<String> command = new ArrayList<String>();
+			command.add("-o");
+			command.add(workingDirectory);
+			command.add(grammarFileName);
+
+			String[] args = command.toArray(new String[command.size()]);
+			System.setErr(System.out);
+			AntlrErrorListener errorListener = new AntlrErrorListener();
+			ErrorManager.setErrorListener(errorListener);
+			Tool tool = new Tool(args);
+			tool.process();
+			return errorListener.getOutput();
+		} catch (Throwable t) {
+			t.printStackTrace(System.out);
+		}
+		return Collections.emptyList();
+	}
+
+	private static List<String> runFromCommandLine(String workingDirectory, String grammarFileName) {
 		List<String> output = new ArrayList<String>();
 		try {
 			List<String> command = new ArrayList<String>();
@@ -96,35 +149,6 @@ public class AntlrTool {
 		return output;
 	}
 
-	public static List<String> run(String workingDirectory, String grammarFileName) {
-		try {
-			// final List<String> options = new ArrayList<String>();
-			// options.add("-o");
-			// options.add(workingDirectory);
-			// options.add("-lib");
-			// options.add(workingDirectory);
-			// options.add(new File(workingDirectory,
-			// grammarFileName).toString());
-			// final String[] optionsA = new String[options.size()];
-			// options.toArray(optionsA);
-			List<String> command = new ArrayList<String>();
-			command.add("-o");
-			command.add(workingDirectory);
-			command.add(grammarFileName);
-
-			String[] args = command.toArray(new String[command.size()]);
-			System.setErr(System.out);
-			AntlrErrorListener errorListener = new AntlrErrorListener();
-			ErrorManager.setErrorListener(errorListener);
-			Tool tool = new Tool(args);
-			tool.process();
-			return errorListener.getOutput();
-		} catch (Throwable t) {
-			t.printStackTrace(System.out);
-		}
-		return Collections.emptyList();
-	}
-	
 	public static IPath getAntlrPath() throws IOException {
 		Bundle bundle = Platform.getBundle(DSLFORGE_ANTLR_GENERATOR_PLUGIN);
 		URL AntlrLibURL = bundle.getResource("lib/" + ANTLR_JAR);

@@ -94,8 +94,7 @@ public class WebPluginProjectFactory extends PluginProjectFactory implements IWe
 		content.append("               .,\\\n");
 		content.append("               plugin.xml,\\");
 		content.append("			   src-js/\n");
-		content.append("               data/,\\\n");
-		content.append("               theme/");
+		content.append("               icons/");
 		createFile("build.properties", project, content.toString(), progressMonitor);
 	}
 	

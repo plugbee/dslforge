@@ -39,7 +39,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -72,12 +71,10 @@ public class GenerateWebPluginProjectOperation extends GenerateProjectOperation 
 		"org.eclipse.pde.PluginNature",
 		"org.eclipse.jdt.core.javanature",
 		"org.dslforge.antlr.project.nature"
-		//"org.deved.antlride.core.nature"
 	};
 	
 	protected static final String[] BUILDERS = new String[] { 
 		JavaCore.BUILDER_ID, 
-		"org.eclipse.dltk.core.scriptbuilder",
 		"org.eclipse.pde.ManifestBuilder",
 		"org.eclipse.pde.SchemaBuilder",
 		"org.dslforge.antlr.builder"
@@ -104,7 +101,7 @@ public class GenerateWebPluginProjectOperation extends GenerateProjectOperation 
 	 
 	protected IWebProjectGenerator projectGenerator;
 	
-	private ArrayList<String> requiredBundles;
+	protected ArrayList<String> requiredBundles;
 	
 	public GenerateWebPluginProjectOperation(Map<String, Object> settings) {
 		super(settings);
