@@ -143,7 +143,7 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 					String absolutePath = file.getAbsolutePath();
 					IWorkbench workbench = PlatformUI.getWorkbench();
 					if (openEditor(workbench, new Path(absolutePath)) != null) {
-						System.out.println("[BasicWorkspaceNavigator] - Opened editor");
+						System.out.println("[INFO] - Opened editor on file " + absolutePath);
 					}
 					workspaceChanged(null);
 				}

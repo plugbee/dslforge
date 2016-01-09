@@ -296,7 +296,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	}
 
 	protected String readFromFile() throws IOException {
-		System.out.println("[INFO] Reading from file " + filePath);
+		System.out.println("[INFO] - Reading from file " + filePath);
 		StringBuilder text = new StringBuilder();
 		String NL = System.getProperty("line.separator");
 		long start = System.currentTimeMillis();
@@ -309,7 +309,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 			scanner.close();
 		}
 		long end = System.currentTimeMillis();
-		System.out.println("[INFO] Reading took: " + ((end - start) / 1000));
+		System.out.println("[INFO] - Reading took: " + ((end - start) / 1000));
 		return text.toString();
 	}
 
