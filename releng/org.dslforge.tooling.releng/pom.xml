@@ -15,9 +15,11 @@
 		<module>../org.dslforge.tooling.target/${platform.version.name}</module>
 
 		<!-- Plug-ins -->
+		<module>../../plugins/org.dslforge.antlr</module>
+		<module>../../plugins/org.dslforge.antlr.ui</module>
 		<module>../../plugins/org.dslforge.xtext.generator</module>
 		<module>../../plugins/org.dslforge.xtext.generator.ui</module>
-		
+				
 		<!-- Features -->
 		<module>../../features/org.dslforge.tooling.feature</module>
 		
