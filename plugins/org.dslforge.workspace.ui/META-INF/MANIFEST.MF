@@ -18,3 +18,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.workspace.ui
 Bundle-Vendor: PlugBee
+Import-Package: javax.persistence;version="2.1.0"
