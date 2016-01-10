@@ -8,7 +8,7 @@
   <parent>
     <artifactId>org.dslforge.runtime.build.parent</artifactId>
     <relativePath>parent</relativePath>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.8.0-SNAPSHOT</version>
     <groupId>dslforge.releng</groupId>
   </parent>
 
@@ -44,5 +44,5 @@
   </modules>
 
   <groupId>dslforge.releng</groupId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>0.8.0-SNAPSHOT</version>
 </project>

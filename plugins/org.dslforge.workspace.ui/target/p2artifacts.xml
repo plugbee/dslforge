@@ -7,7 +7,7 @@
       <property name='download.size' value='56756'/>
       <property name='maven-groupId' value='dslforge.plugins'/>
       <property name='maven-artifactId' value='org.dslforge.workspace.ui'/>
-      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      <property name='maven-version' value='0.8.0-SNAPSHOT'/>
     </properties>
   </artifact>
   <artifact classifier='osgi.bundle' id='org.dslforge.workspace.ui.source' version='1.0.0.201512280055'>
@@ -16,7 +16,7 @@
       <property name='download.size' value='32467'/>
       <property name='maven-groupId' value='dslforge.plugins'/>
       <property name='maven-artifactId' value='org.dslforge.workspace.ui'/>
-      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      <property name='maven-version' value='0.8.0-SNAPSHOT'/>
       <property name='maven-classifier' value='sources'/>
     </properties>
   </artifact>

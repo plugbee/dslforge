@@ -7,7 +7,7 @@
       <property name='org.eclipse.equinox.p2.provider' value='PlugBee'/>
       <property name='maven-groupId' value='dslforge.plugins'/>
       <property name='maven-artifactId' value='org.dslforge.styledtext'/>
-      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      <property name='maven-version' value='0.8.0-SNAPSHOT'/>
     </properties>
     <provides size='4'>
       <provided namespace='org.eclipse.equinox.p2.iu' name='org.dslforge.styledtext' version='1.0.0.201512280055'/>
@@ -44,7 +44,7 @@
       <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
       <property name='maven-groupId' value='dslforge.plugins'/>
       <property name='maven-artifactId' value='org.dslforge.styledtext'/>
-      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      <property name='maven-version' value='0.8.0-SNAPSHOT'/>
       <property name='maven-classifier' value='sources'/>
     </properties>
     <provides size='4'>

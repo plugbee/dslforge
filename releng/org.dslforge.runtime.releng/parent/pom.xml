@@ -7,7 +7,7 @@
 	</prerequisites>
 	<groupId>dslforge.releng</groupId>
 	<artifactId>org.dslforge.runtime.releng.parent</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<description>Integrated modeling tool platform that eases the development of IDE-like tool support for developing web-based IDEs</description>
 	<licenses>
@@ -49,7 +49,7 @@
 						<artifact>
 							<groupId>dslforge.releng</groupId>
 							<artifactId>${platform.version.name}</artifactId>
-							<version>1.0.0-SNAPSHOT</version>
+							<version>0.8.0-SNAPSHOT</version>
 						</artifact>
 					</target>
 					<environments>
