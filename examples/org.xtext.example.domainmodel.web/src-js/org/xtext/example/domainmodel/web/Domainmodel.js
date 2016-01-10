@@ -121,7 +121,7 @@
 					 	
 					 	editor.on("mousedown", function() { 
 					 	    // Store the Row/column values 
-					 		console.log("mouse down");
+					 		//console.log("mouse down");
 					 	}) 
 
 					 	editor.getSession().getSelection().on('changeCursor', function() { 

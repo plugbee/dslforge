@@ -170,7 +170,6 @@ public class BasicText extends Composite {
 	 * @param event
 	 */
 	void handleTextChanged(Event event) {
-		System.out.println("[INFO] - handleTextChanged");
 		notifyListeners(SWT.Modify, event);
 		notifyListeners(TextChanged, event);
 	}

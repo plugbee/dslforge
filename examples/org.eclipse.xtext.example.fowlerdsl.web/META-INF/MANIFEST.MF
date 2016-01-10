@@ -20,3 +20,6 @@ Require-Bundle: org.eclipse.rap.ui,
  org.dslforge.styledtext,
  org.eclipse.xtext.example.fowlerdsl
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.eclipse.xtext.example.fowlerdsl.web.editor,
+ org.eclipse.xtext.example.fowlerdsl.web.editor.widget,
+ org.eclipse.xtext.example.fowlerdsl.web.module

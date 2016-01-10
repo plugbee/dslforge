@@ -20,3 +20,7 @@ Require-Bundle: org.eclipse.rap.ui,
  org.dslforge.texteditor,
  org.dslforge.styledtext
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.xtext.example.domainmodel.web,
+ org.xtext.example.domainmodel.web.editor,
+ org.xtext.example.domainmodel.web.editor.widget,
+ org.xtext.example.domainmodel.web.module
