@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse RAP Styled Text Widget
 Bundle-SymbolicName: org.dslforge.styledtext;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.dslforge.styledtext.internal.Activator
 Bundle-Vendor: PlugBee
 Require-Bundle: org.eclipse.core.runtime,
