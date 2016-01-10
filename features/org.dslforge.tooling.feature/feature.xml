@@ -2,7 +2,7 @@
 <feature
       id="org.dslforge.tooling.feature"
       label="DSLFORGE Tooling Feature"
-      version="1.0.0.qualifier"
+      version="0.8.0.qualifier"
       provider-name="DSLFORGE">
 
    <description url="http://www.dslforge.org">
