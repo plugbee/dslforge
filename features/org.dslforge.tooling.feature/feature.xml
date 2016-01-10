@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.dslforge.tooling.feature"
-      label="DSLFORGE Tooling Feature"
+      label="DSL Forge Tooling Feature"
       version="0.8.0.qualifier"
-      provider-name="DSLFORGE">
+      provider-name="PlugBee">
 
    <description url="http://www.dslforge.org">
       Contains editor generators for Eclipse Remote Application Platform
