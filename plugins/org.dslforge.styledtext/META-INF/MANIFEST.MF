@@ -12,4 +12,5 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.styledtext
-Import-Package: org.eclipse.swt.widgets
+Bundle-ClassPath: src-js/,
+ .

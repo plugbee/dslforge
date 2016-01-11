@@ -48,6 +48,11 @@
    </element>
 
    <element name="contribution">
+      <annotation>
+         <documentation>
+            An editor contribution to the Text Editor Demo application.
+         </documentation>
+      </annotation>
       <complexType>
          <attribute name="label" type="string" use="required">
             <annotation>

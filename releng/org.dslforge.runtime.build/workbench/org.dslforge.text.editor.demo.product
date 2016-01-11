@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="DSL Forge Workbench Product" uid="org.dslforge.workbench.product" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="false">
+<product name="DSL Forge Workbench Product" uid="org.dslforge.text.editor.demo.product" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="false">
 
 
    <configIni use="default">
@@ -44,9 +44,11 @@
       <plugin id="org.apache.felix.gogo.runtime"/>
       <plugin id="org.apache.felix.gogo.shell"/>
       <plugin id="org.apache.log4j"/>
-      <plugin id="org.dslforge.example.java.web"/>
-      <plugin id="org.dslforge.workbench"/>
+      <plugin id="org.dslforge.styledtext"/>
+      <plugin id="org.dslforge.texteditor"/>
+      <plugin id="org.dslforge.texteditor.demo"/>
       <plugin id="org.dslforge.workspace"/>
+      <plugin id="org.dslforge.workspace.ui"/>
       <plugin id="org.dslforge.xtext.common"/>
       <plugin id="org.eclipse.core.commands"/>
       <plugin id="org.eclipse.core.contenttype"/>
@@ -93,7 +95,6 @@
       <plugin id="org.eclipse.rap.rwt.osgi"/>
       <plugin id="org.eclipse.rap.ui"/>
       <plugin id="org.eclipse.rap.ui.cheatsheets"/>
-    <!--  <plugin id="org.eclipse.rap.ui.forms"/> -->
       <plugin id="org.eclipse.rap.ui.navigator"/>
       <plugin id="org.eclipse.rap.ui.views"/>
       <plugin id="org.eclipse.rap.ui.workbench"/>
@@ -186,7 +187,6 @@
       <plugin id="org.eclipse.rap.rwt.osgi" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.ui" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.ui.cheatsheets" autoStart="true" startLevel="0" />
-    <!--  <plugin id="org.eclipse.rap.ui.forms" autoStart="true" startLevel="0" /> -->
       <plugin id="org.eclipse.rap.ui.navigator" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.ui.views" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.ui.workbench" autoStart="true" startLevel="0" />
@@ -200,28 +200,31 @@
       <plugin id="org.eclipse.xtext" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtext.common.types" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtext.ecore" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.xtext.example.arithmetics" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.xtext.example.arithmetics.web" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.xtext.example.fowlerdsl" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.xtext.example.fowlerdsl.web" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtext.generator" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtext.smap" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtext.util" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtext.xbase.lib" autoStart="true" startLevel="0" />
       <plugin id="org.objectweb.asm" autoStart="true" startLevel="0" />
-      <plugin id="org.xtext.example.domainmodel" autoStart="true" startLevel="0" />
-      <plugin id="org.xtext.example.domainmodel.web" autoStart="true" startLevel="0" />
-      <plugin id="org.xtext.example.mydsl" autoStart="true" startLevel="0" />
-      <plugin id="org.xtext.example.mydsl.web" autoStart="true" startLevel="0" />
       
       <plugin id="javax.xml" autoStart="true" startLevel="0" />
       <plugin id="javax.persistence" autoStart="true" startLevel="0" />
       <plugin id="osgi.enterprise" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="2" />
       <plugin id="org.dslforge.workspace" autoStart="true" startLevel="3" />
-      <plugin id="org.dslforge.workbench" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.workspace.ui" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.texteditor.demo" autoStart="true" startLevel="4" />
       <plugin id="org.dslforge.xtext.common" autoStart="true" startLevel="4" />
-
+      <plugin id="org.dslforge.styledtext" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.texteditor" autoStart="true" startLevel="4" />
+      
+      <plugin id="org.xtext.example.domainmodel" autoStart="true" startLevel="4" />
+      <plugin id="org.xtext.example.domainmodel.web" autoStart="true" startLevel="4" />
+      <plugin id="org.xtext.example.mydsl" autoStart="true" startLevel="4" />
+      <plugin id="org.xtext.example.mydsl.web" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.xtext.example.arithmetics" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.xtext.example.arithmetics.web" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.xtext.example.fowlerdsl" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.xtext.example.fowlerdsl.web" autoStart="true" startLevel="4" />
       
    </configurations>
 

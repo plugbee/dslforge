@@ -19,6 +19,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.texteditor,
  org.dslforge.texteditor.actions,
  org.dslforge.texteditor.internal
-Import-Package: org.apache.log4j,
- org.eclipse.persistence.sessions.coordination;version="2.5.2"
+Import-Package: org.apache.log4j
 Bundle-Vendor: PlugBee

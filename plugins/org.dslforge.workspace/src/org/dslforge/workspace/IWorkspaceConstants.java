@@ -17,7 +17,7 @@ package org.dslforge.workspace;
 
 public interface IWorkspaceConstants {
 
-	public static final String DEFAULT_WORKING_DIRECTORY = "D:\\dev\\www\\home\\clean\\workspace";
+	public static final String DEFAULT_WORKING_DIRECTORY = "D:\\www\\dslforge\\workspace";
 	public static final String JDBC_DATABASE_URL = "jdbc:derby:D:/www/dslforge/database;create=true";	
     public static final String JDBC_DATABASE_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
 	public static final String PERSISTENCE_UNIT_NAME = "dslforge";
