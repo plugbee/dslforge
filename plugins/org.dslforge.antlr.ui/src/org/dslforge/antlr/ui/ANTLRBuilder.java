@@ -40,7 +40,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -62,7 +61,6 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 
 	public static final String BUILDER_ID = "org.dslforge.antlr.builder";
 	public static final String CONSOLE_ID = "ANTLR Build Console";
-	private static final Path SRC_JS_PATH = new Path("src-js");
 	protected static final String ANTLR_FILE_EXTENSION = "g";
 	private ANTLRConsole console;
 	private IProblemMarkerFactory markerFactory;
@@ -131,9 +129,9 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 				return (ANTLRConsole) existing[i];
 			}
 		}
-		ANTLRConsole myConsole = new ANTLRConsole(CONSOLE_ID, null);
-		conMan.addConsoles(new IConsole[] { myConsole });
-		return myConsole;
+		ANTLRConsole antlrConsole = new ANTLRConsole(CONSOLE_ID, null);
+		conMan.addConsoles(new IConsole[] { antlrConsole });
+		return antlrConsole;
 	}
 
 	@Override
@@ -187,14 +185,12 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 					throw new OperationCanceledException();
 				IResource resource = delta.getResource();
 				IPath resourcePath = delta.getProjectRelativePath();
-				if (resource instanceof IFile && SRC_JS_PATH.isPrefixOf(resourcePath)) {
+				if (resource instanceof IFile) {
 					if (resourcePath.getFileExtension().equals(ANTLR_FILE_EXTENSION)) {
-						if (delta.getKind() == IResourceDelta.CHANGED) {
-							final IFile grammarFile = (IFile) resource;
-							internalBuild(grammarFile, progress.newChild(1));
-							long endBuild = System.currentTimeMillis();
-							generateReport(startBuild, grammarFile, endBuild);
-						}
+						final IFile grammarFile = (IFile) resource;
+						internalBuild(grammarFile, progress.newChild(1));
+						long endBuild = System.currentTimeMillis();
+						generateReport(startBuild, grammarFile, endBuild);
 					}
 				}
 				return true;
@@ -267,7 +263,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 					if (progress.isCanceled())
 						throw new OperationCanceledException();
 					IPath resourcePath = resource.getProjectRelativePath();
-					if (resource instanceof IFile && SRC_JS_PATH.isPrefixOf(resourcePath)) {
+					if (resource instanceof IFile) {
 						if (resourcePath.getFileExtension().equals(ANTLR_FILE_EXTENSION)) {
 							internalBuild((IFile) resource, progress.newChild(1));
 						}

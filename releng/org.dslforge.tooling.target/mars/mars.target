@@ -13,7 +13,7 @@
 <repository location="http://download.eclipse.org/releases/mars"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
-<unit id="org.dslforge.tooling.feature.feature.group" version="0.8.0.201601101355"/>
+<unit id="org.dslforge.tooling.feature.feature.group" version="0.0.0"/>
 <repository location="http://dslforge.org/downloads/tooling/repository/"/>
 </location>
 </locations>
