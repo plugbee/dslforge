@@ -15,12 +15,9 @@
  */
 package org.dslforge.texteditor.demo;
 
-import static org.eclipse.rap.rwt.RWT.getClient;
-
 import org.dslforge.texteditor.demo.presentation.BasicPresentationWorkbenchAdvisor;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.rap.rwt.application.EntryPoint;
-import org.eclipse.rap.rwt.client.service.StartupParameters;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
