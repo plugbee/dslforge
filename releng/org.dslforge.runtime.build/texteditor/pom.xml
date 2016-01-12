@@ -16,7 +16,7 @@
   <packaging>eclipse-repository</packaging>
 
   <properties>
-    <war-filename>workbench</war-filename>
+    <war-filename>texteditor</war-filename>
   </properties>
 
   <build>

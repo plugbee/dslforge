@@ -39,8 +39,6 @@ public class Domainmodel extends BasicText {
 		languageResources.add(new Path("src-js/org/xtext/example/domainmodel/web/ace/antlr-all-min.js"));
 		languageResources.add(new Path("src-js/org/xtext/example/domainmodel/web/ace/InternalDomainmodelParser.js"));
 		languageResources.add(new Path("src-js/org/xtext/example/domainmodel/web/ace/InternalDomainmodelLexer.js"));
-		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
-		loadClientResources(getBaseResources());
 		registerClientResources(languageResources, getClassLoader());
 		loadClientResources(languageResources);
 	}

@@ -39,8 +39,6 @@ public class MyDsl extends BasicText {
 		languageResources.add(new Path("src-js/org/xtext/example/mydsl/web/parser/antlr-all-min.js"));
 		languageResources.add(new Path("src-js/org/xtext/example/mydsl/web/parser/InternalMyDslParser.js"));
 		languageResources.add(new Path("src-js/org/xtext/example/mydsl/web/parser/InternalMyDslLexer.js"));
-		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
-		loadClientResources(getBaseResources());
 		registerClientResources(languageResources, getClassLoader());
 		loadClientResources(languageResources);
 	}

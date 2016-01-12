@@ -31,10 +31,8 @@
 		<!-- Examples -->
 		<module>../../examples/org.eclipse.xtext.example.arithmetics</module>
 		<module>../../examples/org.eclipse.xtext.example.arithmetics.web</module>
-		<!-- <module>../../examples/org.dslforge.example.java.web</module>-->
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird</module>
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird.web</module>
-
 		<module>../../examples/org.eclipse.xtext.example.fowlerdsl</module>
 		<module>../../examples/org.eclipse.xtext.example.fowlerdsl.web</module>
 		<module>../../examples/org.xtext.example.domainmodel</module>
@@ -43,7 +41,7 @@
 		<module>../../examples/org.xtext.example.mydsl.web</module>
 		 
 		<!-- Product -->
-    	<module>workbench</module>
+    	<module>texteditor</module>
   </modules>
 
   <groupId>dslforge.releng</groupId>

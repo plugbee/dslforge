@@ -84,8 +84,6 @@ public class «grammarShortName» extends BasicText {
 		languageResources.add(new Path("src-js/«basePath»/parser/antlr-all-min.js"));
 		languageResources.add(new Path("src-js/«basePath»/parser/Internal«grammarShortName»Parser.js"));
 		languageResources.add(new Path("src-js/«basePath»/parser/Internal«grammarShortName»Lexer.js"));
-		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
-		loadClientResources(getBaseResources());
 		registerClientResources(languageResources, getClassLoader());
 		loadClientResources(languageResources);
 	}

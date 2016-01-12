@@ -4,17 +4,17 @@ Bundle-Name: Eclipse RAP Xtext Integration
 Bundle-SymbolicName: org.dslforge.xtext.common;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.dslforge.xtext.common.internal.Activator
-Require-Bundle: org.eclipse.rap.ui,
- org.eclipse.core.runtime,
- org.eclipse.xtext,
- org.eclipse.emf.rap.common.ui,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.rap.ui,
  org.eclipse.osgi,
  com.google.inject,
  org.eclipse.rap.rwt,
  org.eclipse.rap.ui.views,
  org.eclipse.rap.ui.navigator,
+ org.eclipse.emf.rap.common.ui,
  org.dslforge.texteditor,
  org.dslforge.styledtext,
+ org.eclipse.xtext,
  org.eclipse.xtext.xbase.lib,
  com.google.guava
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

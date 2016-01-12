@@ -39,8 +39,6 @@ public class Statemachine extends BasicText {
 		languageResources.add(new Path("src-js/org/eclipse/xtext/example/fowlerdsl/web/parser/antlr-all-min.js"));
 		languageResources.add(new Path("src-js/org/eclipse/xtext/example/fowlerdsl/web/parser/InternalStatemachineParser.js"));
 		languageResources.add(new Path("src-js/org/eclipse/xtext/example/fowlerdsl/web/parser/InternalStatemachineLexer.js"));
-		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
-		loadClientResources(getBaseResources());
 		registerClientResources(languageResources, getClassLoader());
 		loadClientResources(languageResources);
 	}

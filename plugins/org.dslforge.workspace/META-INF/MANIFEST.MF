@@ -3,14 +3,12 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse RAP Workspace
 Bundle-SymbolicName: org.dslforge.workspace;singleton:=true
 Bundle-Version: 0.8.0.qualifier
-Require-Bundle: org.eclipse.rap.jface,
- com.google.guava,
- org.eclipse.emf.common,
- org.eclipse.emf.rap.edit.ui,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.rap.jface,
  org.eclipse.emf.ecore,
- org.eclipse.rap.ui.navigator,
- org.eclipse.rap.ui.workbench,
- org.eclipse.gemini.jpa
+ org.eclipse.emf.common,
+ org.eclipse.gemini.jpa,
+ com.google.guava
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.dslforge.database.pu.tables,
  org.dslforge.workspace,

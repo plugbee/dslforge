@@ -136,27 +136,29 @@ public class BasicText extends Composite {
 
 	protected void loadClientResources(List<IPath> resources) {
 		for (int i = 0; i < resources.size(); i++) {
-			getJavaScriptLoader().require(getResourceManager().getLocation(resources.get(i).toOSString()));
+			getJavaScriptLoader().require(getResourceManager().getLocation(resources.get(i).toString()));
 		}
 	}
 
 	protected void setupClient() {
-		addBaseResource(new Path("src-js/org/dslforge/styledtext/ace/ace.js"));
-		addBaseResource(new Path("src-js/org/dslforge/styledtext/ace/ext-language_tools.js"));
-		addBaseResource(new Path("src-js/org/dslforge/styledtext/ace/ext-documentation.js"));
-		addBaseResource(new Path("src-js/org/dslforge/styledtext/ace/ext-tooltip.js"));
-		addBaseResource(new Path("src-js/org/dslforge/styledtext/ace/ext-searchbox.js"));
-		addBaseResource(new Path("src-js/org/dslforge/styledtext/ace/snippets/text.js"));
-		addBaseResource(new Path("src-js/org/dslforge/styledtext/global-index.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/ace/ace.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-language_tools.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-documentation.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-tooltip.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-searchbox.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/ace/snippets/text.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/global-index.js"));		
+		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
+		loadClientResources(getBaseResources());
 	}
 
 	protected void registerClientResources(List<IPath> resources, ClassLoader loader) {
 		ResourceManager resourceManager = getResourceManager();
 		try {
 			for (IPath filePath : resources) {
-				boolean isRegistered = resourceManager.isRegistered(filePath.toOSString());
+				boolean isRegistered = resourceManager.isRegistered(filePath.toString());
 				if (!isRegistered) {
-					registerResource(resourceManager, loader, filePath.toOSString());
+					registerResource(resourceManager, loader, filePath.toString());
 				}
 			}
 		} catch (IOException ioe) {

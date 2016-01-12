@@ -7,17 +7,11 @@ Bundle-SymbolicName: org.dslforge.texteditor.demo;singleton:=true
 Bundle-Activator: org.dslforge.texteditor.demo.internal.Activator
 Require-Bundle: com.google.inject,
  com.google.guava,
- org.eclipse.rap.ui,
- org.eclipse.rap.ui.navigator,
  org.eclipse.rap.jface,
- org.eclipse.equinox.security,
- org.eclipse.core.jobs,
+ org.eclipse.rap.ui,
  org.eclipse.rap.ui.views,
+ org.eclipse.core.jobs,
  org.eclipse.equinox.common,
- org.eclipse.osgi,
- javax.mail,
- javax.activation,
- javax.persistence,
  org.dslforge.styledtext,
  org.dslforge.texteditor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
