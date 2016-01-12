@@ -3,9 +3,7 @@
       id="org.dslforge.runtime.feature"
       label="DSL Forge Runtime Feature"
       version="0.8.0.qualifier"
-      provider-name="PlugBee"
-      license-feature="org.eclipse.license"
-      license-feature-version="0.0.0">
+      provider-name="PlugBee">
 
    <description url="http://www.dslforge.org">
       Contains the DSL Forge Runtime bundles
