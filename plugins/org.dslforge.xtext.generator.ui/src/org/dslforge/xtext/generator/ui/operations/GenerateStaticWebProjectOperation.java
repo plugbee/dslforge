@@ -36,7 +36,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -64,14 +63,14 @@ public class GenerateStaticWebProjectOperation extends GenerateProjectOperation 
 		"org.eclipse.wst.common.project.facet.core.nature",
 		"org.eclipse.wst.common.modulecore.ModuleCoreNature",
 		"org.eclipse.wst.jsdt.core.jsNature",
-		"org.deved.antlride.core.nature"
+		"org.dslforge.antlr.project.nature"
 	};
 
 	protected static final String[] BUILDERS = new String[] { 
 			"org.eclipse.wst.jsdt.core.javascriptValidator",
 			"org.eclipse.wst.common.project.facet.core.builder",
 			"org.eclipse.wst.validation.validationbuilder",
-			"org.eclipse.dltk.core.scriptbuilder"
+			"org.dslforge.antlr.builder"
 		};
 
 	 

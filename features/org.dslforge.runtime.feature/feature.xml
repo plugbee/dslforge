@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.dslforge.runtime.feature"
-      label="DSL Forge Runtime Feature"
+      label="DSL Forge Runtime"
       version="0.8.0.qualifier"
       provider-name="PlugBee">
 
