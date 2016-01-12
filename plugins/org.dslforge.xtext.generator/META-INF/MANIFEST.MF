@@ -19,4 +19,5 @@ Export-Package: org.dslforge.xtext.generator,
  org.dslforge.xtext.generator.util
 Bundle-ClassPath: xtend-gen/,
  .
+Bundle-Vendor: PlugBee
 

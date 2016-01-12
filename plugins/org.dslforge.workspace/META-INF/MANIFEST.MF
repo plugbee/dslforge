@@ -27,3 +27,4 @@ Bundle-ClassPath: lib/derby.jar,
  .
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.dslforge.workspace.internal.Activator
+Bundle-Vendor: PlugBee
