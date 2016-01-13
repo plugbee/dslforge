@@ -38,7 +38,7 @@
 <repository location="http://download.eclipse.org/rt/eclipselink/updates/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.dslforge.runtime.feature.feature.group" version="0.8.0.201601101535"/>
+<unit id="org.dslforge.runtime.feature.feature.group" version="0.0.0"/>
 <repository location="http://dslforge.org/downloads/runtime/repository/"/>
 </location>
 </locations>
