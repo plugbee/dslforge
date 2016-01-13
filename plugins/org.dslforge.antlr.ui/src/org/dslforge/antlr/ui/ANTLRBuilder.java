@@ -61,7 +61,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 
 	public static final String BUILDER_ID = "org.dslforge.antlr.builder";
 	public static final String CONSOLE_ID = "ANTLR Build Console";
-	protected static final String ANTLR_FILE_EXTENSION = "g";
+	public static final String ANTLR_FILE_EXTENSION = "g";
 	private ANTLRConsole console;
 	private IProblemMarkerFactory markerFactory;
 	private List<String> output;
@@ -135,11 +135,6 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 	}
 
 	@Override
-	protected void startupOnInitialize() {
-		super.startupOnInitialize();
-	}
-
-	@Override
 	protected IProject[] build(int kind, Map<String, String> args, IProgressMonitor monitor) throws CoreException {
 		monitor.subTask("Generating ANTLR Parser");
 		long startTime = System.currentTimeMillis();
@@ -149,18 +144,20 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 				fullBuild(progress.newChild(1));
 			} else {
 				IResourceDelta delta = getDelta(getProject());
-				if (delta == null) {
-					fullBuild(progress.newChild(1));
-				} else {
+				if (delta != null) {
 					incrementalBuild(delta, progress.newChild(1));
 				}
 			}
 		} catch (OperationCanceledException ex) {
-			progress.done();
 			String message = "[INFO] - Build " + getProject().getName() + " aborted";
 			System.out.println(message);
 		} finally {
 			progress.done();
+			try {
+				getProject().refreshLocal(IResource.DEPTH_INFINITE, monitor);
+			} catch (CoreException ex) {
+				ex.printStackTrace();
+			}
 			String message = "[INFO] - Build " + getProject().getName() + " in "
 					+ (System.currentTimeMillis() - startTime) + " ms";
 			System.out.println(message);
@@ -209,9 +206,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 	}
 
 	void internalBuild(IFile grammarFile, IProgressMonitor monitor) {
-		console.clearConsole();
 		output.clear();
-
 		String grammaFullPath = grammarFile.getLocation().toOSString();
 		String workingDirectory = grammarFile.getParent().getLocation().toOSString();
 		try {
@@ -307,12 +302,15 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 						out.write("ANTLR Parser Generator Version 3.3 Nov 30, 2010 11:52:12.\n");
 						out.write("Grammar: " + grammarFile.getFullPath()+"\n");
 						out.write("BUILD SUCCESS\n");
-						out.write("Total time: " + buildTime + " ms");
+						out.write("Total time: " + buildTime + " ms\n\n");
 					} else {
 						out.setColor(display.getSystemColor(SWT.COLOR_RED));
+						out.write("ANTLR Parser Generator Version 3.3 Nov 30, 2010 11:52:12.\n");
+						out.write("Grammar: " + grammarFile.getFullPath()+"\n");
 						for (String line : output) {
 							out.write(line+"\n");
 						}
+						out.write("\n");
 					}
 				} catch (IOException e) {
 					e.printStackTrace();

@@ -57,7 +57,7 @@ public class GenerateACEEditorAction extends BaseSelectionListenerAction impleme
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Error:", e.toString(), null);
-		}		
+		}	
 	}
 	
 	private GenerateProjectOperation createGenerateProjectOperation(Map<String, Object> settings) {
