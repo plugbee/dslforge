@@ -66,7 +66,7 @@ If you still need help, feel free to drop a mail to development@dslforge.org
 
 ## Contributing
 
-We actively encourage and support contributions! The entire code is open source under EPL licence, feel free to fork the repository and enhance the tool the way you want. If you think the community can benefit from your changes, please open a pull request. 
+We actively encourage and support contributions! DSL Forge is open source, feel free to fork the repository and enhance the tool the way you want. If you think the community can benefit from your changes, please open a pull request. 
 
 ## License
 
