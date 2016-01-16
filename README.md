@@ -17,7 +17,7 @@ Two generators are contributed:
 The target platform is required if you develop against the Eclipse Remote Application Platform (RAP). It is a set of plugins providing services such as typed content assist, workspace management, persistency, etc. The plugins are built on top of the Basic Equinox RAP Target you can already download from the Eclipse RAP update sites.
 
 # Editor Features
-DSL Forge’s editors can be customized according to the use case. Below the complete list of features provided for free:
+Below the complete list of features bound by default in the generated editors:
 - Syntax highlighting,
 - Syntax validation,
 - Content assist,
