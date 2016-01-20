@@ -28,7 +28,7 @@ public final class BasicTextResource implements IResource {
   }
 
   public String getLocation() {
-    return "org/dslforge/styledtext/BasicText.js"; //$NON-NLS-1$
+    return "src-js/org/dslforge/styledtext/BasicText.js"; //$NON-NLS-1$
   }
   
   public boolean isExternal() {
@@ -40,6 +40,6 @@ public final class BasicTextResource implements IResource {
   }
 
   public boolean isAccessible() {
-    return false;
+    return true;
   }
 }
