@@ -82,7 +82,6 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 		IRunnableWithProgress operation = new IRunnableWithProgress() {
 			public void run(IProgressMonitor progressMonitor) {
 					try {
-						//new StatemachineStandaloneSetup().createInjectorAndDoEMFRegistration();
 						WorkspaceManager.INSTANCE.createResource(fileURI);
 					}
 					catch (Exception exception) {
