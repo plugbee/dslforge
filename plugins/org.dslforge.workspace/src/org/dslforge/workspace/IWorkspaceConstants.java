@@ -17,12 +17,10 @@ package org.dslforge.workspace;
 
 public interface IWorkspaceConstants {
 
-	public static final String DEFAULT_WORKING_DIRECTORY = "D:\\www\\dslforge\\workspace";
-	public static final String JDBC_DATABASE_URL = "jdbc:derby:D:/www/dslforge/database;create=true";	
-    public static final String JDBC_DATABASE_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
 	public static final String PERSISTENCE_UNIT_NAME = "dslforge";
-    public static final String JDBC_DATABASE_USER = "admin";
-    public static final String JDBC_DATABASE_PASSWORD = "admin";
+	public static final String JAVAX_PERSISTENCE_JDBC_URL = "javax.persistence.jdbc.url";
+	public static final String METADATA_FOLDER = ".metadata";
+	public static final String JDBC_PREFIX = "jdbc:derby:";
 	public static final String VISIBILITY_PRIVATE = "private";
 	public static final String VISIBILITY_PUBLIC = "public";
 	public static final String PATH_SEPARATOR = "\\";

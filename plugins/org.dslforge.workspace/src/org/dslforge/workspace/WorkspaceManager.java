@@ -19,7 +19,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
 
 import org.dslforge.database.pu.tables.Folder;
@@ -38,7 +40,23 @@ public class WorkspaceManager {
 	public static WorkspaceManager INSTANCE = new WorkspaceManager();
 
 	private WorkspaceManager() {
-		setWorkspaceRoot(IWorkspaceConstants.DEFAULT_WORKING_DIRECTORY);
+		setupWorkspace();
+	}
+
+	private void setupWorkspace() {
+		EntityManagerFactory emf = DatabaseService.getInstance().getEmf();
+		Map<String, Object> properties = emf.getProperties();
+		String dburl = (String) properties.get(IWorkspaceConstants.JAVAX_PERSISTENCE_JDBC_URL);
+		String[] split = dburl.split(";");
+		String dbPath = split[0].substring(IWorkspaceConstants.JDBC_PREFIX.length(), split[0].length());
+		String[] workspacePath = dbPath.split(IWorkspaceConstants.METADATA_FOLDER);
+		if (workspacePath==null)
+			throw new RuntimeException("The database connection url in persistence.xml is not correctly specified.");
+		setWorkspaceRoot(workspacePath[0]);
+		File file = new File(getWorkspaceRoot());
+		if (!file.exists()) {
+			file.mkdirs();
+		}
 	}
 
 	public String getWorkspaceRoot() {
