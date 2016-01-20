@@ -30,7 +30,7 @@
   <contribution
        class="org.eclipse.xtext.example.fowlerdsl.web.StatemachineExecutableExtensionFactory"
          extension="statemachine"
-        label="org.eclipse.xtext.example.fowlerdsl.Statemachine">
+        label="Statemachine">
   </contribution>
 </extension>
 </plugin>

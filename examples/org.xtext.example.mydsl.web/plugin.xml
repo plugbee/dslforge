@@ -30,7 +30,7 @@
   <contribution
        class="org.xtext.example.mydsl.web.MyDslExecutableExtensionFactory"
          extension="mydsl"
-        label="org.xtext.example.mydsl.MyDsl">
+        label="MyDsl">
   </contribution>
 </extension>
 </plugin>
