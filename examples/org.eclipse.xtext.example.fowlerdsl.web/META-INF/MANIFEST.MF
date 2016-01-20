@@ -14,10 +14,9 @@ Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.emf.ecore,
  com.google.inject,
  org.eclipse.xtext,
- org.dslforge.workspace,
- org.dslforge.xtext.common,
  org.dslforge.styledtext,
  org.dslforge.texteditor,
+ org.dslforge.xtext.common,
  org.eclipse.xtext.example.fowlerdsl
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.eclipse.xtext.example.fowlerdsl.web.editor,

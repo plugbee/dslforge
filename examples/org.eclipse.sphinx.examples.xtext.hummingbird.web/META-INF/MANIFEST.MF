@@ -14,11 +14,10 @@ Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.emf.ecore,
  com.google.inject,
  org.eclipse.xtext,
- org.dslforge.workspace,
- org.dslforge.xtext.common,
- org.eclipse.sphinx.examples.xtext.hummingbird,
+ org.dslforge.styledtext,
  org.dslforge.texteditor,
- org.dslforge.styledtext
+ org.dslforge.xtext.common,
+ org.eclipse.sphinx.examples.xtext.hummingbird
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.eclipse.sphinx.examples.xtext.hummingbird.web.editor,
  org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.widget,

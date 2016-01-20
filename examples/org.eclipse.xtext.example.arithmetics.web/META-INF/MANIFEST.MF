@@ -14,10 +14,10 @@ Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.emf.ecore,
  com.google.inject,
  org.eclipse.xtext,
- org.dslforge.xtext.common,
- org.eclipse.xtext.example.arithmetics,
+ org.dslforge.styledtext,
  org.dslforge.texteditor,
- org.dslforge.styledtext
+ org.dslforge.xtext.common,
+ org.eclipse.xtext.example.arithmetics
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.eclipse.xtext.example.arithmetics.web,
  org.eclipse.xtext.example.arithmetics.web.editor,
