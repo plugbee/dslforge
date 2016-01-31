@@ -5,6 +5,9 @@
          point="org.eclipse.rap.ui.resources">
       <resource
           class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.widget.HummingbirdResource">
+         <dependsOn
+               resourceId="org.dslforge.styledtext.basictext">
+         </dependsOn>
       </resource>
    </extension>
    <extension

@@ -6,6 +6,9 @@
          point="org.eclipse.rap.ui.resources">
       <resource
           class="org.eclipse.xtext.example.fowlerdsl.web.editor.widget.StatemachineResource">
+         <dependsOn
+               resourceId="org.dslforge.styledtext.basictext">
+         </dependsOn>
       </resource>
    </extension>
    <extension

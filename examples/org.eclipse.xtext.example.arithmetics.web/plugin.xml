@@ -5,6 +5,9 @@
          point="org.eclipse.rap.ui.resources">
       <resource
           class="org.eclipse.xtext.example.arithmetics.web.editor.widget.ArithmeticsResource">
+         <dependsOn
+               resourceId="org.dslforge.styledtext.basictext">
+         </dependsOn>
       </resource>
    </extension>
    <extension

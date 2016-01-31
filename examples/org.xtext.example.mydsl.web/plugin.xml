@@ -6,6 +6,9 @@
          point="org.eclipse.rap.ui.resources">
       <resource
           class="org.xtext.example.mydsl.web.editor.widget.MyDslResource">
+         <dependsOn
+               resourceId="org.dslforge.styledtext.basictext">
+         </dependsOn>
       </resource>
    </extension>
    <extension
