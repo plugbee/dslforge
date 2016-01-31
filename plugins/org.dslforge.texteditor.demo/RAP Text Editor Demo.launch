@@ -6,9 +6,9 @@
 <booleanAttribute key="automaticValidate" value="false"/>
 <stringAttribute key="bootstrap" value=""/>
 <stringAttribute key="checked" value="[NONE]"/>
-<booleanAttribute key="clearConfig" value="false"/>
+<booleanAttribute key="clearConfig" value="true"/>
 <booleanAttribute key="clearws" value="true"/>
-<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/RAP Text Editor Demo (1)"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/RAP Text Editor Demo"/>
 <booleanAttribute key="default" value="true"/>
 <booleanAttribute key="default_auto_start" value="true"/>
 <intAttribute key="default_start_level" value="4"/>
@@ -20,13 +20,13 @@
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Declipse.ignoreApp=true -Dosgi.noShutdown=true&#13;&#10;-Dorg.eclipse.equinox.http.jetty.log.stderr.threshold=info"/>
 <stringAttribute key="org.eclipse.rap.launch.browserMode" value="EXTERNAL"/>
 <stringAttribute key="org.eclipse.rap.launch.contextpath" value="/"/>
-<stringAttribute key="org.eclipse.rap.launch.dataLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.rap.tools.launch/DSLFORGEWorkbench"/>
-<booleanAttribute key="org.eclipse.rap.launch.developmentMode" value="true"/>
+<stringAttribute key="org.eclipse.rap.launch.dataLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.rap.tools.launch/RAPTextEditorDemo"/>
+<booleanAttribute key="org.eclipse.rap.launch.developmentMode" value="false"/>
 <booleanAttribute key="org.eclipse.rap.launch.openBrowser" value="true"/>
 <intAttribute key="org.eclipse.rap.launch.port" value="10080"/>
 <stringAttribute key="org.eclipse.rap.launch.servletPath" value="/texteditor"/>
 <intAttribute key="org.eclipse.rap.launch.sessionTimeout" value="0"/>
-<booleanAttribute key="org.eclipse.rap.launch.useDefaultDataLocation" value="false"/>
+<booleanAttribute key="org.eclipse.rap.launch.useDefaultDataLocation" value="true"/>
 <booleanAttribute key="org.eclipse.rap.launch.useManualContextPath" value="false"/>
 <booleanAttribute key="org.eclipse.rap.launch.useManualPort" value="false"/>
 <booleanAttribute key="org.eclipse.rap.launch.useSessionTimeout" value="false"/>
