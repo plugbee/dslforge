@@ -26,4 +26,5 @@ public interface ITextOperationConstants {
 	static final String EVENT_FOCUS_IN = "FocusIn";
 	static final String EVENT_SELECTION = "Selection";
 	static final String EVENT_CARET_CHANGED = "CaretEvent";
+	static final String EVENT_CONTENT_ASSIST = "ContentAssist";
 }
