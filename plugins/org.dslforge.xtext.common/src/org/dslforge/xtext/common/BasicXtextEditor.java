@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import org.dslforge.styledtext.Annotation;
@@ -27,10 +26,9 @@ import org.dslforge.styledtext.AnnotationType;
 import org.dslforge.styledtext.BasicText;
 import org.dslforge.texteditor.BasicTextEditor;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.rap.json.JsonObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
@@ -54,7 +52,6 @@ import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
-import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.util.ReplaceRegion;
@@ -63,14 +60,15 @@ import org.eclipse.xtext.validation.IConcreteSyntaxValidator;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
+
 /**
- * 
- * @author Amine Lajmi
- *
+ * A basic Xtext RAP editor
  */
 public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEditor {
 
@@ -80,17 +78,14 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	@Inject
 	private IXtextResourceFactory xtextResourceFactory;
 
-	private XtextResource xtextResource = null;
+	private XtextResource xtextResource;
 
 	private Iterable<IEObjectDescription> iObjectDescriptions;
 
 	private String languageName;
 
 	@Inject
-	IResourceServiceProvider.Registry registry;
-
-	@Inject
-	IResourceDescription.Manager descriptionManager;
+	private IResourceDescription.Manager descriptionManager;
 
 	public BasicXtextEditor() {
 		super();
@@ -121,12 +116,6 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	@Override
 	protected void setInput(IEditorInput input) {
 		super.setInput(input);
-		if (input instanceof URIEditorInput) {
-			loadContentFromFile();
-			Path path = new Path(((URIEditorInput) input).getURI().toFileString());
-			setFilePath(path);
-			firePropertyChange(PROP_INPUT);
-		}
 		xtextResource = (XtextResource) xtextResourceFactory.createResource(getEditorInput());
 	}
 
@@ -135,6 +124,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 		super.createPartControl(parent);
 		updateIndex();
 		validateResource();
+		createCompletionProposals(0);
 	}
 
 	@Override
@@ -167,20 +157,68 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 
 	@Override
 	public void updateIndex() {
-		iObjectDescriptions = Collections.emptyList();
-		EcoreUtil2.resolveAll(xtextResource);
-		IResourceDescription resourceDescription = descriptionManager.getResourceDescription(xtextResource);
-		Manager manager = xtextResource.getResourceServiceProvider().getResourceDescriptionManager();
-		resourceDescription = manager.getResourceDescription(xtextResource);
-		iObjectDescriptions = Iterables.concat(iObjectDescriptions, resourceDescription.getExportedObjects());
-		Iterator<IEObjectDescription> iterator = iObjectDescriptions.iterator();
-		List<String> referenceValues = new ArrayList<String>();
-		while (iterator.hasNext()) {
-			IEObjectDescription current = iterator.next();
-			referenceValues.add(current.getName().toString() + ":" + current.getEClass().getName());
-		}
-		setScope(referenceValues);
-		referenceValues.clear();
+		SafeRunnable.run(new SafeRunnable() {
+			private static final long serialVersionUID = 1L;
+			public void run() {
+				iObjectDescriptions = Collections.emptyList();
+				EcoreUtil2.resolveAll(xtextResource);
+				IResourceDescription resourceDescription = descriptionManager.getResourceDescription(xtextResource);
+				Manager manager = xtextResource.getResourceServiceProvider().getResourceDescriptionManager();
+				resourceDescription = manager.getResourceDescription(xtextResource);
+				iObjectDescriptions = Iterables.concat(iObjectDescriptions, resourceDescription.getExportedObjects());	
+				Iterable<String> referrables = Iterables.transform(iObjectDescriptions, new Function<IEObjectDescription, String>() {
+					@Override
+					public String apply(IEObjectDescription input) {
+						return input.getName().toString() + ":" + input.getEClass().getName();
+					}
+				});
+				setScope(Lists.newArrayList(referrables));	
+			}
+		});
+		SafeRunnable.run(new SafeRunnable() {
+			private static final long serialVersionUID = 1L;
+			public void run() {
+				iObjectDescriptions = Collections.emptyList();
+				EcoreUtil2.resolveAll(xtextResource);
+				IResourceDescription resourceDescription = descriptionManager.getResourceDescription(xtextResource);
+				Manager manager = xtextResource.getResourceServiceProvider().getResourceDescriptionManager();
+				resourceDescription = manager.getResourceDescription(xtextResource);
+				iObjectDescriptions = Iterables.concat(iObjectDescriptions, resourceDescription.getExportedObjects());	
+				Iterable<String> referrables = Iterables.transform(iObjectDescriptions, new Function<IEObjectDescription, String>() {
+					@Override
+					public String apply(IEObjectDescription input) {
+						return input.getName().toString() + ":" + input.getEClass().getName();
+					}
+				});
+				setScope(Lists.newArrayList(referrables));	
+			}
+		});
+	}
+
+	@Override
+	protected void createCompletionProposals() {
+		createCompletionProposals(getWidget().getOffsetAtCursorPosition());
+	}
+	
+	@Override
+	public void createCompletionProposals(final int offset) {
+		super.createCompletionProposals(offset);
+		SafeRunnable.run(new SafeRunnable() {
+			private static final long serialVersionUID = 1L;
+			public void run() {
+				System.out.println("[INFO] - completing proposals at offset " + offset);
+//				CompletionProposalComputer completionProposalComputer = contentAssistProcessor.createCompletionProposalComputer(getWidget(), xtextResource, offset);
+//				ICompletionProposal[] computedCompletionProposals = completionProposalComputer.exec(xtextResource);
+//				List<String> proposals = Lists.transform(Arrays.asList(computedCompletionProposals), new Function<ICompletionProposal, String>() {
+//					public String apply(ICompletionProposal completionProposal) {
+//						String additionalProposalInfo = completionProposal.getAdditionalProposalInfo();
+//						return completionProposal.getDisplayString() + ((additionalProposalInfo!=null) ? (":" + additionalProposalInfo):"");
+//					}
+//				});
+//				System.out.println("[INFO] - sending proposals: " + proposals.toString());
+//				setProposals(proposals);	
+			}
+		});
 	}
 
 	@Override
@@ -190,26 +228,12 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 			display.asyncExec(new Runnable() {
 				@Override
 				public void run() {
-					IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider()
-							.getResourceValidator();
+					IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider().getResourceValidator();
 					try {
-						List<Annotation> annotations = new ArrayList<Annotation>();
-						List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY,
-								CancelIndicator.NullImpl);
+						List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY, CancelIndicator.NullImpl);
 						if (!issues.isEmpty()) {
-							for (Issue issue : issues) {
-								if (!issue.isSyntaxError()) {
-									Integer offset = issue.getOffset();
-									Integer line = issue.getLineNumber();
-									int lineNumber = line.intValue();
-									String message = issue.getMessage();
-									Severity severity = issue.getSeverity();
-									annotations.add(
-											new Annotation(convertSeverity(severity), lineNumber, offset, message));
-								}
-							}
+							createAnnotations(issues);
 						}
-						getWidget().setAnnotations(annotations);
 					} catch (Exception ex) {
 						if (ex instanceof RuntimeException) {
 							System.err.println(ex.getMessage());
@@ -219,6 +243,26 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 			});
 		}
 	}
+	
+	/**
+	 * Displays annotations for the given issues
+	 * 
+	 * @param issues
+	 */
+	protected void createAnnotations(List<Issue> issues) {
+		List<Annotation> annotations = new ArrayList<Annotation>();
+		for (Issue issue : issues) {
+			if (!issue.isSyntaxError()) {
+				Integer offset = issue.getOffset();
+				Integer line = issue.getLineNumber();
+				int lineNumber = line.intValue();
+				String message = issue.getMessage();
+				Severity severity = issue.getSeverity();
+				annotations.add(new Annotation(convertSeverity(severity), lineNumber, offset, message));
+			}
+		}
+		getWidget().setAnnotations(annotations);
+	}
 
 	protected void updateResource(String text) {
 		ReplaceRegion replaceRegionToBeProcessed = new ReplaceRegion(0, text.length(), text);
@@ -226,6 +270,13 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 				replaceRegionToBeProcessed.getText());
 	}
 
+	/**
+	 * Validates the concrete syntax of the language
+	 * 
+	 * @param object
+	 * @param hostingResource
+	 * @return
+	 */
 	protected boolean validateSyntax(EObject object, XtextResource hostingResource) {
 		List<Diagnostic> diagnostics = new ArrayList<Diagnostic>();
 		IConcreteSyntaxValidator concreteSyntaxValidator = hostingResource.getConcreteSyntaxValidator();
