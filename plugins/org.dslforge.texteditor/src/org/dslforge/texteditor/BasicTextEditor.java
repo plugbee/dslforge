@@ -32,6 +32,7 @@ import org.dslforge.styledtext.Annotation;
 import org.dslforge.styledtext.AnnotationType;
 import org.dslforge.styledtext.BasicText;
 import org.dslforge.styledtext.IBasicTextEditor;
+import org.dslforge.styledtext.IContentAssistListener;
 import org.dslforge.styledtext.ITextChangeListener;
 import org.dslforge.styledtext.ITextModifyListener;
 import org.dslforge.styledtext.ITextSaveListener;
@@ -47,7 +48,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.emf.common.ui.URIEditorInput;
+import org.eclipse.jface.action.GroupMarker;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -68,6 +73,9 @@ import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MenuDetectEvent;
 import org.eclipse.swt.events.MenuDetectListener;
 import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.RGB;
@@ -76,6 +84,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.ui.IEditorActionBarContributor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPathEditorInput;
@@ -85,6 +94,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -96,15 +106,14 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	/**
 	 * This editor's text widget.
 	 */
-	BasicText textWidget;
-	ListenerList listeners = new ListenerList();
-	ISelection selection;
-	PropertySheetPage propertySheetPage;
-	IPath filePath;
-	ArrayList<String> index;
-	TextEditorSavable fSavable;
-	boolean isDirty;
-	
+	private BasicText textWidget;
+	private ListenerList listeners = new ListenerList();
+	private ISelection selection;
+	private PropertySheetPage propertySheetPage;
+	private IPath filePath;
+	private ArrayList<String> index;
+	private TextEditorSavable fSavable;
+	private boolean isDirty;
 
 	ITextChangeListener iTextChangeListener = new ITextChangeListener() {
 		private static final long serialVersionUID = 1L;
@@ -121,6 +130,49 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		//override in subclasses.
 	}
 
+	IContentAssistListener iContentAssistListener = new IContentAssistListener() {
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public boolean verifyKey(VerifyEvent event) {	
+			JsonObject data = (JsonObject) event.data;
+			if (data != null && data instanceof JsonObject) {
+				JsonObject position = (JsonObject) data.get("pos");
+				int row = position.get("row").asInt();
+				int column = position.get("column").asInt();
+				createCompletionProposals(getOffsetAtPosition(row, column));
+				return true;
+			}
+			return false;
+		}
+	};
+	
+	/**
+	 * Creates completion proposals based on cursor position
+	 */
+	protected void createCompletionProposals() {
+		//override in subclass.
+	}
+
+	/**
+	 * Creates completion proposals based on the offset argument
+	 * 
+	 * @param offsetAtPosition
+	 */
+	protected void createCompletionProposals(int offsetAtPosition) {
+		//example
+		List<String> proposalsExample = new ArrayList<String>();
+		proposalsExample.add("my custom proposal 1");
+		proposalsExample.add("my custom proposal 2");
+		proposalsExample.add("my custom proposal 3");
+		proposalsExample.add("my custom proposal 4");
+		getWidget().setProposals(proposalsExample);
+	}
+
+	protected int getOffsetAtPosition(int row, int column) {
+		return getWidget().getOffsetAtPosition(row, column);
+	}
+	
 	MenuDetectListener menuDetectListener = new MenuDetectListener() {
 		private static final long serialVersionUID = 1L;
 
@@ -132,24 +184,100 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		}
 	};
 
-	private void initContextMenu() {
-		MenuManager menuMgr = new MenuManager("#PopupMenu"); //$NON-NLS-1$
-		Menu menu = menuMgr.createContextMenu(getWidget());
-		menuMgr.addMenuListener(new IMenuListener() {
-
-			private static final long serialVersionUID = 1L;
-
+	@SuppressWarnings("serial")
+	protected void initContextMenu() {
+		MenuManager contextMenuManager = new MenuManager("#PopupMenu"); //$NON-NLS-1$
+		Menu menu = contextMenuManager.createContextMenu(getWidget());
+		contextMenuManager.setRemoveAllWhenShown(true);
+		contextMenuManager.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager manager) {
-				fillContextMenu(manager);
+				editorContextMenuAboutToShow(manager);
 			}
 		});
-		menuMgr.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-		getSite().registerContextMenu(menuMgr, this);
+		contextMenuManager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+		getSite().registerContextMenu(contextMenuManager, this);
 		getWidget().setMenu(menu);
 	}
 
-	protected void fillContextMenu(IMenuManager aMenuManager) {
-		// override in subclass, e.g. menuMgr.add(action);
+	/**
+	 * Convenience method to add the action installed under the given action id to the given menu.
+	 * @param menu the menu to add the action to
+	 * @param actionId the id of the action to be added
+	 */
+	protected final void addAction(IMenuManager menu, String actionId) {
+		IAction action= getAction(actionId);
+		if (action != null) {
+			menu.add(action);
+		}
+	}
+
+	/**
+	 * Convenience method to add the action installed under the given action id to the specified group of the menu.
+	 * @param menu the menu to add the action to
+	 * @param group the group in the menu
+	 * @param actionId the id of the action to add
+	 */
+	protected final void addAction(IMenuManager menu, String group, String actionId) {
+	 	IAction action= getAction(actionId);
+	 	if (action != null) {
+	 		IMenuManager subMenu= menu.findMenuUsingPath(group);
+	 		if (subMenu != null)
+	 			subMenu.add(action);
+	 		else
+	 			menu.appendToGroup(group, action);
+	 	}
+	}
+
+	/**
+	 * Convenience method to add a new group after the specified group.
+	 * @param menu the menu to add the new group to
+	 * @param existingGroup the group after which to insert the new group
+	 * @param newGroup the new group
+	 */
+	protected final void addGroup(IMenuManager menu, String existingGroup, String newGroup) {
+ 		IMenuManager subMenu= menu.findMenuUsingPath(existingGroup);
+ 		if (subMenu != null)
+ 			subMenu.add(new Separator(newGroup));
+ 		else
+ 			menu.appendToGroup(existingGroup, new Separator(newGroup));
+	}
+	
+	/**
+	 * Returns the action from the editor contributor instead of duplicating actions creation.
+	 * 
+	 * @param actionId
+	 * @return the action with the given id
+	 */
+	public IAction getAction(String actionId) {
+		IEditorActionBarContributor actionBarContributor = ((IEditorSite)getSite()).getActionBarContributor();
+		if (actionBarContributor instanceof BasicTextEditorContributor) {
+		    return ((BasicTextEditorContributor)actionBarContributor).getAction(this, actionId);
+		}
+		return null;
+	}
+	
+	protected void editorContextMenuAboutToShow(IMenuManager menuManager) {
+		menuManager.add(new Separator(IBasicTextEditorActionConstants.GROUP_UNDO));
+		menuManager.add(new GroupMarker(IBasicTextEditorActionConstants.GROUP_SAVE));
+		menuManager.add(new Separator(IBasicTextEditorActionConstants.GROUP_COPY));
+		menuManager.add(new Separator(IBasicTextEditorActionConstants.GROUP_PRINT));
+		menuManager.add(new Separator(IBasicTextEditorActionConstants.GROUP_EDIT));
+		menuManager.add(new Separator(IBasicTextEditorActionConstants.GROUP_FIND));
+		menuManager.add(new Separator(IBasicTextEditorActionConstants.GROUP_ADD));
+		menuManager.add(new Separator(IBasicTextEditorActionConstants.GROUP_REST));
+		menuManager.add(new Separator(IBasicTextEditorActionConstants.MB_ADDITIONS));
+		if (isEditable()) {
+			addAction(menuManager, IBasicTextEditorActionConstants.GROUP_EDIT, ActionFactory.COPY.getId());
+			addAction(menuManager, IBasicTextEditorActionConstants.GROUP_EDIT, ActionFactory.CUT.getId());
+			addAction(menuManager, IBasicTextEditorActionConstants.GROUP_EDIT, ActionFactory.PASTE.getId());
+			menuManager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+			addAction(menuManager, IBasicTextEditorActionConstants.GROUP_UNDO, ActionFactory.UNDO.getId());
+			addAction(menuManager, IBasicTextEditorActionConstants.GROUP_UNDO, ActionFactory.REDO.getId());
+		}
+	}
+
+	private boolean isEditable() {
+		return getWidget().getEditable();
 	}
 
 	public BasicTextEditor() {
@@ -242,8 +370,8 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		// set font
 		textWidget.setFont(font);
 
-		// set background
-		Color color = new Color(parent.getDisplay(), new RGB(180, 200, 250));
+		// set background color
+		Color color = new Color(parent.getDisplay(), new RGB(229, 242, 255));
 		textWidget.setBackground(color);
 
 		// set read/write access
@@ -258,9 +386,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 		// highlight text ranges
 		List<TextRange> ranges = new ArrayList<TextRange>();
-		ranges.add(new TextRange(1, 1, 0, 1));
-		ranges.add(new TextRange(2, 3, 0, 5));
-		ranges.add(new TextRange(4, 4, 0, 4));
+		ranges.add(new TextRange(1, 0, 1, 40));
 		textWidget.setMarkers(ranges);
 		
 		return textWidget;
@@ -269,11 +395,16 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	@Override
 	protected void setInput(IEditorInput input) {
 		super.setInput(input);
-		if (input instanceof IPathEditorInput) {
-			loadContentFromFile();
-			setFilePath(((IPathEditorInput) input).getPath());
-			firePropertyChange(PROP_INPUT);
-		}
+		IPath path=null;
+		loadContentFromFile();
+		if (input instanceof IPathEditorInput)
+			path = ((IPathEditorInput) input).getPath();
+		else if (input instanceof URIEditorInput)
+			path = new Path(((URIEditorInput) input).getURI().toFileString());
+		else
+			throw new UnsupportedOperationException("Unsupported editor input type.");
+		setFilePath(path);
+		firePropertyChange(PROP_INPUT);
 	}
 
 	protected void loadContentFromFile() {
@@ -289,6 +420,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 						e.printStackTrace();
 					} finally {
 						setText(content);
+						setUrl(filePath.lastSegment().toString());
 					}
 				}
 			});
@@ -323,10 +455,12 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 				@Override
 				public void keyReleased(KeyEvent e) {
+					//customize in subclasses
 				}
 
 				@Override
 				public void keyPressed(KeyEvent e) {
+					//customize in subclasses
 				}
 			};
 			getWidget().addKeyListener(iKeyListener);
@@ -334,6 +468,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 				@Override
 				public void handleTextModified(ModifyEvent event) {
+					//customize in subclasses
 				}
 			});
 
@@ -375,13 +510,33 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 				@Override
 				public void focusLost(FocusEvent event) {
+					//customize in subclasses
 				}
 
 				@Override
 				public void focusGained(FocusEvent event) {
+					//customize in subclasses
 				}
 			});
 			getWidget().addMenuDetectListener(menuDetectListener);
+			getWidget().addContentAssistListener(iContentAssistListener);
+			getWidget().addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseUp(MouseEvent e) {
+					//customize in subclasses
+				}
+				
+				@Override
+				public void mouseDown(MouseEvent e) {
+					//createCompletionProposals();
+				}
+				
+				@Override
+				public void mouseDoubleClick(MouseEvent e) {
+					//customize in subclasses
+				}
+			});
 		}
 	}
 
@@ -395,6 +550,10 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		index.clear();
 	}
 
+	protected void setUrl(String url) {
+		getWidget().setUrl(url);
+	}
+	
 	protected void setText(String text) {
 		getWidget().setText(text);
 	}
@@ -409,6 +568,10 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 	protected void setScope(List<String> scope) {
 		getWidget().setScope(scope);
+	}
+	
+	protected void setProposals(List<String> proposals) {
+		getWidget().setProposals(proposals);
 	}
 
 	@Override
