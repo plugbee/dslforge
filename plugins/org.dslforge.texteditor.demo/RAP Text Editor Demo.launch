@@ -12,6 +12,7 @@
 <booleanAttribute key="default" value="true"/>
 <booleanAttribute key="default_auto_start" value="true"/>
 <intAttribute key="default_start_level" value="4"/>
+<stringAttribute key="deselected_workspace_plugins" value="org.deved.antlride.antlr,org.dslforge.antlr,org.eclipse.sphinx.examples.xtext.hummingbird,org.eclipse.sphinx.examples.xtext.hummingbird.web,org.xtext.example.domainmodel,org.xtext.example.domainmodel.web,org.xtext.example.mydsl,org.xtext.example.mydsl.web"/>
 <booleanAttribute key="includeOptional" value="false"/>
 <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
@@ -36,5 +37,5 @@
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfigArea" value="true"/>
-<stringAttribute key="workspace_bundles" value="org.dslforge.styledtext@default:default,org.dslforge.texteditor.demo@default:default,org.dslforge.texteditor@default:default,org.dslforge.workspace.ui@default:default,org.dslforge.workspace@default:default,org.dslforge.xtext.common@default:default,org.eclipse.sphinx.examples.xtext.hummingbird.web@default:default,org.eclipse.sphinx.examples.xtext.hummingbird@default:default,org.eclipse.xtext.example.arithmetics.web@default:default,org.eclipse.xtext.example.arithmetics@default:default,org.eclipse.xtext.example.fowlerdsl.web@default:default,org.eclipse.xtext.example.fowlerdsl@default:default,org.xtext.example.domainmodel.web@default:default,org.xtext.example.domainmodel@default:default,org.xtext.example.mydsl.web@default:default,org.xtext.example.mydsl@default:default"/>
+<stringAttribute key="workspace_bundles" value="org.dslforge.styledtext@default:default,org.dslforge.texteditor.demo@default:default,org.dslforge.texteditor@default:default,org.dslforge.workspace.ui@default:default,org.dslforge.workspace@default:default,org.dslforge.xtext.common@default:default,org.eclipse.xtext.example.arithmetics.web@default:default,org.eclipse.xtext.example.arithmetics@default:default,org.eclipse.xtext.example.fowlerdsl.web@default:default,org.eclipse.xtext.example.fowlerdsl@default:default"/>
 </launchConfiguration>

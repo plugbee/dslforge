@@ -40,10 +40,8 @@ public class CopyAction extends TextSelectionListenerAction {
 	@Override
 	public void run() {
 		if (activeEditor != null) {
-
 			// FIXME: To copy text from editor, call editor.getCopyText() after
 			// selecting the content to copy.
-
 			BasicText widget = activeEditor.getWidget();
 			TextSelection selection = widget.getSelection();
 			activeEditor.performCopy(selection);
@@ -52,7 +50,6 @@ public class CopyAction extends TextSelectionListenerAction {
 	
 	@Override
 	public boolean updateSelection(ITextSelection selection) {
-		// TODO Auto-generated method stub
 		return super.updateSelection(selection);
 	}
 
