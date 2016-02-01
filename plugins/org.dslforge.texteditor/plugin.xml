@@ -5,7 +5,7 @@
          point="org.eclipse.ui.bindings">
       <key
             commandId="org.eclipse.ui.file.save"
-            contextId="org.dslforge.xtext.common.context"
+            contextId="org.dslforge.text.editor.context"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+S">
       </key>
@@ -13,8 +13,8 @@
    <extension
          point="org.eclipse.ui.contexts">
       <context
-            id="org.dslforge.xtext.common.context"
-            name="DSLFORGE Context"
+            id="org.dslforge.text.editor.context"
+            name="Text Editor Context"
             parentId="org.eclipse.ui.textEditorScope">
       </context>
    </extension>
@@ -23,7 +23,8 @@
       <editor
             class="org.dslforge.texteditor.BasicTextEditor"
             contributorClass="org.dslforge.texteditor.BasicTextEditorContributor"
-            extensions="txt, html, xml, json"
+            default="false"
+            extensions="txt"
             icon="icons/file_obj.png"
             id="org.dslforge.xtext.common.web.editor"
             name="Text Editor">
