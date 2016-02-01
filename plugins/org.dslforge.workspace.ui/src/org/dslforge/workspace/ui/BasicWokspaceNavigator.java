@@ -217,7 +217,7 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 			return null;
 		} else {
 			try {
-				URI fileURI = URI.createFileURI(path.toOSString());
+				URI fileURI = URI.createFileURI(path.toString());
 				return page.openEditor(new URIEditorInput(fileURI), editorDescriptor.getId());
 			} catch (PartInitException exception) {
 				MessageDialog.openError(workbenchWindow.getShell(), "Open Editor", exception.getMessage());
