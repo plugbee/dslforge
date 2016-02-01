@@ -2,32 +2,47 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="contribution" name="org.dslforge.xtext.contribution" schema="schema/contribution.exsd"/>
-<!--
-   <extension
-         point="org.eclipse.rap.ui.resources">
-      <resource
-            class="org.dslforge.xtext.common.BasicTextResource"
-            id="org.dslforge.xtext.common.basicText">
-      </resource>
-   </extension>
--->
+
    <extension
          point="org.eclipse.ui.bindings">
       <key
             commandId="org.eclipse.ui.file.save"
-            contextId="org.dslforge.xtext.common.context"
+            contextId="org.dslforge.text.editor.context"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+S">
       </key>
    </extension>
-   <extension
-         point="org.eclipse.ui.contexts">
-      <context
-            id="org.dslforge.xtext.common.context"
-            name="DSLFORGE Context"
-            parentId="org.eclipse.ui.textEditorScope">
-      </context>
+   
+      <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.navigator.view.actions.contribution.generate"
+            nameFilter="*"
+            objectClass="java.io.File">
+        
+         <action
+               class="org.dslforge.xtext.common.actions.NewModelAction"
+               enablesFor="*"
+               icon="icons/model.png"
+               id="org.dslforge.navigator.actions.new.model"
+               label="Model"
+               menubarPath="org.dslforge.workspace.menu.new/group"
+               style="push"
+               tooltip="Create a new model file">
+         </action>
+        
+         <action
+               class="org.dslforge.xtext.common.actions.BasicGenerateAction"
+               enablesFor="*"
+               icon="icons/generate.png"
+               id="org.dslforge.workspace.menu.generate"
+               label="Generate"
+               style="push">
+         </action>
+      </objectContribution>
    </extension>
+         
       <!-- @generated dslforge -->
       <!--
    <extension point="org.eclipse.ui.editors">
