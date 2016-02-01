@@ -17,7 +17,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext,
  org.eclipse.xtext.xbase.lib,
  com.google.guava,
- org.eclipse.emf.ecore
+ org.eclipse.emf.ecore,
+ org.dslforge.workspace.ui,
+ org.dslforge.workspace,
+ org.eclipse.emf.rap.edit.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.xtext.common,
