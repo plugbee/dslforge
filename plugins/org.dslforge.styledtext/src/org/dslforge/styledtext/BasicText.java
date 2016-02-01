@@ -36,6 +36,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
@@ -46,9 +47,6 @@ import org.eclipse.swt.widgets.Listener;
 
 /**
  * A basic implementation of a styled text widget.
- * 
- * @author Amine Lajmi
- *
  */
 public class BasicText extends Composite {
 
@@ -57,6 +55,7 @@ public class BasicText extends Composite {
 	static final int TextChanged = 47;
 	static final int Save = 48;
 	static final int CaretEvent = 49;
+	static final int ContentAssist = 50;
 
 	class Position {
 		int row;
@@ -70,18 +69,21 @@ public class BasicText extends Composite {
 	final BasicTextOperationHandler operationHandler = new BasicTextOperationHandler(this);
 	RemoteObject remoteObject;
 	List<IPath> resources = new ArrayList<IPath>();
+	String url = "";
 	String text = "";
 	String status = "";
 	String command = "";
 	List<Annotation> annotations = new ArrayList<Annotation>();
 	List<String> scope = new ArrayList<String>();
+	List<String> proposals = new ArrayList<String>();
 	List<TextRange> markers = new ArrayList<TextRange>();
 	int style;
 	Listener listener;
 	TextSelection selection;
 	String clipboard;
 	Position cursorPosition;
-
+	DefaultContent content;
+	
 	public class BasicTextListener implements Listener {
 
 		private static final long serialVersionUID = 1L;
@@ -112,6 +114,10 @@ public class BasicText extends Composite {
 				TextChangedEvent textChangedEvent = new TextChangedEvent(e);
 				((ITextChangeListener) eventListener).handleTextChanged(textChangedEvent);
 				break;
+			case ContentAssist:
+				VerifyEvent verifyEvent = new VerifyEvent(e);
+				((IContentAssistListener) eventListener).verifyKey(verifyEvent);
+				break;
 			}
 		}
 	}
@@ -132,6 +138,11 @@ public class BasicText extends Composite {
 		setupClient();
 		createRemoteObject();
 		installListeners();
+		installDefaultContent();
+	}
+
+	private void installDefaultContent() {
+		content = new DefaultContent();
 	}
 
 	protected void loadClientResources(List<IPath> resources) {
@@ -146,8 +157,11 @@ public class BasicText extends Composite {
 		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-documentation.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-tooltip.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-searchbox.js"));
-		addBaseResource(new Path("org/dslforge/styledtext/ace/snippets/text.js"));
-		addBaseResource(new Path("org/dslforge/styledtext/global-index.js"));		
+		addBaseResource(new Path("org/dslforge/styledtext/ace/snippets/language.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/ace/theme-eclipse.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/ace/mode-language.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/global-index.js"));
+
 		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
 		loadClientResources(getBaseResources());
 	}
@@ -213,6 +227,9 @@ public class BasicText extends Composite {
 				case Save:
 					handleTextSave(event);
 					break;
+				case ContentAssist:
+					handleContentAssist(event);
+					break;
 				}
 			}
 		};
@@ -267,14 +284,30 @@ public class BasicText extends Composite {
 	}
 
 	/**
+	 * Handles a text save event
+	 * 
+	 * @param event
+	 */
+	void handleContentAssist(Event event) {
+		if (event.text != null) {
+			setText(event.text, false);
+		}
+		notifyListeners(ContentAssist, event);
+	}
+	/**
 	 * Handles a menu detect event
 	 * 
 	 * @param event
 	 */
 	void handleMenuDetect(Event event) {
-		// do nothing.
+		// do nothing by default.
 	}
 
+	/**
+	 * Handles a focus gained event
+	 * 
+	 * @param event
+	 */
 	void handleFocusGained(Event event) {
 		JsonObject data = (JsonObject) event.data;
 		if (data != null && data instanceof JsonObject) {
@@ -310,13 +343,17 @@ public class BasicText extends Composite {
 	}
 
 	/**
-	 * Called by StyledText to add itself as an Observer to content changes. See
-	 * TextChangeListener for a description of the listener methods that are
-	 * called when text changes occur.
-	 * <p>
+	 * Called by StyledText to add itself as an Observer to content changes.
 	 *
 	 * @param listener
 	 *            the listener
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
 	 * @exception IllegalArgumentException
 	 *                <ul>
 	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
@@ -333,7 +370,7 @@ public class BasicText extends Composite {
 	 * Adds a modify listener. A Modify event is sent by the widget when the
 	 * widget text has changed.
 	 *
-	 * @param modifyListener
+	 * @param listener
 	 *            the listener
 	 * @exception SWTException
 	 *                <ul>
@@ -347,11 +384,11 @@ public class BasicText extends Composite {
 	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
 	 *                </ul>
 	 */
-	public void addTextModifyListener(ITextModifyListener modifyListener) {
+	public void addTextModifyListener(ITextModifyListener listener) {
 		checkWidget();
-		if (modifyListener == null)
+		if (listener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		BasicTextListener typedListener = new BasicTextListener(modifyListener);
+		BasicTextListener typedListener = new BasicTextListener(listener);
 		addListener(SWT.Modify, typedListener);
 	}
 
@@ -359,7 +396,7 @@ public class BasicText extends Composite {
 	 * Adds a save listener. A Text save event is sent by the widget when the
 	 * client emits a save request.
 	 *
-	 * @param modifyListener
+	 * @param listener
 	 *            the listener
 	 * @exception SWTException
 	 *                <ul>
@@ -373,18 +410,18 @@ public class BasicText extends Composite {
 	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
 	 *                </ul>
 	 */
-	public void addTextSaveListener(ITextSaveListener iTextSaveListener) {
+	public void addTextSaveListener(ITextSaveListener listener) {
 		checkWidget();
-		if (iTextSaveListener == null)
+		if (listener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		BasicTextListener typedListener = new BasicTextListener(iTextSaveListener);
+		BasicTextListener typedListener = new BasicTextListener(listener);
 		addListener(Save, typedListener);
 	}
 
 	/**
 	 * Adds a focus listener.
 	 *
-	 * @param modifyListener
+	 * @param listener
 	 *            the listener
 	 * @exception SWTException
 	 *                <ul>
@@ -398,13 +435,38 @@ public class BasicText extends Composite {
 	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
 	 *                </ul>
 	 */
-	public void addFocusListener(FocusListener focusListener) {
+	public void addFocusListener(FocusListener listener) {
 		checkWidget();
-		if (focusListener == null)
+		if (listener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		BasicTextListener typedListener = new BasicTextListener(focusListener);
+		BasicTextListener typedListener = new BasicTextListener(listener);
 		addListener(SWT.FocusOut, typedListener);
 		addListener(SWT.FocusIn, typedListener);
+	}
+	
+	/**
+	 * Adds a content assist listener.
+	 *
+	 * @param listener
+	 *            the listener
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 * @exception IllegalArgumentException
+	 *                <ul>
+	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
+	 *                </ul>
+	 */
+	public void addContentAssistListener(IContentAssistListener listener) {
+		checkWidget();
+		if (listener == null)
+			SWT.error(SWT.ERROR_NULL_ARGUMENT);
+		BasicTextListener typedListener = new BasicTextListener(listener);
+		addListener(ContentAssist, typedListener);
 	}
 
 	@Override
@@ -418,6 +480,12 @@ public class BasicText extends Composite {
 		}
 	}
 
+	/**
+	 * Notifies listeners when events are sent from the client.
+	 * 
+	 * @param eventName
+	 * @param properties
+	 */
 	public void notifyListeners(String eventName, JsonObject properties) {
 		JsonValue value = properties.get("value");
 		Event event = new Event();
@@ -430,8 +498,8 @@ public class BasicText extends Composite {
 	/**
 	 * Removes the specified text change listener.
 	 *
-	 * @param modifyListener
-	 *            the listener which should no longer be notified
+	 * @param listener
+	 *            the listener
 	 * 
 	 * @exception SWTException
 	 *                <ul>
@@ -454,9 +522,8 @@ public class BasicText extends Composite {
 	/**
 	 * Removes the specified modify listener.
 	 *
-	 * @param modifyListener
-	 *            the listener which should no longer be notified
-	 * 
+	 * @param listener
+	 *            the listener
 	 * @exception SWTException
 	 *                <ul>
 	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
@@ -469,19 +536,18 @@ public class BasicText extends Composite {
 	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
 	 *                </ul>
 	 */
-	public void removeTextModifyListener(ITextModifyListener modifyListener) {
+	public void removeTextModifyListener(ITextModifyListener listener) {
 		checkWidget();
-		if (modifyListener == null)
+		if (listener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		removeListener(SWT.Modify, modifyListener);
+		removeListener(SWT.Modify, listener);
 	}
 
 	/**
 	 * Removes the specified save listener.
 	 *
-	 * @param modifyListener
+	 * @param listener
 	 *            the listener which should no longer be notified
-	 * 
 	 * @exception SWTException
 	 *                <ul>
 	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
@@ -494,19 +560,18 @@ public class BasicText extends Composite {
 	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
 	 *                </ul>
 	 */
-	public void removeTextSaveListener(ITextSaveListener iTextSaveListener) {
+	public void removeTextSaveListener(ITextSaveListener listener) {
 		checkWidget();
-		if (iTextSaveListener == null)
+		if (listener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
-		removeListener(Save, iTextSaveListener);
+		removeListener(Save, listener);
 	}
 
 	/**
 	 * Removes the specified focus listener.
 	 *
-	 * @param modifyListener
+	 * @param focusListener
 	 *            the listener which should no longer be notified
-	 * 
 	 * @exception SWTException
 	 *                <ul>
 	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
@@ -519,12 +584,36 @@ public class BasicText extends Composite {
 	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
 	 *                </ul>
 	 */
-	public void removeFocusListener(FocusListener focusListener) {
+	public void removeFocusListener(FocusListener listener) {
 		checkWidget();
-		if (focusListener == null)
+		if (listener == null)
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
 		removeListener(SWT.FocusOut, listener);
 		removeListener(SWT.FocusIn, listener);
+	}
+
+	/**
+	 * Removes the specified content assist listener.
+	 *
+	 * @param listener
+	 *            the listener which should no longer be notified
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 * @exception IllegalArgumentException
+	 *                <ul>
+	 *                <li>ERROR_NULL_ARGUMENT when listener is null</li>
+	 *                </ul>
+	 */
+	public void removeContentAssistListener(IContentAssistListener listener) {
+		checkWidget();
+		if (listener == null)
+			SWT.error(SWT.ERROR_NULL_ARGUMENT);
+		removeListener(ContentAssist, listener);
 	}
 
 	@Override
@@ -542,7 +631,7 @@ public class BasicText extends Composite {
 	 * Get the event type string given its integer identifier
 	 * 
 	 * @param eventType
-	 * @return
+	 * @return the string identifier of the event type
 	 */
 	String eventTypeToString(int eventType) {
 		if (eventType == TextChanged)
@@ -551,6 +640,8 @@ public class BasicText extends Composite {
 			return ITextOperationConstants.EVENT_CARET_CHANGED;
 		if (eventType == Save)
 			return ITextOperationConstants.EVENT_SAVE;
+		if (eventType == ContentAssist)
+			return ITextOperationConstants.EVENT_CONTENT_ASSIST;
 		if (eventType == SWT.Modify)
 			return ITextOperationConstants.EVENT_MODIFY;
 		if (eventType == SWT.FocusOut)
@@ -563,10 +654,10 @@ public class BasicText extends Composite {
 	}
 
 	/**
-	 * Get the event type given its String name
+	 * Get the event type given its String identifier
 	 * 
 	 * @param eventName
-	 * @return
+	 * @return the integer identifier of the event
 	 */
 	int stringToTypeEvent(String eventName) {
 		if (eventName.equals(ITextOperationConstants.EVENT_TEXT_CHANGED))
@@ -575,6 +666,8 @@ public class BasicText extends Composite {
 			return CaretEvent;
 		if (eventName.equals(ITextOperationConstants.EVENT_SAVE))
 			return Save;
+		if (eventName.equals(ITextOperationConstants.EVENT_CONTENT_ASSIST))
+			return ContentAssist;
 		if (eventName.equals(ITextOperationConstants.EVENT_MODIFY))
 			return SWT.Modify;
 		if (eventName.equals(ITextOperationConstants.EVENT_FOCUS_OUT))
@@ -593,10 +686,20 @@ public class BasicText extends Composite {
 		super.dispose();
 	}
 
+	/**
+	 * Returns the JavaScript loader responsible for loading JavaScript files at runtime
+	 * 
+	 * @return the JavaScript loader
+	 */
 	private JavaScriptLoader getJavaScriptLoader() {
 		return RWT.getClient().getService(JavaScriptLoader.class);
 	}
 
+	/**
+	 * Returns the instance of the resource manager for the current application context.
+	 * 
+	 * @return the resource manager
+	 */
 	private ResourceManager getResourceManager() {
 		return RWT.getResourceManager();
 	}
@@ -618,6 +721,11 @@ public class BasicText extends Composite {
 		}
 	}
 
+	/**
+	 * Returns the widget class loader
+	 * 
+	 * @return the widget class loader
+	 */
 	protected ClassLoader getClassLoader() {
 		ClassLoader classLoader = BasicText.class.getClassLoader();
 		return classLoader;
@@ -689,6 +797,20 @@ public class BasicText extends Composite {
 	}
 
 	/**
+	 * Sets the file URL associated to the widget
+	 * 
+	 * @param status
+	 */
+	public void setUrl(String url) {
+		checkWidget();
+		if (url == null) {
+			SWT.error(SWT.ERROR_NULL_ARGUMENT);
+		}
+		this.url = url;
+		getRemoteObject().set("url", url);
+	}
+
+	/**
 	 * Sets the validation status
 	 * 
 	 * @param status
@@ -738,6 +860,29 @@ public class BasicText extends Composite {
 		getRemoteObject().set("scope", array);
 	}
 
+	/**
+	 * Sets the content assist proposals
+	 * 
+	 * @param proposals
+	 */
+	public void setProposals(List<String> proposals) {
+		checkWidget();
+		if (proposals == null) {
+			SWT.error(SWT.ERROR_NULL_ARGUMENT);
+		}
+		this.proposals = proposals;
+		JsonArray array = new JsonArray();
+		for (String s : proposals) {
+			array.add(s);
+		}
+		getRemoteObject().set("proposals", array);
+	}
+	
+	/**
+	 * Sets markers for the given text ranges
+	 * 
+	 * @param text ranges
+	 */
 	public void setMarkers(List<TextRange> ranges) {
 		checkWidget();
 		if (ranges == null) {
@@ -748,7 +893,6 @@ public class BasicText extends Composite {
 		for (TextRange range : ranges) {
 			values.add(range.getValue());
 		}
-		// getRemoteObject().call("addMarker", properties);
 		getRemoteObject().set("markers", values);
 	}
 
@@ -775,8 +919,7 @@ public class BasicText extends Composite {
 	 */
 	public void setBackground(Color color) {
 		// super.setBackground(color); // This has no effect as the background
-		// will
-		// be hidden by the client script
+		// will be hidden by the client script
 		JsonObject properties = new JsonObject();
 		properties.add("R", color.getRed());
 		properties.add("G", color.getGreen());
@@ -785,36 +928,36 @@ public class BasicText extends Composite {
 	}
 
 	/**
-	   * Sets the selection to the range specified
-	   * by the given start and end indices.
-	   * <p>
-	   * Indexing is zero based.  The range of
-	   * a selection is from 0..N where N is
-	   * the number of characters in the widget.
-	   * </p><p>
-	   * Text selections are specified in terms of
-	   * caret positions.  In a text widget that
-	   * contains N characters, there are N+1 caret
-	   * positions, ranging from 0..N.  This differs
-	   * from other functions that address character
-	   * position such as getText () that use the
-	   * usual array indexing rules.
-	   * </p>
-	   *
-	   * @param start the start of the range
-	   * @param end the end of the range
-	   *
-	   * @exception SWTException <ul>
-	   *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-	   *    <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-	   * </ul>
-	   */
-	  public void setSelection(String value, int rowStart, int rowEnd, int columnStart, int columnEnd) {
-	    checkWidget();
-	    this.selection = new TextSelection(value, rowStart, rowEnd, columnStart, columnEnd);
-	    getRemoteObject().set("selection", selection.getValue());
-	  }
+	 * Sets the selection to the range specified by the given start and end
+	 * indices expressed as couples of (row, column).
+	 * 
+	 * @param rowStart
+	 *            the row start of the range
+	 * @param rowEnd
+	 *            the row end of the range
+	 * @param columnStart
+	 *            the column start of the range
+	 * @param columnEnd
+	 *            the column end of the range
+	 * @exception SWTException
+	 *                <ul>
+	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
+	 *                disposed</li>
+	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
+	 *                thread that created the receiver</li>
+	 *                </ul>
+	 */
+	public void setSelection(String value, int rowStart, int rowEnd, int columnStart, int columnEnd) {
+		checkWidget();
+		this.selection = new TextSelection(value, rowStart, rowEnd, columnStart, columnEnd);
+		getRemoteObject().set("selection", selection.getValue());
+	}
 
+	/**
+	 * Returns the current text selection
+	 * 
+	 * @return the text selection
+	 */
 	public TextSelection getSelection() {
 		checkWidget();
 		if (selection!=null)
@@ -843,7 +986,7 @@ public class BasicText extends Composite {
 	/**
 	 * Get the text value
 	 * 
-	 * @return
+	 * @return the text value
 	 */
 	public String getText() {
 		checkWidget();
@@ -853,7 +996,7 @@ public class BasicText extends Composite {
 	/**
 	 * Get the validation status
 	 * 
-	 * @return
+	 * @return the validation status
 	 */
 	public String getStatus() {
 		checkWidget();
@@ -863,17 +1006,27 @@ public class BasicText extends Composite {
 	/**
 	 * Get the language scope
 	 * 
-	 * @return
+	 * @return the language scope
 	 */
 	public List<String> getScope() {
 		checkWidget();
 		return scope;
 	}
+	
+	/**
+	 * Get the content assist proposals
+	 * 
+	 * @return the content assist proposals
+	 */
+	public List<String> getProposals() {
+		checkWidget();
+		return proposals;
+	}
 
 	/**
-	 * Get the validation issue
+	 * Get the current annotations
 	 * 
-	 * @return
+	 * @return the current annotations
 	 */
 	public List<Annotation> getAnnotations() {
 		checkWidget();
@@ -883,7 +1036,7 @@ public class BasicText extends Composite {
 	/**
 	 * Get the current markers
 	 * 
-	 * @return
+	 * @return the current markers
 	 */
 	public List<TextRange> getMarkers() {
 		checkWidget();
@@ -893,7 +1046,7 @@ public class BasicText extends Composite {
 	/**
 	 * Get the text font
 	 * 
-	 * @return
+	 * @return the text font
 	 */
 	private String getCssFont() {
 		StringBuilder result = new StringBuilder();
@@ -906,14 +1059,29 @@ public class BasicText extends Composite {
 		return result.toString();
 	}
 
+	/**
+	 * Returns the remote object which manages the communication with the client
+	 * 
+	 * @return the remote object
+	 */
 	private RemoteObject getRemoteObject() {
 		return remoteObject;
 	}
 
+	/**
+	 * Sets the handle of the remote object
+	 * 
+	 * @param remoteObject
+	 */
 	private void setRemoteObject(RemoteObject remoteObject) {
 		this.remoteObject = remoteObject;
 	}
 
+	/**
+	 * Returns the path list of the base widget resources
+	 * 
+	 * @return the paths of the base widget resources
+	 */
 	protected List<IPath> getBaseResources() {
 	 	return resources;
 	}
@@ -928,7 +1096,7 @@ public class BasicText extends Composite {
 	}
 
 	/**
-	 * Opens a RAP client/server connection.
+	 * Opens a client/server connection.
 	 */
 	void createRemoteObject() {
 		Connection connection = RWT.getUISession().getConnection();
@@ -954,12 +1122,25 @@ public class BasicText extends Composite {
 	 *            : the method arguments
 	 */
 	protected void invoke(String method, JsonObject properties) {
+		if (method.equals("getProposals")) {
+			Event event = new Event();
+			event.data = properties;
+			handleContentAssist(event);
+		}
 	}
 
+	/**
+	 * Performs a copy to the clip board of the given string
+	 * 
+	 * @param toCopy
+	 */
 	public void copy(String toCopy) {
 		this.clipboard = toCopy;
 	}
 
+	/**
+	 * Performs a paste from the clip board to the text widget
+	 */
 	public void paste() {
 		JsonObject properties = new JsonObject();
 		properties.add("rowStart", this.cursorPosition.row);
@@ -968,10 +1149,20 @@ public class BasicText extends Composite {
 		getRemoteObject().call("insertText", properties);
 	}
 	
+	/**
+	 * Returns the current cursor position
+	 * 
+	 * @return the cursor position
+	 */
 	public Position getCursorPosition() {
 		return cursorPosition;
 	}
 
+	/**
+	 * Cuts the text identified by the text selection
+	 * 
+	 * @param selection
+	 */
 	public void cut(TextSelection selection) {
 		checkWidget ();
 		if ((style & SWT.READ_ONLY) != 0) return;
@@ -983,7 +1174,29 @@ public class BasicText extends Composite {
 		getRemoteObject().call("removeText", properties);
 	}
 
-	public int getOffset() {
-		return 0;
+	/**
+	 * Converts a row/column position to an offset
+	 * 
+	 * @param row
+	 * @param column
+	 * @return the equivalent offset
+	 */
+	public int getOffsetAtPosition(int row, int column) {
+		content.insert(0, getText());
+		int offsetAtLine = content.getOffsetAtLine(row);
+		//System.out.println("[INFO] - widget Text:===========\n" + content.getTextRange(0, getText().length()) + "\n=============");
+		int offset=offsetAtLine + column;
+		System.out.println("[INFO] - [row: " + row + ", column : " + column + "] => offset: "+ offset);
+		return offset;
+	}
+
+	/**
+	 * Returns the current cursor position as an offset
+	 * 
+	 * @return
+	 */
+	public int getOffsetAtCursorPosition() {
+		Position position = getCursorPosition();
+		return getOffsetAtPosition(position.row, position.column);
 	}
 }
