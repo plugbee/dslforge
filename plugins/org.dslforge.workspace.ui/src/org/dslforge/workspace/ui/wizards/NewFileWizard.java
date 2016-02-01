@@ -40,13 +40,13 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 
 	public NewFileWizard(File container) {
 		super(container);
-		setWindowTitle("New Model");
+		setWindowTitle("New File");
 	}
 	
 	@Override
 	public void addPages() {
-		page = new NewFileWizardPage("NewModelFile");
-		page.setTitle("New Model");
+		page = new NewFileWizardPage("NewFile");
+		page.setTitle("New File");
 		page.setDescription("Create a new file resource");
 		page.setInitialElementSelections(Collections.singletonList(getSelection()));
 		addPage(page);

@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.dslforge.xtext.common.registry.LanguageRegistry;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -44,33 +43,15 @@ import org.eclipse.swt.widgets.Text;
 public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 	private static final long serialVersionUID = 1L;
-	public Collection<String> availableFileExtensions = Collections.emptyList();
-	public String defaultFileExtension = null;
+	public String defaultFileExtension = "txt";
+	public Collection<String> availableFileExtensions = Collections.singletonList(defaultFileExtension);
+	private final Map<String, String> languageToFileExtension = new HashMap<String, String>();
 	private Text fileNameText;
 	private Combo languageNameCombo;
 	private String languageName = null;
-	private final Map<String, String> languageToFileExtension = new HashMap<String, String>();
 
-	private List<String> getAvailableDSLNames() {
-		List<String> availableLanguages = LanguageRegistry.INSTANCE.getMetamodels();
-		for (String language : availableLanguages)
-			language = tinify(language);
-		return availableLanguages;
-	}
-
-	private String tinify(String m) {
-		return m.substring(m.lastIndexOf(".") + 1, m.length());
-	}
-
-	private Collection<String> getAvailableFileExtensions() {
-		return getLanguageToFileExtension().values();
-	}
-
-	private void initializeLanguageMap() {
-		List<String> availableLanguages = LanguageRegistry.INSTANCE.getMetamodels();
-		for (String language : availableLanguages) {
-			languageToFileExtension.put(language, LanguageRegistry.INSTANCE.getFileExtensionFor(language));
-		}
+	private Collection<String> getAvailableExtensions() {
+		return availableFileExtensions;
 	}
 
 	protected ModifyListener validator = new ModifyListener() {
@@ -84,8 +65,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 	protected NewFileWizardPage(String pageName) {
 		super(pageName);
-		initializeLanguageMap();
-		availableFileExtensions = Collections.unmodifiableCollection(getAvailableFileExtensions());
+		availableFileExtensions =getAvailableExtensions();
 		defaultFileExtension = availableFileExtensions.isEmpty() ? "NaN" : availableFileExtensions.iterator().next();
 	}
 
@@ -105,7 +85,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 		}
 		List<IStructuredSelection> initialElementSelections = getInitialElementSelections();
 		if (initialElementSelections == null) {
-			setErrorMessage("The model file container is not specified, please select the file container");
+			setErrorMessage("The file container is not specified, please select the file container");
 			return false;
 		}
 		ISelection iSelection = initialElementSelections.get(0);
@@ -113,13 +93,13 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 			Object firstElement = ((StructuredSelection) iSelection).getFirstElement();
 			File container = (File) firstElement;
 			if (!container.isDirectory()) {
-				setErrorMessage("The model file container should be a folder or a project");
+				setErrorMessage("The file container should be a folder or a project");
 				return false;
 			}
 		}
 		String extension = fileURI.fileExtension();
 		if (extension == null || !getSelectedFileExtension().equals(extension)) {
-			setErrorMessage("The model file name must have the following extension: " + getSelectedFileExtension());
+			setErrorMessage("The file name must have the following extension: " + getSelectedFileExtension());
 			return false;
 		}
 		setErrorMessage(null);
@@ -168,7 +148,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 		Label dslNameLabel = new Label(folderInfoComposite, SWT.NONE);
 		dslNameLabel.setLayoutData(new GridData(160, SWT.DEFAULT));
-		dslNameLabel.setText("&DSL Name:");
+		dslNameLabel.setText("&File Extension:");
 
 		languageNameCombo = new Combo(folderInfoComposite, SWT.BORDER | SWT.READ_ONLY);
 		GridData data = new GridData();
@@ -225,7 +205,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 	public void initializeLanguageCombo() {
 		if (languageName == null) {
-			for (String objectName : getAvailableDSLNames()) {
+			for (String objectName : getAvailableExtensions()) {
 				languageNameCombo.add(objectName);
 			}
 			if (languageNameCombo.getItemCount() == 1) {
