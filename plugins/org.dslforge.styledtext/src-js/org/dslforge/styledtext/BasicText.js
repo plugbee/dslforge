@@ -19,9 +19,9 @@
 			return new org.dslforge.styledtext.BasicText(properties);
 		},
 		destructor : "destroy",	 
-		properties : [ "url", "text", "editable", "status", "annotations", "scope", "font", "dirty", "markers", "background"],
-		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut", "Selection", "CaretEvent"],
-		methods : ["addMarker", "insertText", "removeText"]
+		properties : [ "url", "text", "editable", "status", "annotations", "scope", "proposals", "font", "dirty", "markers", "background"],
+		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut", "Selection", "CaretEvent", "ContentAssist"],
+		methods : ["addMarker", "insertText", "removeText", "setProposals"]
 	});
 
 	rwt.qx.Class.define("org.dslforge.styledtext.BasicText", {
@@ -59,9 +59,10 @@
 			initialContent: true,
 			useCompleter: false,
 			langTools: null,
+			completers: null,
 			globalScope: null,
-			selectionStart: -1,
-			selectionEnd:-1,
+			selectionStart:0,
+			selectionEnd:0,
 			
 			onReady : function() {
 				this.ready = true;
@@ -103,6 +104,10 @@
 				if (this._scope) {
 					this.setScope(this._scope);
 					delete this._scope;
+				}
+				if (this._proposals) {
+					this.setProposals(this._proposals);
+					delete this._proposals;
 				}
 			},
 
@@ -164,20 +169,31 @@
 				//nothing to do.
 			},
 			
-			onCompletionRequest : function(pos, prefix) {
-				if (this.isFocused) {
-					var remoteObject = rap.getRemoteObject(this);
-					if (remoteObject) {
-						var x = remoteObject.call("getScope", { pos : pos, prefix : prefix});
-					}
+			onCompletionRequest : function(pos, prefix, callback) {
+			//	if (this.isFocused) {
+				var remoteObject = rap.getRemoteObject(this);
+				if (remoteObject) {
+					remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
 				}
+			//	}
+				
+				var proposals = this._proposals==null?[]:this._proposals;		
+			    var wordList = Object.keys(proposals);
+			    callback(null, wordList.map(function(word) {
+			          return {
+			           	iconClass: " " + typeToIcon(word[0]),
+			               name: word,
+			               value: proposals[word],
+			               score: 1,
+			              meta: "[" + "keyword" + "]"
+			          };
+			      }));
 			},
 			
 			onModify : function() {
 				var remoteObject = rap.getRemoteObject(this);
 				if (remoteObject && !this.initialContent) {
-					remoteObject.notify("TextChanged");
-					//console.log(this.getOffset(this.editor.getCursorPosition()));
+					remoteObject.notify("TextChanged", { value : this.editor.getValue()});
 				} else {
 					if (this.editable) {
 						//initial setting, avoid notify back the server.
@@ -286,17 +302,21 @@
 				if (this.ready) {
 					this._scope = scope;	
 			    	if(this.worker!=null) {
-			        	this.worker.port.postMessage({
-			            	message: this.editor.getValue(), 
-			            	guid: this._url, 
-			            	index: this._scope
-			            });     
+//			        	this.worker.port.postMessage({
+//			            	message: this.editor.getValue(), 
+//			            	guid: this._url, 
+//			            	index: this._scope
+//			            });     
 			    	}	
 				} else {
 					 this._scope = scope;	
 				}
 			},
 
+			setProposals : function(proposals) {
+				this._proposals = proposals;	
+			},
+			
 			//'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro'
 			//font = 14px Verdana, "Lucida Sans", Arial, Helvetica, sans-serif
 			setFont : function(font) {
@@ -312,9 +332,9 @@
 			setBackground : function(color) {
 				if (this.ready) {
 			        this._backgroundColor = color;
-//					ace.require("ace/lib/dom").importCssString('.ace-eclipse {\
-//						    background-color: rgb('+color.R+', '+color.G+', '+color.B+');\
-//						}');
+					ace.require("ace/lib/dom").importCssString('.ace-eclipse {\
+						    background-color: rgb('+color.R+', '+color.G+', '+color.B+');\
+						}');
 				}
 				else {
 			        this._backgroundColor = color;
@@ -337,10 +357,10 @@
 						var Range = ace.require("ace/range").Range;
 						var range = new Range(marker.rowStart, marker.rowEnd, marker.columnStart, marker.columnEnd);
 						this.editor.getSession().addMarker(range, "ace_debug_line", "line");
-//						ace.require("ace/lib/dom").importCssString('.ace_debug_line {\
-//						    background-color: aquamarine;\
-//						    position: absolute;\
-//						}');
+						ace.require("ace/lib/dom").importCssString('.ace_debug_line {\
+						    background-color: aquamarine;\
+						    position: absolute;\
+						}');
 		           }
 				}
 				else {
@@ -352,16 +372,17 @@
 				if(this.editor) {
 					var Range = ace.require("ace/range").Range;
 					var range = new Range(marker.rowStart,marker.rowEnd,marker.columnStart,marker.columnEnd);
-					this.editor.getSession().addMarker(range, "ace_debug_line", "line");
-//					ace.require("ace/lib/dom").importCssString('.ace_debug_line {\
-//					    background-color: aquamarine;\
-//					    position: absolute;\
-//					}');	
+					
+					this.editor.getSession().addMarker(range,"ace_selected_word", "text");
+					//this.editor.getSession().addMarker(range, "ace_debug_line", "line");
+					ace.require("ace/lib/dom").importCssString('.ace_debug_line {\
+					    background-color: aquamarine;\
+					    position: absolute;\
+					}');	
 				}
 			},
 
 			insertText : function(properties) {
-				//console.log("inserting text");
 				if (this.editor) {
 					var position = { row:properties.rowStart, column:properties.columnStart};
 					var text = properties.text;
@@ -370,7 +391,6 @@
 			},
 
 			removeText : function(properties) {
-				//console.log("removing text");
 				if (this.editor) {			        
 					var range = this.editor.getSelectionRange();
 					if (range.start.row != range.end.row || range.start.column !=range.end.column) {
@@ -381,12 +401,16 @@
 			},
 			
 			addEditor : function() {
-				var guid = this._url;
 				var editor = this.editor = ace.edit(this.element);
 				var editable = this.editable;
-		
-				if (editor != null) {					
-					editor.setTheme("ace/theme/eclipse");				
+				if (editor != null) {	
+					
+					//set language mode
+					editor.getSession().setMode("ace/mode/language");	
+					
+					//Set theme
+					editor.setTheme("ace/theme/eclipse");
+					
 					editor.getSession().setUseWrapMode(true);
 				    editor.getSession().setTabSize(4);
 				    editor.getSession().setUseSoftTabs(true);
@@ -399,24 +423,24 @@
 					this.langTools = ace.require("ace/ext/language_tools");
 					this.langTools.completers = [];
 					
-					//initialize the index
+					
+					//1. set the url
+					var guid = this._url;
+					
+					//2. initialize the index
 					if (this._scope==null)
 						this._scope=[];
 					var index = this._scope;
+					
+					//3.initialize the proposals
+					if (this._proposals==null)
+						this._proposals=[];
+					var proposals = this._proposals;
+					
 					var self = this;
 					this.globalScope = {	
 						getCompletions: function(editor, session, pos, prefix, callback) {
-							self.onCompletionRequest();
-							var completions = [];
-							if (self.isFocused) {
-								for (var i = index.length; i--;) {
-									var values = index[i].split(":");
-							        completions.push({ iconClass: " " + typeToIcon(values[0]),
-							        name: values[0], value: values[0], score: 1, meta: "[" + values[1] + "]"
-							        });	
-						          }	
-							}
-					        callback(null, completions);
+							self.onCompletionRequest(pos, prefix, callback);	
 						}
 					}
 					//Add completer and enable content assist
@@ -438,10 +462,13 @@
 						//create the shared worker
 						var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
 						var httpURL = computeWorkerPath(filePath);
-						var worker = this.worker = new SharedWorker(httpURL);	 	
+						var worker = this.worker = new SharedWorker(httpURL);	 			
 						
 					 	//init the index
 					 	index = this._scope;
+					 	
+					 	//init the proposals
+					 	proposals=this._proposals;
 					 	
 					 	//on focus get
 						editor.on("focus", function() {
@@ -490,12 +517,10 @@
 					           	guid: guid, 
 					           	index: index
 					        });
-					        
-					        //index = [];
 				        });											
 					 	worker.port.onmessage = function(e) {
 					 		//update the index reference
-					 		index = e.data.index;
+					 		//index = e.data.index;
 				        };
 					}
 
@@ -548,7 +573,7 @@
 		else if (/^fn\(/.test(type)) suffix = "fn";
 		else if (/^\[/.test(type)) suffix = "array";
 		else suffix = "object";
-		console.log(cls + "completion " + cls + "completion-" + suffix);
+		//console.log(cls + "completion " + cls + "completion-" + suffix);
 		return cls + "completion " + cls + "completion-" + suffix;
 	};
 
