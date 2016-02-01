@@ -30,9 +30,7 @@ public class TextRange {
 		this.rowEnd = rowEnd;
 		this.columnEnd = columnEnd;
 	}
-	
-	//var range = new Range(rowStart, columnStart, rowEnd, columnEnd);
-	//var marker = editor.getSession().addMarker(range,"ace_selected_word", "text");
+
 	public JsonObject getValue() {	
 		JsonObject properties = new JsonObject();
 		properties.add("rowStart", rowStart);
