@@ -175,24 +175,6 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 				setScope(Lists.newArrayList(referrables));	
 			}
 		});
-		SafeRunnable.run(new SafeRunnable() {
-			private static final long serialVersionUID = 1L;
-			public void run() {
-				iObjectDescriptions = Collections.emptyList();
-				EcoreUtil2.resolveAll(xtextResource);
-				IResourceDescription resourceDescription = descriptionManager.getResourceDescription(xtextResource);
-				Manager manager = xtextResource.getResourceServiceProvider().getResourceDescriptionManager();
-				resourceDescription = manager.getResourceDescription(xtextResource);
-				iObjectDescriptions = Iterables.concat(iObjectDescriptions, resourceDescription.getExportedObjects());	
-				Iterable<String> referrables = Iterables.transform(iObjectDescriptions, new Function<IEObjectDescription, String>() {
-					@Override
-					public String apply(IEObjectDescription input) {
-						return input.getName().toString() + ":" + input.getEClass().getName();
-					}
-				});
-				setScope(Lists.newArrayList(referrables));	
-			}
-		});
 	}
 
 	@Override
