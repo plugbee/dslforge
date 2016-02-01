@@ -11,11 +11,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.rap.ui.views,
  org.eclipse.emf.common,
  org.eclipse.emf.rap.edit.ui,
- org.dslforge.xtext.common,
- com.google.inject,
- org.eclipse.xtext
+ com.google.inject
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.dslforge.workspace.ui
+Export-Package: org.dslforge.workspace.ui,
+ org.dslforge.workspace.ui.actions,
+ org.dslforge.workspace.ui.wizards
 Bundle-Vendor: PlugBee
 Import-Package: javax.persistence;version="2.1.0"
