@@ -63,15 +63,15 @@
             id="org.dslforge.navigator.view.actions.contribution.new"
             nameFilter="*"
             objectClass="java.io.File">
-         <action
-               class="org.dslforge.workspace.ui.actions.NewModelAction"
+          <action
+               class="org.dslforge.workspace.ui.actions.NewFileAction"
                enablesFor="*"
-               icon="icons/model.png"
-               id="org.dslforge.navigator.actions.new.model"
-               label="Model"
+               icon="icons/file.gif"
+               id="org.dslforge.navigator.actions.new.file"
+               label="File"
                menubarPath="org.dslforge.workspace.menu.new/group"
                style="push"
-               tooltip="Create a new model file">
+               tooltip="Create a new file">
          </action>
          <action
                class="org.dslforge.workspace.ui.actions.NewFolderAction"
@@ -122,24 +122,7 @@
          </action>
       </objectContribution>
    </extension>
-  
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.navigator.view.actions.contribution.generate"
-            nameFilter="*"
-            objectClass="java.io.File">
-         <action
-               class="org.dslforge.workspace.ui.actions.BasicGenerateAction"
-               enablesFor="*"
-               icon="icons/generate.png"
-               id="org.dslforge.workspace.menu.generate"
-               label="Generate"
-               style="push">
-         </action>
-      </objectContribution>
-   </extension>
+ 
 <!--
       <extension
          point="org.eclipse.ui.popupMenus">
