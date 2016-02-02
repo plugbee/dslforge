@@ -63,6 +63,7 @@
 			globalScope: null,
 			selectionStart:0,
 			selectionEnd:0,
+			useSharedWorker:true,
 			
 			onReady : function() {
 				this.ready = true;
@@ -159,7 +160,7 @@
 			onRender : function() {
 				if (this.element.parentNode) {
 					rap.off("render", this.onRender);
-					this.addEditor();
+					this.createEditor();
 					this.editor.on("instanceReady", this.onReady);
 					rap.on("send", this.onSend);
 				}
@@ -170,13 +171,10 @@
 			},
 			
 			onCompletionRequest : function(pos, prefix, callback) {
-			//	if (this.isFocused) {
 				var remoteObject = rap.getRemoteObject(this);
 				if (remoteObject) {
 					remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
 				}
-			//	}
-				
 				var proposals = this._proposals==null?[]:this._proposals;		
 			    var wordList = Object.keys(proposals);
 			    callback(null, wordList.map(function(word) {
@@ -302,11 +300,11 @@
 				if (this.ready) {
 					this._scope = scope;	
 			    	if(this.worker!=null) {
-//			        	this.worker.port.postMessage({
-//			            	message: this.editor.getValue(), 
-//			            	guid: this._url, 
-//			            	index: this._scope
-//			            });     
+			        	this.worker.port.postMessage({
+			            	message: this.editor.getValue(), 
+			            	guid: this._url, 
+			            	index: this._scope
+			            });     
 			    	}	
 				} else {
 					 this._scope = scope;	
@@ -371,8 +369,7 @@
 			addMarker : function(marker) {
 				if(this.editor) {
 					var Range = ace.require("ace/range").Range;
-					var range = new Range(marker.rowStart,marker.rowEnd,marker.columnStart,marker.columnEnd);
-					
+					var range = new Range(marker.rowStart,marker.rowEnd,marker.columnStart,marker.columnEnd);	
 					this.editor.getSession().addMarker(range,"ace_selected_word", "text");
 					//this.editor.getSession().addMarker(range, "ace_debug_line", "line");
 					ace.require("ace/lib/dom").importCssString('.ace_debug_line {\
@@ -400,10 +397,10 @@
 				}
 			},
 			
-			addEditor : function() {
+			createEditor : function() {
 				var editor = this.editor = ace.edit(this.element);
 				var editable = this.editable;
-				if (editor != null) {	
+				if (editor != null) {
 					
 					//set language mode
 					editor.getSession().setMode("ace/mode/language");	
@@ -411,6 +408,7 @@
 					//Set theme
 					editor.setTheme("ace/theme/eclipse");
 					
+					//Default settings
 					editor.getSession().setUseWrapMode(true);
 				    editor.getSession().setTabSize(4);
 				    editor.getSession().setUseSoftTabs(true);
@@ -419,23 +417,20 @@
 					editor.setReadOnly(!editable);							
 					editor.$blockScrolling = Infinity;
 					
-					//bind content assist
+					//Load content assist module
 					this.langTools = ace.require("ace/ext/language_tools");
 					this.langTools.completers = [];
 					
-					
-					//1. set the url
+					//Set the Id of this editor
 					var guid = this._url;
 					
-					//2. initialize the index
+					//Initialize the global index
 					if (this._scope==null)
 						this._scope=[];
-					var index = this._scope;
 					
-					//3.initialize the proposals
-					if (this._proposals==null)
+					//Initialize the completion proposals
+					if (this._proposals==null) 
 						this._proposals=[];
-					var proposals = this._proposals;
 					
 					var self = this;
 					this.globalScope = {	
@@ -444,86 +439,85 @@
 						}
 					}
 					//Add completer and enable content assist
-					this.langTools.addCompleter(this.globalScope);
-						
+					this.langTools.addCompleter(this.globalScope);			
 					editor.setOptions({
 					    enableBasicAutocompletion: true,
 					    enableSnippets: true
 					});
 					
-					//add documentation hover
+					//Add documentation hover
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 					editor.tokenTooltip = new TokenTooltip(editor);
+				 	
+				 	//Initialize the index
+				 	index = this._scope;
 
-					self = this;
-					if (typeof SharedWorker == 'undefined') {	
-						alert("Your browser does not support JavaScript Shared Workers.");
-					} else {
-						//create the shared worker
-						var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
-						var httpURL = computeWorkerPath(filePath);
-						var worker = this.worker = new SharedWorker(httpURL);	 			
-						
-					 	//init the index
-					 	index = this._scope;
-					 	
-					 	//init the proposals
-					 	proposals=this._proposals;
-					 	
-					 	//on focus get
-						editor.on("focus", function() {
-					 		self.onFocus();
-					 	});
-						
-						//on focus lost
-					 	editor.on("blur", function() {
-					 		self.onBlur();
-					 	});
-					 	
-					 	//on input
-					 	editor.on("input", function() {
-							if (!editor.getSession().getUndoManager().isClean())
-								self.onModify();
-					 	});
-					 	
-					 	editor.on("mousedown", function() { 
-					 	    // Store the Row/column values 
-					 		//console.log("mouse down");
-					 	}) 
-
-					 	editor.getSession().getSelection().on('changeCursor', function() { 
-					 	    if (editor.$mouseHandler.isMousePressed)  {
-					 	      // the cursor changed using the mouse
-					 	      //self.onChangeCursor();
-					 	    }
-					 	    // the cursor changed
-					 	    self.onChangeCursor();
-					 	}); 
-					 	
-					 	editor.getSession().on('changeCursor', function() { 
-					 	    if (editor.$mouseHandler.isMousePressed)  {
-					 	      // remove last stored values 
-					 	      //console.log("remove last stored values");
-					 	    }
-					 	    // Store the Row/column values 
-					 	    //console.log("store the row/column values");
-					 	}); 
-					 	
-					 	//on change
-						editor.on("change", function(event) {					        
-					        //console.log("posting message: index: " + index);
-					        worker.port.postMessage({
-					           	message: editor.getValue(), 
-					           	guid: guid, 
-					           	index: index
-					        });
-				        });											
-					 	worker.port.onmessage = function(e) {
-					 		//update the index reference
-					 		//index = e.data.index;
-				        };
+				 	//Initialize the completion proposals
+				 	proposals = this._proposals;
+					
+					if (this.useSharedWorker) {
+						if (typeof SharedWorker == 'undefined') {	
+							alert("Your browser does not support JavaScript Shared Workers.");
+						} else {
+							//create the shared worker
+							var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
+							var httpURL = computeWorkerPath(filePath);
+							var worker = this.worker = new SharedWorker(httpURL);	 			
+							editor.on("change", function(event) {					        
+						        worker.port.postMessage({
+						           	message: editor.getValue(), 
+						           	guid: guid, 
+						           	index: index
+						        });
+					        });											
+						 	worker.port.onmessage = function(e) {
+						 		//update the index reference
+						 		index = e.data.index;
+					        };	
+					 	}
 					}
+					
+				 	//On focus get event
+					editor.on("focus", function() {
+				 		self.onFocus();
+				 	});
+					
+					//On focus lost event
+				 	editor.on("blur", function() {
+				 		self.onBlur();
+				 	});
+				 	
+				 	//On input event
+				 	editor.on("input", function() {
+						if (!editor.getSession().getUndoManager().isClean())
+							self.onModify();
+				 	});
+				 	
+				 	//On mouse down event
+				 	editor.on("mousedown", function() { 
+				 	    // Store the Row/column values 
+				 	}) 
 
+				 	//On cursor move event
+				 	editor.getSession().getSelection().on('changeCursor', function() { 
+				 	    if (editor.$mouseHandler.isMousePressed)  {
+				 	      // the cursor changed using the mouse
+				 	    }
+				 	    // the cursor changed
+				 	    self.onChangeCursor();
+				 	});
+				 	editor.getSession().on('changeCursor', function() { 
+				 	    if (editor.$mouseHandler.isMousePressed)  {
+				 	      // remove last stored values 
+				 	    }
+				 	    // Store the Row/column values 
+				 	}); 
+
+				 	//On text change event
+					editor.on("change", function(event) {					        
+						//implement in subclasses						
+			        });
+					
 					//Bind keyboard shorcuts
 					editor.commands.addCommand({
 						name: 'saveFile',
@@ -573,7 +567,6 @@
 		else if (/^fn\(/.test(type)) suffix = "fn";
 		else if (/^\[/.test(type)) suffix = "array";
 		else suffix = "object";
-		//console.log(cls + "completion " + cls + "completion-" + suffix);
 		return cls + "completion " + cls + "completion-" + suffix;
 	};
 
