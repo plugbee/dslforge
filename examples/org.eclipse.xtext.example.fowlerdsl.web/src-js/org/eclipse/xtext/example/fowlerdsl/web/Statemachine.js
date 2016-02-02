@@ -26,13 +26,10 @@
 			},
 		
 			onCompletionRequest : function(pos, prefix, callback) {
-			//	if (this.isFocused) {
 				var remoteObject = rap.getRemoteObject(this);
 				if (remoteObject) {
 					remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
-				}
-			//	}
-				
+				}	
 				var proposals = this._proposals==null?[]:this._proposals;		
 		        var wordList = Object.keys(proposals);
 		        callback(null, wordList.map(function(word) {
@@ -50,48 +47,45 @@
 				this._proposals = proposals;	
 			},
 			
-			addEditor : function() {
-				var guid = this._url;
+			createEditor : function() {
 				var basePath = 'rwt-resources/src-js/org/dslforge/styledtext/ace';
 				ace.require("ace/config").set("basePath", basePath);
 				var workerPath = 'rwt-resources/src-js/org/eclipse/xtext/example/fowlerdsl/web/ace';
 				ace.require("ace/config").set("workerPath", workerPath);
 				var themePath = 'rwt-resources/src-js/org/eclipse/xtext/example/fowlerdsl/web/ace';
 				ace.require("ace/config").set("themePath", themePath);
-
 				var editor = this.editor = ace.edit(this.element);
 				var editable = this.editable;				
 				if (editor != null) {
 
-					//1. set the Id of this editor
+					//Set the Id of this editor
 					var guid = this._url;
 					
-					//set language mode
+					//Set language mode
 					editor.getSession().setMode("ace/mode/statemachine");	
 
-					//set theme
+					//Set theme
 					editor.setTheme("ace/theme/eclipse");	
 
+					//Default settings
 					editor.getSession().setUseWrapMode(true);
 				    editor.getSession().setTabSize(4);
 				    editor.getSession().setUseSoftTabs(true);
 					editor.getSession().getUndoManager().reset();
 					editor.setShowPrintMargin(false);		 
 					editor.setReadOnly(!editable);		
-					//editor.$blockScrolling = Infinity;
+					editor.$blockScrolling = Infinity;
 					
-					//bind content assist
+					//Load content assist module
 					this.langTools = ace.require("ace/ext/language_tools");
 					
-					//2. initialize the index
-					if (this._scope==null)
+					//Initialize the global index
+					if (this._scope==null) 
 						this._scope=[];
-					var index = this._scope;
 					
-					//3.initialize the proposals
-					if (this._proposals==null)
+					//Initialize the completion proposals
+					if (this._proposals==null) 
 						this._proposals=[];
-					var proposals = this._proposals;
 					
 					var self = this;
 					this.globalScope = {	
@@ -105,127 +99,127 @@
 					editor.setOptions({
 					    enableBasicAutocompletion: true,
 					    enableSnippets: true
-					});
-					
+					});	
 					this.completers = editor.completers;			
 	
-					//add documentation hover
+					//Add documentation hover
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 					editor.tokenTooltip = new TokenTooltip(editor);		 	
-					
-					//Get this
-					self = this;
-					
-				 	//init the index
+
+				 	//Initialize the index
 				 	index = this._scope;
 
-				 	//init the proposals
+				 	//Initialize the completion proposals
 				 	proposals = this._proposals;
 				 	
 					//Handle the global index
-					if (typeof SharedWorker == 'undefined') {	
-						alert("Your browser does not support JavaScript shared workers.");
-					} else {
-						//Compute worker's http URL
-						var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
-						var httpURL = computeWorkerPath(filePath);
-						var worker = this.worker = new SharedWorker(httpURL);
-					 	
-					 	//on focus get
-						editor.on("focus", function() {
-					 		self.onFocus();
-					 	});
-						
-						//on focus lost
-					 	editor.on("blur", function() {
-					 		self.onBlur();
-					 	});
-					 	
-					 	//on input
-					 	editor.on("input", function() {
-							if (!editor.getSession().getUndoManager().isClean())
-								self.onModify();
-					 	});
-					 	
-					 	editor.on("mousedown", function() { 
-					 	    // Store the Row/column values 
-					 	}) 
+				 	if (this.useSharedWorker) {
+						if (typeof SharedWorker == 'undefined') {	
+							alert("Your browser does not support JavaScript shared workers.");
+						} else {
+							//Compute worker's http URL
+							var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
+							var httpURL = computeWorkerPath(filePath);
+							var worker = this.worker = new SharedWorker(httpURL);		
+							editor.on("change", function(event) {					        
+								worker.port.postMessage({
+									message: editor.getValue(), 
+							        guid: guid, 
+							        index: index
+							    });
+						    });
+							worker.port.onmessage = function(e) {
+							 	//update the index reference
+							 	index = e.data.index;
+						    };	
 
-					 	editor.getSession().getSelection().on('changeCursor', function() { 
-					 	    if (editor.$mouseHandler.isMousePressed)  {
-					 	      // the cursor changed using the mouse
-					 	    }
-					 	    // the cursor changed
-					 	    self.onChangeCursor();
-					 	}); 
-					 	
-					 	editor.getSession().on('changeCursor', function() { 
-					 	    if (editor.$mouseHandler.isMousePressed)  {
-					 	      // remove last stored values 
-					 	     console.log("remove last stored values");
-					 	    }
-					 	    // Store the Row/column values 
-					 	    console.log("store the row/column values");
-					 	}); 
-					 	
-					 	//on change
-						editor.on("change", function(event) {					        
-							if (self.ready) {
-						        var value = self.editor.getValue();					        
-						        var msg_error=null;
-								org.antlr.runtime.BaseRecognizer.prototype.emitErrorMessage = function (msg) {
-									msg_error=msg;
-									console.log(msg_error);
-								};
-							    try {
-								    var cstream = new org.antlr.runtime.ANTLRStringStream(value);
-								    var lexer = new InternalStatemachineLexer(cstream);
-								    var mTokens = lexer.dfa9.predict(cstream);
-								    console.log(mTokens);
-								    var tokenStream = new org.antlr.runtime.CommonTokenStream(lexer);
-								    var parser = new InternalStatemachineParser(tokenStream);
-							    	var statemachine = parser.rule_Statemachine();
-							    	var tree = statemachine.getTree();
-							    	var treeNodeStream = new org.antlr.runtime.tree.CommonTreeNodeStream(tree);		    	
-							    	treeNodeStream.setTokenStream(tokenStream); 
-							    	
-							    	//examine the tokens
-							        var nodes = treeNodeStream.nodes;
-							        var tokens = tokenStream.tokens;
-							        var values = tokens.map(function(token) {
-							        	return token.getText()
-							        });	     
-							        
-							        //predict next tokens based on decision tree
-							        console.log(values);
-							    	
-							    } catch(err) {
-							    	//recovery not enabled.
-							    	console.log("Error:\n\n" + err);
-							    }
-							    if (msg_error!=null) {
-							    	var splits = msg_error.split(/(\d+\:\d+ )/);
-						            var positions = msg_error.match(/\d+/g);
-									var e = new SyntaxError("Parsing Error");	
-									if (splits.length>=3) {
-										msg_error = positions[0] + ":" + splits[2].charAt(0).toUpperCase() + splits[2].slice(1);
-									} 
-							    }
-							}							
-				        });	
-						
-				        //console.log("posting message: index: " + index);
-				        worker.port.postMessage({
-				           	message: editor.getValue(), 
-				           	guid: guid, 
-				           	index: index
-				        });
-					 	worker.port.onmessage = function(e) {
-					 		//update the index reference
-					 		index = e.data.index;
-				        };
-					}
+						}	
+				 	}
 
+				 	//On focus get event
+					editor.on("focus", function() {
+				 		self.onFocus();
+				 	});
+					
+					//On focus lost event
+				 	editor.on("blur", function() {
+				 		self.onBlur();
+				 	});
+				 	
+				 	//On input event
+				 	editor.on("input", function() {
+						if (!editor.getSession().getUndoManager().isClean())
+							self.onModify();
+				 	});
+				 	
+				 	//On mouse down event
+				 	editor.on("mousedown", function() { 
+				 	    // Store the Row/column values 
+				 	}) 
+				 	
+				 	//On cursor move event
+				 	editor.getSession().getSelection().on('changeCursor', function() { 
+				 	    if (editor.$mouseHandler.isMousePressed)  {
+				 	      // the cursor changed using the mouse
+				 	    }
+				 	    // the cursor changed
+				 	    self.onChangeCursor();
+				 	});
+				 	editor.getSession().on('changeCursor', function() { 
+				 	    if (editor.$mouseHandler.isMousePressed)  {
+				 	      // remove last stored values 
+				 	     console.log("remove last stored values");
+				 	    }
+				 	    // Store the Row/column values 
+				 	    console.log("store the row/column values");
+				 	}); 
+				 	
+				 	//On text change event
+					editor.on("change", function(event) {					        
+						if (self.ready) {
+					        var value = self.editor.getValue();					        
+					        var msg_error=null;
+							org.antlr.runtime.BaseRecognizer.prototype.emitErrorMessage = function (msg) {
+								msg_error=msg;
+								console.log(msg_error);
+							};
+						    try {
+							    var cstream = new org.antlr.runtime.ANTLRStringStream(value);
+							    var lexer = new InternalStatemachineLexer(cstream);
+							    var mTokens = lexer.dfa9.predict(cstream);
+							    console.log(mTokens);
+							    var tokenStream = new org.antlr.runtime.CommonTokenStream(lexer);
+							    var parser = new InternalStatemachineParser(tokenStream);
+						    	var statemachine = parser.rule_Statemachine();
+						    	var tree = statemachine.getTree();
+						    	var treeNodeStream = new org.antlr.runtime.tree.CommonTreeNodeStream(tree);		    	
+						    	treeNodeStream.setTokenStream(tokenStream); 
+						    	
+						    	//examine the tokens
+						        var nodes = treeNodeStream.nodes;
+						        var tokens = tokenStream.tokens;
+						        var values = tokens.map(function(token) {
+						        	return token.getText()
+						        });	     
+						        
+						        //predict next tokens based on decision tree
+						        console.log(values);
+						    	
+						    } catch(err) {
+						    	//recovery not enabled.
+						    	console.log("Error:\n\n" + err);
+						    }
+						    if (msg_error!=null) {
+						    	var splits = msg_error.split(/(\d+\:\d+ )/);
+					            var positions = msg_error.match(/\d+/g);
+								var e = new SyntaxError("Parsing Error");	
+								if (splits.length>=3) {
+									msg_error = positions[0] + ":" + splits[2].charAt(0).toUpperCase() + splits[2].slice(1);
+								} 
+						    }
+						}							
+			        });	
+					
 					//Bind keyboard shorcuts
 					editor.commands.addCommand({
 						name: 'saveFile',
@@ -247,7 +241,7 @@
 	});
 	
 	var computeWorkerPath = function (path) {
-        path = path.replace(/^[a-z]+:\/\/[^\/]+/, ""); // Remove domain name and rebuild path
+        path = path.replace(/^[a-z]+:\/\/[^\/]+/, "");
         path = location.protocol + "//" + location.host
             + (path.charAt(0) == "/" ? "" : location.pathname.replace(/\/[^\/]*$/, ""))
             + "/" + path.replace(/^[\/]+/, "");
