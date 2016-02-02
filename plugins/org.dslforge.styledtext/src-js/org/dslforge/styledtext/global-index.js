@@ -1,1 +1,25 @@
-var counter=0,connections=[],index=[];onconnect=function(a){a&&(a=a.ports[0],a.onmessage=function(a){counter++;var c=a.data.guid;a=a.data.index;for(var b=0;b<connections.length;b++)connections[b].postMessage({counter:counter,message:"index",guid:c,index:a})},a.start(),connections.push(a))};
+var counter = 0;
+var connections = [];
+var index = [];
+
+onconnect = function(e) {
+	if(e) {
+	   var port = e.ports[0];  
+	   port.onmessage = function(j) {
+		   counter++;	    
+		   var guid = j.data.guid;
+		   var content = j.data.message;
+		   var contribution = j.data.index;   
+		   for (var i=0; i < connections.length; i++) {
+	           connections[i].postMessage({
+	        	   counter: counter,
+	               message: "index",
+	               guid: guid,
+	               index: contribution
+	           });           
+	       }
+	   }
+	   port.start();
+	   connections.push(port);		
+	}
+}
