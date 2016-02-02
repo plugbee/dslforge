@@ -160,7 +160,7 @@ public class BasicText extends Composite {
 		addBaseResource(new Path("org/dslforge/styledtext/ace/snippets/language.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/theme-eclipse.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/mode-language.js"));
-		addBaseResource(new Path("org/dslforge/styledtext/global-index.js"));
+		addBaseResource(new Path("src-js/org/dslforge/styledtext/global-index.js"));
 
 		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
 		loadClientResources(getBaseResources());
