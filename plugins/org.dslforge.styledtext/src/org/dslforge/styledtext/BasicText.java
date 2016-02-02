@@ -70,7 +70,6 @@ public class BasicText extends Composite {
 	RemoteObject remoteObject;
 	List<IPath> resources = new ArrayList<IPath>();
 	String url = "";
-	String text = "";
 	String status = "";
 	String command = "";
 	List<Annotation> annotations = new ArrayList<Annotation>();
@@ -267,7 +266,9 @@ public class BasicText extends Composite {
 	 * @param event
 	 */
 	void handleTextModify(Event event) {
-		text = event.text;
+		if (event.text != null) {
+			content.setText(event.text);
+		}
 		notifyListeners(TextChanged, event);
 	}
 
@@ -338,7 +339,7 @@ public class BasicText extends Composite {
 		removeListener(SWT.Dispose, listener);
 		notifyListeners(SWT.Dispose, event);
 		event.type = SWT.None;
-		text = null;
+		content = null;
 		listener = null;
 	}
 
@@ -782,7 +783,7 @@ public class BasicText extends Composite {
 		if (text == null) {
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
 		}
-		this.text = text;
+		content.setText(text);
 		if (propagate)
 			getRemoteObject().set("text", text);
 	}
@@ -990,7 +991,7 @@ public class BasicText extends Composite {
 	 */
 	public String getText() {
 		checkWidget();
-		return text;
+		return content.getTextRange(0, getCharCount());
 	}
 
 	/**
@@ -1198,5 +1199,100 @@ public class BasicText extends Composite {
 	public int getOffsetAtCursorPosition() {
 		Position position = getCursorPosition();
 		return getOffsetAtPosition(position.row, position.column);
+	}
+	
+	/**
+	 * Gets the number of characters.
+	 *
+	 * @return number of characters in the widget
+	 * @exception SWTException <ul>
+	 *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+	 *    <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
+	 * </ul>
+	 */
+	public int getCharCount() {
+		checkWidget();
+		return content.getCharCount();
+	}
+	
+	/**
+	 * Returns the line at the given line index without delimiters.
+	 * Index 0 is the first line of the content. When there are not
+	 * any lines, getLine(0) is a valid call that answers an empty string.
+	 * <p>
+	 *
+	 * @param lineIndex index of the line to return.
+	 * @return the line text without delimiters
+	 * 
+	 * @exception SWTException <ul>
+	 *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+	 *    <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
+	 * </ul>
+	 * @exception IllegalArgumentException <ul>
+	 *   <li>ERROR_INVALID_RANGE when the line index is outside the valid range (< 0 or >= getLineCount())</li> 
+	 * </ul>
+	 * @since 3.4
+	 */
+	public String getLine(int lineIndex) {
+		checkWidget();
+		if (lineIndex < 0 || 
+			(lineIndex > 0 && lineIndex >= content.getLineCount())) {
+			SWT.error(SWT.ERROR_INVALID_RANGE);		
+		}
+		return content.getLine(lineIndex);
+	}
+	
+	/**
+	 * Returns the line at the specified offset in the text
+	 * where 0 &lt; offset &lt; getCharCount() so that getLineAtOffset(getCharCount())
+	 * returns the line of the insert location.
+	 *
+	 * @param offset offset relative to the start of the content. 
+	 * 	0 <= offset <= getCharCount()
+	 * @return line at the specified offset in the text
+	 * @exception SWTException <ul>
+	 *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+	 *    <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
+	 * </ul>
+	 * @exception IllegalArgumentException <ul>
+	 *   <li>ERROR_INVALID_RANGE when the offset is outside the valid range (< 0 or > getCharCount())</li> 
+	 * </ul>
+	 */
+	public int getLineAtOffset(int offset) {
+		checkWidget();	
+		if (offset < 0 || offset > getCharCount()) {
+			SWT.error(SWT.ERROR_INVALID_RANGE);		
+		}
+		return content.getLineAtOffset(offset);
+	}
+	
+	/** 
+	 * Gets the number of text lines.
+	 *
+	 * @return the number of lines in the widget
+	 * @exception SWTException <ul>
+	 *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+	 *    <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
+	 * </ul>
+	 */
+	public int getLineCount() {
+		checkWidget();
+		return content.getLineCount();
+	}
+	
+	/**
+	 * Returns the line delimiter used for entering new lines by key down
+	 * or paste operation.
+	 *
+	 * @return line delimiter used for entering new lines by key down
+	 * or paste operation.
+	 * @exception SWTException <ul>
+	 *    <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
+	 *    <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
+	 * </ul>
+	 */
+	public String getLineDelimiter() {
+		checkWidget();
+		return content.getLineDelimiter();
 	}
 }

@@ -698,7 +698,24 @@ public String getTextRange(int start, int length) {
 	return buf.toString();
 }
 
-
+/**
+ * Sets the content to text and removes the gap since there are no sensible predictions 
+ * about where the next change will occur.
+ * <p>
+ *
+ * @param text the text
+ */
+public void setText (String text){
+	textStore = text.toCharArray();
+	gapStart = -1;
+	gapEnd = -1;
+	expandExp = 1;
+	indexLines();
+//	StyledTextEvent event = new StyledTextEvent(this);
+//	event.type = ST.TextSet;
+//	event.text = "";
+//	sendTextEvent(event);
+}
 
 /**
  * Deletes text.
