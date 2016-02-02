@@ -124,7 +124,6 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 		super.createPartControl(parent);
 		updateIndex();
 		validateResource();
-		createCompletionProposals(0);
 	}
 
 	@Override
