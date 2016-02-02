@@ -303,12 +303,6 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		setDirty(false);
 	}
 
-	/**
-	 * This is how the framework determines which interfaces we implement. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
 	@SuppressWarnings("rawtypes")
 	@Override
 	public Object getAdapter(Class key) {
@@ -461,6 +455,9 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 				@Override
 				public void keyPressed(KeyEvent e) {
 					//customize in subclasses
+					if ((e.stateMask & SWT.CTRL)==SWT.CTRL) {
+						createCompletionProposals();
+					}
 				}
 			};
 			getWidget().addKeyListener(iKeyListener);
@@ -529,7 +526,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 				
 				@Override
 				public void mouseDown(MouseEvent e) {
-					//createCompletionProposals();
+					//customize in subclasses
 				}
 				
 				@Override
