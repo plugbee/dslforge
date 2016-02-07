@@ -18,7 +18,6 @@ package org.dslforge.texteditor.actions;
 import org.dslforge.styledtext.ITextSelection;
 import org.dslforge.styledtext.TextSelectionListenerAction;
 import org.dslforge.texteditor.BasicTextEditor;
-import org.dslforge.texteditor.IBasicTextEditor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.actions.ActionFactory;
 
