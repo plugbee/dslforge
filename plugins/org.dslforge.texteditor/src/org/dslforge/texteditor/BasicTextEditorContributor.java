@@ -15,7 +15,6 @@
  */
 package org.dslforge.texteditor;
 
-import org.dslforge.styledtext.IBasicTextEditor;
 import org.dslforge.styledtext.ITextSelection;
 import org.dslforge.styledtext.TextSelection;
 import org.dslforge.texteditor.actions.CopyAction;

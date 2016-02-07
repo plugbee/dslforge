@@ -13,6 +13,7 @@ package org.dslforge.styledtext;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.internal.Compatibility;
 
+//copied from Styled Text RCP plugin
 @SuppressWarnings("restriction")
 class DefaultContent {
 	private final static String LineDelimiter = System.getProperty("line.separator");

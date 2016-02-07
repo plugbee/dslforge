@@ -24,6 +24,7 @@ import java.util.List;
 import org.dslforge.styledtext.Annotation;
 import org.dslforge.styledtext.AnnotationType;
 import org.dslforge.styledtext.BasicText;
+import org.dslforge.styledtext.jface.IDocument;
 import org.dslforge.texteditor.BasicTextEditor;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -31,7 +32,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.rap.json.JsonObject;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -92,8 +92,8 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	}
 
 	@Override
-	protected BasicText createWidget(Composite parent, Font font) {
-		BasicText textWidget = new BasicText(parent, SWT.FILL);
+	protected BasicText createTextWidget(Composite parent, int style) {
+		BasicText textWidget = new BasicText(parent, style);
 		GridData textLayoutData = new GridData();
 		textLayoutData.horizontalAlignment = SWT.FILL;
 		textLayoutData.verticalAlignment = SWT.FILL;
@@ -145,7 +145,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 		try {
 			if (!xtextResource.getContents().isEmpty())
 				if (validateSyntax(xtextResource.getContents().get(0), xtextResource)) {
-					String text = getWidget().getText();
+					String text = getViewer().getDocument().get();
 					xtextResource.reparse(text);
 				}
 		} catch (IOException e) {
@@ -178,7 +178,11 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 
 	@Override
 	protected void createCompletionProposals() {
-		createCompletionProposals(getWidget().getOffsetAtCursorPosition());
+		IDocument document = getViewer().getDocument();
+		if (document.get().length()>0) {
+			BasicText textWidget = getViewer().getTextWidget();
+			createCompletionProposals(textWidget.getOffsetAtCursorPosition());	
+		}
 	}
 	
 	@Override
@@ -204,7 +208,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 
 	@Override
 	public void validateResource() {
-		Display display = getWidget().getDisplay();
+		Display display = getViewer().getTextWidget().getDisplay();
 		if (display != null) {
 			display.asyncExec(new Runnable() {
 				@Override
@@ -242,7 +246,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 				annotations.add(new Annotation(convertSeverity(severity), lineNumber, offset, message));
 			}
 		}
-		getWidget().setAnnotations(annotations);
+		getViewer().getTextWidget().setAnnotations(annotations);
 	}
 
 	protected void updateResource(String text) {

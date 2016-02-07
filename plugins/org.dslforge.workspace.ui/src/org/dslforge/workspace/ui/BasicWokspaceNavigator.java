@@ -209,7 +209,6 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 	public IEditorPart openEditor(IWorkbench workbench, IPath path) {
 		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
 		IWorkbenchPage page = workbenchWindow.getActivePage();
-
 		IEditorDescriptor editorDescriptor = EditorRegistry.getInstance().getDefaultEditor(path.lastSegment());
 		if (editorDescriptor == null) {
 			MessageDialog.openError(workbenchWindow.getShell(), "Error",

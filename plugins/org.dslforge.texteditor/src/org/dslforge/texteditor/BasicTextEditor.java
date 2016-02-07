@@ -31,7 +31,6 @@ import java.util.Scanner;
 import org.dslforge.styledtext.Annotation;
 import org.dslforge.styledtext.AnnotationType;
 import org.dslforge.styledtext.BasicText;
-import org.dslforge.styledtext.IBasicTextEditor;
 import org.dslforge.styledtext.IContentAssistListener;
 import org.dslforge.styledtext.ITextChangeListener;
 import org.dslforge.styledtext.ITextModifyListener;
@@ -40,12 +39,15 @@ import org.dslforge.styledtext.TextChangedEvent;
 import org.dslforge.styledtext.TextRange;
 import org.dslforge.styledtext.TextSavedEvent;
 import org.dslforge.styledtext.TextSelection;
+import org.dslforge.styledtext.jface.IDocument;
+import org.dslforge.styledtext.jface.ITextViewer;
+import org.dslforge.styledtext.jface.TextDocument;
+import org.dslforge.styledtext.jface.TextViewer;
 import org.dslforge.texteditor.internal.Activator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
@@ -60,10 +62,7 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.rap.json.JsonObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
@@ -78,6 +77,7 @@ import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -101,14 +101,13 @@ import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-public class BasicTextEditor extends EditorPart implements ISelectionProvider, ISaveablesSource, IBasicTextEditor {
+public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBasicTextEditor {
 
+	private static final String TEXT_FONT = "Tahoma, Geneva, sans-serif";
 	/**
-	 * This editor's text widget.
+	 * This editor's text viewer.
 	 */
-	private BasicText textWidget;
-	private ListenerList listeners = new ListenerList();
-	private ISelection selection;
+	private ITextViewer viewer;
 	private PropertySheetPage propertySheetPage;
 	private IPath filePath;
 	private ArrayList<String> index;
@@ -140,7 +139,8 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 				JsonObject position = (JsonObject) data.get("pos");
 				int row = position.get("row").asInt();
 				int column = position.get("column").asInt();
-				createCompletionProposals(getOffsetAtPosition(row, column));
+				int offset = viewer.getTextWidget().getOffsetAtPosition(row, column);
+				createCompletionProposals(offset);
 				return true;
 			}
 			return false;
@@ -166,11 +166,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		proposalsExample.add("my custom proposal 2");
 		proposalsExample.add("my custom proposal 3");
 		proposalsExample.add("my custom proposal 4");
-		getWidget().setProposals(proposalsExample);
-	}
-
-	protected int getOffsetAtPosition(int row, int column) {
-		return getWidget().getOffsetAtPosition(row, column);
+		viewer.getTextWidget().setProposals(proposalsExample);
 	}
 	
 	MenuDetectListener menuDetectListener = new MenuDetectListener() {
@@ -187,7 +183,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	@SuppressWarnings("serial")
 	protected void initContextMenu() {
 		MenuManager contextMenuManager = new MenuManager("#PopupMenu"); //$NON-NLS-1$
-		Menu menu = contextMenuManager.createContextMenu(getWidget());
+		Menu menu = contextMenuManager.createContextMenu(viewer.getTextWidget());
 		contextMenuManager.setRemoveAllWhenShown(true);
 		contextMenuManager.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager manager) {
@@ -195,8 +191,8 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 			}
 		});
 		contextMenuManager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-		getSite().registerContextMenu(contextMenuManager, this);
-		getWidget().setMenu(menu);
+		getSite().registerContextMenu(contextMenuManager, viewer.getSelectionProvider());
+		viewer.getTextWidget().setMenu(menu);
 	}
 
 	/**
@@ -248,6 +244,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	 * @param actionId
 	 * @return the action with the given id
 	 */
+	@Override
 	public IAction getAction(String actionId) {
 		IEditorActionBarContributor actionBarContributor = ((IEditorSite)getSite()).getActionBarContributor();
 		if (actionBarContributor instanceof BasicTextEditorContributor) {
@@ -276,8 +273,9 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		}
 	}
 
-	private boolean isEditable() {
-		return getWidget().getEditable();
+	@Override
+	public boolean isEditable() {
+		return viewer.isEditable();
 	}
 
 	public BasicTextEditor() {
@@ -286,73 +284,31 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 	@Override
 	public void createPartControl(Composite parent) {
-		Font font = parent.getFont();
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
 		parent.setLayout(gridLayout);
-		this.textWidget = createWidget(parent, font);
+		viewer = createTextViewer(parent, SWT.FILL);
+		IDocument document = createEmptyDocument();
+		viewer.setDocument(document);		
 		addListeners();
 	}
 
-	@Override
-	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
-		setSite(site);
-		setPartName(input.getName());
-		getSite().setSelectionProvider(this);
-		setInput(input);
-		setDirty(false);
+	/**
+	 * Creates this editor's styled text widget
+	 * 
+	 * @param parent
+	 * @param styles
+	 * @return
+	 */
+	protected ITextViewer createTextViewer(Composite parent, int styles) {
+		BasicText textWidget = createTextWidget(parent, styles);
+		return new TextViewer(textWidget);
 	}
 
-	@SuppressWarnings("rawtypes")
-	@Override
-	public Object getAdapter(Class key) {
-		if (key.equals(IPropertySheetPage.class)) {
-			return getPropertySheetPage();
-		}
-		return super.getAdapter(key);
-	}
-
-	private IPropertySheetPage getPropertySheetPage() {
-		propertySheetPage = new PropertySheetPage();
-		propertySheetPage.setPropertySourceProvider(new IPropertySourceProvider() {
-			@Override
-			public IPropertySource getPropertySource(Object object) {
-				if (object instanceof IPathEditorInput)
-					return new BasicTextEditorPropertySource((IPathEditorInput) object);
-				return null;
-			}
-		});
-		return propertySheetPage;
-	}
-
-	@Override
-	public void addSelectionChangedListener(ISelectionChangedListener listener) {
-		listeners.add(listener);
-	}
-
-	@Override
-	public ISelection getSelection() {
-		if (selection == null) {
-			selection = getWidget().getSelection();
-		}
-		return selection;
-	}
-
-	@Override
-	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
-		listeners.remove(listener);
-	}
-
-	@Override
-	public void setSelection(ISelection selection) {
-		propertySheetPage.selectionChanged(this, selection);
-		propertySheetPage.refresh();
-		Object[] list = listeners.getListeners();
-		for (int i = 0; i < list.length; i++)
-			((ISelectionChangedListener) list[i]).selectionChanged(new SelectionChangedEvent(this, selection));
-	}
-
-	protected BasicText createWidget(Composite parent, Font font) {
+	/**
+	 * Creates and configures this editor's styled text widget
+	 */
+	protected BasicText createTextWidget(Composite parent, int styles) {
 		BasicText textWidget = new BasicText(parent, SWT.FILL);
 		GridData textLayoutData = new GridData();
 		textLayoutData.horizontalAlignment = SWT.FILL;
@@ -362,6 +318,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		textWidget.setLayoutData(textLayoutData);
 
 		// set font
+	    Font font = new Font( Display.getCurrent(), new FontData( TEXT_FONT, 14, SWT.NORMAL ) );
 		textWidget.setFont(font);
 
 		// set background color
@@ -385,23 +342,65 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		
 		return textWidget;
 	}
+	
+	
+	@Override
+	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
+		setSite(site);
+		setPartName(input.getName());
+	//	getSite().setSelectionProvider(this);
+		setInput(input);
+		setDirty(false);
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Object getAdapter(Class key) {
+		if (key.equals(IPropertySheetPage.class)) {
+			return getPropertySheetPage();
+		}
+		return super.getAdapter(key);
+	}
+
+	protected IPropertySheetPage getPropertySheetPage() {
+		propertySheetPage = new PropertySheetPage();
+		propertySheetPage.setPropertySourceProvider(new IPropertySourceProvider() {
+			@Override
+			public IPropertySource getPropertySource(Object object) {
+				if (object instanceof IPathEditorInput)
+					return new BasicTextEditorPropertySource((IPathEditorInput) object);
+				return null;
+			}
+		});
+		return propertySheetPage;
+	}
 
 	@Override
 	protected void setInput(IEditorInput input) {
 		super.setInput(input);
 		IPath path=null;
-		loadContentFromFile();
 		if (input instanceof IPathEditorInput)
 			path = ((IPathEditorInput) input).getPath();
 		else if (input instanceof URIEditorInput)
 			path = new Path(((URIEditorInput) input).getURI().toFileString());
 		else
 			throw new UnsupportedOperationException("Unsupported editor input type.");
+		loadContentFromFile();
 		setFilePath(path);
 		firePropertyChange(PROP_INPUT);
 	}
 
-	protected void loadContentFromFile() {
+	/**
+	 * Creates an empty document
+	 */
+	protected IDocument createEmptyDocument() {
+		return new TextDocument();
+	}
+	
+	/**
+	 * Loads the editor text content from file
+	 */
+	protected void loadContentFromFile() {		
 		Display display = Display.getCurrent();
 		if (display != null) {
 			display.asyncExec(new Runnable() {
@@ -441,9 +440,10 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 	@SuppressWarnings("serial")
 	protected void addListeners() {
-		if (getWidget() != null && !getWidget().isDisposed()) {
-
-			getWidget().addTextChangeListener(iTextChangeListener);
+		BasicText textWidget = viewer.getTextWidget();
+		if (textWidget!= null && !textWidget.isDisposed()) {
+			
+			textWidget.addTextChangeListener(iTextChangeListener);
 
 			KeyListener iKeyListener = new KeyListener() {
 
@@ -460,8 +460,8 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 					}
 				}
 			};
-			getWidget().addKeyListener(iKeyListener);
-			getWidget().addTextModifyListener(new ITextModifyListener() {
+			textWidget.addKeyListener(iKeyListener);
+			textWidget.addTextModifyListener(new ITextModifyListener() {
 
 				@Override
 				public void handleTextModified(ModifyEvent event) {
@@ -469,7 +469,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 				}
 			});
 
-			getWidget().addTextSaveListener(new ITextSaveListener() {
+			textWidget.addTextSaveListener(new ITextSaveListener() {
 
 				@Override
 				public void handleTextSaved(TextSavedEvent event) {
@@ -503,7 +503,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 					}
 				}
 			});
-			getWidget().addFocusListener(new FocusListener() {
+			textWidget.addFocusListener(new FocusListener() {
 
 				@Override
 				public void focusLost(FocusEvent event) {
@@ -515,9 +515,9 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 					//customize in subclasses
 				}
 			});
-			getWidget().addMenuDetectListener(menuDetectListener);
-			getWidget().addContentAssistListener(iContentAssistListener);
-			getWidget().addMouseListener(new MouseListener() {
+			textWidget.addMenuDetectListener(menuDetectListener);
+			textWidget.addContentAssistListener(iContentAssistListener);
+			textWidget.addMouseListener(new MouseListener() {
 				
 				@Override
 				public void mouseUp(MouseEvent e) {
@@ -537,8 +537,9 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		}
 	}
 
-	public BasicText getWidget() {
-		return textWidget;
+	@Override
+	public ITextViewer getViewer() {
+		return viewer;
 	}
 
 	protected void setScope() {
@@ -548,27 +549,29 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 	}
 
 	protected void setUrl(String url) {
-		getWidget().setUrl(url);
+		viewer.getTextWidget().setUrl(url);
 	}
 	
 	protected void setText(String text) {
-		getWidget().setText(text);
+		IDocument document = viewer.getDocument();
+		document.set(text);
+		viewer.getTextWidget().setText(text);
 	}
 
 	protected void setValidationStatus(String status) {
-		getWidget().setStatus(status);
+		viewer.getTextWidget().setStatus(status);
 	}
 
 	protected void setAnnotations(List<Annotation> annotations) {
-		getWidget().setAnnotations(annotations);
+		viewer.getTextWidget().setAnnotations(annotations);
 	}
 
 	protected void setScope(List<String> scope) {
-		getWidget().setScope(scope);
+		viewer.getTextWidget().setScope(scope);
 	}
 	
 	protected void setProposals(List<String> proposals) {
-		getWidget().setProposals(proposals);
+		viewer.getTextWidget().setProposals(proposals);
 	}
 
 	@Override
@@ -602,7 +605,7 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 					writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file.getAbsolutePath()),
 							Charset.availableCharsets().get("UTF-8")));
 					progress.worked(5);
-					writer.write(getWidget().getText());
+					writer.write(viewer.getTextWidget().getText());
 					progress.worked(5);
 					writer.close();
 				} catch (IOException e) {
@@ -628,17 +631,10 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 
 	@Override
 	public void dispose() {
-		// dispose widget
-//		if (!getWidget().isDisposed()) {
-//			getWidget().removeTextChangeListener(iTextChangeListener);
-		// getWidget().removeKeyListener(keyListener);
-		// getWidget().removeTextModifyListener(textModifyListener);
-		// getWidget().removeTextSaveListener(textSaveListener);
-		// getWidget().removeFocusListener(focusListener);
-		// getWidget().removeMenuDetectListener(menuDetectListener);
-		// getWidget().removeClientRequestListener(clientRequestlistener);
-		// getWidget().dispose();
-//		}
+		if (viewer!=null && viewer.getTextWidget()!=null) {
+			viewer.getTextWidget().dispose();
+			viewer = null;
+		}
 		super.dispose();
 	}
 
@@ -759,20 +755,22 @@ public class BasicTextEditor extends EditorPart implements ISelectionProvider, I
 		}
 	}
 
-	@Override
 	public void performCopy(TextSelection selection) {
 		if (!selection.isEmpty())
-			getWidget().copy(selection.getText());
+			viewer.getTextWidget().copy(selection.getText());
 	}
 
-	@Override
 	public void performPaste() {
-		getWidget().paste();
+		viewer.getTextWidget().paste();
 	}
 
-	@Override
 	public void performCut(TextSelection selection) {
 		if (!selection.isEmpty())
-			getWidget().cut(selection);
+			viewer.getTextWidget().cut(selection);
+	}
+
+	@Override
+	public ISelectionProvider getSelectionProvider() {
+		return viewer.getSelectionProvider();
 	}
 }

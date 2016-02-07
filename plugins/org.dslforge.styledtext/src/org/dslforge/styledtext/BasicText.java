@@ -96,8 +96,7 @@ public class BasicText extends Composite {
 		/**
 		 * Process StyledText events by invoking the event's handler.
 		 *
-		 * @param the
-		 *            event to handle
+		 * @param e the event to handle
 		 */
 		public void handleEvent(Event e) {
 			switch (e.type) {
@@ -1185,7 +1184,6 @@ public class BasicText extends Composite {
 	public int getOffsetAtPosition(int row, int column) {
 		content.insert(0, getText());
 		int offsetAtLine = content.getOffsetAtLine(row);
-		//System.out.println("[INFO] - widget Text:===========\n" + content.getTextRange(0, getText().length()) + "\n=============");
 		int offset=offsetAtLine + column;
 		System.out.println("[INFO] - [row: " + row + ", column : " + column + "] => offset: "+ offset);
 		return offset;
@@ -1294,5 +1292,23 @@ public class BasicText extends Composite {
 	public String getLineDelimiter() {
 		checkWidget();
 		return content.getLineDelimiter();
+	}
+
+	/**
+	 * Returns whether the given offset is inside a multi byte line delimiter.
+	 * Example: 
+	 * "Line1\r\n" isLineDelimiter(5) == false but isLineDelimiter(6) == true
+	 * 
+	 * @return true if the given offset is inside a multi byte line delimiter.
+	 * false if the given offset is before or after a line delimiter.
+	 */
+	boolean isLineDelimiter(int offset) {
+		int line = content.getLineAtOffset(offset);
+		int lineOffset = content.getOffsetAtLine(line);	
+		int offsetInLine = offset - lineOffset;
+		// offsetInLine will be greater than line length if the line 
+		// delimiter is longer than one character and the offset is set
+		// in between parts of the line delimiter.
+		return offsetInLine > content.getLine(line).length();
 	}
 }
