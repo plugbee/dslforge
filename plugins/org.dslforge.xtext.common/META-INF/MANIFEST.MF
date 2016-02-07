@@ -28,6 +28,7 @@ Export-Package: org.dslforge.xtext.common,
  org.dslforge.xtext.common.internal,
  org.dslforge.xtext.common.registry,
  org.dslforge.xtext.common.scoping,
- org.dslforge.xtext.common.shared
+ org.dslforge.xtext.common.shared,
+ org.eclipse.xtext.ui.editor.contentassist
 Import-Package: org.apache.log4j
 Bundle-Vendor: PlugBee
