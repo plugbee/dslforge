@@ -11,5 +11,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.rap.rwt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.dslforge.styledtext
+Export-Package: org.dslforge.styledtext,
+ org.dslforge.styledtext.jface
 Bundle-ClassPath: .
