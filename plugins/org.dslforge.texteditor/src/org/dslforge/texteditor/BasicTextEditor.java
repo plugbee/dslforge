@@ -103,7 +103,7 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBasicTextEditor {
 
-	private static final String TEXT_FONT = "Tahoma, Geneva, sans-serif";
+	private static final String DEFAULT_TEXT_FONT = "Tahoma, Geneva, sans-serif";
 	/**
 	 * This editor's text viewer.
 	 */
@@ -114,6 +114,10 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	private TextEditorSavable fSavable;
 	private boolean isDirty;
 
+	public BasicTextEditor() {
+		super();
+	}
+	
 	ITextChangeListener iTextChangeListener = new ITextChangeListener() {
 		private static final long serialVersionUID = 1L;
 
@@ -278,10 +282,6 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		return viewer.isEditable();
 	}
 
-	public BasicTextEditor() {
-		super();
-	}
-
 	@Override
 	public void createPartControl(Composite parent) {
 		GridLayout gridLayout = new GridLayout();
@@ -318,7 +318,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		textWidget.setLayoutData(textLayoutData);
 
 		// set font
-	    Font font = new Font( Display.getCurrent(), new FontData( TEXT_FONT, 14, SWT.NORMAL ) );
+	    Font font = new Font( Display.getCurrent(), new FontData( DEFAULT_TEXT_FONT, 14, SWT.NORMAL ) );
 		textWidget.setFont(font);
 
 		// set background color
@@ -348,7 +348,6 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
 		setSite(site);
 		setPartName(input.getName());
-	//	getSite().setSelectionProvider(this);
 		setInput(input);
 		setDirty(false);
 	}
@@ -623,6 +622,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 
 	@Override
 	public void doSaveAs() {
+		//not handled by default
 	}
 
 	@Override
@@ -638,7 +638,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		super.dispose();
 	}
 
-	IWorkbenchWindow getWorkbenchWindow() {
+	public IWorkbenchWindow getWorkbenchWindow() {
 		return PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 	}
 
@@ -692,28 +692,28 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 			fTextEditor = null;
 		}
 
-		/*
+		/**
 		 * @see org.eclipse.ui.Saveable#getName()
 		 */
 		public String getName() {
 			return fEditorInput.getName();
 		}
 
-		/*
+		/**
 		 * @see org.eclipse.ui.Saveable#getToolTipText()
 		 */
 		public String getToolTipText() {
 			return fEditorInput.getToolTipText();
 		}
 
-		/*
+		/**
 		 * @see org.eclipse.ui.Saveable#getImageDescriptor()
 		 */
 		public ImageDescriptor getImageDescriptor() {
 			return fEditorInput.getImageDescriptor();
 		}
 
-		/*
+		/**
 		 * @see org.eclipse.ui.Saveable#doSave(org.eclipse.core.runtime.
 		 * IProgressMonitor)
 		 */
@@ -725,14 +725,14 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 			return fTextEditor.isDirty();
 		}
 
-		/*
+		/**
 		 * @see org.eclipse.ui.Saveable#supportsBackgroundSave()
 		 */
 		public boolean supportsBackgroundSave() {
 			return true;
 		}
 
-		/*
+		/**
 		 * @see org.eclipse.ui.Saveable#hashCode()
 		 */
 		public int hashCode() {
@@ -743,7 +743,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 			return hash * PRIME + Activator.PLUGIN_ID.hashCode();
 		}
 
-		/*
+		/**
 		 * @see org.eclipse.ui.Saveable#equals(java.lang.Object)
 		 */
 		public boolean equals(Object obj) {
@@ -755,15 +755,24 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		}
 	}
 
+	/**
+	 * Copy text to clip board from the given selection
+	 */
 	public void performCopy(TextSelection selection) {
 		if (!selection.isEmpty())
 			viewer.getTextWidget().copy(selection.getText());
 	}
 
+	/**
+	 * Paste text from clip board at the current caret position
+	 */
 	public void performPaste() {
 		viewer.getTextWidget().paste();
 	}
 
+	/**
+	 * Cut text delimited by the given selection
+	 */
 	public void performCut(TextSelection selection) {
 		if (!selection.isEmpty())
 			viewer.getTextWidget().cut(selection);
