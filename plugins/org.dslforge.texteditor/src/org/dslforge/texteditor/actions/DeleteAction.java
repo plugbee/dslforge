@@ -15,16 +15,17 @@
  */
 package org.dslforge.texteditor.actions;
 
-import org.dslforge.styledtext.IBasicTextEditor;
 import org.dslforge.styledtext.ITextSelection;
 import org.dslforge.styledtext.TextSelectionListenerAction;
+import org.dslforge.texteditor.BasicTextEditor;
+import org.dslforge.texteditor.IBasicTextEditor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.actions.ActionFactory;
 
 public class DeleteAction extends TextSelectionListenerAction {
 
 	private static final long serialVersionUID = 1L;
-	private IBasicTextEditor activeEditor;
+	private BasicTextEditor activeEditor;
 
 	public DeleteAction(String text) {
 		super(text);
@@ -46,15 +47,15 @@ public class DeleteAction extends TextSelectionListenerAction {
 	}
 
 	public void setActiveWorkbenchPart(IEditorPart activeEditor) {
-		if (activeEditor instanceof IBasicTextEditor)
-			this.setActiveEditor((IBasicTextEditor) activeEditor);
+		if (activeEditor instanceof BasicTextEditor)
+			this.setActiveEditor((BasicTextEditor) activeEditor);
 	}
 
-	public IBasicTextEditor getActiveEditor() {
+	public BasicTextEditor getActiveEditor() {
 		return activeEditor;
 	}
 
-	public void setActiveEditor(IBasicTextEditor activeEditor) {
+	public void setActiveEditor(BasicTextEditor activeEditor) {
 		this.activeEditor = activeEditor;
 	}
 }

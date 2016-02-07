@@ -15,16 +15,16 @@
  */
 package org.dslforge.texteditor.actions;
 
-import org.dslforge.styledtext.IBasicTextEditor;
 import org.dslforge.styledtext.ITextSelection;
 import org.dslforge.styledtext.TextSelectionListenerAction;
+import org.dslforge.texteditor.BasicTextEditor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.actions.ActionFactory;
 
 public class PasteAction extends TextSelectionListenerAction {
 
 	private static final long serialVersionUID = 1L;
-	private IBasicTextEditor activeEditor;
+	private BasicTextEditor activeEditor;
 
 	public PasteAction(String text) {
 		super(text);
@@ -46,7 +46,7 @@ public class PasteAction extends TextSelectionListenerAction {
 	}
 
 	public void setActiveWorkbenchPart(IEditorPart activeEditor) {
-		if (activeEditor instanceof IBasicTextEditor)
-			this.activeEditor = (IBasicTextEditor) activeEditor;
+		if (activeEditor instanceof BasicTextEditor)
+			this.activeEditor = (BasicTextEditor) activeEditor;
 	}
 }
