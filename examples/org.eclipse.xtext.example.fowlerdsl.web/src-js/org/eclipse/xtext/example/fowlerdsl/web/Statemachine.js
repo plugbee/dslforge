@@ -26,21 +26,23 @@
 			},
 		
 			onCompletionRequest : function(pos, prefix, callback) {
-				var remoteObject = rap.getRemoteObject(this);
-				if (remoteObject) {
-					remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
-				}	
-				var proposals = this._proposals==null?[]:this._proposals;		
-		        var wordList = Object.keys(proposals);
-		        callback(null, wordList.map(function(word) {
-		            return {
-		            	iconClass: " " + typeToIcon(word[0]),
-		                name: word,
-		                value: proposals[word],
-		                score: 1,
-		                meta: "[" + "keyword" + "]"
-		            };
-		        }));
+				if (this.isFocused) {
+					var remoteObject = rap.getRemoteObject(this);
+					if (remoteObject) {
+						remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
+					}	
+					var proposals = this._proposals==null?[]:this._proposals;		
+			        var wordList = Object.keys(proposals);
+			        callback(null, wordList.map(function(word) {
+			            return {
+			            	iconClass: " " + typeToIcon(word[0]),
+			                name: word,
+			                value: proposals[word],
+			                score: 1,
+			                meta: "[" + "keyword" + "]"
+			            };
+			        }));	
+				}
 			},
 			
 			setProposals : function(proposals) {

@@ -6,7 +6,6 @@ package org.eclipse.xtext.example.fowlerdsl.web.editor;
 import org.dslforge.styledtext.BasicText;
 import org.dslforge.xtext.common.BasicXtextEditor;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.xtext.example.fowlerdsl.web.editor.widget.Statemachine;
@@ -21,15 +20,14 @@ public abstract class AbstractStatemachineEditor extends BasicXtextEditor {
 	}
 	
 	@Override
-	protected BasicText createWidget(Composite parent, Font font) {
-		Statemachine statemachineWidget = new Statemachine(parent, SWT.FILL);
+	protected BasicText createTextWidget(Composite parent, int styles) {
+		Statemachine statemachineWidget = new Statemachine(parent, styles);
 		GridData textLayoutData = new GridData();
 		textLayoutData.horizontalAlignment = SWT.FILL;
 		textLayoutData.verticalAlignment = SWT.FILL;
 		textLayoutData.grabExcessHorizontalSpace = true;
 		textLayoutData.grabExcessVerticalSpace = true;
 		statemachineWidget.setLayoutData(textLayoutData);
-		statemachineWidget.setFont(font);
 		statemachineWidget.setEditable(true);
 		return statemachineWidget;
 	}

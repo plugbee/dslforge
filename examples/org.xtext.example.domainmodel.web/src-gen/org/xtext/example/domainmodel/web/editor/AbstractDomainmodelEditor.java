@@ -6,7 +6,6 @@ package org.xtext.example.domainmodel.web.editor;
 import org.dslforge.styledtext.BasicText;
 import org.dslforge.xtext.common.BasicXtextEditor;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.xtext.example.domainmodel.web.editor.widget.Domainmodel;
@@ -21,15 +20,14 @@ public abstract class AbstractDomainmodelEditor extends BasicXtextEditor {
 	}
 	
 	@Override
-	protected BasicText createWidget(Composite parent, Font font) {
-		Domainmodel domainmodelWidget = new Domainmodel(parent, SWT.FILL);
+	protected BasicText createTextWidget(Composite parent, int styles) {
+		Domainmodel domainmodelWidget = new Domainmodel(parent, styles);
 		GridData textLayoutData = new GridData();
 		textLayoutData.horizontalAlignment = SWT.FILL;
 		textLayoutData.verticalAlignment = SWT.FILL;
 		textLayoutData.grabExcessHorizontalSpace = true;
 		textLayoutData.grabExcessVerticalSpace = true;
 		domainmodelWidget.setLayoutData(textLayoutData);
-		domainmodelWidget.setFont(font);
 		domainmodelWidget.setEditable(true);
 		return domainmodelWidget;
 	}

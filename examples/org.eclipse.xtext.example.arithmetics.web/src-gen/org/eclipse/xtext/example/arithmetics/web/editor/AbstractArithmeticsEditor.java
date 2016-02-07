@@ -6,7 +6,6 @@ package org.eclipse.xtext.example.arithmetics.web.editor;
 import org.dslforge.styledtext.BasicText;
 import org.dslforge.xtext.common.BasicXtextEditor;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.xtext.example.arithmetics.web.editor.widget.Arithmetics;
@@ -21,15 +20,14 @@ public abstract class AbstractArithmeticsEditor extends BasicXtextEditor {
 	}
 	
 	@Override
-	protected BasicText createWidget(Composite parent, Font font) {
-		Arithmetics arithmeticsWidget = new Arithmetics(parent, SWT.FILL);
+	protected BasicText createTextWidget(Composite parent, int styles) {
+		Arithmetics arithmeticsWidget = new Arithmetics(parent, styles);
 		GridData textLayoutData = new GridData();
 		textLayoutData.horizontalAlignment = SWT.FILL;
 		textLayoutData.verticalAlignment = SWT.FILL;
 		textLayoutData.grabExcessHorizontalSpace = true;
 		textLayoutData.grabExcessVerticalSpace = true;
 		arithmeticsWidget.setLayoutData(textLayoutData);
-		arithmeticsWidget.setFont(font);
 		arithmeticsWidget.setEditable(true);
 		return arithmeticsWidget;
 	}
