@@ -1,15 +1,7 @@
-/*******************************************************************************
- * Copyright (c) 2009 itemis AG (http://www.itemis.eu) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.eclipse.xtext.ui.editor.contentassist;
 
 import java.util.Arrays;
 
-import org.dslforge.styledtext.BasicText;
 import org.dslforge.styledtext.jface.ICompletionProposal;
 import org.dslforge.styledtext.jface.IContentAssistProcessor;
 import org.dslforge.styledtext.jface.ITextViewer;
@@ -17,9 +9,13 @@ import org.eclipse.xtext.resource.XtextResource;
 
 import com.google.inject.Inject;
 
-/**
- * @author Sebastian Zarnekow - Initial contribution and API
- */
+//The original code of this class comes from org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor 
+//The code has been slightly modified to deal with the following constraints:
+//- no injection for ITemplateProposalProvider
+//- no injection for IContextInformationProvider
+//- no injection for IXtextDocument
+//- no injection for ICompletionProposalPostProcessor
+
 public class XtextContentAssistProcessor implements IContentAssistProcessor, CompletionProposalComputer.State {
 	
 	@Inject
@@ -35,18 +31,16 @@ public class XtextContentAssistProcessor implements IContentAssistProcessor, Com
 
 	@Override
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer, int offset) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException("Unhandled operation");
 	}
 	
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer, XtextResource resource, int offset) {
-		if (viewer==null)
-			this.viewer = viewer;
+		this.viewer = viewer;
 		if (contentProposalProvider == null)
 			return null;
 		ICompletionProposal[] result = null;
 		try {
-			CompletionProposalComputer completionProposalComputer = createCompletionProposalComputer(getViewer(), resource, offset);
+			CompletionProposalComputer completionProposalComputer = createCompletionProposalComputer(getViewer(), offset);
 			result = completionProposalComputer.exec(resource);
 			Arrays.sort(result, completionProposalComparator);
 		} catch (Exception e) {
@@ -55,7 +49,7 @@ public class XtextContentAssistProcessor implements IContentAssistProcessor, Com
 		return result;
 	} 
 
-	public CompletionProposalComputer createCompletionProposalComputer(ITextViewer viewer, XtextResource resource, int offset) {
+	public CompletionProposalComputer createCompletionProposalComputer(ITextViewer viewer, int offset) {
 		this.viewer = viewer;
 		return new CompletionProposalComputer(this, offset);
 	}

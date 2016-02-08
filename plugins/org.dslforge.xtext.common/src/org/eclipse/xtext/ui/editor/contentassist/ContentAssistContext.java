@@ -9,7 +9,6 @@ package org.eclipse.xtext.ui.editor.contentassist;
 
 import java.util.List;
 
-import org.dslforge.styledtext.BasicText;
 import org.dslforge.styledtext.jface.IDocument;
 import org.dslforge.styledtext.jface.ITextViewer;
 import org.dslforge.styledtext.jface.Region;

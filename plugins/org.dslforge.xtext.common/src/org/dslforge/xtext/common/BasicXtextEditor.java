@@ -73,19 +73,19 @@ import com.google.inject.Injector;
 public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEditor {
 
 	@Inject
-	private Injector injector;
+	protected Injector injector;
 
 	@Inject
-	private IXtextResourceFactory xtextResourceFactory;
+	protected IXtextResourceFactory xtextResourceFactory;
 
-	private XtextResource xtextResource;
+	protected XtextResource xtextResource;
 
-	private Iterable<IEObjectDescription> iObjectDescriptions;
+	protected Iterable<IEObjectDescription> iObjectDescriptions;
 
-	private String languageName;
+	protected String languageName;
 
 	@Inject
-	private IResourceDescription.Manager descriptionManager;
+	protected IResourceDescription.Manager descriptionManager;
 
 	public BasicXtextEditor() {
 		super();
@@ -216,9 +216,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 					IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider().getResourceValidator();
 					try {
 						List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY, CancelIndicator.NullImpl);
-						if (!issues.isEmpty()) {
-							createAnnotations(issues);
-						}
+						createAnnotations(issues);
 					} catch (Exception ex) {
 						if (ex instanceof RuntimeException) {
 							System.err.println(ex.getMessage());

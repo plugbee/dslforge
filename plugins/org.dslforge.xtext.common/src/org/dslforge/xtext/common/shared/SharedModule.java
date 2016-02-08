@@ -37,5 +37,6 @@ public class SharedModule  extends AbstractGenericModule{
 		 binder.bind(org.eclipse.xtext.resource.IContainer.Manager.class).to(BasicTextContainerManager.class);
 		 binder.bind(IXtextResourceFactory.class).to(XtextResourceFactory.class);
 		 binder.bind(IXtextResourceSetProvider.class).to(XtextResourceSetProvider.class);
+		 
 	}
 }
