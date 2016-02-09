@@ -5,21 +5,13 @@ Bundle-SymbolicName: org.dslforge.texteditor;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.dslforge.texteditor.internal.Activator
 Require-Bundle: org.eclipse.rap.ui,
- org.eclipse.core.runtime,
- org.eclipse.osgi,
- com.google.inject,
- org.eclipse.rap.rwt,
  org.eclipse.rap.ui.views,
- org.eclipse.rap.ui.workbench,
- org.eclipse.rap.jface,
- org.eclipse.equinox.registry,
  org.dslforge.styledtext,
- org.eclipse.emf.rap.common.ui,
- org.eclipse.emf.common
+ org.eclipse.emf.common,
+ org.eclipse.emf.rap.common.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.texteditor,
  org.dslforge.texteditor.actions,
  org.dslforge.texteditor.internal
-Import-Package: org.apache.log4j
 Bundle-Vendor: PlugBee

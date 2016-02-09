@@ -5,10 +5,7 @@ Bundle-SymbolicName: org.dslforge.styledtext;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.dslforge.styledtext.internal.Activator
 Bundle-Vendor: PlugBee
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.rap.ui,
- org.eclipse.rap.ui.views,
- org.eclipse.rap.rwt
+Require-Bundle: org.eclipse.rap.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.styledtext,

@@ -4,22 +4,11 @@ Bundle-Name: DSLFORGE RAP Xtext Generator Ui
 Bundle-SymbolicName: org.dslforge.xtext.generator.ui;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.dslforge.xtext.generator.ui.internal.Activator
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.ui,
- org.eclipse.core.resources,
- com.google.inject,
- com.google.guava,
- org.eclipse.emf.common,
- org.eclipse.xtext.generator,
+Require-Bundle: org.eclipse.xtext.generator,
  org.eclipse.ui.ide,
- org.eclipse.xtext,
  org.eclipse.xtext.ui,
- org.eclipse.swt,
- org.eclipse.jface,
  org.eclipse.jdt.core,
- org.eclipse.ui.workbench,
  org.dslforge.xtext.generator,
- org.eclipse.pde.ui,
  org.dslforge.antlr
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

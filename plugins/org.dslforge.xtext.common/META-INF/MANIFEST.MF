@@ -4,23 +4,15 @@ Bundle-Name: Eclipse RAP Xtext Integration
 Bundle-SymbolicName: org.dslforge.xtext.common;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.dslforge.xtext.common.internal.Activator
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.rap.ui,
- org.eclipse.osgi,
- com.google.inject,
- org.eclipse.rap.rwt,
- org.eclipse.rap.ui.views,
- org.eclipse.rap.ui.navigator,
- org.eclipse.emf.rap.common.ui,
+Require-Bundle: org.eclipse.rap.ui,
+ org.eclipse.emf.rap.edit.ui,
  org.dslforge.texteditor,
  org.dslforge.styledtext,
- org.eclipse.xtext,
- org.eclipse.xtext.xbase.lib,
- com.google.guava,
- org.eclipse.emf.ecore,
- org.dslforge.workspace.ui,
  org.dslforge.workspace,
- org.eclipse.emf.rap.edit.ui
+ org.dslforge.workspace.ui,
+ org.eclipse.xtext,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.xtext.common,
@@ -30,5 +22,6 @@ Export-Package: org.dslforge.xtext.common,
  org.dslforge.xtext.common.scoping,
  org.dslforge.xtext.common.shared,
  org.eclipse.xtext.ui.editor.contentassist
-Import-Package: org.apache.log4j
+Import-Package: javax.persistence,
+ org.apache.log4j
 Bundle-Vendor: PlugBee
