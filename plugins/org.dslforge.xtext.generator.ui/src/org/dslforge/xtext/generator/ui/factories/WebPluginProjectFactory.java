@@ -93,8 +93,7 @@ public class WebPluginProjectFactory extends PluginProjectFactory implements IWe
 		content.append("bin.includes = META-INF/,\\\n");
 		content.append("               .,\\\n");
 		content.append("               plugin.xml,\\");
-		content.append("			   src-js/\n");
-		content.append("               icons/");
+		content.append("			   src-js/");
 		createFile("build.properties", project, content.toString(), progressMonitor);
 	}
 	
@@ -109,6 +108,9 @@ public class WebPluginProjectFactory extends PluginProjectFactory implements IWe
 		content.append("         point=\"org.eclipse.rap.ui.resources\">\n");
 		content.append("      <resource\n");
 		content.append("          class=\"" + project.getName() + ".editor.widget." + grammarShortName + "Resource\">\n");
+		content.append("		<dependsOn\n");
+		content.append("			resourceId=\"org.dslforge.styledtext.basictext\">\n");
+		content.append("		</dependsOn>\n");
 		content.append("      </resource>\n");
 		content.append("   </extension>\n");
 		content.append("   <extension\n");

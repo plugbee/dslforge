@@ -12,7 +12,7 @@ package org.eclipse.xtext.ui.editor.contentassist;
  */
 public interface LexerUIBindings {
 
-	String CONTENT_ASSIST = "org.dslforge.xtext.common.contentassist.Lexer.CONTENT_ASSIST"; //$NON-NLS-1$
-	String HIGHLIGHTING = "org.dslforge.xtext.common.contentassist.Lexer.HIGHLIGHTING"; //$NON-NLS-1$
+	String CONTENT_ASSIST = "org.eclipse.xtext.ui.editor.contentassist.Lexer.CONTENT_ASSIST"; //$NON-NLS-1$
+	String HIGHLIGHTING = "org.eclipse.xtext.ui.editor.contentassist.Lexer.HIGHLIGHTING"; //$NON-NLS-1$
 	
 }

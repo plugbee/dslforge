@@ -191,7 +191,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 		SafeRunnable.run(new SafeRunnable() {
 			private static final long serialVersionUID = 1L;
 			public void run() {
-				System.out.println("[INFO] - completing proposals at offset " + offset);
+//				System.out.println("[INFO] - completing proposals at offset " + offset);
 //				CompletionProposalComputer completionProposalComputer = contentAssistProcessor.createCompletionProposalComputer(getWidget(), xtextResource, offset);
 //				ICompletionProposal[] computedCompletionProposals = completionProposalComputer.exec(xtextResource);
 //				List<String> proposals = Lists.transform(Arrays.asList(computedCompletionProposals), new Function<ICompletionProposal, String>() {

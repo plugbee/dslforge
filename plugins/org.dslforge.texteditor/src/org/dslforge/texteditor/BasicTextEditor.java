@@ -165,12 +165,12 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	 */
 	protected void createCompletionProposals(int offsetAtPosition) {
 		//example
-		List<String> proposalsExample = new ArrayList<String>();
-		proposalsExample.add("my custom proposal 1");
-		proposalsExample.add("my custom proposal 2");
-		proposalsExample.add("my custom proposal 3");
-		proposalsExample.add("my custom proposal 4");
-		viewer.getTextWidget().setProposals(proposalsExample);
+//		List<String> proposalsExample = new ArrayList<String>();
+//		proposalsExample.add("my custom proposal 1");
+//		proposalsExample.add("my custom proposal 2");
+//		proposalsExample.add("my custom proposal 3");
+//		proposalsExample.add("my custom proposal 4");
+//		viewer.getTextWidget().setProposals(proposalsExample);
 	}
 	
 	MenuDetectListener menuDetectListener = new MenuDetectListener() {

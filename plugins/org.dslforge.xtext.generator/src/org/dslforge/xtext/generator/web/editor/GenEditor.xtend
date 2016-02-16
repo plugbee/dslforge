@@ -48,7 +48,6 @@ package «projectName».editor;
 import org.dslforge.styledtext.BasicText;
 import org.dslforge.xtext.common.BasicXtextEditor;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import «projectName».editor.widget.«grammarShortName»;
@@ -63,15 +62,14 @@ public abstract class Abstract«grammarShortName»Editor extends BasicXtextEditor 
 	}
 	
 	@Override
-	protected BasicText createWidget(Composite parent, Font font) {
-		«grammarShortName» «grammarShortName.toFirstLower»Widget = new «grammarShortName»(parent, SWT.FILL);
+	protected BasicText createTextWidget(Composite parent, int styles) {
+		«grammarShortName» «grammarShortName.toFirstLower»Widget = new «grammarShortName»(parent, styles);
 		GridData textLayoutData = new GridData();
 		textLayoutData.horizontalAlignment = SWT.FILL;
 		textLayoutData.verticalAlignment = SWT.FILL;
 		textLayoutData.grabExcessHorizontalSpace = true;
 		textLayoutData.grabExcessVerticalSpace = true;
 		«grammarShortName.toFirstLower»Widget.setLayoutData(textLayoutData);
-		«grammarShortName.toFirstLower»Widget.setFont(font);
 		«grammarShortName.toFirstLower»Widget.setEditable(true);
 		return «grammarShortName.toFirstLower»Widget;
 	}

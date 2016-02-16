@@ -28,7 +28,7 @@ public final class BasicTextResource implements IResource {
   }
 
   public String getLocation() {
-    return "src-js/org/dslforge/styledtext/BasicText.js"; //$NON-NLS-1$
+    return "org/dslforge/styledtext/BasicText.js"; //$NON-NLS-1$
   }
   
   public boolean isExternal() {
