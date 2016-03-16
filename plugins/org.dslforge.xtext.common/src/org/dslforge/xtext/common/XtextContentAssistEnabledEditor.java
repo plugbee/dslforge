@@ -60,9 +60,10 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 	@Override
 	protected void handleTextChanged(JsonObject object) {
 		int offset = object.get("offset") != null ? object.get("offset").asInt() : 0;
-		String value = object.get("value") != null ? object.get("value").asString() : null;
+		String value = object.get("value") != null ? object.get("value").asString() : null;	
 		if (value != null) {
 			try {
+				setText(value);
 				ReplaceRegion replaceRegionToBeProcessed = new ReplaceRegion(offset, value.length(), value);
 				xtextResource.reparse(replaceRegionToBeProcessed.getText());
 			} catch (IOException e) {
@@ -99,6 +100,7 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 		IDocument document = getViewer().getDocument();
 		if (document.get().length()>0) {
 			BasicText textWidget = getViewer().getTextWidget();
+			textWidget.setText(document.get());
 			createCompletionProposals(textWidget.getOffsetAtCursorPosition());	
 		}
 	}
