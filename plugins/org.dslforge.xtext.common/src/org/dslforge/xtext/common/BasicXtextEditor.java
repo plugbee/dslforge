@@ -123,7 +123,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 		updateIndex();
-		validateResource();
+		//validateResource();
 	}
 
 	@Override
@@ -208,23 +208,39 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 
 	@Override
 	public void validateResource() {
-		Display display = getViewer().getTextWidget().getDisplay();
-		if (display != null) {
-			display.asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider().getResourceValidator();
-					try {
-						List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY, CancelIndicator.NullImpl);
-						createAnnotations(issues);
-					} catch (Exception ex) {
-						if (ex instanceof RuntimeException) {
-							System.err.println(ex.getMessage());
-						}
+		SafeRunnable.run(new SafeRunnable() {
+			private static final long serialVersionUID = 1L;
+			public void run() {
+				IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider().getResourceValidator();
+				try {
+					List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY, CancelIndicator.NullImpl);
+					createAnnotations(issues);
+				} catch (Exception ex) {
+					if (ex instanceof RuntimeException) {
+						System.err.println(ex.getMessage());
 					}
 				}
-			});
-		}
+			}
+		});
+		
+		
+//		Display display = getViewer().getTextWidget().getDisplay();
+//		if (display != null) {
+//			display.asyncExec(new Runnable() {
+//				@Override
+//				public void run() {
+//					IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider().getResourceValidator();
+//					try {
+//						List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY, CancelIndicator.NullImpl);
+//						createAnnotations(issues);
+//					} catch (Exception ex) {
+//						if (ex instanceof RuntimeException) {
+//							System.err.println(ex.getMessage());
+//						}
+//					}
+//				}
+//			});
+//		}
 	}
 	
 	/**
