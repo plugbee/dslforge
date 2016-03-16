@@ -91,6 +91,7 @@ public class GenerateWebPluginProjectOperation extends GenerateProjectOperation 
 				"org.eclipse.emf.ecore",
 				"com.google.inject",
 				"org.eclipse.xtext", 
+				"org.eclipse.xtend.lib",
 				"org.dslforge.workspace",
 				"org.dslforge.xtext.common",
 				"org.dslforge.texteditor",
@@ -113,6 +114,7 @@ public class GenerateWebPluginProjectOperation extends GenerateProjectOperation 
 		SubMonitor progress = SubMonitor.convert(monitor, 10);
 		final EditorType editorType = (EditorType)settings.get("EditorType");
 		final IFile grammarFile = (IFile) settings.get("Grammar");
+		final boolean isServerSideContentAssist = (Boolean) settings.get("ServerSideContentAssist");
 		try {
 			EObject root = loadGrammar(grammarFile, progress.newChild(1));
 			if (root!=null && root instanceof Grammar) {
@@ -122,9 +124,15 @@ public class GenerateWebPluginProjectOperation extends GenerateProjectOperation 
 					throw new OperationCanceledException();
 				setOutputs(project);
 				setEditorType(editorType);
+				setServerSideContentAssist(isServerSideContentAssist);				
 				if (progress.isCanceled())
 					throw new OperationCanceledException();
 				doGenerate(project, progress.newChild(5));
+//				try {
+//					project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+//				} catch (CoreException ex) {
+//					ex.printStackTrace();
+//				}
 			}	
 		} catch(OperationCanceledException ex) {
 			//do noting for now, forbid propagating exception
@@ -193,12 +201,21 @@ public class GenerateWebPluginProjectOperation extends GenerateProjectOperation 
 
 	private ProjectFactory createWebPluginProjectFactory() {
 		WebPluginProjectFactory factory = new WebPluginProjectFactory(grammar);
+		
+		boolean isServerSideContentAssist = (Boolean) settings.get("ServerSideContentAssist");
+		
 		factory.addBuilderIds(getBuilderIDs());
+		if(isServerSideContentAssist)
+			factory.addBuilderIds("org.eclipse.xtext.ui.shared.xtextBuilder");
+		
 		factory.addImportedPackages(getImportedPackages());
 		factory.addFolders(getAllFolders());
 		List<String> requiredBundles = getProjectRequiredBundles();
 		factory.setProjectName(GeneratorUtil.getProjectName(grammar));
 		factory.addProjectNatures(getProjectNatures());
+		
+		if(isServerSideContentAssist)
+			factory.addProjectNatures("org.eclipse.xtext.ui.shared.xtextNature");
 		factory.addRequiredBundles(requiredBundles);
 		factory.setLocation(getProjectLocation());
 		factory.setProjectDefaultCharset(Charsets.UTF_8.name());
@@ -220,6 +237,12 @@ public class GenerateWebPluginProjectOperation extends GenerateProjectOperation 
 	private void setEditorType(EditorType value) {
 		if (projectGenerator instanceof WebProjectGenerator) {
 			((WebProjectGenerator)projectGenerator).setEditorType(value);
+		}
+	}
+	
+	private void setServerSideContentAssist(boolean value) {
+		if (projectGenerator instanceof WebProjectGenerator) {
+			((WebProjectGenerator)projectGenerator).setServerSideContentAssist(value);
 		}
 	}
 

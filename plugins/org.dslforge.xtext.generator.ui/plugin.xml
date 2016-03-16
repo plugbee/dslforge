@@ -19,6 +19,7 @@
                   name="separator">
             </separator>
          </menu>
+         <!--
          <action
                class="org.dslforge.xtext.generator.ui.actions.GenerateXtextRAPEditorAction" 
                enablesFor="1"
@@ -31,6 +32,14 @@
                enablesFor="1"
                id="org.dslforge.xtext.generator.contribution.action.ace"
                label="Generate ACE Editor"
+               menubarPath="org.dslforge.xtext.generator.contribution.menu.file/group">
+         </action>
+         -->
+         <action
+               class="org.dslforge.xtext.generator.ui.actions.GenerateWebEditorAction" 
+               enablesFor="1"
+               id="org.dslforge.xtext.generator.contribution.action.generic"
+               label="Generate Web Editor"
                menubarPath="org.dslforge.xtext.generator.contribution.menu.file/group">
          </action>
       </objectContribution>

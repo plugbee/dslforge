@@ -32,7 +32,8 @@ public class WebProjectGeneratorWizardPage extends WizardPage {
 	
 	private String initialPath;    
 	private Button generateAceEditorButton;	
-	private Button generateRAPXtextEditorButton;	
+	private Button generateBasicXtextEditorButton;	
+	private Button generateXtextContentAssistEnabledEditor;	
 	
 	protected WebProjectGeneratorWizardPage(String pageName) {
 		super(pageName);
@@ -66,8 +67,8 @@ public class WebProjectGeneratorWizardPage extends WizardPage {
 	
 	private void createGeneratorOptions(final Composite workArea) {
 		
-	   Group group = new Group( workArea, SWT.NONE );
-	   group.setLayout( new GridLayout() );
+	   Group group = new Group(workArea, SWT.NONE);
+	   group.setLayout(new GridLayout());
 	   group.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 	   group.setText( "Select the type of web integration" );
 
@@ -102,15 +103,15 @@ public class WebProjectGeneratorWizardPage extends WizardPage {
 			});	
 			Label label = new Label(optionComposite, SWT.NONE);
 			label.setLayoutData( new GridData( 300, SWT.DEFAULT ) );
-			label.setText("&Generate ACE editor");
+			label.setText("&Standalone ANTLR ACE Editor");
 	   
-			// Generate RAP Xtext Editor option
-			generateRAPXtextEditorButton = new Button(optionComposite, SWT.RADIO);
-			generateRAPXtextEditorButton.setSelection(false);
-			generateRAPXtextEditorButton.addSelectionListener(new SelectionListener() {		
+			// Generate RAP Xtext Editor
+			generateBasicXtextEditorButton = new Button(optionComposite, SWT.RADIO);
+			generateBasicXtextEditorButton.setSelection(false);
+			generateBasicXtextEditorButton.addSelectionListener(new SelectionListener() {		
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					boolean selection = generateRAPXtextEditorButton.getSelection();
+					boolean selection = generateBasicXtextEditorButton.getSelection();
 					if (selection) {
 //						generatorResourceField.setEnabled(true);
 //						browseFileSystem.setEnabled(true);
@@ -126,7 +127,33 @@ public class WebProjectGeneratorWizardPage extends WizardPage {
 			});	
 			label = new Label(optionComposite, SWT.NONE);
 			label.setLayoutData( new GridData( 300, SWT.DEFAULT ) );
-			label.setText("&Generate Xtext RAP editor");
+			label.setText("&Basic Xtext RAP Editor");
+			
+			
+			// Generate RAP Xtext Editor with Xtext Content-Assist (experimental)
+			generateXtextContentAssistEnabledEditor = new Button(optionComposite, SWT.RADIO);
+			generateXtextContentAssistEnabledEditor.setSelection(false);
+			generateXtextContentAssistEnabledEditor.addSelectionListener(new SelectionListener() {		
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					boolean selection = generateXtextContentAssistEnabledEditor.getSelection();
+					if (selection) {
+//						generatorResourceField.setEnabled(true);
+//						browseFileSystem.setEnabled(true);
+					} else {
+//						generatorResourceField.setEnabled(false);
+//						browseFileSystem.setEnabled(false);
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				}
+			});	
+			label = new Label(optionComposite, SWT.NONE);
+			label.setLayoutData( new GridData( 300, SWT.DEFAULT ) );
+			label.setText("&Xtext Content Assist-Enabled RAP Editor");
+			
 	}
 
 	private void restoreWidgetValues() {			
@@ -134,8 +161,8 @@ public class WebProjectGeneratorWizardPage extends WizardPage {
 		if (settings != null) {
 			boolean genAceEditorValue = settings.getBoolean(generateAceEditorButton.getText());
 			generateAceEditorButton.setSelection(genAceEditorValue);
-			boolean generateRAPXtextEditorValue= settings.getBoolean(generateRAPXtextEditorButton.getText());
-			generateRAPXtextEditorButton.setSelection(generateRAPXtextEditorValue);		
+			boolean generateRAPXtextEditorValue= settings.getBoolean(generateBasicXtextEditorButton.getText());
+			generateBasicXtextEditorButton.setSelection(generateRAPXtextEditorValue);		
 		}
 	}
 
@@ -143,7 +170,7 @@ public class WebProjectGeneratorWizardPage extends WizardPage {
 		IDialogSettings settings = getDialogSettings();
 		if (settings != null) {
 			settings.put(generateAceEditorButton.getText(), generateAceEditorButton.getSelection());
-			settings.put(generateRAPXtextEditorButton.getText(), generateRAPXtextEditorButton.getSelection());		
+			settings.put(generateBasicXtextEditorButton.getText(), generateBasicXtextEditorButton.getSelection());		
 		}
 	}
 
@@ -151,5 +178,9 @@ public class WebProjectGeneratorWizardPage extends WizardPage {
 		if (generateAceEditorButton.getSelection())
 			return EditorType.ACE;
 		return EditorType.RAP;
+	}
+	
+	public boolean isServerSideContentAssistEnabled() {
+		return generateXtextContentAssistEnabledEditor.getSelection();
 	}
 }

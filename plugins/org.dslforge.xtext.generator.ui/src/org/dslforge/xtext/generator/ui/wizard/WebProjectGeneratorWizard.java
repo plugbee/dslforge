@@ -42,7 +42,7 @@ public class WebProjectGeneratorWizard extends Wizard {
 	public void addPages() {
 		page = new WebProjectGeneratorWizardPage("GeneratorPreferences");
 		page.setTitle("Generator Preferences");
-		page.setDescription("Configure web application options");
+		page.setDescription("Configure the editor options");
 		addPage(page);
 	}
 	
@@ -54,6 +54,7 @@ public class WebProjectGeneratorWizard extends Wizard {
 		settings.put("Grammar", grammarFile);
 		settings.put("Outputs", grammarFile.getProject());
 		settings.put("EditorType", page.getEditorType());
+		settings.put("ServerSideContentAssist", page.isServerSideContentAssistEnabled());
 		try {
 			PlatformUI.getWorkbench().getProgressService().run(true, true, createGenerateProjectOperation(settings));
 		} catch (InvocationTargetException e) {
