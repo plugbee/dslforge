@@ -464,7 +464,11 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 
 				@Override
 				public void handleTextModified(ModifyEvent event) {
-					//customize in subclasses
+					JsonObject object = (JsonObject) event.data;
+					String text = object.get("value") != null ? object.get("value").asString() : null;
+					if (text!=null) {
+						setText(text);	
+					}		
 				}
 			});
 
@@ -552,9 +556,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	}
 	
 	protected void setText(String text) {
-		IDocument document = viewer.getDocument();
-		document.set(text);
-		viewer.getTextWidget().setText(text);
+		viewer.setText(text);
 	}
 
 	protected void setValidationStatus(String status) {
