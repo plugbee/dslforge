@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.mydsl.web\\src-js\\org\\xtext\\example\\mydsl\\web\\parser\\InternalMyDsl.g 2016-02-07 00:17:26
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.mydsl.web\\src-js\\org\\xtext\\example\\mydsl\\web\\parser\\InternalMyDsl.g 2016-03-16 22:53:39
 
 
 
@@ -100,7 +100,7 @@ org.antlr.lang.augmentObject(InternalMyDslParser.prototype, {
                 switch (alt1) {
                 case 1 :
                     // D:\\git\\dslforge\\examples\\org.xtext.example.mydsl.web\\src-js\\org\\xtext\\example\\mydsl\\web\\parser\\InternalMyDsl.g:19:11: greetings+= rule_Greeting
-                    this.pushFollow(InternalMyDslParser.FOLLOW_rule_Greeting_in_rule_Model65);
+                    this.pushFollow(InternalMyDslParser.FOLLOW_rule_Greeting_in_rule_Model60);
                     greetings=this.rule_Greeting();
 
                     this.state._fsp--;
@@ -118,7 +118,7 @@ org.antlr.lang.augmentObject(InternalMyDslParser.prototype, {
                 }
             } while (true);
 
-            EOF1=this.match(this.input,EOF,InternalMyDslParser.FOLLOW_EOF_in_rule_Model68); 
+            EOF1=this.match(this.input,EOF,InternalMyDslParser.FOLLOW_EOF_in_rule_Model63); 
 
 
 
@@ -174,15 +174,15 @@ org.antlr.lang.augmentObject(InternalMyDslParser.prototype, {
             // D:\\git\\dslforge\\examples\\org.xtext.example.mydsl.web\\src-js\\org\\xtext\\example\\mydsl\\web\\parser\\InternalMyDsl.g:23:2: 'Hello' name= ID '!'
             root_0 = this.adaptor.nil();
 
-            string_literal2=this.match(this.input,9,InternalMyDslParser.FOLLOW_9_in_rule_Greeting85); 
+            string_literal2=this.match(this.input,9,InternalMyDslParser.FOLLOW_9_in_rule_Greeting73); 
             string_literal2_tree = this.adaptor.create(string_literal2);
             this.adaptor.addChild(root_0, string_literal2_tree);
 
-            name=this.match(this.input,ID,InternalMyDslParser.FOLLOW_ID_in_rule_Greeting89); 
+            name=this.match(this.input,ID,InternalMyDslParser.FOLLOW_ID_in_rule_Greeting77); 
             name_tree = this.adaptor.create(name);
             this.adaptor.addChild(root_0, name_tree);
 
-            char_literal3=this.match(this.input,10,InternalMyDslParser.FOLLOW_10_in_rule_Greeting91); 
+            char_literal3=this.match(this.input,10,InternalMyDslParser.FOLLOW_10_in_rule_Greeting79); 
             char_literal3_tree = this.adaptor.create(char_literal3);
             this.adaptor.addChild(root_0, char_literal3_tree);
 
@@ -221,11 +221,11 @@ org.antlr.lang.augmentObject(InternalMyDslParser.prototype, {
 // public class variables
 org.antlr.lang.augmentObject(InternalMyDslParser, {
     tokenNames: ["<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "STRING", "COMMENT", "WS", "INT", "'Hello'", "'!'"],
-    FOLLOW_rule_Greeting_in_rule_Model65: new org.antlr.runtime.BitSet([0x00000200, 0x00000000]),
-    FOLLOW_EOF_in_rule_Model68: new org.antlr.runtime.BitSet([0x00000002, 0x00000000]),
-    FOLLOW_9_in_rule_Greeting85: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
-    FOLLOW_ID_in_rule_Greeting89: new org.antlr.runtime.BitSet([0x00000400, 0x00000000]),
-    FOLLOW_10_in_rule_Greeting91: new org.antlr.runtime.BitSet([0x00000002, 0x00000000])
+    FOLLOW_rule_Greeting_in_rule_Model60: new org.antlr.runtime.BitSet([0x00000200, 0x00000000]),
+    FOLLOW_EOF_in_rule_Model63: new org.antlr.runtime.BitSet([0x00000002, 0x00000000]),
+    FOLLOW_9_in_rule_Greeting73: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
+    FOLLOW_ID_in_rule_Greeting77: new org.antlr.runtime.BitSet([0x00000400, 0x00000000]),
+    FOLLOW_10_in_rule_Greeting79: new org.antlr.runtime.BitSet([0x00000002, 0x00000000])
 });
 
 })();

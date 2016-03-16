@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.mydsl.web
+Bundle-SymbolicName: org.xtext.example.mydsl.web; singleton:=true
+Bundle-Version: 0.0.1
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: org.xtext.example.mydsl.web.contentassist,
+ org.xtext.example.mydsl.web.contentassist.antlr
+Require-Bundle: org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui.editors,
+ org.eclipse.ui,
+ org.eclipse.xtext.xbase.lib
+Import-Package: org.apache.log4j
+Bundle-Activator: org.xtext.example.mydsl.web.internal.Activator

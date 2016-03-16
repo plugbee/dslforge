@@ -6,9 +6,9 @@
          point="org.eclipse.rap.ui.resources">
       <resource
           class="org.xtext.example.mydsl.web.editor.widget.MyDslResource">
-         <dependsOn
-               resourceId="org.dslforge.styledtext.basictext">
-         </dependsOn>
+		<dependsOn
+			resourceId="org.dslforge.styledtext.basictext">
+		</dependsOn>
       </resource>
    </extension>
    <extension
@@ -33,7 +33,7 @@
   <contribution
        class="org.xtext.example.mydsl.web.MyDslExecutableExtensionFactory"
          extension="mydsl"
-        label="MyDsl">
+        label="org.xtext.example.mydsl.MyDsl">
   </contribution>
 </extension>
 </plugin>

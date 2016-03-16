@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.xtext.example.mydsl.web
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-SymbolicName: org.xtext.example.mydsl.web; singleton:=true
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.xtext.example.mydsl.web.internal.Activator
@@ -14,11 +14,10 @@ Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.emf.ecore,
  com.google.inject,
  org.eclipse.xtext,
- org.dslforge.styledtext,
- org.dslforge.texteditor,
+ org.eclipse.xtend.lib,
+ org.dslforge.workspace,
  org.dslforge.xtext.common,
+ org.dslforge.texteditor,
+ org.dslforge.styledtext,
  org.xtext.example.mydsl
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.xtext.example.mydsl.web.editor,
- org.xtext.example.mydsl.web.editor.widget,
- org.xtext.example.mydsl.web.module

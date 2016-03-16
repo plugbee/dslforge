@@ -4,14 +4,14 @@
 package org.xtext.example.mydsl.web.editor;
 
 import org.dslforge.styledtext.BasicText;
-import org.dslforge.xtext.common.BasicXtextEditor;
+import org.dslforge.xtext.common.XtextContentAssistEnabledEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.xtext.example.mydsl.web.editor.widget.MyDsl;
 import org.xtext.example.mydsl.web.internal.Activator;
 
-public abstract class AbstractMyDslEditor extends BasicXtextEditor {
+public abstract class AbstractMyDslEditor extends XtextContentAssistEnabledEditor {
 
 	public AbstractMyDslEditor() {
 		super();

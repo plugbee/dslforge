@@ -13,12 +13,12 @@ options {
 
 @parser::header {
 }
- 
- 
-rule_Model:   
+
+
+rule_Model:
 	greetings+=rule_Greeting* EOF!;
-      
- 
+
+
 rule_Greeting:
 	'Hello' name=ID '!';
 

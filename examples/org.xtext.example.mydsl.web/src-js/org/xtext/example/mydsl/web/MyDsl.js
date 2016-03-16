@@ -18,7 +18,6 @@
 		construct : function(properties) {
 			this.base(arguments, properties);
 		},
-		
 		members : {
 		
 			setScope : function(scope) {
@@ -178,9 +177,7 @@
 				 	
 				 	//On text change event
 					editor.on("change", function(event) {					        
-						if (self.ready) {
-							//customize
-						}							
+						// customize
 			        });	
 					
 					//Bind keyboard shorcuts
@@ -223,6 +220,3 @@
 	};
 	
 }());
-
-
-			
