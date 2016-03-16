@@ -32,6 +32,9 @@ public class TextDocument implements IDocument {
 
 	@Override
 	public String get(int offset, int length) throws BadLocationException {
+		int myLength= content.length();
+		if ((0 > offset) || (0 > length) || (offset + length > myLength))
+			throw new BadLocationException();
 		return content.substring(offset, offset + length);
 	}
 

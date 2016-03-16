@@ -34,6 +34,13 @@ public interface ITextViewer {
 	void setDocument(IDocument document);
 
 	/**
+	 * Set the text viewer's text content.
+	 * 
+	 * @param text the text to set
+	 */
+	public void setText(String text);
+
+	/**
 	 * Returns the text viewer's input document.
 	 *
 	 * @return the viewer's input document or <code>null</code> if none

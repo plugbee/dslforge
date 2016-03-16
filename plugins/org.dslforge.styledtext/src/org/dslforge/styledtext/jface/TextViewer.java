@@ -161,6 +161,12 @@ public class TextViewer extends Viewer implements ITextViewer{
 		fDocument= document;
 	}
 
+	@Override
+	public void setText(String text) {
+		fDocument.set(text);
+	}
+
+
 	/**
 	 * @see ITextViewer#getDocument()
 	 */

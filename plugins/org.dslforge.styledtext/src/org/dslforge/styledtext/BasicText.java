@@ -1182,10 +1182,9 @@ public class BasicText extends Composite {
 	 * @return the equivalent offset
 	 */
 	public int getOffsetAtPosition(int row, int column) {
-		content.insert(0, getText());
 		int offsetAtLine = content.getOffsetAtLine(row);
 		int offset=offsetAtLine + column;
-		System.out.println("[INFO] - [row: " + row + ", column : " + column + "] => offset: "+ offset);
+		System.out.println("[INFO] - getOffsetAtPosition [row: " + row + ", column : " + column + "] => offset: "+ offset);
 		return offset;
 	}
 
