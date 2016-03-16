@@ -10,6 +10,7 @@ package org.eclipse.xtext.ui.editor.contentassist;
 import java.util.Collection;
 
 import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 
 /**
  * A content assist parser that can skip parts of the document for faster parsing

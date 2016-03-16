@@ -5,11 +5,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.eclipse.xtext.ui.editor.contentassist;
+package org.eclipse.xtext.ui.editor.contentassist.antlr;
 
 import java.util.List;
 
 import org.eclipse.xtext.AbstractElement;
+import org.eclipse.xtext.ui.editor.contentassist.LookAheadTerminal;
 
 /**
  * Simple bean that reflects the current state, when the content assist parser

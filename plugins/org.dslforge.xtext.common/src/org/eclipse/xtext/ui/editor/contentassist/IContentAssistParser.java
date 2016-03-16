@@ -9,6 +9,8 @@ package org.eclipse.xtext.ui.editor.contentassist;
 
 import java.util.Collection;
 
+import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
+
 /**
  * Parser that returns the expected elements when EOF is reached.
  * @author Sebastian Zarnekow - Initial contribution and API

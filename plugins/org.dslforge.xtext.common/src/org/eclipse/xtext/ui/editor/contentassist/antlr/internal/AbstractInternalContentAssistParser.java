@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.eclipse.xtext.ui.editor.contentassist;
+package org.eclipse.xtext.ui.editor.contentassist.antlr.internal;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,6 +32,13 @@ import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.UnorderedGroup;
 import org.eclipse.xtext.parser.antlr.ITokenDefProvider;
 import org.eclipse.xtext.parser.antlr.IUnorderedGroupHelper;
+import org.eclipse.xtext.ui.editor.contentassist.InfiniteRecursion;
+import org.eclipse.xtext.ui.editor.contentassist.LookAheadTerminal;
+import org.eclipse.xtext.ui.editor.contentassist.LookAheadTerminalRuleCall;
+import org.eclipse.xtext.ui.editor.contentassist.LookaheadKeyword;
+import org.eclipse.xtext.ui.editor.contentassist.ObservableXtextTokenStream;
+import org.eclipse.xtext.ui.editor.contentassist.ObservableXtextTokenStream.StreamListener;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.LinkedHashMultimap;

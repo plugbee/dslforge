@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.eclipse.xtext.ui.editor.contentassist;
+package org.eclipse.xtext.ui.editor.contentassist.antlr;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -30,6 +30,14 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.UnorderedGroup;
 import org.eclipse.xtext.parser.antlr.IUnorderedGroupHelper;
+import org.eclipse.xtext.ui.editor.contentassist.IContentAssistParser;
+import org.eclipse.xtext.ui.editor.contentassist.InfiniteRecursion;
+import org.eclipse.xtext.ui.editor.contentassist.LexerUIBindings;
+import org.eclipse.xtext.ui.editor.contentassist.LookAheadTerminal;
+import org.eclipse.xtext.ui.editor.contentassist.ObservableXtextTokenStream;
+import org.eclipse.xtext.ui.editor.contentassist.ObservableXtextTokenStream.StreamListener;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.Lexer;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;

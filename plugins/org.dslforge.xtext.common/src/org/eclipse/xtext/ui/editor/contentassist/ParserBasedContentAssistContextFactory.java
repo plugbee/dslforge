@@ -50,6 +50,7 @@ import org.eclipse.xtext.parser.antlr.ITokenDefProvider;
 import org.eclipse.xtext.resource.DerivedStateAwareResource;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext.Builder;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.util.XtextSwitch;
 
@@ -94,7 +95,7 @@ public class ParserBasedContentAssistContextFactory extends AbstractContentAssis
 
 		@Inject
 		@Named(LexerUIBindings.CONTENT_ASSIST)
-		protected org.eclipse.xtext.ui.editor.contentassist.Lexer lexer;
+		protected org.eclipse.xtext.ui.editor.contentassist.antlr.internal.Lexer lexer;
 
 		@Inject
 		protected Provider<ContentAssistContext.Builder> contentAssistContextProvider;

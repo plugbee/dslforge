@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package org.eclipse.xtext.ui.editor.contentassist;
+package org.eclipse.xtext.ui.editor.contentassist.antlr.internal;
 
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognizerSharedState;

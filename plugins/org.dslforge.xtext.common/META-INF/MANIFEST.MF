@@ -16,12 +16,17 @@ Require-Bundle: org.eclipse.rap.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.xtext.common,
+ org.dslforge.xtext.common.actions,
  org.dslforge.xtext.common.guice,
  org.dslforge.xtext.common.internal,
  org.dslforge.xtext.common.registry,
  org.dslforge.xtext.common.scoping,
  org.dslforge.xtext.common.shared,
- org.eclipse.xtext.ui.editor.contentassist
+ org.dslforge.xtext.common.wizards,
+ org.eclipse.xtext.common.web.contentassist,
+ org.eclipse.xtext.ui.editor.contentassist,
+ org.eclipse.xtext.ui.editor.contentassist.antlr,
+ org.eclipse.xtext.ui.editor.contentassist.antlr.internal
 Import-Package: javax.persistence,
  org.apache.log4j
 Bundle-Vendor: PlugBee
