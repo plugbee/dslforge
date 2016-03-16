@@ -36,11 +36,15 @@ public class WebProjectGenerator implements IWebProjectGenerator{
 		getGenWebProject().setEditorType(value);
 	}
 	
+	public void setServerSideContentAssist(boolean value) {
+		getGenWebProject().setServerSideContentAssist(value);
+	}
+	
 	@Override
 	public void doGenerate(EObject input, IFileSystemAccess fsa) {
 		getGenWebProject().doGenerate(input, fsa);
 	}
-	
+		
 	@Override
 	public void doGenerate(Resource input, IFileSystemAccess fsa) {
 		getGenWebProject().doGenerate(input, fsa);

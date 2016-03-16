@@ -39,13 +39,19 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.dslforge.xtext.generator.web.ace.GenTooltip
 import org.dslforge.xtext.generator.web.ace.GenSearchbox
+import org.dslforge.xtext.generator.web.contentassist.GenContentAssistParser
 
 class GenWebProject implements IWebProjectGenerator {
 
 	var EditorType editorType;
-
+	var boolean serverSideContentAssist;
+	
 	def setEditorType(EditorType type) {
 		editorType = type
+	}
+	
+	def setServerSideContentAssist(boolean value) {
+		serverSideContentAssist = value
 	}
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
@@ -81,13 +87,9 @@ class GenWebProject implements IWebProjectGenerator {
 	 * Generate Eclipse RAP editor with both clien-side ANTLR Parser and Lexer and server-side Xtext back-end (Java/JavaSript).
 	 */
 	def generateXtextRAPEditor(EObject input, IFileSystemAccess fsa) {
-		new GenActivator().doGenerate(input, fsa)
 		new GenImageProvider().doGenerate(input, fsa)
-		new GenWebRuntimeModule().doGenerate(input, fsa)
-		new GenWebStandaloneSetup().doGenerate(input, fsa)
-		new GenExecutableExtensionFactory().doGenerate(input, fsa)
 		new GenActionBarContributor().doGenerate(input, fsa)
-		new GenEditor().doGenerate(input, fsa)
+		new GenEditor(serverSideContentAssist).doGenerate(input, fsa)
 		new GenWidget().doGenerate(input, fsa)
 		new GenWidgetResource().doGenerate(input, fsa)
 		new GenMode().doGenerate(input, fsa)
@@ -97,5 +99,13 @@ class GenWebProject implements IWebProjectGenerator {
 		new GenAntlrAll().doGenerate(input, fsa)
 		new GenGrammar().doGenerate(input, fsa)
 		new GenWorker().doGenerate(input, fsa)
+		if (serverSideContentAssist) {
+			// use the Xtext Content Assist Parser fragment
+			new GenContentAssistParser().doGenerate(input, fsa)
+		}
+		new GenActivator().doGenerate(input, fsa)
+		new GenExecutableExtensionFactory().doGenerate(input, fsa)
+		new GenWebRuntimeModule(serverSideContentAssist).doGenerate(input, fsa)
+		new GenWebStandaloneSetup().doGenerate(input, fsa)
 	}
 }

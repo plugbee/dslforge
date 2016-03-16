@@ -22,12 +22,18 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.Grammar
 import org.eclipse.xtext.generator.IFileSystemAccess
 
+
 class GenWebRuntimeModule implements IWebProjectGenerator{
 	
 	val relativePath = "/module/"
 	var String grammarShortName
 	var Grammar grammar
 	var String projectName
+	var boolean serverSideContentAssist
+	
+	new(boolean value) {
+		serverSideContentAssist = value
+	}
 	
 	override doGenerate(EObject input, IFileSystemAccess fsa) {
 		grammar = input as Grammar
@@ -45,8 +51,16 @@ class GenWebRuntimeModule implements IWebProjectGenerator{
 package «projectName».module;
 
 import org.dslforge.xtext.common.shared.SharedModule;
-
 import com.google.inject.Binder;
+«IF (serverSideContentAssist)»
+import «projectName».contentassist.«grammarShortName.toFirstUpper»ProposalProvider;
+import «projectName».contentassist.antlr.«grammarShortName.toFirstUpper»Parser;
+import «projectName».contentassist.antlr.internal.Internal«grammarShortName.toFirstUpper»Lexer;
+import org.dslforge.styledtext.jface.IContentAssistProcessor;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.LexerUIBindings;
+import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
+«ENDIF»
 
 public abstract class AbstractWeb«grammarShortName.toFirstUpper»RuntimeModule extends SharedModule {
 
@@ -54,6 +68,15 @@ public abstract class AbstractWeb«grammarShortName.toFirstUpper»RuntimeModule ex
 	public void configure(Binder binder) {
 		System.out.println("[INFO] - Configuring module " + this.getClass().getName());
 		super.configure(binder);
+		«IF (serverSideContentAssist)»
+		binder.bind(org.eclipse.xtext.ui.editor.contentassist.IContentAssistParser.class).to(«grammarShortName.toFirstUpper»Parser.class);
+		binder.bind(Internal«grammarShortName.toFirstUpper»Lexer.class).toProvider(org.eclipse.xtext.parser.antlr.LexerProvider.create(Internal«grammarShortName.toFirstUpper»Lexer.class));
+		binder.bind(org.eclipse.xtext.ui.editor.contentassist.antlr.internal.Lexer.class).annotatedWith(com.google.inject.name.Names.named(LexerUIBindings.CONTENT_ASSIST)).to(Internal«grammarShortName.toFirstUpper»Lexer.class);
+		binder.bind(org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider.class).to(«grammarShortName.toFirstUpper»ProposalProvider.class);
+		binder.bind(IContentAssistProcessor.class).to(XtextContentAssistProcessor.class);
+		binder.bind(ContentAssistContext.Factory.class).to(org.eclipse.xtext.ui.editor.contentassist.ParserBasedContentAssistContextFactory.class);
+		binder.bind(org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher.class).to(org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher.IgnoreCase.class);
+		«ENDIF»
 	}
 }
 '''
