@@ -123,7 +123,6 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 		updateIndex();
-		//validateResource();
 	}
 
 	@Override
@@ -187,23 +186,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	
 	@Override
 	public void createCompletionProposals(final int offset) {
-		super.createCompletionProposals(offset);
-		SafeRunnable.run(new SafeRunnable() {
-			private static final long serialVersionUID = 1L;
-			public void run() {
-//				System.out.println("[INFO] - completing proposals at offset " + offset);
-//				CompletionProposalComputer completionProposalComputer = contentAssistProcessor.createCompletionProposalComputer(getWidget(), xtextResource, offset);
-//				ICompletionProposal[] computedCompletionProposals = completionProposalComputer.exec(xtextResource);
-//				List<String> proposals = Lists.transform(Arrays.asList(computedCompletionProposals), new Function<ICompletionProposal, String>() {
-//					public String apply(ICompletionProposal completionProposal) {
-//						String additionalProposalInfo = completionProposal.getAdditionalProposalInfo();
-//						return completionProposal.getDisplayString() + ((additionalProposalInfo!=null) ? (":" + additionalProposalInfo):"");
-//					}
-//				});
-//				System.out.println("[INFO] - sending proposals: " + proposals.toString());
-//				setProposals(proposals);	
-			}
-		});
+		//delegate to subclass.
 	}
 
 	@Override
@@ -221,26 +204,26 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 					}
 				}
 			}
-		});
-		
-		
-//		Display display = getViewer().getTextWidget().getDisplay();
-//		if (display != null) {
-//			display.asyncExec(new Runnable() {
-//				@Override
-//				public void run() {
-//					IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider().getResourceValidator();
-//					try {
-//						List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY, CancelIndicator.NullImpl);
-//						createAnnotations(issues);
-//					} catch (Exception ex) {
-//						if (ex instanceof RuntimeException) {
-//							System.err.println(ex.getMessage());
-//						}
-//					}
-//				}
-//			});
-//		}
+		});	
+		// Display display = getViewer().getTextWidget().getDisplay();
+		// if (display != null) {
+		// display.asyncExec(new Runnable() {
+		// @Override
+		// public void run() {
+		// IResourceValidator resourceValidator =
+		// xtextResource.getResourceServiceProvider().getResourceValidator();
+		// try {
+		// List<Issue> issues = resourceValidator.validate(xtextResource,
+		// CheckMode.FAST_ONLY, CancelIndicator.NullImpl);
+		// createAnnotations(issues);
+		// } catch (Exception ex) {
+		// if (ex instanceof RuntimeException) {
+		// System.err.println(ex.getMessage());
+		// }
+		// }
+		// }
+		// });
+		// }
 	}
 	
 	/**
