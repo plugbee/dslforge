@@ -100,7 +100,7 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 		IDocument document = getViewer().getDocument();
 		if (document.get().length()>0) {
 			BasicText textWidget = getViewer().getTextWidget();
-			textWidget.setText(document.get());
+			textWidget.setText(document.get(), false);
 			createCompletionProposals(textWidget.getOffsetAtCursorPosition());	
 		}
 	}
@@ -110,7 +110,6 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 		SafeRunnable.run(new SafeRunnable() {
 			private static final long serialVersionUID = 1L;
 			public void run() {
-				//System.out.println("[INFO] - completing proposals at offset " + offset);
 				XtextContentAssistProcessor xtextContentAssistProcessor = (XtextContentAssistProcessor)contentAssistProcessor;
 				ICompletionProposal[] computedCompletionProposals = xtextContentAssistProcessor.computeCompletionProposals(getViewer(), xtextResource, offset);
 				if (computedCompletionProposals!=null) {
@@ -119,7 +118,6 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 							return completionProposal.getDisplayString();
 						}
 					});
-					//System.out.println("[INFO] - sending proposals: " + proposals.toString());
 					setProposals(proposals);	
 				}
 			}
