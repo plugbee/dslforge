@@ -10,7 +10,7 @@
          <menu
                icon="icons/generate_editor.png"
                id="org.dslforge.xtext.generator.contribution.menu.file"
-               label="DSLFORGE"
+               label="DSL Forge"
                path="additions">
             <groupMarker
                   name="group">
