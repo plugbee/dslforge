@@ -412,12 +412,17 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 					} catch (IOException e) {
 						e.printStackTrace();
 					} finally {
-						setText(content);
+						initializeTextViewer(content);
 						setUrl(filePath.lastSegment().toString());
 					}
 				}
 			});
 		}
+	}
+
+	protected void initializeTextViewer(String content) {
+		setText(content);
+		viewer.getTextWidget().setText(content);
 	}
 
 	protected String readFromFile() throws IOException {
@@ -581,9 +586,9 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		return this.isDirty;
 	}
 
-	protected void setDirty(boolean b) {
-		if (this.isDirty != b) {
-			this.isDirty = b;
+	protected void setDirty(boolean isDirty) {
+		if (this.isDirty != isDirty) {
+			this.isDirty = isDirty;
 			firePropertyChange(PROP_DIRTY);
 		}
 	}
