@@ -181,7 +181,7 @@ public class BasicTextEditorContributor extends EditorActionBarContributor imple
 
 		if (selectionProvider != null) {
 			ISelection selection = selectionProvider.getSelection();
-			ITextSelection structuredSelection = selection instanceof ITextSelection ? (ITextSelection) selection : TextSelection.EMPTY;
+			ITextSelection structuredSelection = selection instanceof ITextSelection ? (ITextSelection) selection : TextSelection.emptySelection();
 			copyAction.updateSelection(structuredSelection);
 			pasteAction.updateSelection(structuredSelection);
 		}

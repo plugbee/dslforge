@@ -143,7 +143,8 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 				JsonObject position = (JsonObject) data.get("pos");
 				int row = position.get("row").asInt();
 				int column = position.get("column").asInt();
-				int offset = viewer.getTextWidget().getOffsetAtPosition(row, column);
+				int offset = viewer.getTextWidget().getOffsetAtPosition(row, column);					
+				viewer.setSelection(new TextSelection(offset, 0));
 				createCompletionProposals(offset);
 				return true;
 			}
@@ -468,7 +469,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 					String text = object.get("value") != null ? object.get("value").asString() : null;
 					if (text!=null) {
 						setText(text);	
-					}		
+					}
 				}
 			});
 

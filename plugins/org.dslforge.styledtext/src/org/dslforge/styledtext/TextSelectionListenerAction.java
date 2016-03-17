@@ -29,7 +29,7 @@ public class TextSelectionListenerAction extends Action implements ISelectionCha
 	/**
 	 * The current selection.
 	 */
-	private ITextSelection selection = new TextSelection();
+	private ITextSelection selection = new TextSelection(0,0);
 
 	/**
 	 * Running flag: <code>true</code> iff the action is running.
@@ -117,7 +117,7 @@ public class TextSelectionListenerAction extends Action implements ISelectionCha
 		if (selection instanceof IStructuredSelection) {
 			selectionChanged((ITextSelection) selection);
 		} else {
-			selectionChanged(TextSelection.EMPTY);
+			selectionChanged(TextSelection.emptySelection());
 		}
 	}
 

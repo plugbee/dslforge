@@ -250,13 +250,15 @@ public class BasicText extends Composite {
 	}
 
 	protected void handleTextSelected(Event event) {
-		String selection = event.text;
 		JsonObject coordinates = (JsonObject) event.data;
 		int rowStart =  coordinates.get("rowStart").asInt();
 		int rowEnd = coordinates.get("rowEnd").asInt();
 		int columnStart = coordinates.get("columnStart").asInt();
 		int columnEnd = coordinates.get("columnEnd").asInt();
-		this.selection = new TextSelection(selection, rowStart, rowEnd, columnStart, columnEnd);
+		int startOffset = getOffsetAtPosition(rowStart, columnStart);
+		int endOffset = getOffsetAtPosition(rowEnd, columnEnd);
+		int length = endOffset - startOffset;
+		this.selection = new TextSelection(startOffset, length);
 	}
 
 	/**
@@ -927,30 +929,11 @@ public class BasicText extends Composite {
 		getRemoteObject().set("background", properties);
 	}
 
-	/**
-	 * Sets the selection to the range specified by the given start and end
-	 * indices expressed as couples of (row, column).
-	 * 
-	 * @param rowStart
-	 *            the row start of the range
-	 * @param rowEnd
-	 *            the row end of the range
-	 * @param columnStart
-	 *            the column start of the range
-	 * @param columnEnd
-	 *            the column end of the range
-	 * @exception SWTException
-	 *                <ul>
-	 *                <li>ERROR_WIDGET_DISPOSED - if the receiver has been
-	 *                disposed</li>
-	 *                <li>ERROR_THREAD_INVALID_ACCESS - if not called from the
-	 *                thread that created the receiver</li>
-	 *                </ul>
-	 */
-	public void setSelection(String value, int rowStart, int rowEnd, int columnStart, int columnEnd) {
+	public void setSelection(int offset, int length) {
 		checkWidget();
-		this.selection = new TextSelection(value, rowStart, rowEnd, columnStart, columnEnd);
-		getRemoteObject().set("selection", selection.getValue());
+		this.selection = new TextSelection(offset, length);
+		String selectedRange = content.getTextRange(offset, length);
+		getRemoteObject().set("selection", selectedRange);
 	}
 
 	/**
@@ -958,11 +941,11 @@ public class BasicText extends Composite {
 	 * 
 	 * @return the text selection
 	 */
-	public TextSelection getSelection() {
+	public ITextSelection getSelection() {
 		checkWidget();
 		if (selection!=null)
 			return this.selection;
-		return TextSelection.EMPTY;
+		return TextSelection.emptySelection();
 	}
 
 	/**
@@ -1184,7 +1167,7 @@ public class BasicText extends Composite {
 	public int getOffsetAtPosition(int row, int column) {
 		int offsetAtLine = content.getOffsetAtLine(row);
 		int offset=offsetAtLine + column;
-		System.out.println("[INFO] - getOffsetAtPosition [row: " + row + ", column : " + column + "] => offset: "+ offset);
+		//System.out.println("[INFO] - getOffsetAtPosition [row: " + row + ", column : " + column + "] => offset: "+ offset);
 		return offset;
 	}
 

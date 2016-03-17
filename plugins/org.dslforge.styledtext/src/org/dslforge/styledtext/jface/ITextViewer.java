@@ -11,6 +11,8 @@
 package org.dslforge.styledtext.jface;
 
 import org.dslforge.styledtext.BasicText;
+import org.dslforge.styledtext.TextSelection;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 
 /**
@@ -68,4 +70,11 @@ public interface ITextViewer {
 	 * @return this viewer's selection provider
 	 */
 	ISelectionProvider getSelectionProvider();
+
+	/**
+	 * Selects the text delimited by the textSelection
+	 * 
+	 * @param textSelection
+	 */
+	void setSelection(ISelection textSelection);
 }

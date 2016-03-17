@@ -41,7 +41,7 @@ public class CutAction extends TextSelectionListenerAction {
 	public void run() {
 		if(activeEditor!=null) {
 			BasicText widget = activeEditor.getViewer().getTextWidget();
-			TextSelection selection = widget.getSelection();
+			TextSelection selection = (TextSelection) widget.getSelection();
 			activeEditor.performCut(selection);
 		}
 	}

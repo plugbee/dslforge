@@ -125,9 +125,10 @@ public class TextViewer extends Viewer implements ITextViewer{
 	@Override
 	public ISelection getSelection() {
 		if (fTextWidget != null ) {
-			return fTextWidget.getSelection();
+			ITextSelection selection = fTextWidget.getSelection();
+			return new TextSelection(getDocument(), selection.getOffset(), selection.getLength());
 		}
-		return TextSelection.EMPTY;
+		return TextSelection.emptySelection();
 	}
 
 	@Override
@@ -147,7 +148,7 @@ public class TextViewer extends Viewer implements ITextViewer{
 	public void setSelection(ISelection selection) {
 		if (selection instanceof ITextSelection) {
 			ITextSelection s= (ITextSelection) selection;
-			fTextWidget.setSelection(s.getText(), s.getRowStart(), s.getRowEnd(), s.getColumnStart(), s.getColumnEnd());
+			fTextWidget.setSelection(s.getOffset(), s.getLength());
 		}
 	}
 

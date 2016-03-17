@@ -19,6 +19,9 @@ import org.dslforge.styledtext.BasicText;
 import org.dslforge.styledtext.ITextSelection;
 import org.dslforge.styledtext.TextSelection;
 import org.dslforge.styledtext.TextSelectionListenerAction;
+import org.dslforge.styledtext.jface.IDocument;
+import org.dslforge.styledtext.jface.ITextViewer;
+import org.dslforge.styledtext.jface.TextViewer;
 import org.dslforge.texteditor.BasicTextEditor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.actions.ActionFactory;
@@ -40,8 +43,8 @@ public class CopyAction extends TextSelectionListenerAction {
 	@Override
 	public void run() {
 		if (activeEditor != null) {
-			BasicText widget = activeEditor.getViewer().getTextWidget();
-			TextSelection selection = widget.getSelection();
+			TextViewer viewer = (TextViewer) activeEditor.getViewer();
+			TextSelection selection = (TextSelection) viewer.getSelection();
 			activeEditor.performCopy(selection);
 		}
 	}
