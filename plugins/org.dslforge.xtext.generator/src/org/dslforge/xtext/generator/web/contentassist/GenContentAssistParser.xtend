@@ -40,9 +40,7 @@ import org.eclipse.xtext.generator.parser.antlr.XtextAntlrUiGeneratorFragment
 import org.eclipse.xtext.resource.XtextResourceSet
 
 /**
- * This generator is invoked to embedd the generated artefacts the Xtext content 
- * assist feature. Basically, the Xtext generator is invoked with a minimal set 
- * of fragments necessary to generate the content assist artefacts in the web plugin.
+ * The Xtext generator is invoked with a minimal set of fragments necessary to generate the content assist artefacts in the web plugin.
  */
 class GenContentAssistParser implements IWebProjectGenerator {
 
