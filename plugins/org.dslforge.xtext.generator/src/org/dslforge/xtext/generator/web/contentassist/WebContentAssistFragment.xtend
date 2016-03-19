@@ -1,11 +1,9 @@
 package org.dslforge.xtext.generator.web.contentassist
 
+import org.dslforge.xtext.generator.util.GeneratorUtil
 import org.eclipse.xtext.Grammar
 import org.eclipse.xtext.GrammarUtil
 import org.eclipse.xtext.ui.generator.contentAssist.ContentAssistFragment
-
-import static org.eclipse.xtext.GrammarUtil.getNamespace
-import org.dslforge.xtext.generator.util.GeneratorUtil
 
 class WebContentAssistFragment extends ContentAssistFragment {
 	
