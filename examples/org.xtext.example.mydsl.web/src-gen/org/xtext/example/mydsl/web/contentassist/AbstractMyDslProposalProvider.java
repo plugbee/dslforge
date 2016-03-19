@@ -7,12 +7,12 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 
 /**
- * Represents a generated, default implementation of superclass {@link org.eclipse.xtext.common.web.contentassist.TerminalsProposalProvider}.
+ * Represents a generated, default implementation of superclass {@link org.eclipse.xtext.ui.editor.contentassist.TerminalsProposalProvider}.
  * Methods are dynamically dispatched on the first parameter, i.e., you can override them 
  * with a more concrete subtype. 
  */
 @SuppressWarnings("all")
-public class AbstractMyDslProposalProvider extends org.eclipse.xtext.common.web.contentassist.TerminalsProposalProvider {
+public class AbstractMyDslProposalProvider extends org.eclipse.xtext.ui.editor.contentassist.TerminalsProposalProvider {
 		
 	public void completeModel_Greetings(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);

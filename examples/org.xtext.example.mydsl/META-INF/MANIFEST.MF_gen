@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.mydsl
+Bundle-SymbolicName: org.xtext.example.mydsl; singleton:=true
+Bundle-Version: 0.0.1
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: org.xtext.example.mydsl,
+ org.xtext.example.mydsl.services
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.util
+Import-Package: org.apache.log4j
+

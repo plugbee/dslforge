@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.mydsl.web\\src-js\\org\\xtext\\example\\mydsl\\web\\parser\\InternalMyDsl.g 2016-03-16 22:53:39
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.mydsl.web\\src-js\\org\\xtext\\example\\mydsl\\web\\parser\\InternalMyDsl.g 2016-03-20 00:14:21
 
 
 

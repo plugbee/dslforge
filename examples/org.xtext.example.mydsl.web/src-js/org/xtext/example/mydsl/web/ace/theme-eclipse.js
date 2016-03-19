@@ -157,7 +157,7 @@ background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZ
 .ace-tooltip { border: 1px solid silver; border-radius: 3px; color: #444; padding: 2px 5px; padding-right:15px; /*for close button*/ font-size: 90%; font-family: monospace; background-color: white; white-space: pre-wrap; max-width: 50em; max-height:30em; overflow-y:auto; position: absolute; z-index: 10; -webkit-box-shadow: 2px 3px 5px rgba(0, 0, 0, .2); -moz-box-shadow: 2px 3px 5px rgba(0, 0, 0, .2); box-shadow: 2px 3px 5px rgba(0, 0, 0, .2); transition: opacity 1s; -moz-transition: opacity 1s; -webkit-transition: opacity 1s; -o-transition: opacity 1s; -ms-transition: opacity 1s; }\
 .ace-tooltip-boxclose { position:absolute; top:0; right:3px; color:red; }\
 .ace-tooltip-boxclose:hover { background-color:yellow; }\
-.ace-tooltip-boxclose:before { content:'×'; cursor:pointer; font-weight:bold; font-size:larger; }\
+.ace-tooltip-boxclose:before { content:'Ã—'; cursor:pointer; font-weight:bold; font-size:larger; }\
 .ace-completion { padding-left: 12px; position: relative; }\
 .ace-completion:before { position: absolute; left: 0; bottom: 0; border-radius: 50%; font-weight: bold; height: 13px; width: 13px; font-size:11px; /*BYM*/ line-height: 14px; text-align: center; color: white; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }\
 .ace-completion-unknown:before { content:'?'; background: #4bb; }\
