@@ -5,6 +5,7 @@ import org.eclipse.xtext.GrammarUtil
 import org.eclipse.xtext.ui.generator.contentAssist.ContentAssistFragment
 
 import static org.eclipse.xtext.GrammarUtil.getNamespace
+import org.dslforge.xtext.generator.util.GeneratorUtil
 
 class WebContentAssistFragment extends ContentAssistFragment {
 	
@@ -17,7 +18,11 @@ class WebContentAssistFragment extends ContentAssistFragment {
 	}
 	
 	override String getProposalProviderName(Grammar grammar) {
-		return grammar.basePackageUi + ".contentassist." + GrammarUtil::getName(grammar) + "ProposalProvider"
+		if (grammar.name==myGrammar.name)
+			return grammar.basePackageUi  + ".contentassist." + GrammarUtil::getName(grammar) + "ProposalProvider"
+		if (grammar.name=="org.eclipse.xtext.common.Terminals")
+			return "org.eclipse.xtext.ui.editor"+ ".contentassist." + GrammarUtil::getName(grammar) + "ProposalProvider"
+		return super.getProposalProviderName(grammar)
 	}
 	
 	override String getGenProposalProviderName() {
@@ -25,6 +30,8 @@ class WebContentAssistFragment extends ContentAssistFragment {
 	}
 	
 	def String basePackageUi(Grammar g) {
-		return getNamespace(g) + ".web";
+		return GeneratorUtil::getProjectName(g);
 	}
+	
+	
 }
