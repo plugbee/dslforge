@@ -1409,7 +1409,7 @@ var Autocomplete = function() {
         } else if (item.docText) {
             tooltipNode.textContent = item.docText;
         }
-        
+            
         if (!tooltipNode.parentNode)
             document.body.appendChild(tooltipNode);        
         var popup = this.popup;
@@ -1424,7 +1424,12 @@ var Autocomplete = function() {
             tooltipNode.style.left = (rect.right + 1) + "px";
             tooltipNode.style.right = "";
         }
-        tooltipNode.style.height = Math.max(tooltipNode.style.height,rect.height) + "px";
+        
+        var renderer = this.editor.renderer
+        var lineHeight = renderer.layerConfig.lineHeight;
+        var tooltipMaxLines = 3; //constant.
+        
+        tooltipNode.style.height = Math.max(Math.max(tooltipNode.style.height,rect.height),tooltipMaxLines*lineHeight) + "px";
         tooltipNode.style.width = rect.width + "px";
         tooltipNode.style.display = "block";
     };
@@ -1931,6 +1936,7 @@ define('ace/autocomplete/text_completer', ['require', 'exports', 'module' , 'ace
     };
 
 });	
+
 
 '''
 
