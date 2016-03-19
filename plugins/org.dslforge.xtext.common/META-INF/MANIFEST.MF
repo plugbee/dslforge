@@ -23,7 +23,6 @@ Export-Package: org.dslforge.xtext.common,
  org.dslforge.xtext.common.scoping,
  org.dslforge.xtext.common.shared,
  org.dslforge.xtext.common.wizards,
- org.eclipse.xtext.common.web.contentassist,
  org.eclipse.xtext.ui.editor.contentassist,
  org.eclipse.xtext.ui.editor.contentassist.antlr,
  org.eclipse.xtext.ui.editor.contentassist.antlr.internal
