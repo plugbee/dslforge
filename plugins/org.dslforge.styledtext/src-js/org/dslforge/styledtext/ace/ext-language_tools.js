@@ -109,8 +109,8 @@ var snippetCompleter = {
 
 var completers = [snippetCompleter, textCompleter, keyWordCompleter];
 
-exports.clear = function() {
-    completers=[];
+exports.setCompleters = function(array) {
+    completers=array;
 };
 
 exports.addCompleter = function(completer) {

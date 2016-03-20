@@ -170,6 +170,10 @@ exports.addCompleter = function(completer) {
     completers.push(completer);
 };
 
+exports.setCompleters = function(array) {
+    completers=array;
+};
+
 exports.removeCompleter = function(completer) {
     completers.pop(completer);
 };
