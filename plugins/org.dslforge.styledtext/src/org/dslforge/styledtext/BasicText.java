@@ -132,7 +132,7 @@ public class BasicText extends Composite {
 		this.style = style;
 		if ((style & SWT.READ_ONLY) != 0) {
 			setEditable(false);
-		}
+		}	
 		setupClient();
 		createRemoteObject();
 		installListeners();
@@ -157,7 +157,7 @@ public class BasicText extends Composite {
 		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-searchbox.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/snippets/language.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/theme-eclipse.js"));
-		addBaseResource(new Path("org/dslforge/styledtext/ace/mode-language.js"));
+		//addBaseResource(new Path("org/dslforge/styledtext/ace/mode-language.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/global-index.js"));
 
 		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
@@ -1167,7 +1167,7 @@ public class BasicText extends Composite {
 	public int getOffsetAtPosition(int row, int column) {
 		int offsetAtLine = content.getOffsetAtLine(row);
 		int offset=offsetAtLine + column;
-		//System.out.println("[INFO] - getOffsetAtPosition [row: " + row + ", column : " + column + "] => offset: "+ offset);
+		System.out.println("[INFO] - getOffsetAtPosition [row: " + row + ", column : " + column + "] => offset: "+ offset);
 		return offset;
 	}
 

@@ -447,9 +447,8 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	protected void addListeners() {
 		BasicText textWidget = viewer.getTextWidget();
 		if (textWidget!= null && !textWidget.isDisposed()) {
+			textWidget.addTextChangeListener(iTextChangeListener);	
 			
-			textWidget.addTextChangeListener(iTextChangeListener);
-
 			KeyListener iKeyListener = new KeyListener() {
 
 				@Override
@@ -459,13 +458,13 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 
 				@Override
 				public void keyPressed(KeyEvent e) {
-					//customize in subclasses
-					if ((e.stateMask & SWT.CTRL)==SWT.CTRL) {
+					if ((e.stateMask & SWT.CTRL) == SWT.CTRL) {
 						createCompletionProposals();
 					}
 				}
 			};
 			textWidget.addKeyListener(iKeyListener);
+			
 			textWidget.addTextModifyListener(new ITextModifyListener() {
 
 				@Override

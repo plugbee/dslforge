@@ -54,8 +54,8 @@ function TokenTooltip (editor) {
 }
 
 function getDocumentation(token, before) {
-	var doc = "//TODO";
-	doc+="\n\n@see: http://www.dslforge.org/documentation"
+	var doc = "Documentation";
+	doc+="\n\n" + token.value + " : " + "[" + token.type + "]";
 	return doc;
 }
 
