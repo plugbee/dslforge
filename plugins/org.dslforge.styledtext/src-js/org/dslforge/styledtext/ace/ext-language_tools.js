@@ -108,6 +108,11 @@ var snippetCompleter = {
 	 };
 
 var completers = [snippetCompleter, textCompleter, keyWordCompleter];
+
+exports.clear = function() {
+    completers=[];
+};
+
 exports.addCompleter = function(completer) {
     completers.push(completer);
 };
