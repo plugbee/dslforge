@@ -96,6 +96,7 @@
 					}
 					
 					//Add completer and enable content assist
+					this.langTools.setCompleters([]);
 					this.langTools.addCompleter(this.globalScope);
 					editor.setOptions({
 					    enableBasicAutocompletion: true,
