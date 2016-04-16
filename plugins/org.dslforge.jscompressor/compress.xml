@@ -1,0 +1,124 @@
+<project basedir="." name="org.dslforge.jscompressor" default="all">
+
+	<property environment="env" />
+
+	<property name="env.BUILD_ID" value="yyyymmdd-hhmm" />
+	
+	<property file="./ant-config/${user.name}.build.properties" />
+	
+	<property file="./ant-config/default.build.properties" />
+
+	<condition property="runs.under.windows">
+		<os family="windows" />
+	</condition>
+
+	<condition property="runs.under.unix">
+		<os family="unix" />
+	</condition>
+
+	<condition property="build.eclipse.available">
+		<available file="./eclipse" />
+	</condition>
+	
+
+	<target name="echoprops" description="Echos configuration properties to console">
+		<echo>ant.version=${ant.version}</echo>
+		<echo>ant.home=${ant.home}</echo>
+		<echo>ant.project.name=${ant.project.name}</echo>
+		<echo>basedir=${basedir}</echo>
+		<echo>user.name=${user.name}</echo>
+		<echo>user.home=${user.home}</echo>
+
+		<echo>build.eclipse.version=${build.eclipse.version}</echo>
+		<echo>build.eclipse.version.name=${build.eclipse.version.name}</echo>
+		<echo>build.eclipse.revision=${build.eclipse.revision}</echo>
+		<echo>build.eclipse.timestamp=${build.eclipse.timestamp}</echo>
+
+		<echo>runs.under.windows=${runs.under.windows}</echo>
+		<echo>runs.under.unix=${runs.under.unix}</echo>
+
+		<echo>eclipse.downloads.drops.folder.name=${eclipse.downloads.drops.folder.name}</echo>
+		<echo>arch.suffix=${arch.suffix}</echo>
+		<echo>mvn.build.type.suffix=${mvn.build.type.suffix}</echo>
+	</target>
+
+	<target name="clean" description="clean target files">
+			<echo>cleaning output folders</echo>
+
+			<delete file="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/BasicText.js" />
+			<delete file="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ace.js" />
+			<delete file="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-documentation.js" />
+			<delete file="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-language_tools.js" />
+			<delete file="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-searchbox.js" />
+			<delete file="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-tooltip.js" />
+			<delete file="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/mode-language.js" />
+			<delete file="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/theme-eclipse.js" />
+
+	</target>
+	
+	<target name="all" depends="echoprops, clean, compress" />
+
+	<target name="compress">
+		
+	    <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask" classpath="${basedir}/closure/compiler.jar"/>
+		
+	    <jscomp compilationLevel="whitespace" 
+	    	warning="verbose" 
+	        debug="true" 
+	    	output="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/BasicText.js">
+	    	<sources dir="${basedir}/input/styledtext/">
+	            <file name="BasicText.js"/>
+	        </sources>
+	    </jscomp>
+
+		<jscomp compilationLevel="whitespace" warning="verbose" 
+	        debug="true" output="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ace.js">
+	        <sources dir="${basedir}/input/styledtext/ace/">
+	        	<file name="ace.js"/>
+	        </sources>
+	    </jscomp>
+		
+	    <jscomp compilationLevel="whitespace" warning="verbose" 
+	        debug="true" output="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-documentation.js">
+	        <sources dir="${basedir}/input/styledtext/ace/">
+	        	<file name="ext-documentation.js"/>
+	        </sources>
+	    </jscomp>
+
+	    <jscomp compilationLevel="whitespace" warning="verbose" 
+	        debug="true" output="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-language_tools.js">
+	        <sources dir="${basedir}/input/styledtext/ace/">
+	        	<file name="ext-language_tools.js"/>
+	        </sources>
+	    </jscomp>
+	
+	    <jscomp compilationLevel="whitespace" warning="verbose" 
+	        debug="true" output="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-searchbox.js">
+	        <sources dir="${basedir}/input/styledtext/ace/">
+	        	<file name="ext-searchbox.js"/>
+	        </sources>
+	    </jscomp>
+
+	    <jscomp compilationLevel="whitespace" warning="verbose" 
+	        debug="true" output="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-tooltip.js">
+	        <sources dir="${basedir}/input/styledtext/ace/">
+	        	<file name="ext-tooltip.js"/>
+	        </sources>
+	    </jscomp>
+
+	    <jscomp compilationLevel="whitespace" warning="verbose" 
+	        debug="true" output="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/mode-language.js">
+	        <sources dir="${basedir}/input/styledtext/ace/">
+	        	<file name="mode-language.js"/>
+	        </sources>
+	    </jscomp>
+	    <jscomp compilationLevel="whitespace" warning="verbose" 
+	        debug="true" output="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/theme-eclipse.js">
+	        <sources dir="${basedir}/input/styledtext/ace/">
+	        	<file name="theme-eclipse.js"/>
+	        </sources>
+	    </jscomp>
+
+	</target>
+
+</project>

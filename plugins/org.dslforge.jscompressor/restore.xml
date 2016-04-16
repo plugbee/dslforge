@@ -1,0 +1,62 @@
+<project name="org.dslforge.jscompressor" default="all">
+
+	<property environment="env" />
+
+	<property name="env.BUILD_ID" value="yyyymmdd-hhmm" />
+
+	<property file="./ant-config/${user.name}.build.properties" />
+	
+	<property file="./ant-config/default.build.properties" />
+
+	<condition property="runs.under.windows">
+		<os family="windows" />
+	</condition>
+
+	<condition property="runs.under.unix">
+		<os family="unix" />
+	</condition>
+
+	<condition property="build.eclipse.available">
+		<available file="./eclipse" />
+	</condition>
+
+	<target name="echoprops" description="Echos configuration properties to console">
+		<echo>ant.version=${ant.version}</echo>
+		<echo>ant.home=${ant.home}</echo>
+		<echo>ant.project.name=${ant.project.name}</echo>
+		<echo>basedir=${basedir}</echo>
+		<echo>user.name=${user.name}</echo>
+		<echo>user.home=${user.home}</echo>
+
+		<echo>build.eclipse.version=${build.eclipse.version}</echo>
+		<echo>build.eclipse.version.name=${build.eclipse.version.name}</echo>
+		<echo>build.eclipse.revision=${build.eclipse.revision}</echo>
+		<echo>build.eclipse.timestamp=${build.eclipse.timestamp}</echo>
+
+		<echo>runs.under.windows=${runs.under.windows}</echo>
+		<echo>runs.under.unix=${runs.under.unix}</echo>
+
+		<echo>eclipse.downloads.drops.folder.name=${eclipse.downloads.drops.folder.name}</echo>
+		<echo>arch.suffix=${arch.suffix}</echo>
+		<echo>mvn.build.type.suffix=${mvn.build.type.suffix}</echo>
+	</target>
+
+	<target name="clean" description="clean target files">
+			<echo>cleaning output folders</echo>
+	</target>
+	
+	<target name="all" depends="echoprops, clean, restore" />
+	
+	<target name="restore" description="restore original files in the target web plugin">
+		<echo>Restore original files in DSL web plugin</echo>		
+		<copy file="input/styledtext/BasicText.js" tofile="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/BasicText.js"  overwrite="true" />
+		<copy file="input/styledtext/ace/ace.js" tofile="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ace.js" overwrite="true" />
+		<copy file="input/styledtext/ace/ext-documentation.js" tofile="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-documentation.js"  overwrite="true" />
+		<copy file="input/styledtext/ace/ext-language_tools.js" tofile="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-language_tools.js"  overwrite="true" />
+		<copy file="input/styledtext/ace/ext-tooltip.js" tofile="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-tooltip.js"  overwrite="true" />
+		<copy file="input/styledtext/ace/ext-searchbox.js" tofile="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/ext-searchbox.js"  overwrite="true" />
+		<copy file="input/styledtext/ace/mode-language.js" tofile="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/mode-language.js"  overwrite="true" />
+		<copy file="input/styledtext/ace/theme-eclipse.js" tofile="../org.dslforge.styledtext/src-js/org/dslforge/styledtext/ace/theme-eclipse.js"  overwrite="true" />
+	</target>
+	
+</project>
