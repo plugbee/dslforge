@@ -1374,7 +1374,7 @@ var Autocomplete = function() {
         
         var renderer = this.editor.renderer
         var lineHeight = renderer.layerConfig.lineHeight;
-        var tooltipMaxLines = 3; //constant.
+        var tooltipMaxLines = 8; //constant.
         
         tooltipNode.style.height = Math.max(Math.max(tooltipNode.style.height,rect.height),tooltipMaxLines*lineHeight) + "px";
         tooltipNode.style.width = rect.width + "px";

@@ -11,7 +11,6 @@
 package org.dslforge.styledtext.jface;
 
 import org.dslforge.styledtext.BasicText;
-import org.dslforge.styledtext.TextSelection;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 

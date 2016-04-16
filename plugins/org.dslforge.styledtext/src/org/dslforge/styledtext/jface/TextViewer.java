@@ -165,6 +165,7 @@ public class TextViewer extends Viewer implements ITextViewer{
 	@Override
 	public void setText(String text) {
 		fDocument.set(text);
+		System.out.println("Document contains:\n" + text);
 	}
 
 

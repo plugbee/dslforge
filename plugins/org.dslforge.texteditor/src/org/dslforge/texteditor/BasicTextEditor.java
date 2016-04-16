@@ -472,6 +472,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 					JsonObject object = (JsonObject) event.data;
 					String text = object.get("value") != null ? object.get("value").asString() : null;
 					if (text!=null) {
+						System.out.println(text);
 						setText(text);	
 					}
 				}

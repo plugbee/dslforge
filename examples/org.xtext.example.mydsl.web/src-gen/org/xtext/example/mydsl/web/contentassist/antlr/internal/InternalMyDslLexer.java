@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.mydsl.web\\src-gen\\org\\xtext\\example\\mydsl\\web\\contentassist\\antlr\\internal\\InternalMyDsl.g 2016-03-20 00:14:21
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.mydsl.web\\src-gen\\org\\xtext\\example\\mydsl\\web\\contentassist\\antlr\\internal\\InternalMyDsl.g 2016-04-17 00:04:55
 
 package org.xtext.example.mydsl.web.contentassist.antlr.internal;
 
@@ -666,7 +666,7 @@ public class InternalMyDslLexer extends Lexer {
         "\2\uffff\1\2\1\uffff\1\3\1\4\3\uffff\1\10\1\11\1\uffff\1\3\1\2"+
         "\1\4\1\5\1\6\1\7\1\10\3\uffff\1\1";
     static final String DFA12_specialS =
-        "\1\0\5\uffff\1\2\1\1\17\uffff}>";
+        "\1\2\5\uffff\1\0\1\1\17\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\12\2\11\2\12\1\11\22\12\1\11\1\2\1\6\4\12\1\7\7\12\1\10"+
             "\12\5\7\12\7\4\1\1\22\4\3\12\1\3\1\4\1\12\32\4\uff85\12",
@@ -731,6 +731,26 @@ public class InternalMyDslLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA12_6 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_6>='\u0000' && LA12_6<='\uFFFF')) ) {s = 15;}
+
+                        else s = 10;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA12_7 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_7>='\u0000' && LA12_7<='\uFFFF')) ) {s = 15;}
+
+                        else s = 10;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -753,26 +773,6 @@ public class InternalMyDslLexer extends Lexer {
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 9;}
 
                         else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='.')||(LA12_0>=':' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\uFFFF')) ) {s = 10;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA12_7 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_7>='\u0000' && LA12_7<='\uFFFF')) ) {s = 15;}
-
-                        else s = 10;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA12_6 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_6>='\u0000' && LA12_6<='\uFFFF')) ) {s = 15;}
-
-                        else s = 10;
 
                         if ( s>=0 ) return s;
                         break;

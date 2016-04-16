@@ -1,4 +1,4 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.mydsl.web\\src-gen\\org\\xtext\\example\\mydsl\\web\\contentassist\\antlr\\internal\\InternalMyDsl.g 2016-03-20 00:14:21
+// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.xtext.example.mydsl.web\\src-gen\\org\\xtext\\example\\mydsl\\web\\contentassist\\antlr\\internal\\InternalMyDsl.g 2016-04-17 00:04:55
 
 package org.xtext.example.mydsl.web.contentassist.antlr.internal; 
 

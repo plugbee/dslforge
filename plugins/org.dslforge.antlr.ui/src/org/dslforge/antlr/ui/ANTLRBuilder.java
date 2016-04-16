@@ -66,6 +66,11 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 	private IProblemMarkerFactory markerFactory;
 	private List<String> output;
 
+	public ANTLRBuilder() {
+		super();
+		setupConsole();
+	}
+	
 	IProblemMarkerFactory getProblemMarkerFactory() {
 		if (markerFactory == null) {
 			markerFactory = createProblemMarkerFactory();
@@ -96,11 +101,6 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public ANTLRBuilder() {
-		super();
-		setupConsole();
 	}
 
 	private void setupConsole() {
