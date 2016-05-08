@@ -18,20 +18,17 @@ package org.dslforge.xtext.generator.web.contentassist
 import com.google.common.collect.Maps
 import java.io.File
 import java.util.Map
-import org.dslforge.xtext.generator.IWebProjectGenerator
-import org.dslforge.xtext.generator.util.GeneratorUtil
-import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.resource.Resource
+import org.dslforge.common.AbstractGenerator
+import org.dslforge.common.IWebProjectFactory
+import org.dslforge.xtext.generator.XtextGrammar
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.emf.mwe.core.WorkflowContext
 import org.eclipse.emf.mwe.core.issues.IssuesImpl
 import org.eclipse.emf.mwe.core.monitor.NullProgressMonitor
 import org.eclipse.xpand2.output.Outlet
 import org.eclipse.xtend.expression.Variable
-import org.eclipse.xtext.Grammar
 import org.eclipse.xtext.generator.Generator
-import org.eclipse.xtext.generator.IFileSystemAccess
-import org.eclipse.xtext.generator.JavaIoFileSystemAccess
 import org.eclipse.xtext.generator.LanguageConfig
 import org.eclipse.xtext.generator.Naming
 import org.eclipse.xtext.generator.grammarAccess.GrammarAccessFragment
@@ -40,36 +37,30 @@ import org.eclipse.xtext.generator.parser.antlr.XtextAntlrUiGeneratorFragment
 import org.eclipse.xtext.resource.XtextResourceSet
 
 /**
- * The Xtext generator is invoked with a minimal set of fragments necessary to generate the content assist artefacts in the web plugin.
+ * The Xtext generator is invoked with a minimal set of fragments necessary 
+ * to generate the content assist artifacts in the web plugin.
  */
-class GenContentAssistParser implements IWebProjectGenerator {
+class GenContentAssistParser extends AbstractGenerator {
 
-	var String projectName
-	var String grammarShortName
-	var String basePath
-	var Grammar grammar
+	var XtextGrammar wrapped
 	var String workspaceRoot;
 
-	override doGenerate(EObject input, IFileSystemAccess fsa) {
-		grammar = input as Grammar
-		projectName = GeneratorUtil::getProjectName(grammar)
-		grammarShortName = GeneratorUtil::getGrammarShortName(grammar)
-		basePath = GeneratorUtil::getBasePath(grammar)
-
-		val output = (fsa as JavaIoFileSystemAccess).outputConfigurations.get("src");
-		val outputDirectory = output.outputDirectory
-		val baseURI = URI.createURI(outputDirectory, false)
-		val URI root = baseURI.trimSegments(2);
-		workspaceRoot = root.toString
-
+	override doGenerate(IWebProjectFactory factory, IProgressMonitor monitor) {
+		wrapped = factory.input as XtextGrammar
+		projectName = wrapped.getProjectName()
+		grammarShortName = wrapped.getShortName()
+		basePath = wrapped.getBasePath()
+		workspaceRoot = ResourcesPlugin.workspace.root.location.toString
+		
 		// initialize global variables
 		var Map<String, Variable> globalVars = Maps.newHashMap();
 		val Naming naming = new Naming()
 		naming.hasIde = false;
 		naming.hasUI = true;
-		naming.grammarId = grammar.name;
+		naming.grammarId = wrapped.grammar.name;
 		naming.setProjectNameUi(getProjectNameUi());
 		naming.setUiBasePackage(getProjectNameUi());
+		
 		// we disable the generation of the runtime plugin, 
 		// as we give priority to the Xtext workflow
 		// naming.setProjectNameRt(getProjectNameRt());
@@ -83,11 +74,11 @@ class GenContentAssistParser implements IWebProjectGenerator {
 
 		// the language config
 		val languageConfig = new LanguageConfig()
-		languageConfig.uri = grammar.eResource.URI.toString // this set the grammar handle
+		languageConfig.uri = wrapped.grammar.eResource.URI.toString //set the grammar handle
 		languageConfig.setForcedResourceSet(new XtextResourceSet());
-		languageConfig.fileExtensions = GeneratorUtil::getFileExtension(grammar);
+		languageConfig.fileExtensions = wrapped.getFileExtension();
 		languageConfig.addFragment(new GrammarAccessFragment)
-		languageConfig.addFragment(new WebContentAssistFragment(grammar))
+		languageConfig.addFragment(new WebContentAssistFragment(wrapped.grammar))
 		languageConfig.addFragment(new XtextAntlrUiGeneratorFragment)
 		languageConfig.registerNaming(naming);
 
@@ -97,40 +88,34 @@ class GenContentAssistParser implements IWebProjectGenerator {
 
 		var Generator xtextGenerator = new Generator()
 		xtextGenerator.pathUiProject = pathUiProject
-		// xtextGenerator.pathRtProject = pathRtProject
-		xtextGenerator.projectNameRt = GeneratorUtil::getDslProjectName(grammar)
+		xtextGenerator.projectNameRt = wrapped.getDslProjectName()
 		xtextGenerator.projectNameUi = projectNameUi
 		xtextGenerator.activator = projectNameUi + ".internal." + "Activator"
 		xtextGenerator.encoding = "UTF-8"
 		xtextGenerator.addLanguage(languageConfig)
 		xtextGenerator.naming = naming
 		xtextGenerator.mergeManifest = false;
-
 		globalVars.put(Naming.GLOBAL_VAR_NAME, new Variable(Naming.GLOBAL_VAR_NAME, naming));
 
 		try {
-			// invoke
+			// invoke the workflow programmatically
 			val IssuesImpl issuesImpl = new IssuesImpl();
 			xtextGenerator.invoke(new WorkflowContext() {
 
 				override get(String slotName) {
-					throw new UnsupportedOperationException("TODO: auto-generated method stub")
+					throw new UnsupportedOperationException("Couldn't get workflow slot name: grammar " + wrapped.grammar.name);
 				}
 
 				override getSlotNames() {
-					throw new UnsupportedOperationException("TODO: auto-generated method stub")
+					throw new UnsupportedOperationException("Couldn't get workflow slot names: grammar " + wrapped.grammar.name);
 				}
 
 				override set(String slotName, Object value) {
-					throw new UnsupportedOperationException("TODO: auto-generated method stub")
+					throw new UnsupportedOperationException("Couldn't set workflow slot name: grammar" + wrapped.grammar.name);
 				}
 
 			}, new NullProgressMonitor(), issuesImpl);
-
-			System.out.println("[INFO] - Xtext content assist parser embedded successfully!");
-			// WORKAROUND!! the Xtext generator adds the default UI modules, difficult to avoid as 
-			// the methods are private and the templates in old Xpand.
-			// remove them as we use our own web modules
+			//remove the unused artifacts.
 			deleteFile(
 				projectName + "/" + "src-gen" + "/" + basePath + "/" + "Abstract" + grammarShortName.toFirstUpper +
 					"UiModule.java")
@@ -138,7 +123,7 @@ class GenContentAssistParser implements IWebProjectGenerator {
 						"UiModule.java")
 
 				} catch (Exception ex) {
-					ex.printStackTrace
+					throw new UnsupportedOperationException("Couldn't execute workflow of grammar " + wrapped.grammar.name);
 				}
 			}
 
@@ -161,7 +146,7 @@ class GenContentAssistParser implements IWebProjectGenerator {
 			}
 
 			def String getProjectNameRt() {
-				return GeneratorUtil::getDslProjectName(grammar);
+				return wrapped.getDslProjectName();
 			}
 
 			def String getSrcGenPath() {
@@ -177,7 +162,7 @@ class GenContentAssistParser implements IWebProjectGenerator {
 			}
 
 			def getPathRtProject() {
-				return workspaceRoot + "/" + GeneratorUtil.getDslProjectName(grammar);
+				return workspaceRoot + "/" + wrapped.getDslProjectName();
 			}
 
 			def String getEncoding() {
@@ -188,8 +173,5 @@ class GenContentAssistParser implements IWebProjectGenerator {
 				val Outlet outlet = new Outlet(append, encoding, name, overwrite, path);
 				return outlet;
 			}
-
-			override doGenerate(Resource input, IFileSystemAccess fsa) {
-				throw new UnsupportedOperationException("TODO: auto-generated method stub")
-			}
 		}
+		

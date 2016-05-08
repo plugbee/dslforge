@@ -15,8 +15,8 @@
  */
 package org.dslforge.xtext.generator.module;
 
-import org.dslforge.xtext.generator.IWebProjectGenerator;
-import org.dslforge.xtext.generator.WebProjectGenerator;
+import org.dslforge.common.IWebProjectFactory;
+import org.dslforge.xtext.generator.DynamicWebProjectFactory;
 import org.eclipse.xtext.resource.generic.AbstractGenericResourceRuntimeModule;
 
 public class WebProjectGeneratorModule extends AbstractGenericResourceRuntimeModule {
@@ -31,7 +31,7 @@ public class WebProjectGeneratorModule extends AbstractGenericResourceRuntimeMod
 		return "xtext";
 	}
 	
-	public Class<? extends IWebProjectGenerator> bindIPartialGenerator() {
-		return WebProjectGenerator.class;
+	public Class<? extends IWebProjectFactory> bindWebProjectFactory() {
+		return DynamicWebProjectFactory.class;
 	}
 }

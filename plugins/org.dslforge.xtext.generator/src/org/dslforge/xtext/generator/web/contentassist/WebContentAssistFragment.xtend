@@ -1,3 +1,15 @@
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2016 PlugBee. All rights reserved.
+ * 
+ * This program and the accompanying materials are made available 
+ * under the terms of the Eclipse Public License v1.0 which 
+ * accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * </copyright>
+ */
 package org.dslforge.xtext.generator.web.contentassist
 
 import org.dslforge.xtext.generator.util.GeneratorUtil
@@ -6,30 +18,29 @@ import org.eclipse.xtext.GrammarUtil
 import org.eclipse.xtext.ui.generator.contentAssist.ContentAssistFragment
 
 class WebContentAssistFragment extends ContentAssistFragment {
-	
-	val Grammar myGrammar
-	
+
+	val Grammar grammar
+
 	new(Grammar grammar) {
 		super();
-		//workaround
-		this.myGrammar = grammar;
+		this.grammar = grammar;
 	}
-	
+
 	override String getProposalProviderName(Grammar grammar) {
-		if (grammar.name==myGrammar.name)
-			return grammar.basePackageUi  + ".contentassist." + GrammarUtil::getName(grammar) + "ProposalProvider"
-		if (grammar.name=="org.eclipse.xtext.common.Terminals")
-			return "org.eclipse.xtext.ui.editor"+ ".contentassist." + GrammarUtil::getName(grammar) + "ProposalProvider"
+		if (this.grammar.name == grammar.name)
+			return grammar.basePackageUi + ".contentassist." + GrammarUtil::getSimpleName(grammar) + "ProposalProvider"
+		else if (grammar.name == "org.eclipse.xtext.common.Terminals")
+			return "org.eclipse.xtext.ui.editor" + ".contentassist." + GrammarUtil::getSimpleName(grammar) +
+				"ProposalProvider"
 		return super.getProposalProviderName(grammar)
 	}
-	
+
 	override String getGenProposalProviderName() {
-		return myGrammar.basePackageUi + ".contentassist.Abstract" + GrammarUtil::getName(myGrammar) + "ProposalProvider"
+		return grammar.basePackageUi + ".contentassist.Abstract" + GrammarUtil::getSimpleName(grammar) +
+			"ProposalProvider"
 	}
-	
+
 	def String basePackageUi(Grammar g) {
 		return GeneratorUtil::getProjectName(g);
 	}
-	
-	
 }

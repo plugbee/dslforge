@@ -15,15 +15,12 @@
  */
 package org.dslforge.xtext.generator.util;
 
-import org.eclipse.emf.ecore.EObject;
-
-
 public class StringAppendable implements IAppendable, CharSequence {
 
 	private final String lineSeparator;
 	private StringBuilder builder;
 	
-	public StringAppendable(EObject source, String indentation, String lineSeparator) {
+	public StringAppendable(String indentation, String lineSeparator) {
 		this.lineSeparator = lineSeparator;
 		this.builder = new StringBuilder(8*1024);
 	}

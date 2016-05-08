@@ -15,42 +15,25 @@
  */
 package org.dslforge.xtext.generator.web
 
-import org.dslforge.xtext.generator.IWebProjectGenerator
-import org.dslforge.xtext.generator.util.GeneratorUtil
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.Grammar
-import org.eclipse.xtext.generator.IFileSystemAccess
+import org.dslforge.common.AbstractGenerator
+import org.dslforge.common.IWebProjectFactory
+import org.dslforge.xtext.generator.XtextGrammar
+import org.eclipse.core.runtime.IProgressMonitor
 
-class GenGlobalIndex implements IWebProjectGenerator{
+class GenGlobalIndex extends AbstractGenerator {
+
+	var XtextGrammar grammar
 	
-	val EditorType type
-	var defaultSlotName = "src-js"
-	val relativePath = "/"
-	var String projectName
-	var String grammarShortName
-	var String basePath
-	var String keywordList
-	var Grammar grammar
- 
-	new (EditorType type) {
-		switch(this.type=type) {
-			case ACE: defaultSlotName = "WebContent"
-			case RAP: defaultSlotName="src-js"
-		}
+	new () {
+		defaultSlotName = "src-js"
+		relativePath = "/"
 	}
-	
-	new() {
-		this(EditorType.RAP)
-	}
-	
-	override doGenerate(EObject input, IFileSystemAccess fsa) {
-		grammar = input as Grammar
-		if(type==EditorType.RAP) basePath=GeneratorUtil::getBasePath(grammar) else basePath="";
-		projectName=GeneratorUtil::getProjectName(grammar)
-		grammarShortName= GeneratorUtil::getGrammarShortName(grammar)
-		keywordList = GeneratorUtil::getKeywords(grammar, ",", true)
-		fsa.generateFile(basePath + relativePath +"global-index.js", defaultSlotName, toJavaScript())
+	override doGenerate(IWebProjectFactory factory, IProgressMonitor monitor) {
+		grammar = factory.input as XtextGrammar
+		basePath=grammar.getBasePath();
+		projectName=grammar.getProjectName()
+		grammarShortName= grammar.getShortName()
+		factory.generateFile(defaultSlotName + "/" + basePath + relativePath, "global-index.js", toJavaScript(), monitor)
 	}
 	
 	def toJavaScript()'''
@@ -80,8 +63,4 @@ onconnect = function(e) {
 	}
 }
 	'''
-
-	override doGenerate(Resource input, IFileSystemAccess fsa) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
 }

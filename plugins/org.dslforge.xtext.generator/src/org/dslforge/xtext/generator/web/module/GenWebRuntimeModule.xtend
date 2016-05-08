@@ -15,33 +15,26 @@
  */
 package org.dslforge.xtext.generator.web.module
 
-import org.dslforge.xtext.generator.IWebProjectGenerator
-import org.dslforge.xtext.generator.util.GeneratorUtil
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.Grammar
-import org.eclipse.xtext.generator.IFileSystemAccess
+import org.dslforge.common.AbstractGenerator
+import org.dslforge.common.IWebProjectFactory
+import org.dslforge.xtext.generator.XtextGrammar
+import org.eclipse.core.runtime.IProgressMonitor
 
-
-class GenWebRuntimeModule implements IWebProjectGenerator{
+class GenWebRuntimeModule extends AbstractGenerator{
 	
-	val relativePath = "/module/"
-	var String grammarShortName
-	var Grammar grammar
-	var String projectName
-	var boolean serverSideContentAssist
-	
-	new(boolean value) {
-		serverSideContentAssist = value
+	var XtextGrammar grammar
+	var serverSideContentAssist=true
+	new() {
+		relativePath = "/module/"
 	}
 	
-	override doGenerate(EObject input, IFileSystemAccess fsa) {
-		grammar = input as Grammar
-		var basePath=GeneratorUtil::getBasePath(grammar)
-		projectName=GeneratorUtil::getProjectName(grammar)
-		grammarShortName= GeneratorUtil::getGrammarShortName(grammar)
-		fsa.generateFile(basePath + relativePath + "AbstractWeb" + grammarShortName.toFirstUpper + "RuntimeModule" + ".java", "src-gen", toJavaSrcGen())
-		fsa.generateFile(basePath + relativePath + "Web" + grammarShortName.toFirstUpper + "RuntimeModule" + ".java", "src", toJavaSrc())
+	override  doGenerate(IWebProjectFactory factory, IProgressMonitor monitor) {
+		grammar = factory.input as XtextGrammar
+		basePath=grammar.getBasePath()
+		projectName=grammar.getProjectName()
+		grammarShortName= grammar.getShortName()
+		factory.generateFile("src-gen/" + basePath + relativePath, "AbstractWeb" + grammarShortName.toFirstUpper + "RuntimeModule" + ".java", toJavaSrcGen(), monitor)
+		factory.generateFile("src/" + basePath + relativePath, "Web" + grammarShortName.toFirstUpper + "RuntimeModule" + ".java", toJavaSrc(), monitor)
 
 	}
 	def toJavaSrcGen()'''
@@ -66,7 +59,6 @@ public abstract class AbstractWeb«grammarShortName.toFirstUpper»RuntimeModule ex
 
 	@Override
 	public void configure(Binder binder) {
-		System.out.println("[INFO] - Configuring module " + this.getClass().getName());
 		super.configure(binder);
 		«IF (serverSideContentAssist)»
 		binder.bind(org.eclipse.xtext.ui.editor.contentassist.IContentAssistParser.class).to(«grammarShortName.toFirstUpper»Parser.class);
@@ -87,20 +79,22 @@ public abstract class AbstractWeb«grammarShortName.toFirstUpper»RuntimeModule ex
  */
 package «projectName».module;
 
+import org.apache.log4j.Logger;
+
 import com.google.inject.Binder;
 
 public class Web«grammarShortName.toFirstUpper»RuntimeModule extends AbstractWeb«grammarShortName.toFirstUpper»RuntimeModule {
 
+	static final Logger logger = Logger.getLogger(Web«grammarShortName.toFirstUpper»RuntimeModule.class);
+	
+	/**
+	 * Add Custom bindings here
+	 */
 	@Override
 	public void configure(Binder binder) {
-		System.out.println("[DSLFORGE] - Configuring module " + this.getClass().getName());
 		super.configure(binder);
+		logger.info("Configuring web module " + this.getClass().getName());
 	}
 }
 	'''
-		
-	override doGenerate(Resource input, IFileSystemAccess fsa) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
 }

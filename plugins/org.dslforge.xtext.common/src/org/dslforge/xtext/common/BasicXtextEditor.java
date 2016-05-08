@@ -21,8 +21,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.dslforge.styledtext.Annotation;
-import org.dslforge.styledtext.AnnotationType;
+import org.dslforge.styledtext.Annotation.AceSeverity;
 import org.dslforge.styledtext.BasicText;
 import org.dslforge.styledtext.jface.IDocument;
 import org.dslforge.texteditor.BasicTextEditor;
@@ -37,17 +38,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.diagnostics.Severity;
-//import org.eclipse.xtext.resource.IEObjectDescription;
-//import org.eclipse.xtext.resource.IResourceDescription;
-//import org.eclipse.xtext.resource.IResourceDescription.Manager;
-//import org.eclipse.xtext.resource.XtextResource;
-//import org.eclipse.xtext.resource.XtextResourceSet;
-//import org.eclipse.xtext.scoping.IGlobalScopeProvider;
-//import org.eclipse.xtext.util.CancelIndicator;
-//import org.eclipse.xtext.validation.CheckMode;
-//import org.eclipse.xtext.validation.IConcreteSyntaxValidator;
-//import org.eclipse.xtext.validation.IResourceValidator;
-//import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
@@ -65,12 +55,13 @@ import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
-
 /**
- * A basic Xtext RAP editor
+ * A basic Xtext RAP Editor
  */
 public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEditor {
 
+	static final Logger logger = Logger.getLogger(BasicXtextEditor.class);
+	
 	@Inject
 	protected Injector injector;
 
@@ -86,10 +77,16 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	@Inject
 	protected IResourceDescription.Manager descriptionManager;
 
+	/**
+	 * Default constructor
+	 */
 	public BasicXtextEditor() {
 		super();
 	}
 
+	/**
+	 * Creates and initializes the text widget
+	 */
 	@Override
 	protected BasicText createTextWidget(Composite parent, int style) {
 		BasicText textWidget = new BasicText(parent, style);
@@ -146,8 +143,8 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 					String text = getViewer().getDocument().get();
 					xtextResource.reparse(text);
 				}
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ex) {
+			logger.error(ex.getMessage(), ex);
 		}
 		validateResource();
 	}
@@ -156,20 +153,22 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	public void updateIndex() {
 		SafeRunnable.run(new SafeRunnable() {
 			private static final long serialVersionUID = 1L;
+
 			public void run() {
 				iObjectDescriptions = Collections.emptyList();
 				EcoreUtil2.resolveAll(xtextResource);
 				IResourceDescription resourceDescription = descriptionManager.getResourceDescription(xtextResource);
 				Manager manager = xtextResource.getResourceServiceProvider().getResourceDescriptionManager();
 				resourceDescription = manager.getResourceDescription(xtextResource);
-				iObjectDescriptions = Iterables.concat(iObjectDescriptions, resourceDescription.getExportedObjects());	
-				Iterable<String> referrables = Iterables.transform(iObjectDescriptions, new Function<IEObjectDescription, String>() {
-					@Override
-					public String apply(IEObjectDescription input) {
-						return input.getName().toString() + ":" + input.getEClass().getName();
-					}
-				});
-				setScope(Lists.newArrayList(referrables));	
+				iObjectDescriptions = Iterables.concat(iObjectDescriptions, resourceDescription.getExportedObjects());
+				Iterable<String> referrables = Iterables.transform(iObjectDescriptions,
+						new Function<IEObjectDescription, String>() {
+							@Override
+							public String apply(IEObjectDescription input) {
+								return input.getName().toString() + ":" + input.getEClass().getName();
+							}
+						});
+				setScope(Lists.newArrayList(referrables));
 			}
 		});
 	}
@@ -177,25 +176,28 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	@Override
 	protected void createCompletionProposals() {
 		IDocument document = getViewer().getDocument();
-		if (document.get().length()>0) {
+		if (document.get().length() > 0) {
 			BasicText textWidget = getViewer().getTextWidget();
-			createCompletionProposals(textWidget.getOffsetAtCursorPosition());	
+			createCompletionProposals(textWidget.getOffsetAtCursorPosition());
 		}
 	}
-	
+
 	@Override
 	public void createCompletionProposals(final int offset) {
-		//delegate to subclass.
+		// delegate to subclass.
 	}
 
 	@Override
 	public void validateResource() {
 		SafeRunnable.run(new SafeRunnable() {
 			private static final long serialVersionUID = 1L;
+
 			public void run() {
-				IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider().getResourceValidator();
+				IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider()
+						.getResourceValidator();
 				try {
-					List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY, CancelIndicator.NullImpl);
+					List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY,
+							CancelIndicator.NullImpl);
 					createAnnotations(issues);
 				} catch (Exception ex) {
 					if (ex instanceof RuntimeException) {
@@ -203,7 +205,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 					}
 				}
 			}
-		});	
+		});
 		// Display display = getViewer().getTextWidget().getDisplay();
 		// if (display != null) {
 		// display.asyncExec(new Runnable() {
@@ -224,7 +226,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 		// });
 		// }
 	}
-	
+
 	/**
 	 * Displays annotations for the given issues
 	 * 
@@ -269,14 +271,14 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 		return true;
 	}
 
-	private AnnotationType convertSeverity(Severity severity) {
+	private AceSeverity convertSeverity(Severity severity) {
 		switch (severity) {
 		case ERROR:
-			return AnnotationType.error;
+			return AceSeverity.ERROR;
 		case WARNING:
-			return AnnotationType.warning;
+			return AceSeverity.WARNING;
 		case INFO:
-			return AnnotationType.info;
+			return AceSeverity.INFORMATION;
 		default:
 			break;
 		}

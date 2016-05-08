@@ -54,28 +54,28 @@
          </documentation>
       </annotation>
       <complexType>
-         <attribute name="label" type="string" use="required">
+         <attribute name="path" type="string" use="required">
             <annotation>
                <documentation>
-                  The language display label
+                  The Xtext grammar path
                </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="factory" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The Xtext executable extension factory
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn="org.dslforge.xtext.common.guice.AbstractGuiceAwareWebExecutableExtensionFactory:"/>
+               </appinfo>
             </annotation>
          </attribute>
          <attribute name="extension" type="string" use="required">
             <annotation>
                <documentation>
-                  The file extension associated to the language
+                  The language file extension
                </documentation>
-            </annotation>
-         </attribute>
-         <attribute name="class" type="string" use="required">
-            <annotation>
-               <documentation>
-                  The language executable extension factory
-               </documentation>
-               <appinfo>
-                  <meta.attribute kind="java" basedOn="org.dslforge.xtext.common.guice.AbstractGuiceAwareWebExecutableExtensionFactory:"/>
-               </appinfo>
             </annotation>
          </attribute>
       </complexType>

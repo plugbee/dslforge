@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.dslforge.xtext.common.guice.AbstractGuiceAwareWebExecutableExtensionFactory;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -38,16 +39,18 @@ import com.google.inject.Injector;
 
 public class LanguageRegistry {
 
+	static final Logger logger = Logger.getLogger(LanguageRegistry.class);
+	
 	public static final LanguageRegistry INSTANCE = new LanguageRegistry();
 	
-	private static final String WorkbenchContribution_ExtensionPoint = "org.dslforge.xtext.common.contribution";
-	private static final String WorkbenchContribution_configElement = "contribution";
-	private static final String WorkbenchContribution_label = "label";
-	private static final String WorkbenchContribution_class = "class";
-	private static final String WorkbenchContribution_file_extension = "extension";
+	private static final String WORKBENCH_CONTRIBUTION_EXTENSION_POINT = "org.dslforge.xtext.common.contribution";
+	private static final String WORKBENCH_CONTRIBUTION_CONFIG_ELEMENT = "contribution";
+	private static final String WORKBENCH_CONTRIBUTION_PATH = "path";
+	private static final String WORKBENCH_CONTRIBUTION_FACTORY = "factory";
+	private static final String WORKBENCH_CONTRIBUTION_FILE_EXTENSION = "extension";
 	
-	static Map<String, LanguageContribution> languageToContributionMap;
-	static Map<String, XtextResourceSet> languageToResourceSetMap = Collections.synchronizedMap(new LinkedHashMap<String, XtextResourceSet>());
+	private static Map<String, LanguageContribution> languageToContributionMap;
+	private static Map<String, XtextResourceSet> languageToResourceSetMap = Collections.synchronizedMap(new LinkedHashMap<String, XtextResourceSet>());
 	
 	public XtextResourceSet getDefaultResourceSet(String fileExtension) {
 		List<String> metamodelsByExtension = getLanguageByExtension(fileExtension);
@@ -112,26 +115,26 @@ public class LanguageRegistry {
 		return toReturn;
 	}
 	
-	public void initialize() throws CoreException {		
-		IConfigurationElement[] configElements =Platform.getExtensionRegistry().getConfigurationElementsFor(WorkbenchContribution_ExtensionPoint);
+	private void initialize() throws CoreException {		
+		IConfigurationElement[] configElements =Platform.getExtensionRegistry().getConfigurationElementsFor(WORKBENCH_CONTRIBUTION_EXTENSION_POINT);
 		if (configElements.length != 0) {
 			for (IConfigurationElement configElement : configElements) {
 				try {
-					if (configElement.getName().toLowerCase().equals(WorkbenchContribution_configElement.toLowerCase())) {	
+					if (configElement.getName().toLowerCase().equals(WORKBENCH_CONTRIBUTION_CONFIG_ELEMENT.toLowerCase())) {	
 						//The language name
-						String label = configElement.getAttribute(WorkbenchContribution_label); 
-						if (languageToContributionMap.containsKey(label)) {
-							logWarning("Duplicate language contribution found for: " + label); //$NON-NLS-1$
+						String xtextGrammarPath = configElement.getAttribute(WORKBENCH_CONTRIBUTION_PATH); 
+						if (languageToContributionMap.containsKey(xtextGrammarPath)) {
+							logWarning("Duplicate language contribution found for: " + xtextGrammarPath); //$NON-NLS-1$
 							continue;
 						}
 						//The language file extension
-						String fileExtension = configElement.getAttribute(WorkbenchContribution_file_extension);			
+						String fileExtension = configElement.getAttribute(WORKBENCH_CONTRIBUTION_FILE_EXTENSION);			
 						//The language injector
 						IContributor contributor = configElement.getContributor();
 						String webPluginName = contributor.getName();
 						Bundle bundle = Platform.getBundle(webPluginName);
 						try {
-							String factoryName = configElement.getAttribute(WorkbenchContribution_class);
+							String factoryName = configElement.getAttribute(WORKBENCH_CONTRIBUTION_FACTORY);
 							//String factoryName = attributeAsIs.substring(0, attributeAsIs.indexOf(":"));
 							Class<?> clazz = bundle.loadClass(factoryName);
 							Object newInstance = clazz.newInstance();
@@ -151,21 +154,22 @@ public class LanguageRegistry {
 									}	
 								} catch (ConfigurationException ex) {
 									//do nothing, there is no generator contributed.
+									logger.info("There is no generator contributed");
 								}
 								//Done.
-								LanguageContribution contribution = new LanguageContribution(label, fileExtension, injector, generators);	
-								languageToContributionMap.put(label, contribution);
+								LanguageContribution contribution = new LanguageContribution(xtextGrammarPath, fileExtension, injector, generators);	
+								languageToContributionMap.put(xtextGrammarPath, contribution);
 							}
-						} catch (ClassNotFoundException e) {
-							e.printStackTrace();
-						} catch (SecurityException e) {
-							e.printStackTrace();
-						} catch (IllegalAccessException e) {
-							e.printStackTrace();
-						} catch (IllegalArgumentException e) {
-							e.printStackTrace();
-						} catch (InstantiationException e) {
-							e.printStackTrace();
+						} catch (ClassNotFoundException ex) {
+							logger.error(ex.getMessage(), ex);
+						} catch (SecurityException ex) {
+							logger.error(ex.getMessage(), ex);
+						} catch (IllegalAccessException ex) {
+							logger.error(ex.getMessage(), ex);
+						} catch (IllegalArgumentException ex) {
+							logger.error(ex.getMessage(), ex);
+						} catch (InstantiationException ex) {
+							logger.error(ex.getMessage(), ex);
 						}						
 					} 
 				} catch (Exception ex) {
@@ -176,10 +180,10 @@ public class LanguageRegistry {
 	}
 
 	private void logWarning(String msg) {
-		System.out.println("[WARNING] - " + msg);
+		logger.info("[WARNING] - " + msg);
 	}
 
 	private void logError(Throwable t) {
-		t.printStackTrace();
+		logger.error(t.getMessage(), t);
 	}
 }

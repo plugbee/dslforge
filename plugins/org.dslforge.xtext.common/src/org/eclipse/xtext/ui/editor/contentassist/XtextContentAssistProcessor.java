@@ -2,6 +2,7 @@ package org.eclipse.xtext.ui.editor.contentassist;
 
 import java.util.Arrays;
 
+import org.apache.log4j.Logger;
 import org.dslforge.styledtext.jface.ICompletionProposal;
 import org.dslforge.styledtext.jface.IContentAssistProcessor;
 import org.dslforge.styledtext.jface.ITextViewer;
@@ -9,14 +10,18 @@ import org.eclipse.xtext.resource.XtextResource;
 
 import com.google.inject.Inject;
 
-//The original code of this class comes from org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor 
-//The code has been slightly modified to deal with the following constraints:
-//- no injection for ITemplateProposalProvider
-//- no injection for IContextInformationProvider
-//- no injection for IXtextDocument
-//- no injection for ICompletionProposalPostProcessor
-
+/**
+ * The main code of this class is copied from
+ * org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor. The
+ * following interfaces are not handled by default: 
+ * <p> - ITemplateProposalProvider
+ * <p> - IContextInformationProvider
+ * <p> - IXtextDocument
+ * <p> - ICompletionProposalPostProcessor
+ */
 public class XtextContentAssistProcessor implements IContentAssistProcessor, CompletionProposalComputer.State {
+	
+	static final Logger logger = Logger.getLogger(XtextContentAssistProcessor.class);
 	
 	@Inject
 	private ContentAssistContext.Factory contextFactory;
@@ -43,8 +48,8 @@ public class XtextContentAssistProcessor implements IContentAssistProcessor, Com
 			CompletionProposalComputer completionProposalComputer = createCompletionProposalComputer(getViewer(), offset);
 			result = completionProposalComputer.exec(resource);
 			Arrays.sort(result, completionProposalComparator);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception ex) {
+			logger.error(ex.getMessage(), ex);
 		}
 		return result;
 	} 

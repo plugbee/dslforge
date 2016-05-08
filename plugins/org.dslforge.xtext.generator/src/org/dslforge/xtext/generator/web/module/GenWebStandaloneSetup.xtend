@@ -15,26 +15,25 @@
  */
 package org.dslforge.xtext.generator.web.module
 
-import org.dslforge.xtext.generator.IWebProjectGenerator
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.generator.IFileSystemAccess
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.Grammar
-import org.dslforge.xtext.generator.util.GeneratorUtil
+import org.dslforge.common.AbstractGenerator
+import org.dslforge.common.IWebProjectFactory
+import org.dslforge.xtext.generator.XtextGrammar
+import org.eclipse.core.runtime.IProgressMonitor
 
-class GenWebStandaloneSetup implements IWebProjectGenerator{
+class GenWebStandaloneSetup extends AbstractGenerator{
 	
-	val relativePath = "/module/"
-	var String grammarShortName
-	var Grammar grammar
-	var String projectName
+	var XtextGrammar grammar
 	
-	override doGenerate(EObject input, IFileSystemAccess fsa) {
-		grammar = input as Grammar
-		var basePath=GeneratorUtil::getBasePath(grammar)
-		projectName=GeneratorUtil::getProjectName(grammar)
-		grammarShortName= GeneratorUtil::getGrammarShortName(grammar)
-		fsa.generateFile(basePath + relativePath + "Web" + grammarShortName.toFirstUpper + "StandaloneSetup" + ".java", "src-gen", toJava())
+	new() {
+		relativePath = "/module/"
+	}
+	
+	override  doGenerate(IWebProjectFactory factory, IProgressMonitor monitor) {
+		grammar = factory.input as XtextGrammar
+		basePath=grammar.getBasePath()
+		projectName=grammar.getProjectName()
+		grammarShortName= grammar.getShortName()
+		factory.generateFile("src-gen/" + basePath + relativePath, "Web" + grammarShortName.toFirstUpper + "StandaloneSetup" + ".java", toJava(), monitor)
 	}
 
 	def toJava()'''
@@ -79,9 +78,4 @@ public class Web«grammarShortName.toFirstUpper»StandaloneSetup extends «grammarS
 	}
 }
 	'''
-		
-	override doGenerate(Resource input, IFileSystemAccess fsa) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
 }

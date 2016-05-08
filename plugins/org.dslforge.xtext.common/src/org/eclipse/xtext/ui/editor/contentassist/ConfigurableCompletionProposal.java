@@ -4,6 +4,7 @@ import org.dslforge.styledtext.jface.ICompletionProposal;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtext.Keyword;
 
 public class ConfigurableCompletionProposal implements ICompletionProposal {
 
@@ -145,12 +146,15 @@ public class ConfigurableCompletionProposal implements ICompletionProposal {
 	@Override
 	public String getAdditionalProposalInfo() {
 		if (additionalProposalInfo != null) {
+			if (additionalProposalInfo instanceof Keyword) {
+				return "keyword";
+			}
 			if (additionalProposalInfo instanceof EObject) {
 				EObject eObject = (EObject) additionalProposalInfo;
 				return eObject.eClass().getName();
 			}
 			return additionalProposalInfo.toString();
 		}
-		return null;
+		return "";
 	}
 }

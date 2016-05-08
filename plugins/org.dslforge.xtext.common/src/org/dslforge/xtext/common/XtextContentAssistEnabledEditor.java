@@ -1,6 +1,7 @@
 package org.dslforge.xtext.common;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -65,8 +66,8 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 				setText(value);
 				ReplaceRegion replaceRegionToBeProcessed = new ReplaceRegion(offset, value.length(), value);
 				xtextResource.reparse(replaceRegionToBeProcessed.getText());
-			} catch (IOException e) {
-				e.printStackTrace();
+			} catch (IOException ex) {
+				logger.error(ex.getMessage(), ex);
 			}
 		}
 		updateIndex();
@@ -76,20 +77,23 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 	public void updateIndex() {
 		SafeRunnable.run(new SafeRunnable() {
 			private static final long serialVersionUID = 1L;
+
 			public void run() {
 				iObjectDescriptions = Collections.emptyList();
 				EcoreUtil2.resolveAll(xtextResource);
 				IResourceDescription resourceDescription = descriptionManager.getResourceDescription(xtextResource);
 				Manager manager = xtextResource.getResourceServiceProvider().getResourceDescriptionManager();
 				resourceDescription = manager.getResourceDescription(xtextResource);
-				iObjectDescriptions = Iterables.concat(iObjectDescriptions, resourceDescription.getExportedObjects());	
-				Iterable<String> referrables = Iterables.transform(iObjectDescriptions, new Function<IEObjectDescription, String>() {
-					@Override
-					public String apply(IEObjectDescription input) {
-						return input.getName().toString(); // + ":" + input.getEClass().getName();
-					}
-				});
-				setScope(Lists.newArrayList(referrables));	
+				iObjectDescriptions = Iterables.concat(iObjectDescriptions, resourceDescription.getExportedObjects());
+				ArrayList<String> referrables = Lists.newArrayList(
+						Iterables.transform(iObjectDescriptions, new Function<IEObjectDescription, String>() {
+							@Override
+							public String apply(IEObjectDescription input) {
+								return input.getName().toString() + ":" + "reference";
+							}
+						}));
+				Collections.sort(referrables);
+				setScope(referrables);
 			}
 		});
 	}
@@ -114,7 +118,7 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 				if (computedCompletionProposals!=null) {
 					List<String> proposals = Lists.transform(Arrays.asList(computedCompletionProposals), new Function<ICompletionProposal, String>() {
 						public String apply(ICompletionProposal completionProposal) {
-							return completionProposal.getDisplayString();
+							return completionProposal.getDisplayString() + ":" + completionProposal.getAdditionalProposalInfo();
 						}
 					});
 					setProposals(proposals);	

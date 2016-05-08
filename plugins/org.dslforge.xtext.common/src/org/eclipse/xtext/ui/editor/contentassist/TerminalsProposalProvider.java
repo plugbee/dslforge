@@ -39,10 +39,12 @@ public class TerminalsProposalProvider extends AbstractJavaBasedContentProposalP
 			if (feature != null)
 				displayText = proposalText + " - " + ruleCall.getRule().getName();
 			proposalText = getValueConverter().toString(proposalText, ruleCall.getRule().getName());
+			
 			ICompletionProposal proposal = createCompletionProposal(proposalText, displayText, null, myContext);
 			if (proposal instanceof ConfigurableCompletionProposal) {
 				ConfigurableCompletionProposal configurable = (ConfigurableCompletionProposal) proposal;
 				//[RAP]
+				configurable.setAdditionalProposalInfo("identifier");
 				// configurable.setSelectionStart(configurable.getReplacementOffset());
 				// configurable.setSelectionLength(proposalText.length());
 				// configurable.setAutoInsertable(false);
@@ -83,6 +85,7 @@ public class TerminalsProposalProvider extends AbstractJavaBasedContentProposalP
 		if (proposal instanceof ConfigurableCompletionProposal) {
 			ConfigurableCompletionProposal configurable = (ConfigurableCompletionProposal) proposal;
 			// [RAP]
+			configurable.setAdditionalProposalInfo("string");
 			// configurable.setSelectionStart(configurable.getReplacementOffset() + 1);
 			// configurable.setSelectionLength(proposalText.length() - 2);
 			// configurable.setAutoInsertable(false);

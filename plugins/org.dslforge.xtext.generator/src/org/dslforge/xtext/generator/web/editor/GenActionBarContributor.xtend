@@ -15,27 +15,26 @@
  */
 package org.dslforge.xtext.generator.web.editor
 
-import org.dslforge.xtext.generator.IWebProjectGenerator
-import org.dslforge.xtext.generator.util.GeneratorUtil
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.Grammar
-import org.eclipse.xtext.generator.IFileSystemAccess
+import org.dslforge.common.AbstractGenerator
+import org.dslforge.common.IWebProjectFactory
+import org.dslforge.xtext.generator.XtextGrammar
+import org.eclipse.core.runtime.IProgressMonitor
 
-class GenActionBarContributor implements IWebProjectGenerator{
+class GenActionBarContributor extends AbstractGenerator{
 	
-	val relativePath = "/editor/"
-	var String projectName
-	var String grammarShortName
-	var String basePath
+	var XtextGrammar grammar
 	
-	override doGenerate(EObject input, IFileSystemAccess fsa) {
-		var grammar = input as Grammar
-		projectName=GeneratorUtil::getProjectName(grammar)
-		grammarShortName= GeneratorUtil::getGrammarShortName(grammar)
-		basePath=GeneratorUtil::getBasePath(grammar)
-		fsa.generateFile(basePath + relativePath + "Abstract" + grammarShortName + "ActionBarContributor.java", "src-gen", toJavaSrcGen())
-		fsa.generateFile(basePath + relativePath + grammarShortName + "ActionBarContributor.java", "src", toJavaSrc())
+	new() {
+		relativePath = "/editor/"	
+	}
+	
+	override  doGenerate(IWebProjectFactory factory, IProgressMonitor monitor) {
+		grammar = factory.input as XtextGrammar
+		projectName=grammar.getProjectName()
+		grammarShortName= grammar.getShortName()
+		basePath=grammar.getBasePath()
+		factory.generateFile("src-gen/" + basePath + relativePath, "Abstract" + grammarShortName + "ActionBarContributor.java", toJavaSrcGen(), monitor)
+		factory.generateFile("src/" + basePath + relativePath, grammarShortName + "ActionBarContributor.java", toJavaSrc(), monitor)
 	}
 	
 	def toJavaSrcGen()'''
@@ -66,7 +65,4 @@ public class «grammarShortName»ActionBarContributor extends Abstract«grammarShor
 	}
 }
 '''
-	override doGenerate(Resource input, IFileSystemAccess fsa) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
 }

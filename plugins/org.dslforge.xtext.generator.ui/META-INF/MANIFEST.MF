@@ -1,15 +1,20 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: DSLFORGE RAP Xtext Generator Ui
+Bundle-Name: DSLFORGE Xtext Generator for RAP UI
 Bundle-SymbolicName: org.dslforge.xtext.generator.ui;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.9.0.qualifier
 Bundle-Activator: org.dslforge.xtext.generator.ui.internal.Activator
-Require-Bundle: org.eclipse.xtext.generator,
- org.eclipse.ui.ide,
+Require-Bundle: org.eclipse.ui.ide,
+ org.eclipse.core.resources,
+ org.eclipse.emf.ecore,
  org.eclipse.xtext.ui,
- org.eclipse.jdt.core,
- org.dslforge.xtext.generator,
- org.dslforge.antlr
+ org.eclipse.xtext.generator,
+ org.dslforge.antlr,
+ org.dslforge.common,
+ org.dslforge.common.ui,
+ org.dslforge.xtext.generator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: PlugBee
+Import-Package: com.google.inject,
+ org.apache.log4j;version="1.2.15"

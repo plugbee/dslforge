@@ -2,47 +2,73 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            id="org.dslforge.xtext.generator.contribution.id"
-            nameFilter="*.xtext"
-            objectClass="org.eclipse.core.resources.IFile">
-         <menu
-               icon="icons/generate_editor.png"
-               id="org.dslforge.xtext.generator.contribution.menu.file"
-               label="DSL Forge"
-               path="additions">
-            <groupMarker
-                  name="group">
-            </groupMarker>
-            <separator
-                  name="separator">
-            </separator>
-         </menu>
-         <!--
-         <action
-               class="org.dslforge.xtext.generator.ui.actions.GenerateXtextRAPEditorAction" 
-               enablesFor="1"
-               id="org.dslforge.xtext.generator.contribution.action.rap"
-               label="Generate Xtext RAP Editor"
-               menubarPath="org.dslforge.xtext.generator.contribution.menu.file/group">
-         </action>
-         <action
-               class="org.dslforge.xtext.generator.ui.actions.GenerateACEEditorAction" 
-               enablesFor="1"
-               id="org.dslforge.xtext.generator.contribution.action.ace"
-               label="Generate ACE Editor"
-               menubarPath="org.dslforge.xtext.generator.contribution.menu.file/group">
-         </action>
-         -->
-         <action
-               class="org.dslforge.xtext.generator.ui.actions.GenerateWebEditorAction" 
-               enablesFor="1"
-               id="org.dslforge.xtext.generator.contribution.action.generic"
-               label="Generate Web Editor"
-               menubarPath="org.dslforge.xtext.generator.contribution.menu.file/group">
-         </action>
-      </objectContribution>
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.dslforge.ui.wizards"
+            name="DSL Forge">
+      </category>
+      <wizard
+            category="org.dslforge.ui.wizards"
+            class="org.dslforge.xtext.generator.ui.wizard.NewWebEditorFromXtextWizard"
+            hasPages="true"
+            icon="icons/wizard_img.png"
+            id="org.dslforge.ui.wizards.xtext.editor"
+            name="Generate Web Editor from Xtext"
+            project="true">
+         <description>
+            Create a Web Editor based on an Xtext grammar
+         </description>
+      </wizard>
    </extension>
+   
+        <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.dslforge.xtext.generator.ui.actions.GenerateXtextWebEditorHandler"
+            description="Generate Web Editor from Xtext"
+            id="org.dslforge.xtext.generator.command"
+            name="GenerateWebEditorFromXtext">
+      </command>
 
+   </extension>
+   
+      <extension point="org.eclipse.core.expressions.definitions">
+      <definition id="org.dslforge.xtext.profile">
+         <iterate ifEmpty="false">
+            <adapt type="org.eclipse.core.resources.IFile">
+               <and>
+                  <test
+                        property="org.eclipse.core.resources.projectNature"
+                        value="org.eclipse.jdt.core.javanature">
+                  </test>
+                  <test
+                        property="org.eclipse.core.resources.name"
+                        value="*.xtext">
+                  </test>
+               </and>
+            </adapt>
+         </iterate>
+      </definition>
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="popup:org.eclipse.ui.popup.any">
+         <command
+               commandId="org.dslforge.xtext.generator.command"
+               icon="icons/xtext_img.png"
+               id="GenerateWebEditorFromXtext"
+               label="Generate artefacts from Xtext"
+               style="push">
+            <visibleWhen checkEnabled="false">
+               <or>
+                  <with variable="activeMenuSelection">
+                     <reference definitionId="org.dslforge.xtext.profile"/>
+                  </with>
+                  <with variable="activeMenuEditorInput">
+                     <reference definitionId="org.dslforge.xtext.profile"/>
+                  </with>
+               </or>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
 </plugin>

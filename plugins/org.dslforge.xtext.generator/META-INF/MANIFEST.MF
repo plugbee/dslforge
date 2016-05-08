@@ -1,20 +1,43 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: DSLFORGE RAP Xtext Generator
+Bundle-Name: DSL Forge Xtext Generator for RAP
 Bundle-SymbolicName: org.dslforge.xtext.generator
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.9.0.qualifier
 Bundle-Activator: org.dslforge.xtext.generator.internal.Activator
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.xtend.lib,
  org.eclipse.xtext,
  org.eclipse.xtext.generator,
- org.eclipse.emf.mwe2.language;resolution:=optional
+ org.eclipse.xtend.ide,
+ org.eclipse.xtend.lib,
+ org.dslforge.common,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.ui,
+ org.eclipse.jdt.launching,
+ org.eclipse.pde.core,
+ org.eclipse.jface,
+ org.dslforge.ace.generator,
+ org.eclipse.emf.mwe2.language.ui,
+ org.eclipse.emf.mwe.core,
+ org.eclipse.emf.mwe2.launch,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.common.types.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.xtext.generator,
+ org.dslforge.xtext.generator.module,
  org.dslforge.xtext.generator.setup,
- org.dslforge.xtext.generator.util
+ org.dslforge.xtext.generator.util,
+ org.dslforge.xtext.generator.web,
+ org.dslforge.xtext.generator.web.contentassist,
+ org.dslforge.xtext.generator.web.editor,
+ org.dslforge.xtext.generator.web.editor.widget,
+ org.dslforge.xtext.generator.web.internal,
+ org.dslforge.xtext.generator.web.module,
+ org.dslforge.xtext.generator.web.parser,
+ org.dslforge.xtext.generator.web.target
 Bundle-ClassPath: xtend-gen/,
  .
 Bundle-Vendor: PlugBee
+Import-Package: org.apache.log4j
 

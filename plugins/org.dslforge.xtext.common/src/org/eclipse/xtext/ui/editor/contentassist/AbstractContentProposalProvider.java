@@ -178,8 +178,7 @@ public abstract class AbstractContentProposalProvider implements IContentProposa
 
 	protected ConfigurableCompletionProposal doCreateProposal(String proposal, StyledString displayString, Image image,
 			int replacementOffset, int replacementLength) {
-		return new ConfigurableCompletionProposal(proposal, replacementOffset, replacementLength, proposal.length(),
-				image, displayString, null);
+		return new ConfigurableCompletionProposal(proposal, replacementOffset, replacementLength, proposal.length(), image, displayString, null);
 	}
 
 	protected StyledString getKeywordDisplayString(Keyword keyword) {
@@ -199,13 +198,6 @@ public abstract class AbstractContentProposalProvider implements IContentProposa
 	protected String getDisplayString(EObject element, String qualifiedNameAsString, String shortName) {
 		if (qualifiedNameAsString == null)
 			qualifiedNameAsString = shortName;
-		// [DSLFORGE] TODO
-		// if (qualifiedNameAsString == null) {
-		// if (element != null)
-		// qualifiedNameAsString = labelProvider.getText(element);
-		// else
-		// return null;
-		// }
 		QualifiedName qualifiedName = qualifiedNameConverter.toQualifiedName(qualifiedNameAsString);		
 		if(qualifiedName.getSegmentCount() >1) {
 			return qualifiedName.getLastSegment() + " - " + qualifiedNameAsString;
@@ -229,7 +221,7 @@ public abstract class AbstractContentProposalProvider implements IContentProposa
 	 * @return the image used to label the element, or <code>null</code> if there is no image for the given object
 	 */
 	protected Image getImage(EObject eObject) {
-		//[DSLFORGE] TODO
+		//[RAP] TODO
 		//return labelProvider.getImage(eObject);
 		return null;
 	}
@@ -254,7 +246,7 @@ public abstract class AbstractContentProposalProvider implements IContentProposa
 		return qualifiedNameConverter;
 	}
 
-	//[DSLFORGE] TODO
+	//[RAP] TODO
 	// public void setLabelProvider(ILabelProvider labelProvider) {
 	// this.labelProvider = labelProvider;
 	// }

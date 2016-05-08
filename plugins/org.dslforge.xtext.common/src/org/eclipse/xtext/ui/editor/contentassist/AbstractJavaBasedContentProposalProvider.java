@@ -185,11 +185,9 @@ public abstract class AbstractJavaBasedContentProposalProvider extends AbstractC
 			ICompletionProposalAcceptor acceptor) {
 		ICompletionProposal proposal = createCompletionProposal(keyword.getValue(), getKeywordDisplayString(keyword),
 				getImage(keyword), contentAssistContext);
-		//[AL] begin
-		if (proposal instanceof ConfigurableCompletionProposal) {
-			((ConfigurableCompletionProposal) proposal).setAdditionalProposalInfo("keyword");
-		}
-		//[AL] end
+		//[RAP]
+		((ConfigurableCompletionProposal)proposal).setAdditionalProposalInfo(keyword);
+		//
 		getPriorityHelper().adjustKeywordPriority(proposal, contentAssistContext.getPrefix());
 		acceptor.accept(proposal);
 	}
