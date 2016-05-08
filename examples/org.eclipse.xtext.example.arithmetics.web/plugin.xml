@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
+<!-- @generated dslforge -->
 <plugin>
       <extension
          point="org.eclipse.rap.ui.resources">
       <resource
           class="org.eclipse.xtext.example.arithmetics.web.editor.widget.ArithmeticsResource">
-         <dependsOn
-               resourceId="org.dslforge.styledtext.basictext">
-         </dependsOn>
+		<dependsOn
+			resourceId="org.dslforge.styledtext.basictext">
+		</dependsOn>
       </resource>
    </extension>
    <extension
@@ -18,47 +19,21 @@
             name="Arithmetics">
       </widget>
    </extension>
-      <!-- @generated dslforge -->
    <extension point="org.eclipse.ui.editors">
       <editor
             id="org.eclipse.xtext.example.arithmetics.web.editor"
             name="Arithmetics Model Editor"
-	            icon="icons/model.png"
 		            extensions="calc"
            class="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsEditor"
             contributorClass="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsActionBarContributor">
       </editor>
    </extension>
    <extension
-         point="org.dslforge.xtext.common.contribution">
-      <contribution
-            class="org.eclipse.xtext.example.arithmetics.web.ArithmeticsExecutableExtensionFactory"
-            extension="calc"
-            label="Arithmetics">
-      </contribution>
-   </extension>
-      <!-- @generated dslforge -->
-      <!--
-   <extension point="org.eclipse.ui.actionSets">
-      <actionSet
-            label="Arithmetics Action Set"
-            visible="true"
-            id="org.dslforge.core.ui.model.actionset">
-         <action
-               label="Arithmetics file"
-               class="org.eclipse.xtext.example.arithmetics.web.actions.NewArithmeticsAction"
-              menubarPath="file/new/additions"
-               id="org.eclipse.xtext.example.arithmetics.web.wizard.newArithmeticsAction"/>
-      </actionSet>
-   </extension>
-
-   <extension
-     point="org.dslforge.workbench.contribution">
-  <generator
-       class="org.eclipse.xtext.example.arithmetics.web.ArithmeticsExecutableExtensionFactory"
-         extension="calc"
-        label="org.eclipse.xtext.example.arithmetics.Arithmetics">
-  </generator>
+     point="org.dslforge.xtext.common.contribution">
+  <contribution
+       factory="org.eclipse.xtext.example.arithmetics.web.ArithmeticsExecutableExtensionFactory"
+        path="/org.eclipse.xtext.example.arithmetics/src/org/eclipse/xtext/example/arithmetics/Arithmetics.xtext"
+        extension="calc">
+  </contribution>
 </extension>
-   -->
 </plugin>

@@ -3,13 +3,20 @@
  */
 package org.eclipse.xtext.example.arithmetics.web.module;
 
+import org.apache.log4j.Logger;
+
 import com.google.inject.Binder;
 
 public class WebArithmeticsRuntimeModule extends AbstractWebArithmeticsRuntimeModule {
 
+	static final Logger logger = Logger.getLogger(WebArithmeticsRuntimeModule.class);
+	
+	/**
+	 * Add Custom bindings here
+	 */
 	@Override
 	public void configure(Binder binder) {
-		System.out.println("[INFO] - Configuring module " + this.getClass().getName());
 		super.configure(binder);
+		logger.info("Configuring web module " + this.getClass().getName());
 	}
 }

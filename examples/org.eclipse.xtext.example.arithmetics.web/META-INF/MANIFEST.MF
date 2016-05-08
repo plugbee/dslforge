@@ -4,8 +4,8 @@ Bundle-Name: org.eclipse.xtext.example.arithmetics.web
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.eclipse.xtext.example.arithmetics.web; singleton:=true
-Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.xtext.example.arithmetics.web.internal.Activator
+Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.rap.ui.navigator,
  org.eclipse.emf.rap.common.ui,
@@ -14,12 +14,11 @@ Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.emf.ecore,
  com.google.inject,
  org.eclipse.xtext,
- org.dslforge.styledtext,
- org.dslforge.texteditor,
+ org.eclipse.xtend.lib,
+ org.dslforge.workspace,
  org.dslforge.xtext.common,
+ org.dslforge.texteditor,
+ org.dslforge.styledtext,
  org.eclipse.xtext.example.arithmetics
+Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.eclipse.xtext.example.arithmetics.web,
- org.eclipse.xtext.example.arithmetics.web.editor,
- org.eclipse.xtext.example.arithmetics.web.editor.widget,
- org.eclipse.xtext.example.arithmetics.web.module

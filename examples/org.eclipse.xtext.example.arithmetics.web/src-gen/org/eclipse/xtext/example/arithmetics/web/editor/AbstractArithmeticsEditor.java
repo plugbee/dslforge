@@ -4,19 +4,19 @@
 package org.eclipse.xtext.example.arithmetics.web.editor;
 
 import org.dslforge.styledtext.BasicText;
-import org.dslforge.xtext.common.BasicXtextEditor;
+import org.dslforge.xtext.common.XtextContentAssistEnabledEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.xtext.example.arithmetics.web.editor.widget.Arithmetics;
 import org.eclipse.xtext.example.arithmetics.web.internal.Activator;
 
-public abstract class AbstractArithmeticsEditor extends BasicXtextEditor {
+public abstract class AbstractArithmeticsEditor extends XtextContentAssistEnabledEditor {
 
 	public AbstractArithmeticsEditor() {
 		super();
-		setLanguageName(Activator.LANGUAGE_NAME);
-		setInjector(Activator.getInstance().getInjector(Activator.LANGUAGE_NAME));
+		setLanguageName(Activator.ORG_ECLIPSE_XTEXT_EXAMPLE_ARITHMETICS_ARITHMETICS);
+		setInjector(Activator.getInstance().getInjector(Activator.ORG_ECLIPSE_XTEXT_EXAMPLE_ARITHMETICS_ARITHMETICS));
 	}
 	
 	@Override

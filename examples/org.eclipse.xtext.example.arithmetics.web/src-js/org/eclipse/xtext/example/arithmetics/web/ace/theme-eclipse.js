@@ -164,7 +164,7 @@ background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZ
 .ace-completion-object:before { content:'R'; background: #77c; }\
 .ace-completion-snippet:before { content:'S'; background: #7c7; }\
 .ace-completion-keyword:before { content:'K'; background: #78002D; }\
-.ace-completion-array:before { content:'A'; background: #c66; }\
+.ace-completion-identifier:before { content:'I'; background: #c66; }\
 .ace-completion-number:before { content:'1'; background: #999; }\
 .ace-completion-string:before { content:'S'; background: #999; }\
 .ace-completion-bool:before { content:'B'; background: #999; }\
@@ -176,4 +176,3 @@ exports.cssClass = "ace-eclipse";
 var dom = require("../lib/dom");
 dom.importCssString(exports.cssText, exports.cssClass);
 });
-

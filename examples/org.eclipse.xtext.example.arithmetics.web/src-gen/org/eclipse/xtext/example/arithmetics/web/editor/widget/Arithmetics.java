@@ -37,10 +37,10 @@ public class Arithmetics extends BasicText {
 		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/ace/mode-arithmetics.js"));
 		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/ace/worker-arithmetics.js"));
 		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/parser/antlr-all-min.js"));
-		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/parser/InternalArithmeticsParser.js"));
-		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/parser/InternalArithmeticsLexer.js"));
-		registerClientResources(languageResources, getClassLoader());
-		loadClientResources(languageResources);
+		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/parser/ArithmeticsParser.js"));
+		languageResources.add(new Path("src-js/org/eclipse/xtext/example/arithmetics/web/parser/ArithmeticsLexer.js"));
+		registerJsResources(languageResources, getClassLoader());
+		loadJsResources(languageResources);
 	}
 
 	@Override

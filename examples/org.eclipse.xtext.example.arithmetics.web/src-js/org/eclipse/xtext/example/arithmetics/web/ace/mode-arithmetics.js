@@ -33,14 +33,14 @@ define('ace/mode/arithmetics', ['require', 'exports', 'module' , 'ace/lib/oop', 
 var oop = require("../lib/oop");
 var TextMode = require("./text").Mode;
 var Tokenizer = require("../tokenizer").Tokenizer;
-var ArithmeticsHighlightRules = require("./arithmetics_highlight_rules").ArithmeticsHighlightRules;
+var arithmeticsHighlightRules = require("./arithmetics_highlight_rules").arithmeticsHighlightRules;
 var MatchingBraceOutdent = require("./matching_brace_outdent").MatchingBraceOutdent;
 var CstyleBehaviour = require("./behaviour/cstyle").CstyleBehaviour;
 var CStyleFoldMode = require("./folding/cstyle").FoldMode;
 var WorkerClient = require("../worker/worker_client").WorkerClient;
 
 var Mode = function() {
-    this.HighlightRules = ArithmeticsHighlightRules;
+    this.HighlightRules = arithmeticsHighlightRules;
     this.$outdent = new MatchingBraceOutdent();
     this.foldingRules = new CStyleFoldMode();
 };
@@ -130,9 +130,9 @@ define('ace/mode/arithmetics_highlight_rules', ['require', 'exports', 'module' ,
     var DocCommentHighlightRules = require("./doc_comment_highlight_rules").DocCommentHighlightRules;
     var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 
-    var ArithmeticsHighlightRules = function() {
+    var arithmeticsHighlightRules = function() {
     	
-        var keywords = ("module|def|import");
+        var keywords = ("import|def|module");
         var builtinTypes = ("");
         var builtinFunctions = ("");
         var builtinConstants = ("");
@@ -223,9 +223,9 @@ define('ace/mode/arithmetics_highlight_rules', ['require', 'exports', 'module' ,
         this.embedRules(DocCommentHighlightRules, "doc-",
             [ DocCommentHighlightRules.getEndRule("start") ]);
     };
-    oop.inherits(ArithmeticsHighlightRules, TextHighlightRules);
+    oop.inherits(arithmeticsHighlightRules, TextHighlightRules);
 
-    exports.ArithmeticsHighlightRules = ArithmeticsHighlightRules;
+    exports.arithmeticsHighlightRules = arithmeticsHighlightRules;
 });
 
 define('ace/mode/doc_comment_highlight_rules', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text_highlight_rules'], function(require, exports, module) {
