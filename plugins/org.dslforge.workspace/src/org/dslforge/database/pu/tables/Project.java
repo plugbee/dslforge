@@ -23,9 +23,8 @@ import javax.persistence.Table;
 @Table(name="df_project")
 public class Project extends Folder {
 	
-	protected User user;
-	
-	protected String visibility;
+	private User user;
+	private String visibility;
 	
 	@ManyToOne
 	public User getUser() {
@@ -47,10 +46,10 @@ public class Project extends Folder {
 	@Override
 	public String toString() {
 		return "Project [id=" + getId()+ 
-				"\n\t, name=" + name + 
-				"\n\t, description=" + description + 
-				"\n\t, path=" + path + 
-				"\n\t, user=" + user + 
+				"\n\t, name=" + getName() + 
+				"\n\t, description=" + getDescription() + 
+				"\n\t, path=" + getPath() + 
+				"\n\t, user=" + getUser() + 
 				"\n\t, visibility=" + visibility + 
 				"\n]";
 	}

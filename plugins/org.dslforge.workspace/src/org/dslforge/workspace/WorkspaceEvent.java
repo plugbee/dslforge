@@ -18,11 +18,9 @@ package org.dslforge.workspace;
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;
 
-
 public class WorkspaceEvent {
     
-	private final Path eventTarget;
-    
+	private final Path eventTarget;  
 	private final WatchEvent.Kind<?> type;
 
     WorkspaceEvent(Path eventTarget, WatchEvent.Kind<?> type) {

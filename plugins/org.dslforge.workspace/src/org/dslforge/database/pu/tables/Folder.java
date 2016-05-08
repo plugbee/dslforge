@@ -32,14 +32,10 @@ public class Folder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private String id;
-
-	protected String name = null;
-	
-	protected String description = null;
-	
-	protected String path = null;
-
-	protected List<Resource> resources = new ArrayList<Resource>();
+	private String name = null;
+	private String description = null;
+	private String path = null;
+	private List<Resource> resources = new ArrayList<Resource>();
 	
 	public String getId() {
 		return id;

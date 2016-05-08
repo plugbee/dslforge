@@ -34,11 +34,8 @@ import java.util.concurrent.TimeUnit;
 public class WorkspaceEventWatcher extends AbstractWorkspaceEventWatcher {
 	
     private FutureTask<Integer> watchTask;
-    
-    private WatchService watchService;
-    
+    private WatchService watchService;   
     private volatile boolean keepWatching = true;
-    
     private Path startPath;
 	
     private class WatchServiceRegisteringVisitor extends SimpleFileVisitor<Path> {
@@ -71,6 +68,7 @@ public class WorkspaceEventWatcher extends AbstractWorkspaceEventWatcher {
         keepWatching = false;
     }
 
+	@SuppressWarnings("unused")
     public void logEvent(WatchEvent<?> event) {
 		WatchEvent.Kind<?> kind = event.kind();				
 		@SuppressWarnings("unchecked")

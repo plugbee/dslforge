@@ -22,6 +22,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
+import org.apache.log4j.Logger;
 import org.dslforge.database.pu.tables.Folder;
 import org.dslforge.database.pu.tables.Project;
 import org.dslforge.database.pu.tables.Resource;
@@ -35,8 +36,10 @@ import org.osgi.framework.ServiceReference;
 
 @SuppressWarnings({ "unchecked", "serial" })
 public class DatabaseService {
-
-	public BundleContext context;
+	
+	static final Logger logger = Logger.getLogger(DatabaseService.class);
+	
+	private BundleContext context;
 	private EntityManagerFactory entityManagerFactory;
 	private static DatabaseService INSTANCE;
 
@@ -48,7 +51,7 @@ public class DatabaseService {
 	}
 
 	private DatabaseService() {
-		System.out.println("[INFO] - Starting DatabaseService...");
+		logger.info("Starting DatabaseService...");
 	}
 
 	public void setEntityManagerFactory(EntityManagerFactory emf) {
@@ -568,21 +571,21 @@ public class DatabaseService {
 	public void dumpUsers() {
 		List<User> users = getAllUsers();
 		for (User user : users) {
-			System.out.println(user);
+			logger.info(user);
 		}
 	}
 
 	public void dumpProjects() {
 		List<Project> projectsList = getAllProjects();
 		for (Project project : projectsList) {
-			System.out.println(project);
+			logger.info(project);
 		}
 	}
 
 	public void dumpFolders() {
 		List<Folder> folderList = getAllFolders();
 		for (Folder folder : folderList) {
-			System.out.println(folder);
+			logger.info(folder);
 		}
 	}
 
@@ -590,7 +593,7 @@ public class DatabaseService {
 		List<Resource> resources = getAllResources();
 		for (Resource resource : resources) {
 			if (resource != null) {
-				System.out.println(resource);
+				logger.info(resource);
 			}
 		}
 	}

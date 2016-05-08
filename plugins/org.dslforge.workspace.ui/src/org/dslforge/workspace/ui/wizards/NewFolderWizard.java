@@ -18,6 +18,7 @@ package org.dslforge.workspace.ui.wizards;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 
+import org.apache.log4j.Logger;
 import org.dslforge.workspace.IWorkspaceConstants;
 import org.dslforge.workspace.WorkspaceManager;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -27,6 +28,8 @@ import org.eclipse.rap.rwt.RWT;
 
 public class NewFolderWizard extends AbstractNewResourceWizard {
 
+	static final Logger logger = Logger.getLogger(NewFolderWizard.class);
+	
 	protected NewFolderWizardPage page = null;
 	
 	public NewFolderWizard(String containerName) {
@@ -55,8 +58,8 @@ public class NewFolderWizard extends AbstractNewResourceWizard {
 								URI folderURI = URI.createFileURI(containerName + IWorkspaceConstants.PATH_SEPARATOR + folderName);
 								WorkspaceManager.INSTANCE.createFolder(folderURI);
 							}
-							catch (Exception exception) {
-								exception.printStackTrace();
+							catch (Exception ex) {
+								logger.error(ex.getMessage(), ex);
 							}
 							finally {
 								progressMonitor.done();
@@ -65,10 +68,10 @@ public class NewFolderWizard extends AbstractNewResourceWizard {
 					};
 				try {
 					getContainer().run(false, false, operation);
-				} catch (InvocationTargetException e) {
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				} catch (InvocationTargetException ex) {
+					logger.error(ex.getMessage(), ex);
+				} catch (InterruptedException ex) {
+					logger.error(ex.getMessage(), ex);
 				}
 				return true; 
 			}

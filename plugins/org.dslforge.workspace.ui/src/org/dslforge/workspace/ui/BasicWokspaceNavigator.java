@@ -21,6 +21,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.dslforge.workspace.IWorkspaceListener;
 import org.dslforge.workspace.WorkspaceEventWatcher;
 import org.dslforge.workspace.WorkspaceManager;
@@ -59,6 +60,8 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 @SuppressWarnings("restriction")
 public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspaceListener, IPartListener {
 
+	static final Logger logger = Logger.getLogger(BasicWokspaceNavigator.class);
+	
 	private List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 	private WorkspaceEventWatcher directoryWatcher;
 	private ServerPushSession pushSession;
@@ -99,8 +102,8 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 		directoryWatcher = new WorkspaceEventWatcher(Paths.get(workspaceRoot));
 		try {
 			directoryWatcher.start();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ex) {
+			logger.error(ex.getMessage(), ex);
 		}
 		directoryWatcher.addListener(this);
 		pushSession = new ServerPushSession();
@@ -143,7 +146,7 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 					String absolutePath = file.getAbsolutePath();
 					IWorkbench workbench = PlatformUI.getWorkbench();
 					if (openEditor(workbench, new Path(absolutePath)) != null) {
-						System.out.println("[INFO] - Opened editor on file " + absolutePath);
+						logger.info("Opened editor on file " + absolutePath);
 					}
 					workspaceChanged(null);
 				}

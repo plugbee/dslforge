@@ -19,6 +19,7 @@ import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 
+import org.apache.log4j.Logger;
 import org.dslforge.workspace.WorkspaceManager;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.IAction;
@@ -28,10 +29,11 @@ import org.eclipse.rap.rwt.RWT;
 
 public class DeleteResourceAction extends AbstractWorkspaceAction {
 
+	static final Logger logger = Logger.getLogger(DeleteResourceAction.class);
+	
 	@Override
 	public void run(IAction action) {
 		Iterator<?> iterator = ((StructuredSelection) getSelection()).iterator();
-		// while (iterator.hasNext()) {
 		Object object = iterator.next();
 		if (object instanceof File) {
 			final File file = (File) object;
@@ -45,8 +47,8 @@ public class DeleteResourceAction extends AbstractWorkspaceAction {
 						} else {
 							WorkspaceManager.INSTANCE.deleteResource(file);
 						}
-					} catch (Exception exception) {
-						exception.printStackTrace();
+					} catch (Exception ex) {
+						logger.error(ex.getMessage(), ex);
 					} finally {
 						progressMonitor.done();
 					}
@@ -54,13 +56,13 @@ public class DeleteResourceAction extends AbstractWorkspaceAction {
 			};
 			try {
 				getWindow().run(false, false, operation);
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			} catch (InvocationTargetException ex) {
+				logger.error(ex.getMessage(), ex);
+			} catch (InterruptedException ex) {
+				logger.error(ex.getMessage(), ex);
 			}
 			final String currentUser = (String) RWT.getUISession().getAttribute("user");
-			System.out.println("[INFO] - " + currentUser + " deleted resource: " + file.getAbsolutePath());
+			logger.info(currentUser + " deleted resource: " + file.getAbsolutePath());
 		}
 	}
 }

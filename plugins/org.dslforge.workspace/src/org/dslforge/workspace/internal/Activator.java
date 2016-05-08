@@ -15,13 +15,10 @@
  */
 package org.dslforge.workspace.internal;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.persistence.EntityManagerFactory;
 
+import org.apache.log4j.Logger;
 import org.dslforge.workspace.IWorkspaceConstants;
-import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -33,9 +30,11 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
 /**
  * The activator class controls the plug-in life cycle
  */
-@SuppressWarnings("rawtypes")
+@SuppressWarnings("rawtypes")	
 public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 
+	static final Logger logger = Logger.getLogger(Activator.class);
+	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.dslforge.workspace"; //$NON-NLS-1$
 
@@ -57,8 +56,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 	public void start(BundleContext context) throws Exception {
 		plugin = this;
 		ctx = context;
-
-		System.out.println("[INFO] - " + "org.dslforge.workspace : started!");
+		logger.info(PLUGIN_ID + " started!");
 		/*
 		 * We are in the same bundle as the persistence unit so the services
 		 * should be available when we start up (if nothing bad happened) and
@@ -72,7 +70,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("[INFO] - " + "org.dslforge.workspace" + " : stopping!");
+		logger.info(PLUGIN_ID + " stopping!");
 		plugin = null;
 		emfTracker.close();
 		if (emf!=null && emf.isOpen())

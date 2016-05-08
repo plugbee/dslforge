@@ -29,13 +29,12 @@ public class Container {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private String id;
-	protected String description = null;
-	protected String name;
-	protected String path;
-	protected String visibility;
-	
-	protected User user;
-	protected List<Resource> resources = new ArrayList<Resource>();
+	private String description = null;
+	private String name;
+	private String path;
+	private String visibility;
+	private User user;
+	private List<Resource> resources = new ArrayList<Resource>();
 	
 	public String getId() {
 		return id;
@@ -102,5 +101,4 @@ public class Container {
 				", visibility=" + visibility + 
 				"]";
 	}
-
 }

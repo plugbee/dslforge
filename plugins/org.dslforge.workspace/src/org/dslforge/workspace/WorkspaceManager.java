@@ -24,6 +24,7 @@ import java.util.Map;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
 
+import org.apache.log4j.Logger;
 import org.dslforge.database.pu.tables.Folder;
 import org.dslforge.database.pu.tables.Project;
 import org.dslforge.database.pu.tables.Resource;
@@ -36,9 +37,11 @@ import org.eclipse.swt.widgets.Display;
 
 public class WorkspaceManager {
 
-	private String workspaceRoot;
+	static final Logger logger = Logger.getLogger(WorkspaceManager.class);
+	
 	public static WorkspaceManager INSTANCE = new WorkspaceManager();
-
+	private String workspaceRoot;
+	
 	private WorkspaceManager() {
 		setupWorkspace();
 	}
@@ -121,7 +124,7 @@ public class WorkspaceManager {
 				}
 			});
 		}
-		System.out.println("[INFO] - " + userId + " created project " + file.getAbsolutePath().toString());
+		logger.info(userId + " created project " + file.getAbsolutePath().toString());
 	}
 
 	private void createProject(String projectName, String description, String path, String userName,
@@ -142,11 +145,11 @@ public class WorkspaceManager {
 					public void run() {
 						try {
 							delete(file);
-						} catch (IOException e) {
-							e.printStackTrace();
-							System.out.println("[ERROR] - Project " + file.getName() + " cold not be deleted.");
+						} catch (IOException ex) {
+							logger.info("Project " + file.getName() + " cold not be deleted.");
+							logger.error(ex.getMessage(), ex);
 						}
-						System.out.println("[INFO] - Project " + file.getName() + " deleted.");
+						logger.info("Project " + file.getName() + " deleted.");
 					}
 				});
 			}
@@ -158,7 +161,7 @@ public class WorkspaceManager {
 			// directory is empty, then delete it
 			if (file.list().length == 0) {
 				file.delete();
-				System.out.println("[INFO] - Directory is deleted : " + file.getAbsolutePath());
+				logger.info("Directory is deleted : " + file.getAbsolutePath());
 			} else {
 
 				// list all the directory contents
@@ -172,13 +175,13 @@ public class WorkspaceManager {
 				// check the directory again, if empty then delete it
 				if (file.list().length == 0) {
 					file.delete();
-					System.out.println("Directory is deleted : " + file.getAbsolutePath());
+					logger.info("Directory is deleted : " + file.getAbsolutePath());
 				}
 			}
 		} else {
 			// if file, then delete it
 			file.delete();
-			System.out.println("File is deleted : " + file.getAbsolutePath());
+			logger.info("File is deleted : " + file.getAbsolutePath());
 		}
 	}
 
@@ -223,7 +226,7 @@ public class WorkspaceManager {
 					if (!isLocked(file)) {
 						WorkspaceManager.INSTANCE.deleteResource(projectName, r.getPath());
 						String userId = (String) RWT.getUISession().getAttribute("user");
-						System.out.println("[INFO] - " + userId + " deleted file " + file.getPath());
+						logger.info(userId + " deleted file " + file.getPath());
 					} else {
 						MessageDialog.openInformation(null, "Forbidden Operation", "Project " + projectName
 								+ " contains locked files, make sure files are unlocked before deleting.");
@@ -357,14 +360,14 @@ public class WorkspaceManager {
 			String projectName = computeProjectName(absoluteURI);
 			createResource(projectName, path);
 			String userId = (String) RWT.getUISession().getAttribute("user");
-			System.out.println("[INFO] - " + userId + " created file " + file.getPath());
+			logger.info(userId + " created file " + file.getPath());
 			Display.getCurrent().syncExec(new Runnable() {
 				@Override
 				public void run() {
 					try {
 						file.createNewFile();
-					} catch (IOException e) {
-						e.printStackTrace();
+					} catch (IOException ex) {
+						logger.error(ex.getMessage(), ex);
 					}
 				}
 			});
@@ -392,7 +395,7 @@ public class WorkspaceManager {
 					}
 				});
 				String userId = (String) RWT.getUISession().getAttribute("user");
-				System.out.println("[INFO] - " + userId + " deleted file " + file.getPath());
+				logger.info(userId + " deleted file " + file.getPath());
 				return true;
 			} else {
 				MessageDialog.openInformation(null, "Forbidden Operation",
@@ -439,7 +442,7 @@ public class WorkspaceManager {
 		String projectName = computeProjectName(absoluteURI);
 		String path = computeRelativePath(absoluteURI);
 		lockResource(userId, projectName, path);
-		System.out.println("[INFO] - " + userId + " locked file " + absoluteURI.toString());
+		logger.info(userId + " locked file " + absoluteURI.toString());
 	}
 
 	public void lockResource(File file) {
@@ -457,7 +460,7 @@ public class WorkspaceManager {
 		String projectName = computeProjectName(absoluteURI);
 		String path = computeRelativePath(absoluteURI);
 		unlockResource(userId, projectName, path);
-		System.out.println("[INFO] - " + userId + " unlocked file " + absoluteURI.path());
+		logger.info(userId + " unlocked file " + absoluteURI.path());
 	}
 
 	public void unlockResource(File file) {

@@ -17,6 +17,7 @@ package org.dslforge.workspace.ui;
 
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreePathViewerSorter;
 import org.eclipse.jface.viewers.Viewer;
@@ -35,6 +36,8 @@ import org.eclipse.ui.navigator.Priority;
 @SuppressWarnings({ "serial", "restriction" })
 public class BasicWorkspaceSorter extends TreePathViewerSorter {
 
+	static final Logger logger = Logger.getLogger(BasicWorkspaceSorter.class);
+	
 	private static final int LEFT_UNDERSTANDS = 1;
 	private static final int RIGHT_UNDERSTANDS = 2; 
 	private static final int BOTH_UNDERSTAND = LEFT_UNDERSTANDS | RIGHT_UNDERSTANDS; 
@@ -43,13 +46,6 @@ public class BasicWorkspaceSorter extends TreePathViewerSorter {
 
 	private INavigatorSorterService sorterService;
 
-	/**
-	 * Create a sorter service attached to the given content service.
-	 * 
-	 * @param aContentService
-	 *            The content service used by the viewer that will use this sorter service.
-	 * @since 3.3
-	 */
 	public void setContentService(INavigatorContentService aContentService) {
 		contentService = (NavigatorContentService) aContentService;
 		sorterService = contentService.getSorterService();
@@ -67,75 +63,64 @@ public class BasicWorkspaceSorter extends TreePathViewerSorter {
 				object != null ? object.toString() : "<null>", parent != null ? parent.toString() : "<null>"), null); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 	
-	public int compare(Viewer viewer, TreePath parentPath, Object e1, Object e2) {
+	public int compare(Viewer viewer, TreePath parentPath, Object object1, Object object2) {
 		if (contentService == null)
 			return -1;
-		INavigatorContentDescriptor sourceOfLvalue = getSource(e1);
-		INavigatorContentDescriptor sourceOfRvalue = getSource(e2);
-		
+		INavigatorContentDescriptor sourceOfLvalue = getSource(object1);
+		INavigatorContentDescriptor sourceOfRvalue = getSource(object2);
 		Object parent;
 		if (parentPath == null) {
 			parent = viewer.getInput();
 		} else {
 			parent = parentPath.getLastSegment();
 		}
-		
 		if (sourceOfLvalue == null) {
-			logMissingExtension(parent, e1);
+			logMissingExtension(parent, object1);
 			return -1;
 		}
 		if (sourceOfRvalue == null) {
-			logMissingExtension(parent, e2);
+			logMissingExtension(parent, object2);
 			return -1;
 		}
-
 		ViewerSorter sorter = null;
-
-		// shortcut if contributed by same source
 		if (sourceOfLvalue == sourceOfRvalue) {
-			sorter = sorterService.findSorter(sourceOfLvalue, parent, e1, e2);
+			sorter = sorterService.findSorter(sourceOfLvalue, parent, object1, object2);
 		} else {
-
 			boolean flags[] = new boolean[4];
-			flags[0] = sourceOfLvalue.isTriggerPoint(e1);
-			flags[1] = sourceOfLvalue.isTriggerPoint(e2);
-			flags[2] = sourceOfRvalue.isTriggerPoint(e1);
-			flags[3] = sourceOfRvalue.isTriggerPoint(e2);
-
+			flags[0] = sourceOfLvalue.isTriggerPoint(object1);
+			flags[1] = sourceOfLvalue.isTriggerPoint(object2);
+			flags[2] = sourceOfRvalue.isTriggerPoint(object1);
+			flags[3] = sourceOfRvalue.isTriggerPoint(object2);
 			int whoknows = 0;
 			whoknows = whoknows | (flags[0] & flags[1] ? LEFT_UNDERSTANDS : 0);
 			whoknows = whoknows | (flags[2] & flags[3] ? RIGHT_UNDERSTANDS : 0);
-
 			switch (whoknows) {
 			case BOTH_UNDERSTAND:
 				sorter = sourceOfLvalue.getSequenceNumber() > sourceOfRvalue.getSequenceNumber() ? sorterService
-						.findSorter(sourceOfLvalue, parent, e1, e2)
-						: sorterService.findSorter(sourceOfRvalue, parent, e1, e2);
+						.findSorter(sourceOfLvalue, parent, object1, object2)
+						: sorterService.findSorter(sourceOfRvalue, parent, object1, object2);
 				break;
 			case LEFT_UNDERSTANDS:
-				sorter = sorterService.findSorter(sourceOfLvalue, parent, e1, e2);
+				sorter = sorterService.findSorter(sourceOfLvalue, parent, object1, object2);
 				break;
 			case RIGHT_UNDERSTANDS:
-				sorter = sorterService.findSorter(sourceOfRvalue, parent, e1, e2);
+				sorter = sorterService.findSorter(sourceOfRvalue, parent, object1, object2);
 				break;
 			}
-		}
-		
+		}	
 		if (sorter != null) {
-			return sorter.compare(viewer, e1, e2);
+			return sorter.compare(viewer, object1, object2);
 		}
- 
-		int categoryDelta = category(e1) - category(e2);
+		int categoryDelta = category(object1) - category(object2);
 		if (categoryDelta == 0) {
-			return super.compare(viewer, e1, e2);
+			return super.compare(viewer, object1, object2);
 		}
 		return categoryDelta;
 	}
 
     public boolean isSorterProperty(Object element, String property) {
-    	// Have to get the parent path from the content provider
-    	NavigatorContentServiceContentProvider cp = (NavigatorContentServiceContentProvider) contentService.createCommonContentProvider();
-    	TreePath[] parentPaths = cp.getParents(element);
+    	NavigatorContentServiceContentProvider contentProvider = (NavigatorContentServiceContentProvider) contentService.createCommonContentProvider();
+    	TreePath[] parentPaths = contentProvider.getParents(element);
     	for (int i = 0; i < parentPaths.length; i++) {
     		if (isSorterProperty(parentPaths[i], element, property))
     			return true;
@@ -153,24 +138,23 @@ public class BasicWorkspaceSorter extends TreePathViewerSorter {
         return false;
     }
 
-    
 	private INavigatorContentDescriptor getSource(Object o) {
-		INavigatorContentDescriptor ncd = contentService.getSourceOfContribution(o);
-		if (ncd != null) {
+		INavigatorContentDescriptor descriptor = contentService.getSourceOfContribution(o);
+		if (descriptor != null) {
 			if (Policy.DEBUG_SORT)
-				System.out.println("sort: " + ncd + " object: " + o); //$NON-NLS-1$//$NON-NLS-2$
-			return ncd;
+				logger.info("sort: " + descriptor + " object: " + o);
+			return descriptor;
 		}
 
 		Set<?> descriptors = contentService.findDescriptorsByTriggerPoint(o, NavigatorContentService.CONSIDER_OVERRIDES);
 		if (descriptors != null && descriptors.size() > 0) {
-			ncd = (INavigatorContentDescriptor) descriptors.iterator().next();
+			descriptor = (INavigatorContentDescriptor) descriptors.iterator().next();
 			if (Policy.DEBUG_SORT)
-				System.out.println("sort: " + ncd + " object: " + o); //$NON-NLS-1$//$NON-NLS-2$
-			return ncd;
+				logger.info("sort: " + descriptor + " object: " + o);
+			return descriptor;
 		}
 		if (Policy.DEBUG_SORT)
-			System.out.println("sort: NULL object: " + o); //$NON-NLS-1$
+			logger.info("sort: NULL object: " + o);
 		return null;
 	}
 }

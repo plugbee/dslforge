@@ -17,6 +17,7 @@ package org.dslforge.workspace.ui.wizards;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.apache.log4j.Logger;
 import org.dslforge.workspace.WorkspaceManager;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -24,6 +25,8 @@ import org.eclipse.rap.rwt.RWT;
 
 
 public class NewProjectWizard extends AbstractNewResourceWizard{
+	
+	static final Logger logger = Logger.getLogger(NewProjectWizard.class);
 	
 	protected NewProjectWizardPage page = null;
 	
@@ -53,8 +56,8 @@ public class NewProjectWizard extends AbstractNewResourceWizard{
 							try {
 								WorkspaceManager.INSTANCE.createProject(projectName, description, visibility);
 							}
-							catch (Exception exception) {
-								exception.printStackTrace();
+							catch (Exception ex) {
+								logger.error(ex.getMessage(), ex);
 							}
 							finally {
 								progressMonitor.done();
@@ -63,12 +66,12 @@ public class NewProjectWizard extends AbstractNewResourceWizard{
 					};
 				try {
 					getContainer().run(false, false, operation);
-				} catch (InvocationTargetException e) {
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				} catch (InvocationTargetException ex) {
+					logger.error(ex.getMessage(), ex);
+				} catch (InterruptedException ex) {
+					logger.error(ex.getMessage(), ex);
 				}
-				System.out.println("[INFO] - " + userName + " created new project: " + projectName);
+				logger.info(userName + " created new project: " + projectName);
 				return true;
 			}
 		}

@@ -29,17 +29,11 @@ public class User {
 
 	@Id
 	private String id;
-
 	private String firstName;
-
 	private String lastName;
-	
 	private String organization;
-	
 	private String email;
-	
 	private String password;
-
 	private final List<Project> projects = new ArrayList<Project>();
 
 	public String getId() {

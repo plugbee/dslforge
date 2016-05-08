@@ -28,14 +28,10 @@ public class Resource {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	private String guid;
-	
+	private String guid;	
 	private String path = null;
-
 	private String status = null;
-	
-	private Project project;
-	
+	private Project project;	
 	private User locker;
 	
 	public String getGuid() {

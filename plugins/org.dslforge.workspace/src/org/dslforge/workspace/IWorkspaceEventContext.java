@@ -18,7 +18,6 @@ package org.dslforge.workspace;
 import java.nio.file.Path;
 import java.util.List;
 
-
 public interface IWorkspaceEventContext {
 
     public boolean isValid();

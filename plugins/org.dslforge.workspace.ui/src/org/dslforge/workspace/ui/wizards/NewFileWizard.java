@@ -19,6 +19,7 @@ import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 
+import org.apache.log4j.Logger;
 import org.dslforge.workspace.WorkspaceManager;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.ui.URIEditorInput;
@@ -36,6 +37,8 @@ import org.eclipse.ui.PartInitException;
 
 public class NewFileWizard extends AbstractNewResourceWizard{
 
+	static final Logger logger = Logger.getLogger(NewFileWizard.class);
+	
 	protected NewFileWizardPage page = null;
 
 	public NewFileWizard(File container) {
@@ -84,8 +87,8 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 					try {
 						WorkspaceManager.INSTANCE.createResource(fileURI);
 					}
-					catch (Exception exception) {
-						exception.printStackTrace();
+					catch (Exception ex) {
+						logger.error(ex.getMessage(), ex);
 					}
 					finally {
 						progressMonitor.done();
@@ -95,13 +98,13 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 
 		try {
 			getContainer().run(false, false, operation);
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		} catch (InvocationTargetException ex) {
+			logger.error(ex.getMessage(), ex);
+		} catch (InterruptedException ex) {
+			logger.error(ex.getMessage(), ex);
 		}
 		final String currentUser = (String) RWT.getUISession().getAttribute("user");
-		System.out.println("[INFO] - " + currentUser + " created new model: " + fileURI);
+		logger.info(currentUser + " created new model: " + fileURI);
 		return openEditor(getWorkbench(), fileURI);		
 	}
 	
