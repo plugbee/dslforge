@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DSL Forge ANTLR Generator for ACE UI
+Bundle-SymbolicName: org.dslforge.ace.generator.ui;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Activator: org.dslforge.ace.generator.ui.internal.Activator
+Bundle-Vendor: PlugBee
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.workbench,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.dslforge.common,
+ org.dslforge.common.ui,
+ org.eclipse.jface,
+ org.dslforge.ace.generator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: org.dslforge.ace.generator.ui.actions,
+ org.dslforge.ace.generator.ui.wizard
+Import-Package: org.apache.log4j

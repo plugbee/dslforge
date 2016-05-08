@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.dslforge.ui.wizards"
+            name="DSL Forge">
+      </category>
+      <wizard
+            category="org.dslforge.ui.wizards"
+            class="org.dslforge.ace.generator.ui.wizard.NewWebEditorWizard"
+            hasPages="true"
+            icon="icons/wizard_img.png"
+            id="org.dslforge.ui.wizards.ace.editor"
+            name="Generate Web Editor from ANTLR"
+            project="true">
+         <description>
+            Create a Web Editor based on an ANTLR grammar
+         </description>
+      </wizard>
+   </extension>
+   
+     <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.dslforge.ace.generator.ui.actions.GenerateAceEditorCommandHandler"
+            description="Generate Web Editor from ANTLR"
+            id="org.dslforge.ace.generator.command"
+            name="GenerateWebEditorFromANTLR">
+      </command>
+   </extension>
+  
+      <extension point="org.eclipse.core.expressions.definitions">
+      <definition id= "org.dslforge.ace.profile">
+         <iterate ifEmpty="false">
+            <adapt type="org.eclipse.core.resources.IFile">
+               <and>
+                  <test
+                        property="org.eclipse.core.resources.projectNature"
+                        value="org.eclipse.wst.jsdt.core.jsNature">
+                  </test>
+                  <test
+                        property="org.eclipse.core.resources.name"
+                        value="*.g">
+                  </test>
+               </and>
+            </adapt>
+         </iterate>
+      </definition>
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="popup:org.eclipse.ui.popup.any">
+         <command
+               commandId="org.dslforge.ace.generator.command"
+               icon="icons/antlr.png"
+               id="GenerateWebEditorFromANTLR"
+               label="Generate artefacts from ANTLR"
+               style="push">
+            <visibleWhen checkEnabled="false">
+               <or>
+                  <with variable="activeMenuSelection">
+                     <reference definitionId="org.dslforge.ace.profile"/>
+                  </with>
+                  <with variable="activeMenuEditorInput">
+                     <reference definitionId="org.dslforge.ace.profile"/>
+                  </with>
+               </or>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+</plugin>
