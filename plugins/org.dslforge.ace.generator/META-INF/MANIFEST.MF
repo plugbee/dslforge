@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DSL Forge ANTLR Generator for ACE
+Bundle-SymbolicName: org.dslforge.ace.generator
+Bundle-Version: 0.9.0.qualifier
+Bundle-Activator: org.dslforge.ace.generator.internal.Activator
+Bundle-Vendor: PlugBee
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.emf.ecore,
+ com.google.guava,
+ org.eclipse.xtend,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro,
+ org.dslforge.antlr,
+ org.dslforge.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: org.dslforge.ace.generator,
+ org.dslforge.ace.generator.web.ace,
+ org.dslforge.ace.generator.web.ace.snippets,
+ org.dslforge.ace.generator.web.parser
+Import-Package: org.apache.log4j
+
