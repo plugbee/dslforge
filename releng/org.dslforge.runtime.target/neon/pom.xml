@@ -9,8 +9,8 @@
 		<relativePath>../../org.dslforge.runtime.releng/parent/pom.xml</relativePath>
 	</parent>
 	<groupId>dslforge.releng</groupId>
-	<artifactId>mars</artifactId>
+	<artifactId>neon</artifactId>
 	<version>0.9.0-SNAPSHOT</version>
-	<name>mars</name>
+	<name>neon</name>
 	<packaging>eclipse-target-definition</packaging>
 </project>

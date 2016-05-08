@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="DSL Forge Tools Target for Neon" sequenceNumber="49">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="epp.package.rcp" version="0.0.0"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.10.0.v201603220719"/>
+<unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.3.20.v201603221017"/>
+<unit id="org.eclipse.egit.feature.group" version="4.3.0.201603230630-rc1"/>
+<unit id="org.eclipse.rap.tools.feature.feature.group" version="3.1.0.20160321-1357"/>
+<unit id="org.eclipse.wst.jsdt.feature.feature.group" version="2.0.0.v201603171403"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.12.0.v20160321-0508"/>
+<repository location="http://download.eclipse.org/releases/neon"/>
+</location>
+</locations>
+</target>
