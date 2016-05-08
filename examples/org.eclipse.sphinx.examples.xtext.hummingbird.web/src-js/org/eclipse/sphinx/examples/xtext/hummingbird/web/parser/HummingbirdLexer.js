@@ -1,11 +1,11 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g 2015-12-28 01:41:59
+// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g 2016-05-08 20:57:27
 
 
 
-var InternalHummingbirdLexer = function(input, state) {
+var HummingbirdLexer = function(input, state) {
 // alternate constructor @todo
-// public InternalHummingbirdLexer(CharStream input)
-// public InternalHummingbirdLexer(CharStream input, RecognizerSharedState state) {
+// public HummingbirdLexer(CharStream input)
+// public HummingbirdLexer(CharStream input, RecognizerSharedState state) {
     if (!state) {
         state = new org.antlr.runtime.RecognizerSharedState();
     }
@@ -13,13 +13,13 @@ var InternalHummingbirdLexer = function(input, state) {
     (function(){
     }).call(this);
 
-    this.dfa9 = new InternalHummingbirdLexer.DFA9(this);
-    InternalHummingbirdLexer.superclass.constructor.call(this, input, state);
+    this.dfa9 = new HummingbirdLexer.DFA9(this);
+    HummingbirdLexer.superclass.constructor.call(this, input, state);
 
 
 };
 
-org.antlr.lang.augmentObject(InternalHummingbirdLexer, {
+org.antlr.lang.augmentObject(HummingbirdLexer, {
     EOF: -1,
     T__9: 9,
     T__10: 10,
@@ -69,7 +69,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer, {
 (function(){
 var HIDDEN = org.antlr.runtime.Token.HIDDEN_CHANNEL,
     EOF = org.antlr.runtime.Token.EOF;
-org.antlr.lang.extend(InternalHummingbirdLexer, org.antlr.runtime.Lexer, {
+org.antlr.lang.extend(HummingbirdLexer, org.antlr.runtime.Lexer, {
     EOF : -1,
     T__9 : 9,
     T__10 : 10,
@@ -114,16 +114,16 @@ org.antlr.lang.extend(InternalHummingbirdLexer, org.antlr.runtime.Lexer, {
     INT : 6,
     COMMENT : 7,
     WS : 8,
-    getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g"; }
+    getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g"; }
 });
-org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
+org.antlr.lang.augmentObject(HummingbirdLexer.prototype, {
     // $ANTLR start T__9
     mT__9: function()  {
         try {
             var _type = this.T__9;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:10:6: ( 'Application' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:10:8: 'Application'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:10:6: ( 'Application' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:10:8: 'Application'
             this.match("Application"); 
 
 
@@ -142,8 +142,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__10;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:11:7: ( '{' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:11:9: '{'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:11:7: ( '{' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:11:9: '{'
             this.match('{'); 
 
 
@@ -161,8 +161,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__11;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:12:7: ( 'description' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:12:9: 'description'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:12:7: ( 'description' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:12:9: 'description'
             this.match("description"); 
 
 
@@ -181,8 +181,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__12;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:13:7: ( 'components' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:13:9: 'components'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:13:7: ( 'components' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:13:9: 'components'
             this.match("components"); 
 
 
@@ -201,8 +201,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__13;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:14:7: ( ',' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:14:9: ','
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:14:7: ( ',' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:14:9: ','
             this.match(','); 
 
 
@@ -220,8 +220,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__14;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:15:7: ( '}' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:15:9: '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:15:7: ( '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:15:9: '}'
             this.match('}'); 
 
 
@@ -239,8 +239,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__15;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:16:7: ( 'Component' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:16:9: 'Component'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:16:7: ( 'Component' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:16:9: 'Component'
             this.match("Component"); 
 
 
@@ -259,8 +259,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__16;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:17:7: ( 'type' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:17:9: 'type'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:17:7: ( 'type' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:17:9: 'type'
             this.match("type"); 
 
 
@@ -279,8 +279,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__17;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:18:7: ( 'incomingConnections' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:18:9: 'incomingConnections'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:18:7: ( 'incomingConnections' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:18:9: 'incomingConnections'
             this.match("incomingConnections"); 
 
 
@@ -299,8 +299,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__18;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:19:7: ( 'outgoingConnections' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:19:9: 'outgoingConnections'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:19:7: ( 'outgoingConnections' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:19:9: 'outgoingConnections'
             this.match("outgoingConnections"); 
 
 
@@ -319,8 +319,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__19;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:20:7: ( 'parameterValues' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:20:9: 'parameterValues'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:20:7: ( 'parameterValues' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:20:9: 'parameterValues'
             this.match("parameterValues"); 
 
 
@@ -339,8 +339,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__20;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:21:7: ( 'Connection' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:21:9: 'Connection'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:21:7: ( 'Connection' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:21:9: 'Connection'
             this.match("Connection"); 
 
 
@@ -359,8 +359,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__21;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:22:7: ( 'sourcePort' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:22:9: 'sourcePort'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:22:7: ( 'sourcePort' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:22:9: 'sourcePort'
             this.match("sourcePort"); 
 
 
@@ -379,8 +379,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__22;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:23:7: ( 'targetComponent' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:23:9: 'targetComponent'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:23:7: ( 'targetComponent' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:23:9: 'targetComponent'
             this.match("targetComponent"); 
 
 
@@ -399,8 +399,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__23;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:24:7: ( 'ParameterValue' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:24:9: 'ParameterValue'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:24:7: ( 'ParameterValue' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:24:9: 'ParameterValue'
             this.match("ParameterValue"); 
 
 
@@ -419,8 +419,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__24;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:25:7: ( 'value' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:25:9: 'value'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:25:7: ( 'value' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:25:9: 'value'
             this.match("value"); 
 
 
@@ -439,8 +439,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__25;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:26:7: ( 'Platform' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:26:9: 'Platform'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:26:7: ( 'Platform' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:26:9: 'Platform'
             this.match("Platform"); 
 
 
@@ -459,8 +459,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__26;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:27:7: ( 'componentTypes' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:27:9: 'componentTypes'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:27:7: ( 'componentTypes' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:27:9: 'componentTypes'
             this.match("componentTypes"); 
 
 
@@ -479,8 +479,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__27;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:28:7: ( 'interfaces' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:28:9: 'interfaces'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:28:7: ( 'interfaces' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:28:9: 'interfaces'
             this.match("interfaces"); 
 
 
@@ -499,8 +499,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__28;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:29:7: ( 'ComponentType' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:29:9: 'ComponentType'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:29:7: ( 'ComponentType' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:29:9: 'ComponentType'
             this.match("ComponentType"); 
 
 
@@ -519,8 +519,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__29;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:30:7: ( 'providedInterfaces' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:30:9: 'providedInterfaces'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:30:7: ( 'providedInterfaces' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:30:9: 'providedInterfaces'
             this.match("providedInterfaces"); 
 
 
@@ -539,8 +539,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__30;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:31:7: ( '(' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:31:9: '('
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:31:7: ( '(' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:31:9: '('
             this.match('('); 
 
 
@@ -558,8 +558,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__31;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:32:7: ( ')' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:32:9: ')'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:32:7: ( ')' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:32:9: ')'
             this.match(')'); 
 
 
@@ -577,8 +577,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__32;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:33:7: ( 'ports' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:33:9: 'ports'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:33:7: ( 'ports' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:33:9: 'ports'
             this.match("ports"); 
 
 
@@ -597,8 +597,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__33;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:34:7: ( 'parameters' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:34:9: 'parameters'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:34:7: ( 'parameters' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:34:9: 'parameters'
             this.match("parameters"); 
 
 
@@ -617,8 +617,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__34;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:35:7: ( 'Interface' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:35:9: 'Interface'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:35:7: ( 'Interface' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:35:9: 'Interface'
             this.match("Interface"); 
 
 
@@ -637,8 +637,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__35;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:36:7: ( 'providingComponentTypes' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:36:9: 'providingComponentTypes'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:36:7: ( 'providingComponentTypes' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:36:9: 'providingComponentTypes'
             this.match("providingComponentTypes"); 
 
 
@@ -657,8 +657,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__36;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:37:7: ( 'requiringPorts' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:37:9: 'requiringPorts'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:37:7: ( 'requiringPorts' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:37:9: 'requiringPorts'
             this.match("requiringPorts"); 
 
 
@@ -677,8 +677,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__37;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:38:7: ( 'Port' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:38:9: 'Port'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:38:7: ( 'Port' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:38:9: 'Port'
             this.match("Port"); 
 
 
@@ -697,8 +697,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__38;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:39:7: ( 'minProviderCount' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:39:9: 'minProviderCount'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:39:7: ( 'minProviderCount' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:39:9: 'minProviderCount'
             this.match("minProviderCount"); 
 
 
@@ -717,8 +717,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__39;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:40:7: ( 'maxProviderCount' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:40:9: 'maxProviderCount'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:40:7: ( 'maxProviderCount' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:40:9: 'maxProviderCount'
             this.match("maxProviderCount"); 
 
 
@@ -737,8 +737,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__40;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:41:7: ( 'requiredInterface' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:41:9: 'requiredInterface'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:41:7: ( 'requiredInterface' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:41:9: 'requiredInterface'
             this.match("requiredInterface"); 
 
 
@@ -757,8 +757,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__41;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:42:7: ( 'optional' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:42:9: 'optional'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:42:7: ( 'optional' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:42:9: 'optional'
             this.match("optional"); 
 
 
@@ -777,8 +777,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__42;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:43:7: ( 'Parameter' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:43:9: 'Parameter'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:43:7: ( 'Parameter' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:43:9: 'Parameter'
             this.match("Parameter"); 
 
 
@@ -797,8 +797,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__43;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:44:7: ( 'dataType' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:44:9: 'dataType'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:44:7: ( 'dataType' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:44:9: 'dataType'
             this.match("dataType"); 
 
 
@@ -817,8 +817,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__44;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:45:7: ( '-' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:45:9: '-'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:45:7: ( '-' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:45:9: '-'
             this.match('-'); 
 
 
@@ -836,8 +836,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__45;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:46:7: ( 'true' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:46:9: 'true'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:46:7: ( 'true' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:46:9: 'true'
             this.match("true"); 
 
 
@@ -856,8 +856,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.T__46;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:47:7: ( 'false' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:47:9: 'false'
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:47:7: ( 'false' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:47:9: 'false'
             this.match("false"); 
 
 
@@ -876,8 +876,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.ID;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:100:4: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:100:6: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:163:4: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:163:6: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             if ( (this.input.LA(1)>='A' && this.input.LA(1)<='Z')||this.input.LA(1)=='_'||(this.input.LA(1)>='a' && this.input.LA(1)<='z') ) {
                 this.input.consume();
 
@@ -887,7 +887,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
                 this.recover(mse);
                 throw mse;}
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:100:34: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:163:34: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop1:
             do {
                 var alt1=2;
@@ -900,7 +900,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
                 switch (alt1) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:
                     if ( (this.input.LA(1)>='0' && this.input.LA(1)<='9')||(this.input.LA(1)>='A' && this.input.LA(1)<='Z')||this.input.LA(1)=='_'||(this.input.LA(1)>='a' && this.input.LA(1)<='z') ) {
                         this.input.consume();
 
@@ -935,9 +935,9 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.STRING;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:8: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:10: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:10: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:8: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:10: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:10: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             var alt4=2;
             var LA4_0 = this.input.LA(1);
 
@@ -955,9 +955,9 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
             }
             switch (alt4) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:11: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:11: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     this.match('\"'); 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:15: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:15: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop2:
                     do {
                         var alt2=3;
@@ -973,7 +973,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
                         switch (alt2) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:16: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:16: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                             this.match('\\'); 
                             if ( this.input.LA(1)=='\"'||this.input.LA(1)=='\''||this.input.LA(1)=='\\'||this.input.LA(1)=='b'||this.input.LA(1)=='f'||this.input.LA(1)=='n'||this.input.LA(1)=='r'||(this.input.LA(1)>='t' && this.input.LA(1)<='u') ) {
                                 this.input.consume();
@@ -988,7 +988,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
                             break;
                         case 2 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:61: ~ ( ( '\\\\' | '\"' ) )
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:61: ~ ( ( '\\\\' | '\"' ) )
                             if ( (this.input.LA(1)>='\u0000' && this.input.LA(1)<='!')||(this.input.LA(1)>='#' && this.input.LA(1)<='[')||(this.input.LA(1)>=']' && this.input.LA(1)<='\uFFFF') ) {
                                 this.input.consume();
 
@@ -1012,9 +1012,9 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
                     break;
                 case 2 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:81: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:81: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     this.match('\''); 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:86: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:86: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop3:
                     do {
                         var alt3=3;
@@ -1030,7 +1030,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
                         switch (alt3) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:87: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:87: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                             this.match('\\'); 
                             if ( this.input.LA(1)=='\"'||this.input.LA(1)=='\''||this.input.LA(1)=='\\'||this.input.LA(1)=='b'||this.input.LA(1)=='f'||this.input.LA(1)=='n'||this.input.LA(1)=='r'||(this.input.LA(1)>='t' && this.input.LA(1)<='u') ) {
                                 this.input.consume();
@@ -1045,7 +1045,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
                             break;
                         case 2 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:102:132: ~ ( ( '\\\\' | '\\'' ) )
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:165:132: ~ ( ( '\\\\' | '\\'' ) )
                             if ( (this.input.LA(1)>='\u0000' && this.input.LA(1)<='&')||(this.input.LA(1)>='(' && this.input.LA(1)<='[')||(this.input.LA(1)>=']' && this.input.LA(1)<='\uFFFF') ) {
                                 this.input.consume();
 
@@ -1087,9 +1087,9 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.COMMENT;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:104:9: ( ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* ) )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:104:11: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:104:11: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:167:9: ( ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:167:11: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:167:11: ( '/*' ( . )* '*/' | '//' (~ ( '\\r' | '\\n' ) )* )
             var alt7=2;
             var LA7_0 = this.input.LA(1);
 
@@ -1117,10 +1117,10 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
             }
             switch (alt7) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:104:12: '/*' ( . )* '*/'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:167:12: '/*' ( . )* '*/'
                     this.match("/*"); 
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:104:17: ( . )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:167:17: ( . )*
                     loop5:
                     do {
                         var alt5=2;
@@ -1145,7 +1145,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
                         switch (alt5) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:104:17: .
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:167:17: .
                             this.matchAny(); 
 
 
@@ -1162,10 +1162,10 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
                     break;
                 case 2 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:104:27: '//' (~ ( '\\r' | '\\n' ) )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:167:27: '//' (~ ( '\\r' | '\\n' ) )*
                     this.match("//"); 
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:104:32: (~ ( '\\r' | '\\n' ) )*
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:167:32: (~ ( '\\r' | '\\n' ) )*
                     loop6:
                     do {
                         var alt6=2;
@@ -1178,7 +1178,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
                         switch (alt6) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:104:32: ~ ( '\\r' | '\\n' )
+                            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:167:32: ~ ( '\\r' | '\\n' )
                             if ( (this.input.LA(1)>='\u0000' && this.input.LA(1)<='\t')||(this.input.LA(1)>='\u000B' && this.input.LA(1)<='\f')||(this.input.LA(1)>='\u000E' && this.input.LA(1)<='\uFFFF') ) {
                                 this.input.consume();
 
@@ -1220,8 +1220,8 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.WS;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:106:3: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:106:6: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:169:3: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:169:6: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
             if ( (this.input.LA(1)>='\t' && this.input.LA(1)<='\n')||(this.input.LA(1)>='\f' && this.input.LA(1)<='\r')||this.input.LA(1)==' ' ) {
                 this.input.consume();
 
@@ -1248,9 +1248,9 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
         try {
             var _type = this.INT;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:110:4: ( ( '0' .. '9' )+ )
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:110:6: ( '0' .. '9' )+
-            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:110:6: ( '0' .. '9' )+
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:173:4: ( ( '0' .. '9' )+ )
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:173:6: ( '0' .. '9' )+
+            // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:173:6: ( '0' .. '9' )+
             var cnt8=0;
             loop8:
             do {
@@ -1264,7 +1264,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
                 switch (alt8) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:110:7: '0' .. '9'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:173:7: '0' .. '9'
                     this.matchRange('0','9'); 
 
 
@@ -1292,264 +1292,264 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
     // $ANTLR end "INT",
 
     mTokens: function() {
-        // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | ID | STRING | COMMENT | WS | INT )
+        // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | ID | STRING | COMMENT | WS | INT )
         var alt9=43;
         alt9 = this.dfa9.predict(this.input);
         switch (alt9) {
             case 1 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:10: T__9
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:10: T__9
                 this.mT__9(); 
 
 
                 break;
             case 2 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:15: T__10
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:15: T__10
                 this.mT__10(); 
 
 
                 break;
             case 3 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:21: T__11
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:21: T__11
                 this.mT__11(); 
 
 
                 break;
             case 4 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:27: T__12
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:27: T__12
                 this.mT__12(); 
 
 
                 break;
             case 5 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:33: T__13
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:33: T__13
                 this.mT__13(); 
 
 
                 break;
             case 6 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:39: T__14
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:39: T__14
                 this.mT__14(); 
 
 
                 break;
             case 7 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:45: T__15
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:45: T__15
                 this.mT__15(); 
 
 
                 break;
             case 8 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:51: T__16
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:51: T__16
                 this.mT__16(); 
 
 
                 break;
             case 9 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:57: T__17
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:57: T__17
                 this.mT__17(); 
 
 
                 break;
             case 10 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:63: T__18
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:63: T__18
                 this.mT__18(); 
 
 
                 break;
             case 11 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:69: T__19
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:69: T__19
                 this.mT__19(); 
 
 
                 break;
             case 12 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:75: T__20
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:75: T__20
                 this.mT__20(); 
 
 
                 break;
             case 13 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:81: T__21
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:81: T__21
                 this.mT__21(); 
 
 
                 break;
             case 14 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:87: T__22
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:87: T__22
                 this.mT__22(); 
 
 
                 break;
             case 15 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:93: T__23
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:93: T__23
                 this.mT__23(); 
 
 
                 break;
             case 16 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:99: T__24
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:99: T__24
                 this.mT__24(); 
 
 
                 break;
             case 17 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:105: T__25
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:105: T__25
                 this.mT__25(); 
 
 
                 break;
             case 18 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:111: T__26
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:111: T__26
                 this.mT__26(); 
 
 
                 break;
             case 19 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:117: T__27
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:117: T__27
                 this.mT__27(); 
 
 
                 break;
             case 20 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:123: T__28
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:123: T__28
                 this.mT__28(); 
 
 
                 break;
             case 21 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:129: T__29
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:129: T__29
                 this.mT__29(); 
 
 
                 break;
             case 22 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:135: T__30
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:135: T__30
                 this.mT__30(); 
 
 
                 break;
             case 23 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:141: T__31
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:141: T__31
                 this.mT__31(); 
 
 
                 break;
             case 24 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:147: T__32
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:147: T__32
                 this.mT__32(); 
 
 
                 break;
             case 25 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:153: T__33
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:153: T__33
                 this.mT__33(); 
 
 
                 break;
             case 26 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:159: T__34
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:159: T__34
                 this.mT__34(); 
 
 
                 break;
             case 27 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:165: T__35
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:165: T__35
                 this.mT__35(); 
 
 
                 break;
             case 28 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:171: T__36
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:171: T__36
                 this.mT__36(); 
 
 
                 break;
             case 29 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:177: T__37
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:177: T__37
                 this.mT__37(); 
 
 
                 break;
             case 30 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:183: T__38
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:183: T__38
                 this.mT__38(); 
 
 
                 break;
             case 31 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:189: T__39
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:189: T__39
                 this.mT__39(); 
 
 
                 break;
             case 32 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:195: T__40
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:195: T__40
                 this.mT__40(); 
 
 
                 break;
             case 33 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:201: T__41
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:201: T__41
                 this.mT__41(); 
 
 
                 break;
             case 34 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:207: T__42
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:207: T__42
                 this.mT__42(); 
 
 
                 break;
             case 35 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:213: T__43
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:213: T__43
                 this.mT__43(); 
 
 
                 break;
             case 36 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:219: T__44
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:219: T__44
                 this.mT__44(); 
 
 
                 break;
             case 37 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:225: T__45
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:225: T__45
                 this.mT__45(); 
 
 
                 break;
             case 38 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:231: T__46
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:231: T__46
                 this.mT__46(); 
 
 
                 break;
             case 39 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:237: ID
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:237: ID
                 this.mID(); 
 
 
                 break;
             case 40 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:240: STRING
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:240: STRING
                 this.mSTRING(); 
 
 
                 break;
             case 41 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:247: COMMENT
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:247: COMMENT
                 this.mCOMMENT(); 
 
 
                 break;
             case 42 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:255: WS
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:255: WS
                 this.mWS(); 
 
 
                 break;
             case 43 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\InternalHummingbird.g:1:258: INT
+                // D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g:1:258: INT
                 this.mINT(); 
 
 
@@ -1561,7 +1561,7 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer.prototype, {
 
 }, true); // important to pass true to overwrite default implementations
 
-org.antlr.lang.augmentObject(InternalHummingbirdLexer, {
+org.antlr.lang.augmentObject(HummingbirdLexer, {
     DFA9_eotS:
         "\u0001\uffff\u0001\u0016\u0001\uffff\u0002\u0016\u0002\uffff\u0008"+
     "\u0016\u0002\uffff\u0003\u0016\u0001\uffff\u0001\u0016\u0005\uffff\u0038"+
@@ -2091,43 +2091,43 @@ org.antlr.lang.augmentObject(InternalHummingbirdLexer, {
     ]
 });
 
-org.antlr.lang.augmentObject(InternalHummingbirdLexer, {
+org.antlr.lang.augmentObject(HummingbirdLexer, {
     DFA9_eot:
-        org.antlr.runtime.DFA.unpackEncodedString(InternalHummingbirdLexer.DFA9_eotS),
+        org.antlr.runtime.DFA.unpackEncodedString(HummingbirdLexer.DFA9_eotS),
     DFA9_eof:
-        org.antlr.runtime.DFA.unpackEncodedString(InternalHummingbirdLexer.DFA9_eofS),
+        org.antlr.runtime.DFA.unpackEncodedString(HummingbirdLexer.DFA9_eofS),
     DFA9_min:
-        org.antlr.runtime.DFA.unpackEncodedStringToUnsignedChars(InternalHummingbirdLexer.DFA9_minS),
+        org.antlr.runtime.DFA.unpackEncodedStringToUnsignedChars(HummingbirdLexer.DFA9_minS),
     DFA9_max:
-        org.antlr.runtime.DFA.unpackEncodedStringToUnsignedChars(InternalHummingbirdLexer.DFA9_maxS),
+        org.antlr.runtime.DFA.unpackEncodedStringToUnsignedChars(HummingbirdLexer.DFA9_maxS),
     DFA9_accept:
-        org.antlr.runtime.DFA.unpackEncodedString(InternalHummingbirdLexer.DFA9_acceptS),
+        org.antlr.runtime.DFA.unpackEncodedString(HummingbirdLexer.DFA9_acceptS),
     DFA9_special:
-        org.antlr.runtime.DFA.unpackEncodedString(InternalHummingbirdLexer.DFA9_specialS),
+        org.antlr.runtime.DFA.unpackEncodedString(HummingbirdLexer.DFA9_specialS),
     DFA9_transition: (function() {
         var a = [],
             i,
-            numStates = InternalHummingbirdLexer.DFA9_transitionS.length;
+            numStates = HummingbirdLexer.DFA9_transitionS.length;
         for (i=0; i<numStates; i++) {
-            a.push(org.antlr.runtime.DFA.unpackEncodedString(InternalHummingbirdLexer.DFA9_transitionS[i]));
+            a.push(org.antlr.runtime.DFA.unpackEncodedString(HummingbirdLexer.DFA9_transitionS[i]));
         }
         return a;
     })()
 });
 
-InternalHummingbirdLexer.DFA9 = function(recognizer) {
+HummingbirdLexer.DFA9 = function(recognizer) {
     this.recognizer = recognizer;
     this.decisionNumber = 9;
-    this.eot = InternalHummingbirdLexer.DFA9_eot;
-    this.eof = InternalHummingbirdLexer.DFA9_eof;
-    this.min = InternalHummingbirdLexer.DFA9_min;
-    this.max = InternalHummingbirdLexer.DFA9_max;
-    this.accept = InternalHummingbirdLexer.DFA9_accept;
-    this.special = InternalHummingbirdLexer.DFA9_special;
-    this.transition = InternalHummingbirdLexer.DFA9_transition;
+    this.eot = HummingbirdLexer.DFA9_eot;
+    this.eof = HummingbirdLexer.DFA9_eof;
+    this.min = HummingbirdLexer.DFA9_min;
+    this.max = HummingbirdLexer.DFA9_max;
+    this.accept = HummingbirdLexer.DFA9_accept;
+    this.special = HummingbirdLexer.DFA9_special;
+    this.transition = HummingbirdLexer.DFA9_transition;
 };
 
-org.antlr.lang.extend(InternalHummingbirdLexer.DFA9, org.antlr.runtime.DFA, {
+org.antlr.lang.extend(HummingbirdLexer.DFA9, org.antlr.runtime.DFA, {
     getDescription: function() {
         return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | ID | STRING | COMMENT | WS | INT );";
     },

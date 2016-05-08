@@ -3,14 +3,20 @@
  */
 package org.eclipse.sphinx.examples.xtext.hummingbird.web.module;
 
+import org.apache.log4j.Logger;
+
 import com.google.inject.Binder;
 
 public class WebHummingbirdRuntimeModule extends AbstractWebHummingbirdRuntimeModule {
 
+	static final Logger logger = Logger.getLogger(WebHummingbirdRuntimeModule.class);
+	
+	/**
+	 * Add Custom bindings here
+	 */
 	@Override
 	public void configure(Binder binder) {
-		System.out.println("[INFO] - Configuring module " + this.getClass().getName());
 		super.configure(binder);
+		logger.info("Configuring web module " + this.getClass().getName());
 	}
 }
-	

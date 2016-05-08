@@ -23,7 +23,7 @@ import com.google.inject.Injector;
 public class Activator extends AbstractUIPlugin {
 
 	// The Language Name
-	public static final String LANGUAGE_NAME = "org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird";
+	public static final String ORG_ECLIPSE_SPHINX_EXAMPLES_XTEXT_HUMMINGBIRD = "org.eclipse.sphinx.examples.xtext.Hummingbird";
 	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.sphinx.examples.xtext.hummingbird.web"; //$NON-NLS-1$
@@ -37,7 +37,7 @@ public class Activator extends AbstractUIPlugin {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = new WebHummingbirdStandaloneSetup().createInjector(LANGUAGE_NAME));
+				injectors.put(language, injector = new WebHummingbirdStandaloneSetup().createInjector("org.eclipse.sphinx.examples.xtext.Hummingbird"));
 			}
 			return injector;
 		}

@@ -877,8 +877,8 @@ var Mirror = require("../worker/mirror").Mirror;
 var hummingbirdparse = require("../mode/hummingbird/hummingbirdparse");
 
 importScripts("../parser/antlr-all-min.js");
-importScripts("../parser/InternalHummingbirdLexer.js");
-importScripts("../parser/InternalHummingbirdParser.js");
+importScripts("../parser/HummingbirdLexer.js");
+importScripts("../parser/HummingbirdParser.js");
 
 var Worker = exports.Worker = function(sender) {
     Mirror.call(this, sender);
@@ -898,9 +898,9 @@ oop.inherits(Worker, Mirror);
 		};
 		
 	    cstream = new org.antlr.runtime.ANTLRStringStream(value);
-	    lexer = new InternalHummingbirdLexer(cstream);
+	    lexer = new HummingbirdLexer(cstream);
 	    tstream = new org.antlr.runtime.CommonTokenStream(lexer);
-	    parser = new InternalHummingbirdParser(tstream);
+	    parser = new HummingbirdParser(tstream);
 	    try {
 	    	parser.rule_EntryPoint();
 	    } catch(err) {

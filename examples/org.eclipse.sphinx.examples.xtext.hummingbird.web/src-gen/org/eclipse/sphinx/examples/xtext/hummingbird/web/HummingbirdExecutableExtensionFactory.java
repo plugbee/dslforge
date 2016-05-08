@@ -18,6 +18,6 @@ public class HummingbirdExecutableExtensionFactory extends AbstractGuiceAwareWeb
 	
 	@Override
 	public Injector getInjector() {
-		return Activator.getInstance().getInjector(Activator.LANGUAGE_NAME);
+		return Activator.getInstance().getInjector(Activator.ORG_ECLIPSE_SPHINX_EXAMPLES_XTEXT_HUMMINGBIRD);
 	}
 }

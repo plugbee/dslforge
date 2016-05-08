@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
+<!-- @generated dslforge -->
 <plugin>
       <extension
          point="org.eclipse.rap.ui.resources">
       <resource
           class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.widget.HummingbirdResource">
-         <dependsOn
-               resourceId="org.dslforge.styledtext.basictext">
-         </dependsOn>
+		<dependsOn
+			resourceId="org.dslforge.styledtext.basictext">
+		</dependsOn>
       </resource>
    </extension>
    <extension
@@ -18,49 +19,21 @@
             name="Hummingbird">
       </widget>
    </extension>
-      <!-- @generated dslforge -->
    <extension point="org.eclipse.ui.editors">
       <editor
             id="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor"
             name="Hummingbird Model Editor"
-	            icon="icons/model.png"
 		            extensions="hbtext"
            class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdEditor"
             contributorClass="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdActionBarContributor">
       </editor>
    </extension>
    <extension
-         point="org.dslforge.xtext.common.contribution">
-      <contribution
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.web.HummingbirdExecutableExtensionFactory"
-            extension="hbtext"
-            label="Humingbird">
-      </contribution>
-   </extension>
-      <!-- @generated dslforge -->
-      <!--
-   <extension point="org.eclipse.ui.actionSets">
-      <actionSet
-            label="Hummingbird Action Set"
-            visible="true"
-            id="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.actionset">
-         <action
-               class="org.eclipse.sphinx.examples.xtext.hummingbird.web.actions.NewHummingbirdAction"
-               icon="icons/model.png"
-               id="org.eclipse.sphinx.examples.xtext.hummingbird.web.wizard.newHummingbirdAction"
-               label="Hummingbird file"
-               menubarPath="file/new/additions"/>
-      </actionSet>
-   </extension>
-
-   
-    <extension
-         point="org.dslforge.workbench.contribution">
-      <generator
-            class="org.eclipse.sphinx.examples.xtext.hummingbird.web.HummingbirdExecutableExtensionFactory"
-            extension="hbtext"
-            label="org.eclipse.sphinx.examples.xtext.hummingbird.Hummingbird">
-      </generator>
-   </extension>  
-      -->
+     point="org.dslforge.xtext.common.contribution">
+  <contribution
+       factory="org.eclipse.sphinx.examples.xtext.hummingbird.web.HummingbirdExecutableExtensionFactory"
+        path="/org.eclipse.sphinx.examples.xtext.hummingbird/src/org/eclipse/sphinx/examples/xtext/Hummingbird.xtext"
+        extension="hbtext">
+  </contribution>
+</extension>
 </plugin>

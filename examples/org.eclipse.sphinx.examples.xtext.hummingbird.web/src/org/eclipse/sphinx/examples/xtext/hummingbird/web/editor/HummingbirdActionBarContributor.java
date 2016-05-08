@@ -3,9 +3,7 @@
  */
 package org.eclipse.sphinx.examples.xtext.hummingbird.web.editor;
 
-import org.dslforge.texteditor.BasicTextEditorContributor;
-
-public class HummingbirdActionBarContributor extends BasicTextEditorContributor {
+public class HummingbirdActionBarContributor extends AbstractHummingbirdActionBarContributor {
 
 	public HummingbirdActionBarContributor() {
 		super();

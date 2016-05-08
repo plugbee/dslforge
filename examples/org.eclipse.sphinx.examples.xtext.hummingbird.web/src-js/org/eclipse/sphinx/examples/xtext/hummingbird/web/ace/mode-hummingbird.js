@@ -33,14 +33,14 @@ define('ace/mode/hummingbird', ['require', 'exports', 'module' , 'ace/lib/oop', 
 var oop = require("../lib/oop");
 var TextMode = require("./text").Mode;
 var Tokenizer = require("../tokenizer").Tokenizer;
-var HummingbirdHighlightRules = require("./hummingbird_highlight_rules").HummingbirdHighlightRules;
+var hummingbirdHighlightRules = require("./hummingbird_highlight_rules").hummingbirdHighlightRules;
 var MatchingBraceOutdent = require("./matching_brace_outdent").MatchingBraceOutdent;
 var CstyleBehaviour = require("./behaviour/cstyle").CstyleBehaviour;
 var CStyleFoldMode = require("./folding/cstyle").FoldMode;
 var WorkerClient = require("../worker/worker_client").WorkerClient;
 
 var Mode = function() {
-    this.HighlightRules = HummingbirdHighlightRules;
+    this.HighlightRules = hummingbirdHighlightRules;
     this.$outdent = new MatchingBraceOutdent();
     this.foldingRules = new CStyleFoldMode();
 };
@@ -130,9 +130,9 @@ define('ace/mode/hummingbird_highlight_rules', ['require', 'exports', 'module' ,
     var DocCommentHighlightRules = require("./doc_comment_highlight_rules").DocCommentHighlightRules;
     var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 
-    var HummingbirdHighlightRules = function() {
+    var hummingbirdHighlightRules = function() {
     	
-        var keywords = ("sourcePort|ComponentType|type|Connection|targetComponent|description|optional|value|interfaces|false|parameters|Component|componentTypes|Parameter|requiredInterface|Platform|requiringPorts|providedInterfaces|incomingConnections|true|outgoingConnections|Interface|providingComponentTypes|dataType|Port|ports|minProviderCount|Application|ParameterValue|maxProviderCount|parameterValues|components");
+        var keywords = ("components|outgoingConnections|sourcePort|Platform|Port|description|type|ports|requiredInterface|maxProviderCount|Component|value|parameterValues|interfaces|ComponentType|ParameterValue|targetComponent|dataType|Connection|componentTypes|false|optional|providedInterfaces|minProviderCount|incomingConnections|requiringPorts|true|Parameter|providingComponentTypes|Application|parameters|Interface");
         var builtinTypes = ("");
         var builtinFunctions = ("");
         var builtinConstants = ("");
@@ -223,9 +223,9 @@ define('ace/mode/hummingbird_highlight_rules', ['require', 'exports', 'module' ,
         this.embedRules(DocCommentHighlightRules, "doc-",
             [ DocCommentHighlightRules.getEndRule("start") ]);
     };
-    oop.inherits(HummingbirdHighlightRules, TextHighlightRules);
+    oop.inherits(hummingbirdHighlightRules, TextHighlightRules);
 
-    exports.HummingbirdHighlightRules = HummingbirdHighlightRules;
+    exports.hummingbirdHighlightRules = hummingbirdHighlightRules;
 });
 
 define('ace/mode/doc_comment_highlight_rules', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text_highlight_rules'], function(require, exports, module) {

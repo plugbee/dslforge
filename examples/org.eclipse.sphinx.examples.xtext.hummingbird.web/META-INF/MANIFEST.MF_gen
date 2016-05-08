@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.sphinx.examples.xtext.hummingbird.web
+Bundle-SymbolicName: org.eclipse.sphinx.examples.xtext.hummingbird.web; singleton:=true
+Bundle-Version: 0.0.1
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: org.eclipse.sphinx.examples.xtext.hummingbird.web.contentassist,
+ org.eclipse.sphinx.examples.xtext.hummingbird.web.contentassist.antlr,
+ org.eclipse.sphinx.examples.xtext.hummingbird.web.contentassist.antlr.internal
+Require-Bundle: org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui.editors,
+ org.eclipse.ui,
+ org.eclipse.xtext.xbase.lib
+Import-Package: org.apache.log4j
+Bundle-Activator: org.eclipse.sphinx.examples.xtext.hummingbird.web.internal.Activator

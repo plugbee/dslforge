@@ -37,10 +37,10 @@ public class Hummingbird extends BasicText {
 		languageResources.add(new Path("src-js/org/eclipse/sphinx/examples/xtext/hummingbird/web/ace/mode-hummingbird.js"));
 		languageResources.add(new Path("src-js/org/eclipse/sphinx/examples/xtext/hummingbird/web/ace/worker-hummingbird.js"));
 		languageResources.add(new Path("src-js/org/eclipse/sphinx/examples/xtext/hummingbird/web/parser/antlr-all-min.js"));
-		languageResources.add(new Path("src-js/org/eclipse/sphinx/examples/xtext/hummingbird/web/parser/InternalHummingbirdParser.js"));
-		languageResources.add(new Path("src-js/org/eclipse/sphinx/examples/xtext/hummingbird/web/parser/InternalHummingbirdLexer.js"));
-		registerClientResources(languageResources, getClassLoader());
-		loadClientResources(languageResources);
+		languageResources.add(new Path("src-js/org/eclipse/sphinx/examples/xtext/hummingbird/web/parser/HummingbirdParser.js"));
+		languageResources.add(new Path("src-js/org/eclipse/sphinx/examples/xtext/hummingbird/web/parser/HummingbirdLexer.js"));
+		registerJsResources(languageResources, getClassLoader());
+		loadJsResources(languageResources);
 	}
 
 	@Override
