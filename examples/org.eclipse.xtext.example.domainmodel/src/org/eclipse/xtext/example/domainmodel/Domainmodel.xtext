@@ -1,0 +1,64 @@
+grammar org.eclipse.xtext.example.domainmodel.Domainmodel with org.eclipse.xtext.common.Terminals
+
+generate domainmodel "http://www.xtext.org/example/Domainmodel"
+
+DomainModel:
+	elements+=AbstractElement*;
+
+AbstractElement:
+	PackageDeclaration | Type | Import;
+
+Import:
+	'import' importedNamespace=QualifiedNameWithWildcard;
+
+PackageDeclaration:
+	'package' name=QualifiedName '{'
+		elements+=AbstractElement*
+	'}';
+
+Type:
+	Entity | DataType;
+
+DataType:
+	'datatype' name=ID;
+
+Entity:
+	'entity' name=ID ('extends' superType=[Entity|QualifiedName])? '{'
+		features+=Feature*
+	'}';
+
+Feature:
+	StructuralFeature | Operation;
+
+StructuralFeature:
+	Attribute | Reference;
+
+Attribute:
+	name=ID ':' type=TypeRef;
+
+Reference:
+	'ref' name=ID ':' type=TypeRef ('opposite' opposite=[Reference])?;
+
+Operation:
+	visibility=Visibility? 'op' name=ID '(' (params+=Parameter (',' params+=Parameter)*)? ')' ':' type=TypeRef;
+
+Parameter:
+	name=ID type=TypeRef;
+
+TypedElement:
+	Feature | Parameter;
+
+TypeRef:
+	referenced=[Type|QualifiedName] multi?='*'?;
+
+enum Visibility:
+	public | private | protected;
+	
+QualifiedName:
+  ValidID ('.' ValidID)*;
+
+QualifiedNameWithWildcard :
+	QualifiedName  '.' '*';
+
+ValidID:
+	ID;

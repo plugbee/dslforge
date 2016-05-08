@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!-- @generated dslforge -->
+<plugin>
+      <extension
+         point="org.eclipse.rap.ui.resources">
+      <resource
+          class="org.eclipse.xtext.example.domainmodel.web.editor.widget.DomainmodelResource">
+		<dependsOn
+			resourceId="org.dslforge.styledtext.basictext">
+		</dependsOn>
+      </resource>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.themeableWidgets">
+      <widget
+            class="org.eclipse.xtext.example.domainmodel.web.editor.widget.Domainmodel"
+            id="org.eclipse.xtext.example.domainmodel.web.editor.widget.Domainmodel"
+            name="Domainmodel">
+      </widget>
+   </extension>
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.eclipse.xtext.example.domainmodel.web.editor"
+            name="Domainmodel Model Editor"
+		            extensions="file.extensions"
+           class="org.eclipse.xtext.example.domainmodel.web.editor.DomainmodelEditor"
+            contributorClass="org.eclipse.xtext.example.domainmodel.web.editor.DomainmodelActionBarContributor">
+      </editor>
+   </extension>
+   <extension
+     point="org.dslforge.xtext.common.contribution">
+  <contribution
+       factory="org.eclipse.xtext.example.domainmodel.web.DomainmodelExecutableExtensionFactory"
+        path="/org.eclipse.xtext.example.domainmodel/src/org/eclipse/xtext/example/domainmodel/Domainmodel.xtext"
+        extension="file.extensions">
+  </contribution>
+</extension>
+</plugin>
