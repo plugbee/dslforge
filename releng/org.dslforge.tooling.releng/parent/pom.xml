@@ -6,9 +6,15 @@
 		<maven>3.0</maven>
 	</prerequisites>
 
+	<properties>
+		<tycho.version>0.20.0</tycho.version>
+		<xtext.version>2.10.0</xtext.version>
+		<xtend.maven.version>2.9.2</xtend.maven.version>
+	</properties>
+	
 	<groupId>dslforge.releng</groupId>
 	<artifactId>org.dslforge.tooling.releng.parent</artifactId>
-	<version>0.8.0-SNAPSHOT</version>
+	<version>0.9.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.dslforge.org</url>
@@ -16,10 +22,6 @@
 		<name>PlugBee</name>
 		<url>http://www.plugbee.com</url>
 	</organization>
-	<properties>
-		<tycho.version>0.20.0</tycho.version>
-		<xtext.version>2.8.4</xtext.version>
-	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -38,7 +40,7 @@
 						<artifact>
 							<groupId>dslforge.releng</groupId>
 							<artifactId>${platform.version.name}</artifactId>
-							<version>0.8.0-SNAPSHOT</version>
+							<version>0.9.0-SNAPSHOT</version>
 						</artifact>
 					</target>
 					<environments>
@@ -276,7 +278,7 @@
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtext.version}</version>
+					<version>${xtend.maven.version}</version>
 					<executions>
 						<execution>
 							<goals>
@@ -333,7 +335,7 @@
 		<repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/mars/</url>
+			<url>http://download.eclipse.org/releases/neon/</url>
 		</repository>
 		<!-- 
 		<repository>
@@ -358,12 +360,6 @@
 
 	<profiles>
 		<profile>
-			<id>platform-mars</id>
-			<properties>
-				<platform.version.name>mars</platform.version.name>
-			</properties>
-		</profile>
-		<profile>
 			<id>platform-kepler</id>
 			<properties>
 				<platform.version.name>kepler</platform.version.name>
@@ -373,6 +369,18 @@
 			<id>platform-luna</id>
 			<properties>
 				<platform.version.name>luna</platform.version.name>
+			</properties>
+		</profile>
+		<profile>
+			<id>platform-mars</id>
+			<properties>
+				<platform.version.name>mars</platform.version.name>
+			</properties>
+		</profile>
+		<profile>
+			<id>platform-neon</id>
+			<properties>
+				<platform.version.name>neon</platform.version.name>
 			</properties>
 		</profile>
 		<profile>

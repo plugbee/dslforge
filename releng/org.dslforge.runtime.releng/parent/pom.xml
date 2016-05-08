@@ -7,7 +7,7 @@
 	</prerequisites>
 	<groupId>dslforge.releng</groupId>
 	<artifactId>org.dslforge.runtime.releng.parent</artifactId>
-	<version>0.8.0-SNAPSHOT</version>
+	<version>0.9.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<description>Integrated modeling tool platform that eases the development of IDE-like tool support for developing web-based IDEs</description>
 	<licenses>
@@ -29,7 +29,8 @@
 	</organization>
 	<properties>
 		<tycho.version>0.20.0</tycho.version>
-		<xtext.version>2.8.4</xtext.version>
+		<xtext.version>2.10.0</xtext.version>
+		<xtend.maven.version>2.9.2</xtend.maven.version>
 	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -49,7 +50,7 @@
 						<artifact>
 							<groupId>dslforge.releng</groupId>
 							<artifactId>${platform.version.name}</artifactId>
-							<version>0.8.0-SNAPSHOT</version>
+							<version>0.9.0-SNAPSHOT</version>
 						</artifact>
 					</target>
 					<environments>
@@ -63,6 +64,7 @@
 							<ws>win32</ws>
 							<arch>x86_64</arch>
 						</environment>
+						<!-- 
 						<environment>
 							<os>macosx</os>
 							<ws>cocoa</ws>
@@ -73,6 +75,7 @@
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
 						</environment>
+						-->
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
@@ -263,7 +266,7 @@
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtext.version}</version>
+					<version>${xtend.maven.version}</version>
 					<executions>
 						<execution>
 							<goals>
@@ -309,7 +312,7 @@
 		</pluginRepository>
 		<pluginRepository>
 			<id>mwe2</id>
-			<url>http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/</url>
+			<url>http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.9.0/</url>
 		</pluginRepository>
 	</pluginRepositories>
 
@@ -330,6 +333,12 @@
 			<id>platform-mars</id>
 			<properties>
 				<platform.version.name>mars</platform.version.name>
+			</properties>
+		</profile>
+		<profile>
+			<id>platform-neon</id>
+			<properties>
+				<platform.version.name>neon</platform.version.name>
 			</properties>
 		</profile>
 		<profile>

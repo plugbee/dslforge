@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.dslforge.tooling.feature_0.8.0.qualifier.jar" id="org.dslforge.tooling.feature" version="0.8.0.qualifier">
+   <feature url="features/org.dslforge.tooling.feature_0.9.0.qualifier.jar" id="org.dslforge.tooling.feature" version="0.9.0.qualifier">
       <category name="org.dslforge.category"/>
    </feature>
    <category-def name="org.dslforge.category" label="DSLFORGE Tooling (Incubation)">
       <description>
-         Integrated modeling tool platform that eases the development of web-based DSL tools
+         Integrated modeling tools that eases the development of textual language editors for web applications and Cloud IDEs
       </description>
    </category-def>
 </site>

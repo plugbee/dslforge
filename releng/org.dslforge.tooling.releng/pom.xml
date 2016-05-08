@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dslforge.releng</groupId>
 	<artifactId>org.dslforge.tooling.releng</artifactId>
-	<version>0.8.0-SNAPSHOT</version>
+	<version>0.9.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		
@@ -15,6 +15,11 @@
 		<module>../org.dslforge.tooling.target/${platform.version.name}</module>
 
 		<!-- Plug-ins -->
+		<module>../../plugins/org.dslforge.common</module>
+		<module>../../plugins/org.dslforge.common.ui</module>
+		<module>../../plugins/org.dslforge.common.logging</module>
+		<module>../../plugins/org.dslforge.ace.generator</module>
+		<module>../../plugins/org.dslforge.ace.generator.ui</module>
 		<module>../../plugins/org.dslforge.antlr</module>
 		<module>../../plugins/org.dslforge.antlr.ui</module>
 		<module>../../plugins/org.dslforge.xtext.generator</module>
@@ -49,12 +54,18 @@
 				<platform.version.name>luna</platform.version.name>
 			</properties>
 		</profile>
+		<profile>
+			<id>platform-neon</id>
+			<properties>
+				<platform.version.name>neon</platform.version.name>
+			</properties>
+		</profile>
 	</profiles>
 	<name>org.dslforge.tooling.releng</name>
 	<parent>
 		<groupId>dslforge.releng</groupId>
 		<artifactId>org.dslforge.tooling.releng.parent</artifactId>
-		<version>0.8.0-SNAPSHOT</version>
+		<version>0.9.0-SNAPSHOT</version>
 		<relativePath>./parent/pom.xml</relativePath>
 	</parent>
 </project>

@@ -15,12 +15,9 @@
  */
 package org.dslforge.texteditor.actions;
 
-import org.dslforge.styledtext.BasicText;
 import org.dslforge.styledtext.ITextSelection;
 import org.dslforge.styledtext.TextSelection;
 import org.dslforge.styledtext.TextSelectionListenerAction;
-import org.dslforge.styledtext.jface.IDocument;
-import org.dslforge.styledtext.jface.ITextViewer;
 import org.dslforge.styledtext.jface.TextViewer;
 import org.dslforge.texteditor.BasicTextEditor;
 import org.eclipse.ui.IEditorPart;

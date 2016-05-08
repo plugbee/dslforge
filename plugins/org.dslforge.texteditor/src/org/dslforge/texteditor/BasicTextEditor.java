@@ -28,8 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
 import org.dslforge.styledtext.Annotation;
-import org.dslforge.styledtext.AnnotationType;
+import org.dslforge.styledtext.Annotation.AceSeverity;
 import org.dslforge.styledtext.BasicText;
 import org.dslforge.styledtext.IContentAssistListener;
 import org.dslforge.styledtext.ITextChangeListener;
@@ -103,6 +104,8 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBasicTextEditor {
 
+	static final Logger logger = Logger.getLogger(BasicTextEditor.class);
+	
 	private static final String DEFAULT_TEXT_FONT = "Tahoma, Geneva, sans-serif";
 	/**
 	 * This editor's text viewer.
@@ -331,9 +334,9 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 
 		// add annotations
 		List<Annotation> annotations = new ArrayList<Annotation>();
-		annotations.add(new Annotation(AnnotationType.error, 1, 3, "This is an error"));
-		annotations.add(new Annotation(AnnotationType.warning, 3, 1, "This is a warning"));
-		annotations.add(new Annotation(AnnotationType.info, 5, 1, "This is an info"));
+		annotations.add(new Annotation(AceSeverity.ERROR, 1, 3, "This is an error"));
+		annotations.add(new Annotation(AceSeverity.WARNING, 3, 1, "This is a warning"));
+		annotations.add(new Annotation(AceSeverity.INFORMATION, 5, 1, "This is an info"));
 		textWidget.setAnnotations(annotations);
 
 		// highlight text ranges
@@ -409,24 +412,24 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 					String content = "";
 					try {
 						content = readFromFile();
-					} catch (IOException e) {
-						e.printStackTrace();
+					} catch (IOException ex) {
+						logger.error(ex.getMessage(), ex);
 					} finally {
-						initializeTextViewer(content);
-						setUrl(filePath.lastSegment().toString());
+						setTextViewer(content);
+						setURL(filePath.lastSegment().toString());
 					}
 				}
 			});
 		}
 	}
 
-	protected void initializeTextViewer(String content) {
+	protected void setTextViewer(String content) {
 		setText(content);
 		viewer.getTextWidget().setText(content);
 	}
 
 	protected String readFromFile() throws IOException {
-		System.out.println("[INFO] - Reading from file " + filePath);
+		logger.info("Reading from file " + filePath);
 		StringBuilder text = new StringBuilder();
 		String NL = System.getProperty("line.separator");
 		long start = System.currentTimeMillis();
@@ -439,7 +442,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 			scanner.close();
 		}
 		long end = System.currentTimeMillis();
-		System.out.println("[INFO] - Reading took: " + ((end - start) / 1000));
+		logger.info("Reading took: " + ((end - start) / 1000));
 		return text.toString();
 	}
 
@@ -472,7 +475,6 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 					JsonObject object = (JsonObject) event.data;
 					String text = object.get("value") != null ? object.get("value").asString() : null;
 					if (text!=null) {
-						System.out.println(text);
 						setText(text);	
 					}
 				}
@@ -557,7 +559,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		index.clear();
 	}
 
-	protected void setUrl(String url) {
+	protected void setURL(String url) {
 		viewer.getTextWidget().setUrl(url);
 	}
 	
@@ -615,8 +617,8 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 					writer.write(viewer.getTextWidget().getText());
 					progress.worked(5);
 					writer.close();
-				} catch (IOException e) {
-					e.printStackTrace();
+				} catch (IOException ex) {
+					logger.error(ex.getMessage(), ex);
 				}
 			}
 

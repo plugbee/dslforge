@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.dslforge.tooling.feature"
-      label="DSL Forge Tooling"
-      version="0.8.0.qualifier"
+      label="DSL Forge Tools Feature"
+      version="0.9.0.qualifier"
       provider-name="PlugBee">
 
    <description url="http://www.dslforge.org">
@@ -28,7 +28,7 @@ Amine Lajmi - Initial API and implementation
    </license>
 
    <url>
-      <update label="DSL Forge Repository" url="http://dslforge.org/downloads/tooling/repository/"/>
+      <update label="DSL Forge Repository" url="http://dslforge.org/downloads/tools/repository/"/>
    </url>
 
    <plugin
@@ -54,6 +54,37 @@ Amine Lajmi - Initial API and implementation
 
    <plugin
          id="org.dslforge.antlr.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.dslforge.ace.generator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.dslforge.ace.generator.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.dslforge.common"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.dslforge.common.logging"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="org.dslforge.common.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
