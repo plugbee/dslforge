@@ -17,7 +17,6 @@ package org.dslforge.antlr.ui;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +27,7 @@ import org.antlr.grammar.v3.ANTLRv3Parser;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
+import org.apache.log4j.Logger;
 import org.dslforge.antlr.AntlrTool;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -59,6 +59,8 @@ import org.eclipse.ui.console.IOConsoleOutputStream;
 
 public class ANTLRBuilder extends IncrementalProjectBuilder {
 
+	static final Logger logger = Logger.getLogger(ANTLRBuilder.class);
+	
 	public static final String BUILDER_ID = "org.dslforge.antlr.builder";
 	public static final String CONSOLE_ID = "ANTLR Build Console";
 	public static final String ANTLR_FILE_EXTENSION = "g";
@@ -99,7 +101,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 		try {
 			getProblemMarkerFactory().createMarker(file, diagnostic);
 		} catch (CoreException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 	}
 
@@ -115,7 +117,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 				IConsoleView view = (IConsoleView) activePage.showView(id);
 				view.display(console);
 			} catch (PartInitException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage(), e);
 			}
 		}
 	}
@@ -149,28 +151,22 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 				}
 			}
 		} catch (OperationCanceledException ex) {
-			String message = "[INFO] - Build " + getProject().getName() + " aborted";
-			System.out.println(message);
+			String message = "Build " + getProject().getName() + " aborted";
+			logger.info(message);
 		} finally {
 			progress.done();
 			try {
 				getProject().refreshLocal(IResource.DEPTH_INFINITE, monitor);
 			} catch (CoreException ex) {
-				ex.printStackTrace();
+				logger.error(ex.getMessage(), ex);
 			}
-			String message = "[INFO] - Build " + getProject().getName() + " in "
+			String message = "Build " + getProject().getName() + " in "
 					+ (System.currentTimeMillis() - startTime) + " ms";
-			System.out.println(message);
+			logger.info(message);
 		}
 		return getProject().getReferencedProjects();
 	}
 
-	/**
-	 * Performs incremental build given the resource delta given as input.
-	 * 
-	 * @param delta
-	 * @param monitor
-	 */
 	private void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) {
 		final long startBuild = System.currentTimeMillis();
 		final SubMonitor progress = SubMonitor.convert(monitor, "Collecting resource deltas", 1);
@@ -198,7 +194,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 				delta.accept(visitor);
 			}
 		} catch (CoreException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		} finally {
 			if (monitor != null)
 				monitor.done();
@@ -206,12 +202,13 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 	}
 
 	void internalBuild(IFile grammarFile, IProgressMonitor monitor) {
+		final SubMonitor progress = SubMonitor.convert(monitor, "Generating parser and lexer", 1);
 		output.clear();
 		String grammaFullPath = grammarFile.getLocation().toOSString();
 		String workingDirectory = grammarFile.getParent().getLocation().toOSString();
+		InputStreamReader inputStreamReader =null;
 		try {
-			InputStream contents = grammarFile.getContents();
-			InputStreamReader inputStreamReader = new InputStreamReader(contents);
+			inputStreamReader = new InputStreamReader(grammarFile.getContents());
 			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 			StringBuffer buffer = new StringBuffer(1000);
 			int c;
@@ -236,16 +233,23 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 			try {
 				parser.grammarDef();
 			} catch (RecognitionException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage(), e);
 			}
 		} catch (CoreException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
+		} finally {
+			try {
+				inputStreamReader.close();
+			} catch (IOException e) {
+				logger.error(e.getMessage(), e);
+			}
 		}
+		
 		List<String> generatorOutput = AntlrTool.run(workingDirectory, grammaFullPath);
 		output.addAll(generatorOutput);
-		monitor.done();
+		progress.done();
 	}
 
 	private void fullBuild(IProgressMonitor monitor) {
@@ -268,7 +272,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 			});
 			progress.worked(2);
 		} catch (CoreException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		} finally {
 			progress.done();
 		}
@@ -313,7 +317,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 						out.write("\n");
 					}
 				} catch (IOException e) {
-					e.printStackTrace();
+					logger.error(e.getMessage(), e);
 				}
 			}
 		});

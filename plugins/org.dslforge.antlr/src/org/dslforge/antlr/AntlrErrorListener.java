@@ -22,42 +22,45 @@ import org.antlr.tool.ANTLRErrorListener;
 import org.antlr.tool.ErrorManager;
 import org.antlr.tool.Message;
 import org.antlr.tool.ToolMessage;
+import org.apache.log4j.Logger;
 
 public class AntlrErrorListener implements ANTLRErrorListener {
 
+	static final Logger logger = Logger.getLogger(AntlrErrorListener.class);
+
 	private List<String> output;
-	
+
 	public AntlrErrorListener() {
 		output = new ArrayList<String>();
 	}
-	
+
 	@Override
 	public void info(String message) {
 		handleInfo(message);
 	}
-	
+
 	@Override
 	public void error(Message message) {
 		String type = ErrorManager.getMessageType(message.msgID);
 		if (type.startsWith("error")) {
 			handleError(message);
-		}else {
+		} else {
 			handleWarning(message);
 		}
 	}
-	
+
 	@Override
 	public void warning(Message message) {
 		handleWarning(message);
 	}
-	
+
 	@Override
 	public void error(ToolMessage message) {
 		handleToolError(message);
 	}
 
 	protected void handleInfo(String message) {
-		System.err.println("[INFO] " + message);
+		logger.info("ANTLR says: " + message);
 	}
 
 	protected void handleError(Message message) {
@@ -65,27 +68,28 @@ public class AntlrErrorListener implements ANTLRErrorListener {
 		int line = message.line > 0 ? message.line : -1;
 		int column = message.column > 0 ? message.column : 0;
 		int id = message.msgID;
-		System.err.println("[" + messageType + "]" + message);
+		logger.info("ANTLR Error: [" + messageType + ", id=" + id + ", line=" + line + ", column=" + column + "] : "
+				+ message);
 	}
 
 	protected void handleWarning(Message message) {
 		String messageType = ErrorManager.getMessageType(message.msgID);
-		System.out.println("MessageType = " + messageType);
 		int line = message.line > 0 ? message.line : -1;
 		int column = message.column > 0 ? message.column : 0;
 		int id = message.msgID;
-		System.err.println("[" + messageType + "] " + message);
+		logger.info("ANTLR Warning: [" + messageType + ", id=" + id + ", line=" + line + ", column=" + column + "] : "
+				+ message);
 	}
-	
+
 	protected void handleToolError(ToolMessage message) {
 		String messageType = ErrorManager.getMessageType(message.msgID);
-		System.out.println("MessageType = " + messageType);
 		int line = message.line > 0 ? message.line : -1;
 		int column = message.column > 0 ? message.column : 0;
 		int id = message.msgID;
-		System.err.println("[" + messageType + "] " + message);
+		logger.info("ANTLR Tool Error: [" + messageType + ", id=" + id + ", line=" + line + ", column=" + column
+				+ "] : " + message);
 	}
-	
+
 	List<String> getOutput() {
 		return output;
 	}

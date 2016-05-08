@@ -21,16 +21,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.antlr.Tool;
 import org.antlr.tool.ErrorManager;
+import org.antlr.tool.Grammar;
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
+
+import antlr.RecognitionException;
 
 /**
  * Run ANTLR v3 Parser Generator from command line.
@@ -47,6 +50,8 @@ import org.osgi.framework.Bundle;
  */
 public class AntlrTool {
 
+	static final Logger logger = Logger.getLogger(AntlrTool.class);
+	
 	private static final String ANTLR_JAR = "antlr-3.3-complete.jar";
 	private static final String DSLFORGE_ANTLR_GENERATOR_PLUGIN = "org.dslforge.antlr.generator";
 	private static final String ANTLR_MAIN_CLASS = "org.antlr.Tool";
@@ -70,34 +75,53 @@ public class AntlrTool {
 			return output;
 		}
 	}
+	
+	public static Grammar createGrammar(String workingDirectory, String grammarFileName) {
+		List<String> command = new ArrayList<String>();
+		command.add("-o");
+		command.add(workingDirectory);
+		command.add(grammarFileName);
+		String[] args = command.toArray(new String[command.size()]);
+		System.setErr(System.out);
+		AntlrErrorListener errorListener = new AntlrErrorListener();
+		ErrorManager.setErrorListener(errorListener);
+		try {
+			Tool tool = new Tool(args);
+			Grammar rootGrammar = null;
+			try {
+				rootGrammar = tool.getRootGrammar(grammarFileName);
+				rootGrammar.parseAndBuildAST();
+				rootGrammar.composite.assignTokenTypes();
+				rootGrammar.composite.defineGrammarSymbols();
+				rootGrammar.composite.createNFAs();
+			} catch (IOException e) {
+				logger.error(e.getMessage(), e);
+			} catch (RecognitionException e) {
+				logger.error(e.getMessage(), e);
+			}		
+			return rootGrammar;
+		} catch (Throwable throwable) {
+			logger.error(throwable.getMessage(), throwable);
+		}
+		return null;
+	}
 
 	private static List<String> runFromEmbeddedJar(String workingDirectory, String grammarFileName) {
+		List<String> command = new ArrayList<String>();
+		command.add("-o");
+		command.add(workingDirectory);
+		command.add(grammarFileName);
+		String[] args = command.toArray(new String[command.size()]);
+		System.setErr(System.out);
+		AntlrErrorListener errorListener = new AntlrErrorListener();
+		ErrorManager.setErrorListener(errorListener);
 		try {
-			// final List<String> options = new ArrayList<String>();
-			// options.add("-o");
-			// options.add(workingDirectory);
-			// options.add("-lib");
-			// options.add(workingDirectory);
-			// options.add(new File(workingDirectory,
-			// grammarFileName).toString());
-			// final String[] optionsA = new String[options.size()];
-			// options.toArray(optionsA);
-			List<String> command = new ArrayList<String>();
-			command.add("-o");
-			command.add(workingDirectory);
-			command.add(grammarFileName);
-
-			String[] args = command.toArray(new String[command.size()]);
-			System.setErr(System.out);
-			AntlrErrorListener errorListener = new AntlrErrorListener();
-			ErrorManager.setErrorListener(errorListener);
 			Tool tool = new Tool(args);
 			tool.process();
-			return errorListener.getOutput();
-		} catch (Throwable t) {
-			t.printStackTrace(System.out);
+		} catch (Throwable throwable) {
+			logger.error(throwable.getMessage(), throwable);
 		}
-		return Collections.emptyList();
+		return errorListener.getOutput();
 	}
 
 	private static List<String> runFromCommandLine(String workingDirectory, String grammarFileName) {
@@ -136,15 +160,13 @@ public class AntlrTool {
 					output.add(line);
 					line = err.readLine();
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			} catch (IOException ex) {
+				logger.error(ex.getMessage(), ex);
+			} catch (InterruptedException ex) {
+				logger.info(ex.getMessage(), ex);
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		} catch (Exception ex) {
-			ex.printStackTrace();
+		} catch (IOException ex) {
+			logger.error(ex.getMessage(), ex);
 		}
 		return output;
 	}

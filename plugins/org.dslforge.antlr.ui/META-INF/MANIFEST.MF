@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: ANTLR UI
+Bundle-Name: DSL Forge ANTLR Tool UI
 Bundle-SymbolicName: org.dslforge.antlr.ui;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.9.0.qualifier
 Bundle-Activator: org.dslforge.antlr.ui.internal.Activator
 Bundle-Vendor: PlugBee
 Require-Bundle: org.eclipse.ui,
@@ -13,8 +13,10 @@ Require-Bundle: org.eclipse.ui,
  org.dslforge.antlr,
  org.eclipse.ui.console,
  org.eclipse.ui.editors,
- org.eclipse.jface.text
+ org.eclipse.jface.text,
+ org.eclipse.ui.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.antlr.ui,
  org.dslforge.antlr.ui.editor
+Import-Package: org.apache.log4j

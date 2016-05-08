@@ -1,13 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: ANTLR v3 Generator
+Bundle-Name: DSL Forge ANTLR Tool
 Bundle-SymbolicName: org.dslforge.antlr;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.9.0.qualifier
 Bundle-Activator: org.dslforge.antlr.internal.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: lib/antlr-3.3-complete.jar,
- .
+Bundle-ClassPath: .,
+ lib/antlr-complete-3.3.jar
+Bundle-Vendor: PlugBee
+Require-Bundle: org.eclipse.osgi,
+ org.eclipse.core.runtime
 Export-Package: antlr,
  antlr.ASdebug,
  antlr.actions.cpp,
@@ -41,6 +44,4 @@ Export-Package: antlr,
  org.antlr.tool,
  org.dslforge.antlr,
  org.dslforge.antlr.internal
-Bundle-Vendor: PlugBee
-Require-Bundle: org.eclipse.osgi,
- org.eclipse.core.runtime
+Import-Package: org.apache.log4j

@@ -43,12 +43,36 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.dslforge.antlr.ui.editor.BasicAntlrEditor"
+            class="org.dslforge.antlr.ui.editor.BasicANTLREditor"
             default="true"
             extensions="g"
+            icon="icons/antlr.png"
             id="org.dslforge.antlr.ui.editor"
             name="ANTLR Editor">
       </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/dslforge_overlay.png"
+            id="org.dslforge.antlr.project.nature.decorator"
+            label="DSL Forge Nature"
+            lightweight="true"
+            location="TOP_RIGHT"
+            state="true">
+         <enablement>
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IProject">
+               </objectClass>
+               <objectState
+                     name="nature"
+                     value="org.dslforge.antlr.project.nature">
+               </objectState>
+            </and>
+         </enablement>
+      </decorator>
    </extension>
 
 </plugin>
