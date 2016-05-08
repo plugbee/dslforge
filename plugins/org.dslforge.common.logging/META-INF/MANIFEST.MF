@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DSL Forge Common Logging
+Bundle-SymbolicName: org.dslforge.common.logging
+Bundle-Version: 0.9.0.qualifier
+Fragment-Host: org.apache.log4j;bundle-version="1.2.15"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: PlugBee
