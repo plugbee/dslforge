@@ -33,14 +33,14 @@ define('ace/mode/statemachine', ['require', 'exports', 'module' , 'ace/lib/oop',
 var oop = require("../lib/oop");
 var TextMode = require("./text").Mode;
 var Tokenizer = require("../tokenizer").Tokenizer;
-var StatemachineHighlightRules = require("./statemachine_highlight_rules").StatemachineHighlightRules;
+var statemachineHighlightRules = require("./statemachine_highlight_rules").statemachineHighlightRules;
 var MatchingBraceOutdent = require("./matching_brace_outdent").MatchingBraceOutdent;
 var CstyleBehaviour = require("./behaviour/cstyle").CstyleBehaviour;
 var CStyleFoldMode = require("./folding/cstyle").FoldMode;
 var WorkerClient = require("../worker/worker_client").WorkerClient;
 
 var Mode = function() {
-    this.HighlightRules = StatemachineHighlightRules;
+    this.HighlightRules = statemachineHighlightRules;
     this.$outdent = new MatchingBraceOutdent();
     this.foldingRules = new CStyleFoldMode();
 };
@@ -130,9 +130,9 @@ define('ace/mode/statemachine_highlight_rules', ['require', 'exports', 'module' 
     var DocCommentHighlightRules = require("./doc_comment_highlight_rules").DocCommentHighlightRules;
     var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 
-    var StatemachineHighlightRules = function() {
+    var statemachineHighlightRules = function() {
     	
-        var keywords = ("resetEvents|=>|events|commands|state|actions|end");
+        var keywords = ("=>|end|state|resetEvents|actions|events|commands");
         var builtinTypes = ("");
         var builtinFunctions = ("");
         var builtinConstants = ("");
@@ -223,9 +223,9 @@ define('ace/mode/statemachine_highlight_rules', ['require', 'exports', 'module' 
         this.embedRules(DocCommentHighlightRules, "doc-",
             [ DocCommentHighlightRules.getEndRule("start") ]);
     };
-    oop.inherits(StatemachineHighlightRules, TextHighlightRules);
+    oop.inherits(statemachineHighlightRules, TextHighlightRules);
 
-    exports.StatemachineHighlightRules = StatemachineHighlightRules;
+    exports.statemachineHighlightRules = statemachineHighlightRules;
 });
 
 define('ace/mode/doc_comment_highlight_rules', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text_highlight_rules'], function(require, exports, module) {

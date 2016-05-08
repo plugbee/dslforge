@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.xtext.example.fowlerdsl.ui
 Bundle-Vendor: My Company
-Bundle-Version: 2.8.3.qualifier
+Bundle-Version: 2.10.0.qualifier
 Bundle-SymbolicName: org.eclipse.xtext.example.fowlerdsl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext.example.fowlerdsl;visibility:=reexport,
@@ -22,5 +22,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.xtext.example.fowlerdsl.ui.quickfix,
  org.eclipse.xtext.example.fowlerdsl.ui.contentassist,
  org.eclipse.xtext.example.fowlerdsl.ui.contentassist.antlr,
- org.eclipse.xtext.example.fowlerdsl.ui.internal
+ org.eclipse.xtext.example.fowlerdsl.ui.internal,
+ org.eclipse.xtext.example.fowlerdsl.ui.contentassist.antlr.internal
 Bundle-Activator: org.eclipse.xtext.example.fowlerdsl.ui.internal.StatemachineActivator

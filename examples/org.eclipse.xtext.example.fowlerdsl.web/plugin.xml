@@ -6,9 +6,9 @@
          point="org.eclipse.rap.ui.resources">
       <resource
           class="org.eclipse.xtext.example.fowlerdsl.web.editor.widget.StatemachineResource">
-         <dependsOn
-               resourceId="org.dslforge.styledtext.basictext">
-         </dependsOn>
+		<dependsOn
+			resourceId="org.dslforge.styledtext.basictext">
+		</dependsOn>
       </resource>
    </extension>
    <extension
@@ -31,9 +31,9 @@
    <extension
      point="org.dslforge.xtext.common.contribution">
   <contribution
-       class="org.eclipse.xtext.example.fowlerdsl.web.StatemachineExecutableExtensionFactory"
-         extension="statemachine"
-        label="Statemachine">
+       factory="org.eclipse.xtext.example.fowlerdsl.web.StatemachineExecutableExtensionFactory"
+        path="/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/Statemachine.xtext"
+        extension="statemachine">
   </contribution>
 </extension>
 </plugin>

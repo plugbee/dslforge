@@ -877,8 +877,8 @@ var Mirror = require("../worker/mirror").Mirror;
 var statemachineparse = require("../mode/statemachine/statemachineparse");
 
 importScripts("../parser/antlr-all-min.js");
-importScripts("../parser/InternalStatemachineLexer.js");
-importScripts("../parser/InternalStatemachineParser.js");
+importScripts("../parser/StatemachineLexer.js");
+importScripts("../parser/StatemachineParser.js");
 
 var Worker = exports.Worker = function(sender) {
     Mirror.call(this, sender);
@@ -898,11 +898,11 @@ oop.inherits(Worker, Mirror);
 		};
 		
 	    cstream = new org.antlr.runtime.ANTLRStringStream(value);
-	    lexer = new InternalStatemachineLexer(cstream);
+	    lexer = new StatemachineLexer(cstream);
 	    tstream = new org.antlr.runtime.CommonTokenStream(lexer);
-	    parser = new InternalStatemachineParser(tstream);
+	    parser = new StatemachineParser(tstream);
 	    try {
-	    	parser.rule_Statemachine();
+	    	parser.rule_Rule_Statemachine();
 	    } catch(err) {
 	    	//recovery not enabled.
 	    }

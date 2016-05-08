@@ -18,7 +18,6 @@
 		construct : function(properties) {
 			this.base(arguments, properties);
 		},
-		
 		members : {
 		
 			setScope : function(scope) {
@@ -31,22 +30,22 @@
 					if (remoteObject) {
 						remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
 					}	
-					var proposals = this._proposals==null?[]:this._proposals;		
+					var proposals = this.proposals==null?[":"]:this.proposals;		
 			        var wordList = Object.keys(proposals);
 			        callback(null, wordList.map(function(word) {
 			            return {
-			            	iconClass: " " + typeToIcon(word[0]),
+			            	iconClass: " " + typeToIcon(proposals[word].split(":")[1]),
 			                name: word,
-			                value: proposals[word],
+			                value: proposals[word].split(":")[0],
 			                score: 1,
-			                meta: "[" + "keyword" + "]"
+			                meta: "[" + proposals[word].split(":")[1] + "]"
 			            };
 			        }));	
 				}
 			},
 			
 			setProposals : function(proposals) {
-				this._proposals = proposals;	
+				this.proposals = proposals;	
 			},
 			
 			createEditor : function() {
@@ -86,23 +85,31 @@
 						this._scope=[];
 					
 					//Initialize the completion proposals
-					if (this._proposals==null) 
-						this._proposals=[];
+					if (this.proposals==null) 
+						this.proposals=[":"];
 					
 					var self = this;
 					this.globalScope = {	
 						getCompletions: function(editor, session, pos, prefix, callback) {
 							self.onCompletionRequest(pos, prefix, callback);	
+						},
+						getDocTooltip: function(item) {
+						    item.docHTML = ["<b>", item.caption, "</b>", 
+						                    "<hr></hr>", 
+						                    item.meta.substring(1,item.meta.length-1)
+						                    ].join("");
 						}
 					}
 					
 					//Add completer and enable content assist
+					if (!this.useCompleter)
+						this.langTools.setCompleters([]);
 					this.langTools.addCompleter(this.globalScope);
 					editor.setOptions({
 					    enableBasicAutocompletion: true,
 					    enableSnippets: true
 					});	
-					this.completers = editor.completers;			
+					this.completers = editor.completers;		
 	
 					//Add documentation hover
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
@@ -112,7 +119,7 @@
 				 	index = this._scope;
 
 				 	//Initialize the completion proposals
-				 	proposals = this._proposals;
+				 	proposals = this.proposals;
 				 	
 					//Handle the global index
 				 	if (this.useSharedWorker) {
@@ -178,48 +185,7 @@
 				 	
 				 	//On text change event
 					editor.on("change", function(event) {					        
-						if (self.ready) {
-					        var value = self.editor.getValue();					        
-					        var msg_error=null;
-							org.antlr.runtime.BaseRecognizer.prototype.emitErrorMessage = function (msg) {
-								msg_error=msg;
-								console.log(msg_error);
-							};
-						    try {
-							    var cstream = new org.antlr.runtime.ANTLRStringStream(value);
-							    var lexer = new InternalStatemachineLexer(cstream);
-							    var mTokens = lexer.dfa9.predict(cstream);
-							    console.log(mTokens);
-							    var tokenStream = new org.antlr.runtime.CommonTokenStream(lexer);
-							    var parser = new InternalStatemachineParser(tokenStream);
-						    	var statemachine = parser.rule_Statemachine();
-						    	var tree = statemachine.getTree();
-						    	var treeNodeStream = new org.antlr.runtime.tree.CommonTreeNodeStream(tree);		    	
-						    	treeNodeStream.setTokenStream(tokenStream); 
-						    	
-						    	//examine the tokens
-						        var nodes = treeNodeStream.nodes;
-						        var tokens = tokenStream.tokens;
-						        var values = tokens.map(function(token) {
-						        	return token.getText()
-						        });	     
-						        
-						        //predict next tokens based on decision tree
-						        console.log(values);
-						    	
-						    } catch(err) {
-						    	//recovery not enabled.
-						    	console.log("Error:\n\n" + err);
-						    }
-						    if (msg_error!=null) {
-						    	var splits = msg_error.split(/(\d+\:\d+ )/);
-					            var positions = msg_error.match(/\d+/g);
-								var e = new SyntaxError("Parsing Error");	
-								if (splits.length>=3) {
-									msg_error = positions[0] + ":" + splits[2].charAt(0).toUpperCase() + splits[2].slice(1);
-								} 
-						    }
-						}							
+						// customize
 			        });	
 					
 					//Bind keyboard shorcuts
@@ -254,6 +220,8 @@
 		var cls = "ace-";
 		var suffix;
 		if (type == "?") suffix = "unknown";
+		else if (type == "keyword") suffix = type;
+		else if (type == "identifier") suffix = type;
 		else if (type == "number" || type == "string" || type == "bool") suffix = type;
 		else if (/^fn\(/.test(type)) suffix = "fn";
 		else if (/^\[/.test(type)) suffix = "array";

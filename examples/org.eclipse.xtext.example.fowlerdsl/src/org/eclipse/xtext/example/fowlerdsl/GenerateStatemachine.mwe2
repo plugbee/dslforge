@@ -4,12 +4,9 @@ import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var projectName = "org.eclipse.xtext.example.fowlerdsl"
-// grammarURI has to be platform:/resource as it is not on the classpath
-var grammarURI = "platform:/resource/${projectName}/src/org/eclipse/xtext/example/fowlerdsl/Statemachine.xtext"
-//var grammarURI = "classpath:/org/eclipse/xtext/example/fowlerdsl/Statemachine.xtext"
+var grammarURI = "classpath:/org/eclipse/xtext/example/fowlerdsl/Statemachine.xtext"
 var fileExtensions = "statemachine"
-
+var projectName = "org.eclipse.xtext.example.fowlerdsl"
 var runtimeProject = "../${projectName}"
 var generateXtendStub = true
 var encoding = "UTF-8"
@@ -19,19 +16,9 @@ Workflow {
     bean = StandaloneSetup {
     	scanClassPath = true
     	platformUri = "${runtimeProject}/.."
-    	
-    	// use an XtextResourceset throughout the process, which is able to resolve classpath:/ URIs.
-  		resourceSet = org.eclipse.xtext.resource.XtextResourceSet : theResourceSet {}
-
-    	// add mappings from platform:/resource to classpath:/
-    	uriMap = {
-    		from = "platform:/resource/org.eclipse.xtext.common.types/"
-    		to = "classpath:/"
-    	}
-    	
     	// The following two lines can be removed, if Xbase is not used.
-    	//registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
-    	//registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+    	registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
+    	registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
     }
     
     component = DirectoryCleaner {
@@ -60,16 +47,11 @@ Workflow {
     	language = auto-inject {
     		uri = grammarURI
     
-    		// make sure we use the resourceSet created during standalone setup.
-		    forcedResourceSet = theResourceSet
-		    
     		// Java API to access grammar elements (required by several other fragments)
     		fragment = grammarAccess.GrammarAccessFragment auto-inject {}
     
     		// generates Java API for the generated EPackages
-    		fragment = ecore.EMFGeneratorFragment auto-inject {
-    			javaModelDirectory = "/${projectName}/src-gen"
-    		}
+    		fragment = ecore.EMFGeneratorFragment auto-inject {}
     
     		// the old serialization component
     		// fragment = parseTreeConstructor.ParseTreeConstructorFragment auto-inject {}    

@@ -23,7 +23,7 @@ import com.google.inject.Injector;
 public class Activator extends AbstractUIPlugin {
 
 	// The Language Name
-	public static final String LANGUAGE_NAME = "org.eclipse.xtext.example.fowlerdsl.Statemachine";
+	public static final String ORG_ECLIPSE_XTEXT_EXAMPLE_FOWLERDSL_STATEMACHINE = "org.eclipse.xtext.example.fowlerdsl.Statemachine";
 	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.xtext.example.fowlerdsl.web"; //$NON-NLS-1$

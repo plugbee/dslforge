@@ -1,8 +1,8 @@
-// $ANTLR 3.3 Nov 30, 2010 12:50:56 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g 2016-01-30 22:40:11
+// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g 2016-05-08 20:57:47
 
 
 
-var InternalStatemachineParser = function(input, state) {
+var StatemachineParser = function(input, state) {
     if (!state) {
         state = new org.antlr.runtime.RecognizerSharedState();
     }
@@ -10,7 +10,7 @@ var InternalStatemachineParser = function(input, state) {
     (function(){
     }).call(this);
 
-    InternalStatemachineParser.superclass.constructor.call(this, input, state);
+    StatemachineParser.superclass.constructor.call(this, input, state);
 
 
          
@@ -20,7 +20,7 @@ var InternalStatemachineParser = function(input, state) {
 
 };
 
-org.antlr.lang.augmentObject(InternalStatemachineParser, {
+org.antlr.lang.augmentObject(StatemachineParser, {
     EOF: -1,
     T__9: 9,
     T__10: 10,
@@ -57,7 +57,7 @@ var EOF= -1,
     INT= 8;
 
 // public instance methods/vars
-org.antlr.lang.extend(InternalStatemachineParser, org.antlr.runtime.Parser, {
+org.antlr.lang.extend(StatemachineParser, org.antlr.runtime.Parser, {
         
     setTreeAdaptor: function(adaptor) {
         this.adaptor = adaptor;
@@ -66,15 +66,15 @@ org.antlr.lang.extend(InternalStatemachineParser, org.antlr.runtime.Parser, {
         return this.adaptor;
     },
 
-    getTokenNames: function() { return InternalStatemachineParser.tokenNames; },
-    getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g"; }
+    getTokenNames: function() { return StatemachineParser.tokenNames; },
+    getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g"; }
 });
-org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
+org.antlr.lang.augmentObject(StatemachineParser.prototype, {
 
     // inline static return class
-    rule_Statemachine_return: (function() {
-        InternalStatemachineParser.rule_Statemachine_return = function(){};
-        org.antlr.lang.extend(InternalStatemachineParser.rule_Statemachine_return,
+    rule_Rule_Statemachine_return: (function() {
+        StatemachineParser.rule_Rule_Statemachine_return = function(){};
+        org.antlr.lang.extend(StatemachineParser.rule_Rule_Statemachine_return,
                           org.antlr.runtime.ParserRuleReturnScope,
         {
             getTree: function() { return this.tree; }
@@ -82,10 +82,10 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:18:1: rule_Statemachine returns [Stemachine] : ( 'events' (events+= rule_Event )+ 'end' )? ( 'resetEvents' (resetevents+= ID )+ 'end' )? ( 'commands' (commands+= rule_Command )+ 'end' )? (states+= rule_State )* EOF ;
-    // $ANTLR start "rule_Statemachine"
-    rule_Statemachine: function() {
-        var retval = new InternalStatemachineParser.rule_Statemachine_return();
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:20:1: rule_Rule_Statemachine : ( 'events' (events+= rule_Rule_Event )+ 'end' )? ( 'resetEvents' (resetevents+= ID )+ 'end' )? ( 'commands' (commands+= rule_Rule_Command )+ 'end' )? (states+= rule_Rule_State )* EOF ;
+    // $ANTLR start "rule_Rule_Statemachine"
+    rule_Rule_Statemachine: function() {
+        var retval = new StatemachineParser.rule_Rule_Statemachine_return();
         retval.start = this.input.LT(1);
 
         var root_0 = null;
@@ -115,11 +115,11 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
         var resetevents_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:18:39: ( ( 'events' (events+= rule_Event )+ 'end' )? ( 'resetEvents' (resetevents+= ID )+ 'end' )? ( 'commands' (commands+= rule_Command )+ 'end' )? (states+= rule_State )* EOF )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:19:2: ( 'events' (events+= rule_Event )+ 'end' )? ( 'resetEvents' (resetevents+= ID )+ 'end' )? ( 'commands' (commands+= rule_Command )+ 'end' )? (states+= rule_State )* EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:20:24: ( ( 'events' (events+= rule_Rule_Event )+ 'end' )? ( 'resetEvents' (resetevents+= ID )+ 'end' )? ( 'commands' (commands+= rule_Rule_Command )+ 'end' )? (states+= rule_Rule_State )* EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:22:2: ( 'events' (events+= rule_Rule_Event )+ 'end' )? ( 'resetEvents' (resetevents+= ID )+ 'end' )? ( 'commands' (commands+= rule_Rule_Command )+ 'end' )? (states+= rule_Rule_State )* EOF
             root_0 = this.adaptor.nil();
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:19:2: ( 'events' (events+= rule_Event )+ 'end' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:22:2: ( 'events' (events+= rule_Rule_Event )+ 'end' )?
             var alt2=2;
             var LA2_0 = this.input.LA(1);
 
@@ -128,12 +128,12 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
             }
             switch (alt2) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:19:3: 'events' (events+= rule_Event )+ 'end'
-                    string_literal1=this.match(this.input,9,InternalStatemachineParser.FOLLOW_9_in_rule_Statemachine69); 
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:22:3: 'events' (events+= rule_Rule_Event )+ 'end'
+                    string_literal1=this.match(this.input,9,StatemachineParser.FOLLOW_9_in_rule_Rule_Statemachine68); 
                     string_literal1_tree = this.adaptor.create(string_literal1);
                     this.adaptor.addChild(root_0, string_literal1_tree);
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:20:9: (events+= rule_Event )+
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:23:9: (events+= rule_Rule_Event )+
                     var cnt1=0;
                     loop1:
                     do {
@@ -147,9 +147,9 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
 
                         switch (alt1) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:20:9: events+= rule_Event
-                            this.pushFollow(InternalStatemachineParser.FOLLOW_rule_Event_in_rule_Statemachine76);
-                            events=this.rule_Event();
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:23:9: events+= rule_Rule_Event
+                            this.pushFollow(StatemachineParser.FOLLOW_rule_Rule_Event_in_rule_Rule_Statemachine75);
+                            events=this.rule_Rule_Event();
 
                             this.state._fsp--;
 
@@ -171,7 +171,7 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
                         cnt1++;
                     } while (true);
 
-                    string_literal2=this.match(this.input,10,InternalStatemachineParser.FOLLOW_10_in_rule_Statemachine81); 
+                    string_literal2=this.match(this.input,10,StatemachineParser.FOLLOW_10_in_rule_Rule_Statemachine80); 
                     string_literal2_tree = this.adaptor.create(string_literal2);
                     this.adaptor.addChild(root_0, string_literal2_tree);
 
@@ -181,7 +181,7 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:21:10: ( 'resetEvents' (resetevents+= ID )+ 'end' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:25:2: ( 'resetEvents' (resetevents+= ID )+ 'end' )?
             var alt4=2;
             var LA4_0 = this.input.LA(1);
 
@@ -190,12 +190,12 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
             }
             switch (alt4) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:21:11: 'resetEvents' (resetevents+= ID )+ 'end'
-                    string_literal3=this.match(this.input,11,InternalStatemachineParser.FOLLOW_11_in_rule_Statemachine86); 
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:25:3: 'resetEvents' (resetevents+= ID )+ 'end'
+                    string_literal3=this.match(this.input,11,StatemachineParser.FOLLOW_11_in_rule_Rule_Statemachine86); 
                     string_literal3_tree = this.adaptor.create(string_literal3);
                     this.adaptor.addChild(root_0, string_literal3_tree);
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:22:14: (resetevents+= ID )+
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:26:14: (resetevents+= ID )+
                     var cnt3=0;
                     loop3:
                     do {
@@ -209,8 +209,8 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
 
                         switch (alt3) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:22:14: resetevents+= ID
-                            resetevents=this.match(this.input,ID,InternalStatemachineParser.FOLLOW_ID_in_rule_Statemachine93); 
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:26:14: resetevents+= ID
+                            resetevents=this.match(this.input,ID,StatemachineParser.FOLLOW_ID_in_rule_Rule_Statemachine93); 
                             resetevents_tree = this.adaptor.create(resetevents);
                             this.adaptor.addChild(root_0, resetevents_tree);
 
@@ -231,7 +231,7 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
                         cnt3++;
                     } while (true);
 
-                    string_literal4=this.match(this.input,10,InternalStatemachineParser.FOLLOW_10_in_rule_Statemachine98); 
+                    string_literal4=this.match(this.input,10,StatemachineParser.FOLLOW_10_in_rule_Rule_Statemachine98); 
                     string_literal4_tree = this.adaptor.create(string_literal4);
                     this.adaptor.addChild(root_0, string_literal4_tree);
 
@@ -241,7 +241,7 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:23:10: ( 'commands' (commands+= rule_Command )+ 'end' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:28:2: ( 'commands' (commands+= rule_Rule_Command )+ 'end' )?
             var alt6=2;
             var LA6_0 = this.input.LA(1);
 
@@ -250,12 +250,12 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
             }
             switch (alt6) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:23:11: 'commands' (commands+= rule_Command )+ 'end'
-                    string_literal5=this.match(this.input,12,InternalStatemachineParser.FOLLOW_12_in_rule_Statemachine103); 
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:28:3: 'commands' (commands+= rule_Rule_Command )+ 'end'
+                    string_literal5=this.match(this.input,12,StatemachineParser.FOLLOW_12_in_rule_Rule_Statemachine104); 
                     string_literal5_tree = this.adaptor.create(string_literal5);
                     this.adaptor.addChild(root_0, string_literal5_tree);
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:24:11: (commands+= rule_Command )+
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:29:11: (commands+= rule_Rule_Command )+
                     var cnt5=0;
                     loop5:
                     do {
@@ -269,9 +269,9 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
 
                         switch (alt5) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:24:11: commands+= rule_Command
-                            this.pushFollow(InternalStatemachineParser.FOLLOW_rule_Command_in_rule_Statemachine110);
-                            commands=this.rule_Command();
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:29:11: commands+= rule_Rule_Command
+                            this.pushFollow(StatemachineParser.FOLLOW_rule_Rule_Command_in_rule_Rule_Statemachine111);
+                            commands=this.rule_Rule_Command();
 
                             this.state._fsp--;
 
@@ -293,7 +293,7 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
                         cnt5++;
                     } while (true);
 
-                    string_literal6=this.match(this.input,10,InternalStatemachineParser.FOLLOW_10_in_rule_Statemachine115); 
+                    string_literal6=this.match(this.input,10,StatemachineParser.FOLLOW_10_in_rule_Rule_Statemachine116); 
                     string_literal6_tree = this.adaptor.create(string_literal6);
                     this.adaptor.addChild(root_0, string_literal6_tree);
 
@@ -303,7 +303,7 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:25:16: (states+= rule_State )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:31:8: (states+= rule_Rule_State )*
             loop7:
             do {
                 var alt7=2;
@@ -316,9 +316,9 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
 
                 switch (alt7) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:25:16: states+= rule_State
-                    this.pushFollow(InternalStatemachineParser.FOLLOW_rule_State_in_rule_Statemachine121);
-                    states=this.rule_State();
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:31:8: states+= rule_Rule_State
+                    this.pushFollow(StatemachineParser.FOLLOW_rule_Rule_State_in_rule_Rule_Statemachine123);
+                    states=this.rule_Rule_State();
 
                     this.state._fsp--;
 
@@ -335,7 +335,7 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
                 }
             } while (true);
 
-            EOF7=this.match(this.input,EOF,InternalStatemachineParser.FOLLOW_EOF_in_rule_Statemachine125); 
+            EOF7=this.match(this.input,EOF,StatemachineParser.FOLLOW_EOF_in_rule_Rule_Statemachine127); 
 
 
 
@@ -360,9 +360,9 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
     },
 
     // inline static return class
-    rule_Event_return: (function() {
-        InternalStatemachineParser.rule_Event_return = function(){};
-        org.antlr.lang.extend(InternalStatemachineParser.rule_Event_return,
+    rule_Rule_Event_return: (function() {
+        StatemachineParser.rule_Rule_Event_return = function(){};
+        org.antlr.lang.extend(StatemachineParser.rule_Rule_Event_return,
                           org.antlr.runtime.ParserRuleReturnScope,
         {
             getTree: function() { return this.tree; }
@@ -370,10 +370,10 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:29:1: rule_Event returns [Event] : name= ID code= ID ;
-    // $ANTLR start "rule_Event"
-    rule_Event: function() {
-        var retval = new InternalStatemachineParser.rule_Event_return();
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:37:1: rule_Rule_Event : name= ID code= ID ;
+    // $ANTLR start "rule_Rule_Event"
+    rule_Rule_Event: function() {
+        var retval = new StatemachineParser.rule_Rule_Event_return();
         retval.start = this.input.LT(1);
 
         var root_0 = null;
@@ -385,15 +385,15 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
         var code_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:29:27: (name= ID code= ID )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:30:2: name= ID code= ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:37:16: (name= ID code= ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:38:2: name= ID code= ID
             root_0 = this.adaptor.nil();
 
-            name=this.match(this.input,ID,InternalStatemachineParser.FOLLOW_ID_in_rule_Event141); 
+            name=this.match(this.input,ID,StatemachineParser.FOLLOW_ID_in_rule_Rule_Event141); 
             name_tree = this.adaptor.create(name);
             this.adaptor.addChild(root_0, name_tree);
 
-            code=this.match(this.input,ID,InternalStatemachineParser.FOLLOW_ID_in_rule_Event145); 
+            code=this.match(this.input,ID,StatemachineParser.FOLLOW_ID_in_rule_Rule_Event145); 
             code_tree = this.adaptor.create(code);
             this.adaptor.addChild(root_0, code_tree);
 
@@ -421,9 +421,9 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
     },
 
     // inline static return class
-    rule_Command_return: (function() {
-        InternalStatemachineParser.rule_Command_return = function(){};
-        org.antlr.lang.extend(InternalStatemachineParser.rule_Command_return,
+    rule_Rule_Command_return: (function() {
+        StatemachineParser.rule_Rule_Command_return = function(){};
+        org.antlr.lang.extend(StatemachineParser.rule_Rule_Command_return,
                           org.antlr.runtime.ParserRuleReturnScope,
         {
             getTree: function() { return this.tree; }
@@ -431,10 +431,10 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:34:1: rule_Command returns [Command] : name= ID code= ID ;
-    // $ANTLR start "rule_Command"
-    rule_Command: function() {
-        var retval = new InternalStatemachineParser.rule_Command_return();
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:44:1: rule_Rule_Command : name= ID code= ID ;
+    // $ANTLR start "rule_Rule_Command"
+    rule_Rule_Command: function() {
+        var retval = new StatemachineParser.rule_Rule_Command_return();
         retval.start = this.input.LT(1);
 
         var root_0 = null;
@@ -446,15 +446,15 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
         var code_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:34:31: (name= ID code= ID )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:35:2: name= ID code= ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:44:18: (name= ID code= ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:45:2: name= ID code= ID
             root_0 = this.adaptor.nil();
 
-            name=this.match(this.input,ID,InternalStatemachineParser.FOLLOW_ID_in_rule_Command161); 
+            name=this.match(this.input,ID,StatemachineParser.FOLLOW_ID_in_rule_Rule_Command159); 
             name_tree = this.adaptor.create(name);
             this.adaptor.addChild(root_0, name_tree);
 
-            code=this.match(this.input,ID,InternalStatemachineParser.FOLLOW_ID_in_rule_Command165); 
+            code=this.match(this.input,ID,StatemachineParser.FOLLOW_ID_in_rule_Rule_Command163); 
             code_tree = this.adaptor.create(code);
             this.adaptor.addChild(root_0, code_tree);
 
@@ -482,9 +482,9 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
     },
 
     // inline static return class
-    rule_State_return: (function() {
-        InternalStatemachineParser.rule_State_return = function(){};
-        org.antlr.lang.extend(InternalStatemachineParser.rule_State_return,
+    rule_Rule_State_return: (function() {
+        StatemachineParser.rule_Rule_State_return = function(){};
+        org.antlr.lang.extend(StatemachineParser.rule_Rule_State_return,
                           org.antlr.runtime.ParserRuleReturnScope,
         {
             getTree: function() { return this.tree; }
@@ -492,10 +492,10 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:39:1: rule_State returns [State] : 'state' name= ID ( 'actions' '{' (actions+= ID )+ '}' )? (transitions+= rule_Transition )* 'end' ;
-    // $ANTLR start "rule_State"
-    rule_State: function() {
-        var retval = new InternalStatemachineParser.rule_State_return();
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:51:1: rule_Rule_State : 'state' name= ID ( 'actions' '{' (actions+= ID )+ '}' )? (transitions+= rule_Rule_Transition )* 'end' ;
+    // $ANTLR start "rule_Rule_State"
+    rule_Rule_State: function() {
+        var retval = new StatemachineParser.rule_Rule_State_return();
         retval.start = this.input.LT(1);
 
         var root_0 = null;
@@ -519,19 +519,19 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
         var actions_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:39:27: ( 'state' name= ID ( 'actions' '{' (actions+= ID )+ '}' )? (transitions+= rule_Transition )* 'end' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:40:2: 'state' name= ID ( 'actions' '{' (actions+= ID )+ '}' )? (transitions+= rule_Transition )* 'end'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:51:16: ( 'state' name= ID ( 'actions' '{' (actions+= ID )+ '}' )? (transitions+= rule_Rule_Transition )* 'end' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:52:2: 'state' name= ID ( 'actions' '{' (actions+= ID )+ '}' )? (transitions+= rule_Rule_Transition )* 'end'
             root_0 = this.adaptor.nil();
 
-            string_literal8=this.match(this.input,13,InternalStatemachineParser.FOLLOW_13_in_rule_State179); 
+            string_literal8=this.match(this.input,13,StatemachineParser.FOLLOW_13_in_rule_Rule_State175); 
             string_literal8_tree = this.adaptor.create(string_literal8);
             this.adaptor.addChild(root_0, string_literal8_tree);
 
-            name=this.match(this.input,ID,InternalStatemachineParser.FOLLOW_ID_in_rule_State183); 
+            name=this.match(this.input,ID,StatemachineParser.FOLLOW_ID_in_rule_Rule_State179); 
             name_tree = this.adaptor.create(name);
             this.adaptor.addChild(root_0, name_tree);
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:40:18: ( 'actions' '{' (actions+= ID )+ '}' )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:53:3: ( 'actions' '{' (actions+= ID )+ '}' )?
             var alt9=2;
             var LA9_0 = this.input.LA(1);
 
@@ -540,16 +540,16 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
             }
             switch (alt9) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:40:19: 'actions' '{' (actions+= ID )+ '}'
-                    string_literal9=this.match(this.input,14,InternalStatemachineParser.FOLLOW_14_in_rule_State186); 
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:53:4: 'actions' '{' (actions+= ID )+ '}'
+                    string_literal9=this.match(this.input,14,StatemachineParser.FOLLOW_14_in_rule_Rule_State184); 
                     string_literal9_tree = this.adaptor.create(string_literal9);
                     this.adaptor.addChild(root_0, string_literal9_tree);
 
-                    char_literal10=this.match(this.input,15,InternalStatemachineParser.FOLLOW_15_in_rule_State188); 
+                    char_literal10=this.match(this.input,15,StatemachineParser.FOLLOW_15_in_rule_Rule_State186); 
                     char_literal10_tree = this.adaptor.create(char_literal10);
                     this.adaptor.addChild(root_0, char_literal10_tree);
 
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:40:40: (actions+= ID )+
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:53:25: (actions+= ID )+
                     var cnt8=0;
                     loop8:
                     do {
@@ -563,8 +563,8 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
 
                         switch (alt8) {
                         case 1 :
-                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:40:40: actions+= ID
-                            actions=this.match(this.input,ID,InternalStatemachineParser.FOLLOW_ID_in_rule_State192); 
+                            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:53:25: actions+= ID
+                            actions=this.match(this.input,ID,StatemachineParser.FOLLOW_ID_in_rule_Rule_State190); 
                             actions_tree = this.adaptor.create(actions);
                             this.adaptor.addChild(root_0, actions_tree);
 
@@ -585,7 +585,7 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
                         cnt8++;
                     } while (true);
 
-                    char_literal11=this.match(this.input,16,InternalStatemachineParser.FOLLOW_16_in_rule_State195); 
+                    char_literal11=this.match(this.input,16,StatemachineParser.FOLLOW_16_in_rule_Rule_State193); 
                     char_literal11_tree = this.adaptor.create(char_literal11);
                     this.adaptor.addChild(root_0, char_literal11_tree);
 
@@ -595,7 +595,7 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
 
             }
 
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:40:63: (transitions+= rule_Transition )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:54:14: (transitions+= rule_Rule_Transition )*
             loop10:
             do {
                 var alt10=2;
@@ -608,9 +608,9 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
 
                 switch (alt10) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:40:63: transitions+= rule_Transition
-                    this.pushFollow(InternalStatemachineParser.FOLLOW_rule_Transition_in_rule_State201);
-                    transitions=this.rule_Transition();
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:54:14: transitions+= rule_Rule_Transition
+                    this.pushFollow(StatemachineParser.FOLLOW_rule_Rule_Transition_in_rule_Rule_State201);
+                    transitions=this.rule_Rule_Transition();
 
                     this.state._fsp--;
 
@@ -627,7 +627,7 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
                 }
             } while (true);
 
-            string_literal12=this.match(this.input,10,InternalStatemachineParser.FOLLOW_10_in_rule_State205); 
+            string_literal12=this.match(this.input,10,StatemachineParser.FOLLOW_10_in_rule_Rule_State205); 
             string_literal12_tree = this.adaptor.create(string_literal12);
             this.adaptor.addChild(root_0, string_literal12_tree);
 
@@ -655,9 +655,9 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
     },
 
     // inline static return class
-    rule_Transition_return: (function() {
-        InternalStatemachineParser.rule_Transition_return = function(){};
-        org.antlr.lang.extend(InternalStatemachineParser.rule_Transition_return,
+    rule_Rule_Transition_return: (function() {
+        StatemachineParser.rule_Rule_Transition_return = function(){};
+        org.antlr.lang.extend(StatemachineParser.rule_Rule_Transition_return,
                           org.antlr.runtime.ParserRuleReturnScope,
         {
             getTree: function() { return this.tree; }
@@ -665,10 +665,10 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
         return;
     })(),
 
-    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:45:1: rule_Transition returns [Transition] : event= ID '=>' state= ID ;
-    // $ANTLR start "rule_Transition"
-    rule_Transition: function() {
-        var retval = new InternalStatemachineParser.rule_Transition_return();
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:61:1: rule_Rule_Transition : event= ID '=>' state= ID ;
+    // $ANTLR start "rule_Rule_Transition"
+    rule_Rule_Transition: function() {
+        var retval = new StatemachineParser.rule_Rule_Transition_return();
         retval.start = this.input.LT(1);
 
         var root_0 = null;
@@ -682,19 +682,19 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
         var string_literal13_tree=null;
 
         try {
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:45:37: (event= ID '=>' state= ID )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\InternalStatemachine.g:46:2: event= ID '=>' state= ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:61:21: (event= ID '=>' state= ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.fowlerdsl.web\\src-js\\org\\eclipse\\xtext\\example\\fowlerdsl\\web\\parser\\Statemachine.g:62:2: event= ID '=>' state= ID
             root_0 = this.adaptor.nil();
 
-            event=this.match(this.input,ID,InternalStatemachineParser.FOLLOW_ID_in_rule_Transition221); 
+            event=this.match(this.input,ID,StatemachineParser.FOLLOW_ID_in_rule_Rule_Transition219); 
             event_tree = this.adaptor.create(event);
             this.adaptor.addChild(root_0, event_tree);
 
-            string_literal13=this.match(this.input,17,InternalStatemachineParser.FOLLOW_17_in_rule_Transition223); 
+            string_literal13=this.match(this.input,17,StatemachineParser.FOLLOW_17_in_rule_Rule_Transition221); 
             string_literal13_tree = this.adaptor.create(string_literal13);
             this.adaptor.addChild(root_0, string_literal13_tree);
 
-            state=this.match(this.input,ID,InternalStatemachineParser.FOLLOW_ID_in_rule_Transition227); 
+            state=this.match(this.input,ID,StatemachineParser.FOLLOW_ID_in_rule_Rule_Transition225); 
             state_tree = this.adaptor.create(state);
             this.adaptor.addChild(root_0, state_tree);
 
@@ -731,34 +731,34 @@ org.antlr.lang.augmentObject(InternalStatemachineParser.prototype, {
  
 
 // public class variables
-org.antlr.lang.augmentObject(InternalStatemachineParser, {
+org.antlr.lang.augmentObject(StatemachineParser, {
     tokenNames: ["<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "STRING", "COMMENT", "WS", "INT", "'events'", "'end'", "'resetEvents'", "'commands'", "'state'", "'actions'", "'{'", "'}'", "'=>'"],
-    FOLLOW_9_in_rule_Statemachine69: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
-    FOLLOW_rule_Event_in_rule_Statemachine76: new org.antlr.runtime.BitSet([0x00000410, 0x00000000]),
-    FOLLOW_10_in_rule_Statemachine81: new org.antlr.runtime.BitSet([0x00003800, 0x00000000]),
-    FOLLOW_11_in_rule_Statemachine86: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
-    FOLLOW_ID_in_rule_Statemachine93: new org.antlr.runtime.BitSet([0x00000410, 0x00000000]),
-    FOLLOW_10_in_rule_Statemachine98: new org.antlr.runtime.BitSet([0x00003000, 0x00000000]),
-    FOLLOW_12_in_rule_Statemachine103: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
-    FOLLOW_rule_Command_in_rule_Statemachine110: new org.antlr.runtime.BitSet([0x00000410, 0x00000000]),
-    FOLLOW_10_in_rule_Statemachine115: new org.antlr.runtime.BitSet([0x00002000, 0x00000000]),
-    FOLLOW_rule_State_in_rule_Statemachine121: new org.antlr.runtime.BitSet([0x00002000, 0x00000000]),
-    FOLLOW_EOF_in_rule_Statemachine125: new org.antlr.runtime.BitSet([0x00000002, 0x00000000]),
-    FOLLOW_ID_in_rule_Event141: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
-    FOLLOW_ID_in_rule_Event145: new org.antlr.runtime.BitSet([0x00000002, 0x00000000]),
-    FOLLOW_ID_in_rule_Command161: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
-    FOLLOW_ID_in_rule_Command165: new org.antlr.runtime.BitSet([0x00000002, 0x00000000]),
-    FOLLOW_13_in_rule_State179: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
-    FOLLOW_ID_in_rule_State183: new org.antlr.runtime.BitSet([0x00004410, 0x00000000]),
-    FOLLOW_14_in_rule_State186: new org.antlr.runtime.BitSet([0x00008000, 0x00000000]),
-    FOLLOW_15_in_rule_State188: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
-    FOLLOW_ID_in_rule_State192: new org.antlr.runtime.BitSet([0x00010010, 0x00000000]),
-    FOLLOW_16_in_rule_State195: new org.antlr.runtime.BitSet([0x00000410, 0x00000000]),
-    FOLLOW_rule_Transition_in_rule_State201: new org.antlr.runtime.BitSet([0x00000410, 0x00000000]),
-    FOLLOW_10_in_rule_State205: new org.antlr.runtime.BitSet([0x00000002, 0x00000000]),
-    FOLLOW_ID_in_rule_Transition221: new org.antlr.runtime.BitSet([0x00020000, 0x00000000]),
-    FOLLOW_17_in_rule_Transition223: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
-    FOLLOW_ID_in_rule_Transition227: new org.antlr.runtime.BitSet([0x00000002, 0x00000000])
+    FOLLOW_9_in_rule_Rule_Statemachine68: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
+    FOLLOW_rule_Rule_Event_in_rule_Rule_Statemachine75: new org.antlr.runtime.BitSet([0x00000410, 0x00000000]),
+    FOLLOW_10_in_rule_Rule_Statemachine80: new org.antlr.runtime.BitSet([0x00003800, 0x00000000]),
+    FOLLOW_11_in_rule_Rule_Statemachine86: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
+    FOLLOW_ID_in_rule_Rule_Statemachine93: new org.antlr.runtime.BitSet([0x00000410, 0x00000000]),
+    FOLLOW_10_in_rule_Rule_Statemachine98: new org.antlr.runtime.BitSet([0x00003000, 0x00000000]),
+    FOLLOW_12_in_rule_Rule_Statemachine104: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
+    FOLLOW_rule_Rule_Command_in_rule_Rule_Statemachine111: new org.antlr.runtime.BitSet([0x00000410, 0x00000000]),
+    FOLLOW_10_in_rule_Rule_Statemachine116: new org.antlr.runtime.BitSet([0x00002000, 0x00000000]),
+    FOLLOW_rule_Rule_State_in_rule_Rule_Statemachine123: new org.antlr.runtime.BitSet([0x00002000, 0x00000000]),
+    FOLLOW_EOF_in_rule_Rule_Statemachine127: new org.antlr.runtime.BitSet([0x00000002, 0x00000000]),
+    FOLLOW_ID_in_rule_Rule_Event141: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
+    FOLLOW_ID_in_rule_Rule_Event145: new org.antlr.runtime.BitSet([0x00000002, 0x00000000]),
+    FOLLOW_ID_in_rule_Rule_Command159: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
+    FOLLOW_ID_in_rule_Rule_Command163: new org.antlr.runtime.BitSet([0x00000002, 0x00000000]),
+    FOLLOW_13_in_rule_Rule_State175: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
+    FOLLOW_ID_in_rule_Rule_State179: new org.antlr.runtime.BitSet([0x00004410, 0x00000000]),
+    FOLLOW_14_in_rule_Rule_State184: new org.antlr.runtime.BitSet([0x00008000, 0x00000000]),
+    FOLLOW_15_in_rule_Rule_State186: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
+    FOLLOW_ID_in_rule_Rule_State190: new org.antlr.runtime.BitSet([0x00010010, 0x00000000]),
+    FOLLOW_16_in_rule_Rule_State193: new org.antlr.runtime.BitSet([0x00000410, 0x00000000]),
+    FOLLOW_rule_Rule_Transition_in_rule_Rule_State201: new org.antlr.runtime.BitSet([0x00000410, 0x00000000]),
+    FOLLOW_10_in_rule_Rule_State205: new org.antlr.runtime.BitSet([0x00000002, 0x00000000]),
+    FOLLOW_ID_in_rule_Rule_Transition219: new org.antlr.runtime.BitSet([0x00020000, 0x00000000]),
+    FOLLOW_17_in_rule_Rule_Transition221: new org.antlr.runtime.BitSet([0x00000010, 0x00000000]),
+    FOLLOW_ID_in_rule_Rule_Transition225: new org.antlr.runtime.BitSet([0x00000002, 0x00000000])
 });
 
 })();
