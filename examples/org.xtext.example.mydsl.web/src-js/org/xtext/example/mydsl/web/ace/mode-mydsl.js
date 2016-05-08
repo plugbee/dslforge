@@ -33,14 +33,14 @@ define('ace/mode/mydsl', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/m
 var oop = require("../lib/oop");
 var TextMode = require("./text").Mode;
 var Tokenizer = require("../tokenizer").Tokenizer;
-var MyDslHighlightRules = require("./mydsl_highlight_rules").MyDslHighlightRules;
+var mydslHighlightRules = require("./mydsl_highlight_rules").mydslHighlightRules;
 var MatchingBraceOutdent = require("./matching_brace_outdent").MatchingBraceOutdent;
 var CstyleBehaviour = require("./behaviour/cstyle").CstyleBehaviour;
 var CStyleFoldMode = require("./folding/cstyle").FoldMode;
 var WorkerClient = require("../worker/worker_client").WorkerClient;
 
 var Mode = function() {
-    this.HighlightRules = MyDslHighlightRules;
+    this.HighlightRules = mydslHighlightRules;
     this.$outdent = new MatchingBraceOutdent();
     this.foldingRules = new CStyleFoldMode();
 };
@@ -130,7 +130,7 @@ define('ace/mode/mydsl_highlight_rules', ['require', 'exports', 'module' , 'ace/
     var DocCommentHighlightRules = require("./doc_comment_highlight_rules").DocCommentHighlightRules;
     var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 
-    var MyDslHighlightRules = function() {
+    var mydslHighlightRules = function() {
     	
         var keywords = ("Hello");
         var builtinTypes = ("");
@@ -223,9 +223,9 @@ define('ace/mode/mydsl_highlight_rules', ['require', 'exports', 'module' , 'ace/
         this.embedRules(DocCommentHighlightRules, "doc-",
             [ DocCommentHighlightRules.getEndRule("start") ]);
     };
-    oop.inherits(MyDslHighlightRules, TextHighlightRules);
+    oop.inherits(mydslHighlightRules, TextHighlightRules);
 
-    exports.MyDslHighlightRules = MyDslHighlightRules;
+    exports.mydslHighlightRules = mydslHighlightRules;
 });
 
 define('ace/mode/doc_comment_highlight_rules', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text_highlight_rules'], function(require, exports, module) {

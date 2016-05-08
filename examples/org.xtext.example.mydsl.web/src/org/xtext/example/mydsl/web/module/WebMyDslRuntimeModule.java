@@ -3,13 +3,20 @@
  */
 package org.xtext.example.mydsl.web.module;
 
+import org.apache.log4j.Logger;
+
 import com.google.inject.Binder;
 
 public class WebMyDslRuntimeModule extends AbstractWebMyDslRuntimeModule {
 
+	static final Logger logger = Logger.getLogger(WebMyDslRuntimeModule.class);
+	
+	/**
+	 * Add Custom bindings here
+	 */
 	@Override
 	public void configure(Binder binder) {
-		System.out.println("[DSLFORGE] - Configuring module " + this.getClass().getName());
 		super.configure(binder);
+		logger.info("Configuring web module " + this.getClass().getName());
 	}
 }

@@ -1,16 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="windows-1252"?>
 <?eclipse version="3.0"?>
-
 <plugin>
-
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.xtext.org/example/mydsl/MyDsl" 
-       class = "org.xtext.example.mydsl.myDsl.MyDslPackage"
-       genModel = "model/generated/MyDsl.genmodel" /> 
-	
-  </extension>
-
-
-
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.xtext.org/example/mydsl/MyDsl"
+			class = "org.xtext.example.mydsl.myDsl.MyDslPackage"
+			genModel = "model/generated/MyDsl.genmodel" />
+	</extension>
 </plugin>

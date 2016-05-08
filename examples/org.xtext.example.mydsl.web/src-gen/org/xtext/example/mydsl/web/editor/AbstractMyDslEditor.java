@@ -15,8 +15,8 @@ public abstract class AbstractMyDslEditor extends XtextContentAssistEnabledEdito
 
 	public AbstractMyDslEditor() {
 		super();
-		setLanguageName(Activator.LANGUAGE_NAME);
-		setInjector(Activator.getInstance().getInjector(Activator.LANGUAGE_NAME));
+		setLanguageName(Activator.ORG_XTEXT_EXAMPLE_MYDSL_MYDSL);
+		setInjector(Activator.getInstance().getInjector(Activator.ORG_XTEXT_EXAMPLE_MYDSL_MYDSL));
 	}
 	
 	@Override

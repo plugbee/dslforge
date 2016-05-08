@@ -17,7 +17,6 @@ public abstract class AbstractWebMyDslRuntimeModule extends SharedModule {
 
 	@Override
 	public void configure(Binder binder) {
-		System.out.println("[INFO] - Configuring module " + this.getClass().getName());
 		super.configure(binder);
 		binder.bind(org.eclipse.xtext.ui.editor.contentassist.IContentAssistParser.class).to(MyDslParser.class);
 		binder.bind(InternalMyDslLexer.class).toProvider(org.eclipse.xtext.parser.antlr.LexerProvider.create(InternalMyDslLexer.class));

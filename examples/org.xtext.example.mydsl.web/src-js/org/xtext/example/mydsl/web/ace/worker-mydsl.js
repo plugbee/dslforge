@@ -877,8 +877,8 @@ var Mirror = require("../worker/mirror").Mirror;
 var mydslparse = require("../mode/mydsl/mydslparse");
 
 importScripts("../parser/antlr-all-min.js");
-importScripts("../parser/InternalMyDslLexer.js");
-importScripts("../parser/InternalMyDslParser.js");
+importScripts("../parser/MyDslLexer.js");
+importScripts("../parser/MyDslParser.js");
 
 var Worker = exports.Worker = function(sender) {
     Mirror.call(this, sender);
@@ -898,9 +898,9 @@ oop.inherits(Worker, Mirror);
 		};
 		
 	    cstream = new org.antlr.runtime.ANTLRStringStream(value);
-	    lexer = new InternalMyDslLexer(cstream);
+	    lexer = new MyDslLexer(cstream);
 	    tstream = new org.antlr.runtime.CommonTokenStream(lexer);
-	    parser = new InternalMyDslParser(tstream);
+	    parser = new MyDslParser(tstream);
 	    try {
 	    	parser.rule_Model();
 	    } catch(err) {

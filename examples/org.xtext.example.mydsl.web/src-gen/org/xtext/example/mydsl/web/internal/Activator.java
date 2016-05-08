@@ -23,7 +23,7 @@ import com.google.inject.Injector;
 public class Activator extends AbstractUIPlugin {
 
 	// The Language Name
-	public static final String LANGUAGE_NAME = "org.xtext.example.mydsl.MyDsl";
+	public static final String ORG_XTEXT_EXAMPLE_MYDSL_MYDSL = "org.xtext.example.mydsl.MyDsl";
 	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.xtext.example.mydsl.web"; //$NON-NLS-1$

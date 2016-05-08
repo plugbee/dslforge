@@ -6,7 +6,8 @@ Bundle-Version: 0.0.1
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.xtext.example.mydsl.web.contentassist,
- org.xtext.example.mydsl.web.contentassist.antlr
+ org.xtext.example.mydsl.web.contentassist.antlr,
+ org.xtext.example.mydsl.web.contentassist.antlr.internal
 Require-Bundle: org.eclipse.xtext.ui,
  org.eclipse.xtext.ui.shared,
  org.eclipse.ui.editors,

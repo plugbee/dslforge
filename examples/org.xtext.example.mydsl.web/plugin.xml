@@ -31,9 +31,9 @@
    <extension
      point="org.dslforge.xtext.common.contribution">
   <contribution
-       class="org.xtext.example.mydsl.web.MyDslExecutableExtensionFactory"
-         extension="mydsl"
-        label="org.xtext.example.mydsl.MyDsl">
+       factory="org.xtext.example.mydsl.web.MyDslExecutableExtensionFactory"
+        path="/org.xtext.example.mydsl/src/org/xtext/example/mydsl/MyDsl.xtext"
+        extension="mydsl">
   </contribution>
 </extension>
 </plugin>

@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.xtext.example.mydsl.web
 Bundle-Vendor: My Company
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.xtext.example.mydsl.web; singleton:=true
-Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.xtext.example.mydsl.web.internal.Activator
+Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.rap.ui.navigator,
  org.eclipse.emf.rap.common.ui,
@@ -20,4 +20,5 @@ Require-Bundle: org.eclipse.rap.ui,
  org.dslforge.texteditor,
  org.dslforge.styledtext,
  org.xtext.example.mydsl
+Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

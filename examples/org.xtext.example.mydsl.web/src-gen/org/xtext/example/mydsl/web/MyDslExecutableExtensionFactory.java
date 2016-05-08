@@ -18,6 +18,6 @@ public class MyDslExecutableExtensionFactory extends AbstractGuiceAwareWebExecut
 	
 	@Override
 	public Injector getInjector() {
-		return Activator.getInstance().getInjector(Activator.LANGUAGE_NAME);
+		return Activator.getInstance().getInjector(Activator.ORG_XTEXT_EXAMPLE_MYDSL_MYDSL);
 	}
 }
