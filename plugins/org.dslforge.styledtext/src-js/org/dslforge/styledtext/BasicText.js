@@ -106,9 +106,9 @@
 					this.setScope(this._scope);
 					delete this._scope;
 				}
-				if (this._proposals) {
-					this.setProposals(this._proposals);
-					delete this._proposals;
+				if (this.proposals) {
+					this.setProposals(this.proposals);
+					delete this.proposals;
 				}
 			},
 
@@ -155,6 +155,8 @@
 						});
 					}
 				}
+				//clear proposals
+				this.proposals= [":"];
 			},
 
 			onRender : function() {
@@ -171,21 +173,23 @@
 			},
 			
 			onCompletionRequest : function(pos, prefix, callback) {
-				var remoteObject = rap.getRemoteObject(this);
-				if (remoteObject) {
-					remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
+				if (this.isFocused) {
+					var remoteObject = rap.getRemoteObject(this);
+					if (remoteObject) {
+						remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
+					}	
+					var proposals = this.proposals==null?[":"]:this.proposals;		
+			        var wordList = Object.keys(proposals);
+			        callback(null, wordList.map(function(word) {
+			            return {
+			            	iconClass: " " + typeToIcon(proposals[word].split(":")[1]),
+			                name: word,
+			                value: proposals[word].split(":")[0],
+			                score: 1,
+			                meta: "[" + proposals[word].split(":")[1] + "]"
+			            };
+			        }));	
 				}
-				var proposals = this._proposals==null?[]:this._proposals;		
-			    var wordList = Object.keys(proposals);
-			    callback(null, wordList.map(function(word) {
-			          return {
-			           	iconClass: " " + typeToIcon(word[0]),
-			               name: word,
-			               value: proposals[word],
-			               score: 1,
-			              meta: "[" + "keyword" + "]"
-			          };
-			      }));
 			},
 			
 			onModify : function() {
@@ -312,7 +316,7 @@
 			},
 
 			setProposals : function(proposals) {
-				this._proposals = proposals;	
+				this.proposals = proposals;	
 			},
 			
 			//'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro'
@@ -430,12 +434,18 @@
 					
 					//Initialize the completion proposals
 					if (this._proposals==null) 
-						this._proposals=[];
+						this._proposals=[":"];
 					
 					var self = this;
 					this.globalScope = {	
 						getCompletions: function(editor, session, pos, prefix, callback) {
 							self.onCompletionRequest(pos, prefix, callback);	
+						},
+						getDocTooltip: function(item) {
+						    item.docHTML = ["<b>", item.caption, "</b>", 
+						                    "<hr></hr>", 
+						                    item.meta.substring(1,item.meta.length-1)
+						                    ].join("");
 						}
 					}
 					//Add completer and enable content assist
@@ -453,7 +463,7 @@
 				 	index = this._scope;
 
 				 	//Initialize the completion proposals
-				 	proposals = this._proposals;
+				 	proposals = this.proposals;
 					
 					if (this.useSharedWorker) {
 						if (typeof SharedWorker == 'undefined') {	
@@ -563,6 +573,8 @@
 		var cls = "ace-";
 		var suffix;
 		if (type == "?") suffix = "unknown";
+		else if (type == "keyword") suffix = type;
+		else if (type == "identifier") suffix = type;
 		else if (type == "number" || type == "string" || type == "bool") suffix = type;
 		else if (/^fn\(/.test(type)) suffix = "fn";
 		else if (/^\[/.test(type)) suffix = "array";

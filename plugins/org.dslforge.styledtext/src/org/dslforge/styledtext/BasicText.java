@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.rap.json.JsonArray;
@@ -50,38 +51,39 @@ import org.eclipse.swt.widgets.Listener;
  */
 public class BasicText extends Composite {
 
-	static final long serialVersionUID = 1L;
-	static final String REMOTE_TYPE = "org.dslforge.styledtext.BasicText";
-	static final int TextChanged = 47;
-	static final int Save = 48;
-	static final int CaretEvent = 49;
-	static final int ContentAssist = 50;
-
-	class Position {
-		int row;
-		int column;
+	static final Logger logger = Logger.getLogger(BasicText.class);
+	
+	private static final long serialVersionUID = 1L;
+	private static final String REMOTE_TYPE = "org.dslforge.styledtext.BasicText";
+	private static final int TextChanged = 47;
+	private static final int Save = 48;
+	private static final int CaretEvent = 49;
+	private static final int ContentAssist = 50;
+	
+	private final BasicTextOperationHandler operationHandler = new BasicTextOperationHandler(this);
+	private RemoteObject remoteObject;
+	private List<IPath> resources = new ArrayList<IPath>();
+	private String url = "";
+	private String status = "";
+	private List<Annotation> annotations = new ArrayList<Annotation>();
+	private List<String> scope = new ArrayList<String>();
+	private List<String> proposals = new ArrayList<String>();
+	private List<TextRange> markers = new ArrayList<TextRange>();
+	private int style;
+	private Listener listener;
+	private TextSelection selection;
+	private String clipboard;
+	private Position cursorPosition;
+	private DefaultContent content;
+	
+	private class Position {
+		private final int row;
+		private final int column;
 		public Position(int newRow, int newColumn) {
 			this.row = newRow;
 			this.column = newColumn;
 		}
 	}
-	
-	final BasicTextOperationHandler operationHandler = new BasicTextOperationHandler(this);
-	RemoteObject remoteObject;
-	List<IPath> resources = new ArrayList<IPath>();
-	String url = "";
-	String status = "";
-	String command = "";
-	List<Annotation> annotations = new ArrayList<Annotation>();
-	List<String> scope = new ArrayList<String>();
-	List<String> proposals = new ArrayList<String>();
-	List<TextRange> markers = new ArrayList<TextRange>();
-	int style;
-	Listener listener;
-	TextSelection selection;
-	String clipboard;
-	Position cursorPosition;
-	DefaultContent content;
 	
 	public class BasicTextListener implements Listener {
 
@@ -143,7 +145,8 @@ public class BasicText extends Composite {
 		content = new DefaultContent();
 	}
 
-	protected void loadClientResources(List<IPath> resources) {
+	@SuppressWarnings("deprecation")
+	protected void loadJsResources(List<IPath> resources) {
 		for (int i = 0; i < resources.size(); i++) {
 			getJavaScriptLoader().require(getResourceManager().getLocation(resources.get(i).toString()));
 		}
@@ -157,14 +160,12 @@ public class BasicText extends Composite {
 		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-searchbox.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/snippets/language.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/theme-eclipse.js"));
-		//addBaseResource(new Path("org/dslforge/styledtext/ace/mode-language.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/global-index.js"));
-
-		registerClientResources(getBaseResources(), BasicText.class.getClassLoader());
-		loadClientResources(getBaseResources());
+		registerJsResources(getBaseResources(), BasicText.class.getClassLoader());
+		loadJsResources(getBaseResources());
 	}
 
-	protected void registerClientResources(List<IPath> resources, ClassLoader loader) {
+	protected void registerJsResources(List<IPath> resources, ClassLoader loader) {
 		ResourceManager resourceManager = getResourceManager();
 		try {
 			for (IPath filePath : resources) {
@@ -174,7 +175,7 @@ public class BasicText extends Composite {
 				}
 			}
 		} catch (IOException ioe) {
-			ioe.printStackTrace();
+			logger.error(ioe.getMessage(), ioe);
 		}
 	}
 
@@ -714,7 +715,7 @@ public class BasicText extends Composite {
 	 * @throws IOException
 	 */
 	private void registerResource(ResourceManager resourceManager, ClassLoader classLoader, String filePath) throws IOException {
-		System.out.println("[INFO] - Registering file: " + filePath);
+		logger.info("Registering file: " + filePath);
 		InputStream inputStream = classLoader.getResourceAsStream(filePath);
 		try {
 			resourceManager.register(filePath, inputStream);
@@ -1167,7 +1168,7 @@ public class BasicText extends Composite {
 	public int getOffsetAtPosition(int row, int column) {
 		int offsetAtLine = content.getOffsetAtLine(row);
 		int offset=offsetAtLine + column;
-		System.out.println("[INFO] - getOffsetAtPosition [row: " + row + ", column : " + column + "] => offset: "+ offset);
+		logger.info("getOffsetAtPosition [row: " + row + ", column : " + column + "] => offset: "+ offset);
 		return offset;
 	}
 

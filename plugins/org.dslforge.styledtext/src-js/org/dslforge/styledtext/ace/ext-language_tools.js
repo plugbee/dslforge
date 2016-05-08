@@ -1071,7 +1071,7 @@ var Autocomplete = function() {
         this.popup.setRow(this.autoSelect ? 0 : -1);
         if (!keepPopupPosition) {
         	this.popup.setTheme(editor.getTheme());
-            this.popup.setFontSize(editor.getFontSize());
+            this.popup.setFontSize(editor.getFontSize()-1); //TODO: set font size separately from editor
 
             var lineHeight = renderer.layerConfig.lineHeight;
             
@@ -1703,7 +1703,7 @@ var AcePopup = function(parentNode) {
         var screenHeight = window.innerHeight;
         var screenWidth = window.innerWidth;
         var renderer = this.renderer;
-        var maxH = renderer.$maxLines * lineHeight * 1.4;
+        var maxH = renderer.$maxLines * lineHeight;
         var top = pos.top + this.$borderSize;
         if (top + maxH > screenHeight - lineHeight && !topdownOnly) {
             el.style.top = "";
@@ -1716,8 +1716,6 @@ var AcePopup = function(parentNode) {
             popup.isTopdown = true;
         }
 
-//        el.style.resize = "both";
-//        el.style.overflow = "auto";
         el.style.display = "";
         this.renderer.$textLayer.checkForSizeChanges();
      
@@ -1726,6 +1724,7 @@ var AcePopup = function(parentNode) {
             left = screenWidth - el.offsetWidth;
             
         el.style.left = left + "px";
+        //el.style.height = maxH + "px";
         
         this._signal("show");
         lastMouseEvent = null;
