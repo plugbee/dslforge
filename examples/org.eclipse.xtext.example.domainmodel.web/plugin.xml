@@ -33,7 +33,7 @@
   <contribution
        factory="org.eclipse.xtext.example.domainmodel.web.DomainmodelExecutableExtensionFactory"
         path="/org.eclipse.xtext.example.domainmodel/src/org/eclipse/xtext/example/domainmodel/Domainmodel.xtext"
-        extension="file.extensions">
+        extension="dmodel">
   </contribution>
 </extension>
 </plugin>
