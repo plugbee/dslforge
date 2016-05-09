@@ -41,7 +41,7 @@ class GenTarget extends AbstractGenerator {
 <?pde version="3.8"?><target name="«grammarShortName.toLowerCase»" sequenceNumber="1">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.dslforge.runtime.feature.feature.group" version="0.9.0.201605081733"/>
+<unit id="org.dslforge.runtime.feature.feature.group" version="0.0.0"/>
 <repository location="http://dslforge.org/downloads/runtime/repository"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
