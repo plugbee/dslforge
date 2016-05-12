@@ -37,7 +37,7 @@ public class Activator extends AbstractUIPlugin {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = new WebDomainmodelStandaloneSetup().createInjector("org.eclipse.xtext.example.domainmodel.Domainmodel"));
+				injectors.put(language, injector = new WebDomainmodelStandaloneSetup().createInjector(ORG_ECLIPSE_XTEXT_EXAMPLE_DOMAINMODEL_DOMAINMODEL));
 			}
 			return injector;
 		}

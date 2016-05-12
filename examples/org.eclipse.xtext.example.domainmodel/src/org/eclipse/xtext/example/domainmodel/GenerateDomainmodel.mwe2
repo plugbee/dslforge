@@ -21,9 +21,9 @@ Workflow {
 
 	bean = StandaloneSetup {
 		scanClassPath  = true
-//		registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
-//		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
-//		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
+		registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+		registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
 	}
 	
 	component = DirectoryCleaner {
@@ -53,9 +53,7 @@ Workflow {
 			fragment = grammarAccess.GrammarAccessFragment auto-inject {}
 
 			// Generate java classes for Ecore models
-			fragment = ecore.EMFGeneratorFragment auto-inject {
-				emfRuntimeVersion = "2.10"
-			}
+			fragment = ecore.EMFGeneratorFragment auto-inject {}
 
 			// the serialization component
 			fragment = serializer.SerializerFragment {}
@@ -112,8 +110,8 @@ Workflow {
 			}
 
 			// Xbase support
-//			fragment = types.TypesGeneratorFragment {}
-//			fragment = xbase.XbaseGeneratorFragment {}
+			fragment = types.TypesGeneratorFragment {}
+			fragment = xbase.XbaseGeneratorFragment {}
 			
 			// Code generator
 			fragment = generator.GeneratorFragment {

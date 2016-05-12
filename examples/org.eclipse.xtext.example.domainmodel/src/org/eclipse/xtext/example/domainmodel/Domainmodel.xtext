@@ -45,9 +45,6 @@ Operation:
 Parameter:
 	name=ID type=TypeRef;
 
-TypedElement:
-	Feature | Parameter;
-
 TypeRef:
 	referenced=[Type|QualifiedName] multi?='*'?;
 

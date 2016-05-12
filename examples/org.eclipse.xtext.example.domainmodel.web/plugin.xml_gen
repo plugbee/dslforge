@@ -9,7 +9,7 @@
             class="org.eclipse.xtext.example.domainmodel.web.DomainmodelExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
-            extensions="file.extensions"
+            extensions="dmodel"
             id="org.eclipse.xtext.example.domainmodel.Domainmodel"
             name="Domainmodel Editor">
         </editor>

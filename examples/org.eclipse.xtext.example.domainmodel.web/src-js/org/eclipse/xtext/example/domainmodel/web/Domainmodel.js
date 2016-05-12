@@ -104,13 +104,14 @@
 					//Add completer and enable content assist
 					if (!this.useCompleter)
 						this.langTools.setCompleters([]);
+					
 					this.langTools.addCompleter(this.globalScope);
 					editor.setOptions({
 					    enableBasicAutocompletion: true,
 					    enableSnippets: true
 					});	
 					this.completers = editor.completers;		
-	
+					
 					//Add documentation hover
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 					editor.tokenTooltip = new TokenTooltip(editor);		 	

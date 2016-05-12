@@ -18,7 +18,7 @@ options {
 
 
 rule_DomainModel:
-	elements+=rule_AbstractElement* EOF!
+	elements+=rule_AbstractElement* EOF!;
 
 
 
@@ -99,12 +99,6 @@ rule_Parameter:
 
 
 
-rule_TypedElement:
-	rule_Feature | rule_Parameter;
-
-
-
-
 rule_TypeRef:
 	referenced=ID multi='*'?;
 
@@ -126,9 +120,9 @@ rule_QualifiedNameWithWildcard :
 rule_ValidID:
 	ID;
 
-
+ 
 rule_Visibility:
-	public='public' | private='private' | protected='protected';
+	public_='public' | private_='private' | protected_='protected';
 
 
 ID : ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')* ;

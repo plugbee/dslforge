@@ -1,3 +1,5 @@
+// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g 2016-05-11 21:03:14
+
 package org.eclipse.xtext.example.domainmodel.web.contentassist.antlr.internal; 
 
 import java.io.InputStream;
@@ -19,38 +21,37 @@ import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
 
-@SuppressWarnings("all")
 public class InternalDomainmodelParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'public'", "'private'", "'protected'", "'import'", "'package'", "'{'", "'}'", "'datatype'", "'entity'", "'extends'", "':'", "'ref'", "'opposite'", "'op'", "'('", "')'", "','", "'.'", "'*'"
     };
-    public static final int RULE_STRING=6;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int T__19=19;
-    public static final int T__15=15;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
+    public static final int EOF=-1;
     public static final int T__11=11;
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
-    public static final int EOF=-1;
-    public static final int RULE_ID=4;
-    public static final int RULE_WS=9;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
-    public static final int RULE_INT=5;
-    public static final int T__29=29;
+    public static final int T__15=15;
+    public static final int T__16=16;
+    public static final int T__17=17;
+    public static final int T__18=18;
+    public static final int T__19=19;
+    public static final int T__20=20;
+    public static final int T__21=21;
     public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=7;
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
-    public static final int T__20=20;
-    public static final int T__21=21;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int T__29=29;
+    public static final int RULE_ID=4;
+    public static final int RULE_INT=5;
+    public static final int RULE_STRING=6;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int RULE_WS=9;
+    public static final int RULE_ANY_OTHER=10;
 
     // delegates
     // delegators
@@ -66,7 +67,7 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
         
 
     public String[] getTokenNames() { return InternalDomainmodelParser.tokenNames; }
-    public String getGrammarFileName() { return "InternalDomainmodel.g"; }
+    public String getGrammarFileName() { return "D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g"; }
 
 
      
@@ -90,20 +91,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleDomainModel"
-    // InternalDomainmodel.g:58:1: entryRuleDomainModel : ruleDomainModel EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:58:1: entryRuleDomainModel : ruleDomainModel EOF ;
     public final void entryRuleDomainModel() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:59:1: ( ruleDomainModel EOF )
-            // InternalDomainmodel.g:60:1: ruleDomainModel EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:59:1: ( ruleDomainModel EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:60:1: ruleDomainModel EOF
             {
              before(grammarAccess.getDomainModelRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleDomainModel_in_entryRuleDomainModel61);
             ruleDomainModel();
 
             state._fsp--;
 
              after(grammarAccess.getDomainModelRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDomainModel68); 
 
             }
 
@@ -120,20 +121,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleDomainModel"
-    // InternalDomainmodel.g:67:1: ruleDomainModel : ( ( rule__DomainModel__ElementsAssignment )* ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:67:1: ruleDomainModel : ( ( rule__DomainModel__ElementsAssignment )* ) ;
     public final void ruleDomainModel() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:71:2: ( ( ( rule__DomainModel__ElementsAssignment )* ) )
-            // InternalDomainmodel.g:72:1: ( ( rule__DomainModel__ElementsAssignment )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:71:2: ( ( ( rule__DomainModel__ElementsAssignment )* ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:72:1: ( ( rule__DomainModel__ElementsAssignment )* )
             {
-            // InternalDomainmodel.g:72:1: ( ( rule__DomainModel__ElementsAssignment )* )
-            // InternalDomainmodel.g:73:1: ( rule__DomainModel__ElementsAssignment )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:72:1: ( ( rule__DomainModel__ElementsAssignment )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:73:1: ( rule__DomainModel__ElementsAssignment )*
             {
              before(grammarAccess.getDomainModelAccess().getElementsAssignment()); 
-            // InternalDomainmodel.g:74:1: ( rule__DomainModel__ElementsAssignment )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:74:1: ( rule__DomainModel__ElementsAssignment )*
             loop1:
             do {
                 int alt1=2;
@@ -146,9 +147,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalDomainmodel.g:74:2: rule__DomainModel__ElementsAssignment
+            	    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:74:2: rule__DomainModel__ElementsAssignment
             	    {
-            	    pushFollow(FOLLOW_3);
+            	    pushFollow(FOLLOW_rule__DomainModel__ElementsAssignment_in_ruleDomainModel94);
             	    rule__DomainModel__ElementsAssignment();
 
             	    state._fsp--;
@@ -185,20 +186,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleAbstractElement"
-    // InternalDomainmodel.g:86:1: entryRuleAbstractElement : ruleAbstractElement EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:86:1: entryRuleAbstractElement : ruleAbstractElement EOF ;
     public final void entryRuleAbstractElement() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:87:1: ( ruleAbstractElement EOF )
-            // InternalDomainmodel.g:88:1: ruleAbstractElement EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:87:1: ( ruleAbstractElement EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:88:1: ruleAbstractElement EOF
             {
              before(grammarAccess.getAbstractElementRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleAbstractElement_in_entryRuleAbstractElement122);
             ruleAbstractElement();
 
             state._fsp--;
 
              after(grammarAccess.getAbstractElementRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAbstractElement129); 
 
             }
 
@@ -215,23 +216,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleAbstractElement"
-    // InternalDomainmodel.g:95:1: ruleAbstractElement : ( ( rule__AbstractElement__Alternatives ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:95:1: ruleAbstractElement : ( ( rule__AbstractElement__Alternatives ) ) ;
     public final void ruleAbstractElement() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:99:2: ( ( ( rule__AbstractElement__Alternatives ) ) )
-            // InternalDomainmodel.g:100:1: ( ( rule__AbstractElement__Alternatives ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:99:2: ( ( ( rule__AbstractElement__Alternatives ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:100:1: ( ( rule__AbstractElement__Alternatives ) )
             {
-            // InternalDomainmodel.g:100:1: ( ( rule__AbstractElement__Alternatives ) )
-            // InternalDomainmodel.g:101:1: ( rule__AbstractElement__Alternatives )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:100:1: ( ( rule__AbstractElement__Alternatives ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:101:1: ( rule__AbstractElement__Alternatives )
             {
              before(grammarAccess.getAbstractElementAccess().getAlternatives()); 
-            // InternalDomainmodel.g:102:1: ( rule__AbstractElement__Alternatives )
-            // InternalDomainmodel.g:102:2: rule__AbstractElement__Alternatives
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:102:1: ( rule__AbstractElement__Alternatives )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:102:2: rule__AbstractElement__Alternatives
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__AbstractElement__Alternatives_in_ruleAbstractElement155);
             rule__AbstractElement__Alternatives();
 
             state._fsp--;
@@ -262,20 +263,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleImport"
-    // InternalDomainmodel.g:114:1: entryRuleImport : ruleImport EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:114:1: entryRuleImport : ruleImport EOF ;
     public final void entryRuleImport() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:115:1: ( ruleImport EOF )
-            // InternalDomainmodel.g:116:1: ruleImport EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:115:1: ( ruleImport EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:116:1: ruleImport EOF
             {
              before(grammarAccess.getImportRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleImport_in_entryRuleImport182);
             ruleImport();
 
             state._fsp--;
 
              after(grammarAccess.getImportRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleImport189); 
 
             }
 
@@ -292,23 +293,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleImport"
-    // InternalDomainmodel.g:123:1: ruleImport : ( ( rule__Import__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:123:1: ruleImport : ( ( rule__Import__Group__0 ) ) ;
     public final void ruleImport() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:127:2: ( ( ( rule__Import__Group__0 ) ) )
-            // InternalDomainmodel.g:128:1: ( ( rule__Import__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:127:2: ( ( ( rule__Import__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:128:1: ( ( rule__Import__Group__0 ) )
             {
-            // InternalDomainmodel.g:128:1: ( ( rule__Import__Group__0 ) )
-            // InternalDomainmodel.g:129:1: ( rule__Import__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:128:1: ( ( rule__Import__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:129:1: ( rule__Import__Group__0 )
             {
              before(grammarAccess.getImportAccess().getGroup()); 
-            // InternalDomainmodel.g:130:1: ( rule__Import__Group__0 )
-            // InternalDomainmodel.g:130:2: rule__Import__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:130:1: ( rule__Import__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:130:2: rule__Import__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Import__Group__0_in_ruleImport215);
             rule__Import__Group__0();
 
             state._fsp--;
@@ -339,20 +340,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRulePackageDeclaration"
-    // InternalDomainmodel.g:142:1: entryRulePackageDeclaration : rulePackageDeclaration EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:142:1: entryRulePackageDeclaration : rulePackageDeclaration EOF ;
     public final void entryRulePackageDeclaration() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:143:1: ( rulePackageDeclaration EOF )
-            // InternalDomainmodel.g:144:1: rulePackageDeclaration EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:143:1: ( rulePackageDeclaration EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:144:1: rulePackageDeclaration EOF
             {
              before(grammarAccess.getPackageDeclarationRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_rulePackageDeclaration_in_entryRulePackageDeclaration242);
             rulePackageDeclaration();
 
             state._fsp--;
 
              after(grammarAccess.getPackageDeclarationRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRulePackageDeclaration249); 
 
             }
 
@@ -369,23 +370,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rulePackageDeclaration"
-    // InternalDomainmodel.g:151:1: rulePackageDeclaration : ( ( rule__PackageDeclaration__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:151:1: rulePackageDeclaration : ( ( rule__PackageDeclaration__Group__0 ) ) ;
     public final void rulePackageDeclaration() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:155:2: ( ( ( rule__PackageDeclaration__Group__0 ) ) )
-            // InternalDomainmodel.g:156:1: ( ( rule__PackageDeclaration__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:155:2: ( ( ( rule__PackageDeclaration__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:156:1: ( ( rule__PackageDeclaration__Group__0 ) )
             {
-            // InternalDomainmodel.g:156:1: ( ( rule__PackageDeclaration__Group__0 ) )
-            // InternalDomainmodel.g:157:1: ( rule__PackageDeclaration__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:156:1: ( ( rule__PackageDeclaration__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:157:1: ( rule__PackageDeclaration__Group__0 )
             {
              before(grammarAccess.getPackageDeclarationAccess().getGroup()); 
-            // InternalDomainmodel.g:158:1: ( rule__PackageDeclaration__Group__0 )
-            // InternalDomainmodel.g:158:2: rule__PackageDeclaration__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:158:1: ( rule__PackageDeclaration__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:158:2: rule__PackageDeclaration__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__PackageDeclaration__Group__0_in_rulePackageDeclaration275);
             rule__PackageDeclaration__Group__0();
 
             state._fsp--;
@@ -416,20 +417,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleType"
-    // InternalDomainmodel.g:170:1: entryRuleType : ruleType EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:170:1: entryRuleType : ruleType EOF ;
     public final void entryRuleType() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:171:1: ( ruleType EOF )
-            // InternalDomainmodel.g:172:1: ruleType EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:171:1: ( ruleType EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:172:1: ruleType EOF
             {
              before(grammarAccess.getTypeRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleType_in_entryRuleType302);
             ruleType();
 
             state._fsp--;
 
              after(grammarAccess.getTypeRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType309); 
 
             }
 
@@ -446,23 +447,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleType"
-    // InternalDomainmodel.g:179:1: ruleType : ( ( rule__Type__Alternatives ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:179:1: ruleType : ( ( rule__Type__Alternatives ) ) ;
     public final void ruleType() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:183:2: ( ( ( rule__Type__Alternatives ) ) )
-            // InternalDomainmodel.g:184:1: ( ( rule__Type__Alternatives ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:183:2: ( ( ( rule__Type__Alternatives ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:184:1: ( ( rule__Type__Alternatives ) )
             {
-            // InternalDomainmodel.g:184:1: ( ( rule__Type__Alternatives ) )
-            // InternalDomainmodel.g:185:1: ( rule__Type__Alternatives )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:184:1: ( ( rule__Type__Alternatives ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:185:1: ( rule__Type__Alternatives )
             {
              before(grammarAccess.getTypeAccess().getAlternatives()); 
-            // InternalDomainmodel.g:186:1: ( rule__Type__Alternatives )
-            // InternalDomainmodel.g:186:2: rule__Type__Alternatives
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:186:1: ( rule__Type__Alternatives )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:186:2: rule__Type__Alternatives
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Type__Alternatives_in_ruleType335);
             rule__Type__Alternatives();
 
             state._fsp--;
@@ -493,20 +494,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleDataType"
-    // InternalDomainmodel.g:198:1: entryRuleDataType : ruleDataType EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:198:1: entryRuleDataType : ruleDataType EOF ;
     public final void entryRuleDataType() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:199:1: ( ruleDataType EOF )
-            // InternalDomainmodel.g:200:1: ruleDataType EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:199:1: ( ruleDataType EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:200:1: ruleDataType EOF
             {
              before(grammarAccess.getDataTypeRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleDataType_in_entryRuleDataType362);
             ruleDataType();
 
             state._fsp--;
 
              after(grammarAccess.getDataTypeRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDataType369); 
 
             }
 
@@ -523,23 +524,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleDataType"
-    // InternalDomainmodel.g:207:1: ruleDataType : ( ( rule__DataType__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:207:1: ruleDataType : ( ( rule__DataType__Group__0 ) ) ;
     public final void ruleDataType() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:211:2: ( ( ( rule__DataType__Group__0 ) ) )
-            // InternalDomainmodel.g:212:1: ( ( rule__DataType__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:211:2: ( ( ( rule__DataType__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:212:1: ( ( rule__DataType__Group__0 ) )
             {
-            // InternalDomainmodel.g:212:1: ( ( rule__DataType__Group__0 ) )
-            // InternalDomainmodel.g:213:1: ( rule__DataType__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:212:1: ( ( rule__DataType__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:213:1: ( rule__DataType__Group__0 )
             {
              before(grammarAccess.getDataTypeAccess().getGroup()); 
-            // InternalDomainmodel.g:214:1: ( rule__DataType__Group__0 )
-            // InternalDomainmodel.g:214:2: rule__DataType__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:214:1: ( rule__DataType__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:214:2: rule__DataType__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__DataType__Group__0_in_ruleDataType395);
             rule__DataType__Group__0();
 
             state._fsp--;
@@ -570,20 +571,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleEntity"
-    // InternalDomainmodel.g:226:1: entryRuleEntity : ruleEntity EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:226:1: entryRuleEntity : ruleEntity EOF ;
     public final void entryRuleEntity() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:227:1: ( ruleEntity EOF )
-            // InternalDomainmodel.g:228:1: ruleEntity EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:227:1: ( ruleEntity EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:228:1: ruleEntity EOF
             {
              before(grammarAccess.getEntityRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleEntity_in_entryRuleEntity422);
             ruleEntity();
 
             state._fsp--;
 
              after(grammarAccess.getEntityRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEntity429); 
 
             }
 
@@ -600,23 +601,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleEntity"
-    // InternalDomainmodel.g:235:1: ruleEntity : ( ( rule__Entity__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:235:1: ruleEntity : ( ( rule__Entity__Group__0 ) ) ;
     public final void ruleEntity() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:239:2: ( ( ( rule__Entity__Group__0 ) ) )
-            // InternalDomainmodel.g:240:1: ( ( rule__Entity__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:239:2: ( ( ( rule__Entity__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:240:1: ( ( rule__Entity__Group__0 ) )
             {
-            // InternalDomainmodel.g:240:1: ( ( rule__Entity__Group__0 ) )
-            // InternalDomainmodel.g:241:1: ( rule__Entity__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:240:1: ( ( rule__Entity__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:241:1: ( rule__Entity__Group__0 )
             {
              before(grammarAccess.getEntityAccess().getGroup()); 
-            // InternalDomainmodel.g:242:1: ( rule__Entity__Group__0 )
-            // InternalDomainmodel.g:242:2: rule__Entity__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:242:1: ( rule__Entity__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:242:2: rule__Entity__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__Group__0_in_ruleEntity455);
             rule__Entity__Group__0();
 
             state._fsp--;
@@ -647,20 +648,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleFeature"
-    // InternalDomainmodel.g:254:1: entryRuleFeature : ruleFeature EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:254:1: entryRuleFeature : ruleFeature EOF ;
     public final void entryRuleFeature() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:255:1: ( ruleFeature EOF )
-            // InternalDomainmodel.g:256:1: ruleFeature EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:255:1: ( ruleFeature EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:256:1: ruleFeature EOF
             {
              before(grammarAccess.getFeatureRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleFeature_in_entryRuleFeature482);
             ruleFeature();
 
             state._fsp--;
 
              after(grammarAccess.getFeatureRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFeature489); 
 
             }
 
@@ -677,23 +678,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleFeature"
-    // InternalDomainmodel.g:263:1: ruleFeature : ( ( rule__Feature__Alternatives ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:263:1: ruleFeature : ( ( rule__Feature__Alternatives ) ) ;
     public final void ruleFeature() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:267:2: ( ( ( rule__Feature__Alternatives ) ) )
-            // InternalDomainmodel.g:268:1: ( ( rule__Feature__Alternatives ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:267:2: ( ( ( rule__Feature__Alternatives ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:268:1: ( ( rule__Feature__Alternatives ) )
             {
-            // InternalDomainmodel.g:268:1: ( ( rule__Feature__Alternatives ) )
-            // InternalDomainmodel.g:269:1: ( rule__Feature__Alternatives )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:268:1: ( ( rule__Feature__Alternatives ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:269:1: ( rule__Feature__Alternatives )
             {
              before(grammarAccess.getFeatureAccess().getAlternatives()); 
-            // InternalDomainmodel.g:270:1: ( rule__Feature__Alternatives )
-            // InternalDomainmodel.g:270:2: rule__Feature__Alternatives
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:270:1: ( rule__Feature__Alternatives )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:270:2: rule__Feature__Alternatives
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Feature__Alternatives_in_ruleFeature515);
             rule__Feature__Alternatives();
 
             state._fsp--;
@@ -724,20 +725,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleStructuralFeature"
-    // InternalDomainmodel.g:282:1: entryRuleStructuralFeature : ruleStructuralFeature EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:282:1: entryRuleStructuralFeature : ruleStructuralFeature EOF ;
     public final void entryRuleStructuralFeature() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:283:1: ( ruleStructuralFeature EOF )
-            // InternalDomainmodel.g:284:1: ruleStructuralFeature EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:283:1: ( ruleStructuralFeature EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:284:1: ruleStructuralFeature EOF
             {
              before(grammarAccess.getStructuralFeatureRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleStructuralFeature_in_entryRuleStructuralFeature542);
             ruleStructuralFeature();
 
             state._fsp--;
 
              after(grammarAccess.getStructuralFeatureRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStructuralFeature549); 
 
             }
 
@@ -754,23 +755,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleStructuralFeature"
-    // InternalDomainmodel.g:291:1: ruleStructuralFeature : ( ( rule__StructuralFeature__Alternatives ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:291:1: ruleStructuralFeature : ( ( rule__StructuralFeature__Alternatives ) ) ;
     public final void ruleStructuralFeature() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:295:2: ( ( ( rule__StructuralFeature__Alternatives ) ) )
-            // InternalDomainmodel.g:296:1: ( ( rule__StructuralFeature__Alternatives ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:295:2: ( ( ( rule__StructuralFeature__Alternatives ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:296:1: ( ( rule__StructuralFeature__Alternatives ) )
             {
-            // InternalDomainmodel.g:296:1: ( ( rule__StructuralFeature__Alternatives ) )
-            // InternalDomainmodel.g:297:1: ( rule__StructuralFeature__Alternatives )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:296:1: ( ( rule__StructuralFeature__Alternatives ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:297:1: ( rule__StructuralFeature__Alternatives )
             {
              before(grammarAccess.getStructuralFeatureAccess().getAlternatives()); 
-            // InternalDomainmodel.g:298:1: ( rule__StructuralFeature__Alternatives )
-            // InternalDomainmodel.g:298:2: rule__StructuralFeature__Alternatives
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:298:1: ( rule__StructuralFeature__Alternatives )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:298:2: rule__StructuralFeature__Alternatives
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__StructuralFeature__Alternatives_in_ruleStructuralFeature575);
             rule__StructuralFeature__Alternatives();
 
             state._fsp--;
@@ -801,20 +802,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleAttribute"
-    // InternalDomainmodel.g:310:1: entryRuleAttribute : ruleAttribute EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:310:1: entryRuleAttribute : ruleAttribute EOF ;
     public final void entryRuleAttribute() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:311:1: ( ruleAttribute EOF )
-            // InternalDomainmodel.g:312:1: ruleAttribute EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:311:1: ( ruleAttribute EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:312:1: ruleAttribute EOF
             {
              before(grammarAccess.getAttributeRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleAttribute_in_entryRuleAttribute602);
             ruleAttribute();
 
             state._fsp--;
 
              after(grammarAccess.getAttributeRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAttribute609); 
 
             }
 
@@ -831,23 +832,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleAttribute"
-    // InternalDomainmodel.g:319:1: ruleAttribute : ( ( rule__Attribute__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:319:1: ruleAttribute : ( ( rule__Attribute__Group__0 ) ) ;
     public final void ruleAttribute() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:323:2: ( ( ( rule__Attribute__Group__0 ) ) )
-            // InternalDomainmodel.g:324:1: ( ( rule__Attribute__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:323:2: ( ( ( rule__Attribute__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:324:1: ( ( rule__Attribute__Group__0 ) )
             {
-            // InternalDomainmodel.g:324:1: ( ( rule__Attribute__Group__0 ) )
-            // InternalDomainmodel.g:325:1: ( rule__Attribute__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:324:1: ( ( rule__Attribute__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:325:1: ( rule__Attribute__Group__0 )
             {
              before(grammarAccess.getAttributeAccess().getGroup()); 
-            // InternalDomainmodel.g:326:1: ( rule__Attribute__Group__0 )
-            // InternalDomainmodel.g:326:2: rule__Attribute__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:326:1: ( rule__Attribute__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:326:2: rule__Attribute__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Attribute__Group__0_in_ruleAttribute635);
             rule__Attribute__Group__0();
 
             state._fsp--;
@@ -878,20 +879,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleReference"
-    // InternalDomainmodel.g:338:1: entryRuleReference : ruleReference EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:338:1: entryRuleReference : ruleReference EOF ;
     public final void entryRuleReference() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:339:1: ( ruleReference EOF )
-            // InternalDomainmodel.g:340:1: ruleReference EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:339:1: ( ruleReference EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:340:1: ruleReference EOF
             {
              before(grammarAccess.getReferenceRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleReference_in_entryRuleReference662);
             ruleReference();
 
             state._fsp--;
 
              after(grammarAccess.getReferenceRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleReference669); 
 
             }
 
@@ -908,23 +909,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleReference"
-    // InternalDomainmodel.g:347:1: ruleReference : ( ( rule__Reference__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:347:1: ruleReference : ( ( rule__Reference__Group__0 ) ) ;
     public final void ruleReference() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:351:2: ( ( ( rule__Reference__Group__0 ) ) )
-            // InternalDomainmodel.g:352:1: ( ( rule__Reference__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:351:2: ( ( ( rule__Reference__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:352:1: ( ( rule__Reference__Group__0 ) )
             {
-            // InternalDomainmodel.g:352:1: ( ( rule__Reference__Group__0 ) )
-            // InternalDomainmodel.g:353:1: ( rule__Reference__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:352:1: ( ( rule__Reference__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:353:1: ( rule__Reference__Group__0 )
             {
              before(grammarAccess.getReferenceAccess().getGroup()); 
-            // InternalDomainmodel.g:354:1: ( rule__Reference__Group__0 )
-            // InternalDomainmodel.g:354:2: rule__Reference__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:354:1: ( rule__Reference__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:354:2: rule__Reference__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__Group__0_in_ruleReference695);
             rule__Reference__Group__0();
 
             state._fsp--;
@@ -955,20 +956,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleOperation"
-    // InternalDomainmodel.g:366:1: entryRuleOperation : ruleOperation EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:366:1: entryRuleOperation : ruleOperation EOF ;
     public final void entryRuleOperation() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:367:1: ( ruleOperation EOF )
-            // InternalDomainmodel.g:368:1: ruleOperation EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:367:1: ( ruleOperation EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:368:1: ruleOperation EOF
             {
              before(grammarAccess.getOperationRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleOperation_in_entryRuleOperation722);
             ruleOperation();
 
             state._fsp--;
 
              after(grammarAccess.getOperationRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOperation729); 
 
             }
 
@@ -985,23 +986,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleOperation"
-    // InternalDomainmodel.g:375:1: ruleOperation : ( ( rule__Operation__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:375:1: ruleOperation : ( ( rule__Operation__Group__0 ) ) ;
     public final void ruleOperation() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:379:2: ( ( ( rule__Operation__Group__0 ) ) )
-            // InternalDomainmodel.g:380:1: ( ( rule__Operation__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:379:2: ( ( ( rule__Operation__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:380:1: ( ( rule__Operation__Group__0 ) )
             {
-            // InternalDomainmodel.g:380:1: ( ( rule__Operation__Group__0 ) )
-            // InternalDomainmodel.g:381:1: ( rule__Operation__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:380:1: ( ( rule__Operation__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:381:1: ( rule__Operation__Group__0 )
             {
              before(grammarAccess.getOperationAccess().getGroup()); 
-            // InternalDomainmodel.g:382:1: ( rule__Operation__Group__0 )
-            // InternalDomainmodel.g:382:2: rule__Operation__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:382:1: ( rule__Operation__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:382:2: rule__Operation__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group__0_in_ruleOperation755);
             rule__Operation__Group__0();
 
             state._fsp--;
@@ -1032,20 +1033,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleParameter"
-    // InternalDomainmodel.g:394:1: entryRuleParameter : ruleParameter EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:394:1: entryRuleParameter : ruleParameter EOF ;
     public final void entryRuleParameter() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:395:1: ( ruleParameter EOF )
-            // InternalDomainmodel.g:396:1: ruleParameter EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:395:1: ( ruleParameter EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:396:1: ruleParameter EOF
             {
              before(grammarAccess.getParameterRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleParameter_in_entryRuleParameter782);
             ruleParameter();
 
             state._fsp--;
 
              after(grammarAccess.getParameterRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParameter789); 
 
             }
 
@@ -1062,23 +1063,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleParameter"
-    // InternalDomainmodel.g:403:1: ruleParameter : ( ( rule__Parameter__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:403:1: ruleParameter : ( ( rule__Parameter__Group__0 ) ) ;
     public final void ruleParameter() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:407:2: ( ( ( rule__Parameter__Group__0 ) ) )
-            // InternalDomainmodel.g:408:1: ( ( rule__Parameter__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:407:2: ( ( ( rule__Parameter__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:408:1: ( ( rule__Parameter__Group__0 ) )
             {
-            // InternalDomainmodel.g:408:1: ( ( rule__Parameter__Group__0 ) )
-            // InternalDomainmodel.g:409:1: ( rule__Parameter__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:408:1: ( ( rule__Parameter__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:409:1: ( rule__Parameter__Group__0 )
             {
              before(grammarAccess.getParameterAccess().getGroup()); 
-            // InternalDomainmodel.g:410:1: ( rule__Parameter__Group__0 )
-            // InternalDomainmodel.g:410:2: rule__Parameter__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:410:1: ( rule__Parameter__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:410:2: rule__Parameter__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Parameter__Group__0_in_ruleParameter815);
             rule__Parameter__Group__0();
 
             state._fsp--;
@@ -1109,20 +1110,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleTypeRef"
-    // InternalDomainmodel.g:424:1: entryRuleTypeRef : ruleTypeRef EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:422:1: entryRuleTypeRef : ruleTypeRef EOF ;
     public final void entryRuleTypeRef() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:425:1: ( ruleTypeRef EOF )
-            // InternalDomainmodel.g:426:1: ruleTypeRef EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:423:1: ( ruleTypeRef EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:424:1: ruleTypeRef EOF
             {
              before(grammarAccess.getTypeRefRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleTypeRef_in_entryRuleTypeRef842);
             ruleTypeRef();
 
             state._fsp--;
 
              after(grammarAccess.getTypeRefRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTypeRef849); 
 
             }
 
@@ -1139,23 +1140,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleTypeRef"
-    // InternalDomainmodel.g:433:1: ruleTypeRef : ( ( rule__TypeRef__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:431:1: ruleTypeRef : ( ( rule__TypeRef__Group__0 ) ) ;
     public final void ruleTypeRef() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:437:2: ( ( ( rule__TypeRef__Group__0 ) ) )
-            // InternalDomainmodel.g:438:1: ( ( rule__TypeRef__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:435:2: ( ( ( rule__TypeRef__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:436:1: ( ( rule__TypeRef__Group__0 ) )
             {
-            // InternalDomainmodel.g:438:1: ( ( rule__TypeRef__Group__0 ) )
-            // InternalDomainmodel.g:439:1: ( rule__TypeRef__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:436:1: ( ( rule__TypeRef__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:437:1: ( rule__TypeRef__Group__0 )
             {
              before(grammarAccess.getTypeRefAccess().getGroup()); 
-            // InternalDomainmodel.g:440:1: ( rule__TypeRef__Group__0 )
-            // InternalDomainmodel.g:440:2: rule__TypeRef__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:438:1: ( rule__TypeRef__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:438:2: rule__TypeRef__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__TypeRef__Group__0_in_ruleTypeRef875);
             rule__TypeRef__Group__0();
 
             state._fsp--;
@@ -1186,20 +1187,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // InternalDomainmodel.g:452:1: entryRuleQualifiedName : ruleQualifiedName EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:450:1: entryRuleQualifiedName : ruleQualifiedName EOF ;
     public final void entryRuleQualifiedName() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:453:1: ( ruleQualifiedName EOF )
-            // InternalDomainmodel.g:454:1: ruleQualifiedName EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:451:1: ( ruleQualifiedName EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:452:1: ruleQualifiedName EOF
             {
              before(grammarAccess.getQualifiedNameRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName902);
             ruleQualifiedName();
 
             state._fsp--;
 
              after(grammarAccess.getQualifiedNameRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName909); 
 
             }
 
@@ -1216,23 +1217,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleQualifiedName"
-    // InternalDomainmodel.g:461:1: ruleQualifiedName : ( ( rule__QualifiedName__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:459:1: ruleQualifiedName : ( ( rule__QualifiedName__Group__0 ) ) ;
     public final void ruleQualifiedName() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:465:2: ( ( ( rule__QualifiedName__Group__0 ) ) )
-            // InternalDomainmodel.g:466:1: ( ( rule__QualifiedName__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:463:2: ( ( ( rule__QualifiedName__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:464:1: ( ( rule__QualifiedName__Group__0 ) )
             {
-            // InternalDomainmodel.g:466:1: ( ( rule__QualifiedName__Group__0 ) )
-            // InternalDomainmodel.g:467:1: ( rule__QualifiedName__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:464:1: ( ( rule__QualifiedName__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:465:1: ( rule__QualifiedName__Group__0 )
             {
              before(grammarAccess.getQualifiedNameAccess().getGroup()); 
-            // InternalDomainmodel.g:468:1: ( rule__QualifiedName__Group__0 )
-            // InternalDomainmodel.g:468:2: rule__QualifiedName__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:466:1: ( rule__QualifiedName__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:466:2: rule__QualifiedName__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__0_in_ruleQualifiedName935);
             rule__QualifiedName__Group__0();
 
             state._fsp--;
@@ -1263,20 +1264,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleQualifiedNameWithWildcard"
-    // InternalDomainmodel.g:480:1: entryRuleQualifiedNameWithWildcard : ruleQualifiedNameWithWildcard EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:478:1: entryRuleQualifiedNameWithWildcard : ruleQualifiedNameWithWildcard EOF ;
     public final void entryRuleQualifiedNameWithWildcard() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:481:1: ( ruleQualifiedNameWithWildcard EOF )
-            // InternalDomainmodel.g:482:1: ruleQualifiedNameWithWildcard EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:479:1: ( ruleQualifiedNameWithWildcard EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:480:1: ruleQualifiedNameWithWildcard EOF
             {
              before(grammarAccess.getQualifiedNameWithWildcardRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard962);
             ruleQualifiedNameWithWildcard();
 
             state._fsp--;
 
              after(grammarAccess.getQualifiedNameWithWildcardRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard969); 
 
             }
 
@@ -1293,23 +1294,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleQualifiedNameWithWildcard"
-    // InternalDomainmodel.g:489:1: ruleQualifiedNameWithWildcard : ( ( rule__QualifiedNameWithWildcard__Group__0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:487:1: ruleQualifiedNameWithWildcard : ( ( rule__QualifiedNameWithWildcard__Group__0 ) ) ;
     public final void ruleQualifiedNameWithWildcard() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:493:2: ( ( ( rule__QualifiedNameWithWildcard__Group__0 ) ) )
-            // InternalDomainmodel.g:494:1: ( ( rule__QualifiedNameWithWildcard__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:491:2: ( ( ( rule__QualifiedNameWithWildcard__Group__0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:492:1: ( ( rule__QualifiedNameWithWildcard__Group__0 ) )
             {
-            // InternalDomainmodel.g:494:1: ( ( rule__QualifiedNameWithWildcard__Group__0 ) )
-            // InternalDomainmodel.g:495:1: ( rule__QualifiedNameWithWildcard__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:492:1: ( ( rule__QualifiedNameWithWildcard__Group__0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:493:1: ( rule__QualifiedNameWithWildcard__Group__0 )
             {
              before(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup()); 
-            // InternalDomainmodel.g:496:1: ( rule__QualifiedNameWithWildcard__Group__0 )
-            // InternalDomainmodel.g:496:2: rule__QualifiedNameWithWildcard__Group__0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:494:1: ( rule__QualifiedNameWithWildcard__Group__0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:494:2: rule__QualifiedNameWithWildcard__Group__0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__0_in_ruleQualifiedNameWithWildcard995);
             rule__QualifiedNameWithWildcard__Group__0();
 
             state._fsp--;
@@ -1340,20 +1341,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "entryRuleValidID"
-    // InternalDomainmodel.g:508:1: entryRuleValidID : ruleValidID EOF ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:506:1: entryRuleValidID : ruleValidID EOF ;
     public final void entryRuleValidID() throws RecognitionException {
         try {
-            // InternalDomainmodel.g:509:1: ( ruleValidID EOF )
-            // InternalDomainmodel.g:510:1: ruleValidID EOF
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:507:1: ( ruleValidID EOF )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:508:1: ruleValidID EOF
             {
              before(grammarAccess.getValidIDRule()); 
-            pushFollow(FOLLOW_1);
+            pushFollow(FOLLOW_ruleValidID_in_entryRuleValidID1022);
             ruleValidID();
 
             state._fsp--;
 
              after(grammarAccess.getValidIDRule()); 
-            match(input,EOF,FOLLOW_2); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValidID1029); 
 
             }
 
@@ -1370,20 +1371,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleValidID"
-    // InternalDomainmodel.g:517:1: ruleValidID : ( RULE_ID ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:515:1: ruleValidID : ( RULE_ID ) ;
     public final void ruleValidID() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:521:2: ( ( RULE_ID ) )
-            // InternalDomainmodel.g:522:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:519:2: ( ( RULE_ID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:520:1: ( RULE_ID )
             {
-            // InternalDomainmodel.g:522:1: ( RULE_ID )
-            // InternalDomainmodel.g:523:1: RULE_ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:520:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:521:1: RULE_ID
             {
              before(grammarAccess.getValidIDAccess().getIDTerminalRuleCall()); 
-            match(input,RULE_ID,FOLLOW_2); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleValidID1055); 
              after(grammarAccess.getValidIDAccess().getIDTerminalRuleCall()); 
 
             }
@@ -1407,23 +1408,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "ruleVisibility"
-    // InternalDomainmodel.g:537:1: ruleVisibility : ( ( rule__Visibility__Alternatives ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:535:1: ruleVisibility : ( ( rule__Visibility__Alternatives ) ) ;
     public final void ruleVisibility() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:541:1: ( ( ( rule__Visibility__Alternatives ) ) )
-            // InternalDomainmodel.g:542:1: ( ( rule__Visibility__Alternatives ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:539:1: ( ( ( rule__Visibility__Alternatives ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:540:1: ( ( rule__Visibility__Alternatives ) )
             {
-            // InternalDomainmodel.g:542:1: ( ( rule__Visibility__Alternatives ) )
-            // InternalDomainmodel.g:543:1: ( rule__Visibility__Alternatives )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:540:1: ( ( rule__Visibility__Alternatives ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:541:1: ( rule__Visibility__Alternatives )
             {
              before(grammarAccess.getVisibilityAccess().getAlternatives()); 
-            // InternalDomainmodel.g:544:1: ( rule__Visibility__Alternatives )
-            // InternalDomainmodel.g:544:2: rule__Visibility__Alternatives
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:542:1: ( rule__Visibility__Alternatives )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:542:2: rule__Visibility__Alternatives
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Visibility__Alternatives_in_ruleVisibility1091);
             rule__Visibility__Alternatives();
 
             state._fsp--;
@@ -1454,13 +1455,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__AbstractElement__Alternatives"
-    // InternalDomainmodel.g:555:1: rule__AbstractElement__Alternatives : ( ( rulePackageDeclaration ) | ( ruleType ) | ( ruleImport ) );
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:553:1: rule__AbstractElement__Alternatives : ( ( rulePackageDeclaration ) | ( ruleType ) | ( ruleImport ) );
     public final void rule__AbstractElement__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:559:1: ( ( rulePackageDeclaration ) | ( ruleType ) | ( ruleImport ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:557:1: ( ( rulePackageDeclaration ) | ( ruleType ) | ( ruleImport ) )
             int alt2=3;
             switch ( input.LA(1) ) {
             case 15:
@@ -1488,13 +1489,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
             switch (alt2) {
                 case 1 :
-                    // InternalDomainmodel.g:560:1: ( rulePackageDeclaration )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:558:1: ( rulePackageDeclaration )
                     {
-                    // InternalDomainmodel.g:560:1: ( rulePackageDeclaration )
-                    // InternalDomainmodel.g:561:1: rulePackageDeclaration
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:558:1: ( rulePackageDeclaration )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:559:1: rulePackageDeclaration
                     {
                      before(grammarAccess.getAbstractElementAccess().getPackageDeclarationParserRuleCall_0()); 
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_rulePackageDeclaration_in_rule__AbstractElement__Alternatives1126);
                     rulePackageDeclaration();
 
                     state._fsp--;
@@ -1507,13 +1508,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 2 :
-                    // InternalDomainmodel.g:566:6: ( ruleType )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:564:6: ( ruleType )
                     {
-                    // InternalDomainmodel.g:566:6: ( ruleType )
-                    // InternalDomainmodel.g:567:1: ruleType
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:564:6: ( ruleType )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:565:1: ruleType
                     {
                      before(grammarAccess.getAbstractElementAccess().getTypeParserRuleCall_1()); 
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_ruleType_in_rule__AbstractElement__Alternatives1143);
                     ruleType();
 
                     state._fsp--;
@@ -1526,13 +1527,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 3 :
-                    // InternalDomainmodel.g:572:6: ( ruleImport )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:570:6: ( ruleImport )
                     {
-                    // InternalDomainmodel.g:572:6: ( ruleImport )
-                    // InternalDomainmodel.g:573:1: ruleImport
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:570:6: ( ruleImport )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:571:1: ruleImport
                     {
                      before(grammarAccess.getAbstractElementAccess().getImportParserRuleCall_2()); 
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_ruleImport_in_rule__AbstractElement__Alternatives1160);
                     ruleImport();
 
                     state._fsp--;
@@ -1562,13 +1563,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Type__Alternatives"
-    // InternalDomainmodel.g:583:1: rule__Type__Alternatives : ( ( ruleEntity ) | ( ruleDataType ) );
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:581:1: rule__Type__Alternatives : ( ( ruleEntity ) | ( ruleDataType ) );
     public final void rule__Type__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:587:1: ( ( ruleEntity ) | ( ruleDataType ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:585:1: ( ( ruleEntity ) | ( ruleDataType ) )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -1586,13 +1587,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
             }
             switch (alt3) {
                 case 1 :
-                    // InternalDomainmodel.g:588:1: ( ruleEntity )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:586:1: ( ruleEntity )
                     {
-                    // InternalDomainmodel.g:588:1: ( ruleEntity )
-                    // InternalDomainmodel.g:589:1: ruleEntity
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:586:1: ( ruleEntity )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:587:1: ruleEntity
                     {
                      before(grammarAccess.getTypeAccess().getEntityParserRuleCall_0()); 
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_ruleEntity_in_rule__Type__Alternatives1192);
                     ruleEntity();
 
                     state._fsp--;
@@ -1605,13 +1606,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 2 :
-                    // InternalDomainmodel.g:594:6: ( ruleDataType )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:592:6: ( ruleDataType )
                     {
-                    // InternalDomainmodel.g:594:6: ( ruleDataType )
-                    // InternalDomainmodel.g:595:1: ruleDataType
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:592:6: ( ruleDataType )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:593:1: ruleDataType
                     {
                      before(grammarAccess.getTypeAccess().getDataTypeParserRuleCall_1()); 
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_ruleDataType_in_rule__Type__Alternatives1209);
                     ruleDataType();
 
                     state._fsp--;
@@ -1641,13 +1642,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Feature__Alternatives"
-    // InternalDomainmodel.g:605:1: rule__Feature__Alternatives : ( ( ruleStructuralFeature ) | ( ruleOperation ) );
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:603:1: rule__Feature__Alternatives : ( ( ruleStructuralFeature ) | ( ruleOperation ) );
     public final void rule__Feature__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:609:1: ( ( ruleStructuralFeature ) | ( ruleOperation ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:607:1: ( ( ruleStructuralFeature ) | ( ruleOperation ) )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1665,13 +1666,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
             }
             switch (alt4) {
                 case 1 :
-                    // InternalDomainmodel.g:610:1: ( ruleStructuralFeature )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:608:1: ( ruleStructuralFeature )
                     {
-                    // InternalDomainmodel.g:610:1: ( ruleStructuralFeature )
-                    // InternalDomainmodel.g:611:1: ruleStructuralFeature
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:608:1: ( ruleStructuralFeature )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:609:1: ruleStructuralFeature
                     {
                      before(grammarAccess.getFeatureAccess().getStructuralFeatureParserRuleCall_0()); 
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_ruleStructuralFeature_in_rule__Feature__Alternatives1241);
                     ruleStructuralFeature();
 
                     state._fsp--;
@@ -1684,13 +1685,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 2 :
-                    // InternalDomainmodel.g:616:6: ( ruleOperation )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:614:6: ( ruleOperation )
                     {
-                    // InternalDomainmodel.g:616:6: ( ruleOperation )
-                    // InternalDomainmodel.g:617:1: ruleOperation
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:614:6: ( ruleOperation )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:615:1: ruleOperation
                     {
                      before(grammarAccess.getFeatureAccess().getOperationParserRuleCall_1()); 
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_ruleOperation_in_rule__Feature__Alternatives1258);
                     ruleOperation();
 
                     state._fsp--;
@@ -1720,13 +1721,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__StructuralFeature__Alternatives"
-    // InternalDomainmodel.g:627:1: rule__StructuralFeature__Alternatives : ( ( ruleAttribute ) | ( ruleReference ) );
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:625:1: rule__StructuralFeature__Alternatives : ( ( ruleAttribute ) | ( ruleReference ) );
     public final void rule__StructuralFeature__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:631:1: ( ( ruleAttribute ) | ( ruleReference ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:629:1: ( ( ruleAttribute ) | ( ruleReference ) )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -1744,13 +1745,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
             }
             switch (alt5) {
                 case 1 :
-                    // InternalDomainmodel.g:632:1: ( ruleAttribute )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:630:1: ( ruleAttribute )
                     {
-                    // InternalDomainmodel.g:632:1: ( ruleAttribute )
-                    // InternalDomainmodel.g:633:1: ruleAttribute
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:630:1: ( ruleAttribute )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:631:1: ruleAttribute
                     {
                      before(grammarAccess.getStructuralFeatureAccess().getAttributeParserRuleCall_0()); 
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_ruleAttribute_in_rule__StructuralFeature__Alternatives1290);
                     ruleAttribute();
 
                     state._fsp--;
@@ -1763,13 +1764,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 2 :
-                    // InternalDomainmodel.g:638:6: ( ruleReference )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:636:6: ( ruleReference )
                     {
-                    // InternalDomainmodel.g:638:6: ( ruleReference )
-                    // InternalDomainmodel.g:639:1: ruleReference
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:636:6: ( ruleReference )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:637:1: ruleReference
                     {
                      before(grammarAccess.getStructuralFeatureAccess().getReferenceParserRuleCall_1()); 
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_ruleReference_in_rule__StructuralFeature__Alternatives1307);
                     ruleReference();
 
                     state._fsp--;
@@ -1799,13 +1800,13 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Visibility__Alternatives"
-    // InternalDomainmodel.g:650:1: rule__Visibility__Alternatives : ( ( ( 'public' ) ) | ( ( 'private' ) ) | ( ( 'protected' ) ) );
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:647:1: rule__Visibility__Alternatives : ( ( ( 'public' ) ) | ( ( 'private' ) ) | ( ( 'protected' ) ) );
     public final void rule__Visibility__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:654:1: ( ( ( 'public' ) ) | ( ( 'private' ) ) | ( ( 'protected' ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:651:1: ( ( ( 'public' ) ) | ( ( 'private' ) ) | ( ( 'protected' ) ) )
             int alt6=3;
             switch ( input.LA(1) ) {
             case 11:
@@ -1832,16 +1833,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
             switch (alt6) {
                 case 1 :
-                    // InternalDomainmodel.g:655:1: ( ( 'public' ) )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:652:1: ( ( 'public' ) )
                     {
-                    // InternalDomainmodel.g:655:1: ( ( 'public' ) )
-                    // InternalDomainmodel.g:656:1: ( 'public' )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:652:1: ( ( 'public' ) )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:653:1: ( 'public' )
                     {
                      before(grammarAccess.getVisibilityAccess().getPublicEnumLiteralDeclaration_0()); 
-                    // InternalDomainmodel.g:657:1: ( 'public' )
-                    // InternalDomainmodel.g:657:3: 'public'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:654:1: ( 'public' )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:654:3: 'public'
                     {
-                    match(input,11,FOLLOW_2); 
+                    match(input,11,FOLLOW_11_in_rule__Visibility__Alternatives1340); 
 
                     }
 
@@ -1853,16 +1854,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 2 :
-                    // InternalDomainmodel.g:662:6: ( ( 'private' ) )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:659:6: ( ( 'private' ) )
                     {
-                    // InternalDomainmodel.g:662:6: ( ( 'private' ) )
-                    // InternalDomainmodel.g:663:1: ( 'private' )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:659:6: ( ( 'private' ) )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:660:1: ( 'private' )
                     {
                      before(grammarAccess.getVisibilityAccess().getPrivateEnumLiteralDeclaration_1()); 
-                    // InternalDomainmodel.g:664:1: ( 'private' )
-                    // InternalDomainmodel.g:664:3: 'private'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:661:1: ( 'private' )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:661:3: 'private'
                     {
-                    match(input,12,FOLLOW_2); 
+                    match(input,12,FOLLOW_12_in_rule__Visibility__Alternatives1361); 
 
                     }
 
@@ -1874,16 +1875,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
                     }
                     break;
                 case 3 :
-                    // InternalDomainmodel.g:669:6: ( ( 'protected' ) )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:666:6: ( ( 'protected' ) )
                     {
-                    // InternalDomainmodel.g:669:6: ( ( 'protected' ) )
-                    // InternalDomainmodel.g:670:1: ( 'protected' )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:666:6: ( ( 'protected' ) )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:667:1: ( 'protected' )
                     {
                      before(grammarAccess.getVisibilityAccess().getProtectedEnumLiteralDeclaration_2()); 
-                    // InternalDomainmodel.g:671:1: ( 'protected' )
-                    // InternalDomainmodel.g:671:3: 'protected'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:668:1: ( 'protected' )
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:668:3: 'protected'
                     {
-                    match(input,13,FOLLOW_2); 
+                    match(input,13,FOLLOW_13_in_rule__Visibility__Alternatives1382); 
 
                     }
 
@@ -1912,21 +1913,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Import__Group__0"
-    // InternalDomainmodel.g:683:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:680:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
     public final void rule__Import__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:687:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
-            // InternalDomainmodel.g:688:2: rule__Import__Group__0__Impl rule__Import__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:684:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:685:2: rule__Import__Group__0__Impl rule__Import__Group__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__01415);
             rule__Import__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Import__Group__1_in_rule__Import__Group__01418);
             rule__Import__Group__1();
 
             state._fsp--;
@@ -1950,20 +1951,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Import__Group__0__Impl"
-    // InternalDomainmodel.g:695:1: rule__Import__Group__0__Impl : ( 'import' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:692:1: rule__Import__Group__0__Impl : ( 'import' ) ;
     public final void rule__Import__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:699:1: ( ( 'import' ) )
-            // InternalDomainmodel.g:700:1: ( 'import' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:696:1: ( ( 'import' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:697:1: ( 'import' )
             {
-            // InternalDomainmodel.g:700:1: ( 'import' )
-            // InternalDomainmodel.g:701:1: 'import'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:697:1: ( 'import' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:698:1: 'import'
             {
              before(grammarAccess.getImportAccess().getImportKeyword_0()); 
-            match(input,14,FOLLOW_2); 
+            match(input,14,FOLLOW_14_in_rule__Import__Group__0__Impl1446); 
              after(grammarAccess.getImportAccess().getImportKeyword_0()); 
 
             }
@@ -1987,16 +1988,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Import__Group__1"
-    // InternalDomainmodel.g:714:1: rule__Import__Group__1 : rule__Import__Group__1__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:711:1: rule__Import__Group__1 : rule__Import__Group__1__Impl ;
     public final void rule__Import__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:718:1: ( rule__Import__Group__1__Impl )
-            // InternalDomainmodel.g:719:2: rule__Import__Group__1__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:715:1: ( rule__Import__Group__1__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:716:2: rule__Import__Group__1__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__11477);
             rule__Import__Group__1__Impl();
 
             state._fsp--;
@@ -2020,23 +2021,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Import__Group__1__Impl"
-    // InternalDomainmodel.g:725:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:722:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) ;
     public final void rule__Import__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:729:1: ( ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) )
-            // InternalDomainmodel.g:730:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:726:1: ( ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:727:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
             {
-            // InternalDomainmodel.g:730:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
-            // InternalDomainmodel.g:731:1: ( rule__Import__ImportedNamespaceAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:727:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:728:1: ( rule__Import__ImportedNamespaceAssignment_1 )
             {
              before(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1()); 
-            // InternalDomainmodel.g:732:1: ( rule__Import__ImportedNamespaceAssignment_1 )
-            // InternalDomainmodel.g:732:2: rule__Import__ImportedNamespaceAssignment_1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:729:1: ( rule__Import__ImportedNamespaceAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:729:2: rule__Import__ImportedNamespaceAssignment_1
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Import__ImportedNamespaceAssignment_1_in_rule__Import__Group__1__Impl1504);
             rule__Import__ImportedNamespaceAssignment_1();
 
             state._fsp--;
@@ -2067,21 +2068,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__Group__0"
-    // InternalDomainmodel.g:746:1: rule__PackageDeclaration__Group__0 : rule__PackageDeclaration__Group__0__Impl rule__PackageDeclaration__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:743:1: rule__PackageDeclaration__Group__0 : rule__PackageDeclaration__Group__0__Impl rule__PackageDeclaration__Group__1 ;
     public final void rule__PackageDeclaration__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:750:1: ( rule__PackageDeclaration__Group__0__Impl rule__PackageDeclaration__Group__1 )
-            // InternalDomainmodel.g:751:2: rule__PackageDeclaration__Group__0__Impl rule__PackageDeclaration__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:747:1: ( rule__PackageDeclaration__Group__0__Impl rule__PackageDeclaration__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:748:2: rule__PackageDeclaration__Group__0__Impl rule__PackageDeclaration__Group__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__PackageDeclaration__Group__0__Impl_in_rule__PackageDeclaration__Group__01538);
             rule__PackageDeclaration__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__PackageDeclaration__Group__1_in_rule__PackageDeclaration__Group__01541);
             rule__PackageDeclaration__Group__1();
 
             state._fsp--;
@@ -2105,20 +2106,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__Group__0__Impl"
-    // InternalDomainmodel.g:758:1: rule__PackageDeclaration__Group__0__Impl : ( 'package' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:755:1: rule__PackageDeclaration__Group__0__Impl : ( 'package' ) ;
     public final void rule__PackageDeclaration__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:762:1: ( ( 'package' ) )
-            // InternalDomainmodel.g:763:1: ( 'package' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:759:1: ( ( 'package' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:760:1: ( 'package' )
             {
-            // InternalDomainmodel.g:763:1: ( 'package' )
-            // InternalDomainmodel.g:764:1: 'package'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:760:1: ( 'package' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:761:1: 'package'
             {
              before(grammarAccess.getPackageDeclarationAccess().getPackageKeyword_0()); 
-            match(input,15,FOLLOW_2); 
+            match(input,15,FOLLOW_15_in_rule__PackageDeclaration__Group__0__Impl1569); 
              after(grammarAccess.getPackageDeclarationAccess().getPackageKeyword_0()); 
 
             }
@@ -2142,21 +2143,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__Group__1"
-    // InternalDomainmodel.g:777:1: rule__PackageDeclaration__Group__1 : rule__PackageDeclaration__Group__1__Impl rule__PackageDeclaration__Group__2 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:774:1: rule__PackageDeclaration__Group__1 : rule__PackageDeclaration__Group__1__Impl rule__PackageDeclaration__Group__2 ;
     public final void rule__PackageDeclaration__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:781:1: ( rule__PackageDeclaration__Group__1__Impl rule__PackageDeclaration__Group__2 )
-            // InternalDomainmodel.g:782:2: rule__PackageDeclaration__Group__1__Impl rule__PackageDeclaration__Group__2
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:778:1: ( rule__PackageDeclaration__Group__1__Impl rule__PackageDeclaration__Group__2 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:779:2: rule__PackageDeclaration__Group__1__Impl rule__PackageDeclaration__Group__2
             {
-            pushFollow(FOLLOW_5);
+            pushFollow(FOLLOW_rule__PackageDeclaration__Group__1__Impl_in_rule__PackageDeclaration__Group__11600);
             rule__PackageDeclaration__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__PackageDeclaration__Group__2_in_rule__PackageDeclaration__Group__11603);
             rule__PackageDeclaration__Group__2();
 
             state._fsp--;
@@ -2180,23 +2181,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__Group__1__Impl"
-    // InternalDomainmodel.g:789:1: rule__PackageDeclaration__Group__1__Impl : ( ( rule__PackageDeclaration__NameAssignment_1 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:786:1: rule__PackageDeclaration__Group__1__Impl : ( ( rule__PackageDeclaration__NameAssignment_1 ) ) ;
     public final void rule__PackageDeclaration__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:793:1: ( ( ( rule__PackageDeclaration__NameAssignment_1 ) ) )
-            // InternalDomainmodel.g:794:1: ( ( rule__PackageDeclaration__NameAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:790:1: ( ( ( rule__PackageDeclaration__NameAssignment_1 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:791:1: ( ( rule__PackageDeclaration__NameAssignment_1 ) )
             {
-            // InternalDomainmodel.g:794:1: ( ( rule__PackageDeclaration__NameAssignment_1 ) )
-            // InternalDomainmodel.g:795:1: ( rule__PackageDeclaration__NameAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:791:1: ( ( rule__PackageDeclaration__NameAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:792:1: ( rule__PackageDeclaration__NameAssignment_1 )
             {
              before(grammarAccess.getPackageDeclarationAccess().getNameAssignment_1()); 
-            // InternalDomainmodel.g:796:1: ( rule__PackageDeclaration__NameAssignment_1 )
-            // InternalDomainmodel.g:796:2: rule__PackageDeclaration__NameAssignment_1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:793:1: ( rule__PackageDeclaration__NameAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:793:2: rule__PackageDeclaration__NameAssignment_1
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__PackageDeclaration__NameAssignment_1_in_rule__PackageDeclaration__Group__1__Impl1630);
             rule__PackageDeclaration__NameAssignment_1();
 
             state._fsp--;
@@ -2227,21 +2228,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__Group__2"
-    // InternalDomainmodel.g:806:1: rule__PackageDeclaration__Group__2 : rule__PackageDeclaration__Group__2__Impl rule__PackageDeclaration__Group__3 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:803:1: rule__PackageDeclaration__Group__2 : rule__PackageDeclaration__Group__2__Impl rule__PackageDeclaration__Group__3 ;
     public final void rule__PackageDeclaration__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:810:1: ( rule__PackageDeclaration__Group__2__Impl rule__PackageDeclaration__Group__3 )
-            // InternalDomainmodel.g:811:2: rule__PackageDeclaration__Group__2__Impl rule__PackageDeclaration__Group__3
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:807:1: ( rule__PackageDeclaration__Group__2__Impl rule__PackageDeclaration__Group__3 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:808:2: rule__PackageDeclaration__Group__2__Impl rule__PackageDeclaration__Group__3
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_rule__PackageDeclaration__Group__2__Impl_in_rule__PackageDeclaration__Group__21660);
             rule__PackageDeclaration__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__PackageDeclaration__Group__3_in_rule__PackageDeclaration__Group__21663);
             rule__PackageDeclaration__Group__3();
 
             state._fsp--;
@@ -2265,20 +2266,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__Group__2__Impl"
-    // InternalDomainmodel.g:818:1: rule__PackageDeclaration__Group__2__Impl : ( '{' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:815:1: rule__PackageDeclaration__Group__2__Impl : ( '{' ) ;
     public final void rule__PackageDeclaration__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:822:1: ( ( '{' ) )
-            // InternalDomainmodel.g:823:1: ( '{' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:819:1: ( ( '{' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:820:1: ( '{' )
             {
-            // InternalDomainmodel.g:823:1: ( '{' )
-            // InternalDomainmodel.g:824:1: '{'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:820:1: ( '{' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:821:1: '{'
             {
              before(grammarAccess.getPackageDeclarationAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,16,FOLLOW_2); 
+            match(input,16,FOLLOW_16_in_rule__PackageDeclaration__Group__2__Impl1691); 
              after(grammarAccess.getPackageDeclarationAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -2302,21 +2303,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__Group__3"
-    // InternalDomainmodel.g:837:1: rule__PackageDeclaration__Group__3 : rule__PackageDeclaration__Group__3__Impl rule__PackageDeclaration__Group__4 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:834:1: rule__PackageDeclaration__Group__3 : rule__PackageDeclaration__Group__3__Impl rule__PackageDeclaration__Group__4 ;
     public final void rule__PackageDeclaration__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:841:1: ( rule__PackageDeclaration__Group__3__Impl rule__PackageDeclaration__Group__4 )
-            // InternalDomainmodel.g:842:2: rule__PackageDeclaration__Group__3__Impl rule__PackageDeclaration__Group__4
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:838:1: ( rule__PackageDeclaration__Group__3__Impl rule__PackageDeclaration__Group__4 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:839:2: rule__PackageDeclaration__Group__3__Impl rule__PackageDeclaration__Group__4
             {
-            pushFollow(FOLLOW_6);
+            pushFollow(FOLLOW_rule__PackageDeclaration__Group__3__Impl_in_rule__PackageDeclaration__Group__31722);
             rule__PackageDeclaration__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__PackageDeclaration__Group__4_in_rule__PackageDeclaration__Group__31725);
             rule__PackageDeclaration__Group__4();
 
             state._fsp--;
@@ -2340,20 +2341,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__Group__3__Impl"
-    // InternalDomainmodel.g:849:1: rule__PackageDeclaration__Group__3__Impl : ( ( rule__PackageDeclaration__ElementsAssignment_3 )* ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:846:1: rule__PackageDeclaration__Group__3__Impl : ( ( rule__PackageDeclaration__ElementsAssignment_3 )* ) ;
     public final void rule__PackageDeclaration__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:853:1: ( ( ( rule__PackageDeclaration__ElementsAssignment_3 )* ) )
-            // InternalDomainmodel.g:854:1: ( ( rule__PackageDeclaration__ElementsAssignment_3 )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:850:1: ( ( ( rule__PackageDeclaration__ElementsAssignment_3 )* ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:851:1: ( ( rule__PackageDeclaration__ElementsAssignment_3 )* )
             {
-            // InternalDomainmodel.g:854:1: ( ( rule__PackageDeclaration__ElementsAssignment_3 )* )
-            // InternalDomainmodel.g:855:1: ( rule__PackageDeclaration__ElementsAssignment_3 )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:851:1: ( ( rule__PackageDeclaration__ElementsAssignment_3 )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:852:1: ( rule__PackageDeclaration__ElementsAssignment_3 )*
             {
              before(grammarAccess.getPackageDeclarationAccess().getElementsAssignment_3()); 
-            // InternalDomainmodel.g:856:1: ( rule__PackageDeclaration__ElementsAssignment_3 )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:853:1: ( rule__PackageDeclaration__ElementsAssignment_3 )*
             loop7:
             do {
                 int alt7=2;
@@ -2366,9 +2367,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalDomainmodel.g:856:2: rule__PackageDeclaration__ElementsAssignment_3
+            	    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:853:2: rule__PackageDeclaration__ElementsAssignment_3
             	    {
-            	    pushFollow(FOLLOW_3);
+            	    pushFollow(FOLLOW_rule__PackageDeclaration__ElementsAssignment_3_in_rule__PackageDeclaration__Group__3__Impl1752);
             	    rule__PackageDeclaration__ElementsAssignment_3();
 
             	    state._fsp--;
@@ -2405,16 +2406,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__Group__4"
-    // InternalDomainmodel.g:866:1: rule__PackageDeclaration__Group__4 : rule__PackageDeclaration__Group__4__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:863:1: rule__PackageDeclaration__Group__4 : rule__PackageDeclaration__Group__4__Impl ;
     public final void rule__PackageDeclaration__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:870:1: ( rule__PackageDeclaration__Group__4__Impl )
-            // InternalDomainmodel.g:871:2: rule__PackageDeclaration__Group__4__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:867:1: ( rule__PackageDeclaration__Group__4__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:868:2: rule__PackageDeclaration__Group__4__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__PackageDeclaration__Group__4__Impl_in_rule__PackageDeclaration__Group__41783);
             rule__PackageDeclaration__Group__4__Impl();
 
             state._fsp--;
@@ -2438,20 +2439,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__Group__4__Impl"
-    // InternalDomainmodel.g:877:1: rule__PackageDeclaration__Group__4__Impl : ( '}' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:874:1: rule__PackageDeclaration__Group__4__Impl : ( '}' ) ;
     public final void rule__PackageDeclaration__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:881:1: ( ( '}' ) )
-            // InternalDomainmodel.g:882:1: ( '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:878:1: ( ( '}' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:879:1: ( '}' )
             {
-            // InternalDomainmodel.g:882:1: ( '}' )
-            // InternalDomainmodel.g:883:1: '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:879:1: ( '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:880:1: '}'
             {
              before(grammarAccess.getPackageDeclarationAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,17,FOLLOW_2); 
+            match(input,17,FOLLOW_17_in_rule__PackageDeclaration__Group__4__Impl1811); 
              after(grammarAccess.getPackageDeclarationAccess().getRightCurlyBracketKeyword_4()); 
 
             }
@@ -2475,21 +2476,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DataType__Group__0"
-    // InternalDomainmodel.g:906:1: rule__DataType__Group__0 : rule__DataType__Group__0__Impl rule__DataType__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:903:1: rule__DataType__Group__0 : rule__DataType__Group__0__Impl rule__DataType__Group__1 ;
     public final void rule__DataType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:910:1: ( rule__DataType__Group__0__Impl rule__DataType__Group__1 )
-            // InternalDomainmodel.g:911:2: rule__DataType__Group__0__Impl rule__DataType__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:907:1: ( rule__DataType__Group__0__Impl rule__DataType__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:908:2: rule__DataType__Group__0__Impl rule__DataType__Group__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__DataType__Group__0__Impl_in_rule__DataType__Group__01852);
             rule__DataType__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__DataType__Group__1_in_rule__DataType__Group__01855);
             rule__DataType__Group__1();
 
             state._fsp--;
@@ -2513,20 +2514,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DataType__Group__0__Impl"
-    // InternalDomainmodel.g:918:1: rule__DataType__Group__0__Impl : ( 'datatype' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:915:1: rule__DataType__Group__0__Impl : ( 'datatype' ) ;
     public final void rule__DataType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:922:1: ( ( 'datatype' ) )
-            // InternalDomainmodel.g:923:1: ( 'datatype' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:919:1: ( ( 'datatype' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:920:1: ( 'datatype' )
             {
-            // InternalDomainmodel.g:923:1: ( 'datatype' )
-            // InternalDomainmodel.g:924:1: 'datatype'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:920:1: ( 'datatype' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:921:1: 'datatype'
             {
              before(grammarAccess.getDataTypeAccess().getDatatypeKeyword_0()); 
-            match(input,18,FOLLOW_2); 
+            match(input,18,FOLLOW_18_in_rule__DataType__Group__0__Impl1883); 
              after(grammarAccess.getDataTypeAccess().getDatatypeKeyword_0()); 
 
             }
@@ -2550,16 +2551,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DataType__Group__1"
-    // InternalDomainmodel.g:937:1: rule__DataType__Group__1 : rule__DataType__Group__1__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:934:1: rule__DataType__Group__1 : rule__DataType__Group__1__Impl ;
     public final void rule__DataType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:941:1: ( rule__DataType__Group__1__Impl )
-            // InternalDomainmodel.g:942:2: rule__DataType__Group__1__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:938:1: ( rule__DataType__Group__1__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:939:2: rule__DataType__Group__1__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__DataType__Group__1__Impl_in_rule__DataType__Group__11914);
             rule__DataType__Group__1__Impl();
 
             state._fsp--;
@@ -2583,23 +2584,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DataType__Group__1__Impl"
-    // InternalDomainmodel.g:948:1: rule__DataType__Group__1__Impl : ( ( rule__DataType__NameAssignment_1 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:945:1: rule__DataType__Group__1__Impl : ( ( rule__DataType__NameAssignment_1 ) ) ;
     public final void rule__DataType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:952:1: ( ( ( rule__DataType__NameAssignment_1 ) ) )
-            // InternalDomainmodel.g:953:1: ( ( rule__DataType__NameAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:949:1: ( ( ( rule__DataType__NameAssignment_1 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:950:1: ( ( rule__DataType__NameAssignment_1 ) )
             {
-            // InternalDomainmodel.g:953:1: ( ( rule__DataType__NameAssignment_1 ) )
-            // InternalDomainmodel.g:954:1: ( rule__DataType__NameAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:950:1: ( ( rule__DataType__NameAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:951:1: ( rule__DataType__NameAssignment_1 )
             {
              before(grammarAccess.getDataTypeAccess().getNameAssignment_1()); 
-            // InternalDomainmodel.g:955:1: ( rule__DataType__NameAssignment_1 )
-            // InternalDomainmodel.g:955:2: rule__DataType__NameAssignment_1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:952:1: ( rule__DataType__NameAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:952:2: rule__DataType__NameAssignment_1
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__DataType__NameAssignment_1_in_rule__DataType__Group__1__Impl1941);
             rule__DataType__NameAssignment_1();
 
             state._fsp--;
@@ -2630,21 +2631,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__0"
-    // InternalDomainmodel.g:969:1: rule__Entity__Group__0 : rule__Entity__Group__0__Impl rule__Entity__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:966:1: rule__Entity__Group__0 : rule__Entity__Group__0__Impl rule__Entity__Group__1 ;
     public final void rule__Entity__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:973:1: ( rule__Entity__Group__0__Impl rule__Entity__Group__1 )
-            // InternalDomainmodel.g:974:2: rule__Entity__Group__0__Impl rule__Entity__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:970:1: ( rule__Entity__Group__0__Impl rule__Entity__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:971:2: rule__Entity__Group__0__Impl rule__Entity__Group__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Entity__Group__0__Impl_in_rule__Entity__Group__01975);
             rule__Entity__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__Group__1_in_rule__Entity__Group__01978);
             rule__Entity__Group__1();
 
             state._fsp--;
@@ -2668,20 +2669,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__0__Impl"
-    // InternalDomainmodel.g:981:1: rule__Entity__Group__0__Impl : ( 'entity' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:978:1: rule__Entity__Group__0__Impl : ( 'entity' ) ;
     public final void rule__Entity__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:985:1: ( ( 'entity' ) )
-            // InternalDomainmodel.g:986:1: ( 'entity' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:982:1: ( ( 'entity' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:983:1: ( 'entity' )
             {
-            // InternalDomainmodel.g:986:1: ( 'entity' )
-            // InternalDomainmodel.g:987:1: 'entity'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:983:1: ( 'entity' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:984:1: 'entity'
             {
              before(grammarAccess.getEntityAccess().getEntityKeyword_0()); 
-            match(input,19,FOLLOW_2); 
+            match(input,19,FOLLOW_19_in_rule__Entity__Group__0__Impl2006); 
              after(grammarAccess.getEntityAccess().getEntityKeyword_0()); 
 
             }
@@ -2705,21 +2706,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__1"
-    // InternalDomainmodel.g:1000:1: rule__Entity__Group__1 : rule__Entity__Group__1__Impl rule__Entity__Group__2 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:997:1: rule__Entity__Group__1 : rule__Entity__Group__1__Impl rule__Entity__Group__2 ;
     public final void rule__Entity__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1004:1: ( rule__Entity__Group__1__Impl rule__Entity__Group__2 )
-            // InternalDomainmodel.g:1005:2: rule__Entity__Group__1__Impl rule__Entity__Group__2
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1001:1: ( rule__Entity__Group__1__Impl rule__Entity__Group__2 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1002:2: rule__Entity__Group__1__Impl rule__Entity__Group__2
             {
-            pushFollow(FOLLOW_7);
+            pushFollow(FOLLOW_rule__Entity__Group__1__Impl_in_rule__Entity__Group__12037);
             rule__Entity__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__Group__2_in_rule__Entity__Group__12040);
             rule__Entity__Group__2();
 
             state._fsp--;
@@ -2743,23 +2744,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__1__Impl"
-    // InternalDomainmodel.g:1012:1: rule__Entity__Group__1__Impl : ( ( rule__Entity__NameAssignment_1 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1009:1: rule__Entity__Group__1__Impl : ( ( rule__Entity__NameAssignment_1 ) ) ;
     public final void rule__Entity__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1016:1: ( ( ( rule__Entity__NameAssignment_1 ) ) )
-            // InternalDomainmodel.g:1017:1: ( ( rule__Entity__NameAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1013:1: ( ( ( rule__Entity__NameAssignment_1 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1014:1: ( ( rule__Entity__NameAssignment_1 ) )
             {
-            // InternalDomainmodel.g:1017:1: ( ( rule__Entity__NameAssignment_1 ) )
-            // InternalDomainmodel.g:1018:1: ( rule__Entity__NameAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1014:1: ( ( rule__Entity__NameAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1015:1: ( rule__Entity__NameAssignment_1 )
             {
              before(grammarAccess.getEntityAccess().getNameAssignment_1()); 
-            // InternalDomainmodel.g:1019:1: ( rule__Entity__NameAssignment_1 )
-            // InternalDomainmodel.g:1019:2: rule__Entity__NameAssignment_1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1016:1: ( rule__Entity__NameAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1016:2: rule__Entity__NameAssignment_1
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__NameAssignment_1_in_rule__Entity__Group__1__Impl2067);
             rule__Entity__NameAssignment_1();
 
             state._fsp--;
@@ -2790,21 +2791,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__2"
-    // InternalDomainmodel.g:1029:1: rule__Entity__Group__2 : rule__Entity__Group__2__Impl rule__Entity__Group__3 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1026:1: rule__Entity__Group__2 : rule__Entity__Group__2__Impl rule__Entity__Group__3 ;
     public final void rule__Entity__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1033:1: ( rule__Entity__Group__2__Impl rule__Entity__Group__3 )
-            // InternalDomainmodel.g:1034:2: rule__Entity__Group__2__Impl rule__Entity__Group__3
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1030:1: ( rule__Entity__Group__2__Impl rule__Entity__Group__3 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1031:2: rule__Entity__Group__2__Impl rule__Entity__Group__3
             {
-            pushFollow(FOLLOW_7);
+            pushFollow(FOLLOW_rule__Entity__Group__2__Impl_in_rule__Entity__Group__22097);
             rule__Entity__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__Group__3_in_rule__Entity__Group__22100);
             rule__Entity__Group__3();
 
             state._fsp--;
@@ -2828,20 +2829,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__2__Impl"
-    // InternalDomainmodel.g:1041:1: rule__Entity__Group__2__Impl : ( ( rule__Entity__Group_2__0 )? ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1038:1: rule__Entity__Group__2__Impl : ( ( rule__Entity__Group_2__0 )? ) ;
     public final void rule__Entity__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1045:1: ( ( ( rule__Entity__Group_2__0 )? ) )
-            // InternalDomainmodel.g:1046:1: ( ( rule__Entity__Group_2__0 )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1042:1: ( ( ( rule__Entity__Group_2__0 )? ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1043:1: ( ( rule__Entity__Group_2__0 )? )
             {
-            // InternalDomainmodel.g:1046:1: ( ( rule__Entity__Group_2__0 )? )
-            // InternalDomainmodel.g:1047:1: ( rule__Entity__Group_2__0 )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1043:1: ( ( rule__Entity__Group_2__0 )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1044:1: ( rule__Entity__Group_2__0 )?
             {
              before(grammarAccess.getEntityAccess().getGroup_2()); 
-            // InternalDomainmodel.g:1048:1: ( rule__Entity__Group_2__0 )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1045:1: ( rule__Entity__Group_2__0 )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -2850,9 +2851,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
             }
             switch (alt8) {
                 case 1 :
-                    // InternalDomainmodel.g:1048:2: rule__Entity__Group_2__0
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1045:2: rule__Entity__Group_2__0
                     {
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_rule__Entity__Group_2__0_in_rule__Entity__Group__2__Impl2127);
                     rule__Entity__Group_2__0();
 
                     state._fsp--;
@@ -2886,21 +2887,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__3"
-    // InternalDomainmodel.g:1058:1: rule__Entity__Group__3 : rule__Entity__Group__3__Impl rule__Entity__Group__4 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1055:1: rule__Entity__Group__3 : rule__Entity__Group__3__Impl rule__Entity__Group__4 ;
     public final void rule__Entity__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1062:1: ( rule__Entity__Group__3__Impl rule__Entity__Group__4 )
-            // InternalDomainmodel.g:1063:2: rule__Entity__Group__3__Impl rule__Entity__Group__4
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1059:1: ( rule__Entity__Group__3__Impl rule__Entity__Group__4 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1060:2: rule__Entity__Group__3__Impl rule__Entity__Group__4
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_rule__Entity__Group__3__Impl_in_rule__Entity__Group__32158);
             rule__Entity__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__Group__4_in_rule__Entity__Group__32161);
             rule__Entity__Group__4();
 
             state._fsp--;
@@ -2924,20 +2925,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__3__Impl"
-    // InternalDomainmodel.g:1070:1: rule__Entity__Group__3__Impl : ( '{' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1067:1: rule__Entity__Group__3__Impl : ( '{' ) ;
     public final void rule__Entity__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1074:1: ( ( '{' ) )
-            // InternalDomainmodel.g:1075:1: ( '{' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1071:1: ( ( '{' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1072:1: ( '{' )
             {
-            // InternalDomainmodel.g:1075:1: ( '{' )
-            // InternalDomainmodel.g:1076:1: '{'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1072:1: ( '{' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1073:1: '{'
             {
              before(grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_3()); 
-            match(input,16,FOLLOW_2); 
+            match(input,16,FOLLOW_16_in_rule__Entity__Group__3__Impl2189); 
              after(grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_3()); 
 
             }
@@ -2961,21 +2962,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__4"
-    // InternalDomainmodel.g:1089:1: rule__Entity__Group__4 : rule__Entity__Group__4__Impl rule__Entity__Group__5 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1086:1: rule__Entity__Group__4 : rule__Entity__Group__4__Impl rule__Entity__Group__5 ;
     public final void rule__Entity__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1093:1: ( rule__Entity__Group__4__Impl rule__Entity__Group__5 )
-            // InternalDomainmodel.g:1094:2: rule__Entity__Group__4__Impl rule__Entity__Group__5
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1090:1: ( rule__Entity__Group__4__Impl rule__Entity__Group__5 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1091:2: rule__Entity__Group__4__Impl rule__Entity__Group__5
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_rule__Entity__Group__4__Impl_in_rule__Entity__Group__42220);
             rule__Entity__Group__4__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__Group__5_in_rule__Entity__Group__42223);
             rule__Entity__Group__5();
 
             state._fsp--;
@@ -2999,20 +3000,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__4__Impl"
-    // InternalDomainmodel.g:1101:1: rule__Entity__Group__4__Impl : ( ( rule__Entity__FeaturesAssignment_4 )* ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1098:1: rule__Entity__Group__4__Impl : ( ( rule__Entity__FeaturesAssignment_4 )* ) ;
     public final void rule__Entity__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1105:1: ( ( ( rule__Entity__FeaturesAssignment_4 )* ) )
-            // InternalDomainmodel.g:1106:1: ( ( rule__Entity__FeaturesAssignment_4 )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1102:1: ( ( ( rule__Entity__FeaturesAssignment_4 )* ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1103:1: ( ( rule__Entity__FeaturesAssignment_4 )* )
             {
-            // InternalDomainmodel.g:1106:1: ( ( rule__Entity__FeaturesAssignment_4 )* )
-            // InternalDomainmodel.g:1107:1: ( rule__Entity__FeaturesAssignment_4 )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1103:1: ( ( rule__Entity__FeaturesAssignment_4 )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1104:1: ( rule__Entity__FeaturesAssignment_4 )*
             {
              before(grammarAccess.getEntityAccess().getFeaturesAssignment_4()); 
-            // InternalDomainmodel.g:1108:1: ( rule__Entity__FeaturesAssignment_4 )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1105:1: ( rule__Entity__FeaturesAssignment_4 )*
             loop9:
             do {
                 int alt9=2;
@@ -3025,9 +3026,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalDomainmodel.g:1108:2: rule__Entity__FeaturesAssignment_4
+            	    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1105:2: rule__Entity__FeaturesAssignment_4
             	    {
-            	    pushFollow(FOLLOW_9);
+            	    pushFollow(FOLLOW_rule__Entity__FeaturesAssignment_4_in_rule__Entity__Group__4__Impl2250);
             	    rule__Entity__FeaturesAssignment_4();
 
             	    state._fsp--;
@@ -3064,16 +3065,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__5"
-    // InternalDomainmodel.g:1118:1: rule__Entity__Group__5 : rule__Entity__Group__5__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1115:1: rule__Entity__Group__5 : rule__Entity__Group__5__Impl ;
     public final void rule__Entity__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1122:1: ( rule__Entity__Group__5__Impl )
-            // InternalDomainmodel.g:1123:2: rule__Entity__Group__5__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1119:1: ( rule__Entity__Group__5__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1120:2: rule__Entity__Group__5__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__Group__5__Impl_in_rule__Entity__Group__52281);
             rule__Entity__Group__5__Impl();
 
             state._fsp--;
@@ -3097,20 +3098,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group__5__Impl"
-    // InternalDomainmodel.g:1129:1: rule__Entity__Group__5__Impl : ( '}' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1126:1: rule__Entity__Group__5__Impl : ( '}' ) ;
     public final void rule__Entity__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1133:1: ( ( '}' ) )
-            // InternalDomainmodel.g:1134:1: ( '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1130:1: ( ( '}' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1131:1: ( '}' )
             {
-            // InternalDomainmodel.g:1134:1: ( '}' )
-            // InternalDomainmodel.g:1135:1: '}'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1131:1: ( '}' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1132:1: '}'
             {
              before(grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_5()); 
-            match(input,17,FOLLOW_2); 
+            match(input,17,FOLLOW_17_in_rule__Entity__Group__5__Impl2309); 
              after(grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_5()); 
 
             }
@@ -3134,21 +3135,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group_2__0"
-    // InternalDomainmodel.g:1160:1: rule__Entity__Group_2__0 : rule__Entity__Group_2__0__Impl rule__Entity__Group_2__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1157:1: rule__Entity__Group_2__0 : rule__Entity__Group_2__0__Impl rule__Entity__Group_2__1 ;
     public final void rule__Entity__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1164:1: ( rule__Entity__Group_2__0__Impl rule__Entity__Group_2__1 )
-            // InternalDomainmodel.g:1165:2: rule__Entity__Group_2__0__Impl rule__Entity__Group_2__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1161:1: ( rule__Entity__Group_2__0__Impl rule__Entity__Group_2__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1162:2: rule__Entity__Group_2__0__Impl rule__Entity__Group_2__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Entity__Group_2__0__Impl_in_rule__Entity__Group_2__02352);
             rule__Entity__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__Group_2__1_in_rule__Entity__Group_2__02355);
             rule__Entity__Group_2__1();
 
             state._fsp--;
@@ -3172,20 +3173,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group_2__0__Impl"
-    // InternalDomainmodel.g:1172:1: rule__Entity__Group_2__0__Impl : ( 'extends' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1169:1: rule__Entity__Group_2__0__Impl : ( 'extends' ) ;
     public final void rule__Entity__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1176:1: ( ( 'extends' ) )
-            // InternalDomainmodel.g:1177:1: ( 'extends' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1173:1: ( ( 'extends' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1174:1: ( 'extends' )
             {
-            // InternalDomainmodel.g:1177:1: ( 'extends' )
-            // InternalDomainmodel.g:1178:1: 'extends'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1174:1: ( 'extends' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1175:1: 'extends'
             {
              before(grammarAccess.getEntityAccess().getExtendsKeyword_2_0()); 
-            match(input,20,FOLLOW_2); 
+            match(input,20,FOLLOW_20_in_rule__Entity__Group_2__0__Impl2383); 
              after(grammarAccess.getEntityAccess().getExtendsKeyword_2_0()); 
 
             }
@@ -3209,16 +3210,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group_2__1"
-    // InternalDomainmodel.g:1191:1: rule__Entity__Group_2__1 : rule__Entity__Group_2__1__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1188:1: rule__Entity__Group_2__1 : rule__Entity__Group_2__1__Impl ;
     public final void rule__Entity__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1195:1: ( rule__Entity__Group_2__1__Impl )
-            // InternalDomainmodel.g:1196:2: rule__Entity__Group_2__1__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1192:1: ( rule__Entity__Group_2__1__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1193:2: rule__Entity__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__Group_2__1__Impl_in_rule__Entity__Group_2__12414);
             rule__Entity__Group_2__1__Impl();
 
             state._fsp--;
@@ -3242,23 +3243,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__Group_2__1__Impl"
-    // InternalDomainmodel.g:1202:1: rule__Entity__Group_2__1__Impl : ( ( rule__Entity__SuperTypeAssignment_2_1 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1199:1: rule__Entity__Group_2__1__Impl : ( ( rule__Entity__SuperTypeAssignment_2_1 ) ) ;
     public final void rule__Entity__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1206:1: ( ( ( rule__Entity__SuperTypeAssignment_2_1 ) ) )
-            // InternalDomainmodel.g:1207:1: ( ( rule__Entity__SuperTypeAssignment_2_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1203:1: ( ( ( rule__Entity__SuperTypeAssignment_2_1 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1204:1: ( ( rule__Entity__SuperTypeAssignment_2_1 ) )
             {
-            // InternalDomainmodel.g:1207:1: ( ( rule__Entity__SuperTypeAssignment_2_1 ) )
-            // InternalDomainmodel.g:1208:1: ( rule__Entity__SuperTypeAssignment_2_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1204:1: ( ( rule__Entity__SuperTypeAssignment_2_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1205:1: ( rule__Entity__SuperTypeAssignment_2_1 )
             {
              before(grammarAccess.getEntityAccess().getSuperTypeAssignment_2_1()); 
-            // InternalDomainmodel.g:1209:1: ( rule__Entity__SuperTypeAssignment_2_1 )
-            // InternalDomainmodel.g:1209:2: rule__Entity__SuperTypeAssignment_2_1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1206:1: ( rule__Entity__SuperTypeAssignment_2_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1206:2: rule__Entity__SuperTypeAssignment_2_1
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Entity__SuperTypeAssignment_2_1_in_rule__Entity__Group_2__1__Impl2441);
             rule__Entity__SuperTypeAssignment_2_1();
 
             state._fsp--;
@@ -3289,21 +3290,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Attribute__Group__0"
-    // InternalDomainmodel.g:1223:1: rule__Attribute__Group__0 : rule__Attribute__Group__0__Impl rule__Attribute__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1220:1: rule__Attribute__Group__0 : rule__Attribute__Group__0__Impl rule__Attribute__Group__1 ;
     public final void rule__Attribute__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1227:1: ( rule__Attribute__Group__0__Impl rule__Attribute__Group__1 )
-            // InternalDomainmodel.g:1228:2: rule__Attribute__Group__0__Impl rule__Attribute__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1224:1: ( rule__Attribute__Group__0__Impl rule__Attribute__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1225:2: rule__Attribute__Group__0__Impl rule__Attribute__Group__1
             {
-            pushFollow(FOLLOW_10);
+            pushFollow(FOLLOW_rule__Attribute__Group__0__Impl_in_rule__Attribute__Group__02475);
             rule__Attribute__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Attribute__Group__1_in_rule__Attribute__Group__02478);
             rule__Attribute__Group__1();
 
             state._fsp--;
@@ -3327,23 +3328,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Attribute__Group__0__Impl"
-    // InternalDomainmodel.g:1235:1: rule__Attribute__Group__0__Impl : ( ( rule__Attribute__NameAssignment_0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1232:1: rule__Attribute__Group__0__Impl : ( ( rule__Attribute__NameAssignment_0 ) ) ;
     public final void rule__Attribute__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1239:1: ( ( ( rule__Attribute__NameAssignment_0 ) ) )
-            // InternalDomainmodel.g:1240:1: ( ( rule__Attribute__NameAssignment_0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1236:1: ( ( ( rule__Attribute__NameAssignment_0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1237:1: ( ( rule__Attribute__NameAssignment_0 ) )
             {
-            // InternalDomainmodel.g:1240:1: ( ( rule__Attribute__NameAssignment_0 ) )
-            // InternalDomainmodel.g:1241:1: ( rule__Attribute__NameAssignment_0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1237:1: ( ( rule__Attribute__NameAssignment_0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1238:1: ( rule__Attribute__NameAssignment_0 )
             {
              before(grammarAccess.getAttributeAccess().getNameAssignment_0()); 
-            // InternalDomainmodel.g:1242:1: ( rule__Attribute__NameAssignment_0 )
-            // InternalDomainmodel.g:1242:2: rule__Attribute__NameAssignment_0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1239:1: ( rule__Attribute__NameAssignment_0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1239:2: rule__Attribute__NameAssignment_0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Attribute__NameAssignment_0_in_rule__Attribute__Group__0__Impl2505);
             rule__Attribute__NameAssignment_0();
 
             state._fsp--;
@@ -3374,21 +3375,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Attribute__Group__1"
-    // InternalDomainmodel.g:1252:1: rule__Attribute__Group__1 : rule__Attribute__Group__1__Impl rule__Attribute__Group__2 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1249:1: rule__Attribute__Group__1 : rule__Attribute__Group__1__Impl rule__Attribute__Group__2 ;
     public final void rule__Attribute__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1256:1: ( rule__Attribute__Group__1__Impl rule__Attribute__Group__2 )
-            // InternalDomainmodel.g:1257:2: rule__Attribute__Group__1__Impl rule__Attribute__Group__2
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1253:1: ( rule__Attribute__Group__1__Impl rule__Attribute__Group__2 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1254:2: rule__Attribute__Group__1__Impl rule__Attribute__Group__2
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Attribute__Group__1__Impl_in_rule__Attribute__Group__12535);
             rule__Attribute__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__12538);
             rule__Attribute__Group__2();
 
             state._fsp--;
@@ -3412,20 +3413,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Attribute__Group__1__Impl"
-    // InternalDomainmodel.g:1264:1: rule__Attribute__Group__1__Impl : ( ':' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1261:1: rule__Attribute__Group__1__Impl : ( ':' ) ;
     public final void rule__Attribute__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1268:1: ( ( ':' ) )
-            // InternalDomainmodel.g:1269:1: ( ':' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1265:1: ( ( ':' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1266:1: ( ':' )
             {
-            // InternalDomainmodel.g:1269:1: ( ':' )
-            // InternalDomainmodel.g:1270:1: ':'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1266:1: ( ':' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1267:1: ':'
             {
              before(grammarAccess.getAttributeAccess().getColonKeyword_1()); 
-            match(input,21,FOLLOW_2); 
+            match(input,21,FOLLOW_21_in_rule__Attribute__Group__1__Impl2566); 
              after(grammarAccess.getAttributeAccess().getColonKeyword_1()); 
 
             }
@@ -3449,16 +3450,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Attribute__Group__2"
-    // InternalDomainmodel.g:1283:1: rule__Attribute__Group__2 : rule__Attribute__Group__2__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1280:1: rule__Attribute__Group__2 : rule__Attribute__Group__2__Impl ;
     public final void rule__Attribute__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1287:1: ( rule__Attribute__Group__2__Impl )
-            // InternalDomainmodel.g:1288:2: rule__Attribute__Group__2__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1284:1: ( rule__Attribute__Group__2__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1285:2: rule__Attribute__Group__2__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Attribute__Group__2__Impl_in_rule__Attribute__Group__22597);
             rule__Attribute__Group__2__Impl();
 
             state._fsp--;
@@ -3482,23 +3483,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Attribute__Group__2__Impl"
-    // InternalDomainmodel.g:1294:1: rule__Attribute__Group__2__Impl : ( ( rule__Attribute__TypeAssignment_2 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1291:1: rule__Attribute__Group__2__Impl : ( ( rule__Attribute__TypeAssignment_2 ) ) ;
     public final void rule__Attribute__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1298:1: ( ( ( rule__Attribute__TypeAssignment_2 ) ) )
-            // InternalDomainmodel.g:1299:1: ( ( rule__Attribute__TypeAssignment_2 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1295:1: ( ( ( rule__Attribute__TypeAssignment_2 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1296:1: ( ( rule__Attribute__TypeAssignment_2 ) )
             {
-            // InternalDomainmodel.g:1299:1: ( ( rule__Attribute__TypeAssignment_2 ) )
-            // InternalDomainmodel.g:1300:1: ( rule__Attribute__TypeAssignment_2 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1296:1: ( ( rule__Attribute__TypeAssignment_2 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1297:1: ( rule__Attribute__TypeAssignment_2 )
             {
              before(grammarAccess.getAttributeAccess().getTypeAssignment_2()); 
-            // InternalDomainmodel.g:1301:1: ( rule__Attribute__TypeAssignment_2 )
-            // InternalDomainmodel.g:1301:2: rule__Attribute__TypeAssignment_2
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1298:1: ( rule__Attribute__TypeAssignment_2 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1298:2: rule__Attribute__TypeAssignment_2
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Attribute__TypeAssignment_2_in_rule__Attribute__Group__2__Impl2624);
             rule__Attribute__TypeAssignment_2();
 
             state._fsp--;
@@ -3529,21 +3530,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group__0"
-    // InternalDomainmodel.g:1317:1: rule__Reference__Group__0 : rule__Reference__Group__0__Impl rule__Reference__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1314:1: rule__Reference__Group__0 : rule__Reference__Group__0__Impl rule__Reference__Group__1 ;
     public final void rule__Reference__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1321:1: ( rule__Reference__Group__0__Impl rule__Reference__Group__1 )
-            // InternalDomainmodel.g:1322:2: rule__Reference__Group__0__Impl rule__Reference__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1318:1: ( rule__Reference__Group__0__Impl rule__Reference__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1319:2: rule__Reference__Group__0__Impl rule__Reference__Group__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Reference__Group__0__Impl_in_rule__Reference__Group__02660);
             rule__Reference__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__Group__1_in_rule__Reference__Group__02663);
             rule__Reference__Group__1();
 
             state._fsp--;
@@ -3567,20 +3568,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group__0__Impl"
-    // InternalDomainmodel.g:1329:1: rule__Reference__Group__0__Impl : ( 'ref' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1326:1: rule__Reference__Group__0__Impl : ( 'ref' ) ;
     public final void rule__Reference__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1333:1: ( ( 'ref' ) )
-            // InternalDomainmodel.g:1334:1: ( 'ref' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1330:1: ( ( 'ref' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1331:1: ( 'ref' )
             {
-            // InternalDomainmodel.g:1334:1: ( 'ref' )
-            // InternalDomainmodel.g:1335:1: 'ref'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1331:1: ( 'ref' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1332:1: 'ref'
             {
              before(grammarAccess.getReferenceAccess().getRefKeyword_0()); 
-            match(input,22,FOLLOW_2); 
+            match(input,22,FOLLOW_22_in_rule__Reference__Group__0__Impl2691); 
              after(grammarAccess.getReferenceAccess().getRefKeyword_0()); 
 
             }
@@ -3604,21 +3605,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group__1"
-    // InternalDomainmodel.g:1348:1: rule__Reference__Group__1 : rule__Reference__Group__1__Impl rule__Reference__Group__2 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1345:1: rule__Reference__Group__1 : rule__Reference__Group__1__Impl rule__Reference__Group__2 ;
     public final void rule__Reference__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1352:1: ( rule__Reference__Group__1__Impl rule__Reference__Group__2 )
-            // InternalDomainmodel.g:1353:2: rule__Reference__Group__1__Impl rule__Reference__Group__2
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1349:1: ( rule__Reference__Group__1__Impl rule__Reference__Group__2 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1350:2: rule__Reference__Group__1__Impl rule__Reference__Group__2
             {
-            pushFollow(FOLLOW_10);
+            pushFollow(FOLLOW_rule__Reference__Group__1__Impl_in_rule__Reference__Group__12722);
             rule__Reference__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__Group__2_in_rule__Reference__Group__12725);
             rule__Reference__Group__2();
 
             state._fsp--;
@@ -3642,23 +3643,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group__1__Impl"
-    // InternalDomainmodel.g:1360:1: rule__Reference__Group__1__Impl : ( ( rule__Reference__NameAssignment_1 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1357:1: rule__Reference__Group__1__Impl : ( ( rule__Reference__NameAssignment_1 ) ) ;
     public final void rule__Reference__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1364:1: ( ( ( rule__Reference__NameAssignment_1 ) ) )
-            // InternalDomainmodel.g:1365:1: ( ( rule__Reference__NameAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1361:1: ( ( ( rule__Reference__NameAssignment_1 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1362:1: ( ( rule__Reference__NameAssignment_1 ) )
             {
-            // InternalDomainmodel.g:1365:1: ( ( rule__Reference__NameAssignment_1 ) )
-            // InternalDomainmodel.g:1366:1: ( rule__Reference__NameAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1362:1: ( ( rule__Reference__NameAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1363:1: ( rule__Reference__NameAssignment_1 )
             {
              before(grammarAccess.getReferenceAccess().getNameAssignment_1()); 
-            // InternalDomainmodel.g:1367:1: ( rule__Reference__NameAssignment_1 )
-            // InternalDomainmodel.g:1367:2: rule__Reference__NameAssignment_1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1364:1: ( rule__Reference__NameAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1364:2: rule__Reference__NameAssignment_1
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__NameAssignment_1_in_rule__Reference__Group__1__Impl2752);
             rule__Reference__NameAssignment_1();
 
             state._fsp--;
@@ -3689,21 +3690,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group__2"
-    // InternalDomainmodel.g:1377:1: rule__Reference__Group__2 : rule__Reference__Group__2__Impl rule__Reference__Group__3 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1374:1: rule__Reference__Group__2 : rule__Reference__Group__2__Impl rule__Reference__Group__3 ;
     public final void rule__Reference__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1381:1: ( rule__Reference__Group__2__Impl rule__Reference__Group__3 )
-            // InternalDomainmodel.g:1382:2: rule__Reference__Group__2__Impl rule__Reference__Group__3
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1378:1: ( rule__Reference__Group__2__Impl rule__Reference__Group__3 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1379:2: rule__Reference__Group__2__Impl rule__Reference__Group__3
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Reference__Group__2__Impl_in_rule__Reference__Group__22782);
             rule__Reference__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__Group__3_in_rule__Reference__Group__22785);
             rule__Reference__Group__3();
 
             state._fsp--;
@@ -3727,20 +3728,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group__2__Impl"
-    // InternalDomainmodel.g:1389:1: rule__Reference__Group__2__Impl : ( ':' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1386:1: rule__Reference__Group__2__Impl : ( ':' ) ;
     public final void rule__Reference__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1393:1: ( ( ':' ) )
-            // InternalDomainmodel.g:1394:1: ( ':' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1390:1: ( ( ':' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1391:1: ( ':' )
             {
-            // InternalDomainmodel.g:1394:1: ( ':' )
-            // InternalDomainmodel.g:1395:1: ':'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1391:1: ( ':' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1392:1: ':'
             {
              before(grammarAccess.getReferenceAccess().getColonKeyword_2()); 
-            match(input,21,FOLLOW_2); 
+            match(input,21,FOLLOW_21_in_rule__Reference__Group__2__Impl2813); 
              after(grammarAccess.getReferenceAccess().getColonKeyword_2()); 
 
             }
@@ -3764,21 +3765,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group__3"
-    // InternalDomainmodel.g:1408:1: rule__Reference__Group__3 : rule__Reference__Group__3__Impl rule__Reference__Group__4 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1405:1: rule__Reference__Group__3 : rule__Reference__Group__3__Impl rule__Reference__Group__4 ;
     public final void rule__Reference__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1412:1: ( rule__Reference__Group__3__Impl rule__Reference__Group__4 )
-            // InternalDomainmodel.g:1413:2: rule__Reference__Group__3__Impl rule__Reference__Group__4
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1409:1: ( rule__Reference__Group__3__Impl rule__Reference__Group__4 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1410:2: rule__Reference__Group__3__Impl rule__Reference__Group__4
             {
-            pushFollow(FOLLOW_11);
+            pushFollow(FOLLOW_rule__Reference__Group__3__Impl_in_rule__Reference__Group__32844);
             rule__Reference__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__Group__4_in_rule__Reference__Group__32847);
             rule__Reference__Group__4();
 
             state._fsp--;
@@ -3802,23 +3803,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group__3__Impl"
-    // InternalDomainmodel.g:1420:1: rule__Reference__Group__3__Impl : ( ( rule__Reference__TypeAssignment_3 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1417:1: rule__Reference__Group__3__Impl : ( ( rule__Reference__TypeAssignment_3 ) ) ;
     public final void rule__Reference__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1424:1: ( ( ( rule__Reference__TypeAssignment_3 ) ) )
-            // InternalDomainmodel.g:1425:1: ( ( rule__Reference__TypeAssignment_3 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1421:1: ( ( ( rule__Reference__TypeAssignment_3 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1422:1: ( ( rule__Reference__TypeAssignment_3 ) )
             {
-            // InternalDomainmodel.g:1425:1: ( ( rule__Reference__TypeAssignment_3 ) )
-            // InternalDomainmodel.g:1426:1: ( rule__Reference__TypeAssignment_3 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1422:1: ( ( rule__Reference__TypeAssignment_3 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1423:1: ( rule__Reference__TypeAssignment_3 )
             {
              before(grammarAccess.getReferenceAccess().getTypeAssignment_3()); 
-            // InternalDomainmodel.g:1427:1: ( rule__Reference__TypeAssignment_3 )
-            // InternalDomainmodel.g:1427:2: rule__Reference__TypeAssignment_3
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1424:1: ( rule__Reference__TypeAssignment_3 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1424:2: rule__Reference__TypeAssignment_3
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__TypeAssignment_3_in_rule__Reference__Group__3__Impl2874);
             rule__Reference__TypeAssignment_3();
 
             state._fsp--;
@@ -3849,16 +3850,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group__4"
-    // InternalDomainmodel.g:1437:1: rule__Reference__Group__4 : rule__Reference__Group__4__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1434:1: rule__Reference__Group__4 : rule__Reference__Group__4__Impl ;
     public final void rule__Reference__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1441:1: ( rule__Reference__Group__4__Impl )
-            // InternalDomainmodel.g:1442:2: rule__Reference__Group__4__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1438:1: ( rule__Reference__Group__4__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1439:2: rule__Reference__Group__4__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__Group__4__Impl_in_rule__Reference__Group__42904);
             rule__Reference__Group__4__Impl();
 
             state._fsp--;
@@ -3882,20 +3883,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group__4__Impl"
-    // InternalDomainmodel.g:1448:1: rule__Reference__Group__4__Impl : ( ( rule__Reference__Group_4__0 )? ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1445:1: rule__Reference__Group__4__Impl : ( ( rule__Reference__Group_4__0 )? ) ;
     public final void rule__Reference__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1452:1: ( ( ( rule__Reference__Group_4__0 )? ) )
-            // InternalDomainmodel.g:1453:1: ( ( rule__Reference__Group_4__0 )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1449:1: ( ( ( rule__Reference__Group_4__0 )? ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1450:1: ( ( rule__Reference__Group_4__0 )? )
             {
-            // InternalDomainmodel.g:1453:1: ( ( rule__Reference__Group_4__0 )? )
-            // InternalDomainmodel.g:1454:1: ( rule__Reference__Group_4__0 )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1450:1: ( ( rule__Reference__Group_4__0 )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1451:1: ( rule__Reference__Group_4__0 )?
             {
              before(grammarAccess.getReferenceAccess().getGroup_4()); 
-            // InternalDomainmodel.g:1455:1: ( rule__Reference__Group_4__0 )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1452:1: ( rule__Reference__Group_4__0 )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -3904,9 +3905,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
             }
             switch (alt10) {
                 case 1 :
-                    // InternalDomainmodel.g:1455:2: rule__Reference__Group_4__0
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1452:2: rule__Reference__Group_4__0
                     {
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_rule__Reference__Group_4__0_in_rule__Reference__Group__4__Impl2931);
                     rule__Reference__Group_4__0();
 
                     state._fsp--;
@@ -3940,21 +3941,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group_4__0"
-    // InternalDomainmodel.g:1475:1: rule__Reference__Group_4__0 : rule__Reference__Group_4__0__Impl rule__Reference__Group_4__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1472:1: rule__Reference__Group_4__0 : rule__Reference__Group_4__0__Impl rule__Reference__Group_4__1 ;
     public final void rule__Reference__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1479:1: ( rule__Reference__Group_4__0__Impl rule__Reference__Group_4__1 )
-            // InternalDomainmodel.g:1480:2: rule__Reference__Group_4__0__Impl rule__Reference__Group_4__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1476:1: ( rule__Reference__Group_4__0__Impl rule__Reference__Group_4__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1477:2: rule__Reference__Group_4__0__Impl rule__Reference__Group_4__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Reference__Group_4__0__Impl_in_rule__Reference__Group_4__02972);
             rule__Reference__Group_4__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__Group_4__1_in_rule__Reference__Group_4__02975);
             rule__Reference__Group_4__1();
 
             state._fsp--;
@@ -3978,20 +3979,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group_4__0__Impl"
-    // InternalDomainmodel.g:1487:1: rule__Reference__Group_4__0__Impl : ( 'opposite' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1484:1: rule__Reference__Group_4__0__Impl : ( 'opposite' ) ;
     public final void rule__Reference__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1491:1: ( ( 'opposite' ) )
-            // InternalDomainmodel.g:1492:1: ( 'opposite' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1488:1: ( ( 'opposite' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1489:1: ( 'opposite' )
             {
-            // InternalDomainmodel.g:1492:1: ( 'opposite' )
-            // InternalDomainmodel.g:1493:1: 'opposite'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1489:1: ( 'opposite' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1490:1: 'opposite'
             {
              before(grammarAccess.getReferenceAccess().getOppositeKeyword_4_0()); 
-            match(input,23,FOLLOW_2); 
+            match(input,23,FOLLOW_23_in_rule__Reference__Group_4__0__Impl3003); 
              after(grammarAccess.getReferenceAccess().getOppositeKeyword_4_0()); 
 
             }
@@ -4015,16 +4016,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group_4__1"
-    // InternalDomainmodel.g:1506:1: rule__Reference__Group_4__1 : rule__Reference__Group_4__1__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1503:1: rule__Reference__Group_4__1 : rule__Reference__Group_4__1__Impl ;
     public final void rule__Reference__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1510:1: ( rule__Reference__Group_4__1__Impl )
-            // InternalDomainmodel.g:1511:2: rule__Reference__Group_4__1__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1507:1: ( rule__Reference__Group_4__1__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1508:2: rule__Reference__Group_4__1__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__Group_4__1__Impl_in_rule__Reference__Group_4__13034);
             rule__Reference__Group_4__1__Impl();
 
             state._fsp--;
@@ -4048,23 +4049,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__Group_4__1__Impl"
-    // InternalDomainmodel.g:1517:1: rule__Reference__Group_4__1__Impl : ( ( rule__Reference__OppositeAssignment_4_1 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1514:1: rule__Reference__Group_4__1__Impl : ( ( rule__Reference__OppositeAssignment_4_1 ) ) ;
     public final void rule__Reference__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1521:1: ( ( ( rule__Reference__OppositeAssignment_4_1 ) ) )
-            // InternalDomainmodel.g:1522:1: ( ( rule__Reference__OppositeAssignment_4_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1518:1: ( ( ( rule__Reference__OppositeAssignment_4_1 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1519:1: ( ( rule__Reference__OppositeAssignment_4_1 ) )
             {
-            // InternalDomainmodel.g:1522:1: ( ( rule__Reference__OppositeAssignment_4_1 ) )
-            // InternalDomainmodel.g:1523:1: ( rule__Reference__OppositeAssignment_4_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1519:1: ( ( rule__Reference__OppositeAssignment_4_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1520:1: ( rule__Reference__OppositeAssignment_4_1 )
             {
              before(grammarAccess.getReferenceAccess().getOppositeAssignment_4_1()); 
-            // InternalDomainmodel.g:1524:1: ( rule__Reference__OppositeAssignment_4_1 )
-            // InternalDomainmodel.g:1524:2: rule__Reference__OppositeAssignment_4_1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1521:1: ( rule__Reference__OppositeAssignment_4_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1521:2: rule__Reference__OppositeAssignment_4_1
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Reference__OppositeAssignment_4_1_in_rule__Reference__Group_4__1__Impl3061);
             rule__Reference__OppositeAssignment_4_1();
 
             state._fsp--;
@@ -4095,21 +4096,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__0"
-    // InternalDomainmodel.g:1538:1: rule__Operation__Group__0 : rule__Operation__Group__0__Impl rule__Operation__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1535:1: rule__Operation__Group__0 : rule__Operation__Group__0__Impl rule__Operation__Group__1 ;
     public final void rule__Operation__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1542:1: ( rule__Operation__Group__0__Impl rule__Operation__Group__1 )
-            // InternalDomainmodel.g:1543:2: rule__Operation__Group__0__Impl rule__Operation__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1539:1: ( rule__Operation__Group__0__Impl rule__Operation__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1540:2: rule__Operation__Group__0__Impl rule__Operation__Group__1
             {
-            pushFollow(FOLLOW_12);
+            pushFollow(FOLLOW_rule__Operation__Group__0__Impl_in_rule__Operation__Group__03095);
             rule__Operation__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group__1_in_rule__Operation__Group__03098);
             rule__Operation__Group__1();
 
             state._fsp--;
@@ -4133,20 +4134,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__0__Impl"
-    // InternalDomainmodel.g:1550:1: rule__Operation__Group__0__Impl : ( ( rule__Operation__VisibilityAssignment_0 )? ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1547:1: rule__Operation__Group__0__Impl : ( ( rule__Operation__VisibilityAssignment_0 )? ) ;
     public final void rule__Operation__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1554:1: ( ( ( rule__Operation__VisibilityAssignment_0 )? ) )
-            // InternalDomainmodel.g:1555:1: ( ( rule__Operation__VisibilityAssignment_0 )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1551:1: ( ( ( rule__Operation__VisibilityAssignment_0 )? ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1552:1: ( ( rule__Operation__VisibilityAssignment_0 )? )
             {
-            // InternalDomainmodel.g:1555:1: ( ( rule__Operation__VisibilityAssignment_0 )? )
-            // InternalDomainmodel.g:1556:1: ( rule__Operation__VisibilityAssignment_0 )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1552:1: ( ( rule__Operation__VisibilityAssignment_0 )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1553:1: ( rule__Operation__VisibilityAssignment_0 )?
             {
              before(grammarAccess.getOperationAccess().getVisibilityAssignment_0()); 
-            // InternalDomainmodel.g:1557:1: ( rule__Operation__VisibilityAssignment_0 )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1554:1: ( rule__Operation__VisibilityAssignment_0 )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -4155,9 +4156,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
             }
             switch (alt11) {
                 case 1 :
-                    // InternalDomainmodel.g:1557:2: rule__Operation__VisibilityAssignment_0
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1554:2: rule__Operation__VisibilityAssignment_0
                     {
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_rule__Operation__VisibilityAssignment_0_in_rule__Operation__Group__0__Impl3125);
                     rule__Operation__VisibilityAssignment_0();
 
                     state._fsp--;
@@ -4191,21 +4192,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__1"
-    // InternalDomainmodel.g:1567:1: rule__Operation__Group__1 : rule__Operation__Group__1__Impl rule__Operation__Group__2 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1564:1: rule__Operation__Group__1 : rule__Operation__Group__1__Impl rule__Operation__Group__2 ;
     public final void rule__Operation__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1571:1: ( rule__Operation__Group__1__Impl rule__Operation__Group__2 )
-            // InternalDomainmodel.g:1572:2: rule__Operation__Group__1__Impl rule__Operation__Group__2
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1568:1: ( rule__Operation__Group__1__Impl rule__Operation__Group__2 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1569:2: rule__Operation__Group__1__Impl rule__Operation__Group__2
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Operation__Group__1__Impl_in_rule__Operation__Group__13156);
             rule__Operation__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group__2_in_rule__Operation__Group__13159);
             rule__Operation__Group__2();
 
             state._fsp--;
@@ -4229,20 +4230,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__1__Impl"
-    // InternalDomainmodel.g:1579:1: rule__Operation__Group__1__Impl : ( 'op' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1576:1: rule__Operation__Group__1__Impl : ( 'op' ) ;
     public final void rule__Operation__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1583:1: ( ( 'op' ) )
-            // InternalDomainmodel.g:1584:1: ( 'op' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1580:1: ( ( 'op' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1581:1: ( 'op' )
             {
-            // InternalDomainmodel.g:1584:1: ( 'op' )
-            // InternalDomainmodel.g:1585:1: 'op'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1581:1: ( 'op' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1582:1: 'op'
             {
              before(grammarAccess.getOperationAccess().getOpKeyword_1()); 
-            match(input,24,FOLLOW_2); 
+            match(input,24,FOLLOW_24_in_rule__Operation__Group__1__Impl3187); 
              after(grammarAccess.getOperationAccess().getOpKeyword_1()); 
 
             }
@@ -4266,21 +4267,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__2"
-    // InternalDomainmodel.g:1598:1: rule__Operation__Group__2 : rule__Operation__Group__2__Impl rule__Operation__Group__3 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1595:1: rule__Operation__Group__2 : rule__Operation__Group__2__Impl rule__Operation__Group__3 ;
     public final void rule__Operation__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1602:1: ( rule__Operation__Group__2__Impl rule__Operation__Group__3 )
-            // InternalDomainmodel.g:1603:2: rule__Operation__Group__2__Impl rule__Operation__Group__3
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1599:1: ( rule__Operation__Group__2__Impl rule__Operation__Group__3 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1600:2: rule__Operation__Group__2__Impl rule__Operation__Group__3
             {
-            pushFollow(FOLLOW_13);
+            pushFollow(FOLLOW_rule__Operation__Group__2__Impl_in_rule__Operation__Group__23218);
             rule__Operation__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group__3_in_rule__Operation__Group__23221);
             rule__Operation__Group__3();
 
             state._fsp--;
@@ -4304,23 +4305,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__2__Impl"
-    // InternalDomainmodel.g:1610:1: rule__Operation__Group__2__Impl : ( ( rule__Operation__NameAssignment_2 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1607:1: rule__Operation__Group__2__Impl : ( ( rule__Operation__NameAssignment_2 ) ) ;
     public final void rule__Operation__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1614:1: ( ( ( rule__Operation__NameAssignment_2 ) ) )
-            // InternalDomainmodel.g:1615:1: ( ( rule__Operation__NameAssignment_2 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1611:1: ( ( ( rule__Operation__NameAssignment_2 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1612:1: ( ( rule__Operation__NameAssignment_2 ) )
             {
-            // InternalDomainmodel.g:1615:1: ( ( rule__Operation__NameAssignment_2 ) )
-            // InternalDomainmodel.g:1616:1: ( rule__Operation__NameAssignment_2 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1612:1: ( ( rule__Operation__NameAssignment_2 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1613:1: ( rule__Operation__NameAssignment_2 )
             {
              before(grammarAccess.getOperationAccess().getNameAssignment_2()); 
-            // InternalDomainmodel.g:1617:1: ( rule__Operation__NameAssignment_2 )
-            // InternalDomainmodel.g:1617:2: rule__Operation__NameAssignment_2
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1614:1: ( rule__Operation__NameAssignment_2 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1614:2: rule__Operation__NameAssignment_2
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__NameAssignment_2_in_rule__Operation__Group__2__Impl3248);
             rule__Operation__NameAssignment_2();
 
             state._fsp--;
@@ -4351,21 +4352,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__3"
-    // InternalDomainmodel.g:1627:1: rule__Operation__Group__3 : rule__Operation__Group__3__Impl rule__Operation__Group__4 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1624:1: rule__Operation__Group__3 : rule__Operation__Group__3__Impl rule__Operation__Group__4 ;
     public final void rule__Operation__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1631:1: ( rule__Operation__Group__3__Impl rule__Operation__Group__4 )
-            // InternalDomainmodel.g:1632:2: rule__Operation__Group__3__Impl rule__Operation__Group__4
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1628:1: ( rule__Operation__Group__3__Impl rule__Operation__Group__4 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1629:2: rule__Operation__Group__3__Impl rule__Operation__Group__4
             {
-            pushFollow(FOLLOW_14);
+            pushFollow(FOLLOW_rule__Operation__Group__3__Impl_in_rule__Operation__Group__33278);
             rule__Operation__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group__4_in_rule__Operation__Group__33281);
             rule__Operation__Group__4();
 
             state._fsp--;
@@ -4389,20 +4390,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__3__Impl"
-    // InternalDomainmodel.g:1639:1: rule__Operation__Group__3__Impl : ( '(' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1636:1: rule__Operation__Group__3__Impl : ( '(' ) ;
     public final void rule__Operation__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1643:1: ( ( '(' ) )
-            // InternalDomainmodel.g:1644:1: ( '(' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1640:1: ( ( '(' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1641:1: ( '(' )
             {
-            // InternalDomainmodel.g:1644:1: ( '(' )
-            // InternalDomainmodel.g:1645:1: '('
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1641:1: ( '(' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1642:1: '('
             {
              before(grammarAccess.getOperationAccess().getLeftParenthesisKeyword_3()); 
-            match(input,25,FOLLOW_2); 
+            match(input,25,FOLLOW_25_in_rule__Operation__Group__3__Impl3309); 
              after(grammarAccess.getOperationAccess().getLeftParenthesisKeyword_3()); 
 
             }
@@ -4426,21 +4427,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__4"
-    // InternalDomainmodel.g:1658:1: rule__Operation__Group__4 : rule__Operation__Group__4__Impl rule__Operation__Group__5 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1655:1: rule__Operation__Group__4 : rule__Operation__Group__4__Impl rule__Operation__Group__5 ;
     public final void rule__Operation__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1662:1: ( rule__Operation__Group__4__Impl rule__Operation__Group__5 )
-            // InternalDomainmodel.g:1663:2: rule__Operation__Group__4__Impl rule__Operation__Group__5
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1659:1: ( rule__Operation__Group__4__Impl rule__Operation__Group__5 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1660:2: rule__Operation__Group__4__Impl rule__Operation__Group__5
             {
-            pushFollow(FOLLOW_14);
+            pushFollow(FOLLOW_rule__Operation__Group__4__Impl_in_rule__Operation__Group__43340);
             rule__Operation__Group__4__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group__5_in_rule__Operation__Group__43343);
             rule__Operation__Group__5();
 
             state._fsp--;
@@ -4464,20 +4465,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__4__Impl"
-    // InternalDomainmodel.g:1670:1: rule__Operation__Group__4__Impl : ( ( rule__Operation__Group_4__0 )? ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1667:1: rule__Operation__Group__4__Impl : ( ( rule__Operation__Group_4__0 )? ) ;
     public final void rule__Operation__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1674:1: ( ( ( rule__Operation__Group_4__0 )? ) )
-            // InternalDomainmodel.g:1675:1: ( ( rule__Operation__Group_4__0 )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1671:1: ( ( ( rule__Operation__Group_4__0 )? ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1672:1: ( ( rule__Operation__Group_4__0 )? )
             {
-            // InternalDomainmodel.g:1675:1: ( ( rule__Operation__Group_4__0 )? )
-            // InternalDomainmodel.g:1676:1: ( rule__Operation__Group_4__0 )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1672:1: ( ( rule__Operation__Group_4__0 )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1673:1: ( rule__Operation__Group_4__0 )?
             {
              before(grammarAccess.getOperationAccess().getGroup_4()); 
-            // InternalDomainmodel.g:1677:1: ( rule__Operation__Group_4__0 )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1674:1: ( rule__Operation__Group_4__0 )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -4486,9 +4487,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
             }
             switch (alt12) {
                 case 1 :
-                    // InternalDomainmodel.g:1677:2: rule__Operation__Group_4__0
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1674:2: rule__Operation__Group_4__0
                     {
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_rule__Operation__Group_4__0_in_rule__Operation__Group__4__Impl3370);
                     rule__Operation__Group_4__0();
 
                     state._fsp--;
@@ -4522,21 +4523,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__5"
-    // InternalDomainmodel.g:1687:1: rule__Operation__Group__5 : rule__Operation__Group__5__Impl rule__Operation__Group__6 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1684:1: rule__Operation__Group__5 : rule__Operation__Group__5__Impl rule__Operation__Group__6 ;
     public final void rule__Operation__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1691:1: ( rule__Operation__Group__5__Impl rule__Operation__Group__6 )
-            // InternalDomainmodel.g:1692:2: rule__Operation__Group__5__Impl rule__Operation__Group__6
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1688:1: ( rule__Operation__Group__5__Impl rule__Operation__Group__6 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1689:2: rule__Operation__Group__5__Impl rule__Operation__Group__6
             {
-            pushFollow(FOLLOW_10);
+            pushFollow(FOLLOW_rule__Operation__Group__5__Impl_in_rule__Operation__Group__53401);
             rule__Operation__Group__5__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group__6_in_rule__Operation__Group__53404);
             rule__Operation__Group__6();
 
             state._fsp--;
@@ -4560,20 +4561,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__5__Impl"
-    // InternalDomainmodel.g:1699:1: rule__Operation__Group__5__Impl : ( ')' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1696:1: rule__Operation__Group__5__Impl : ( ')' ) ;
     public final void rule__Operation__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1703:1: ( ( ')' ) )
-            // InternalDomainmodel.g:1704:1: ( ')' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1700:1: ( ( ')' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1701:1: ( ')' )
             {
-            // InternalDomainmodel.g:1704:1: ( ')' )
-            // InternalDomainmodel.g:1705:1: ')'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1701:1: ( ')' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1702:1: ')'
             {
              before(grammarAccess.getOperationAccess().getRightParenthesisKeyword_5()); 
-            match(input,26,FOLLOW_2); 
+            match(input,26,FOLLOW_26_in_rule__Operation__Group__5__Impl3432); 
              after(grammarAccess.getOperationAccess().getRightParenthesisKeyword_5()); 
 
             }
@@ -4597,21 +4598,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__6"
-    // InternalDomainmodel.g:1718:1: rule__Operation__Group__6 : rule__Operation__Group__6__Impl rule__Operation__Group__7 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1715:1: rule__Operation__Group__6 : rule__Operation__Group__6__Impl rule__Operation__Group__7 ;
     public final void rule__Operation__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1722:1: ( rule__Operation__Group__6__Impl rule__Operation__Group__7 )
-            // InternalDomainmodel.g:1723:2: rule__Operation__Group__6__Impl rule__Operation__Group__7
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1719:1: ( rule__Operation__Group__6__Impl rule__Operation__Group__7 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1720:2: rule__Operation__Group__6__Impl rule__Operation__Group__7
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Operation__Group__6__Impl_in_rule__Operation__Group__63463);
             rule__Operation__Group__6__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group__7_in_rule__Operation__Group__63466);
             rule__Operation__Group__7();
 
             state._fsp--;
@@ -4635,20 +4636,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__6__Impl"
-    // InternalDomainmodel.g:1730:1: rule__Operation__Group__6__Impl : ( ':' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1727:1: rule__Operation__Group__6__Impl : ( ':' ) ;
     public final void rule__Operation__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1734:1: ( ( ':' ) )
-            // InternalDomainmodel.g:1735:1: ( ':' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1731:1: ( ( ':' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1732:1: ( ':' )
             {
-            // InternalDomainmodel.g:1735:1: ( ':' )
-            // InternalDomainmodel.g:1736:1: ':'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1732:1: ( ':' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1733:1: ':'
             {
              before(grammarAccess.getOperationAccess().getColonKeyword_6()); 
-            match(input,21,FOLLOW_2); 
+            match(input,21,FOLLOW_21_in_rule__Operation__Group__6__Impl3494); 
              after(grammarAccess.getOperationAccess().getColonKeyword_6()); 
 
             }
@@ -4672,16 +4673,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__7"
-    // InternalDomainmodel.g:1749:1: rule__Operation__Group__7 : rule__Operation__Group__7__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1746:1: rule__Operation__Group__7 : rule__Operation__Group__7__Impl ;
     public final void rule__Operation__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1753:1: ( rule__Operation__Group__7__Impl )
-            // InternalDomainmodel.g:1754:2: rule__Operation__Group__7__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1750:1: ( rule__Operation__Group__7__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1751:2: rule__Operation__Group__7__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group__7__Impl_in_rule__Operation__Group__73525);
             rule__Operation__Group__7__Impl();
 
             state._fsp--;
@@ -4705,23 +4706,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group__7__Impl"
-    // InternalDomainmodel.g:1760:1: rule__Operation__Group__7__Impl : ( ( rule__Operation__TypeAssignment_7 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1757:1: rule__Operation__Group__7__Impl : ( ( rule__Operation__TypeAssignment_7 ) ) ;
     public final void rule__Operation__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1764:1: ( ( ( rule__Operation__TypeAssignment_7 ) ) )
-            // InternalDomainmodel.g:1765:1: ( ( rule__Operation__TypeAssignment_7 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1761:1: ( ( ( rule__Operation__TypeAssignment_7 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1762:1: ( ( rule__Operation__TypeAssignment_7 ) )
             {
-            // InternalDomainmodel.g:1765:1: ( ( rule__Operation__TypeAssignment_7 ) )
-            // InternalDomainmodel.g:1766:1: ( rule__Operation__TypeAssignment_7 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1762:1: ( ( rule__Operation__TypeAssignment_7 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1763:1: ( rule__Operation__TypeAssignment_7 )
             {
              before(grammarAccess.getOperationAccess().getTypeAssignment_7()); 
-            // InternalDomainmodel.g:1767:1: ( rule__Operation__TypeAssignment_7 )
-            // InternalDomainmodel.g:1767:2: rule__Operation__TypeAssignment_7
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1764:1: ( rule__Operation__TypeAssignment_7 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1764:2: rule__Operation__TypeAssignment_7
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__TypeAssignment_7_in_rule__Operation__Group__7__Impl3552);
             rule__Operation__TypeAssignment_7();
 
             state._fsp--;
@@ -4752,21 +4753,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group_4__0"
-    // InternalDomainmodel.g:1793:1: rule__Operation__Group_4__0 : rule__Operation__Group_4__0__Impl rule__Operation__Group_4__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1790:1: rule__Operation__Group_4__0 : rule__Operation__Group_4__0__Impl rule__Operation__Group_4__1 ;
     public final void rule__Operation__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1797:1: ( rule__Operation__Group_4__0__Impl rule__Operation__Group_4__1 )
-            // InternalDomainmodel.g:1798:2: rule__Operation__Group_4__0__Impl rule__Operation__Group_4__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1794:1: ( rule__Operation__Group_4__0__Impl rule__Operation__Group_4__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1795:2: rule__Operation__Group_4__0__Impl rule__Operation__Group_4__1
             {
-            pushFollow(FOLLOW_15);
+            pushFollow(FOLLOW_rule__Operation__Group_4__0__Impl_in_rule__Operation__Group_4__03598);
             rule__Operation__Group_4__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group_4__1_in_rule__Operation__Group_4__03601);
             rule__Operation__Group_4__1();
 
             state._fsp--;
@@ -4790,23 +4791,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group_4__0__Impl"
-    // InternalDomainmodel.g:1805:1: rule__Operation__Group_4__0__Impl : ( ( rule__Operation__ParamsAssignment_4_0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1802:1: rule__Operation__Group_4__0__Impl : ( ( rule__Operation__ParamsAssignment_4_0 ) ) ;
     public final void rule__Operation__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1809:1: ( ( ( rule__Operation__ParamsAssignment_4_0 ) ) )
-            // InternalDomainmodel.g:1810:1: ( ( rule__Operation__ParamsAssignment_4_0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1806:1: ( ( ( rule__Operation__ParamsAssignment_4_0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1807:1: ( ( rule__Operation__ParamsAssignment_4_0 ) )
             {
-            // InternalDomainmodel.g:1810:1: ( ( rule__Operation__ParamsAssignment_4_0 ) )
-            // InternalDomainmodel.g:1811:1: ( rule__Operation__ParamsAssignment_4_0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1807:1: ( ( rule__Operation__ParamsAssignment_4_0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1808:1: ( rule__Operation__ParamsAssignment_4_0 )
             {
              before(grammarAccess.getOperationAccess().getParamsAssignment_4_0()); 
-            // InternalDomainmodel.g:1812:1: ( rule__Operation__ParamsAssignment_4_0 )
-            // InternalDomainmodel.g:1812:2: rule__Operation__ParamsAssignment_4_0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1809:1: ( rule__Operation__ParamsAssignment_4_0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1809:2: rule__Operation__ParamsAssignment_4_0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__ParamsAssignment_4_0_in_rule__Operation__Group_4__0__Impl3628);
             rule__Operation__ParamsAssignment_4_0();
 
             state._fsp--;
@@ -4837,16 +4838,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group_4__1"
-    // InternalDomainmodel.g:1822:1: rule__Operation__Group_4__1 : rule__Operation__Group_4__1__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1819:1: rule__Operation__Group_4__1 : rule__Operation__Group_4__1__Impl ;
     public final void rule__Operation__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1826:1: ( rule__Operation__Group_4__1__Impl )
-            // InternalDomainmodel.g:1827:2: rule__Operation__Group_4__1__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1823:1: ( rule__Operation__Group_4__1__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1824:2: rule__Operation__Group_4__1__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group_4__1__Impl_in_rule__Operation__Group_4__13658);
             rule__Operation__Group_4__1__Impl();
 
             state._fsp--;
@@ -4870,20 +4871,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group_4__1__Impl"
-    // InternalDomainmodel.g:1833:1: rule__Operation__Group_4__1__Impl : ( ( rule__Operation__Group_4_1__0 )* ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1830:1: rule__Operation__Group_4__1__Impl : ( ( rule__Operation__Group_4_1__0 )* ) ;
     public final void rule__Operation__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1837:1: ( ( ( rule__Operation__Group_4_1__0 )* ) )
-            // InternalDomainmodel.g:1838:1: ( ( rule__Operation__Group_4_1__0 )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1834:1: ( ( ( rule__Operation__Group_4_1__0 )* ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1835:1: ( ( rule__Operation__Group_4_1__0 )* )
             {
-            // InternalDomainmodel.g:1838:1: ( ( rule__Operation__Group_4_1__0 )* )
-            // InternalDomainmodel.g:1839:1: ( rule__Operation__Group_4_1__0 )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1835:1: ( ( rule__Operation__Group_4_1__0 )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1836:1: ( rule__Operation__Group_4_1__0 )*
             {
              before(grammarAccess.getOperationAccess().getGroup_4_1()); 
-            // InternalDomainmodel.g:1840:1: ( rule__Operation__Group_4_1__0 )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1837:1: ( rule__Operation__Group_4_1__0 )*
             loop13:
             do {
                 int alt13=2;
@@ -4896,9 +4897,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
                 switch (alt13) {
             	case 1 :
-            	    // InternalDomainmodel.g:1840:2: rule__Operation__Group_4_1__0
+            	    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1837:2: rule__Operation__Group_4_1__0
             	    {
-            	    pushFollow(FOLLOW_16);
+            	    pushFollow(FOLLOW_rule__Operation__Group_4_1__0_in_rule__Operation__Group_4__1__Impl3685);
             	    rule__Operation__Group_4_1__0();
 
             	    state._fsp--;
@@ -4935,21 +4936,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group_4_1__0"
-    // InternalDomainmodel.g:1854:1: rule__Operation__Group_4_1__0 : rule__Operation__Group_4_1__0__Impl rule__Operation__Group_4_1__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1851:1: rule__Operation__Group_4_1__0 : rule__Operation__Group_4_1__0__Impl rule__Operation__Group_4_1__1 ;
     public final void rule__Operation__Group_4_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1858:1: ( rule__Operation__Group_4_1__0__Impl rule__Operation__Group_4_1__1 )
-            // InternalDomainmodel.g:1859:2: rule__Operation__Group_4_1__0__Impl rule__Operation__Group_4_1__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1855:1: ( rule__Operation__Group_4_1__0__Impl rule__Operation__Group_4_1__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1856:2: rule__Operation__Group_4_1__0__Impl rule__Operation__Group_4_1__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Operation__Group_4_1__0__Impl_in_rule__Operation__Group_4_1__03720);
             rule__Operation__Group_4_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group_4_1__1_in_rule__Operation__Group_4_1__03723);
             rule__Operation__Group_4_1__1();
 
             state._fsp--;
@@ -4973,20 +4974,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group_4_1__0__Impl"
-    // InternalDomainmodel.g:1866:1: rule__Operation__Group_4_1__0__Impl : ( ',' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1863:1: rule__Operation__Group_4_1__0__Impl : ( ',' ) ;
     public final void rule__Operation__Group_4_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1870:1: ( ( ',' ) )
-            // InternalDomainmodel.g:1871:1: ( ',' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1867:1: ( ( ',' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1868:1: ( ',' )
             {
-            // InternalDomainmodel.g:1871:1: ( ',' )
-            // InternalDomainmodel.g:1872:1: ','
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1868:1: ( ',' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1869:1: ','
             {
              before(grammarAccess.getOperationAccess().getCommaKeyword_4_1_0()); 
-            match(input,27,FOLLOW_2); 
+            match(input,27,FOLLOW_27_in_rule__Operation__Group_4_1__0__Impl3751); 
              after(grammarAccess.getOperationAccess().getCommaKeyword_4_1_0()); 
 
             }
@@ -5010,16 +5011,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group_4_1__1"
-    // InternalDomainmodel.g:1885:1: rule__Operation__Group_4_1__1 : rule__Operation__Group_4_1__1__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1882:1: rule__Operation__Group_4_1__1 : rule__Operation__Group_4_1__1__Impl ;
     public final void rule__Operation__Group_4_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1889:1: ( rule__Operation__Group_4_1__1__Impl )
-            // InternalDomainmodel.g:1890:2: rule__Operation__Group_4_1__1__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1886:1: ( rule__Operation__Group_4_1__1__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1887:2: rule__Operation__Group_4_1__1__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__Group_4_1__1__Impl_in_rule__Operation__Group_4_1__13782);
             rule__Operation__Group_4_1__1__Impl();
 
             state._fsp--;
@@ -5043,23 +5044,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__Group_4_1__1__Impl"
-    // InternalDomainmodel.g:1896:1: rule__Operation__Group_4_1__1__Impl : ( ( rule__Operation__ParamsAssignment_4_1_1 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1893:1: rule__Operation__Group_4_1__1__Impl : ( ( rule__Operation__ParamsAssignment_4_1_1 ) ) ;
     public final void rule__Operation__Group_4_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1900:1: ( ( ( rule__Operation__ParamsAssignment_4_1_1 ) ) )
-            // InternalDomainmodel.g:1901:1: ( ( rule__Operation__ParamsAssignment_4_1_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1897:1: ( ( ( rule__Operation__ParamsAssignment_4_1_1 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1898:1: ( ( rule__Operation__ParamsAssignment_4_1_1 ) )
             {
-            // InternalDomainmodel.g:1901:1: ( ( rule__Operation__ParamsAssignment_4_1_1 ) )
-            // InternalDomainmodel.g:1902:1: ( rule__Operation__ParamsAssignment_4_1_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1898:1: ( ( rule__Operation__ParamsAssignment_4_1_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1899:1: ( rule__Operation__ParamsAssignment_4_1_1 )
             {
              before(grammarAccess.getOperationAccess().getParamsAssignment_4_1_1()); 
-            // InternalDomainmodel.g:1903:1: ( rule__Operation__ParamsAssignment_4_1_1 )
-            // InternalDomainmodel.g:1903:2: rule__Operation__ParamsAssignment_4_1_1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1900:1: ( rule__Operation__ParamsAssignment_4_1_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1900:2: rule__Operation__ParamsAssignment_4_1_1
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Operation__ParamsAssignment_4_1_1_in_rule__Operation__Group_4_1__1__Impl3809);
             rule__Operation__ParamsAssignment_4_1_1();
 
             state._fsp--;
@@ -5090,21 +5091,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Parameter__Group__0"
-    // InternalDomainmodel.g:1917:1: rule__Parameter__Group__0 : rule__Parameter__Group__0__Impl rule__Parameter__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1914:1: rule__Parameter__Group__0 : rule__Parameter__Group__0__Impl rule__Parameter__Group__1 ;
     public final void rule__Parameter__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1921:1: ( rule__Parameter__Group__0__Impl rule__Parameter__Group__1 )
-            // InternalDomainmodel.g:1922:2: rule__Parameter__Group__0__Impl rule__Parameter__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1918:1: ( rule__Parameter__Group__0__Impl rule__Parameter__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1919:2: rule__Parameter__Group__0__Impl rule__Parameter__Group__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__Parameter__Group__0__Impl_in_rule__Parameter__Group__03843);
             rule__Parameter__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Parameter__Group__1_in_rule__Parameter__Group__03846);
             rule__Parameter__Group__1();
 
             state._fsp--;
@@ -5128,23 +5129,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Parameter__Group__0__Impl"
-    // InternalDomainmodel.g:1929:1: rule__Parameter__Group__0__Impl : ( ( rule__Parameter__NameAssignment_0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1926:1: rule__Parameter__Group__0__Impl : ( ( rule__Parameter__NameAssignment_0 ) ) ;
     public final void rule__Parameter__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1933:1: ( ( ( rule__Parameter__NameAssignment_0 ) ) )
-            // InternalDomainmodel.g:1934:1: ( ( rule__Parameter__NameAssignment_0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1930:1: ( ( ( rule__Parameter__NameAssignment_0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1931:1: ( ( rule__Parameter__NameAssignment_0 ) )
             {
-            // InternalDomainmodel.g:1934:1: ( ( rule__Parameter__NameAssignment_0 ) )
-            // InternalDomainmodel.g:1935:1: ( rule__Parameter__NameAssignment_0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1931:1: ( ( rule__Parameter__NameAssignment_0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1932:1: ( rule__Parameter__NameAssignment_0 )
             {
              before(grammarAccess.getParameterAccess().getNameAssignment_0()); 
-            // InternalDomainmodel.g:1936:1: ( rule__Parameter__NameAssignment_0 )
-            // InternalDomainmodel.g:1936:2: rule__Parameter__NameAssignment_0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1933:1: ( rule__Parameter__NameAssignment_0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1933:2: rule__Parameter__NameAssignment_0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Parameter__NameAssignment_0_in_rule__Parameter__Group__0__Impl3873);
             rule__Parameter__NameAssignment_0();
 
             state._fsp--;
@@ -5175,16 +5176,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Parameter__Group__1"
-    // InternalDomainmodel.g:1946:1: rule__Parameter__Group__1 : rule__Parameter__Group__1__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1943:1: rule__Parameter__Group__1 : rule__Parameter__Group__1__Impl ;
     public final void rule__Parameter__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1950:1: ( rule__Parameter__Group__1__Impl )
-            // InternalDomainmodel.g:1951:2: rule__Parameter__Group__1__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1947:1: ( rule__Parameter__Group__1__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1948:2: rule__Parameter__Group__1__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Parameter__Group__1__Impl_in_rule__Parameter__Group__13903);
             rule__Parameter__Group__1__Impl();
 
             state._fsp--;
@@ -5208,23 +5209,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Parameter__Group__1__Impl"
-    // InternalDomainmodel.g:1957:1: rule__Parameter__Group__1__Impl : ( ( rule__Parameter__TypeAssignment_1 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1954:1: rule__Parameter__Group__1__Impl : ( ( rule__Parameter__TypeAssignment_1 ) ) ;
     public final void rule__Parameter__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1961:1: ( ( ( rule__Parameter__TypeAssignment_1 ) ) )
-            // InternalDomainmodel.g:1962:1: ( ( rule__Parameter__TypeAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1958:1: ( ( ( rule__Parameter__TypeAssignment_1 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1959:1: ( ( rule__Parameter__TypeAssignment_1 ) )
             {
-            // InternalDomainmodel.g:1962:1: ( ( rule__Parameter__TypeAssignment_1 ) )
-            // InternalDomainmodel.g:1963:1: ( rule__Parameter__TypeAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1959:1: ( ( rule__Parameter__TypeAssignment_1 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1960:1: ( rule__Parameter__TypeAssignment_1 )
             {
              before(grammarAccess.getParameterAccess().getTypeAssignment_1()); 
-            // InternalDomainmodel.g:1964:1: ( rule__Parameter__TypeAssignment_1 )
-            // InternalDomainmodel.g:1964:2: rule__Parameter__TypeAssignment_1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1961:1: ( rule__Parameter__TypeAssignment_1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1961:2: rule__Parameter__TypeAssignment_1
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__Parameter__TypeAssignment_1_in_rule__Parameter__Group__1__Impl3930);
             rule__Parameter__TypeAssignment_1();
 
             state._fsp--;
@@ -5255,21 +5256,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TypeRef__Group__0"
-    // InternalDomainmodel.g:1978:1: rule__TypeRef__Group__0 : rule__TypeRef__Group__0__Impl rule__TypeRef__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1975:1: rule__TypeRef__Group__0 : rule__TypeRef__Group__0__Impl rule__TypeRef__Group__1 ;
     public final void rule__TypeRef__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1982:1: ( rule__TypeRef__Group__0__Impl rule__TypeRef__Group__1 )
-            // InternalDomainmodel.g:1983:2: rule__TypeRef__Group__0__Impl rule__TypeRef__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1979:1: ( rule__TypeRef__Group__0__Impl rule__TypeRef__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1980:2: rule__TypeRef__Group__0__Impl rule__TypeRef__Group__1
             {
-            pushFollow(FOLLOW_17);
+            pushFollow(FOLLOW_rule__TypeRef__Group__0__Impl_in_rule__TypeRef__Group__03964);
             rule__TypeRef__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__TypeRef__Group__1_in_rule__TypeRef__Group__03967);
             rule__TypeRef__Group__1();
 
             state._fsp--;
@@ -5293,23 +5294,23 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TypeRef__Group__0__Impl"
-    // InternalDomainmodel.g:1990:1: rule__TypeRef__Group__0__Impl : ( ( rule__TypeRef__ReferencedAssignment_0 ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1987:1: rule__TypeRef__Group__0__Impl : ( ( rule__TypeRef__ReferencedAssignment_0 ) ) ;
     public final void rule__TypeRef__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:1994:1: ( ( ( rule__TypeRef__ReferencedAssignment_0 ) ) )
-            // InternalDomainmodel.g:1995:1: ( ( rule__TypeRef__ReferencedAssignment_0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1991:1: ( ( ( rule__TypeRef__ReferencedAssignment_0 ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1992:1: ( ( rule__TypeRef__ReferencedAssignment_0 ) )
             {
-            // InternalDomainmodel.g:1995:1: ( ( rule__TypeRef__ReferencedAssignment_0 ) )
-            // InternalDomainmodel.g:1996:1: ( rule__TypeRef__ReferencedAssignment_0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1992:1: ( ( rule__TypeRef__ReferencedAssignment_0 ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1993:1: ( rule__TypeRef__ReferencedAssignment_0 )
             {
              before(grammarAccess.getTypeRefAccess().getReferencedAssignment_0()); 
-            // InternalDomainmodel.g:1997:1: ( rule__TypeRef__ReferencedAssignment_0 )
-            // InternalDomainmodel.g:1997:2: rule__TypeRef__ReferencedAssignment_0
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1994:1: ( rule__TypeRef__ReferencedAssignment_0 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:1994:2: rule__TypeRef__ReferencedAssignment_0
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__TypeRef__ReferencedAssignment_0_in_rule__TypeRef__Group__0__Impl3994);
             rule__TypeRef__ReferencedAssignment_0();
 
             state._fsp--;
@@ -5340,16 +5341,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TypeRef__Group__1"
-    // InternalDomainmodel.g:2007:1: rule__TypeRef__Group__1 : rule__TypeRef__Group__1__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2004:1: rule__TypeRef__Group__1 : rule__TypeRef__Group__1__Impl ;
     public final void rule__TypeRef__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2011:1: ( rule__TypeRef__Group__1__Impl )
-            // InternalDomainmodel.g:2012:2: rule__TypeRef__Group__1__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2008:1: ( rule__TypeRef__Group__1__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2009:2: rule__TypeRef__Group__1__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__TypeRef__Group__1__Impl_in_rule__TypeRef__Group__14024);
             rule__TypeRef__Group__1__Impl();
 
             state._fsp--;
@@ -5373,20 +5374,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TypeRef__Group__1__Impl"
-    // InternalDomainmodel.g:2018:1: rule__TypeRef__Group__1__Impl : ( ( rule__TypeRef__MultiAssignment_1 )? ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2015:1: rule__TypeRef__Group__1__Impl : ( ( rule__TypeRef__MultiAssignment_1 )? ) ;
     public final void rule__TypeRef__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2022:1: ( ( ( rule__TypeRef__MultiAssignment_1 )? ) )
-            // InternalDomainmodel.g:2023:1: ( ( rule__TypeRef__MultiAssignment_1 )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2019:1: ( ( ( rule__TypeRef__MultiAssignment_1 )? ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2020:1: ( ( rule__TypeRef__MultiAssignment_1 )? )
             {
-            // InternalDomainmodel.g:2023:1: ( ( rule__TypeRef__MultiAssignment_1 )? )
-            // InternalDomainmodel.g:2024:1: ( rule__TypeRef__MultiAssignment_1 )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2020:1: ( ( rule__TypeRef__MultiAssignment_1 )? )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2021:1: ( rule__TypeRef__MultiAssignment_1 )?
             {
              before(grammarAccess.getTypeRefAccess().getMultiAssignment_1()); 
-            // InternalDomainmodel.g:2025:1: ( rule__TypeRef__MultiAssignment_1 )?
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2022:1: ( rule__TypeRef__MultiAssignment_1 )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -5395,9 +5396,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
             }
             switch (alt14) {
                 case 1 :
-                    // InternalDomainmodel.g:2025:2: rule__TypeRef__MultiAssignment_1
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2022:2: rule__TypeRef__MultiAssignment_1
                     {
-                    pushFollow(FOLLOW_2);
+                    pushFollow(FOLLOW_rule__TypeRef__MultiAssignment_1_in_rule__TypeRef__Group__1__Impl4051);
                     rule__TypeRef__MultiAssignment_1();
 
                     state._fsp--;
@@ -5431,21 +5432,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedName__Group__0"
-    // InternalDomainmodel.g:2039:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2036:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
     public final void rule__QualifiedName__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2043:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
-            // InternalDomainmodel.g:2044:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2040:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2041:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
             {
-            pushFollow(FOLLOW_18);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__04086);
             rule__QualifiedName__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__04089);
             rule__QualifiedName__Group__1();
 
             state._fsp--;
@@ -5469,20 +5470,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedName__Group__0__Impl"
-    // InternalDomainmodel.g:2051:1: rule__QualifiedName__Group__0__Impl : ( ruleValidID ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2048:1: rule__QualifiedName__Group__0__Impl : ( ruleValidID ) ;
     public final void rule__QualifiedName__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2055:1: ( ( ruleValidID ) )
-            // InternalDomainmodel.g:2056:1: ( ruleValidID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2052:1: ( ( ruleValidID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2053:1: ( ruleValidID )
             {
-            // InternalDomainmodel.g:2056:1: ( ruleValidID )
-            // InternalDomainmodel.g:2057:1: ruleValidID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2053:1: ( ruleValidID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2054:1: ruleValidID
             {
              before(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleValidID_in_rule__QualifiedName__Group__0__Impl4116);
             ruleValidID();
 
             state._fsp--;
@@ -5510,16 +5511,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedName__Group__1"
-    // InternalDomainmodel.g:2068:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2065:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
     public final void rule__QualifiedName__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2072:1: ( rule__QualifiedName__Group__1__Impl )
-            // InternalDomainmodel.g:2073:2: rule__QualifiedName__Group__1__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2069:1: ( rule__QualifiedName__Group__1__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2070:2: rule__QualifiedName__Group__1__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__14145);
             rule__QualifiedName__Group__1__Impl();
 
             state._fsp--;
@@ -5543,20 +5544,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedName__Group__1__Impl"
-    // InternalDomainmodel.g:2079:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2076:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
     public final void rule__QualifiedName__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2083:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
-            // InternalDomainmodel.g:2084:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2080:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2081:1: ( ( rule__QualifiedName__Group_1__0 )* )
             {
-            // InternalDomainmodel.g:2084:1: ( ( rule__QualifiedName__Group_1__0 )* )
-            // InternalDomainmodel.g:2085:1: ( rule__QualifiedName__Group_1__0 )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2081:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2082:1: ( rule__QualifiedName__Group_1__0 )*
             {
              before(grammarAccess.getQualifiedNameAccess().getGroup_1()); 
-            // InternalDomainmodel.g:2086:1: ( rule__QualifiedName__Group_1__0 )*
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2083:1: ( rule__QualifiedName__Group_1__0 )*
             loop15:
             do {
                 int alt15=2;
@@ -5575,9 +5576,9 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
                 switch (alt15) {
             	case 1 :
-            	    // InternalDomainmodel.g:2086:2: rule__QualifiedName__Group_1__0
+            	    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2083:2: rule__QualifiedName__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_19);
+            	    pushFollow(FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl4172);
             	    rule__QualifiedName__Group_1__0();
 
             	    state._fsp--;
@@ -5614,21 +5615,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0"
-    // InternalDomainmodel.g:2100:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2097:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
     public final void rule__QualifiedName__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2104:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
-            // InternalDomainmodel.g:2105:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2101:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2102:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__04207);
             rule__QualifiedName__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__04210);
             rule__QualifiedName__Group_1__1();
 
             state._fsp--;
@@ -5652,20 +5653,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0__Impl"
-    // InternalDomainmodel.g:2112:1: rule__QualifiedName__Group_1__0__Impl : ( '.' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2109:1: rule__QualifiedName__Group_1__0__Impl : ( '.' ) ;
     public final void rule__QualifiedName__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2116:1: ( ( '.' ) )
-            // InternalDomainmodel.g:2117:1: ( '.' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2113:1: ( ( '.' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2114:1: ( '.' )
             {
-            // InternalDomainmodel.g:2117:1: ( '.' )
-            // InternalDomainmodel.g:2118:1: '.'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2114:1: ( '.' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2115:1: '.'
             {
              before(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
-            match(input,28,FOLLOW_2); 
+            match(input,28,FOLLOW_28_in_rule__QualifiedName__Group_1__0__Impl4238); 
              after(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
 
             }
@@ -5689,16 +5690,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1"
-    // InternalDomainmodel.g:2131:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2128:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
     public final void rule__QualifiedName__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2135:1: ( rule__QualifiedName__Group_1__1__Impl )
-            // InternalDomainmodel.g:2136:2: rule__QualifiedName__Group_1__1__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2132:1: ( rule__QualifiedName__Group_1__1__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2133:2: rule__QualifiedName__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__14269);
             rule__QualifiedName__Group_1__1__Impl();
 
             state._fsp--;
@@ -5722,20 +5723,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1__Impl"
-    // InternalDomainmodel.g:2142:1: rule__QualifiedName__Group_1__1__Impl : ( ruleValidID ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2139:1: rule__QualifiedName__Group_1__1__Impl : ( ruleValidID ) ;
     public final void rule__QualifiedName__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2146:1: ( ( ruleValidID ) )
-            // InternalDomainmodel.g:2147:1: ( ruleValidID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2143:1: ( ( ruleValidID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2144:1: ( ruleValidID )
             {
-            // InternalDomainmodel.g:2147:1: ( ruleValidID )
-            // InternalDomainmodel.g:2148:1: ruleValidID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2144:1: ( ruleValidID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2145:1: ruleValidID
             {
              before(grammarAccess.getQualifiedNameAccess().getValidIDParserRuleCall_1_1()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl4296);
             ruleValidID();
 
             state._fsp--;
@@ -5763,21 +5764,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__0"
-    // InternalDomainmodel.g:2163:1: rule__QualifiedNameWithWildcard__Group__0 : rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2160:1: rule__QualifiedNameWithWildcard__Group__0 : rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 ;
     public final void rule__QualifiedNameWithWildcard__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2167:1: ( rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 )
-            // InternalDomainmodel.g:2168:2: rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2164:1: ( rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2165:2: rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1
             {
-            pushFollow(FOLLOW_18);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__0__Impl_in_rule__QualifiedNameWithWildcard__Group__04329);
             rule__QualifiedNameWithWildcard__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__1_in_rule__QualifiedNameWithWildcard__Group__04332);
             rule__QualifiedNameWithWildcard__Group__1();
 
             state._fsp--;
@@ -5801,20 +5802,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__0__Impl"
-    // InternalDomainmodel.g:2175:1: rule__QualifiedNameWithWildcard__Group__0__Impl : ( ruleQualifiedName ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2172:1: rule__QualifiedNameWithWildcard__Group__0__Impl : ( ruleQualifiedName ) ;
     public final void rule__QualifiedNameWithWildcard__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2179:1: ( ( ruleQualifiedName ) )
-            // InternalDomainmodel.g:2180:1: ( ruleQualifiedName )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2176:1: ( ( ruleQualifiedName ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2177:1: ( ruleQualifiedName )
             {
-            // InternalDomainmodel.g:2180:1: ( ruleQualifiedName )
-            // InternalDomainmodel.g:2181:1: ruleQualifiedName
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2177:1: ( ruleQualifiedName )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2178:1: ruleQualifiedName
             {
              before(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildcard__Group__0__Impl4359);
             ruleQualifiedName();
 
             state._fsp--;
@@ -5842,21 +5843,21 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__1"
-    // InternalDomainmodel.g:2192:1: rule__QualifiedNameWithWildcard__Group__1 : rule__QualifiedNameWithWildcard__Group__1__Impl rule__QualifiedNameWithWildcard__Group__2 ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2189:1: rule__QualifiedNameWithWildcard__Group__1 : rule__QualifiedNameWithWildcard__Group__1__Impl rule__QualifiedNameWithWildcard__Group__2 ;
     public final void rule__QualifiedNameWithWildcard__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2196:1: ( rule__QualifiedNameWithWildcard__Group__1__Impl rule__QualifiedNameWithWildcard__Group__2 )
-            // InternalDomainmodel.g:2197:2: rule__QualifiedNameWithWildcard__Group__1__Impl rule__QualifiedNameWithWildcard__Group__2
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2193:1: ( rule__QualifiedNameWithWildcard__Group__1__Impl rule__QualifiedNameWithWildcard__Group__2 )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2194:2: rule__QualifiedNameWithWildcard__Group__1__Impl rule__QualifiedNameWithWildcard__Group__2
             {
-            pushFollow(FOLLOW_17);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__1__Impl_in_rule__QualifiedNameWithWildcard__Group__14388);
             rule__QualifiedNameWithWildcard__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__2_in_rule__QualifiedNameWithWildcard__Group__14391);
             rule__QualifiedNameWithWildcard__Group__2();
 
             state._fsp--;
@@ -5880,20 +5881,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__1__Impl"
-    // InternalDomainmodel.g:2204:1: rule__QualifiedNameWithWildcard__Group__1__Impl : ( '.' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2201:1: rule__QualifiedNameWithWildcard__Group__1__Impl : ( '.' ) ;
     public final void rule__QualifiedNameWithWildcard__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2208:1: ( ( '.' ) )
-            // InternalDomainmodel.g:2209:1: ( '.' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2205:1: ( ( '.' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2206:1: ( '.' )
             {
-            // InternalDomainmodel.g:2209:1: ( '.' )
-            // InternalDomainmodel.g:2210:1: '.'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2206:1: ( '.' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2207:1: '.'
             {
              before(grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopKeyword_1()); 
-            match(input,28,FOLLOW_2); 
+            match(input,28,FOLLOW_28_in_rule__QualifiedNameWithWildcard__Group__1__Impl4419); 
              after(grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopKeyword_1()); 
 
             }
@@ -5917,16 +5918,16 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__2"
-    // InternalDomainmodel.g:2223:1: rule__QualifiedNameWithWildcard__Group__2 : rule__QualifiedNameWithWildcard__Group__2__Impl ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2220:1: rule__QualifiedNameWithWildcard__Group__2 : rule__QualifiedNameWithWildcard__Group__2__Impl ;
     public final void rule__QualifiedNameWithWildcard__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2227:1: ( rule__QualifiedNameWithWildcard__Group__2__Impl )
-            // InternalDomainmodel.g:2228:2: rule__QualifiedNameWithWildcard__Group__2__Impl
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2224:1: ( rule__QualifiedNameWithWildcard__Group__2__Impl )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2225:2: rule__QualifiedNameWithWildcard__Group__2__Impl
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__2__Impl_in_rule__QualifiedNameWithWildcard__Group__24450);
             rule__QualifiedNameWithWildcard__Group__2__Impl();
 
             state._fsp--;
@@ -5950,20 +5951,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__2__Impl"
-    // InternalDomainmodel.g:2234:1: rule__QualifiedNameWithWildcard__Group__2__Impl : ( '*' ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2231:1: rule__QualifiedNameWithWildcard__Group__2__Impl : ( '*' ) ;
     public final void rule__QualifiedNameWithWildcard__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2238:1: ( ( '*' ) )
-            // InternalDomainmodel.g:2239:1: ( '*' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2235:1: ( ( '*' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2236:1: ( '*' )
             {
-            // InternalDomainmodel.g:2239:1: ( '*' )
-            // InternalDomainmodel.g:2240:1: '*'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2236:1: ( '*' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2237:1: '*'
             {
              before(grammarAccess.getQualifiedNameWithWildcardAccess().getAsteriskKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,29,FOLLOW_29_in_rule__QualifiedNameWithWildcard__Group__2__Impl4478); 
              after(grammarAccess.getQualifiedNameWithWildcardAccess().getAsteriskKeyword_2()); 
 
             }
@@ -5987,20 +5988,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DomainModel__ElementsAssignment"
-    // InternalDomainmodel.g:2260:1: rule__DomainModel__ElementsAssignment : ( ruleAbstractElement ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2257:1: rule__DomainModel__ElementsAssignment : ( ruleAbstractElement ) ;
     public final void rule__DomainModel__ElementsAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2264:1: ( ( ruleAbstractElement ) )
-            // InternalDomainmodel.g:2265:1: ( ruleAbstractElement )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2261:1: ( ( ruleAbstractElement ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2262:1: ( ruleAbstractElement )
             {
-            // InternalDomainmodel.g:2265:1: ( ruleAbstractElement )
-            // InternalDomainmodel.g:2266:1: ruleAbstractElement
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2262:1: ( ruleAbstractElement )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2263:1: ruleAbstractElement
             {
              before(grammarAccess.getDomainModelAccess().getElementsAbstractElementParserRuleCall_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleAbstractElement_in_rule__DomainModel__ElementsAssignment4520);
             ruleAbstractElement();
 
             state._fsp--;
@@ -6028,20 +6029,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Import__ImportedNamespaceAssignment_1"
-    // InternalDomainmodel.g:2275:1: rule__Import__ImportedNamespaceAssignment_1 : ( ruleQualifiedNameWithWildcard ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2272:1: rule__Import__ImportedNamespaceAssignment_1 : ( ruleQualifiedNameWithWildcard ) ;
     public final void rule__Import__ImportedNamespaceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2279:1: ( ( ruleQualifiedNameWithWildcard ) )
-            // InternalDomainmodel.g:2280:1: ( ruleQualifiedNameWithWildcard )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2276:1: ( ( ruleQualifiedNameWithWildcard ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2277:1: ( ruleQualifiedNameWithWildcard )
             {
-            // InternalDomainmodel.g:2280:1: ( ruleQualifiedNameWithWildcard )
-            // InternalDomainmodel.g:2281:1: ruleQualifiedNameWithWildcard
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2277:1: ( ruleQualifiedNameWithWildcard )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2278:1: ruleQualifiedNameWithWildcard
             {
              before(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_rule__Import__ImportedNamespaceAssignment_14551);
             ruleQualifiedNameWithWildcard();
 
             state._fsp--;
@@ -6069,20 +6070,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__NameAssignment_1"
-    // InternalDomainmodel.g:2290:1: rule__PackageDeclaration__NameAssignment_1 : ( ruleQualifiedName ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2287:1: rule__PackageDeclaration__NameAssignment_1 : ( ruleQualifiedName ) ;
     public final void rule__PackageDeclaration__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2294:1: ( ( ruleQualifiedName ) )
-            // InternalDomainmodel.g:2295:1: ( ruleQualifiedName )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2291:1: ( ( ruleQualifiedName ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2292:1: ( ruleQualifiedName )
             {
-            // InternalDomainmodel.g:2295:1: ( ruleQualifiedName )
-            // InternalDomainmodel.g:2296:1: ruleQualifiedName
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2292:1: ( ruleQualifiedName )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2293:1: ruleQualifiedName
             {
              before(grammarAccess.getPackageDeclarationAccess().getNameQualifiedNameParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__PackageDeclaration__NameAssignment_14582);
             ruleQualifiedName();
 
             state._fsp--;
@@ -6110,20 +6111,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__PackageDeclaration__ElementsAssignment_3"
-    // InternalDomainmodel.g:2305:1: rule__PackageDeclaration__ElementsAssignment_3 : ( ruleAbstractElement ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2302:1: rule__PackageDeclaration__ElementsAssignment_3 : ( ruleAbstractElement ) ;
     public final void rule__PackageDeclaration__ElementsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2309:1: ( ( ruleAbstractElement ) )
-            // InternalDomainmodel.g:2310:1: ( ruleAbstractElement )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2306:1: ( ( ruleAbstractElement ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2307:1: ( ruleAbstractElement )
             {
-            // InternalDomainmodel.g:2310:1: ( ruleAbstractElement )
-            // InternalDomainmodel.g:2311:1: ruleAbstractElement
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2307:1: ( ruleAbstractElement )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2308:1: ruleAbstractElement
             {
              before(grammarAccess.getPackageDeclarationAccess().getElementsAbstractElementParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleAbstractElement_in_rule__PackageDeclaration__ElementsAssignment_34613);
             ruleAbstractElement();
 
             state._fsp--;
@@ -6151,20 +6152,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__DataType__NameAssignment_1"
-    // InternalDomainmodel.g:2320:1: rule__DataType__NameAssignment_1 : ( RULE_ID ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2317:1: rule__DataType__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__DataType__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2324:1: ( ( RULE_ID ) )
-            // InternalDomainmodel.g:2325:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2321:1: ( ( RULE_ID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2322:1: ( RULE_ID )
             {
-            // InternalDomainmodel.g:2325:1: ( RULE_ID )
-            // InternalDomainmodel.g:2326:1: RULE_ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2322:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2323:1: RULE_ID
             {
              before(grammarAccess.getDataTypeAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_2); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__DataType__NameAssignment_14644); 
              after(grammarAccess.getDataTypeAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -6188,20 +6189,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__NameAssignment_1"
-    // InternalDomainmodel.g:2335:1: rule__Entity__NameAssignment_1 : ( RULE_ID ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2332:1: rule__Entity__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Entity__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2339:1: ( ( RULE_ID ) )
-            // InternalDomainmodel.g:2340:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2336:1: ( ( RULE_ID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2337:1: ( RULE_ID )
             {
-            // InternalDomainmodel.g:2340:1: ( RULE_ID )
-            // InternalDomainmodel.g:2341:1: RULE_ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2337:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2338:1: RULE_ID
             {
              before(grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_2); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Entity__NameAssignment_14675); 
              after(grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -6225,24 +6226,24 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__SuperTypeAssignment_2_1"
-    // InternalDomainmodel.g:2350:1: rule__Entity__SuperTypeAssignment_2_1 : ( ( ruleQualifiedName ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2347:1: rule__Entity__SuperTypeAssignment_2_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__Entity__SuperTypeAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2354:1: ( ( ( ruleQualifiedName ) ) )
-            // InternalDomainmodel.g:2355:1: ( ( ruleQualifiedName ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2351:1: ( ( ( ruleQualifiedName ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2352:1: ( ( ruleQualifiedName ) )
             {
-            // InternalDomainmodel.g:2355:1: ( ( ruleQualifiedName ) )
-            // InternalDomainmodel.g:2356:1: ( ruleQualifiedName )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2352:1: ( ( ruleQualifiedName ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2353:1: ( ruleQualifiedName )
             {
              before(grammarAccess.getEntityAccess().getSuperTypeEntityCrossReference_2_1_0()); 
-            // InternalDomainmodel.g:2357:1: ( ruleQualifiedName )
-            // InternalDomainmodel.g:2358:1: ruleQualifiedName
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2354:1: ( ruleQualifiedName )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2355:1: ruleQualifiedName
             {
              before(grammarAccess.getEntityAccess().getSuperTypeEntityQualifiedNameParserRuleCall_2_1_0_1()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Entity__SuperTypeAssignment_2_14710);
             ruleQualifiedName();
 
             state._fsp--;
@@ -6274,20 +6275,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Entity__FeaturesAssignment_4"
-    // InternalDomainmodel.g:2369:1: rule__Entity__FeaturesAssignment_4 : ( ruleFeature ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2366:1: rule__Entity__FeaturesAssignment_4 : ( ruleFeature ) ;
     public final void rule__Entity__FeaturesAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2373:1: ( ( ruleFeature ) )
-            // InternalDomainmodel.g:2374:1: ( ruleFeature )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2370:1: ( ( ruleFeature ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2371:1: ( ruleFeature )
             {
-            // InternalDomainmodel.g:2374:1: ( ruleFeature )
-            // InternalDomainmodel.g:2375:1: ruleFeature
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2371:1: ( ruleFeature )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2372:1: ruleFeature
             {
              before(grammarAccess.getEntityAccess().getFeaturesFeatureParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleFeature_in_rule__Entity__FeaturesAssignment_44745);
             ruleFeature();
 
             state._fsp--;
@@ -6315,20 +6316,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Attribute__NameAssignment_0"
-    // InternalDomainmodel.g:2384:1: rule__Attribute__NameAssignment_0 : ( RULE_ID ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2381:1: rule__Attribute__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__Attribute__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2388:1: ( ( RULE_ID ) )
-            // InternalDomainmodel.g:2389:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2385:1: ( ( RULE_ID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2386:1: ( RULE_ID )
             {
-            // InternalDomainmodel.g:2389:1: ( RULE_ID )
-            // InternalDomainmodel.g:2390:1: RULE_ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2386:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2387:1: RULE_ID
             {
              before(grammarAccess.getAttributeAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_2); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_04776); 
              after(grammarAccess.getAttributeAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -6352,20 +6353,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Attribute__TypeAssignment_2"
-    // InternalDomainmodel.g:2399:1: rule__Attribute__TypeAssignment_2 : ( ruleTypeRef ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2396:1: rule__Attribute__TypeAssignment_2 : ( ruleTypeRef ) ;
     public final void rule__Attribute__TypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2403:1: ( ( ruleTypeRef ) )
-            // InternalDomainmodel.g:2404:1: ( ruleTypeRef )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2400:1: ( ( ruleTypeRef ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2401:1: ( ruleTypeRef )
             {
-            // InternalDomainmodel.g:2404:1: ( ruleTypeRef )
-            // InternalDomainmodel.g:2405:1: ruleTypeRef
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2401:1: ( ruleTypeRef )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2402:1: ruleTypeRef
             {
              before(grammarAccess.getAttributeAccess().getTypeTypeRefParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleTypeRef_in_rule__Attribute__TypeAssignment_24807);
             ruleTypeRef();
 
             state._fsp--;
@@ -6393,20 +6394,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__NameAssignment_1"
-    // InternalDomainmodel.g:2414:1: rule__Reference__NameAssignment_1 : ( RULE_ID ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2411:1: rule__Reference__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Reference__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2418:1: ( ( RULE_ID ) )
-            // InternalDomainmodel.g:2419:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2415:1: ( ( RULE_ID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2416:1: ( RULE_ID )
             {
-            // InternalDomainmodel.g:2419:1: ( RULE_ID )
-            // InternalDomainmodel.g:2420:1: RULE_ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2416:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2417:1: RULE_ID
             {
              before(grammarAccess.getReferenceAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_2); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Reference__NameAssignment_14838); 
              after(grammarAccess.getReferenceAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -6430,20 +6431,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__TypeAssignment_3"
-    // InternalDomainmodel.g:2429:1: rule__Reference__TypeAssignment_3 : ( ruleTypeRef ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2426:1: rule__Reference__TypeAssignment_3 : ( ruleTypeRef ) ;
     public final void rule__Reference__TypeAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2433:1: ( ( ruleTypeRef ) )
-            // InternalDomainmodel.g:2434:1: ( ruleTypeRef )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2430:1: ( ( ruleTypeRef ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2431:1: ( ruleTypeRef )
             {
-            // InternalDomainmodel.g:2434:1: ( ruleTypeRef )
-            // InternalDomainmodel.g:2435:1: ruleTypeRef
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2431:1: ( ruleTypeRef )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2432:1: ruleTypeRef
             {
              before(grammarAccess.getReferenceAccess().getTypeTypeRefParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleTypeRef_in_rule__Reference__TypeAssignment_34869);
             ruleTypeRef();
 
             state._fsp--;
@@ -6471,24 +6472,24 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Reference__OppositeAssignment_4_1"
-    // InternalDomainmodel.g:2444:1: rule__Reference__OppositeAssignment_4_1 : ( ( RULE_ID ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2441:1: rule__Reference__OppositeAssignment_4_1 : ( ( RULE_ID ) ) ;
     public final void rule__Reference__OppositeAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2448:1: ( ( ( RULE_ID ) ) )
-            // InternalDomainmodel.g:2449:1: ( ( RULE_ID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2445:1: ( ( ( RULE_ID ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2446:1: ( ( RULE_ID ) )
             {
-            // InternalDomainmodel.g:2449:1: ( ( RULE_ID ) )
-            // InternalDomainmodel.g:2450:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2446:1: ( ( RULE_ID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2447:1: ( RULE_ID )
             {
              before(grammarAccess.getReferenceAccess().getOppositeReferenceCrossReference_4_1_0()); 
-            // InternalDomainmodel.g:2451:1: ( RULE_ID )
-            // InternalDomainmodel.g:2452:1: RULE_ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2448:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2449:1: RULE_ID
             {
              before(grammarAccess.getReferenceAccess().getOppositeReferenceIDTerminalRuleCall_4_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_2); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Reference__OppositeAssignment_4_14904); 
              after(grammarAccess.getReferenceAccess().getOppositeReferenceIDTerminalRuleCall_4_1_0_1()); 
 
             }
@@ -6516,20 +6517,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__VisibilityAssignment_0"
-    // InternalDomainmodel.g:2463:1: rule__Operation__VisibilityAssignment_0 : ( ruleVisibility ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2460:1: rule__Operation__VisibilityAssignment_0 : ( ruleVisibility ) ;
     public final void rule__Operation__VisibilityAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2467:1: ( ( ruleVisibility ) )
-            // InternalDomainmodel.g:2468:1: ( ruleVisibility )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2464:1: ( ( ruleVisibility ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2465:1: ( ruleVisibility )
             {
-            // InternalDomainmodel.g:2468:1: ( ruleVisibility )
-            // InternalDomainmodel.g:2469:1: ruleVisibility
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2465:1: ( ruleVisibility )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2466:1: ruleVisibility
             {
              before(grammarAccess.getOperationAccess().getVisibilityVisibilityEnumRuleCall_0_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleVisibility_in_rule__Operation__VisibilityAssignment_04939);
             ruleVisibility();
 
             state._fsp--;
@@ -6557,20 +6558,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__NameAssignment_2"
-    // InternalDomainmodel.g:2478:1: rule__Operation__NameAssignment_2 : ( RULE_ID ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2475:1: rule__Operation__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__Operation__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2482:1: ( ( RULE_ID ) )
-            // InternalDomainmodel.g:2483:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2479:1: ( ( RULE_ID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2480:1: ( RULE_ID )
             {
-            // InternalDomainmodel.g:2483:1: ( RULE_ID )
-            // InternalDomainmodel.g:2484:1: RULE_ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2480:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2481:1: RULE_ID
             {
              before(grammarAccess.getOperationAccess().getNameIDTerminalRuleCall_2_0()); 
-            match(input,RULE_ID,FOLLOW_2); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Operation__NameAssignment_24970); 
              after(grammarAccess.getOperationAccess().getNameIDTerminalRuleCall_2_0()); 
 
             }
@@ -6594,20 +6595,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__ParamsAssignment_4_0"
-    // InternalDomainmodel.g:2493:1: rule__Operation__ParamsAssignment_4_0 : ( ruleParameter ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2490:1: rule__Operation__ParamsAssignment_4_0 : ( ruleParameter ) ;
     public final void rule__Operation__ParamsAssignment_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2497:1: ( ( ruleParameter ) )
-            // InternalDomainmodel.g:2498:1: ( ruleParameter )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2494:1: ( ( ruleParameter ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2495:1: ( ruleParameter )
             {
-            // InternalDomainmodel.g:2498:1: ( ruleParameter )
-            // InternalDomainmodel.g:2499:1: ruleParameter
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2495:1: ( ruleParameter )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2496:1: ruleParameter
             {
              before(grammarAccess.getOperationAccess().getParamsParameterParserRuleCall_4_0_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleParameter_in_rule__Operation__ParamsAssignment_4_05001);
             ruleParameter();
 
             state._fsp--;
@@ -6635,20 +6636,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__ParamsAssignment_4_1_1"
-    // InternalDomainmodel.g:2508:1: rule__Operation__ParamsAssignment_4_1_1 : ( ruleParameter ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2505:1: rule__Operation__ParamsAssignment_4_1_1 : ( ruleParameter ) ;
     public final void rule__Operation__ParamsAssignment_4_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2512:1: ( ( ruleParameter ) )
-            // InternalDomainmodel.g:2513:1: ( ruleParameter )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2509:1: ( ( ruleParameter ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2510:1: ( ruleParameter )
             {
-            // InternalDomainmodel.g:2513:1: ( ruleParameter )
-            // InternalDomainmodel.g:2514:1: ruleParameter
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2510:1: ( ruleParameter )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2511:1: ruleParameter
             {
              before(grammarAccess.getOperationAccess().getParamsParameterParserRuleCall_4_1_1_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleParameter_in_rule__Operation__ParamsAssignment_4_1_15032);
             ruleParameter();
 
             state._fsp--;
@@ -6676,20 +6677,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Operation__TypeAssignment_7"
-    // InternalDomainmodel.g:2523:1: rule__Operation__TypeAssignment_7 : ( ruleTypeRef ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2520:1: rule__Operation__TypeAssignment_7 : ( ruleTypeRef ) ;
     public final void rule__Operation__TypeAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2527:1: ( ( ruleTypeRef ) )
-            // InternalDomainmodel.g:2528:1: ( ruleTypeRef )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2524:1: ( ( ruleTypeRef ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2525:1: ( ruleTypeRef )
             {
-            // InternalDomainmodel.g:2528:1: ( ruleTypeRef )
-            // InternalDomainmodel.g:2529:1: ruleTypeRef
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2525:1: ( ruleTypeRef )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2526:1: ruleTypeRef
             {
              before(grammarAccess.getOperationAccess().getTypeTypeRefParserRuleCall_7_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleTypeRef_in_rule__Operation__TypeAssignment_75063);
             ruleTypeRef();
 
             state._fsp--;
@@ -6717,20 +6718,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Parameter__NameAssignment_0"
-    // InternalDomainmodel.g:2538:1: rule__Parameter__NameAssignment_0 : ( RULE_ID ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2535:1: rule__Parameter__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__Parameter__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2542:1: ( ( RULE_ID ) )
-            // InternalDomainmodel.g:2543:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2539:1: ( ( RULE_ID ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2540:1: ( RULE_ID )
             {
-            // InternalDomainmodel.g:2543:1: ( RULE_ID )
-            // InternalDomainmodel.g:2544:1: RULE_ID
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2540:1: ( RULE_ID )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2541:1: RULE_ID
             {
              before(grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_2); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Parameter__NameAssignment_05094); 
              after(grammarAccess.getParameterAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -6754,20 +6755,20 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__Parameter__TypeAssignment_1"
-    // InternalDomainmodel.g:2553:1: rule__Parameter__TypeAssignment_1 : ( ruleTypeRef ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2550:1: rule__Parameter__TypeAssignment_1 : ( ruleTypeRef ) ;
     public final void rule__Parameter__TypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2557:1: ( ( ruleTypeRef ) )
-            // InternalDomainmodel.g:2558:1: ( ruleTypeRef )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2554:1: ( ( ruleTypeRef ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2555:1: ( ruleTypeRef )
             {
-            // InternalDomainmodel.g:2558:1: ( ruleTypeRef )
-            // InternalDomainmodel.g:2559:1: ruleTypeRef
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2555:1: ( ruleTypeRef )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2556:1: ruleTypeRef
             {
              before(grammarAccess.getParameterAccess().getTypeTypeRefParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleTypeRef_in_rule__Parameter__TypeAssignment_15125);
             ruleTypeRef();
 
             state._fsp--;
@@ -6795,24 +6796,24 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TypeRef__ReferencedAssignment_0"
-    // InternalDomainmodel.g:2568:1: rule__TypeRef__ReferencedAssignment_0 : ( ( ruleQualifiedName ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2565:1: rule__TypeRef__ReferencedAssignment_0 : ( ( ruleQualifiedName ) ) ;
     public final void rule__TypeRef__ReferencedAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2572:1: ( ( ( ruleQualifiedName ) ) )
-            // InternalDomainmodel.g:2573:1: ( ( ruleQualifiedName ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2569:1: ( ( ( ruleQualifiedName ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2570:1: ( ( ruleQualifiedName ) )
             {
-            // InternalDomainmodel.g:2573:1: ( ( ruleQualifiedName ) )
-            // InternalDomainmodel.g:2574:1: ( ruleQualifiedName )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2570:1: ( ( ruleQualifiedName ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2571:1: ( ruleQualifiedName )
             {
              before(grammarAccess.getTypeRefAccess().getReferencedTypeCrossReference_0_0()); 
-            // InternalDomainmodel.g:2575:1: ( ruleQualifiedName )
-            // InternalDomainmodel.g:2576:1: ruleQualifiedName
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2572:1: ( ruleQualifiedName )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2573:1: ruleQualifiedName
             {
              before(grammarAccess.getTypeRefAccess().getReferencedTypeQualifiedNameParserRuleCall_0_0_1()); 
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__TypeRef__ReferencedAssignment_05160);
             ruleQualifiedName();
 
             state._fsp--;
@@ -6844,24 +6845,24 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
 
     // $ANTLR start "rule__TypeRef__MultiAssignment_1"
-    // InternalDomainmodel.g:2587:1: rule__TypeRef__MultiAssignment_1 : ( ( '*' ) ) ;
+    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2584:1: rule__TypeRef__MultiAssignment_1 : ( ( '*' ) ) ;
     public final void rule__TypeRef__MultiAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalDomainmodel.g:2591:1: ( ( ( '*' ) ) )
-            // InternalDomainmodel.g:2592:1: ( ( '*' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2588:1: ( ( ( '*' ) ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2589:1: ( ( '*' ) )
             {
-            // InternalDomainmodel.g:2592:1: ( ( '*' ) )
-            // InternalDomainmodel.g:2593:1: ( '*' )
-            {
-             before(grammarAccess.getTypeRefAccess().getMultiAsteriskKeyword_1_0()); 
-            // InternalDomainmodel.g:2594:1: ( '*' )
-            // InternalDomainmodel.g:2595:1: '*'
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2589:1: ( ( '*' ) )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2590:1: ( '*' )
             {
              before(grammarAccess.getTypeRefAccess().getMultiAsteriskKeyword_1_0()); 
-            match(input,29,FOLLOW_2); 
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2591:1: ( '*' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-gen\\org\\eclipse\\xtext\\example\\domainmodel\\web\\contentassist\\antlr\\internal\\InternalDomainmodel.g:2592:1: '*'
+            {
+             before(grammarAccess.getTypeRefAccess().getMultiAsteriskKeyword_1_0()); 
+            match(input,29,FOLLOW_29_in_rule__TypeRef__MultiAssignment_15200); 
              after(grammarAccess.getTypeRefAccess().getMultiAsteriskKeyword_1_0()); 
 
             }
@@ -6892,24 +6893,225 @@ public class InternalDomainmodelParser extends AbstractInternalContentAssistPars
 
  
 
-    public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x00000000000CC002L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00000000000EC000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000110000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000001423810L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000001403812L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000001403810L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000004000010L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_ruleDomainModel_in_entryRuleDomainModel61 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDomainModel68 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DomainModel__ElementsAssignment_in_ruleDomainModel94 = new BitSet(new long[]{0x00000000000CC002L});
+    public static final BitSet FOLLOW_ruleAbstractElement_in_entryRuleAbstractElement122 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAbstractElement129 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__AbstractElement__Alternatives_in_ruleAbstractElement155 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_entryRuleImport182 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleImport189 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__Group__0_in_ruleImport215 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePackageDeclaration_in_entryRulePackageDeclaration242 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRulePackageDeclaration249 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__Group__0_in_rulePackageDeclaration275 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_entryRuleType302 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Type__Alternatives_in_ruleType335 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDataType_in_entryRuleDataType362 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDataType369 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DataType__Group__0_in_ruleDataType395 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEntity_in_entryRuleEntity422 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEntity429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__Group__0_in_ruleEntity455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeature_in_entryRuleFeature482 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFeature489 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Feature__Alternatives_in_ruleFeature515 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStructuralFeature_in_entryRuleStructuralFeature542 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStructuralFeature549 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__StructuralFeature__Alternatives_in_ruleStructuralFeature575 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute602 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAttribute609 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__0_in_ruleAttribute635 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleReference_in_entryRuleReference662 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleReference669 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__Group__0_in_ruleReference695 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOperation_in_entryRuleOperation722 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOperation729 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group__0_in_ruleOperation755 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameter_in_entryRuleParameter782 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParameter789 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Parameter__Group__0_in_ruleParameter815 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypeRef_in_entryRuleTypeRef842 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTypeRef849 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypeRef__Group__0_in_ruleTypeRef875 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName902 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName909 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__0_in_ruleQualifiedName935 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard962 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard969 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__0_in_ruleQualifiedNameWithWildcard995 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_entryRuleValidID1022 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValidID1029 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleValidID1055 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Visibility__Alternatives_in_ruleVisibility1091 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePackageDeclaration_in_rule__AbstractElement__Alternatives1126 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_rule__AbstractElement__Alternatives1143 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_rule__AbstractElement__Alternatives1160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEntity_in_rule__Type__Alternatives1192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDataType_in_rule__Type__Alternatives1209 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStructuralFeature_in_rule__Feature__Alternatives1241 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOperation_in_rule__Feature__Alternatives1258 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_rule__StructuralFeature__Alternatives1290 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleReference_in_rule__StructuralFeature__Alternatives1307 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_11_in_rule__Visibility__Alternatives1340 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_rule__Visibility__Alternatives1361 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_rule__Visibility__Alternatives1382 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__01415 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__01418 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_rule__Import__Group__0__Impl1446 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__11477 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__ImportedNamespaceAssignment_1_in_rule__Import__Group__1__Impl1504 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__Group__0__Impl_in_rule__PackageDeclaration__Group__01538 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__Group__1_in_rule__PackageDeclaration__Group__01541 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__PackageDeclaration__Group__0__Impl1569 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__Group__1__Impl_in_rule__PackageDeclaration__Group__11600 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__Group__2_in_rule__PackageDeclaration__Group__11603 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__NameAssignment_1_in_rule__PackageDeclaration__Group__1__Impl1630 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__Group__2__Impl_in_rule__PackageDeclaration__Group__21660 = new BitSet(new long[]{0x00000000000EC000L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__Group__3_in_rule__PackageDeclaration__Group__21663 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__PackageDeclaration__Group__2__Impl1691 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__Group__3__Impl_in_rule__PackageDeclaration__Group__31722 = new BitSet(new long[]{0x00000000000EC000L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__Group__4_in_rule__PackageDeclaration__Group__31725 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__ElementsAssignment_3_in_rule__PackageDeclaration__Group__3__Impl1752 = new BitSet(new long[]{0x00000000000CC002L});
+    public static final BitSet FOLLOW_rule__PackageDeclaration__Group__4__Impl_in_rule__PackageDeclaration__Group__41783 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__PackageDeclaration__Group__4__Impl1811 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DataType__Group__0__Impl_in_rule__DataType__Group__01852 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__DataType__Group__1_in_rule__DataType__Group__01855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__DataType__Group__0__Impl1883 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DataType__Group__1__Impl_in_rule__DataType__Group__11914 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DataType__NameAssignment_1_in_rule__DataType__Group__1__Impl1941 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__Group__0__Impl_in_rule__Entity__Group__01975 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Entity__Group__1_in_rule__Entity__Group__01978 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__Entity__Group__0__Impl2006 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__Group__1__Impl_in_rule__Entity__Group__12037 = new BitSet(new long[]{0x0000000000110000L});
+    public static final BitSet FOLLOW_rule__Entity__Group__2_in_rule__Entity__Group__12040 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__NameAssignment_1_in_rule__Entity__Group__1__Impl2067 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__Group__2__Impl_in_rule__Entity__Group__22097 = new BitSet(new long[]{0x0000000000110000L});
+    public static final BitSet FOLLOW_rule__Entity__Group__3_in_rule__Entity__Group__22100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__Group_2__0_in_rule__Entity__Group__2__Impl2127 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__Group__3__Impl_in_rule__Entity__Group__32158 = new BitSet(new long[]{0x0000000001423810L});
+    public static final BitSet FOLLOW_rule__Entity__Group__4_in_rule__Entity__Group__32161 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__Entity__Group__3__Impl2189 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__Group__4__Impl_in_rule__Entity__Group__42220 = new BitSet(new long[]{0x0000000001423810L});
+    public static final BitSet FOLLOW_rule__Entity__Group__5_in_rule__Entity__Group__42223 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__FeaturesAssignment_4_in_rule__Entity__Group__4__Impl2250 = new BitSet(new long[]{0x0000000001403812L});
+    public static final BitSet FOLLOW_rule__Entity__Group__5__Impl_in_rule__Entity__Group__52281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__Entity__Group__5__Impl2309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__Group_2__0__Impl_in_rule__Entity__Group_2__02352 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Entity__Group_2__1_in_rule__Entity__Group_2__02355 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__Entity__Group_2__0__Impl2383 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__Group_2__1__Impl_in_rule__Entity__Group_2__12414 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__SuperTypeAssignment_2_1_in_rule__Entity__Group_2__1__Impl2441 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__0__Impl_in_rule__Attribute__Group__02475 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__1_in_rule__Attribute__Group__02478 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__NameAssignment_0_in_rule__Attribute__Group__0__Impl2505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__1__Impl_in_rule__Attribute__Group__12535 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__12538 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__Attribute__Group__1__Impl2566 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__2__Impl_in_rule__Attribute__Group__22597 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__TypeAssignment_2_in_rule__Attribute__Group__2__Impl2624 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__Group__0__Impl_in_rule__Reference__Group__02660 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Reference__Group__1_in_rule__Reference__Group__02663 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_rule__Reference__Group__0__Impl2691 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__Group__1__Impl_in_rule__Reference__Group__12722 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_rule__Reference__Group__2_in_rule__Reference__Group__12725 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__NameAssignment_1_in_rule__Reference__Group__1__Impl2752 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__Group__2__Impl_in_rule__Reference__Group__22782 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Reference__Group__3_in_rule__Reference__Group__22785 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__Reference__Group__2__Impl2813 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__Group__3__Impl_in_rule__Reference__Group__32844 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_rule__Reference__Group__4_in_rule__Reference__Group__32847 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__TypeAssignment_3_in_rule__Reference__Group__3__Impl2874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__Group__4__Impl_in_rule__Reference__Group__42904 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__Group_4__0_in_rule__Reference__Group__4__Impl2931 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__Group_4__0__Impl_in_rule__Reference__Group_4__02972 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Reference__Group_4__1_in_rule__Reference__Group_4__02975 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__Reference__Group_4__0__Impl3003 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__Group_4__1__Impl_in_rule__Reference__Group_4__13034 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Reference__OppositeAssignment_4_1_in_rule__Reference__Group_4__1__Impl3061 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group__0__Impl_in_rule__Operation__Group__03095 = new BitSet(new long[]{0x0000000001403810L});
+    public static final BitSet FOLLOW_rule__Operation__Group__1_in_rule__Operation__Group__03098 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__VisibilityAssignment_0_in_rule__Operation__Group__0__Impl3125 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group__1__Impl_in_rule__Operation__Group__13156 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Operation__Group__2_in_rule__Operation__Group__13159 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__Operation__Group__1__Impl3187 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group__2__Impl_in_rule__Operation__Group__23218 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_rule__Operation__Group__3_in_rule__Operation__Group__23221 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__NameAssignment_2_in_rule__Operation__Group__2__Impl3248 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group__3__Impl_in_rule__Operation__Group__33278 = new BitSet(new long[]{0x0000000004000010L});
+    public static final BitSet FOLLOW_rule__Operation__Group__4_in_rule__Operation__Group__33281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_rule__Operation__Group__3__Impl3309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group__4__Impl_in_rule__Operation__Group__43340 = new BitSet(new long[]{0x0000000004000010L});
+    public static final BitSet FOLLOW_rule__Operation__Group__5_in_rule__Operation__Group__43343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group_4__0_in_rule__Operation__Group__4__Impl3370 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group__5__Impl_in_rule__Operation__Group__53401 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_rule__Operation__Group__6_in_rule__Operation__Group__53404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rule__Operation__Group__5__Impl3432 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group__6__Impl_in_rule__Operation__Group__63463 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Operation__Group__7_in_rule__Operation__Group__63466 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__Operation__Group__6__Impl3494 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group__7__Impl_in_rule__Operation__Group__73525 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__TypeAssignment_7_in_rule__Operation__Group__7__Impl3552 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group_4__0__Impl_in_rule__Operation__Group_4__03598 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_rule__Operation__Group_4__1_in_rule__Operation__Group_4__03601 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__ParamsAssignment_4_0_in_rule__Operation__Group_4__0__Impl3628 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group_4__1__Impl_in_rule__Operation__Group_4__13658 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group_4_1__0_in_rule__Operation__Group_4__1__Impl3685 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group_4_1__0__Impl_in_rule__Operation__Group_4_1__03720 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Operation__Group_4_1__1_in_rule__Operation__Group_4_1__03723 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_rule__Operation__Group_4_1__0__Impl3751 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__Group_4_1__1__Impl_in_rule__Operation__Group_4_1__13782 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Operation__ParamsAssignment_4_1_1_in_rule__Operation__Group_4_1__1__Impl3809 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Parameter__Group__0__Impl_in_rule__Parameter__Group__03843 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Parameter__Group__1_in_rule__Parameter__Group__03846 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Parameter__NameAssignment_0_in_rule__Parameter__Group__0__Impl3873 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Parameter__Group__1__Impl_in_rule__Parameter__Group__13903 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Parameter__TypeAssignment_1_in_rule__Parameter__Group__1__Impl3930 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypeRef__Group__0__Impl_in_rule__TypeRef__Group__03964 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_rule__TypeRef__Group__1_in_rule__TypeRef__Group__03967 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypeRef__ReferencedAssignment_0_in_rule__TypeRef__Group__0__Impl3994 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypeRef__Group__1__Impl_in_rule__TypeRef__Group__14024 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TypeRef__MultiAssignment_1_in_rule__TypeRef__Group__1__Impl4051 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__04086 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__04089 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group__0__Impl4116 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__14145 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl4172 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__04207 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__04210 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_rule__QualifiedName__Group_1__0__Impl4238 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__14269 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__QualifiedName__Group_1__1__Impl4296 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__0__Impl_in_rule__QualifiedNameWithWildcard__Group__04329 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__1_in_rule__QualifiedNameWithWildcard__Group__04332 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildcard__Group__0__Impl4359 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__1__Impl_in_rule__QualifiedNameWithWildcard__Group__14388 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__2_in_rule__QualifiedNameWithWildcard__Group__14391 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_rule__QualifiedNameWithWildcard__Group__1__Impl4419 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__2__Impl_in_rule__QualifiedNameWithWildcard__Group__24450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_rule__QualifiedNameWithWildcard__Group__2__Impl4478 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAbstractElement_in_rule__DomainModel__ElementsAssignment4520 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_rule__Import__ImportedNamespaceAssignment_14551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__PackageDeclaration__NameAssignment_14582 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAbstractElement_in_rule__PackageDeclaration__ElementsAssignment_34613 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__DataType__NameAssignment_14644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Entity__NameAssignment_14675 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Entity__SuperTypeAssignment_2_14710 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeature_in_rule__Entity__FeaturesAssignment_44745 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_04776 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypeRef_in_rule__Attribute__TypeAssignment_24807 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Reference__NameAssignment_14838 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypeRef_in_rule__Reference__TypeAssignment_34869 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Reference__OppositeAssignment_4_14904 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVisibility_in_rule__Operation__VisibilityAssignment_04939 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Operation__NameAssignment_24970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameter_in_rule__Operation__ParamsAssignment_4_05001 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameter_in_rule__Operation__ParamsAssignment_4_1_15032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypeRef_in_rule__Operation__TypeAssignment_75063 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Parameter__NameAssignment_05094 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypeRef_in_rule__Parameter__TypeAssignment_15125 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__TypeRef__ReferencedAssignment_05160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_rule__TypeRef__MultiAssignment_15200 = new BitSet(new long[]{0x0000000000000002L});
 
 }

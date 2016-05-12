@@ -50,14 +50,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//Operation/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//Operation/body"/>
     </genClasses>
-    <genClasses ecoreClass="Domainmodel.ecore#//Parameter"/>
-    <genClasses ecoreClass="Domainmodel.ecore#//TypedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Domainmodel.ecore#//TypedElement/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//TypedElement/type"/>
+    <genClasses ecoreClass="Domainmodel.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Domainmodel.ecore#//Parameter/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//Parameter/type"/>
     </genClasses>
     <genClasses ecoreClass="Domainmodel.ecore#//TypeRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//TypeRef/referenced"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Domainmodel.ecore#//TypeRef/multi"/>
+    </genClasses>
+    <genClasses ecoreClass="Domainmodel.ecore#//TypedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Domainmodel.ecore#//TypedElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//TypedElement/type"/>
     </genClasses>
     <genClasses ecoreClass="Domainmodel.ecore#//Property"/>
   </genPackages>

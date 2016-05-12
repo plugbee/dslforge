@@ -23,7 +23,7 @@
       <editor
             id="org.eclipse.xtext.example.domainmodel.web.editor"
             name="Domainmodel Model Editor"
-		            extensions="file.extensions"
+		            extensions="dmodel"
            class="org.eclipse.xtext.example.domainmodel.web.editor.DomainmodelEditor"
             contributorClass="org.eclipse.xtext.example.domainmodel.web.editor.DomainmodelActionBarContributor">
       </editor>

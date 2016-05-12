@@ -2,7 +2,6 @@ package org.eclipse.xtext.example.domainmodel.tests;
 
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.example.domainmodel.DomainmodelUiInjectorProvider;
-import org.eclipse.xtext.example.domainmodel.ui.internal.DomainmodelActivator;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.ui.AbstractOutlineTest;
@@ -19,7 +18,9 @@ import org.junit.runner.RunWith;
 public class OutlineTest extends AbstractOutlineTest {
   @Override
   protected String getEditorId() {
-    return DomainmodelActivator.ORG_ECLIPSE_XTEXT_EXAMPLE_DOMAINMODEL_DOMAINMODEL;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field DomainmodelActivator is undefined"
+      + "\nORG_ECLIPSE_XTEXT_EXAMPLE_DOMAINMODEL_DOMAINMODEL cannot be resolved");
   }
   
   @Test
