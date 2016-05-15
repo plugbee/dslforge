@@ -186,9 +186,13 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 			new GenGrammar().doGenerate(this, progress.newChild(1));
 			new GenMode().doGenerate(this, progress.newChild(1));
 			new GenWorker().doGenerate(this, progress.newChild(1));
+			if (this.isServerSideContentAssist){
+				new GenContentAssistParser().doGenerate(this, progress.newChild(1));
+				new GenExecutableExtensionFactory().doGenerate(this, progress.newChild(1));
+				new GenActivator().doGenerate(this, progress.newChild(1));	
+			}
 		} else {
 			try {
-
 				setBuilderIds(getDefaultBuilderIds());
 				if (this.isServerSideContentAssist)
 					addBuilderId(XTEXT_BUILDER_ID);

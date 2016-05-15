@@ -4,8 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.apache.log4j.Logger;
 import org.dslforge.common.IWebProjectDescriptor;
-import org.dslforge.common.IWebProjectFactory;
 import org.dslforge.common.IWebProjectDescriptor.EditorType;
+import org.dslforge.common.IWebProjectFactory;
 import org.dslforge.common.WebProjectDescriptor;
 import org.dslforge.xtext.generator.XtextGrammar;
 import org.dslforge.xtext.generator.util.GeneratorUtil;
@@ -77,10 +77,21 @@ public class GenerateXtextWebEditorHandler extends AbstractHandler {
 		return new GenerateXtextWebEditorOperation(configuration);
 	}
 	
-	<T> T unwrap(Object object, Class<T> type) {
+	private <T> T unwrap(ExecutionEvent object, Class<T> type) {
 		Object current = object;
 		if (current instanceof ExecutionEvent) {
-			current = HandlerUtil.getActiveEditorInput((ExecutionEvent) current);
+			ExecutionEvent event = (ExecutionEvent) object;
+			Object variable = HandlerUtil.getVariable(object, "activeMenuSelection");
+			if (variable != null && variable instanceof IStructuredSelection) {
+				// from menu selection
+				current = HandlerUtil.getCurrentSelection(event);
+			} else {
+				variable = HandlerUtil.getVariable(object, "activeMenuEditorInput");
+				if (variable != null && variable instanceof IStructuredSelection) {
+					// from editor
+					current = HandlerUtil.getActiveEditorInput(event);
+				}
+			}
 		}
 		if (current instanceof IStructuredSelection) {
 			current = ((IStructuredSelection) current).getFirstElement();
