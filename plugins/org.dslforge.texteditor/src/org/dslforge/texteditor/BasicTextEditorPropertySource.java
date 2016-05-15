@@ -15,16 +15,19 @@
  */
 package org.dslforge.texteditor;
 
-import org.eclipse.ui.IEditorInput;
+import java.io.File;
+import java.util.Date;
+
+import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 
 public class BasicTextEditorPropertySource implements IPropertySource {
 
-	IEditorInput editorInput;
+	private URIEditorInput editorInput;
 	
-	public BasicTextEditorPropertySource(IEditorInput handle) {
+	public BasicTextEditorPropertySource(URIEditorInput handle) {
 		this.editorInput = handle;
 	}
 	
@@ -38,7 +41,7 @@ public class BasicTextEditorPropertySource implements IPropertySource {
 			return new IPropertyDescriptor[] {
 					new PropertyDescriptor("name", "Name"),
 					new PropertyDescriptor("location", "Location"),
-					new PropertyDescriptor("path", "Path"),
+					//new PropertyDescriptor("path", "Path"),
 					new PropertyDescriptor("size", "Size"),
 					new PropertyDescriptor("lastModified", "Last Modified"),
 					new PropertyDescriptor("editable", "Editable")
@@ -47,18 +50,18 @@ public class BasicTextEditorPropertySource implements IPropertySource {
 
 	@Override
 	public Object getPropertyValue(Object id) {
-//		if ("name".equals(id))
-//			return editorInput.getURI().lastSegment();
-//		else if ("location".equals(id))
-//			return editorInput.getURI().toFileString();
-//		else if ("path".equals(id))
-//			return editorInput.getURI().path();
-//		else if ("lastModified".equals(id)) {
-//			return new Date(new File(editorInput.getURI().toFileString()).lastModified());
-//		} else if ("size".equals(id))
-//			return new File(editorInput.getURI().toFileString()).length() + " bytes";
-//		else if ("editable".equals(id))
-//			return true;
+		if ("name".equals(id))
+			return editorInput.getURI().lastSegment();
+		else if ("location".equals(id))
+			return editorInput.getURI().toFileString();
+		else if ("path".equals(id))
+			return editorInput.getURI().lastSegment();
+		else if ("lastModified".equals(id)) {
+			return new Date(new File(editorInput.getURI().toFileString()).lastModified());
+		} else if ("size".equals(id))
+			return new File(editorInput.getURI().toFileString()).length() + " bytes";
+		else if ("editable".equals(id))
+			return true;
 		return null;
 	}
 

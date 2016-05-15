@@ -63,7 +63,10 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.rap.json.JsonObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
@@ -292,8 +295,22 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		gridLayout.numColumns = 1;
 		parent.setLayout(gridLayout);
 		viewer = createTextViewer(parent, SWT.FILL);
-		IDocument document = createEmptyDocument();
-		viewer.setDocument(document);		
+		viewer.setDocument(createEmptyDocument());
+		getSite().setSelectionProvider(		new ISelectionProvider() {
+			@Override
+			public void addSelectionChangedListener(ISelectionChangedListener listener) {
+			}
+			@Override
+			public ISelection getSelection() {
+				return new StructuredSelection(getEditorInput());
+			}
+			@Override
+			public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+			}
+			@Override
+			public void setSelection(ISelection selection) {
+			}
+		});
 		addListeners();
 	}
 
@@ -336,7 +353,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		List<Annotation> annotations = new ArrayList<Annotation>();
 		annotations.add(new Annotation(AceSeverity.ERROR, 1, 3, "This is an error"));
 		annotations.add(new Annotation(AceSeverity.WARNING, 3, 1, "This is a warning"));
-		annotations.add(new Annotation(AceSeverity.INFORMATION, 5, 1, "This is an info"));
+		annotations.add(new Annotation(AceSeverity.INFO, 5, 1, "This is an info"));
 		textWidget.setAnnotations(annotations);
 
 		// highlight text ranges
@@ -370,8 +387,8 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		propertySheetPage.setPropertySourceProvider(new IPropertySourceProvider() {
 			@Override
 			public IPropertySource getPropertySource(Object object) {
-				if (object instanceof IPathEditorInput)
-					return new BasicTextEditorPropertySource((IPathEditorInput) object);
+				if (object instanceof URIEditorInput)
+					return new BasicTextEditorPropertySource((URIEditorInput) object);
 				return null;
 			}
 		});

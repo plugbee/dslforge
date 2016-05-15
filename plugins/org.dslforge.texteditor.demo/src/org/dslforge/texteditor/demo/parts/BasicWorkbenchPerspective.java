@@ -32,5 +32,7 @@ public class BasicWorkbenchPerspective implements IPerspectiveFactory {
 		layout.setFixed(true);
 		layout.addStandaloneView(IWorkbenchConstants.NAVIGATOR_VIEW_ID, true, IPageLayout.LEFT, 0.25f, editorArea);
 		layout.getViewLayout(IWorkbenchConstants.NAVIGATOR_VIEW_ID).setCloseable(false);	
+		layout.addStandaloneView(IPageLayout.ID_PROP_SHEET, true, IPageLayout.BOTTOM, 0.66f, editorArea);
+		layout.getViewLayout(IPageLayout.ID_PROP_SHEET).setCloseable(false);	
 	}
 }

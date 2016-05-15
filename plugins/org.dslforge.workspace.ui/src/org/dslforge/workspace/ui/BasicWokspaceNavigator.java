@@ -90,12 +90,12 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 		getCommonViewer().setSorter(new BasicWorkspaceSorter());
 		getCommonViewer().setComparator(new BasicViewerComparator());
 		String workspaceRoot = getWorkspaceRoot();
-		serverPushSessionOn(workspaceRoot);
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IPartService partService = workbench.getActiveWorkbenchWindow().getPartService();
 		partService.addPartListener(this);
 		getCommonViewer().addSelectionChangedListener(selectionListener);
 		getCommonViewer().addFilter(new BasicWorkspaceFilter());
+		serverPushSessionOn(workspaceRoot);
 	}
 
 	private void serverPushSessionOn(String workspaceRoot) {
@@ -126,8 +126,7 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 	}
 
 	public IPropertySheetPage getPropertySheetPage() {
-		PropertySheetPage propertySheetPage = new PropertySheetPage() {
-		};
+		PropertySheetPage propertySheetPage = new PropertySheetPage();
 		propertySheetPage.setPropertySourceProvider(new FilePropertySourceProvider());
 		propertySheetPages.add(propertySheetPage);
 		return propertySheetPage;
@@ -171,11 +170,11 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 
 	@Override
 	public void dispose() {
+		super.dispose();
 		serverPushSessionOff();
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IPartService partService = workbench.getActiveWorkbenchWindow().getPartService();
 		partService.removePartListener(this);
-		super.dispose();
 	}
 
 	private void serverPushSessionOff() {
