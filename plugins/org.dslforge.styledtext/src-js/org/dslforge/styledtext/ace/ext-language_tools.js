@@ -37,8 +37,9 @@ var config = require("../config");
 var lang = require("../lib/lang");
 
 var textCompleter = require("../autocomplete/text_completer");
+
 var keyWordCompleter = {
-    getCompletions: function(editor, session, pos, prefix, callback) {
+	getCompletions: function(editor, session, pos, prefix, callback) {
         var state = editor.session.getState(pos.row);
         var completions = session.$mode.getCompletions(state, session, pos, prefix);
         var enhancedCompletions = [];
@@ -75,8 +76,8 @@ var keyWordCompleter = {
 };
 
 var snippetCompleter = {
-	     getCompletions: function(editor, session, pos, prefix, callback) {
-	         var snippetMap = snippetManager.snippetMap;
+	getCompletions: function(editor, session, pos, prefix, callback) {
+	     var snippetMap = snippetManager.snippetMap;
 	         var completions = [];
 	         snippetManager.getActiveScopes(editor).forEach(function(scope) {
 	             var snippets = snippetMap[scope] || [];
@@ -89,7 +90,7 @@ var snippetCompleter = {
 	                	iconClass: " " + "ace-completion ace-completion-snippet",
 	                    caption: caption,
 	                    snippet: s.content,
-	                    meta: s.tabTrigger && !s.name ? s.tabTrigger + "\u21E5 " : "snippet",
+	                    meta: s.tabTrigger && !s.name ? s.tabTrigger + "\u21E5 " : "[template]",
 	                    type: "snippet",
 	                    score:100
 	                 });
@@ -107,7 +108,43 @@ var snippetCompleter = {
 	     }
 	 };
 
-var completers = [snippetCompleter, textCompleter, keyWordCompleter];
+var completers = [];
+
+exports.disableTextCompleter = function() {
+	for (var i=0; i < completers.length; i++) {
+		if (completers[i]==textCompleter) {
+			completers.splice(i, 1);
+		}
+	}
+};
+
+exports.disableKeyWordCompleter = function() {
+	for (var i=0; i < completers.length; i++) {
+		if (completers[i]==keyWordCompleter) {
+			completers.splice(i, 1);
+		}
+	}
+};
+
+exports.disableSnippetCompleter = function() {
+	for (var i=0; i < completers.length; i++) {
+		if (completers[i]==snippetCompleter) {
+			completers.splice(i, 1);
+		}
+	}
+};
+
+exports.enableSnippetCompleter = function() {
+ 	completers.push(snippetCompleter);
+};
+
+exports.enableTextCompleter = function() {
+ 	completers.push(textCompleter);
+};
+
+exports.enableKeyWordCompleter = function() {
+ 	completers.push(keyWordCompleter);
+};
 
 exports.setCompleters = function(array) {
     completers=array;
@@ -117,13 +154,15 @@ exports.addCompleter = function(completer) {
     completers.push(completer);
 };
 
-exports.removeCompleter = function(completer) {
-    completers.pop(completer);
+var removeCompleter = function(completer) {
+	for (var i=0; i < completers.length; i++) {
+		if (completers[i]==completer) {
+			completers.splice(i, 1);
+		}
+	}
 };
 
-exports.getCompletersNumber = function() {
-    completers.length;
-};
+exports.removeCompleter = removeCompleter;
 
 var expandSnippet = {
     name: "expandSnippet",
@@ -184,15 +223,43 @@ require("../config").defineOptions(Editor.prototype, "editor", {
     enableSnippets: {
         set: function(val) {
             if (val) {
+            	completers.push(snippetCompleter);
                 this.commands.addCommand(expandSnippet);
                 this.on("changeMode", onChangeMode);
                 onChangeMode(null, this);
             } else {
+                removeCompleter(snippetCompleter);
                 this.commands.removeCommand(expandSnippet);
                 this.off("changeMode", onChangeMode);
             }
         },
         value: false
+    },
+    enableTextCompleter: {
+    	set: function(val) {
+    		if (val) {
+    			completers.push(textCompleter);
+                this.on("changeMode", onChangeMode);
+                onChangeMode(null, this);
+    		} else {
+    			removeCompleter(textCompleter);
+                this.off("changeMode", onChangeMode);
+    		}
+    	},
+    	value: false
+    },
+    enableKeyWordCompleter: {
+    	set: function(val) {
+    		if (val) {
+    			completers.push(keyWordCompleter);
+                this.on("changeMode", onChangeMode);
+                onChangeMode(null, this);
+    		} else {
+    			removeCompleter(keyWordCompleter)
+                this.off("changeMode", onChangeMode);
+    		}
+    	},
+    	value: false
     }
 });
 
@@ -1323,7 +1390,7 @@ var Autocomplete = function() {
         var all = popup.data;
         var selected = all && (all[popup.getHoveredRow()] || all[popup.getRow()]);
         var doc = null;
-        if (!selected || !this.editor || !this.popup.isOpen)
+        if (!popup.isFocused ||  !this.editor || !this.popup.isOpen)
             return this.hideDocTooltip();
         this.editor.completers.some(function(completer) {
             if (completer.getDocTooltip)
@@ -1374,9 +1441,9 @@ var Autocomplete = function() {
         
         var renderer = this.editor.renderer
         var lineHeight = renderer.layerConfig.lineHeight;
-        var tooltipMaxLines = 8; //constant.
-        
-        tooltipNode.style.height = Math.max(Math.max(tooltipNode.style.height,rect.height),tooltipMaxLines*lineHeight) + "px";
+        //var tooltipMaxLines = 8; //constant.
+        //tooltipNode.style.height = Math.max(Math.max(tooltipNode.style.height,rect.height),tooltipMaxLines*lineHeight) + "px";
+        tooltipNode.style.height = Math.max(tooltipNode.style.height,rect.height)+ "px";
         tooltipNode.style.width = rect.width + "px";
         tooltipNode.style.display = "block";
     };
@@ -1770,7 +1837,7 @@ dom.importCssString("\
     text-shadow: 0 0 0.01em;\
 }\
 .ace_autocomplete {\
-    width: 360px;\
+    width: 340px;\
     z-index: 200000;\
     background: #ffffff;\
     color: #444;\
@@ -1862,23 +1929,23 @@ define('ace/autocomplete/text_completer', ['require', 'exports', 'module' , 'ace
         return wordScores;
     }
 
-//    exports.getCompletions = function(editor, session, pos, prefix, callback) {
-//        var wordScore = wordDistance(session, pos, prefix);
-//        var wordList = Object.keys(wordScore);
-//        callback(null, wordList.map(function(word) {
-//            return {
-//                name: word,
-//                value: word,
-//                score: wordScore[word],
-//                meta: "local"
-//            };
-//        }));
-//    };
     exports.getCompletions = function(editor, session, pos, prefix, callback) {
         var wordScore = wordDistance(session, pos, prefix);
         var wordList = Object.keys(wordScore);
-        var completions = [];  
-        callback(null, completions);
+        callback(null, wordList.map(function(word) {
+            return {
+                name: word,
+                value: word,
+                score: wordScore[word],
+                meta: "local"
+            };
+        }));
     };
+//    exports.getCompletions = function(editor, session, pos, prefix, callback) {
+//        var wordScore = wordDistance(session, pos, prefix);
+//        var wordList = Object.keys(wordScore);
+//        var completions = [];  
+//        callback(null, completions);
+//    };
 
 });	

@@ -47,7 +47,6 @@
 		destruct : function() {
 			rap.off("send", this.onSend);
 			this.editor.destroy();
-			this.langTools = null;
 			this.element.parentNode.removeChild(this.element);
 		},
 		
@@ -57,13 +56,14 @@
 			editable: true,
 			isFocused: false,
 			initialContent: true,
-			useCompleter: false,
 			langTools: null,
+			scope: [],
 			completers: null,
-			globalScope: null,
+			backendCompleter: null,
+			proposals: [":"],
 			selectionStart:0,
 			selectionEnd:0,
-			useSharedWorker:true,
+			useSharedWorker: true,
 			
 			onReady : function() {
 				this.ready = true;
@@ -118,9 +118,7 @@
 				this.element.parentNode.removeChild(this.element);
 			},
 			
-			onAppear: function() {
-				//nothing to do.
-			},
+			onAppear: function() {},
 
 			onFocus: function() {
 				this.isFocused = true;
@@ -129,13 +127,6 @@
 					remoteObject.notify("FocusIn", { value : this.editor.getCursorPosition()});
 					this.onChangeCursor();
 				}
-			},
-
-			onChangeCursor: function() {
-				var remoteObject = rap.getRemoteObject(this);
-				if (remoteObject) {
-					remoteObject.notify("CaretEvent", { value : this.editor.getCursorPosition()});
-				}				
 			},
 			
 			onBlur: function() {
@@ -168,8 +159,13 @@
 				}
 			},
 
-			onSend : function() {
-				//nothing to do.
+			onSend : function() {},
+			
+			onChangeCursor: function() {
+				var remoteObject = rap.getRemoteObject(this);
+				if (remoteObject) {
+					remoteObject.notify("CaretEvent", { value : this.editor.getCursorPosition()});
+				}				
 			},
 			
 			onCompletionRequest : function(pos, prefix, callback) {
@@ -283,11 +279,11 @@
 							var annotation = annotations[i];
 							for (var key in annotation) {
 								var positions = annotation[key].match(/\d+/g);
-								if (key=="error")
+								if (key=="ERROR")
 									this._annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"error", server: true});
-								else if (key=="warning")
+								else if (key=="WARNING")
 									this._annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"warning", server: true});
-								else if (key=="info")
+								else if (key=="INFO")
 									this._annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"info", server: true});
 							}	
 			           }
@@ -423,7 +419,7 @@
 					
 					//Load content assist module
 					this.langTools = ace.require("ace/ext/language_tools");
-					this.langTools.completers = [];
+					this.langTools.setCompleters([]);
 					
 					//Set the Id of this editor
 					var guid = this._url;
@@ -437,7 +433,7 @@
 						this._proposals=[":"];
 					
 					var self = this;
-					this.globalScope = {	
+					this.backendCompleter = {	
 						getCompletions: function(editor, session, pos, prefix, callback) {
 							self.onCompletionRequest(pos, prefix, callback);	
 						},
@@ -449,7 +445,7 @@
 						}
 					}
 					//Add completer and enable content assist
-					this.langTools.addCompleter(this.globalScope);			
+					this.langTools.addCompleter(this.backendCompleter);			
 					editor.setOptions({
 					    enableBasicAutocompletion: true,
 					    enableSnippets: true
@@ -575,6 +571,7 @@
 		if (type == "?") suffix = "unknown";
 		else if (type == "keyword") suffix = type;
 		else if (type == "identifier") suffix = type;
+		else if (type == "snippet") suffix = "snippet";
 		else if (type == "number" || type == "string" || type == "bool") suffix = type;
 		else if (/^fn\(/.test(type)) suffix = "fn";
 		else if (/^\[/.test(type)) suffix = "array";
