@@ -24,7 +24,7 @@
             class="org.dslforge.texteditor.BasicTextEditor"
             contributorClass="org.dslforge.texteditor.BasicTextEditorContributor"
             default="false"
-            extensions="txt"
+            extensions="txt, json"
             icon="icons/file_obj.png"
             id="org.dslforge.xtext.common.web.editor"
             name="Text Editor">
