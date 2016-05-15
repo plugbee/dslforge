@@ -32,11 +32,30 @@ public class SharedModule  extends AbstractGenericModule{
 
 	@Override
 	public void configure(Binder binder) {
-		 binder.bind(ILinkingService.class).to(BasicTextLinkingService.class);
-		 binder.bind(IGlobalScopeProvider.class).to(BasicTextGlobalScopeProvider.class);
-		 binder.bind(org.eclipse.xtext.resource.IContainer.Manager.class).to(BasicTextContainerManager.class);
-		 binder.bind(IXtextResourceFactory.class).to(XtextResourceFactory.class);
-		 binder.bind(IXtextResourceSetProvider.class).to(XtextResourceSetProvider.class);
-		 
+		 bindLinkingService(binder);
+		 bindGlobalScopeProvider(binder);
+		 bindContainerManager(binder);
+		 bindResourceFactory(binder);
+		 bindResourceSetProvider(binder);
+	}
+	
+	protected void bindLinkingService(Binder binder) {
+		binder.bind(ILinkingService.class).to(BasicTextLinkingService.class);
+	}
+
+	protected void bindGlobalScopeProvider(Binder binder) {
+		binder.bind(IGlobalScopeProvider.class).to(BasicTextGlobalScopeProvider.class);
+	}
+	
+	protected void bindContainerManager(Binder binder) {
+		binder.bind(org.eclipse.xtext.resource.IContainer.Manager.class).to(BasicTextContainerManager.class);
+	}
+	
+	protected void bindResourceFactory(Binder binder) {
+		binder.bind(IXtextResourceFactory.class).to(XtextResourceFactory.class);
+	}
+
+	protected void bindResourceSetProvider(Binder binder) {
+		binder.bind(IXtextResourceSetProvider.class).to(XtextResourceSetProvider.class);
 	}
 }

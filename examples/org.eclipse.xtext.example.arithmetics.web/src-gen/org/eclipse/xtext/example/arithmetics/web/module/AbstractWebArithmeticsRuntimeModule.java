@@ -3,15 +3,22 @@
  */
 package org.eclipse.xtext.example.arithmetics.web.module;
 
+import org.dslforge.styledtext.jface.IContentAssistProcessor;
+import org.dslforge.xtext.common.IXtextResourceFactory;
+import org.dslforge.xtext.common.IXtextResourceSetProvider;
+import org.dslforge.xtext.common.SharedXtextResourceFactory;
+import org.dslforge.xtext.common.SharedXtextResourceSetProvider;
+import org.dslforge.xtext.common.XtextResourceFactory;
+import org.dslforge.xtext.common.XtextResourceSetProvider;
 import org.dslforge.xtext.common.shared.SharedModule;
-import com.google.inject.Binder;
 import org.eclipse.xtext.example.arithmetics.web.contentassist.ArithmeticsProposalProvider;
 import org.eclipse.xtext.example.arithmetics.web.contentassist.antlr.ArithmeticsParser;
 import org.eclipse.xtext.example.arithmetics.web.contentassist.antlr.internal.InternalArithmeticsLexer;
-import org.dslforge.styledtext.jface.IContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.LexerUIBindings;
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
+
+import com.google.inject.Binder;
 
 public abstract class AbstractWebArithmeticsRuntimeModule extends SharedModule {
 
@@ -25,5 +32,15 @@ public abstract class AbstractWebArithmeticsRuntimeModule extends SharedModule {
 		binder.bind(IContentAssistProcessor.class).to(XtextContentAssistProcessor.class);
 		binder.bind(ContentAssistContext.Factory.class).to(org.eclipse.xtext.ui.editor.contentassist.ParserBasedContentAssistContextFactory.class);
 		binder.bind(org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher.class).to(org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher.IgnoreCase.class);
+	}
+	
+	@Override
+	protected void bindResourceSetProvider(Binder binder) {
+		binder.bind(IXtextResourceSetProvider.class).to(SharedXtextResourceSetProvider.class);
+	}
+
+	@Override
+	protected void bindResourceFactory(Binder binder) {
+		binder.bind(IXtextResourceFactory.class).to(SharedXtextResourceFactory.class);
 	}
 }
