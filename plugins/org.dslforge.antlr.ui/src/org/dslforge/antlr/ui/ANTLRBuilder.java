@@ -178,7 +178,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 					throw new OperationCanceledException();
 				IResource resource = delta.getResource();
 				IPath resourcePath = delta.getProjectRelativePath();
-				if (resource instanceof IFile) {
+				if (resource instanceof IFile && resource.exists()) {
 					if (resourcePath.getFileExtension().equals(ANTLR_FILE_EXTENSION)) {
 						final IFile grammarFile = (IFile) resource;
 						internalBuild(grammarFile, progress.newChild(1));
@@ -262,7 +262,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 					if (progress.isCanceled())
 						throw new OperationCanceledException();
 					IPath resourcePath = resource.getProjectRelativePath();
-					if (resource instanceof IFile) {
+					if (resource instanceof IFile && resource.exists()) {
 						if (resourcePath.getFileExtension().equals(ANTLR_FILE_EXTENSION)) {
 							internalBuild((IFile) resource, progress.newChild(1));
 						}
