@@ -278,7 +278,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 		case WARNING:
 			return AceSeverity.WARNING;
 		case INFO:
-			return AceSeverity.INFORMATION;
+			return AceSeverity.INFO;
 		default:
 			break;
 		}

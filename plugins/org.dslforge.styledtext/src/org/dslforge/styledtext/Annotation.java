@@ -44,7 +44,7 @@ public class Annotation {
 	
 	public enum AceSeverity {
 		ERROR, 
-		INFORMATION, 
+		INFO, 
 		WARNING,
 	}
 
