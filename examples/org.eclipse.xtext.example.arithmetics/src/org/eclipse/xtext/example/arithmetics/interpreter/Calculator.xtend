@@ -29,7 +29,11 @@ import org.eclipse.xtext.example.arithmetics.arithmetics.Plus
 class Calculator {
 
 	def BigDecimal evaluate(Expression obj) {
+		try{
 		return evaluate(obj, ImmutableMap.<String, BigDecimal>of())
+		} catch(ArithmeticException ex) {
+			//ignore, validator will inform.
+		}
 	}
 
 	def BigDecimal evaluate(Expression obj, ImmutableMap<String, BigDecimal> values) {
