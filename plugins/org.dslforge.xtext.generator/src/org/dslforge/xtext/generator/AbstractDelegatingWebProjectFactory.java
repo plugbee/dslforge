@@ -57,7 +57,7 @@ public abstract class AbstractDelegatingWebProjectFactory extends AbstractWebPro
 		List<IProject> result = new ArrayList<IProject>();
 		for (IWebProjectFactory factory : delegates) {
 			progress.subTask(Integer.toString(delegates.indexOf(factory)));
-			factory.createProject(progress.newChild(10));
+			result.add(factory.createProject(progress.newChild(10)));
 		}
 		return result;
 	}

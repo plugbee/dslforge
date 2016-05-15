@@ -81,7 +81,6 @@ public class GenerateXtextWebEditorOperation extends WorkspaceModifyOperation {
 		SubMonitor progress = SubMonitor.convert(monitor, 10);
 		try {
 			DynamicWebProjectFactory factory = (DynamicWebProjectFactory) createWebProjectFactory();
-			factory.createProjects(progress);
 			List<IProject> projects = factory.createProjects(progress.newChild(1));
 			if (progress.isCanceled())
 				throw new OperationCanceledException();

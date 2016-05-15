@@ -51,14 +51,16 @@ public abstract class AbstractWebProjectFactory implements IWebProjectFactory {
 		SubMonitor progress = SubMonitor.convert(monitor, 10);
 		IProject project = getProject();
 		IFolder folder = project.getFolder(folderName);
-		try {
-			folder.create(true, true, progress);
-		} catch (CoreException e) {
-			logger.error(e.getMessage(), e);
-		}  finally {
-			progress.worked(10);
-			progress.done();
+		if (folder != null && !folder.exists()) {
+			try {
+				folder.create(true, true, progress);
+			} catch (CoreException e) {
+				logger.error(e.getMessage(), e);
+			} finally {
+				progress.worked(10);
+			}
 		}
+		progress.done();
 		return folder;
 	}
 	
