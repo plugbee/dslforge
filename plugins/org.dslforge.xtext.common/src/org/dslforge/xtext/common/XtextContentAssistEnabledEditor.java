@@ -55,6 +55,7 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 	@Override
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
+		validateResource();
 	}
 
 	@Override
