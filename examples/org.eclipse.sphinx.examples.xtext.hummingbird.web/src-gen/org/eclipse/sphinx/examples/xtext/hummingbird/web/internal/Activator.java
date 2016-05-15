@@ -37,7 +37,7 @@ public class Activator extends AbstractUIPlugin {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = new WebHummingbirdStandaloneSetup().createInjector("org.eclipse.sphinx.examples.xtext.Hummingbird"));
+				injectors.put(language, injector = new WebHummingbirdStandaloneSetup().createInjector(ORG_ECLIPSE_SPHINX_EXAMPLES_XTEXT_HUMMINGBIRD));
 			}
 			return injector;
 		}

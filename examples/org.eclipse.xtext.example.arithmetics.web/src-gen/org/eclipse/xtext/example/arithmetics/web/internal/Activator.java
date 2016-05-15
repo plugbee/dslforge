@@ -37,7 +37,7 @@ public class Activator extends AbstractUIPlugin {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = new WebArithmeticsStandaloneSetup().createInjector("org.eclipse.xtext.example.arithmetics.Arithmetics"));
+				injectors.put(language, injector = new WebArithmeticsStandaloneSetup().createInjector(ORG_ECLIPSE_XTEXT_EXAMPLE_ARITHMETICS_ARITHMETICS));
 			}
 			return injector;
 		}

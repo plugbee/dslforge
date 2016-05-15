@@ -37,7 +37,7 @@ public class Activator extends AbstractUIPlugin {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = new WebMyDslStandaloneSetup().createInjector("org.xtext.example.mydsl.MyDsl"));
+				injectors.put(language, injector = new WebMyDslStandaloneSetup().createInjector(ORG_XTEXT_EXAMPLE_MYDSL_MYDSL));
 			}
 			return injector;
 		}

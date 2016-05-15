@@ -37,7 +37,7 @@ public class Activator extends AbstractUIPlugin {
 		synchronized (injectors) {
 			Injector injector = injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = new WebStatemachineStandaloneSetup().createInjector("org.eclipse.xtext.example.fowlerdsl.Statemachine"));
+				injectors.put(language, injector = new WebStatemachineStandaloneSetup().createInjector(ORG_ECLIPSE_XTEXT_EXAMPLE_FOWLERDSL_STATEMACHINE));
 			}
 			return injector;
 		}
