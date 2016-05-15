@@ -75,7 +75,7 @@ class GenActivator extends AbstractGenerator {
 				synchronized (injectors) {
 					Injector injector = injectors.get(language);
 					if (injector == null) {
-						injectors.put(language, injector = new Web«grammarShortName.toFirstUpper»StandaloneSetup().createInjector("«grammar.name»"));
+						injectors.put(language, injector = new Web«grammarShortName.toFirstUpper»StandaloneSetup().createInjector(«grammar.name.toUpperCase.replace(".", "_")»));
 					}
 					return injector;
 				}

@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.dslforge.xtext.common.util.FileUtil;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -104,7 +105,7 @@ public class BasicTextGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	private IResourceDescription.Manager getResourceDescriptionManager(URI uri) {
 		Map<String, Object> extensionToFactoryMap = registry
 				.getExtensionToFactoryMap();
-		IResourceServiceProvider resourceServiceProvider = getServiceProvider(uri, extensionToFactoryMap,	getFileExtension(uri));
+		IResourceServiceProvider resourceServiceProvider = getServiceProvider(uri, extensionToFactoryMap, FileUtil.getFileExtension(uri));
 		return resourceServiceProvider != null ? resourceServiceProvider
 				.getResourceDescriptionManager() : null;
 	}
@@ -144,14 +145,5 @@ public class BasicTextGlobalScopeProvider extends DefaultGlobalScopeProvider {
 			throw new RuntimeException("Unresolved proxy: " + uri.toString());
 		}
 		return resourceFactory;
-	}
-	
-	public  String getFileExtension(URI uri) {
-		String[] segments = uri.segments();
-		int len = segments.length;
-		if (len == 0) return null;
-		String lastSegment = segments[len - 1];
-		int i = lastSegment.indexOf('.');
-		return i < 0 ? null : lastSegment.substring(i + 1);
 	}
 }

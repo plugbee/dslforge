@@ -27,7 +27,7 @@ import com.google.inject.Inject;
 public class XtextResourceFactory implements IXtextResourceFactory {
 
 	@Inject
-	private IXtextResourceSetProvider resourceSetProvider;
+	protected IXtextResourceSetProvider resourceSetProvider;
 
 	public Resource createResource(IEditorInput editorInput) {
 		if (editorInput instanceof URIEditorInput) {
@@ -42,7 +42,6 @@ public class XtextResourceFactory implements IXtextResourceFactory {
 		ResourceSet resourceSet = getDefaultResourceSet();
 		URI resourceURI = editorInput.getURI();
 		XtextResource resource = (XtextResource) resourceSet.getResource(resourceURI, true);
-		//resource.setValidationDisabled(false);
 		return resource;
 	}
 	

@@ -460,7 +460,6 @@ public class DatabaseService {
 	public User changePwd(String userName, String pwd) {
 		EntityManagerFactory emf = getEmf();
 		EntityManager em = emf.createEntityManager();
-		// dumpUsers();
 		Query q = em.createQuery("select u from User u where u.id = '" + userName + "'");
 		List<User> users = q.getResultList();
 		if (users.size() > 1)

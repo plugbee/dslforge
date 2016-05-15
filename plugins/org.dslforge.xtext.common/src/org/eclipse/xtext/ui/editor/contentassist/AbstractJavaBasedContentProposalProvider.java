@@ -109,11 +109,11 @@ public abstract class AbstractJavaBasedContentProposalProvider extends AbstractC
 			Image image = getImage(objectOrProxy);
 			result = createCompletionProposal(proposal, displayString, image, contentAssistContext);
 			if (result instanceof ConfigurableCompletionProposal) {
-				//RAP begin
+				//[begin]
 				//((ConfigurableCompletionProposal) result).setProposalContextResource(contentAssistContext.getResource());
 				((ConfigurableCompletionProposal) result).setAdditionalProposalInfo(objectOrProxy);
 				//((ConfigurableCompletionProposal) result).setHover(hover);
-				//RAP end
+				//[end]
 			}
 			getPriorityHelper().adjustCrossReferencePriority(result, contentAssistContext.getPrefix());
 			return result;
@@ -185,9 +185,10 @@ public abstract class AbstractJavaBasedContentProposalProvider extends AbstractC
 			ICompletionProposalAcceptor acceptor) {
 		ICompletionProposal proposal = createCompletionProposal(keyword.getValue(), getKeywordDisplayString(keyword),
 				getImage(keyword), contentAssistContext);
-		//[RAP]
-		((ConfigurableCompletionProposal)proposal).setAdditionalProposalInfo(keyword);
-		//
+		//[begin]
+		if (proposal!=null)
+			((ConfigurableCompletionProposal)proposal).setAdditionalProposalInfo(keyword);
+		//[end]
 		getPriorityHelper().adjustKeywordPriority(proposal, contentAssistContext.getPrefix());
 		acceptor.accept(proposal);
 	}

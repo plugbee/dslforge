@@ -694,6 +694,7 @@ public class BasicText extends Composite {
 	 * 
 	 * @return the JavaScript loader
 	 */
+	@SuppressWarnings("deprecation")
 	private JavaScriptLoader getJavaScriptLoader() {
 		return RWT.getClient().getService(JavaScriptLoader.class);
 	}
