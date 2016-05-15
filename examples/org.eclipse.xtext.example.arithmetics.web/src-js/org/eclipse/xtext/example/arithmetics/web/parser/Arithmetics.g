@@ -14,7 +14,7 @@ options {
 @parser::header {
 }  
  
-
+  
  
 
 rule_Module:
@@ -82,7 +82,7 @@ rule_Multiplication :
 
 rule_PrimaryExpression :
 	'(' rule_Expression ')' |
-	 value=NUMBER |
+	 value=INT |
 	 func=ID ('(' args+=rule_Expression (',' args+=rule_Expression)* ')')?;
 
 
@@ -94,7 +94,6 @@ COMMENT : ('/*' .* '*/' | '//' ~('\r' | '\n')*)   { $channel = HIDDEN; } ;
 
 WS:  (' '|'\r'|'\t'|'\u000C'|'\n') {$channel=HIDDEN;} ;
 
-//NUMBER: INT ('.' INT)?;
-
 INT: ('0'..'9')+;
 
+//NUMBER: ('0'..'9')+ ('.' ('0'..'9')+)?;

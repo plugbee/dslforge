@@ -1,4 +1,4 @@
-// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g 2016-05-08 20:57:38
+// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g 2016-05-14 21:09:17
 
 
 
@@ -21,6 +21,7 @@ var ArithmeticsLexer = function(input, state) {
 
 org.antlr.lang.augmentObject(ArithmeticsLexer, {
     EOF: -1,
+    T__9: 9,
     T__10: 10,
     T__11: 11,
     T__12: 12,
@@ -32,13 +33,11 @@ org.antlr.lang.augmentObject(ArithmeticsLexer, {
     T__18: 18,
     T__19: 19,
     T__20: 20,
-    T__21: 21,
     ID: 4,
-    NUMBER: 5,
+    INT: 5,
     STRING: 6,
     COMMENT: 7,
-    WS: 8,
-    INT: 9
+    WS: 8
 });
 
 (function(){
@@ -46,6 +45,7 @@ var HIDDEN = org.antlr.runtime.Token.HIDDEN_CHANNEL,
     EOF = org.antlr.runtime.Token.EOF;
 org.antlr.lang.extend(ArithmeticsLexer, org.antlr.runtime.Lexer, {
     EOF : -1,
+    T__9 : 9,
     T__10 : 10,
     T__11 : 11,
     T__12 : 12,
@@ -57,24 +57,42 @@ org.antlr.lang.extend(ArithmeticsLexer, org.antlr.runtime.Lexer, {
     T__18 : 18,
     T__19 : 19,
     T__20 : 20,
-    T__21 : 21,
     ID : 4,
-    NUMBER : 5,
+    INT : 5,
     STRING : 6,
     COMMENT : 7,
     WS : 8,
-    INT : 9,
     getGrammarFileName: function() { return "D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g"; }
 });
 org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
+    // $ANTLR start T__9
+    mT__9: function()  {
+        try {
+            var _type = this.T__9;
+            var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:10:6: ( 'module' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:10:8: 'module'
+            this.match("module"); 
+
+
+
+
+            this.state.type = _type;
+            this.state.channel = _channel;
+        }
+        finally {
+        }
+    },
+    // $ANTLR end "T__9",
+
     // $ANTLR start T__10
     mT__10: function()  {
         try {
             var _type = this.T__10;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:10:7: ( 'module' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:10:9: 'module'
-            this.match("module"); 
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:11:7: ( 'import' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:11:9: 'import'
+            this.match("import"); 
 
 
 
@@ -92,9 +110,9 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.T__11;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:11:7: ( 'import' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:11:9: 'import'
-            this.match("import"); 
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:12:7: ( 'def' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:12:9: 'def'
+            this.match("def"); 
 
 
 
@@ -112,10 +130,9 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.T__12;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:12:7: ( 'def' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:12:9: 'def'
-            this.match("def"); 
-
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:13:7: ( '(' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:13:9: '('
+            this.match('('); 
 
 
 
@@ -132,9 +149,9 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.T__13;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:13:7: ( '(' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:13:9: '('
-            this.match('('); 
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:14:7: ( ',' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:14:9: ','
+            this.match(','); 
 
 
 
@@ -151,9 +168,9 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.T__14;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:14:7: ( ',' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:14:9: ','
-            this.match(','); 
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:15:7: ( ')' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:15:9: ')'
+            this.match(')'); 
 
 
 
@@ -170,9 +187,9 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.T__15;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:15:7: ( ')' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:15:9: ')'
-            this.match(')'); 
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:16:7: ( ':' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:16:9: ':'
+            this.match(':'); 
 
 
 
@@ -189,9 +206,9 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.T__16;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:16:7: ( ':' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:16:9: ':'
-            this.match(':'); 
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:17:7: ( ';' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:17:9: ';'
+            this.match(';'); 
 
 
 
@@ -208,9 +225,9 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.T__17;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:17:7: ( ';' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:17:9: ';'
-            this.match(';'); 
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:18:7: ( '+' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:18:9: '+'
+            this.match('+'); 
 
 
 
@@ -227,9 +244,9 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.T__18;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:18:7: ( '+' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:18:9: '+'
-            this.match('+'); 
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:19:7: ( '-' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:19:9: '-'
+            this.match('-'); 
 
 
 
@@ -246,9 +263,9 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.T__19;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:19:7: ( '-' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:19:9: '-'
-            this.match('-'); 
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:20:7: ( '*' )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:20:9: '*'
+            this.match('*'); 
 
 
 
@@ -265,25 +282,6 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.T__20;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:20:7: ( '*' )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:20:9: '*'
-            this.match('*'); 
-
-
-
-            this.state.type = _type;
-            this.state.channel = _channel;
-        }
-        finally {
-        }
-    },
-    // $ANTLR end "T__20",
-
-    // $ANTLR start T__21
-    mT__21: function()  {
-        try {
-            var _type = this.T__21;
-            var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
             // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:21:7: ( '/' )
             // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:21:9: '/'
             this.match('/'); 
@@ -296,7 +294,7 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         finally {
         }
     },
-    // $ANTLR end "T__21",
+    // $ANTLR end "T__20",
 
     // $ANTLR start ID
     mID: function()  {
@@ -675,9 +673,9 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
         try {
             var _type = this.INT;
             var _channel = org.antlr.runtime.BaseRecognizer.DEFAULT_TOKEN_CHANNEL;
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:99:4: ( ( '0' .. '9' )+ )
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:99:6: ( '0' .. '9' )+
-            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:99:6: ( '0' .. '9' )+
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:97:4: ( ( '0' .. '9' )+ )
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:97:6: ( '0' .. '9' )+
+            // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:97:6: ( '0' .. '9' )+
             var cnt8=0;
             loop8:
             do {
@@ -691,7 +689,7 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
 
                 switch (alt8) {
                 case 1 :
-                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:99:7: '0' .. '9'
+                    // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:97:7: '0' .. '9'
                     this.matchRange('0','9'); 
 
 
@@ -719,108 +717,108 @@ org.antlr.lang.augmentObject(ArithmeticsLexer.prototype, {
     // $ANTLR end "INT",
 
     mTokens: function() {
-        // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:8: ( T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | ID | STRING | COMMENT | WS | INT )
+        // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | ID | STRING | COMMENT | WS | INT )
         var alt9=17;
         alt9 = this.dfa9.predict(this.input);
         switch (alt9) {
             case 1 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:10: T__10
-                this.mT__10(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:10: T__9
+                this.mT__9(); 
 
 
                 break;
             case 2 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:16: T__11
-                this.mT__11(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:15: T__10
+                this.mT__10(); 
 
 
                 break;
             case 3 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:22: T__12
-                this.mT__12(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:21: T__11
+                this.mT__11(); 
 
 
                 break;
             case 4 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:28: T__13
-                this.mT__13(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:27: T__12
+                this.mT__12(); 
 
 
                 break;
             case 5 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:34: T__14
-                this.mT__14(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:33: T__13
+                this.mT__13(); 
 
 
                 break;
             case 6 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:40: T__15
-                this.mT__15(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:39: T__14
+                this.mT__14(); 
 
 
                 break;
             case 7 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:46: T__16
-                this.mT__16(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:45: T__15
+                this.mT__15(); 
 
 
                 break;
             case 8 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:52: T__17
-                this.mT__17(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:51: T__16
+                this.mT__16(); 
 
 
                 break;
             case 9 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:58: T__18
-                this.mT__18(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:57: T__17
+                this.mT__17(); 
 
 
                 break;
             case 10 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:64: T__19
-                this.mT__19(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:63: T__18
+                this.mT__18(); 
 
 
                 break;
             case 11 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:70: T__20
-                this.mT__20(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:69: T__19
+                this.mT__19(); 
 
 
                 break;
             case 12 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:76: T__21
-                this.mT__21(); 
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:75: T__20
+                this.mT__20(); 
 
 
                 break;
             case 13 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:82: ID
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:81: ID
                 this.mID(); 
 
 
                 break;
             case 14 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:85: STRING
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:84: STRING
                 this.mSTRING(); 
 
 
                 break;
             case 15 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:92: COMMENT
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:91: COMMENT
                 this.mCOMMENT(); 
 
 
                 break;
             case 16 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:100: WS
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:99: WS
                 this.mWS(); 
 
 
                 break;
             case 17 :
-                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:103: INT
+                // D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-js\\org\\eclipse\\xtext\\example\\arithmetics\\web\\parser\\Arithmetics.g:1:102: INT
                 this.mINT(); 
 
 
@@ -941,7 +939,7 @@ ArithmeticsLexer.DFA9 = function(recognizer) {
 
 org.antlr.lang.extend(ArithmeticsLexer.DFA9, org.antlr.runtime.DFA, {
     getDescription: function() {
-        return "1:1: Tokens : ( T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | ID | STRING | COMMENT | WS | INT );";
+        return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | ID | STRING | COMMENT | WS | INT );";
     },
     dummy: null
 });

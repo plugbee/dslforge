@@ -1,4 +1,4 @@
-// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g 2016-05-08 20:57:27
+// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-js\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\parser\\Hummingbird.g 2016-05-11 21:02:58
 
 
 
