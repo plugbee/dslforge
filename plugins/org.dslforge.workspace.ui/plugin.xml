@@ -9,7 +9,7 @@
             icon="icons/earth_view.png"
             id="org.dslforge.navigator.view"
             name="Project Explorer"
-            restorable="false">
+            restorable="true">
       </view>
    </extension>
    <extension
