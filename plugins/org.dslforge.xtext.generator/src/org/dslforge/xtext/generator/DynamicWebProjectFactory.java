@@ -54,7 +54,9 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.pde.internal.core.ClasspathComputer;
+import org.eclipse.swt.widgets.Display;
 
 import com.google.common.collect.Lists;
 
@@ -161,27 +163,24 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 		final IProject project = this.configuration.getProject();
 		if (project.exists()) {
 			//project exists -> ask user
-			// final Display display = Display.getDefault();
-			// if (display != null) {
-			// display.syncExec(new Runnable() {
-			// @Override
-			// public void run() {
-			// boolean openConfirm =
-			// MessageDialog.openConfirm(display.getActiveShell(),
-			// this.getClass().getSimpleName(), "A project called " +
-			// project.getName()
-			// + " already exists in the workspace. Would you like to proceed
-			// anyway?");
-			// if (openConfirm) {
-			// try {
-			// project.delete(true, true, progress);
-			// } catch (CoreException e) {
-			// logger.error(e.getMessage(), e);
-			// }
-			// }
-			// }
-			// });
-			// }
+			final Display display = Display.getDefault();
+			if (display != null) {
+				display.syncExec(new Runnable() {
+					@Override
+					public void run() {
+						boolean openConfirm = MessageDialog.openConfirm(display.getActiveShell(),
+								this.getClass().getSimpleName(), "A project called " + project.getName()
+										+ " already exists in the workspace. Would you like to proceed anyway?");
+						if (openConfirm) {
+							try {
+								project.delete(true, true, progress);
+							} catch (CoreException e) {
+								logger.error(e.getMessage(), e);
+							}
+						}
+					}
+				});
+			}
 			//project exists -> incremental mode
 			new GenGrammar().doGenerate(this, progress.newChild(1));
 			new GenMode().doGenerate(this, progress.newChild(1));
@@ -222,7 +221,29 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 		}
 		return project;
 	}
-
+	
+	public void deleteProject(final IProject project, final IProgressMonitor monitor) {
+		//project exists -> ask user
+		final Display display = Display.getDefault();
+		if (display != null) {
+			display.syncExec(new Runnable() {
+				@Override
+				public void run() {
+					boolean openConfirm = MessageDialog.openConfirm(display.getActiveShell(),
+							this.getClass().getSimpleName(), "A project called " + project.getName()
+									+ " already exists in the workspace. Would you like to proceed anyway?");
+					if (openConfirm) {
+						try {
+							project.delete(true, true, monitor);
+						} catch (CoreException e) {
+							logger.error(e.getMessage(), e);
+						}
+					}
+				}
+			});
+		}
+	}
+	
 	public void convertToJava(IProgressMonitor monitor) {
 		SubMonitor progress = SubMonitor.convert(monitor, 1);
 		try {
