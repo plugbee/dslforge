@@ -10,8 +10,8 @@ The framework is composed of two features:
 ## Tooling
 The Tooling has two code generators which take Xtext grammar as input and generate two variants of editors.
 Two generators are contributed:
-- _*Generate ACE Editor*_ outputs a JavaScript Parser and ACE modules from the language grammar. The generated code is packaged into a standalone HTML/JavaScript web application.
-- _*Generate Xtext RAP Editor*_ outputs a JavaScript parser and ACE modules from the language grammar. The generated code is packaged into an Eclipse RAP web plugin.
+- _*Generate ACE Editor*_ produces a text editor with JavaScript parsers and lexers from ANTLR v3. You get an ACE editor tailored for the language definition which runs entirely on the client.
+- _*Generate Xtext RAP Editor*_ produces a plugin to be packaged with the original Xtext language plugin into an Eclipse workbench application enabling precise interaction between the client and the server. You get a RAP editor with advanced client server interaction model based on our styled text widget.
 
 ## Runtime
 The Runtime is required if you develop against the Eclipse Remote Application Platform (RAP). It is a set of plugins providing services such as typed content assist, workspace management, persistency, etc. The plugins are built on top of the Basic Equinox RAP Target you can already download from the Eclipse RAP update sites.
