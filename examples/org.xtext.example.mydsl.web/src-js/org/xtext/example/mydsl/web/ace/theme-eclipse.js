@@ -162,7 +162,7 @@ background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZ
 .ace-completion:before { position: absolute; left: 0; bottom: 0; border-radius: 50%; font-weight: bold; height: 13px; width: 13px; font-size:11px; /*BYM*/ line-height: 14px; text-align: center; color: white; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }\
 .ace-completion-unknown:before { content:'?'; background: #4bb; }\
 .ace-completion-object:before { content:'R'; background: #77c; }\
-.ace-completion-snippet:before { content:'S'; background: #7c7; }\
+.ace-completion-snippet:before { content:'T'; background: #7c7; }\
 .ace-completion-keyword:before { content:'K'; background: #78002D; }\
 .ace-completion-array:before { content:'A'; background: #c66; }\
 .ace-completion-number:before { content:'1'; background: #999; }\
