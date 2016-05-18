@@ -42,6 +42,7 @@ var WorkerClient = require("../worker/worker_client").WorkerClient;
 var Mode = function() {
     this.HighlightRules = hummingbirdHighlightRules;
     this.$outdent = new MatchingBraceOutdent();
+    this.$behaviour = new CstyleBehaviour();
     this.foldingRules = new CStyleFoldMode();
 };
 oop.inherits(Mode, TextMode);

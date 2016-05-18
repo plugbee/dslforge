@@ -113,7 +113,7 @@ public class «grammarShortName» extends BasicText {
 				this.base(arguments, properties);
 			},
 			members : {
-							
+
 				createEditor : function() {
 					var basePath = 'rwt-resources/src-js/org/dslforge/styledtext/ace';
 					ace.require("ace/config").set("basePath", basePath);
@@ -139,10 +139,12 @@ public class «grammarShortName» extends BasicText {
 					    editor.getSession().setTabSize(4);
 					    editor.getSession().setUseSoftTabs(true);
 						editor.getSession().getUndoManager().reset();
-						editor.setShowPrintMargin(false);		 
-						editor.setReadOnly(!editable);		
+						editor.setShowPrintMargin(false);
+						editor.setBehavioursEnabled(true);
+						editor.setWrapBehavioursEnabled(true);
+						editor.setReadOnly(!editable);
 						editor.$blockScrolling = Infinity;
-											
+
 						//Configure content assist feature
 						this.langTools = ace.require("ace/ext/language_tools");
 						this.backendCompleter = {
