@@ -413,10 +413,11 @@
 				    editor.getSession().setTabSize(4);
 				    editor.getSession().setUseSoftTabs(true);
 					editor.getSession().getUndoManager().reset();
-					editor.setShowPrintMargin(false);		 
+					editor.setShowPrintMargin(false);
+					editor.setBehavioursEnabled(true);
+					editor.setWrapBehavioursEnabled(true);
 					editor.setReadOnly(!editable);							
-					editor.$blockScrolling = Infinity;
-					
+					editor.$blockScrolling = Infinity;				
 					//Load content assist module
 					this.langTools = ace.require("ace/ext/language_tools");
 					this.langTools.setCompleters([]);

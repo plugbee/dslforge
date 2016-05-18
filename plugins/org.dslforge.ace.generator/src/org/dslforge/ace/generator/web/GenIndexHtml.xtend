@@ -75,7 +75,9 @@ class GenIndexHtml extends AbstractGenerator{
 	    editor.getSession().setUseSoftTabs(true);
 		editor.getSession().getUndoManager().reset();
 		
-		editor.setShowPrintMargin(false);		 
+		editor.setShowPrintMargin(false);
+		editor.setBehavioursEnabled(true);
+		editor.setWrapBehavioursEnabled(true); 
 		editor.setReadOnly(false);			
 	    editor.setFontSize(14);   
 	    editor.setTheme("ace/theme/eclipse");
