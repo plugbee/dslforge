@@ -55,7 +55,7 @@
 					this.langTools = ace.require("ace/ext/language_tools");
 					this.editor.setOptions({
 					    enableBasicAutocompletion: true,
-					    enableSnippets: false
+					    enableSnippets: true
 					});
 					this.backendCompleter = {
 						getMode: function() {
@@ -197,22 +197,14 @@
 			},
 
 			onFocus: function() {
-				this.editor.setOptions({
-				    enableBasicAutocompletion: true,
-				    enableSnippets: true
-				});
 				this.langTools.addCompleter(this.backendCompleter);
-				this.completers = editor.completers;
+				this.completers = this.editor.completers;
 				this.base(arguments);
 			},
 			
 			onBlur: function() {
-				this.editor.setOptions({
-				    enableBasicAutocompletion: false,
-				    enableSnippets: false
-				});
 				this.langTools.removeCompleter(this.backendCompleter);
-				this.completers = editor.completers;
+				this.completers = this.editor.completers;
 				this.base(arguments);
 			},
 
