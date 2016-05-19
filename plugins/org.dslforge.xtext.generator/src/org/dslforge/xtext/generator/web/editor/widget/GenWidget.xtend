@@ -147,6 +147,10 @@ public class «grammarShortName» extends BasicText {
 
 						//Configure content assist feature
 						this.langTools = ace.require("ace/ext/language_tools");
+						this.editor.setOptions({
+							enableBasicAutocompletion: true,
+							enableSnippets: true
+						});
 						this.backendCompleter = {
 							getMode: function() {
 								return editor.getSession().getMode();
@@ -287,21 +291,15 @@ public class «grammarShortName» extends BasicText {
 				},
 	
 				onFocus: function() {
-					this.base(arguments);
 					this.langTools.addCompleter(this.backendCompleter);
-					this.editor.setOptions({
-					    enableBasicAutocompletion: true,
-					    enableSnippets: true
-					});
+					this.completers = this.editor.completers;
+					this.base(arguments);
 				},
 				
 				onBlur: function() {
-					this.base(arguments);
 					this.langTools.removeCompleter(this.backendCompleter);
-					this.editor.setOptions({
-					    enableBasicAutocompletion: false,
-					    enableSnippets: false
-					});
+					this.completers = this.editor.completers;
+					this.base(arguments);
 				},
 	
 				destroy : function() {

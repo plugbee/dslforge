@@ -198,7 +198,7 @@
 						this.initialContent=false;
 						this.editor.getSession().getUndoManager().reset();		
 					}
-				}
+				}	
 			},
 			
 			getOffset: function(properties) {
