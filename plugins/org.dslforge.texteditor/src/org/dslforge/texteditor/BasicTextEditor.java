@@ -79,10 +79,8 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.VerifyEvent;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
-import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -343,23 +341,26 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		textWidget.setFont(font);
 
 		// set background color
-		Color color = new Color(parent.getDisplay(), new RGB(229, 242, 255));
-		textWidget.setBackground(color);
+		//Color color = new Color(parent.getDisplay(), new RGB(229, 242, 255));
+		//textWidget.setBackground(color);
 
 		// set read/write access
 		textWidget.setEditable(true);
 
-		// add annotations
-		List<Annotation> annotations = new ArrayList<Annotation>();
-		annotations.add(new Annotation(AceSeverity.ERROR, 1, 3, "This is an error"));
-		annotations.add(new Annotation(AceSeverity.WARNING, 3, 1, "This is a warning"));
-		annotations.add(new Annotation(AceSeverity.INFO, 5, 1, "This is an info"));
-		textWidget.setAnnotations(annotations);
-
-		// highlight text ranges
-		List<TextRange> ranges = new ArrayList<TextRange>();
-		ranges.add(new TextRange(1, 0, 1, 40));
-		textWidget.setMarkers(ranges);
+		// // add annotations
+		// List<Annotation> annotations = new ArrayList<Annotation>();
+		// annotations.add(new Annotation(AceSeverity.ERROR, 1, 3, "This is an
+		// error"));
+		// annotations.add(new Annotation(AceSeverity.WARNING, 3, 1, "This is a
+		// warning"));
+		// annotations.add(new Annotation(AceSeverity.INFO, 5, 1, "This is an
+		// info"));
+		// textWidget.setAnnotations(annotations);
+		//
+		// // highlight text ranges
+		// List<TextRange> ranges = new ArrayList<TextRange>();
+		// ranges.add(new TextRange(1, 0, 1, 40));
+		// textWidget.setMarkers(ranges);
 		
 		return textWidget;
 	}
