@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.codingpark.piraterobot.play.web
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.codingpark.piraterobot.play.web; singleton:=true
+Bundle-Activator: org.codingpark.piraterobot.play.web.internal.Activator
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.rap.ui,
+ org.eclipse.rap.ui.navigator,
+ org.eclipse.emf.rap.common.ui,
+ org.eclipse.emf.rap.edit.ui,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore,
+ com.google.inject,
+ org.eclipse.xtext,
+ org.eclipse.xtend.lib,
+ org.dslforge.workspace,
+ org.dslforge.xtext.common,
+ org.dslforge.texteditor,
+ org.dslforge.styledtext,
+ org.codingpark.piraterobot.play
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -1,0 +1,34 @@
+grammar org.codingpark.piraterobot.Play  with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate play "http://www.codingpark.org/piraterobot/Play"
+
+
+PlayModel:
+	// For the moment only one. procedures+=Procedure*
+	procedures+=Procedure
+;
+
+Procedure:
+	'procedure' name=ID '(' //parameters+=Parameter*   no parameters yet
+	')' '{' actions+=Action* '}'
+;
+	
+Action: 
+	// we put num also in dig and fight just to add validation messages
+	(isUp?='up' '(' (parameterValue = ParameterValue)? ')') |
+	(isRight?='right' '(' (parameterValue = ParameterValue)? ')') |
+	(isDown?='down' '(' (parameterValue = ParameterValue)? ')') |
+	(isLeft?='left' '(' (parameterValue = ParameterValue)? ')') |
+	(isDig?='dig' '(' (parameterValue = ParameterValue)? ')') |
+	(isJump?='jump' '(' (parameterValue = ParameterValue)? ')') |
+	(isFight?='fight' '(' (parameterValue = ParameterValue)? ')') |
+	(isRepeat?='repeat' '(' (parameterValue = ParameterValue)? ')' '{' actions+=Action* '}')
+;
+
+ParameterValue:
+	// it will have expressions
+	num = INT
+;
+

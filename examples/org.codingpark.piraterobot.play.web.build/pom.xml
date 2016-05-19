@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>org.codingpark.piraterobot.play.web.build.parent</artifactId>
+    <relativePath>./parent</relativePath>
+    <version>1.0.0-SNAPSHOT</version>
+    <groupId>dslforge.example</groupId>
+  </parent>
+
+  <artifactId>org.codingpark.piraterobot.play.web.build</artifactId>
+  <packaging>pom</packaging>
+
+  <name>org.codingpark.piraterobot.play.web.build</name>
+  <modules>
+		<module>../org.codingpark.piraterobot.play.web.target/neon</module>
+		<module>../org.codingpark.piraterobot.play.web</module>	
+		<module>../org.codingpark.piraterobot.play</module> 
+    	<module>./play</module>
+  </modules>
+
+  <groupId>dslforge.example</groupId>
+  <version>1.0.0-SNAPSHOT</version>
+</project>	

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!-- @generated dslforge -->
+<plugin>
+      <extension
+         point="org.eclipse.rap.ui.resources">
+      <resource
+          class="org.codingpark.piraterobot.play.web.editor.widget.PlayResource">
+		<dependsOn
+			resourceId="org.dslforge.styledtext.basictext">
+		</dependsOn>
+      </resource>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.themeableWidgets">
+      <widget
+            class="org.codingpark.piraterobot.play.web.editor.widget.Play"
+            id="org.codingpark.piraterobot.play.web.editor.widget.Play"
+            name="Play">
+      </widget>
+   </extension>
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.codingpark.piraterobot.play.web.editor"
+            name="Play Model Editor"
+		            extensions="play"
+           class="org.codingpark.piraterobot.play.web.editor.PlayEditor"
+            contributorClass="org.codingpark.piraterobot.play.web.editor.PlayActionBarContributor">
+      </editor>
+   </extension>
+   <extension
+     point="org.dslforge.xtext.common.contribution">
+  <contribution
+       factory="org.codingpark.piraterobot.play.web.PlayExecutableExtensionFactory"
+        path="/org.codingpark.piraterobot.play/src/org/codingpark/piraterobot/Play.xtext"
+        extension="play">
+  </contribution>
+</extension>
+</plugin>
