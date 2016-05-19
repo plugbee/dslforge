@@ -223,6 +223,7 @@ require("../config").defineOptions(Editor.prototype, "editor", {
     enableSnippets: {
         set: function(val) {
             if (val) {
+                this.completers = completers;
             	completers.push(snippetCompleter);
                 this.commands.addCommand(expandSnippet);
                 this.on("changeMode", onChangeMode);
@@ -238,6 +239,7 @@ require("../config").defineOptions(Editor.prototype, "editor", {
     enableTextCompleter: {
     	set: function(val) {
     		if (val) {
+                this.completers = completers;
     			completers.push(textCompleter);
                 this.on("changeMode", onChangeMode);
                 onChangeMode(null, this);
@@ -251,6 +253,7 @@ require("../config").defineOptions(Editor.prototype, "editor", {
     enableKeyWordCompleter: {
     	set: function(val) {
     		if (val) {
+                this.completers = completers;
     			completers.push(keyWordCompleter);
                 this.on("changeMode", onChangeMode);
                 onChangeMode(null, this);

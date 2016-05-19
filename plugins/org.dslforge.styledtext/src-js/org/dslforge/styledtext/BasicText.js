@@ -420,7 +420,10 @@
 					editor.$blockScrolling = Infinity;				
 					//Load content assist module
 					this.langTools = ace.require("ace/ext/language_tools");
-					this.langTools.setCompleters([]);
+					editor.setOptions({
+					    enableBasicAutocompletion: true,
+					    enableSnippets: false
+					});
 					
 					//Set the Id of this editor
 					var guid = this._url;
@@ -446,11 +449,7 @@
 						}
 					}
 					//Add completer and enable content assist
-					this.langTools.addCompleter(this.backendCompleter);			
-					editor.setOptions({
-					    enableBasicAutocompletion: true,
-					    enableSnippets: true
-					});
+					this.langTools.addCompleter(this.backendCompleter);
 					
 					//Add documentation hover
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	

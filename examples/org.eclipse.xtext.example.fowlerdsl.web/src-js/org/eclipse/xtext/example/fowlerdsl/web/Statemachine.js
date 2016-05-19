@@ -53,6 +53,10 @@
 										
 					//Configure content assist feature
 					this.langTools = ace.require("ace/ext/language_tools");
+					this.editor.setOptions({
+					    enableBasicAutocompletion: true,
+					    enableSnippets: false
+					});
 					this.backendCompleter = {
 						getMode: function() {
 							return editor.getSession().getMode();
@@ -88,7 +92,8 @@
 							var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
 							var httpURL = computeWorkerPath(filePath);
 							var worker = this.worker = new SharedWorker(httpURL);		
-							editor.on("change", function(event) {					        
+							editor.on("change", function(event) {
+								self.onModify();
 								worker.port.postMessage({
 									message: editor.getValue(), 
 							        guid: guid, 
@@ -192,21 +197,23 @@
 			},
 
 			onFocus: function() {
-				this.base(arguments);
-				this.langTools.addCompleter(this.backendCompleter);
 				this.editor.setOptions({
 				    enableBasicAutocompletion: true,
 				    enableSnippets: true
 				});
+				this.langTools.addCompleter(this.backendCompleter);
+				this.completers = editor.completers;
+				this.base(arguments);
 			},
 			
 			onBlur: function() {
-				this.base(arguments);
-				this.langTools.removeCompleter(this.backendCompleter);
 				this.editor.setOptions({
 				    enableBasicAutocompletion: false,
 				    enableSnippets: false
 				});
+				this.langTools.removeCompleter(this.backendCompleter);
+				this.completers = editor.completers;
+				this.base(arguments);
 			},
 
 			destroy : function() {

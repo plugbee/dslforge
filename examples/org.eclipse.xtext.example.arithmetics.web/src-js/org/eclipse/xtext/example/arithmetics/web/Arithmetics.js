@@ -47,12 +47,16 @@
 					editor.getSession().getUndoManager().reset();
 					editor.setShowPrintMargin(false);
 					editor.setBehavioursEnabled(true);
-					editor.setWrapBehavioursEnabled(true);
+					editor.setWrapBehavioursEnabled(true);	
 					editor.setReadOnly(!editable);		
 					editor.$blockScrolling = Infinity;
 										
 					//Configure content assist feature
 					this.langTools = ace.require("ace/ext/language_tools");
+					this.editor.setOptions({
+					    enableBasicAutocompletion: true,
+					    enableSnippets: false
+					});
 					this.backendCompleter = {
 						getMode: function() {
 							return editor.getSession().getMode();
@@ -193,21 +197,23 @@
 			},
 
 			onFocus: function() {
-				this.base(arguments);
-				this.langTools.addCompleter(this.backendCompleter);
 				this.editor.setOptions({
 				    enableBasicAutocompletion: true,
 				    enableSnippets: true
 				});
+				this.langTools.addCompleter(this.backendCompleter);
+				this.completers = editor.completers;
+				this.base(arguments);
 			},
 			
 			onBlur: function() {
-				this.base(arguments);
-				this.langTools.removeCompleter(this.backendCompleter);
 				this.editor.setOptions({
 				    enableBasicAutocompletion: false,
 				    enableSnippets: false
 				});
+				this.langTools.removeCompleter(this.backendCompleter);
+				this.completers = editor.completers;
+				this.base(arguments);
 			},
 
 			destroy : function() {
