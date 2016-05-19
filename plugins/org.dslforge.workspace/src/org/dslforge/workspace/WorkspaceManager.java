@@ -75,7 +75,7 @@ public class WorkspaceManager {
 	}
 
 	private String computeResourceName(URI absoluteURI) {
-		URI rootURI = URI.createFileURI(getWorkspaceRoot() + IWorkspaceConstants.PATH_SEPARATOR);
+		URI rootURI = URI.createFileURI(getWorkspaceRoot());
 		URI relativeURI = absoluteURI.deresolve(rootURI);
 		String[] segments = relativeURI.segments();
 		if (segments.length == 0) {
@@ -90,7 +90,7 @@ public class WorkspaceManager {
 	}
 
 	private String computeRelativePath(URI absoluteURI) {
-		URI rootURI = URI.createFileURI(getWorkspaceRoot() + IWorkspaceConstants.PATH_SEPARATOR);
+		URI rootURI = URI.createFileURI(getWorkspaceRoot());
 		URI relativeURI = absoluteURI.deresolve(rootURI);
 		String[] segments = relativeURI.segments();
 		if (segments.length == 0) {
@@ -100,7 +100,7 @@ public class WorkspaceManager {
 	}
 
 	private String computeProjectName(URI absoluteURI) {
-		URI rootURI = URI.createFileURI(getWorkspaceRoot() + IWorkspaceConstants.PATH_SEPARATOR);
+		URI rootURI = URI.createFileURI(getWorkspaceRoot());
 		URI relativeURI = absoluteURI.deresolve(rootURI);
 		String[] segments = relativeURI.segments();
 		if (segments.length == 0) {
@@ -113,10 +113,10 @@ public class WorkspaceManager {
 	public void createProject(String projectName, String description, String visibility) {
 		String userId = (String) RWT.getUISession().getAttribute("user");
 		String workspaceRoot = getWorkspaceRoot();
-		String projectPath = workspaceRoot + IWorkspaceConstants.PATH_SEPARATOR + projectName;
+		String projectPath = workspaceRoot + projectName;
 		final File file = new File(projectPath);
 		if (!file.exists()) {
-			createProject(projectName, description, IWorkspaceConstants.PATH_SEPARATOR + projectName, userId, visibility);
+			createProject(projectName, description, projectName, userId, visibility);
 			Display.getCurrent().syncExec(new Runnable() {
 				@Override
 				public void run() {
@@ -220,7 +220,7 @@ public class WorkspaceManager {
 			// delete files in the porject
 			List<Resource> allResourcesInProject = DatabaseService.getInstance().getAllResourcesInProject(projectName);
 			for (Resource r : allResourcesInProject) {
-				final String filePath = getWorkspaceRoot() + IWorkspaceConstants.PATH_SEPARATOR + r.getPath().replace("/", "\\");
+				final String filePath = getWorkspaceRoot() + r.getPath().replace("/", "\\");
 				final File file = new File(filePath);
 				if (file.exists()) {
 					if (!isLocked(file)) {
@@ -238,7 +238,7 @@ public class WorkspaceManager {
 			// delete folders in the project
 			List<Folder> folders = DatabaseService.getInstance().getAllFoldersInProject(projectName);
 			for (Folder folder : folders) {
-				final String filePath = getWorkspaceRoot() + IWorkspaceConstants.PATH_SEPARATOR + folder.getPath().replace("/", "\\");
+				final String filePath = getWorkspaceRoot() + folder.getPath().replace("/", "\\");
 				final File file = new File(filePath);
 				if (file.exists()) {
 					if (!isLocked(file)) {
@@ -291,7 +291,7 @@ public class WorkspaceManager {
 		Folder folder = getFolder(file.getAbsolutePath());
 		if (folder == null) {
 			MessageDialog.openInformation(null, "Unexpected Error",
-					"Oops, could not find Folder " + file.getAbsolutePath());
+					"Could not find Folder " + file.getAbsolutePath());
 			return false;
 		}
 		if (file.exists()) {
