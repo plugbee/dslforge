@@ -31,8 +31,8 @@ class Calculator {
 	def BigDecimal evaluate(Expression obj) {
 		try{
 		return evaluate(obj, ImmutableMap.<String, BigDecimal>of())
-		} catch(ArithmeticException ex) {
-			//ignore, validator will inform.
+		} catch(Exception ex) {
+			//ignore.
 		}
 	}
 
