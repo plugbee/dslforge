@@ -16,7 +16,6 @@ public class DomainmodelEditor extends AbstractDomainmodelEditor {
 	@Override
 	protected void handleTextChanged(JsonObject object) {
 		super.handleTextChanged(object);
-		//enable validation on text change
 		validateResource();
 	}
 }

@@ -3,11 +3,19 @@
  */
 package org.eclipse.xtext.example.arithmetics.web.editor;
 
+import org.eclipse.rap.json.JsonObject;
+
 public class ArithmeticsEditor extends AbstractArithmeticsEditor {
 
 	static final String EDITOR_ID = "org.eclipse.xtext.example.arithmetics.web.editor";
 
 	public ArithmeticsEditor() {
 		super();
+	}
+	
+	@Override
+	protected void handleTextChanged(JsonObject object) {
+		super.handleTextChanged(object);
+		validateResource();
 	}
 }

@@ -8,8 +8,6 @@ import org.dslforge.xtext.common.IXtextResourceFactory;
 import org.dslforge.xtext.common.IXtextResourceSetProvider;
 import org.dslforge.xtext.common.SharedXtextResourceFactory;
 import org.dslforge.xtext.common.SharedXtextResourceSetProvider;
-import org.dslforge.xtext.common.XtextResourceFactory;
-import org.dslforge.xtext.common.XtextResourceSetProvider;
 import org.dslforge.xtext.common.shared.SharedModule;
 import org.eclipse.xtext.example.arithmetics.web.contentassist.ArithmeticsProposalProvider;
 import org.eclipse.xtext.example.arithmetics.web.contentassist.antlr.ArithmeticsParser;

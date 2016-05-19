@@ -117,7 +117,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	private ArrayList<String> index;
 	private TextEditorSavable fSavable;
 	private boolean isDirty;
-
+	
 	public BasicTextEditor() {
 		super();
 	}
