@@ -16,6 +16,7 @@
 package org.dslforge.xtext.common.wizards;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import java.util.Map;
 
 import org.dslforge.workspace.ui.wizards.AbstractNewResourceWizardPage;
 import org.dslforge.xtext.common.registry.LanguageRegistry;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -42,6 +44,10 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+
 public class NewModelFileWizardPage extends AbstractNewResourceWizardPage {
 
 	private static final long serialVersionUID = 1L;
@@ -54,15 +60,20 @@ public class NewModelFileWizardPage extends AbstractNewResourceWizardPage {
 
 	private List<String> getAvailableDSLNames() {
 		List<String> availableLanguages = LanguageRegistry.INSTANCE.getMetamodels();
-		for (String language : availableLanguages)
-			language = tinify(language);
-		return availableLanguages;
+		ArrayList<String> names = Lists.newArrayList(
+				Iterables.transform(availableLanguages, new Function<String, String>() {
+					@Override
+					public String apply(String input) {
+						return toShortName(input);
+					}
+				}));
+		return names;
 	}
-
-	private String tinify(String m) {
-		return m.substring(m.lastIndexOf(".") + 1, m.length());
+	
+	private String toShortName(String input) {
+		return (new Path(input)).removeFileExtension().lastSegment();
 	}
-
+	
 	private Collection<String> getAvailableFileExtensions() {
 		return getLanguageToFileExtension().values();
 	}
@@ -70,7 +81,7 @@ public class NewModelFileWizardPage extends AbstractNewResourceWizardPage {
 	private void initializeLanguageMap() {
 		List<String> availableLanguages = LanguageRegistry.INSTANCE.getMetamodels();
 		for (String language : availableLanguages) {
-			languageToFileExtension.put(language, LanguageRegistry.INSTANCE.getFileExtensionFor(language));
+			languageToFileExtension.put(toShortName(language), LanguageRegistry.INSTANCE.getFileExtensionFor(language));
 		}
 	}
 
