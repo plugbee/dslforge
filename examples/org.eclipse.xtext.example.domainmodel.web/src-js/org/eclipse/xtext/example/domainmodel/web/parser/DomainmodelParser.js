@@ -1,4 +1,4 @@
-// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-js\\org\\eclipse\\xtext\\example\\domainmodel\\web\\parser\\Domainmodel.g 2016-05-13 22:38:39
+// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.domainmodel.web\\src-js\\org\\eclipse\\xtext\\example\\domainmodel\\web\\parser\\Domainmodel.g 2016-05-18 22:02:11
 
 
 

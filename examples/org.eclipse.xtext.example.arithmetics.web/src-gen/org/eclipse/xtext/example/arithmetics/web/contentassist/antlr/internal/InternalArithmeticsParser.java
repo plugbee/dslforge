@@ -1,4 +1,4 @@
-// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-gen\\org\\eclipse\\xtext\\example\\arithmetics\\web\\contentassist\\antlr\\internal\\InternalArithmetics.g 2016-05-11 21:03:06
+// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.xtext.example.arithmetics.web\\src-gen\\org\\eclipse\\xtext\\example\\arithmetics\\web\\contentassist\\antlr\\internal\\InternalArithmetics.g 2016-05-18 22:02:04
 
 package org.eclipse.xtext.example.arithmetics.web.contentassist.antlr.internal; 
 
