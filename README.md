@@ -9,9 +9,9 @@ The framework is composed of two features:
 
 ## Tooling
 The Tooling has two code generators which take Xtext grammar as input and generate two variants of editors.
-Two generators are contributed:
-- _*Generate ACE Editor*_ produces a text editor with JavaScript parsers and lexers from ANTLR v3. You get an ACE editor tailored for the language definition which runs entirely on the client.
-- _*Generate Xtext RAP Editor*_ produces a plugin to be packaged with the original Xtext language plugin into an Eclipse workbench application enabling precise interaction between the client and the server. You get a RAP editor with advanced client server interaction model based on our styled text widget.
+Two wizards are contributed:
+- _*Generate Web Editor from ANTLR*_ produces a text editor with JavaScript parsers and lexers from ANTLR v3. You get an ACE editor tailored for the language definition which runs entirely on the client.
+- _*Generate Web Editor from Xtext*_ produces a plugin to be packaged with the original Xtext plugin into a workbench application enabling precise interaction between the client and the server.
 
 ## Runtime
 The Runtime is required if you develop against the Eclipse Remote Application Platform (RAP). It is a set of plugins providing services such as typed content assist, workspace management, persistency, etc. The plugins are built on top of the Basic Equinox RAP Target you can already download from the Eclipse RAP update sites.
@@ -41,14 +41,14 @@ In this scenario, users are interested in having a DSL editor shipped with HTML/
 If you want a closer integration with Xtext and EMF, or if you want to integrate the editor with other Eclipse components, you’d better install Eclipse for RCP and RAP Developers. This makes it possible to integrate the editor with third party RWT (Remote Widget Toolkit, the web-based SWT) plugins and widgets.
 
 2. **Install the Xtext SDK**
-This version is using Xtext 2.8.4 (Mars). Install Xtext Complete SDK from Mars update site http://download.eclipse.org/releases/mars (Help>Install New Software).
+Install Xtext Complete SDK from Mars update site http://download.eclipse.org/releases/neon (Help>Install New Software).
 
 3. **Install DSL Forge Tools**
 Use the update site http://dslforge.org/downloads/tooling/repository/
 
 4. **Setup the Target Platform**
 There are two ways to set the target: you could either import the base target platform (may contain features you are not interested in, but everything is there to run the examples), or compose your own target platform.
-Import the Target Platform org.dslforge.runtime.target, open the target file (mars.target) and let P2 Provisioning System do the rest (this may take a while).
+Import the Target Platform org.dslforge.runtime.target, open the target file (neon.target) and let P2 Provisioning System do the rest (this may take a while).
 
 ## Usage
 
