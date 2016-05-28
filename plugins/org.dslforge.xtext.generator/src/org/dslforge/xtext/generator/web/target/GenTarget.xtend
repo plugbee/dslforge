@@ -60,31 +60,31 @@ class GenTarget extends AbstractGenerator {
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="com.google.guava" version="15.0.0.v201403281430"/>
 <unit id="org.antlr.runtime" version="4.3.0.v201502022030"/>
-<unit id="com.google.inject" version="3.0.0.v201312141243"/>
+<unit id="com.google.inject" version="3.0.0.v201605172100"/>
 <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
 <unit id="javax.inject" version="1.0.0.v20091030"/>
 <unit id="org.apache.commons.logging" version="1.0.4.v201101211617"/>
 <unit id="org.objectweb.asm" version="5.0.1.v201404251740"/>
 <unit id="osgi.enterprise" version="4.2.0.v201108120515"/>
 <unit id="com.ibm.icu" version="0.0.0"/>
-<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20160308060251/repository/"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.rap.sdk.feature.feature.group" version="3.1.0.20160322-1037"/>
-<unit id="org.eclipse.rap.feature.feature.group" version="3.1.0.20160322-1037"/>
-<unit id="org.eclipse.emf.rap.sdk.feature.group" version="2.12.0.v20160321-0508"/>
-<unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="3.1.0.20160321-1405"/>
+<unit id="org.eclipse.rap.sdk.feature.feature.group" version="3.1.0.20160523-1225"/>
+<unit id="org.eclipse.rap.feature.feature.group" version="3.1.0.20160523-1225"/>
+<unit id="org.eclipse.emf.rap.sdk.feature.group" version="2.12.0.v20160429-0808"/>
+<unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="3.1.0.20160524-1612"/>
 <repository location="http://download.eclipse.org/releases/neon"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.mwe.core.feature.feature.group" version="1.3.20.v201603221017"/>
-<unit id="org.eclipse.xtend.feature.group" version="2.2.0.v201603220642"/>
-<unit id="org.eclipse.xtext.xbase.lib.feature.group" version="2.10.0.v201603220719"/>
-<unit id="org.eclipse.xtend.sdk.feature.group" version="2.10.0.v201603220719"/>
-<unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.9.0.v201603221017"/>
-<unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="2.9.0.v201603221017"/>
-<unit id="org.eclipse.xtext.runtime.feature.group" version="2.10.0.v201603220719"/>
-<unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="2.9.0.v201603221017"/>
+<unit id="org.eclipse.xtend.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.xtext.xbase.lib.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.xtend.sdk.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.mwe.core.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.xtext.runtime.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.xtext.xbase" version="0.0.0"/>
 <unit id="org.eclipse.xtext.xbase.ide" version="0.0.0"/>
 <unit id="org.eclipse.emf.codegen.ecore" version="0.0.0"/>
