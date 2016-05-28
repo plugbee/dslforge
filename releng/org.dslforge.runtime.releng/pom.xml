@@ -16,7 +16,7 @@
 		<module>../../plugins/org.dslforge.workspace</module>
 		<module>../../plugins/org.dslforge.workspace.ui</module>
 		<module>../../plugins/org.dslforge.xtext.common</module>
-		
+		<module>../../plugins/org.dslforge.common.logging</module>
 
 		<!-- Examples -->
 <!-- 		<module>../../examples/org.dslforge.example.java.web</module>

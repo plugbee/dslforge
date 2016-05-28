@@ -9,7 +9,7 @@
     <groupId>dslforge.releng</groupId>
     <artifactId>org.dslforge.runtime.build.parent.parent</artifactId>
     <relativePath>../parent/parent</relativePath>
-    <version>0.8.0-SNAPSHOT</version>
+    <version>0.9.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>org.dslforge.text.editor.demo.product</artifactId>

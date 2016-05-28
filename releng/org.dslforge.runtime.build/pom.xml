@@ -8,7 +8,7 @@
   <parent>
     <artifactId>org.dslforge.runtime.build.parent</artifactId>
     <relativePath>parent</relativePath>
-    <version>0.8.0-SNAPSHOT</version>
+    <version>0.9.0-SNAPSHOT</version>
     <groupId>dslforge.releng</groupId>
   </parent>
 
@@ -18,32 +18,36 @@
   <name>org.dslforge.runtime.build</name>
   <modules>
   		<!-- Target platform -->
-		<module>../org.dslforge.runtime.target/mars</module>
+		<module>../org.dslforge.runtime.target/neon</module>
 		
 		<!-- Plug-ins -->
+		<!-- 
 		<module>../../plugins/org.dslforge.texteditor.demo</module>
 		<module>../../plugins/org.dslforge.texteditor</module>
 		<module>../../plugins/org.dslforge.styledtext</module>
 		<module>../../plugins/org.dslforge.workspace</module>
 		<module>../../plugins/org.dslforge.workspace.ui</module>
 		<module>../../plugins/org.dslforge.xtext.common</module>
-		
+		 -->
+
 		<!-- Examples -->
+		<module>../../examples/org.eclipse.xtext.example.domainmodel</module>
+		<module>../../examples/org.eclipse.xtext.example.domainmodel.web</module>
 		<module>../../examples/org.eclipse.xtext.example.arithmetics</module>
 		<module>../../examples/org.eclipse.xtext.example.arithmetics.web</module>
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird</module>
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird.web</module>
 		<module>../../examples/org.eclipse.xtext.example.fowlerdsl</module>
 		<module>../../examples/org.eclipse.xtext.example.fowlerdsl.web</module>
-		<module>../../examples/org.xtext.example.domainmodel</module>
-		<module>../../examples/org.xtext.example.domainmodel.web</module>
 		<module>../../examples/org.xtext.example.mydsl</module>
-		<module>../../examples/org.xtext.example.mydsl.web</module>
-		 
+		<module>../../examples/org.xtext.example.mydsl.web</module>	
+		<module>../../examples/org.codingpark.piraterobot.play</module>
+		<module>../../examples/org.codingpark.piraterobot.play.web</module>					
 		<!-- Product -->
     	<module>texteditor</module>
+    	
   </modules>
 
   <groupId>dslforge.releng</groupId>
-  <version>0.8.0-SNAPSHOT</version>
+  <version>0.9.0-SNAPSHOT</version>
 </project>

@@ -18,7 +18,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<rap-repository>http://download.eclipse.org/rt/rap/3.0/</rap-repository>
 		<rap-incubator-repository>http://download.eclipse.org/rt/rap/incubator/nightly/</rap-incubator-repository>
-		<xtext.version>2.8.4</xtext.version>
+		<xtext.version>2.10.0</xtext.version>
+		<xtend.maven.version>2.9.2</xtend.maven.version>
 	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -38,7 +39,7 @@
 						<artifact>
 							<groupId>dslforge.releng</groupId>
 							<artifactId>${platform.version.name}</artifactId>
-							<version>0.8.0-SNAPSHOT</version>
+							<version>0.9.0-SNAPSHOT</version>
 						</artifact>
 					</target>
 					<environments>
@@ -62,6 +63,7 @@
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
 						</environment>
+						-->
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
@@ -112,15 +114,12 @@
 				<version>${tycho.version}</version>
 				<executions>
 					<execution>
-						<!-- Don't attach (default) metadata before the "generate-source-feature" 
-							execution. -->
 						<id>default-p2-metadata-default</id>
 						<configuration>
 							<attachP2Metadata>false</attachP2Metadata>
 						</configuration>
 					</execution>
 					<execution>
-						<!-- Do attach metadata after the "generate-source-feature" execution. -->
 						<id>attach-p2-metadata</id>
 						<phase>package</phase>
 						<goals>
@@ -216,28 +215,6 @@
 					</executions>
 				</plugin>
 				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>1.3</version>
-					<executions>
-						<execution>
-							<id>add-source</id>
-							<phase>generate-sources</phase>
-							<goals>
-								<goal>add-source</goal>
-							</goals>
-							<configuration>
-								<sources>
-									<source>${project.build.directory}/src-gen</source>
-								</sources>
-								<sources>
-									<source>${project.build.directory}/xtend-gen</source>
-								</sources>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
 					<groupId>org.eclipse.dash.maven</groupId>
 					<artifactId>eclipse-signing-maven-plugin</artifactId>
 					<version>1.0.5</version>
@@ -252,7 +229,7 @@
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtext.version}</version>
+					<version>${xtend.maven.version}</version>
 					<executions>
 						<execution>
 							<goals>
@@ -296,10 +273,6 @@
 			<id>xtend</id>
 			<url>http://build.eclipse.org/common/xtend/maven/</url>
 		</pluginRepository>
-		<pluginRepository>
-			<id>mwe2</id>
-			<url>http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.1/</url>
-		</pluginRepository>
 	</pluginRepositories>
 
 	<profiles>
@@ -322,6 +295,12 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>platform-neon</id>
+			<properties>
+				<platform.version.name>neon</platform.version.name>
+			</properties>
+		</profile>
+		<profile>
 			<id>os-macosx</id>
 			<activation>
 				<os>
@@ -329,12 +308,7 @@
 				</os>
 			</activation>
 			<properties>
-				<!-- !!! Important Note !!! The following element MUST be written in 
-					a single line. Otherwise the build will fail under Max OS X (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=427693). 
-					In particular, be careful when auto formatting this file with Ctrl+Shift+F 
-					as it tends to break up this line into several pieces. -->
-				<tycho.surefire.extra.vmargs>-Xmx512m -XX:MaxPermSize=256m
-					-XstartOnFirstThread</tycho.surefire.extra.vmargs>
+				<tycho.surefire.extra.vmargs>-Xmx512m -XX:MaxPermSize=256m -XstartOnFirstThread</tycho.surefire.extra.vmargs>
 			</properties>
 		</profile>
 		<profile>
@@ -428,5 +402,5 @@
 			</build>
 		</profile>
 	</profiles>
-	<version>0.8.0-SNAPSHOT</version>
+	<version>0.9.0-SNAPSHOT</version>
 </project>
