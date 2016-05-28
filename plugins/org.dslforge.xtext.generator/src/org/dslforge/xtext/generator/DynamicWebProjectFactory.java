@@ -162,25 +162,6 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 		final SubMonitor progress = SubMonitor.convert(monitor, 10);
 		final IProject project = this.configuration.getProject();
 		if (project.exists()) {
-			//project exists -> ask user
-			final Display display = Display.getDefault();
-			if (display != null) {
-				display.syncExec(new Runnable() {
-					@Override
-					public void run() {
-						boolean openConfirm = MessageDialog.openConfirm(display.getActiveShell(),
-								this.getClass().getSimpleName(), "A project called " + project.getName()
-										+ " already exists in the workspace. Would you like to proceed anyway?");
-						if (openConfirm) {
-							try {
-								project.delete(true, true, progress);
-							} catch (CoreException e) {
-								logger.error(e.getMessage(), e);
-							}
-						}
-					}
-				});
-			}
 			//project exists -> incremental mode
 			new GenGrammar().doGenerate(this, progress.newChild(1));
 			new GenMode().doGenerate(this, progress.newChild(1));
@@ -191,6 +172,7 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 				new GenActivator().doGenerate(this, progress.newChild(1));	
 			}
 		} else {
+			//create new project
 			try {
 				setBuilderIds(getDefaultBuilderIds());
 				if (this.isServerSideContentAssist)
