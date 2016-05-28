@@ -41,7 +41,7 @@ In this scenario, users are interested in having a DSL editor shipped with HTML/
 If you want a closer integration with Xtext and EMF, or if you want to integrate the editor with other Eclipse components, you’d better install Eclipse for RCP and RAP Developers. This makes it possible to integrate the editor with third party RWT (Remote Widget Toolkit, the web-based SWT) plugins and widgets.
 
 2. **Install the Xtext SDK**
-Install Xtext Complete SDK from Mars update site http://download.eclipse.org/releases/neon (Help>Install New Software).
+Install Xtext Complete SDK from Neon update site http://download.eclipse.org/releases/neon (Help>Install New Software).
 
 3. **Install DSL Forge Tools**
 Use the update site http://dslforge.org/downloads/tooling/repository/
