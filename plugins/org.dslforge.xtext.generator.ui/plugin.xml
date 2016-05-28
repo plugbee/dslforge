@@ -54,7 +54,7 @@
       <menuContribution locationURI="popup:org.eclipse.ui.popup.any">
          <command
                commandId="org.dslforge.xtext.generator.command"
-               icon="icons/xtext_img.png"
+               icon="icons/wizard_img.png"
                id="GenerateWebEditorFromXtext"
                label="Generate artefacts from Xtext"
                style="push">
