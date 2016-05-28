@@ -140,6 +140,7 @@ class GenContentAssistParser extends AbstractGenerator {
 		val xtextAntlrUiGeneratorFragment = new XtextAntlrUiGeneratorFragment
 		val dslProjectLocation = ResourcesPlugin.workspace.root.getProject(projectNameRt).location
 		xtextAntlrUiGeneratorFragment.antlrTool.downloadTo = dslProjectLocation + "/.antlr-generator-3.2.0-patch.jar"
+		xtextAntlrUiGeneratorFragment.antlrTool.askBeforeDownload = false
 		languageConfig.addFragment(xtextAntlrUiGeneratorFragment)
 		languageConfig.registerNaming(naming);
 		return languageConfig
