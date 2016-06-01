@@ -46,15 +46,20 @@ Install Xtext Complete SDK from Neon update site http://download.eclipse.org/rel
 3. **Install DSL Forge Tools**
 Use the update site http://dslforge.org/downloads/tooling/repository/
 
-4. **Setup the Target Platform**
-There are two ways to set the target: you could either import the base target platform (may contain features you are not interested in, but everything is there to run the examples), or compose your own target platform.
-Import the Target Platform org.dslforge.runtime.target, open the target file (neon.target) and let P2 Provisioning System do the rest (this may take a while).
-
 ## Usage
 
 Two use cases are documented on the official websie:
-- Generate ACE Editor: http://dslforge.org/getting-started-generate-ace-editor/
-- Generate Xtext RAP Editor: http://dslforge.org/getting-started-generate-xtext-rap-editor/
+- Generate Web Editor from ANTLR: http://dslforge.org/getting-started-generate-ace-editor/
+- Generate Web Editor from Xtext: http://dslforge.org/getting-started-generate-xtext-rap-editor/
+
+### Generate Web Editor from Xtext
+- Step 1 - Generate Web Editor from Xtext https://youtu.be/vDGwmz4lU54
+- Step 2 - Set up Debug Configuration and Test Editor  https://youtu.be/aD-DsFIwo3I
+- Step 3 - Build Web Application Archive  https://youtu.be/FOnoayKri7E
+- Step 4 - Deploy Web Archive on Servlet Container  https://youtu.be/2u5agv8koAo
+
+### Generate Web Editor from ANTLR
+See tutorial on http://dslforge.org/getting-started-generate-ace-editor/
 
 ## Documentation
 
