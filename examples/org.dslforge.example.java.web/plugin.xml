@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+    <extension
+         point="org.eclipse.rap.ui.resources">
+      <resource
+            class="org.dslforge.example.java.web.editor.widget.JavaResource"
+            id="org.dslforge.example.java.web.editor">
+            <dependsOn
+				resourceId="org.dslforge.styledtext.basictext">
+			</dependsOn>
+      </resource>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.themeableWidgets">
+      <widget
+            class="org.dslforge.example.java.web.editor.widget.Java"
+            id="org.dslforge.example.java.web.editor.widget.Domainmodel"
+            name="Java">
+      </widget>
+   </extension>
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.dslforge.example.java.web.editor"
+            name="Java Editor"
+	            icon="icons/jcu_obj.png"
+		            extensions="java"
+           class="org.dslforge.example.java.web.editor.JavaEditor"
+            contributorClass="org.dslforge.example.java.web.editor.JavaActionBarContributor">
+      </editor>
+   </extension>
+</plugin>
