@@ -109,6 +109,7 @@
       <plugin id="org.objectweb.asm"/>
       <plugin id="org.xtext.example.mydsl"/>
       <plugin id="org.xtext.example.mydsl.web"/>
+      <plugin id="org.dslforge.example.java.web"/>
       <plugin id="osgi.enterprise"/>
    </plugins>
 
@@ -193,6 +194,7 @@
       <plugin id="org.objectweb.asm" autoStart="true" startLevel="0" />
       <plugin id="org.xtext.example.mydsl" autoStart="true" startLevel="4" />
       <plugin id="org.xtext.example.mydsl.web" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.example.java.web" autoStart="true" startLevel="4" />
       <plugin id="osgi.enterprise" autoStart="true" startLevel="1" />
    </configurations>
 
