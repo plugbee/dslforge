@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="DSL Forge Runtime Target" sequenceNumber="47">
+<?pde version="3.8"?><target name="DSL Forge Runtime Target" sequenceNumber="48">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.dslforge.runtime.feature.feature.group" version="0.0.0"/>
-<repository location="http://dslforge.org/downloads/runtime/repository"/>
-</location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.persistence.sdk.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/rt/eclipselink/updates/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.rap.tabbed-properties.feature.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.rap.cnf.feature.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/rt/rap/incubator/nightly/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.gemini.jpa.feature.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/gemini/jpa/updates/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="com.google.guava" version="15.0.0.v201403281430"/>
@@ -38,6 +25,10 @@
 <repository location="http://download.eclipse.org/releases/neon"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.gemini.jpa.feature.feature.group" version="0.0.0"/>
+<repository location="http://download.eclipse.org/gemini/jpa/updates/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.xtend.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.xtext.xbase.lib.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.xtend.sdk.feature.group" version="0.0.0"/>
@@ -52,6 +43,11 @@
 <unit id="org.eclipse.xtext.junit4" version="0.0.0"/>
 <unit id="org.eclipse.xtext.xbase.junit" version="0.0.0"/>
 <repository location="http://download.eclipse.org/releases/neon"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.rap.tabbed-properties.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.cnf.feature.feature.group" version="0.0.0"/>
+<repository location="http://download.eclipse.org/rt/rap/incubator/nightly/"/>
 </location>
 </locations>
 </target>
