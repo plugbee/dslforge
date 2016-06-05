@@ -95,14 +95,14 @@ var keyWordCompleter = {
                 iconClass: " " + "ace-completion ace-completion-keyword",
                 name: s.name,
                 value: s.value,
-                meta: "keyword"
+                meta: "[keyword]"
              });
         }
         
         callback(null, enhancedCompletions);
     },
 	getDocTooltip: function(item) {
-	    if (item.meta == "keyword") {
+	    if (item.meta == "[keyword]") {
 	    	item.docHTML = [
 	    		 "<b>", item.caption, "</b>", "<hr></hr>",
 	    		  "keyword"
@@ -133,7 +133,7 @@ var snippetCompleter = {
 	                	iconClass: " " + "ace-completion ace-completion-snippet",
 	                    caption: caption,
 	                    snippet: s.content,
-	                    meta: s.tabTrigger && !s.name ? s.tabTrigger + "\u21E5 " : "snippet",
+	                    meta: s.tabTrigger && !s.name ? s.tabTrigger + "\u21E5 " : "[template]",
 	                    type: "snippet",
 	                    score:100
 	                 });
@@ -1366,7 +1366,7 @@ var Autocomplete = function() {
         var all = popup.data;
         var selected = all && (all[popup.getHoveredRow()] || all[popup.getRow()]);
         var doc = null;
-        if (!selected || !this.editor || !this.popup.isOpen)
+        if (!popup.isFocused ||  !this.editor || !this.popup.isOpen)
             return this.hideDocTooltip();
         this.editor.completers.some(function(completer) {
             if (completer.getDocTooltip)
@@ -1417,9 +1417,9 @@ var Autocomplete = function() {
         
         var renderer = this.editor.renderer
         var lineHeight = renderer.layerConfig.lineHeight;
-        var tooltipMaxLines = 3; //constant.
-        
-        tooltipNode.style.height = Math.max(Math.max(tooltipNode.style.height,rect.height),tooltipMaxLines*lineHeight) + "px";
+        //var tooltipMaxLines = 8; //constant.
+        //tooltipNode.style.height = Math.max(Math.max(tooltipNode.style.height,rect.height),tooltipMaxLines*lineHeight) + "px";
+        tooltipNode.style.height = Math.max(tooltipNode.style.height,rect.height)+ "px";
         tooltipNode.style.width = rect.width + "px";
         tooltipNode.style.display = "block";
     };
@@ -1746,7 +1746,7 @@ var AcePopup = function(parentNode) {
         var screenHeight = window.innerHeight;
         var screenWidth = window.innerWidth;
         var renderer = this.renderer;
-        var maxH = renderer.$maxLines * lineHeight * 1.4;
+        var maxH = renderer.$maxLines * lineHeight;
         var top = pos.top + this.$borderSize;
         if (top + maxH > screenHeight - lineHeight && !topdownOnly) {
             el.style.top = "";
@@ -1759,8 +1759,6 @@ var AcePopup = function(parentNode) {
             popup.isTopdown = true;
         }
 
-//        el.style.resize = "both";
-//        el.style.overflow = "auto";
         el.style.display = "";
         this.renderer.$textLayer.checkForSizeChanges();
      
@@ -1814,7 +1812,7 @@ dom.importCssString("\
     text-shadow: 0 0 0.01em;\
 }\
 .ace_autocomplete {\
-    width: 360px;\
+    width: 340px;\
     z-index: 200000;\
     background: #ffffff;\
     color: #444;\
@@ -1914,19 +1912,17 @@ define('ace/autocomplete/text_completer', ['require', 'exports', 'module' , 'ace
 //                name: word,
 //                value: word,
 //                score: wordScore[word],
-//                meta: "local"
+//                meta: "[local]"
 //            };
 //        }));
 //    };
+    
     exports.getCompletions = function(editor, session, pos, prefix, callback) {
         var wordScore = wordDistance(session, pos, prefix);
         var wordList = Object.keys(wordScore);
         var completions = [];  
         callback(null, completions);
     };
-
 });	
-
-
 '''
 }

@@ -83,6 +83,10 @@ class GenIndexHtml extends AbstractGenerator{
 	    editor.setTheme("ace/theme/eclipse");
 	    editor.getSession().setMode("ace/mode/«grammarShortName.toLowerCase»");
         var langTools = ace.require("ace/ext/language_tools");
+	    editor.setOptions({
+		    enableBasicAutocompletion: true,
+		    enableSnippets: true
+		});
 	    var globalScope = {
 	    		getCompletions: function(editor, session, pos, prefix, callback) {
 	    	 	   for (var i=0; i < index.length; i++) {
@@ -101,18 +105,14 @@ class GenIndexHtml extends AbstractGenerator{
 		                    name: word,
 		                    value: word,
 		                    score: 1,
-		                    meta: "global"
+		                    meta: "[global]"
 		                };
 		            }));
 	    	    }   
 	        }
+		var completers = editor.completers;
 	    langTools.addCompleter(globalScope);
-		
-	    editor.setOptions({
-		    enableBasicAutocompletion: true,
-		    enableSnippets: true
-		});
-		
+	    
 		//add documentation hover
 		var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 		editor.tokenTooltip = new TokenTooltip(editor);		 	
@@ -133,22 +133,20 @@ class GenIndexHtml extends AbstractGenerator{
 
 	 	//on focus get
 		editor.on("focus", function() {
-	 		
 	 	});
 		
 		//on focus lost
 	 	editor.on("blur", function() {
-	 		
 	 	});
 	 	
 	 	//on input
 	 	editor.on("input", function() {
-
 	 	});
 	 	
 	 	//on change
-		editor.on("change", function(event) {					        
-	        //console.log("posting message: index: " + index);
+		editor.on("change", function(event) {	
+			var splitRegex = /[^a-zA-Z_0-9\$\-]+/;
+			index = editor.getValue().split(splitRegex);
 	        worker.port.postMessage({
 	           	message: editor.getValue(), 
 	           	guid: guid, 
@@ -177,6 +175,7 @@ class GenIndexHtml extends AbstractGenerator{
     </script>
 </body>
 </html>
+
 	'''
 	
 	

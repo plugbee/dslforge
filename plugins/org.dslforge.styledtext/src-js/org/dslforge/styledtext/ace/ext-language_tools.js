@@ -1794,7 +1794,6 @@ var AcePopup = function(parentNode) {
             left = screenWidth - el.offsetWidth;
             
         el.style.left = left + "px";
-        //el.style.height = maxH + "px";
         
         this._signal("show");
         lastMouseEvent = null;

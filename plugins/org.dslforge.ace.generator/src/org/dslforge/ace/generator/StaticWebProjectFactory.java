@@ -237,8 +237,7 @@ public class StaticWebProjectFactory extends AbstractWebProjectFactory implement
 		content.append("</project-modules>\n");
 		return content.toString();
 	}
-	
-	@SuppressWarnings("unused")
+
 	private String getProjectFacet() {
 		final StringBuilder content = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 		content.append("<faceted-project>\n");
