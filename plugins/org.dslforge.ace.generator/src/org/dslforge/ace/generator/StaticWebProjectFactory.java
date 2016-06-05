@@ -183,7 +183,7 @@ public class StaticWebProjectFactory extends AbstractWebProjectFactory implement
 		final IFolder settings = project.getFolder(".settings");
 		createFile(".jsdtscope", settings, getJsdtScope(), monitor);
 		createFile("org.eclipse.wst.common.component", settings, getProjectModules(project.getName()), monitor);
-		//createFile("org.eclipse.wst.common.project.facet.core.xml", settings, getProjectFacet(), monitor);
+		createFile("org.eclipse.wst.common.project.facet.core.xml", settings, getProjectFacet(), monitor);
 		createFile("org.eclipse.wst.jsdt.ui.superType.container", settings, "org.eclipse.wst.jsdt.launching.baseBrowserLibrary", monitor);
 		createFile("org.eclipse.wst.jsdt.ui.superType.name", settings, "Window", monitor);
 		return settings;
