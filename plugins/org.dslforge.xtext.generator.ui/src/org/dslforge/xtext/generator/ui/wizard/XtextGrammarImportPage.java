@@ -180,7 +180,7 @@ public class XtextGrammarImportPage extends WizardPage {
 		selectionDialog.setInitialPattern(IXtextGrammarConstants.XTEXT_FILE_EXTENSION_FILTER);
 		if (selectionDialog.open() == Window.OK) {
 			IFile xtextGrammarFile = selectionDialog.getGrammarFile();
-			grammar = GeneratorUtil.loadGrammar(xtextGrammarFile, getInjector());
+			grammar = GeneratorUtil.loadXtextGrammar(xtextGrammarFile);
 			runtimeProjectNameField.setText(GeneratorUtil.getDslProjectName(grammar));
 			grammarPathField.setText(xtextGrammarFile.getLocation().toString());
 			grammarNameField.setText(xtextGrammarFile.getLocation().removeFileExtension().lastSegment());

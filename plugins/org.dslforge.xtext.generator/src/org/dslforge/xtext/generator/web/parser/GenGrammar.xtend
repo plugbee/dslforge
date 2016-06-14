@@ -37,6 +37,7 @@ import org.eclipse.xtext.Group
 import org.eclipse.xtext.ParserRule
 import org.eclipse.xtext.TerminalRule
 import org.eclipse.xtext.XtextFactory
+import org.eclipse.xtext.resource.SaveOptions
 import org.eclipse.xtext.resource.XtextResource
 
 class GenGrammar extends AbstractGenerator {
@@ -102,6 +103,7 @@ class GenGrammar extends AbstractGenerator {
 		}
 		parserRules = GrammarUtil::allParserRules(grammar);
 		for (ParserRule pr : parserRules) {
+			println(pr)
 			// rules on the client side are untyped
 			pr.setType(null)
 			// remove the actions (xtext-specific)
@@ -143,20 +145,6 @@ class GenGrammar extends AbstractGenerator {
 //						var typeRef = XtextFactory::eINSTANCE.createTypeRef
 //						var dataType = EcorePackage::eINSTANCE.EString
 //						typeRef.classifier = dataType
-						
-//						var ReferencedMetamodel ecoreReferenced=null
-//						val usedGrammars = grammar.usedGrammars
-//						for (Grammar usedGrammar: usedGrammars) {
-//							for (AbstractMetamodelDeclaration metamodelDeclaration : usedGrammar.metamodelDeclarations) {
-//							if (metamodelDeclaration instanceof ReferencedMetamodel) {
-//								var refMetamodel = metamodelDeclaration as ReferencedMetamodel
-//								var alias = refMetamodel.alias
-//								if (alias =="ecore") {
-//									ecoreReferenced=refMetamodel
-//								}
-//							}
-//						}	
-//						}
 //						typeRef.metamodel = ecoreReferenced
 //						replacement.type = typeRef
 					call.setRule(replacement)
@@ -164,7 +152,7 @@ class GenGrammar extends AbstractGenerator {
 				}
 			}
 
-			var text = grammarDefinition.serializer.serialize(pr)
+			var text = grammarDefinition.serializer.serialize(pr, SaveOptions::defaultOptions)
 			// remove all the {Pattern.current=xxx}			 	 
 			val Pattern p = Pattern::compile("\\{(.*?)\\}")
 			val Matcher m = p.matcher(text)

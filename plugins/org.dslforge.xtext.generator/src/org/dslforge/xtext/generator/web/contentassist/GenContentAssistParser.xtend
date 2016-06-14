@@ -38,6 +38,11 @@ import org.eclipse.xpand2.output.OutputImpl
 import org.eclipse.xpand2.output.PostProcessor
 import org.eclipse.xtend.expression.Variable
 import org.eclipse.xtend.type.impl.java.JavaBeansMetaModel
+import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.Grammar
+import org.eclipse.xtext.GrammarUtil
+import org.eclipse.xtext.ReferencedMetamodel
+import org.eclipse.xtext.XtextPackage
 import org.eclipse.xtext.XtextStandaloneSetup
 import org.eclipse.xtext.generator.CompositeGeneratorException
 import org.eclipse.xtext.generator.Generator
@@ -46,8 +51,13 @@ import org.eclipse.xtext.generator.Naming
 import org.eclipse.xtext.generator.NewlineNormalizer
 import org.eclipse.xtext.generator.parser.antlr.AntlrOptions
 import org.eclipse.xtext.generator.parser.antlr.XtextAntlrUiGeneratorFragment
-import org.eclipse.xtext.resource.XtextResourceSet
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import org.eclipse.xtext.resource.XtextResource
+import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.util.Strings
+import org.eclipse.xtext.validation.CheckMode
+import org.eclipse.xtext.validation.IResourceValidator
+import org.eclipse.xtext.validation.Issue
 
 /**
  * The Xtext generator is invoked with a minimal set of fragments necessary 
@@ -132,9 +142,14 @@ class GenContentAssistParser extends AbstractGenerator {
 	def LanguageConfig createLanguageConfiguration(Naming naming) {
 		// the language config
 		val languageConfig = new LanguageConfig()
+		val grammar = wrapped.grammar
+		EcoreUtil2::resolveAll(grammar)		
 		// set the grammar handle
-		languageConfig.uri = wrapped.grammar.eResource.URI.toString
-		languageConfig.setForcedResourceSet(new XtextResourceSet());
+		val xtextResource = wrapped.grammar.eResource as XtextResource
+		var resourceSet = xtextResource.resourceSet
+
+		languageConfig.setForcedResourceSet(resourceSet);
+		languageConfig.uri = xtextResource.URI.toString
 		languageConfig.fileExtensions = wrapped.getFileExtension();
 		languageConfig.addFragment(new WebContentAssistFragment(wrapped.grammar))
 		val xtextAntlrUiGeneratorFragment = new XtextAntlrUiGeneratorFragment
@@ -145,7 +160,39 @@ class GenContentAssistParser extends AbstractGenerator {
 		languageConfig.registerNaming(naming);
 		return languageConfig
 	}
+	
+	protected def void validateXtext(XtextResource xtextResource) {
+		val IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider().getResourceValidator();
+		try {
+			val List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY,
+				CancelIndicator.NullImpl);
+			if (issues.isEmpty)
+				throw new RuntimeException("Could not generate content assist feature: the Xtext model is not valid.")
+		} catch (Exception ex) {
+			logger.error(ex.message, ex)
+		}
+	}
 
+	protected def void validateAllImports(Grammar grammar) {
+		for (amd : GrammarUtil.allMetamodelDeclarations(grammar)) {
+			if (amd instanceof ReferencedMetamodel)
+				validateReferencedMetamodel(amd)
+		}
+	}
+	
+	protected def void validateReferencedMetamodel(ReferencedMetamodel ref) {
+		if (ref.EPackage != null && !ref.EPackage.eIsProxy) {
+			return
+		}
+		val eref = XtextPackage.Literals.ABSTRACT_METAMODEL_DECLARATION__EPACKAGE
+		val nodes = NodeModelUtils.findNodesForFeature(ref, eref)
+		val refName = if (nodes.empty) '(unknown)' else NodeModelUtils.getTokenText(nodes.get(0))
+		val grammarName = GrammarUtil.getGrammar(ref).name
+		val msg = "The EPackage " + refName + " in grammar " + grammarName + " could not be found. "
+			+ "You might want to register that EPackage in your workflow file."
+		throw new IllegalStateException(msg)
+	}
+	
 	def void invokeInternal(Naming naming, LanguageConfig config, ProgressMonitor monitor, Issues issues) {
 		new XtextStandaloneSetup().createInjectorAndDoEMFRegistration();
 		try {

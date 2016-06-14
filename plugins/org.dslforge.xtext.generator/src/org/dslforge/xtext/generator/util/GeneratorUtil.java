@@ -9,6 +9,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.Map;
 /**
  * <copyright>
  *
@@ -38,24 +40,33 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EPackage.Registry;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.mwe.utils.GenModelHelper;
 import org.eclipse.emf.mwe2.language.mwe2.DeclaredProperty;
 import org.eclipse.emf.mwe2.language.mwe2.Module;
 import org.eclipse.emf.mwe2.language.mwe2.PlainString;
 import org.eclipse.emf.mwe2.language.mwe2.StringLiteral;
 import org.eclipse.emf.mwe2.language.mwe2.StringPart;
 import org.eclipse.emf.mwe2.language.mwe2.Value;
+import org.eclipse.xtext.AbstractMetamodelDeclaration;
 import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.ParserRule;
+import org.eclipse.xtext.ReferencedMetamodel;
 import org.eclipse.xtext.XtextStandaloneSetup;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Injector;
@@ -201,12 +212,79 @@ public class GeneratorUtil {
 	public static Grammar loadXtextGrammar(IFile file) {
 		Injector xtextInjector = new XtextStandaloneSetup().createInjectorAndDoEMFRegistration();
 		XtextResourceSet instance = xtextInjector.getInstance(XtextResourceSet.class);
+		
+		//initialize instance
+		instance.getPackageRegistry().put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
+		
 		String path = computeResourcePath(file);
-		Resource resource = instance.getResource(URI.createPlatformResourceURI(path, true), true);
+		XtextResource resource = (XtextResource) instance.getResource(URI.createPlatformResourceURI(path, true), true);
 		EObject eObject = resource.getContents().get(0);
+		
+		Grammar grammar = (Grammar) eObject;
+		List<Grammar> usedGrammars = grammar.getUsedGrammars();
+		for (Grammar usedGrammar : usedGrammars) {
+			for (AbstractMetamodelDeclaration metamodelDeclaration : usedGrammar.getMetamodelDeclarations()) {
+				if (metamodelDeclaration instanceof ReferencedMetamodel) {
+					ReferencedMetamodel refMetamodel = (ReferencedMetamodel) metamodelDeclaration;
+					String alias = refMetamodel.getAlias();
+					if (alias.equals("ecore")) {
+						registerReferencedMetamodel(instance, refMetamodel);
+					}
+				}
+			}
+		}
+		EcoreUtil.resolveAll(instance);
 		return (Grammar) eObject;
 	}
 
+	private static void registerReferencedMetamodel(XtextResourceSet instance, ReferencedMetamodel refMetamodel) {
+		EPackage ePackage = refMetamodel.getEPackage();
+		EPackage ePackageRoot = loadEPackage(ePackage.getNsURI(), instance);
+		register(ePackageRoot, instance);
+		Map<String, URI> ePackageNsURIToGenModelLocationMap = EcorePlugin.getEPackageNsURIToGenModelLocationMap(false);
+		URI genModelURI = ePackageNsURIToGenModelLocationMap.get(ePackage.getNsURI());
+		Resource genModelResource = instance.getResource(genModelURI, true);
+		EObject genModel = genModelResource.getContents().get(0);
+		register((GenModel)genModel);
+	}
+
+	private static EPackage loadEPackage(String resourceOrNsURI, ResourceSet resourceSet) {
+		if (resourceSet.getPackageRegistry().containsKey(resourceOrNsURI))
+			return resourceSet.getPackageRegistry().getEPackage(resourceOrNsURI);
+		URI uri = URI.createURI(resourceOrNsURI);
+		try {
+			if ("http".equalsIgnoreCase(uri.scheme()))
+				return null;
+			if (uri.fragment() == null) {
+				Resource resource = resourceSet.getResource(uri, true);
+				if (resource.getContents().isEmpty())
+					return null;
+				EPackage result = (EPackage) resource.getContents().get(0);
+				return result;
+			}
+			EPackage result = (EPackage) resourceSet.getEObject(uri, true);
+			return result;
+		} catch (RuntimeException ex) {
+			if (uri.isPlatformResource()) {
+				String platformString = uri.toPlatformString(true);
+				URI platformPluginURI = URI.createPlatformPluginURI(platformString, true);
+				return loadEPackage(platformPluginURI.toString(), resourceSet);
+			}
+			return null;
+		}
+	}
+	
+	private static void register(EPackage ePackage, ResourceSet resourceSet) {
+		Registry registry = resourceSet.getPackageRegistry();
+		if (registry.get(ePackage.getNsURI()) == null) {
+			registry.put(ePackage.getNsURI(), ePackage);
+		}
+	}
+	
+	private static void register(GenModel genModel) {
+		new GenModelHelper().registerGenModel(genModel);
+	}
+	
 	private static String computeResourcePath(final IFile file) {
 		final IProject project = file.getProject();
 		if (project.exists()) {
