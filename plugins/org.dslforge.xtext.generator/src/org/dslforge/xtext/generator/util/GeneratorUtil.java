@@ -287,27 +287,28 @@ public class GeneratorUtil {
 	
 	//copied from org.eclipse.xtext.xtext.generator.XtextGeneratorResourceSetInitializer
 	private static void ensureResourceCanBeLoaded(URI loadedResource, ResourceSet resourceSet) {
-		switch (loadedResource.fileExtension()) {
-			case "genmodel": {
-				GenModelPackage.eINSTANCE.getEFactoryInstance();
-				IResourceServiceProvider resourceServiceProvider = IResourceServiceProvider.Registry.INSTANCE.getResourceServiceProvider(loadedResource);
-				if (resourceServiceProvider == null) {
-					try {
-						Class<?> genModelSupport = Class.forName("org.eclipse.emf.codegen.ecore.xtext.GenModelSupport");
-						Object instance = genModelSupport.newInstance();
-						genModelSupport.getDeclaredMethod("createInjectorAndDoEMFRegistration").invoke(instance);
-					} catch (ClassNotFoundException e) {
-						logger.debug("org.eclipse.emf.codegen.ecore.xtext.GenModelSupport not found, GenModels will not be indexed");
-					} catch (Exception e) {
-						logger.error("Couldn't initialize GenModel support.", e);
-					}
+		String fileExtension = loadedResource.fileExtension();
+		if (fileExtension.equals("genmodel")) {
+			GenModelPackage.eINSTANCE.getEFactoryInstance();
+			IResourceServiceProvider resourceServiceProvider = IResourceServiceProvider.Registry.INSTANCE
+					.getResourceServiceProvider(loadedResource);
+			if (resourceServiceProvider == null) {
+				try {
+					Class<?> genModelSupport = Class.forName("org.eclipse.emf.codegen.ecore.xtext.GenModelSupport");
+					Object instance = genModelSupport.newInstance();
+					genModelSupport.getDeclaredMethod("createInjectorAndDoEMFRegistration").invoke(instance);
+				} catch (ClassNotFoundException e) {
+					logger.debug(
+							"org.eclipse.emf.codegen.ecore.xtext.GenModelSupport not found, GenModels will not be indexed");
+				} catch (Exception e) {
+					logger.error("Couldn't initialize GenModel support.", e);
 				}
 			}
-			case "ecore": {
-				IResourceServiceProvider resourceServiceProvider = IResourceServiceProvider.Registry.INSTANCE.getResourceServiceProvider(loadedResource);
-				if (resourceServiceProvider == null) {
-					EcoreSupportStandaloneSetup.setup();
-				}
+		} else if (fileExtension.equals("ecore")) {
+			IResourceServiceProvider resourceServiceProvider = IResourceServiceProvider.Registry.INSTANCE
+					.getResourceServiceProvider(loadedResource);
+			if (resourceServiceProvider == null) {
+				EcoreSupportStandaloneSetup.setup();
 			}
 		}
 	}
