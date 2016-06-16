@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 /**
@@ -36,16 +37,19 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -53,22 +57,44 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.mwe.utils.GenModelHelper;
+import org.eclipse.emf.mwe2.language.mwe2.Assignment;
+import org.eclipse.emf.mwe2.language.mwe2.Component;
 import org.eclipse.emf.mwe2.language.mwe2.DeclaredProperty;
 import org.eclipse.emf.mwe2.language.mwe2.Module;
 import org.eclipse.emf.mwe2.language.mwe2.PlainString;
 import org.eclipse.emf.mwe2.language.mwe2.StringLiteral;
 import org.eclipse.emf.mwe2.language.mwe2.StringPart;
 import org.eclipse.emf.mwe2.language.mwe2.Value;
+import org.eclipse.emf.mwe2.language.mwe2.impl.ComponentImplCustom;
+import org.eclipse.emf.mwe2.language.resource.MweResourceSetProvider;
+import org.eclipse.emf.mwe2.language.scoping.Mwe2ScopeProvider;
+import org.eclipse.emf.mwe2.language.ui.internal.Mwe2Activator;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.xtext.AbstractMetamodelDeclaration;
 import org.eclipse.xtext.AbstractRule;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.ReferencedMetamodel;
+import org.eclipse.xtext.XtextPackage;
 import org.eclipse.xtext.XtextStandaloneSetup;
+import org.eclipse.xtext.ecore.EcoreSupportStandaloneSetup;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.IResourceDescription;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsData;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.IScopeProvider;
 
+import com.google.common.collect.Lists;
 import com.google.inject.Injector;
 
 public class GeneratorUtil {
@@ -212,34 +238,182 @@ public class GeneratorUtil {
 	public static Grammar loadXtextGrammar(IFile file) {
 		Injector xtextInjector = new XtextStandaloneSetup().createInjectorAndDoEMFRegistration();
 		XtextResourceSet instance = xtextInjector.getInstance(XtextResourceSet.class);
-		
-		//initialize instance
 		instance.getPackageRegistry().put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
-		
+		//register referenced ecore/genmodels
+		List<String> referencedResources = new ArrayList<String>();
+		//initialize instance
 		String path = computeResourcePath(file);
-		XtextResource resource = (XtextResource) instance.getResource(URI.createPlatformResourceURI(path, true), true);
+		for (String referencedResourceURI: getReferencedResources(file)){
+			referencedResources.add(referencedResourceURI);
+		}
+		initialize(instance, referencedResources);
+		Resource resource = (XtextResource) instance.getResource(URI.createPlatformResourceURI(path, true), true);
 		EObject eObject = resource.getContents().get(0);
-		
 		Grammar grammar = (Grammar) eObject;
-		List<Grammar> usedGrammars = grammar.getUsedGrammars();
-		for (Grammar usedGrammar : usedGrammars) {
-			for (AbstractMetamodelDeclaration metamodelDeclaration : usedGrammar.getMetamodelDeclarations()) {
-				if (metamodelDeclaration instanceof ReferencedMetamodel) {
-					ReferencedMetamodel refMetamodel = (ReferencedMetamodel) metamodelDeclaration;
-					String alias = refMetamodel.getAlias();
-					if (alias.equals("ecore")) {
-						registerReferencedMetamodel(instance, refMetamodel);
+		validateAllImports(grammar);
+		return (Grammar) eObject;
+	}
+
+	public static void initialize(ResourceSet resourceSet, List<String> referencedResources) {
+		for (String referencedResource : referencedResources) {
+			URI loadedResourceUri = URI.createURI(referencedResource);
+			ensureResourceCanBeLoaded(loadedResourceUri, resourceSet);
+			resourceSet.getResource(loadedResourceUri, true);
+		}
+		registerGenModels(resourceSet);
+		registerEPackages(resourceSet);
+		installIndex(resourceSet);
+		EcoreUtil.resolveAll(resourceSet);
+	}
+	
+	private static void installIndex(ResourceSet resourceSet) {
+		ResourceDescriptionsData index = new ResourceDescriptionsData(new ArrayList<IResourceDescription>());
+		List<Resource> resources = Lists.newArrayList(resourceSet.getResources());
+		for (Resource resource : resources) {
+			index(resource, resource.getURI(), index);
+		}
+		ResourceDescriptionsData.ResourceSetAdapter.installResourceDescriptionsData(resourceSet, index);
+	}
+
+	private static void index(Resource resource, URI uri, ResourceDescriptionsData index) {
+		IResourceServiceProvider serviceProvider = IResourceServiceProvider.Registry.INSTANCE.getResourceServiceProvider(uri);
+		if (serviceProvider != null) {
+			IResourceDescription resourceDescription = serviceProvider.getResourceDescriptionManager().getResourceDescription(resource);
+			if (resourceDescription != null) {
+				index.addDescription(uri, resourceDescription);
+			}
+		}
+	}
+	
+	//copied from org.eclipse.xtext.xtext.generator.XtextGeneratorResourceSetInitializer
+	private static void ensureResourceCanBeLoaded(URI loadedResource, ResourceSet resourceSet) {
+		switch (loadedResource.fileExtension()) {
+			case "genmodel": {
+				GenModelPackage.eINSTANCE.getEFactoryInstance();
+				IResourceServiceProvider resourceServiceProvider = IResourceServiceProvider.Registry.INSTANCE.getResourceServiceProvider(loadedResource);
+				if (resourceServiceProvider == null) {
+					try {
+						Class<?> genModelSupport = Class.forName("org.eclipse.emf.codegen.ecore.xtext.GenModelSupport");
+						Object instance = genModelSupport.newInstance();
+						genModelSupport.getDeclaredMethod("createInjectorAndDoEMFRegistration").invoke(instance);
+					} catch (ClassNotFoundException e) {
+						logger.debug("org.eclipse.emf.codegen.ecore.xtext.GenModelSupport not found, GenModels will not be indexed");
+					} catch (Exception e) {
+						logger.error("Couldn't initialize GenModel support.", e);
+					}
+				}
+			}
+			case "ecore": {
+				IResourceServiceProvider resourceServiceProvider = IResourceServiceProvider.Registry.INSTANCE.getResourceServiceProvider(loadedResource);
+				if (resourceServiceProvider == null) {
+					EcoreSupportStandaloneSetup.setup();
+				}
+			}
+		}
+	}
+	
+	public static void registerGenModels(ResourceSet resourceSet) {
+		for (int i=0; i<resourceSet.getResources().size(); i++) {
+			Resource resource = resourceSet.getResources().get(i);
+			EObject eObject = resource.getContents().get(0);
+			if (eObject instanceof GenModel) {
+				register((GenModel) eObject);	
+			}
+		}
+	}
+
+	public static void registerEPackages(ResourceSet resourceSet) {
+		for (int i=0; i<resourceSet.getResources().size(); i++) {
+			Resource resource = resourceSet.getResources().get(i);
+			EObject eObject = resource.getContents().get(0);
+			if (eObject instanceof EPackage) {
+				register((EPackage)eObject, resourceSet);
+			}
+		}
+	}
+	
+	
+	public static void validateAllImports(Grammar grammar) {
+		for (AbstractMetamodelDeclaration declaration : GrammarUtil.allMetamodelDeclarations(grammar)) {
+			if (declaration instanceof ReferencedMetamodel)
+				validateReferencedMetamodel((ReferencedMetamodel)declaration);
+		}
+	}
+
+	private static List<String> getReferencedResources(IFile file) {
+		String path = computeResourcePath(file);
+		Injector xtextInjector = new XtextStandaloneSetup().createInjectorAndDoEMFRegistration();
+		XtextResourceSet instance = xtextInjector.getInstance(XtextResourceSet.class);
+		Resource resource = (XtextResource) instance.getResource(URI.createPlatformResourceURI(path, true), true);
+		EObject eObject = resource.getContents().get(0);
+		Grammar grammar = (Grammar) eObject;
+		List<String> referencedResources = new ArrayList<String>();
+		Resource workflow = loadWorkflowResource(grammar);
+		Module m = (Module) workflow.getContents().get(0);
+		Injector injector = Mwe2Activator.getInstance().getInjector("org.eclipse.emf.mwe2.language.Mwe2");
+		Mwe2ScopeProvider scopeProvider = (Mwe2ScopeProvider) injector.getInstance(IScopeProvider.class);
+		IQualifiedNameConverter qualifiedNameConverter = injector.getInstance(IQualifiedNameConverter.class);
+		ComponentImplCustom root = (ComponentImplCustom) m.getRoot();
+		for (Assignment assignment : root.getAssignment()) {
+			ComponentImplCustom value = (ComponentImplCustom) assignment.getValue();				
+			IScope componentFeaturesScope = scopeProvider.createComponentFeaturesScope(value);
+			for (IEObjectDescription description : componentFeaturesScope.getAllElements()) {
+				String featureName = qualifiedNameConverter.toString(description.getName());
+				if (featureName.equals("language")) {
+					EList<Assignment> children = value.getAssignment();
+					for (Assignment child: children) {
+						if(child.getValue() instanceof Component) {
+							Component childValue = (Component) child.getValue() ;
+							IScope childComponentFeaturesScope = scopeProvider.createComponentFeaturesScope(childValue);
+							for (IEObjectDescription desc : childComponentFeaturesScope.getAllElements()) {
+								if ((qualifiedNameConverter.toString(desc.getName())).equals("referencedResource")) {
+									ICompositeNode languageNode = NodeModelUtils.findActualNodeFor(childValue);
+									Pattern fileExtensionPattern = Pattern.compile("referencedResource(.+)", Pattern.MULTILINE);
+									Matcher match = fileExtensionPattern.matcher(languageNode.getText());									
+									while (match.find()) {
+										referencedResources.add(match.group(1).replaceAll("=", "").replaceAll("\"", "").trim());
+									}
+								}
+							}	
+						}
 					}
 				}
 			}
 		}
-		EcoreUtil.resolveAll(instance);
-		return (Grammar) eObject;
+		return referencedResources;
+	}
+
+	private static void validateReferencedMetamodel(ReferencedMetamodel ref) {
+		if (ref.getEPackage() != null && !ref.getEPackage().eIsProxy()) {
+			return;
+		}
+		EReference eref = XtextPackage.Literals.ABSTRACT_METAMODEL_DECLARATION__EPACKAGE;
+		List<INode> nodes = NodeModelUtils.findNodesForFeature(ref, eref);
+		String refName = (nodes.isEmpty()) ?"(unknown)": NodeModelUtils.getTokenText(nodes.get(0));
+		String grammarName = GrammarUtil.getGrammar(ref).getName();
+		String msg = "The EPackage " + refName + " in grammar " + grammarName + " could not be found. "
+			+ "You might want to register that EPackage in your workflow file.";
+		throw new IllegalStateException(msg);
+	}
+	
+	@SuppressWarnings("unused")
+	private static void registerReferencedMetamodels(XtextResourceSet instance, Grammar usedGrammar) {
+		EcoreUtil2.resolveAll(instance);
+		for (AbstractMetamodelDeclaration metamodelDeclaration : GrammarUtil.allMetamodelDeclarations(usedGrammar)) {
+			if (metamodelDeclaration instanceof ReferencedMetamodel) {
+				ReferencedMetamodel refMetamodel = (ReferencedMetamodel) metamodelDeclaration;
+				String alias = refMetamodel.getAlias();
+				if (alias!=null && alias.equals("ecore")) {
+					registerReferencedMetamodel(instance, refMetamodel);
+				}
+			}
+		}
 	}
 
 	private static void registerReferencedMetamodel(XtextResourceSet instance, ReferencedMetamodel refMetamodel) {
 		EPackage ePackage = refMetamodel.getEPackage();
-		EPackage ePackageRoot = loadEPackage(ePackage.getNsURI(), instance);
+		EPackage ePackageRoot = loadEPackage("http://www.example.org/models2016", instance);
+		refMetamodel.setEPackage(ePackageRoot);
 		register(ePackageRoot, instance);
 		Map<String, URI> ePackageNsURIToGenModelLocationMap = EcorePlugin.getEPackageNsURIToGenModelLocationMap(false);
 		URI genModelURI = ePackageNsURIToGenModelLocationMap.get(ePackage.getNsURI());
@@ -248,7 +422,7 @@ public class GeneratorUtil {
 		register((GenModel)genModel);
 	}
 
-	private static EPackage loadEPackage(String resourceOrNsURI, ResourceSet resourceSet) {
+	public static EPackage loadEPackage(String resourceOrNsURI, ResourceSet resourceSet) {
 		if (resourceSet.getPackageRegistry().containsKey(resourceOrNsURI))
 			return resourceSet.getPackageRegistry().getEPackage(resourceOrNsURI);
 		URI uri = URI.createURI(resourceOrNsURI);
@@ -274,15 +448,73 @@ public class GeneratorUtil {
 		}
 	}
 	
-	private static void register(EPackage ePackage, ResourceSet resourceSet) {
+	public static void register(EPackage ePackage, ResourceSet resourceSet) {
 		Registry registry = resourceSet.getPackageRegistry();
 		if (registry.get(ePackage.getNsURI()) == null) {
 			registry.put(ePackage.getNsURI(), ePackage);
 		}
 	}
 	
-	private static void register(GenModel genModel) {
+	public static void register(GenModel genModel) {
 		new GenModelHelper().registerGenModel(genModel);
+	}
+	
+	
+	public static String lookupFileExtension(Module m) {
+		Injector injector = Mwe2Activator.getInstance().getInjector("org.eclipse.emf.mwe2.language.Mwe2");
+		Mwe2ScopeProvider scopeProvider = (Mwe2ScopeProvider) injector.getInstance(IScopeProvider.class);
+		IQualifiedNameConverter qualifiedNameConverter = injector.getInstance(IQualifiedNameConverter.class);
+		ComponentImplCustom root = (ComponentImplCustom) m.getRoot();
+		for (Assignment assignment : root.getAssignment()) {
+			ComponentImplCustom value = (ComponentImplCustom) assignment.getValue();				
+			IScope componentFeaturesScope = scopeProvider.createComponentFeaturesScope(value);
+			for (IEObjectDescription description : componentFeaturesScope.getAllElements()) {
+				String featureName = qualifiedNameConverter.toString(description.getName());
+				if (featureName.equals("language")) {
+					EList<Assignment> children = value.getAssignment();
+					for (Assignment child: children) {
+						if(child.getValue() instanceof Component) {
+							Component childValue = (Component) child.getValue() ;
+							IScope childComponentFeaturesScope = scopeProvider.createComponentFeaturesScope(childValue);
+							for (IEObjectDescription desc : childComponentFeaturesScope.getAllElements()) {
+								if ((qualifiedNameConverter.toString(desc.getName())).equals("fileExtensions")) {
+									ICompositeNode languageNode = NodeModelUtils.findActualNodeFor(childValue);
+									Pattern fileExtensionPattern = Pattern.compile("fileExtensions(.+)", Pattern.MULTILINE);
+									Matcher match = fileExtensionPattern.matcher(languageNode.getText());
+									if (match.find()) {
+										return match.group(1).replaceAll("=", "").replaceAll("\"", "").trim();
+									}
+								}
+							}	
+						}
+					}
+				}
+			}
+		}
+		throw new UnsupportedOperationException("[DSLFORGE] Could not localize file extensions.");
+	}
+
+	public static Resource loadWorkflowResource(Grammar grammar) {
+		Injector injector = Mwe2Activator.getInstance().getInjector("org.eclipse.emf.mwe2.language.Mwe2");
+		MweResourceSetProvider casted = injector.getInstance(MweResourceSetProvider.class);
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getDslProjectName(grammar));
+		IJavaProject javaProject = JavaCore.create(project);
+		XtextResourceSet mwe2ResourceSet = casted.get();
+		mwe2ResourceSet.setClasspathURIContext(javaProject);
+		URI uri = EcoreUtil.getURI(grammar).trimFragment();
+		URI workflowFileURI = uri.trimSegments(1).appendSegment("Generate" + getGrammarShortName(grammar) + ".mwe2");
+		Resource resource = null;
+		try {
+			resource = mwe2ResourceSet.getResource(workflowFileURI, true);
+		} catch (Exception ex) {
+			//fall back.
+		} finally {
+			if (resource == null) {
+				workflowFileURI = uri.trimSegments(1).appendSegment(getGrammarShortName(grammar) + ".mwe2");
+				resource = mwe2ResourceSet.getResource(workflowFileURI, true);
+			}
+		}
+		return resource;
 	}
 	
 	private static String computeResourcePath(final IFile file) {

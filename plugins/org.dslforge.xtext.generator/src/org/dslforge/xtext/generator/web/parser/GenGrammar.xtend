@@ -103,7 +103,6 @@ class GenGrammar extends AbstractGenerator {
 		}
 		parserRules = GrammarUtil::allParserRules(grammar);
 		for (ParserRule pr : parserRules) {
-			println(pr)
 			// rules on the client side are untyped
 			pr.setType(null)
 			// remove the actions (xtext-specific)
@@ -135,18 +134,11 @@ class GenGrammar extends AbstractGenerator {
 				if (terminal instanceof CrossReference) {
 					var call = XtextFactory::eINSTANCE.createRuleCall
 					var replacement = XtextFactory::eINSTANCE.createTerminalRule
-						val allTerminalRules = GrammarUtil::allTerminalRules(grammar)
-						for (TerminalRule t: allTerminalRules) {
-							if (t.name=="ID")
-								replacement=t
-						}
-						
-//						replacement.setName("ID") // FQN
-//						var typeRef = XtextFactory::eINSTANCE.createTypeRef
-//						var dataType = EcorePackage::eINSTANCE.EString
-//						typeRef.classifier = dataType
-//						typeRef.metamodel = ecoreReferenced
-//						replacement.type = typeRef
+					val allTerminalRules = GrammarUtil::allTerminalRules(grammar)
+					for (TerminalRule t: allTerminalRules) {
+						if (t.name=="ID")
+							replacement=t
+					}
 					call.setRule(replacement)
 					a.setTerminal(call)
 				}

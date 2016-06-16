@@ -163,7 +163,6 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 		final IProject project = this.configuration.getProject();
 		if (project.exists()) {
 			//project exists -> incremental mode
-			new GenGrammar().doGenerate(this, progress.newChild(1));
 			new GenMode().doGenerate(this, progress.newChild(1));
 			new GenWorker().doGenerate(this, progress.newChild(1));
 			if (this.isServerSideContentAssist){
@@ -171,6 +170,7 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 				new GenExecutableExtensionFactory().doGenerate(this, progress.newChild(1));
 				new GenActivator().doGenerate(this, progress.newChild(1));	
 			}
+			new GenGrammar().doGenerate(this, progress.newChild(1));
 		} else {
 			//create new project
 			try {
@@ -276,13 +276,13 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 		new GenImageProvider().doGenerate(factory, progress.newChild(1));
 		new GenActionBarContributor().doGenerate(factory, progress.newChild(1));
 		new GenGlobalIndex().doGenerate(factory, progress.newChild(1));
-		new GenGrammar().doGenerate(factory, progress.newChild(1));
 		if (this.isServerSideContentAssist){
 			new GenContentAssistEnabledEditor().doGenerate(factory, progress.newChild(1));
 			new GenContentAssistParser().doGenerate(factory, progress.newChild(1));
 		} else {
 			new GenBasicEditor().doGenerate(factory, progress.newChild(1));
 		}
+		new GenGrammar().doGenerate(factory, progress.newChild(1));
 		new GenExecutableExtensionFactory().doGenerate(factory, progress.newChild(1));
 		new GenWebRuntimeModule().doGenerate(factory, progress.newChild(1));
 		new GenWebStandaloneSetup().doGenerate(factory, progress.newChild(1));

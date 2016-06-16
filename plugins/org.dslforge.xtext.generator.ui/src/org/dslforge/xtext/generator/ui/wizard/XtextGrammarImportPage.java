@@ -44,9 +44,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xtext.Grammar;
-import org.eclipse.xtext.XtextStandaloneSetup;
-
-import com.google.inject.Injector;
 
 public class XtextGrammarImportPage extends WizardPage {
 
@@ -253,9 +250,5 @@ public class XtextGrammarImportPage extends WizardPage {
 		if (descriptor!=null)
 			return descriptor.getProject();
 		return null;
-	}
-
-	private Injector getInjector() {
-		return new XtextStandaloneSetup().createInjectorAndDoEMFRegistration();
 	}
 }

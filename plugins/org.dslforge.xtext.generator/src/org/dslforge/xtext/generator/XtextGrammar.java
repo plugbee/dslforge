@@ -16,12 +16,9 @@
 package org.dslforge.xtext.generator;
 
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.dslforge.common.IGrammar;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
+import org.dslforge.xtext.generator.util.GeneratorUtil;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
@@ -29,33 +26,16 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.mwe2.language.mwe2.Assignment;
-import org.eclipse.emf.mwe2.language.mwe2.Component;
 import org.eclipse.emf.mwe2.language.mwe2.DeclaredProperty;
 import org.eclipse.emf.mwe2.language.mwe2.Module;
 import org.eclipse.emf.mwe2.language.mwe2.PlainString;
 import org.eclipse.emf.mwe2.language.mwe2.StringLiteral;
 import org.eclipse.emf.mwe2.language.mwe2.StringPart;
 import org.eclipse.emf.mwe2.language.mwe2.Value;
-import org.eclipse.emf.mwe2.language.mwe2.impl.ComponentImplCustom;
-import org.eclipse.emf.mwe2.language.resource.MweResourceSetProvider;
-import org.eclipse.emf.mwe2.language.scoping.Mwe2ScopeProvider;
-import org.eclipse.emf.mwe2.language.ui.internal.Mwe2Activator;
-import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.xtext.AbstractRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.ParserRule;
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.resource.IEObjectDescription;
-import org.eclipse.xtext.resource.XtextResourceSet;
-import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.IScopeProvider;
-
-import com.google.inject.Injector;
 
 public class XtextGrammar implements IGrammar {
 
@@ -65,7 +45,7 @@ public class XtextGrammar implements IGrammar {
 
 	public XtextGrammar(Grammar grammar) {
 		this.grammar = grammar;
-		this.workflow = loadWorkflowResource();
+		this.workflow = GeneratorUtil.loadWorkflowResource(this.grammar);
 	}
 
 	public Grammar getGrammar() {
@@ -105,65 +85,10 @@ public class XtextGrammar implements IGrammar {
 			}
 		}
 		// Xtext 2.10		
-		return lookupFileExtension(m);
+		return GeneratorUtil.lookupFileExtension(m);
 	}
 
-	private String lookupFileExtension(Module m) {
-		Injector injector = Mwe2Activator.getInstance().getInjector("org.eclipse.emf.mwe2.language.Mwe2");
-		Mwe2ScopeProvider scopeProvider = (Mwe2ScopeProvider) injector.getInstance(IScopeProvider.class);
-		IQualifiedNameConverter qualifiedNameConverter = injector.getInstance(IQualifiedNameConverter.class);
-		ComponentImplCustom root = (ComponentImplCustom) m.getRoot();
-		for (Assignment assignment : root.getAssignment()) {
-			ComponentImplCustom value = (ComponentImplCustom) assignment.getValue();				
-			IScope componentFeaturesScope = scopeProvider.createComponentFeaturesScope(value);
-			for (IEObjectDescription description : componentFeaturesScope.getAllElements()) {
-				String featureName = qualifiedNameConverter.toString(description.getName());
-				if (featureName.equals("language")) {
-					EList<Assignment> children = value.getAssignment();
-					for (Assignment child: children) {
-						if(child.getValue() instanceof Component) {
-							Component childValue = (Component) child.getValue() ;
-							IScope childComponentFeaturesScope = scopeProvider.createComponentFeaturesScope(childValue);
-							for (IEObjectDescription desc : childComponentFeaturesScope.getAllElements()) {
-								if ((qualifiedNameConverter.toString(desc.getName())).equals("fileExtensions")) {
-									ICompositeNode languageNode = NodeModelUtils.findActualNodeFor(childValue);
-									Pattern fileExtensionPattern = Pattern.compile("fileExtensions(.+)", Pattern.MULTILINE);
-									Matcher match = fileExtensionPattern.matcher(languageNode.getText());
-									if (match.find()) {
-										return match.group(1).replaceAll("=", "").replaceAll("\"", "").trim();
-									}
-								}
-							}	
-						}
-					}
-				}
-			}
-		}
-		throw new UnsupportedOperationException("[DSLFORGE] Could not localize file extensions.");
-	}
 
-	private Resource loadWorkflowResource() {
-		Injector injector = Mwe2Activator.getInstance().getInjector("org.eclipse.emf.mwe2.language.Mwe2");
-		MweResourceSetProvider casted = injector.getInstance(MweResourceSetProvider.class);
-		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getDslProjectName());
-		IJavaProject javaProject = JavaCore.create(project);
-		XtextResourceSet mwe2ResourceSet = casted.get();
-		mwe2ResourceSet.setClasspathURIContext(javaProject);
-		URI uri = EcoreUtil.getURI(grammar).trimFragment();
-		URI workflowFileURI = uri.trimSegments(1).appendSegment("Generate" + getShortName() + ".mwe2");
-		Resource resource = null;
-		try {
-			resource = mwe2ResourceSet.getResource(workflowFileURI, true);
-		} catch (Exception ex) {
-			//fall back.
-		} finally {
-			if (resource == null) {
-				workflowFileURI = uri.trimSegments(1).appendSegment(getShortName() + ".mwe2");
-				resource = mwe2ResourceSet.getResource(workflowFileURI, true);
-			}
-		}
-		return resource;
-	}
 
 	@Override
 	public Set<String> getKeywords() {
