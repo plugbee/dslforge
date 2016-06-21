@@ -30,6 +30,7 @@ import org.dslforge.xtext.common.registry.LanguageRegistry;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.xtext.generator.GeneratorDelegate;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
@@ -39,6 +40,7 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Maps;
+import com.google.inject.ConfigurationException;
 import com.google.inject.Injector;
 
 public class BasicGenerateAction extends AbstractWorkspaceAction {
@@ -70,14 +72,20 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 			//load the resource
 			String languageName = getLanguageName(extension);
 			if (languageName!=null) {
-				injector = LanguageRegistry.INSTANCE.getInjector(languageName);
-				IGenerator generator = injector.getInstance(IGenerator.class);
 				XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 				XtextResource resource = (XtextResource) resourceSet.getResource(fileURI, true);
+				injector = LanguageRegistry.INSTANCE.getInjector(languageName);
 				//launch the generator
 				outlets.put("DEFAULT_OUTPUT", targetDirectory);
 				IFileSystemAccess fsa = getConfiguredFileSystemAccess();
-				generator.doGenerate(resource, fsa);
+				try {
+					 IGenerator generator = injector.getInstance(IGenerator.class);
+					 generator.doGenerate(resource, fsa);
+				} catch(ConfigurationException ex) {
+					// Xtext 2.10: cannot find or create IGenerator binding, try IGenerator2
+					GeneratorDelegate delegate= injector.getInstance(GeneratorDelegate.class);
+					delegate.doGenerate(resource, fsa);
+				}
 			}
 		}
 	}
