@@ -72,9 +72,9 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 			//load the resource
 			String languageName = getLanguageName(extension);
 			if (languageName!=null) {
+				injector = LanguageRegistry.INSTANCE.getInjector(languageName);
 				XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 				XtextResource resource = (XtextResource) resourceSet.getResource(fileURI, true);
-				injector = LanguageRegistry.INSTANCE.getInjector(languageName);
 				//launch the generator
 				outlets.put("DEFAULT_OUTPUT", targetDirectory);
 				IFileSystemAccess fsa = getConfiguredFileSystemAccess();
