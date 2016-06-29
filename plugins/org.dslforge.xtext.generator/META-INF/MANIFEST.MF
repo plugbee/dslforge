@@ -23,7 +23,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.ui,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ecore
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.xtext.generator,
  org.dslforge.xtext.generator.module,

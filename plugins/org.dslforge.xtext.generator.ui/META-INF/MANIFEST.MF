@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.ui.ide,
  org.dslforge.common,
  org.dslforge.common.ui,
  org.dslforge.xtext.generator
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: PlugBee
 Import-Package: com.google.inject,
