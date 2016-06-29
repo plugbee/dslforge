@@ -9,7 +9,7 @@ Require-Bundle: org.eclipse.rap.ui,
  org.dslforge.styledtext,
  org.eclipse.emf.common,
  org.eclipse.emf.rap.common.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.texteditor,
  org.dslforge.texteditor.actions,

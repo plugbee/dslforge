@@ -14,7 +14,7 @@ Require-Bundle: com.google.inject,
  org.eclipse.equinox.common,
  org.dslforge.styledtext,
  org.dslforge.texteditor
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.dslforge.texteditor.demo,
  org.dslforge.texteditor.demo.actions,
  org.dslforge.texteditor.demo.commands,

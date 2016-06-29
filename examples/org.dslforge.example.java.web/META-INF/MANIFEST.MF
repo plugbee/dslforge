@@ -18,7 +18,7 @@ Require-Bundle: org.eclipse.rap.ui,
  org.dslforge.workspace,
  org.dslforge.texteditor,
  org.dslforge.styledtext
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Activator: org.dslforge.example.java.web.internal.Activator
 Export-Package: org.dslforge.example.java.web.editor,
  org.dslforge.example.java.web.editor.widget

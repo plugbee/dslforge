@@ -9,7 +9,7 @@ Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.rap.ui.views,
  org.eclipse.emf.rap.edit.ui,
  org.dslforge.workspace
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.workspace.ui,
  org.dslforge.workspace.ui.actions,

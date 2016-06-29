@@ -21,4 +21,4 @@ Require-Bundle: org.eclipse.rap.ui,
  org.dslforge.styledtext,
  org.codingpark.piraterobot.play
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

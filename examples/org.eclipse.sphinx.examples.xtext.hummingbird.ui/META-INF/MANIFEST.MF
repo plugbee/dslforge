@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.sphinx.examples.xtext.hummingbird;visibility:=reexpo
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.sphinx.examples.xtext.ui.quickfix,
  org.eclipse.sphinx.examples.xtext.ui.contentassist,
  org.eclipse.sphinx.examples.xtext.ui.internal,
