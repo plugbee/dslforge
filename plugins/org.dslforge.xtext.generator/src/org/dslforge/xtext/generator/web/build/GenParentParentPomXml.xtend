@@ -50,7 +50,7 @@ class GenParentParentPomXml extends AbstractGenerator {
 	<artifactId>«projectName».parent.parent</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-		<tycho.version>0.20.0</tycho.version>
+		<tycho.version>0.25.0</tycho.version>
 		<tycho.showEclipseLog>true</tycho.showEclipseLog>
 		<assembly-version>2.4</assembly-version>
 		<replacer-version>1.4.1</replacer-version>
@@ -167,8 +167,8 @@ class GenParentParentPomXml extends AbstractGenerator {
 					<version>${tycho.version}</version>
 					<configuration>
 						<encoding>UTF-8</encoding>
-						<source>6.0</source>
-						<target>6.0</target>
+						<source>1.8</source>
+						<target>1.8</target>
 					</configuration>
 				</plugin>
 	      		<plugin>
