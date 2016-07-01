@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2015 PlugBee. All rights reserved.
+ * Copyright (c) 2016 PlugBee. All rights reserved.
  * 
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
@@ -15,7 +15,7 @@
  */
 package org.dslforge.workspace.internal;
 
-public class NavigatorImageProvider {
+public class WorkspaceImageProvider {
 
 	public static final String FILE = "icons/file_obj.png";
 	public static final String MODEL = "icons/model.png";

@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2015 PlugBee. All rights reserved.
+ * Copyright (c) 2016 PlugBee. All rights reserved.
  * 
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
@@ -15,13 +15,24 @@
  */
 package org.dslforge.workspace.internal;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.persistence.EntityManagerFactory;
 
 import org.apache.log4j.Logger;
 import org.dslforge.workspace.IWorkspaceConstants;
+import org.dslforge.workspace.contribution.IWorkspaceContribution;
+import org.dslforge.workspace.contribution.WorkspaceContribution;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.jpa.EntityManagerFactoryBuilder;
 import org.osgi.util.tracker.ServiceTracker;
@@ -38,14 +49,18 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.dslforge.workspace"; //$NON-NLS-1$
 
+	private static final String WORKSPACE_CONTRIBUTION_EXTENSION_POINT = "org.dslforge.workspace.configuration";
+	private static final String WORKSPACE_CONTRIBUTION_CONFIG_ELEMENT = "contribution";
+	private static final String WORKSPACE_CONTRIBUTION_PATH = "path";
+	
 	// The shared instance
 	private static Activator plugin;
 
 	private static BundleContext ctx;
-
 	private ServiceTracker emfTracker;
-
-	EntityManagerFactory emf;
+	private EntityManagerFactory emf;
+	private IPath workspaceRootPath; 
+	private static List<IWorkspaceContribution> workspaceContributions;
 	
 	public static Activator getDefault() {
 		return plugin;
@@ -67,7 +82,47 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 		emfTracker = new ServiceTracker(ctx, EntityManagerFactory.class.getName(), this);
 		emfTracker.open();
 	}
-
+	
+	private void initialize() {
+		workspaceContributions = new ArrayList<IWorkspaceContribution>();
+		if (Platform.isRunning()) {
+			IConfigurationElement[] configElements =Platform.getExtensionRegistry().getConfigurationElementsFor(WORKSPACE_CONTRIBUTION_EXTENSION_POINT);
+			if (configElements.length != 0) {
+				for (IConfigurationElement configElement : configElements) { 
+					try {
+						if (configElement.getName().toLowerCase().equals(WORKSPACE_CONTRIBUTION_CONFIG_ELEMENT.toLowerCase())) {	
+							String workspaceRootPath = configElement.getAttribute(WORKSPACE_CONTRIBUTION_PATH); 
+							if (workspaceContributions.contains(workspaceRootPath)) {
+								logger.warn("Duplicate workspace contribution found for: " + workspaceRootPath);
+								continue;
+							}
+							WorkspaceContribution contribution = new WorkspaceContribution(workspaceRootPath);	
+							workspaceContributions.add(contribution);
+						}	
+					} catch (Exception ex) {
+						logger.error(ex.getMessage(), ex);
+					}
+				}
+			}	
+		} 
+		else throw new RuntimeException("Platform is not running at this point.");
+	}
+	
+	public IWorkspaceContribution getWorkspaceContribution() {
+		initialize();
+		if (workspaceContributions.size() == 1) {
+			return workspaceContributions.get(0);
+		} else {
+			if (workspaceContributions.isEmpty()) {
+				// no workspace contributions, ignore
+			} else if (workspaceContributions.size() > 1) {
+				logger.error("More than one workspace extension has been registered");
+			}
+			// use default persistence.xml properties
+			return new WorkspaceContribution(IWorkspaceConstants.WORKSPACE_DEFAULT_PATH);
+		}
+	}
+	
 	@Override
 	public void stop(BundleContext context) throws Exception {
 		logger.info(PLUGIN_ID + " stopping!");
@@ -80,28 +135,39 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer {
 
 	@SuppressWarnings("unchecked")
 	public Object addingService(ServiceReference ref) {
-		Bundle b = ref.getBundle();
-		final Object service = b.getBundleContext().getService(ref);
+		IWorkspaceContribution workspaceContribution = getWorkspaceContribution();
+		workspaceRootPath = workspaceContribution.getWorkspaceRootPath();
+		Bundle bundle = ref.getBundle();
+		final Object service = bundle.getBundleContext().getService(ref);
 		String unitName = (String) ref.getProperty(EntityManagerFactoryBuilder.JPA_UNIT_NAME);
 		if (unitName.equals(IWorkspaceConstants.PERSISTENCE_UNIT_NAME)) {
-			emf = (EntityManagerFactory) service;
+			EntityManagerFactoryBuilder entityManagerFactoryBuilder = lookupEntityManagerFactoryBuilder(unitName);
+			emf = entityManagerFactoryBuilder.createEntityManagerFactory(overrideConfiguration());
 			DatabaseService.getInstance().setEntityManagerFactory(emf);
 		}
 		return service;
 	}
-
-//	public Map<String, Object> defaultProperties() {
-//		Map<String, Object> props = new HashMap<String, Object>();
-//		props.put("javax.persistence.jdbc.driver", IWorkspaceConstants.JDBC_DATABASE_DRIVER);
-//		props.put("javax.persistence.jdbc.url", IWorkspaceConstants.JDBC_DATABASE_URL);
-//		props.put("javax.persistence.jdbc.user", IWorkspaceConstants.JDBC_DATABASE_USER);
-//		props.put("javax.persistence.jdbc.password", IWorkspaceConstants.JDBC_DATABASE_PASSWORD);
-//		props.put("eclipselink.logging.level", "OFF");
-//		props.put(PersistenceUnitProperties.CLASSLOADER, this.getClass().getClassLoader());
-//		props.put(PersistenceUnitProperties.WEAVING, "false");
-//		return props;
-//	}
-
+	
+	private Map<String, Object> overrideConfiguration() {
+		Map<String, Object> props = new HashMap<String, Object>();
+		props.put(IWorkspaceConstants.JAVAX_PERSISTENCE_JDBC_URL,
+				IWorkspaceConstants.JDBC_PREFIX + workspaceRootPath.removeTrailingSeparator().toString()
+						+ IWorkspaceConstants.METADATA_FOLDER + ";create=true");
+		return props;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public EntityManagerFactoryBuilder lookupEntityManagerFactoryBuilder(String puName) {
+		String filter = "(osgi.unit.name=" + puName + ")";
+		ServiceReference[] refs = null;
+		try {
+			refs = ctx.getServiceReferences(EntityManagerFactoryBuilder.class.getName(), filter);
+		} catch (InvalidSyntaxException isEx) {
+			new RuntimeException("Found bad filter in manifest file.", isEx);
+		}
+		return (refs == null) ? null : (EntityManagerFactoryBuilder) ctx.getService(refs[0]);
+	}
+	
 	public void modifiedService(ServiceReference ref, Object service) {
 	}
 

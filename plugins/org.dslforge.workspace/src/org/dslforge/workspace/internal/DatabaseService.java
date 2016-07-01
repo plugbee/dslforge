@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2015 PlugBee. All rights reserved.
+ * Copyright (c) 2016 PlugBee. All rights reserved.
  * 
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
@@ -68,7 +68,7 @@ public class DatabaseService {
 		}
 		return entityManagerFactory;
 	}
-
+	
 	public EntityManagerFactory lookupEntityManagerFactory(String puName) {
 		String filter = "(osgi.unit.name=" + puName + ")";
 		@SuppressWarnings("rawtypes")
@@ -76,7 +76,7 @@ public class DatabaseService {
 		try {
 			refs = context.getServiceReferences(EntityManagerFactory.class.getName(), filter);
 		} catch (InvalidSyntaxException isEx) {
-			new RuntimeException("[ERROR] - Bad filter", isEx);
+			new RuntimeException("Found bad filter in manifest file.", isEx);
 		}
 		return (refs == null) ? null : (EntityManagerFactory) context.getService(refs[0]);
 	}
@@ -458,8 +458,7 @@ public class DatabaseService {
 	}
 
 	public User changePwd(String userName, String pwd) {
-		EntityManagerFactory emf = getEmf();
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery("select u from User u where u.id = '" + userName + "'");
 		List<User> users = q.getResultList();
 		if (users.size() > 1)

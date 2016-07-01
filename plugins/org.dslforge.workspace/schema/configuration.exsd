@@ -17,6 +17,9 @@
          </appinfo>
       </annotation>
       <complexType>
+         <sequence minOccurs="0" maxOccurs="1">
+            <element ref="contribution"/>
+         </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
                <documentation>
@@ -39,6 +42,23 @@
                <appinfo>
                   <meta.attribute translatable="true"/>
                </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="contribution">
+      <annotation>
+         <documentation>
+            A workspace contribution to the text editor workbench.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="path" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The root path of the workspace, e.g. D:/www/dslforge/workspace or /var/lib/tomcat7/workspace
+               </documentation>
             </annotation>
          </attribute>
       </complexType>

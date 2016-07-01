@@ -26,4 +26,5 @@ public interface IWorkspaceConstants {
 	public static final String PATH_SEPARATOR = "\\";
 	public static final String LOCKED = "locked";
 	public static final String UNLOCKED = "unlocked";
+	public static final String WORKSPACE_DEFAULT_PATH = "D:/www/dslforge/workspace";
 }

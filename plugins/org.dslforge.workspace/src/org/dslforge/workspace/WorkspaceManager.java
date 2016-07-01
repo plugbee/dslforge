@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2015 PlugBee. All rights reserved.
+ * Copyright (c) 2016 PlugBee. All rights reserved.
  * 
  * This program and the accompanying materials are made available 
  * under the terms of the Eclipse Public License v1.0 which 
@@ -30,6 +30,8 @@ import org.dslforge.database.pu.tables.Project;
 import org.dslforge.database.pu.tables.Resource;
 import org.dslforge.database.pu.tables.User;
 import org.dslforge.workspace.internal.DatabaseService;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.rap.rwt.RWT;
@@ -45,7 +47,7 @@ public class WorkspaceManager {
 	private WorkspaceManager() {
 		setupWorkspace();
 	}
-
+	
 	private void setupWorkspace() {
 		EntityManagerFactory emf = DatabaseService.getInstance().getEmf();
 		Map<String, Object> properties = emf.getProperties();
@@ -90,31 +92,30 @@ public class WorkspaceManager {
 	}
 
 	private String computeRelativePath(URI absoluteURI) {
-		URI rootURI = URI.createFileURI(getWorkspaceRoot());
-		URI relativeURI = absoluteURI.deresolve(rootURI);
-		String[] segments = relativeURI.segments();
+		IPath absolutePath = new Path(absoluteURI.devicePath());
+		IPath relativePath = absolutePath.makeRelativeTo(new Path(getWorkspaceRoot()));
+		String[] segments = relativePath.segments();
 		if (segments.length == 0) {
 			throw new RuntimeException("Problem when computing relative path for " + absoluteURI);
 		}
-		return relativeURI.toString();
+		return relativePath.toString();
 	}
 
 	private String computeProjectName(URI absoluteURI) {
-		URI rootURI = URI.createFileURI(getWorkspaceRoot());
-		URI relativeURI = absoluteURI.deresolve(rootURI);
-		String[] segments = relativeURI.segments();
+		IPath absolutePath = new Path(absoluteURI.devicePath());
+		IPath relativePath = absolutePath.makeRelativeTo(new Path(getWorkspaceRoot()));
+		String[] segments = relativePath.segments();
 		if (segments.length == 0) {
 			throw new RuntimeException("Problem when computing relative path for " + absoluteURI);
 		}
-		String projectName = relativeURI.segment(0);
-		return projectName;
+		return relativePath.segment(0);
 	}
 
 	public void createProject(String projectName, String description, String visibility) {
 		String userId = (String) RWT.getUISession().getAttribute("user");
 		String workspaceRoot = getWorkspaceRoot();
-		String projectPath = workspaceRoot + projectName;
-		final File file = new File(projectPath);
+		IPath projectPath = new Path(workspaceRoot).addTrailingSeparator().append(projectName);
+		final File file = projectPath.toFile();
 		if (!file.exists()) {
 			createProject(projectName, description, projectName, userId, visibility);
 			Display.getCurrent().syncExec(new Runnable() {
@@ -133,7 +134,10 @@ public class WorkspaceManager {
 	}
 
 	public boolean isProject(File file) {
-		return (file.isDirectory() && file.getParent() != null && file.getParent().equals(getWorkspaceRoot()));
+		String parent = file.getParent();
+		boolean result  = new Path(parent).equals(new Path(getWorkspaceRoot()));
+		return (file.isDirectory() && parent != null && result);
+
 	}
 
 	public void deleteProject(final File file) {
@@ -217,14 +221,14 @@ public class WorkspaceManager {
 			return false;
 		}
 		try {
-			// delete files in the porject
+			// delete files in the project
 			List<Resource> allResourcesInProject = DatabaseService.getInstance().getAllResourcesInProject(projectName);
 			for (Resource r : allResourcesInProject) {
 				final String filePath = getWorkspaceRoot() + r.getPath().replace("/", "\\");
 				final File file = new File(filePath);
 				if (file.exists()) {
 					if (!isLocked(file)) {
-						WorkspaceManager.INSTANCE.deleteResource(projectName, r.getPath());
+						deleteResource(projectName, r.getPath());
 						String userId = (String) RWT.getUISession().getAttribute("user");
 						logger.info(userId + " deleted file " + file.getPath());
 					} else {
@@ -242,7 +246,7 @@ public class WorkspaceManager {
 				final File file = new File(filePath);
 				if (file.exists()) {
 					if (!isLocked(file)) {
-						WorkspaceManager.INSTANCE.deleteFolder(folder.getPath());
+						deleteFolder(folder.getPath());
 					}
 				}
 			}
@@ -250,7 +254,7 @@ public class WorkspaceManager {
 			DatabaseService.getInstance().deleteProject(projectName);
 
 		} catch (PersistenceException ex) {
-			// TODO: project contains resources, should make sure to delete all
+			//project contains resources, should make sure to delete all
 			// the resources inside the project.
 			MessageDialog.openInformation(null, "Unexpected Error",
 					"Project " + projectName + " could not be deleted, check your user access privileges.");

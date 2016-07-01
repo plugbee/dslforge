@@ -11,6 +11,7 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.dslforge.database.pu.tables,
  org.dslforge.workspace,
+ org.dslforge.workspace.contribution,
  org.dslforge.workspace.internal
 Import-Package: javax.persistence;version="2.1.0",
  org.apache.log4j;version="1.2.15",
