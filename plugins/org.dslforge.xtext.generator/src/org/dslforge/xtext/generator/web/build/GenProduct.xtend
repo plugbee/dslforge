@@ -80,6 +80,7 @@ class GenProduct extends AbstractGenerator {
       <plugin id="org.apache.felix.gogo.runtime"/>
       <plugin id="org.apache.felix.gogo.shell"/>
       <plugin id="org.apache.log4j"/>
+      <plugin id="org.dslforge.common.logging" fragment="true"/>
       <plugin id="org.dslforge.styledtext"/>
       <plugin id="org.dslforge.texteditor"/>
       <plugin id="org.dslforge.texteditor.demo"/>
