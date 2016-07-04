@@ -37,6 +37,12 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.widgets.Display;
 
+/**
+ * A singleton which wraps a couple of (file system, database) allowing basic
+ * interaction with workspaces, such as creating projects, folders, resources,
+ * users, etc.
+ *
+ */
 public class WorkspaceManager {
 
 	static final Logger logger = Logger.getLogger(WorkspaceManager.class);
@@ -76,68 +82,59 @@ public class WorkspaceManager {
 		this.workspaceRoot = workspaceRoot;
 	}
 
-	private String computeResourceName(URI absoluteURI) {
-		URI rootURI = URI.createFileURI(getWorkspaceRoot());
-		URI relativeURI = absoluteURI.deresolve(rootURI);
-		String[] segments = relativeURI.segments();
-		if (segments.length == 0) {
-			throw new RuntimeException("Problem when computing relative path for " + absoluteURI);
-		}
-		if (segments.length == 1) {
-			return segments[0];
-		}
-		// more than one segment
-		String segment = relativeURI.segment(segments.length - 1);
-		return segment;
-	}
-
-	private String computeRelativePath(URI absoluteURI) {
-		IPath absolutePath = new Path(absoluteURI.devicePath());
-		IPath relativePath = absolutePath.makeRelativeTo(new Path(getWorkspaceRoot()));
-		String[] segments = relativePath.segments();
-		if (segments.length == 0) {
-			throw new RuntimeException("Problem when computing relative path for " + absoluteURI);
-		}
-		return relativePath.toString();
-	}
-
-	private String computeProjectName(URI absoluteURI) {
-		IPath absolutePath = new Path(absoluteURI.devicePath());
-		IPath relativePath = absolutePath.makeRelativeTo(new Path(getWorkspaceRoot()));
-		String[] segments = relativePath.segments();
-		if (segments.length == 0) {
-			throw new RuntimeException("Problem when computing relative path for " + absoluteURI);
-		}
-		return relativePath.segment(0);
-	}
-
 	public void createProject(String projectName, String description, String visibility) {
 		String userId = (String) RWT.getUISession().getAttribute("user");
 		String workspaceRoot = getWorkspaceRoot();
 		IPath projectPath = new Path(workspaceRoot).addTrailingSeparator().append(projectName);
 		final File file = projectPath.toFile();
 		if (!file.exists()) {
-			createProject(projectName, description, projectName, userId, visibility);
+			DatabaseService.getInstance().createProject(projectName, description, projectName, userId, visibility);
 			Display.getCurrent().syncExec(new Runnable() {
 				@Override
 				public void run() {
 					file.mkdir();
 				}
 			});
+			logger.info(userId + " created project " + file.getAbsolutePath().toString());
 		}
-		logger.info(userId + " created project " + file.getAbsolutePath().toString());
 	}
 
-	private void createProject(String projectName, String description, String path, String userName,
-			String visibility) {
-		DatabaseService.getInstance().createProject(projectName, description, path, userName, visibility);
+	public void createFolder(URI uri) {
+		String folderName = computeResourceName(uri);
+		String path = computeRelativePath(uri);
+		final File file = new File(uri.toFileString());
+		if (!file.exists()) {
+			DatabaseService.getInstance().createFolder(path, folderName);
+			Display.getCurrent().syncExec(new Runnable() {
+				@Override
+				public void run() {
+					file.mkdir();
+				}
+			});
+			String userId = (String) RWT.getUISession().getAttribute("user");
+			logger.info(userId + " created folder " + file.getAbsolutePath().toString());
+		}
 	}
 
-	public boolean isProject(File file) {
-		String parent = file.getParent();
-		boolean result  = new Path(parent).equals(new Path(getWorkspaceRoot()));
-		return (file.isDirectory() && parent != null && result);
-
+	public void createResource(URI uri) {
+		final File file = new File(uri.toFileString());
+		if (!file.exists()) {
+			String path = computeRelativePath(uri);
+			String projectName = computeProjectName(uri);
+			DatabaseService.getInstance().createResource(projectName, path);
+			Display.getCurrent().syncExec(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						file.createNewFile();
+					} catch (IOException ex) {
+						logger.error(ex.getMessage(), ex);
+					}
+				}
+			});
+			String userId = (String) RWT.getUISession().getAttribute("user");
+			logger.info(userId + " created file " + file.getAbsolutePath().toString());
+		}
 	}
 
 	public void deleteProject(final File file) {
@@ -148,9 +145,9 @@ public class WorkspaceManager {
 					@Override
 					public void run() {
 						try {
-							delete(file);
+							deleteRecursive(file);
 						} catch (IOException ex) {
-							logger.info("Project " + file.getName() + " cold not be deleted.");
+							logger.info("Project " + file.getName() + " could not be deleted.");
 							logger.error(ex.getMessage(), ex);
 						}
 						logger.info("Project " + file.getName() + " deleted.");
@@ -160,41 +157,79 @@ public class WorkspaceManager {
 		}
 	}
 
-	public void delete(File file) throws IOException {
-		if (file.isDirectory()) {
-			// directory is empty, then delete it
-			if (file.list().length == 0) {
-				file.delete();
-				logger.info("Directory is deleted : " + file.getAbsolutePath());
-			} else {
-
-				// list all the directory contents
-				String files[] = file.list();
-				for (String temp : files) {
-					// construct the file structure
-					File fileDelete = new File(file, temp);
-					// recursive delete
-					delete(fileDelete);
-				}
-				// check the directory again, if empty then delete it
-				if (file.list().length == 0) {
+	public boolean deleteFolder(final File file) {
+		String path = computeRelativePath(URI.createFileURI(file.getAbsolutePath()));
+		Folder folder = DatabaseService.getInstance().getFolder(path);
+		if (folder == null) {
+			MessageDialog.openInformation(null, "Unexpected Error",
+					"Could not find Folder " + file.getAbsolutePath());
+			return false;
+		}
+		if (file.exists()) {
+			deleteFolder(file.getAbsolutePath());
+			Display.getCurrent().syncExec(new Runnable() {
+				@Override
+				public void run() {
 					file.delete();
-					logger.info("Directory is deleted : " + file.getAbsolutePath());
 				}
+			});
+			return true;
+		}
+		return false;
+	}
+
+	public boolean deleteResource(final File file) {
+		if (file.exists()) {
+			if (!isLocked(file)) {
+				URI uri = URI.createFileURI(file.getAbsolutePath());
+				String relativePath = computeRelativePath(uri);
+				String projectName = computeProjectName(uri);
+				if (relativePath == null) {
+					throw new RuntimeException("Could not compute relative path of file " + file.getAbsolutePath());
+				}
+				DatabaseService.getInstance().deleteResource(projectName, relativePath);
+				Display.getCurrent().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						file.delete();
+					}
+				});
+				String userId = (String) RWT.getUISession().getAttribute("user");
+				logger.info(userId + " deleted file " + file.getAbsolutePath());
+				return true;
+			} else {
+				MessageDialog.openInformation(null, "Forbidden Operation",
+						"File " + file.getAbsolutePath() + " is currently locked. Please unlock file before deleting it.");
 			}
-		} else {
-			// if file, then delete it
-			file.delete();
-			logger.info("File is deleted : " + file.getAbsolutePath());
+		}
+		return false;
+	}
+
+	public void deleteUser(String userName) {
+		User user = DatabaseService.getInstance().getUser(userName);
+		if (user != null) {
+			DatabaseService.getInstance().deleteUser(userName);
 		}
 	}
 
-	public void deleteAllProjects() {
-		DatabaseService.getInstance().deleteAllProjects();
+	public User getUserById(String userId) {
+		return DatabaseService.getInstance().getUserById(userId);
 	}
 
 	public Project getProject(String projectName) {
 		return DatabaseService.getInstance().getProject(projectName);
+	}
+
+	public Folder getFolder(URI folderURI) {
+		return DatabaseService.getInstance().getFolder(folderURI.toFileString());
+	}
+
+	public Resource getResource(String projectName, String path) {
+		return DatabaseService.getInstance().getResource(projectName, path);
+	}
+	
+	public List<User> getAllUsers() {
+		return DatabaseService.getInstance().getAllUsers();
 	}
 
 	public List<Project> getAllProjects() {
@@ -214,209 +249,10 @@ public class WorkspaceManager {
 		return DatabaseService.getInstance().getAllProjectsForUser(userName);
 	}
 
-	private boolean deleteProject(String projectName) {
-		Project project = DatabaseService.getInstance().getProject(projectName);
-		if (project == null) {
-			MessageDialog.openInformation(null, "Unexpected Error", "Could not find Project " + projectName);
-			return false;
-		}
-		try {
-			// delete files in the project
-			List<Resource> allResourcesInProject = DatabaseService.getInstance().getAllResourcesInProject(projectName);
-			for (Resource r : allResourcesInProject) {
-				final String filePath = getWorkspaceRoot() + r.getPath().replace("/", "\\");
-				final File file = new File(filePath);
-				if (file.exists()) {
-					if (!isLocked(file)) {
-						deleteResource(projectName, r.getPath());
-						String userId = (String) RWT.getUISession().getAttribute("user");
-						logger.info(userId + " deleted file " + file.getPath());
-					} else {
-						MessageDialog.openInformation(null, "Forbidden Operation", "Project " + projectName
-								+ " contains locked files, make sure files are unlocked before deleting.");
-						return false;
-					}
-				}
-			}
-
-			// delete folders in the project
-			List<Folder> folders = DatabaseService.getInstance().getAllFoldersInProject(projectName);
-			for (Folder folder : folders) {
-				final String filePath = getWorkspaceRoot() + folder.getPath().replace("/", "\\");
-				final File file = new File(filePath);
-				if (file.exists()) {
-					if (!isLocked(file)) {
-						deleteFolder(folder.getPath());
-					}
-				}
-			}
-			// delete the project
-			DatabaseService.getInstance().deleteProject(projectName);
-
-		} catch (PersistenceException ex) {
-			//project contains resources, should make sure to delete all
-			// the resources inside the project.
-			MessageDialog.openInformation(null, "Unexpected Error",
-					"Project " + projectName + " could not be deleted, check your user access privileges.");
-			return false;
-		}
-		return true;
-	}
-
-	public void createFolder(URI uri) {
-		String folderName = computeResourceName(uri);
-		String path = computeRelativePath(uri);
-		final File file = new File(uri.toFileString());
-		if (!file.exists()) {
-			DatabaseService.getInstance().createFolder(path, folderName);
-			Display.getCurrent().syncExec(new Runnable() {
-				@Override
-				public void run() {
-					file.mkdir();
-				}
-			});
-		}
-	}
-
-	public Folder getFolder(URI folderURI) {
-		return null;
-	}
-
-	private Folder getFolder(String folderPath) {
-		String path = computeRelativePath(URI.createFileURI(folderPath));
-		return DatabaseService.getInstance().getFolder(path);
-	}
-
 	public List<Folder> getAllFolders() {
 		return DatabaseService.getInstance().getAllFolders();
 	}
 
-	public boolean deleteFolder(final File file) {
-		Folder folder = getFolder(file.getAbsolutePath());
-		if (folder == null) {
-			MessageDialog.openInformation(null, "Unexpected Error",
-					"Could not find Folder " + file.getAbsolutePath());
-			return false;
-		}
-		if (file.exists()) {
-			deleteFolder(file.getAbsolutePath());
-			Display.getCurrent().syncExec(new Runnable() {
-				@Override
-				public void run() {
-					file.delete();
-				}
-			});
-			return true;
-		}
-		return false;
-	}
-
-	public void deleteAllFolders() {
-		DatabaseService.getInstance().deleteAllFolders();
-	}
-
-	private void deleteFolder(String folderPath) {
-		String projectName = computeProjectName(URI.createFileURI(folderPath));
-		String path = computeRelativePath(URI.createFileURI(folderPath));
-		DatabaseService.getInstance().deleteFolder(projectName, path);
-	}
-
-	public void createUser(String userName, String firstName, String lastName, String organization, String email,
-			String pwd) {
-		DatabaseService.getInstance().createUser(userName, firstName, lastName, organization, email, pwd);
-	}
-
-	public void deleteUser(String userName) {
-		User user = getUser(userName);
-		if (user != null) {
-			DatabaseService.getInstance().deleteUser(userName);
-		}
-	}
-
-	public void deleteAllUsers() {
-		DatabaseService.getInstance().deleteAllUsers();
-	}
-
-	public User getUserById(String userId) {
-		return DatabaseService.getInstance().getUserById(userId);
-	}
-
-	private User getUser(String userName) {
-		return DatabaseService.getInstance().getUser(userName);
-	}
-
-	public List<User> getAllUsers() {
-		return DatabaseService.getInstance().getAllUsers();
-	}
-
-	public User authenticateUser(String login, String password) {
-		return DatabaseService.getInstance().authenticateUser(login, password);
-	}
-
-	public User changePwd(String userName, String pwd) {
-		return DatabaseService.getInstance().changePwd(userName, pwd);
-	}
-
-	public void createResource(URI absoluteURI) {
-		final File file = new File(absoluteURI.devicePath());
-		if (!file.exists()) {
-			String path = computeRelativePath(absoluteURI);
-			String projectName = computeProjectName(absoluteURI);
-			createResource(projectName, path);
-			String userId = (String) RWT.getUISession().getAttribute("user");
-			logger.info(userId + " created file " + file.getPath());
-			Display.getCurrent().syncExec(new Runnable() {
-				@Override
-				public void run() {
-					try {
-						file.createNewFile();
-					} catch (IOException ex) {
-						logger.error(ex.getMessage(), ex);
-					}
-				}
-			});
-		}
-	}
-
-	private void createResource(String projectName, String path) {
-		DatabaseService.getInstance().createResource(projectName, path);
-	}
-
-	public boolean deleteResource(final File file) {
-		if (file.exists()) {
-			if (!isLocked(file)) {
-				URI fileURI = URI.createFileURI(file.getPath());
-				String relativePath = computeRelativePath(fileURI);
-				String projectName = computeProjectName(fileURI);
-				if (relativePath == null) {
-					throw new RuntimeException("Could not compute relative path of file " + file.getPath());
-				}
-				deleteResource(projectName, relativePath);
-				Display.getCurrent().syncExec(new Runnable() {
-					@Override
-					public void run() {
-						file.delete();
-					}
-				});
-				String userId = (String) RWT.getUISession().getAttribute("user");
-				logger.info(userId + " deleted file " + file.getPath());
-				return true;
-			} else {
-				MessageDialog.openInformation(null, "Forbidden Operation",
-						"File " + file.getPath() + " is currently locked. Please unlock file before deleting it.");
-			}
-		}
-		return false;
-	}
-
-	private void deleteResource(String projectName, String path) {
-		DatabaseService.getInstance().deleteResource(projectName, path);
-	}
-
-	public void deleteAllResources() {
-		DatabaseService.getInstance().deleteAllResources();
-	}
-	
 	public List<Resource> getAllResources() {
 		return DatabaseService.getInstance().getAllResources();
 	}
@@ -425,10 +261,10 @@ public class WorkspaceManager {
 		return DatabaseService.getInstance().getAllResourcesInProject(projectName);
 	}
 
-	public boolean isLocked(URI absoluteURI) {
-		String path = computeRelativePath(absoluteURI);
-		String projectName = computeProjectName(absoluteURI);
-		return isLocked(projectName, path);
+	public boolean isProject(File file) {
+		String parent = file.getParent();
+		boolean result  = new Path(parent).equals(new Path(getWorkspaceRoot()));
+		return (file.isDirectory() && parent != null && result);
 	}
 
 	public boolean isLocked(File file) {
@@ -437,16 +273,18 @@ public class WorkspaceManager {
 		return isLocked(uri);
 	}
 
-	private boolean isLocked(String projectName, String path) {
+	public boolean isLocked(URI uri) {
+		String path = computeRelativePath(uri);
+		String projectName = computeProjectName(uri);
 		return DatabaseService.getInstance().isLocked(projectName, path);
 	}
 
-	public void lockResource(URI absoluteURI) {
+	public void lockResource(URI uri) {
 		String userId = (String) RWT.getUISession().getAttribute("user");
-		String projectName = computeProjectName(absoluteURI);
-		String path = computeRelativePath(absoluteURI);
-		lockResource(userId, projectName, path);
-		logger.info(userId + " locked file " + absoluteURI.toString());
+		String projectName = computeProjectName(uri);
+		String path = computeRelativePath(uri);
+		DatabaseService.getInstance().lockResource(userId, projectName, path);
+		logger.info(userId + " locked file " + uri.toFileString());
 	}
 
 	public void lockResource(File file) {
@@ -455,16 +293,12 @@ public class WorkspaceManager {
 		lockResource(uri);
 	}
 
-	private void lockResource(String userName, String projectName, String path) {
-		DatabaseService.getInstance().lockResource(userName, projectName, path);
-	}
-
-	public void unlockResource(URI absoluteURI) {
+	public void unlockResource(URI uri) {
 		String userId = (String) RWT.getUISession().getAttribute("user");
-		String projectName = computeProjectName(absoluteURI);
-		String path = computeRelativePath(absoluteURI);
-		unlockResource(userId, projectName, path);
-		logger.info(userId + " unlocked file " + absoluteURI.path());
+		String projectName = computeProjectName(uri);
+		String path = computeRelativePath(uri);
+		DatabaseService.getInstance().unlockResource(userId, projectName, path);
+		logger.info(userId + " unlocked file " + uri.toFileString());
 	}
 
 	public void unlockResource(File file) {
@@ -473,18 +307,14 @@ public class WorkspaceManager {
 		unlockResource(uri);
 	}
 
-	private void unlockResource(String userId, String projectName, String path) {
-		DatabaseService.getInstance().unlockResource(userId, projectName, path);
-	}
-
 	public void unlockAll(String userId) {
 		DatabaseService.getInstance().unlockAll(userId);
 	}
 
-	public User getLocker(URI absoluteURI) {
-		String projectName = computeProjectName(absoluteURI);
-		String path = computeRelativePath(absoluteURI);
-		return getLocker(projectName, path);
+	public User getLocker(URI uri) {
+		String projectName = computeProjectName(uri);
+		String path = computeRelativePath(uri);
+		return DatabaseService.getInstance().getLocker(projectName, path);
 	}
 
 	public String getLocker(File file) {
@@ -495,21 +325,128 @@ public class WorkspaceManager {
 
 	public String getLockerId(URI uri) {
 		User user = getLocker(uri);
-		if (user == null) {
-			return null;
+		if (user != null) {
+			return user.getId();
 		}
-		return user.getId();
-	}
-
-	public String getLockerId(File file) {
 		return null;
 	}
 
-	private User getLocker(String projectName, String path) {
-		return DatabaseService.getInstance().getLocker(projectName, path);
+	private String computeResourceName(URI uri) {
+		URI rootURI = URI.createFileURI(getWorkspaceRoot());
+		URI relativeURI = uri.deresolve(rootURI);
+		String[] segments = relativeURI.segments();
+		if (segments.length == 0) {
+			throw new RuntimeException("Problem when computing relative path for " + uri);
+		}
+		if (segments.length == 1) {
+			return segments[0];
+		}
+		// more than one segment
+		String segment = relativeURI.segment(segments.length - 1);
+		return segment;
 	}
 
-	public void dumpResources() {
-		DatabaseService.getInstance().dumpResources();
+	private String computeRelativePath(URI uri) {
+		IPath absolutePath = new Path(uri.toFileString());
+		IPath relativePath = absolutePath.makeRelativeTo(new Path(getWorkspaceRoot()));
+		String[] segments = relativePath.segments();
+		if (segments.length == 0) {
+			throw new RuntimeException("Problem when computing relative path for " + uri);
+		}
+		return relativePath.toString();
+	}
+
+	private String computeProjectName(URI uri) {
+		IPath absolutePath = new Path(uri.toFileString());
+		IPath relativePath = absolutePath.makeRelativeTo(new Path(getWorkspaceRoot()));
+		String[] segments = relativePath.segments();
+		if (segments.length == 0) {
+			throw new RuntimeException("Problem when computing relative path for " + uri);
+		}
+		return relativePath.segment(0);
+	}
+
+	private void deleteRecursive(File file) throws IOException {
+		if (file.isDirectory()) {
+			// directory is empty, then delete it
+			if (file.list().length == 0) {
+				file.delete();
+				logger.info("Directory is deleted : " + file.getAbsolutePath());
+			} else {
+	
+				// list all the directory contents
+				String files[] = file.list();
+				for (String temp : files) {
+					// construct the file structure
+					File fileDelete = new File(file, temp);
+					// recursive delete
+					deleteRecursive(fileDelete);
+				}
+				// check the directory again, if empty then delete it
+				if (file.list().length == 0) {
+					file.delete();
+					logger.info("Directory is deleted : " + file.getAbsolutePath());
+				}
+			}
+		} else {
+			// if file, then delete it
+			file.delete();
+			logger.info("File is deleted : " + file.getAbsolutePath());
+		}
+	}
+
+	private boolean deleteProject(String projectName) {
+		Project project = DatabaseService.getInstance().getProject(projectName);
+		if (project == null) {
+			MessageDialog.openInformation(null, "Unexpected Error", "Could not find Project " + projectName);
+			return false;
+		}
+		try {
+			// delete files in the project
+			List<Resource> allResourcesInProject = DatabaseService.getInstance().getAllResourcesInProject(projectName);
+			for (Resource r : allResourcesInProject) {
+				final String filePath = getWorkspaceRoot() + r.getPath();
+				final File file = new File(filePath);
+				if (file.exists()) {
+					if (!isLocked(file)) {
+						DatabaseService.getInstance().deleteResource(projectName, r.getPath());
+						String userId = (String) RWT.getUISession().getAttribute("user");
+						logger.info(userId + " deleted file " + file.getAbsolutePath());
+					} else {
+						MessageDialog.openInformation(null, "Forbidden Operation", "Project " + projectName
+								+ " contains locked files, make sure files are unlocked before deleting.");
+						return false;
+					}
+				}
+			}
+	
+			// delete folders in the project
+			List<Folder> folders = DatabaseService.getInstance().getAllFoldersInProject(projectName);
+			for (Folder folder : folders) {
+				final String filePath = getWorkspaceRoot() + folder.getPath();
+				final File file = new File(filePath);
+				if (file.exists()) {
+					if (!isLocked(file)) {
+						deleteFolder(folder.getPath());
+					}
+				}
+			}
+			// delete the project
+			DatabaseService.getInstance().deleteProject(projectName);
+	
+		} catch (PersistenceException ex) {
+			//project contains resources, should make sure to delete all
+			// the resources inside the project.
+			MessageDialog.openInformation(null, "Unexpected Error",
+					"Project " + projectName + " could not be deleted, check your user access privileges.");
+			return false;
+		}
+		return true;
+	}
+
+	private void deleteFolder(String folderPath) {
+		String projectName = computeProjectName(URI.createFileURI(folderPath));
+		String path = computeRelativePath(URI.createFileURI(folderPath));
+		DatabaseService.getInstance().deleteFolder(projectName, path);
 	}
 }

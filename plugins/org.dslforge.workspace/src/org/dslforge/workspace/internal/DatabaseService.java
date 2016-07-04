@@ -81,9 +81,6 @@ public class DatabaseService {
 		return (refs == null) ? null : (EntityManagerFactory) context.getService(refs[0]);
 	}
 
-	//////////////////////////////////////////
-	// USERS
-	//////////////////////////////////////////
 	public void createUser(final String userName, final String firstName, final String lastName,
 			final String organization, final String email, final String pwd) {
 		SafeRunnable.run(new SafeRunnable() {
@@ -100,14 +97,9 @@ public class DatabaseService {
 				em.persist(user);
 				em.getTransaction().commit();
 				em.close();
-				dumpDatabase();
 			}
 		});
 	}
-
-	//////////////////////////////////////////
-	// PROJECTS
-	//////////////////////////////////////////
 
 	public void createProject(final String projectName, final String description, final String path,
 			final String userName, final String visibility) {
@@ -125,7 +117,6 @@ public class DatabaseService {
 				em.persist(project);
 				em.getTransaction().commit();
 				em.close();
-				dumpDatabase();
 			}
 		});
 
@@ -143,7 +134,6 @@ public class DatabaseService {
 				em.persist(folder);
 				em.getTransaction().commit();
 				em.close();
-				dumpDatabase();
 			}
 		});
 	}
@@ -179,9 +169,80 @@ public class DatabaseService {
 				em.persist(resource);
 				em.getTransaction().commit();
 				em.close();
-				dumpDatabase();
 			}
 		});
+	}
+
+	public void deleteUser(String userName) {
+		EntityManager em = getEmf().createEntityManager();
+		Query q = em.createQuery("delete from User u where u.id ='" + userName + "'");
+		em.getTransaction().begin();
+		q.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public void deleteProject(String projectName) {
+		EntityManager em = getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Query q = em.createQuery("delete from Project p where p.name ='" + projectName + "'");
+		q.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public void deleteFolder(String projectName, String path) {
+		EntityManager em = getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Query q = em.createQuery("delete from Folder p where p.path ='" + path + "'");
+		q.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public void deleteResource(String projectName, String path) {
+		EntityManager em = getEmf().createEntityManager();
+		em.getTransaction().begin();
+		Resource resource = null;
+		Query q = em.createQuery("select r from Resource r where r.path='" + path + "'");
+		List<Resource> resources = q.getResultList();
+		for (Resource r : resources) {
+			Project project = r.getProject();
+			if (project.getName().equals(projectName)) {
+				resource = r;
+				break;
+			}
+		}
+		// verify resource is not null
+		if (resource != null) {
+			Project project = null;
+			q = em.createQuery("select p from Project p");
+			List<Project> projects = q.getResultList();
+			int i = 0;
+			while (i < projects.size()) {
+				Project p = projects.get(i);
+				if (p.getName().equals(projectName)) {
+					project = p;
+					break;
+				}
+				i++;
+			}
+	
+			// verify project is not null
+			if (project == null) {
+				return;
+			}
+	
+			// update project
+			project.getResources().remove(resource);
+			em.persist(project);
+	
+			q = em.createQuery("delete from Resource r where r.path ='" + path + "'");
+			q.executeUpdate();
+	
+		}
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	public User getUser(String userName) {
@@ -319,16 +380,6 @@ public class DatabaseService {
 		return resources;
 	}
 
-	public void deleteUser(String userName) {
-		EntityManager em = getEmf().createEntityManager();
-		Query q = em.createQuery("delete from User u where u.id ='" + userName + "'");
-		em.getTransaction().begin();
-		q.executeUpdate();
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
-	}
-
 	public void deleteUser(String firstName, String lastName) {
 		EntityManager em = getEmf().createEntityManager();
 		Query q = em.createQuery(
@@ -337,7 +388,6 @@ public class DatabaseService {
 		q.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
-		dumpDatabase();
 	}
 
 	public void deleteAllUsers() {
@@ -349,16 +399,6 @@ public class DatabaseService {
 		em.close();
 	}
 
-	public void deleteProject(String projectName) {
-		EntityManager em = getEmf().createEntityManager();
-		em.getTransaction().begin();
-		Query q = em.createQuery("delete from Project p where p.name ='" + projectName + "'");
-		q.executeUpdate();
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
-	}
-
 	public void deleteAllProjects() {
 		EntityManager em = getEmf().createEntityManager();
 		em.getTransaction().begin();
@@ -368,68 +408,11 @@ public class DatabaseService {
 		em.close();
 	}
 
-	public void deleteFolder(String projectName, String path) {
-		EntityManager em = getEmf().createEntityManager();
-		em.getTransaction().begin();
-		Query q = em.createQuery("delete from Folder p where p.path ='" + path + "'");
-		q.executeUpdate();
-		em.getTransaction().commit();
-		em.close();
-		dumpDatabase();
-	}
-
 	public void deleteAllFolders() {
 		EntityManager em = getEmf().createEntityManager();
 		em.getTransaction().begin();
 		Query q = em.createQuery("delete from Folder");
 		q.executeUpdate();
-		em.getTransaction().commit();
-		em.close();
-	}
-
-	public void deleteResource(String projectName, String path) {
-		EntityManager em = getEmf().createEntityManager();
-		em.getTransaction().begin();
-
-		// Resource r = getResource(projectName, path);
-		Resource resource = null;
-		Query q = em.createQuery("select r from Resource r where r.path='" + path + "'");
-		List<Resource> resources = q.getResultList();
-		for (Resource r : resources) {
-			Project project = r.getProject();
-			if (project.getName().equals(projectName)) {
-				resource = r;
-				break;
-			}
-		}
-		// verify resource is not null
-		if (resource != null) {
-			Project project = null;
-			q = em.createQuery("select p from Project p");
-			List<Project> projects = q.getResultList();
-			int i = 0;
-			while (i < projects.size()) {
-				Project p = projects.get(i);
-				if (p.getName().equals(projectName)) {
-					project = p;
-					break;
-				}
-				i++;
-			}
-
-			// verify project is not null
-			if (project == null) {
-				return;
-			}
-
-			// update project
-			project.getResources().remove(resource);
-			em.persist(project);
-
-			q = em.createQuery("delete from Resource r where r.path ='" + path + "'");
-			q.executeUpdate();
-
-		}
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -501,7 +484,6 @@ public class DatabaseService {
 		em.persist(resource);
 		em.getTransaction().commit();
 		em.close();
-		dumpDatabase();
 	}
 
 	public void unlockResource(String userId, String projectName, String path) {
@@ -529,7 +511,6 @@ public class DatabaseService {
 		q.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
-		dumpDatabase();
 	}
 
 	public void unlockAll(String userId) {
@@ -540,7 +521,6 @@ public class DatabaseService {
 		q.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
-		dumpDatabase();
 	}
 
 	public User getLocker(String projectName, String path) {
