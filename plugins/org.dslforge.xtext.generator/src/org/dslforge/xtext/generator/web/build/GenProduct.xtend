@@ -45,21 +45,13 @@ class GenProduct extends AbstractGenerator {
 
    <configIni use="default">
    </configIni>
-
-   <launcherArgs>
-      <vmArgs>-DREFRESH_BUNDLES=FALSE
-      </vmArgs>
-   </launcherArgs>
-
    <windowImages/>
-
    <launcher>
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
-
    <vm>
    </vm>
 
@@ -85,6 +77,8 @@ class GenProduct extends AbstractGenerator {
       <plugin id="org.dslforge.texteditor"/>
       <plugin id="org.dslforge.texteditor.demo"/>
       <plugin id="org.dslforge.workspace"/>
+      <plugin id="org.dslforge.workspace.config"/>
+      <plugin id="org.dslforge.workspace.jpa"/>
       <plugin id="org.dslforge.workspace.ui"/>
       <plugin id="org.dslforge.xtext.common"/>
       <plugin id="org.eclipse.core.commands"/>
@@ -105,12 +99,15 @@ class GenProduct extends AbstractGenerator {
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.console"/>
+      <plugin id="org.eclipse.equinox.ds"/>
+      <plugin id="org.eclipse.equinox.event"/>
       <plugin id="org.eclipse.equinox.http.registry"/>
       <plugin id="org.eclipse.equinox.http.servlet"/>
       <plugin id="org.eclipse.equinox.http.servletbridge"/>
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.equinox.servletbridge"/>
+      <plugin id="org.eclipse.equinox.util"/>
       <plugin id="org.eclipse.gemini.jpa"/>
       <plugin id="org.eclipse.help"/>
       <plugin id="org.eclipse.osgi"/>
@@ -132,8 +129,8 @@ class GenProduct extends AbstractGenerator {
       <plugin id="org.eclipse.xtend.lib.macro"/>
       <plugin id="org.eclipse.xtext"/>
       <plugin id="org.eclipse.xtext.common.types"/>
-      <plugin id="«projectName.replace(".web.build", "")»"/>
-      <plugin id="«projectName.replace(".build", "")»"/>
+      <plugin id="org.eclipse.xtext.example.fowlerdsl"/>
+      <plugin id="org.eclipse.xtext.example.fowlerdsl.web"/>
       <plugin id="org.eclipse.xtext.smap"/>
       <plugin id="org.eclipse.xtext.util"/>
       <plugin id="org.eclipse.xtext.xbase.lib"/>
@@ -159,12 +156,6 @@ class GenProduct extends AbstractGenerator {
       <plugin id="org.apache.felix.gogo.runtime" autoStart="true" startLevel="0" />
       <plugin id="org.apache.felix.gogo.shell" autoStart="true" startLevel="0" />
       <plugin id="org.apache.log4j" autoStart="true" startLevel="0" />
-      <plugin id="org.dslforge.styledtext" autoStart="true" startLevel="4" />
-      <plugin id="org.dslforge.texteditor" autoStart="true" startLevel="4" />
-      <plugin id="org.dslforge.texteditor.demo" autoStart="true" startLevel="4" />
-      <plugin id="org.dslforge.workspace" autoStart="true" startLevel="3" />
-      <plugin id="org.dslforge.workspace.ui" autoStart="true" startLevel="4" />
-      <plugin id="org.dslforge.xtext.common" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.core.commands" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.core.contenttype" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.core.databinding" autoStart="true" startLevel="0" />
@@ -183,13 +174,15 @@ class GenProduct extends AbstractGenerator {
       <plugin id="org.eclipse.equinox.app" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.console" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.http.registry" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.http.servlet" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.http.servletbridge" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.preferences" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.registry" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.servletbridge" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.util" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.help" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.osgi" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.osgi.services" autoStart="true" startLevel="0" />
@@ -208,15 +201,24 @@ class GenProduct extends AbstractGenerator {
       <plugin id="org.eclipse.rap.ui.workbench" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtend.lib" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtend.lib.macro" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.xtend.typesystem.emf" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtext" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtext.common.types" autoStart="true" startLevel="0" />
-      <plugin id="«projectName.replace(".web.build", "")»" autoStart="true" startLevel="4" />
-      <plugin id="«projectName.replace(".build", "")»" autoStart="true" startLevel="4" />
+      <plugin id="«projectName.replace(".web.build", "")»" autoStart="true" startLevel="0" />
+      <plugin id="«projectName.replace(".build", "")»" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtext.smap" autoStart="true" startLevel="0" />      
       <plugin id="org.eclipse.xtext.util" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.xtext.xbase.lib" autoStart="true" startLevel="0" />
       <plugin id="org.hamcrest.core" autoStart="true" startLevel="0" />
       <plugin id="org.objectweb.asm" autoStart="true" startLevel="0" />
+      <plugin id="org.dslforge.styledtext" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.texteditor" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.workspace.ui" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.xtext.common" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.texteditor.demo" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.workspace" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.workspace.config" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.workspace.jpa" autoStart="true" startLevel="3" />
+      <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="2" />
       <plugin id="osgi.enterprise" autoStart="true" startLevel="1" />
    </configurations>
 
