@@ -27,8 +27,6 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 /**
  * Basic Workbench UI entry point
- * 
- * @author Amine Lajmi
  *
  */
 public class BasicWorkbench implements EntryPoint {

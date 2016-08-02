@@ -15,9 +15,6 @@
  */
 package org.dslforge.texteditor.demo.internal;
 
-import java.net.URL;
-
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -28,8 +25,6 @@ public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.dslforge.texteditor.demo"; //$NON-NLS-1$
-	
-	private static BundleContext bundleContext;
 	  
 	// The shared instance
 	private static Activator plugin;
@@ -51,7 +46,6 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-	    bundleContext = context;
 	}
 
 	/*
@@ -59,12 +53,8 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
-		super.stop(context);		
-	    bundleContext = context;
-	}
-	
-	public static BundleContext getBundleContext() {
-		return bundleContext;
+		super.stop(context);
+		plugin = null;
 	}
 
 	/**
@@ -75,37 +65,4 @@ public class Activator extends AbstractUIPlugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
-
-//	@Override
-//	protected void initializeImageRegistry(ImageRegistry reg) {
-//		addImageFilePath(BasicWorkbenchImageProvider.USER);
-//		addImageFilePath(BasicWorkbenchImageProvider.FILE);
-//		addImageFilePath(BasicWorkbenchImageProvider.MODEL);
-//		addImageFilePath(BasicWorkbenchImageProvider.FOLDER);
-//		addImageFilePath(BasicWorkbenchImageProvider.PROJECT);
-//		addImageFilePath(BasicWorkbenchImageProvider.UNKNOWN);
-//		addImageFilePath(BasicWorkbenchImageProvider.DELETE_RESOURCE);
-//		addImageFilePath(BasicWorkbenchImageProvider.RUN_EXEC);
-//		addImageFilePath(BasicWorkbenchImageProvider.COMPILE);
-//		addImageFilePath(BasicWorkbenchImageProvider.JAVA);
-//		addImageFilePath(BasicWorkbenchImageProvider.BINARY);		
-//	}
-
-//	private void addImageFilePath(String relativeURL) {
-//		Image image = plugin.getImageRegistry().get(relativeURL);
-//		if (image == null) {
-//			URL imageURL = plugin.getBundle().getEntry(relativeURL);
-//			ImageDescriptor descriptor = ImageDescriptor.createFromURL(imageURL);
-//			image = descriptor.createImage();
-//			plugin.getImageRegistry().put(relativeURL, image);
-//		}
-//	}
-
-	public static ImageDescriptor getImageDescriptor(String relativeURL) {
-		URL entry = plugin.getBundle().getEntry(relativeURL);
-		if (entry != null) {
-			return ImageDescriptor.createFromURL(entry);
-		}
-		return null;
-	} 
 }

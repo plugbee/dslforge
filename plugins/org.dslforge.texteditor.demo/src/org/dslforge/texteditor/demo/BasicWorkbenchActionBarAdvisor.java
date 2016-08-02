@@ -56,7 +56,7 @@ public class BasicWorkbenchActionBarAdvisor extends ActionBarAdvisor {
 	 * @return
 	 */
 	protected IMenuManager createFileMenu(IWorkbenchWindow window) {
-		IMenuManager menu = new MenuManager("  File  ",
+		IMenuManager menu = new MenuManager("File",
 		IWorkbenchActionConstants.M_FILE);    
 		menu.add(new GroupMarker(IWorkbenchActionConstants.FILE_START));
 		IMenuManager newMenu = new MenuManager("New", "new");
@@ -84,8 +84,7 @@ public class BasicWorkbenchActionBarAdvisor extends ActionBarAdvisor {
 	 * @return
 	 */
 	protected IMenuManager createEditMenu(IWorkbenchWindow window) {
-		IMenuManager menu = new MenuManager("  Edit  ",
-		IWorkbenchActionConstants.M_EDIT);
+		IMenuManager menu = new MenuManager("Edit",	IWorkbenchActionConstants.M_EDIT);
 
 		menu.add(new GroupMarker(IWorkbenchActionConstants.EDIT_START));
 		addToMenuAndRegister(menu, ActionFactory.UNDO.create(window));
@@ -119,7 +118,7 @@ public class BasicWorkbenchActionBarAdvisor extends ActionBarAdvisor {
 	 * @return
 	 */
 	protected IMenuManager createToolsMenu(IWorkbenchWindow window) {
-		IMenuManager menu = new MenuManager("  Tools  ", IWorkbenchActionConstants.M_EDIT);
+		IMenuManager menu = new MenuManager("Tools", IWorkbenchActionConstants.M_EDIT);
 		menu.add(new GroupMarker(TOOLS_START));
 		return menu;
 	}
@@ -131,10 +130,10 @@ public class BasicWorkbenchActionBarAdvisor extends ActionBarAdvisor {
 	 * @return
 	 */
 	protected IMenuManager createHelpMenu(IWorkbenchWindow window) {
-		IMenuManager menu = new MenuManager("  Help  ", IWorkbenchActionConstants.M_HELP);
+		IMenuManager menu = new MenuManager("Help", IWorkbenchActionConstants.M_HELP);
 		menu.add(new GroupMarker(IWorkbenchActionConstants.HELP_START));
+		menu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 		menu.add(new GroupMarker(IWorkbenchActionConstants.HELP_END));
-		menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 		return menu;
 	}
 	

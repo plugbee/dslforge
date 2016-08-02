@@ -15,10 +15,10 @@ Require-Bundle: org.eclipse.rap.ui,
  com.google.inject,
  org.eclipse.xtext,
  org.eclipse.xtend.lib,
- org.dslforge.workspace,
  org.dslforge.xtext.common,
  org.dslforge.texteditor,
  org.dslforge.styledtext,
- org.eclipse.xtext.example.fowlerdsl
+ org.eclipse.xtext.example.fowlerdsl,
+ org.dslforge.workspace.config
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-<!-- @generated dslforge -->
 <extension point="org.eclipse.rap.ui.entrypoint">
 	<entrypoint
        brandingId="org.dslforge.texteditor.demo.branding"
@@ -27,10 +26,11 @@
 	   <branding
 	         favicon="icons/dslforge.png"
 	         id="org.dslforge.texteditor.demo.branding"
-	         title="Text Editor Basic Workbench">
+	         title="Text Editor Demo">
 	      <presentationFactory
-	            id="org.eclipse.ui.presentations.default"
-	            name="Text Editor Demo">
+             id="org.eclipse.ui.presentations.default"
+             name="Text Editor Demo"
+             viewActionsVisible="true">
 	      </presentationFactory>
 	   </branding>
 	</extension>
@@ -38,9 +38,10 @@
 	<extension
 		point="org.eclipse.ui.perspectives">
 		<perspective
-			name="Text Editor Demo Perspective"
-			class="org.dslforge.texteditor.demo.parts.BasicWorkbenchPerspective"
-				id="org.dslforge.texteditor.demo.ui.parts.perspective">
+        class="org.dslforge.texteditor.demo.parts.BasicWorkbenchPerspective"
+        icon="icons/dslforge.png"
+        id="org.dslforge.texteditor.demo.ui.parts.perspective"
+        name="Text Editor Demo">
 		</perspective>
 	</extension>
 
@@ -61,5 +62,27 @@
             </contentExtension>
          </includes>
       </viewerContentBinding>
+   </extension>
+      <extension point="org.eclipse.ui.commands">
+     <command
+           defaultHandler="org.dslforge.texteditor.demo.commands.AboutCommand"
+           description="About"
+           helpContextId="About"
+           id="org.dslforge.texteditor.demo.commands.help"
+           name="About">
+     </command>
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:help">
+         <command
+               commandId="org.dslforge.texteditor.demo.commands.help"
+               helpContextId="About"
+               label="About"
+               style="push"
+               tooltip="About">
+         </command>
+      </menuContribution>
    </extension>
 </plugin>

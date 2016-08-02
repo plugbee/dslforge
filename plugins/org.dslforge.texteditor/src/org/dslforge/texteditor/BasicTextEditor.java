@@ -30,14 +30,12 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 import org.dslforge.styledtext.Annotation;
-import org.dslforge.styledtext.Annotation.AceSeverity;
 import org.dslforge.styledtext.BasicText;
 import org.dslforge.styledtext.IContentAssistListener;
 import org.dslforge.styledtext.ITextChangeListener;
 import org.dslforge.styledtext.ITextModifyListener;
 import org.dslforge.styledtext.ITextSaveListener;
 import org.dslforge.styledtext.TextChangedEvent;
-import org.dslforge.styledtext.TextRange;
 import org.dslforge.styledtext.TextSavedEvent;
 import org.dslforge.styledtext.TextSelection;
 import org.dslforge.styledtext.jface.IDocument;

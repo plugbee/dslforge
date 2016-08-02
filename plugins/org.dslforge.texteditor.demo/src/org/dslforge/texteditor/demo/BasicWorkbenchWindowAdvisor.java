@@ -37,7 +37,8 @@ public class BasicWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		getWindowConfigurer().setShowPerspectiveBar(true);
 		getWindowConfigurer().setShowStatusLine(true);
 		getWindowConfigurer().setShowMenuBar( true );
-		getWindowConfigurer().setTitle("Text Editor Demo Workbench");
+		getWindowConfigurer().setShowCoolBar( true );	
+		getWindowConfigurer().setTitle("Text Editor Demo");
 		getWindowConfigurer().setShellStyle(SWT.TITLE | SWT.MAX);
 		Rectangle bounds = Display.getCurrent().getBounds();
 		getWindowConfigurer().setInitialSize(new Point(bounds.width, bounds.height));

@@ -13,7 +13,9 @@ Require-Bundle: com.google.inject,
  org.eclipse.core.jobs,
  org.eclipse.equinox.common,
  org.dslforge.styledtext,
- org.dslforge.texteditor
+ org.dslforge.texteditor,
+ org.dslforge.workspace,
+ org.dslforge.workspace.config
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.dslforge.texteditor.demo,
  org.dslforge.texteditor.demo.actions,
@@ -21,4 +23,5 @@ Export-Package: org.dslforge.texteditor.demo,
  org.dslforge.texteditor.demo.internal,
  org.dslforge.texteditor.demo.parts
 Bundle-ActivationPolicy: lazy
-Import-Package: org.osgi.service.jpa
+Import-Package: org.apache.log4j;version="1.2.15",
+ org.osgi.service.jpa
