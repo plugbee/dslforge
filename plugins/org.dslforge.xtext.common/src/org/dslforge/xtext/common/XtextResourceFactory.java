@@ -15,6 +15,8 @@
  */
 package org.dslforge.xtext.common;
 
+import org.dslforge.workspace.ui.PathEditorInput;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -30,17 +32,24 @@ public class XtextResourceFactory implements IXtextResourceFactory {
 	protected IXtextResourceSetProvider resourceSetProvider;
 
 	public Resource createResource(IEditorInput editorInput) {
+		if (editorInput instanceof PathEditorInput) {
+			IPath path = ((PathEditorInput) editorInput).getPath();
+			URI fileURI = URI.createFileURI(path.toString());
+			Resource result = createResource(fileURI);
+			if (result != null)
+				return result;
+		}
 		if (editorInput instanceof URIEditorInput) {
-			Resource result = createResource((URIEditorInput) editorInput);
+			URI fileURI = ((URIEditorInput) editorInput).getURI();
+			Resource result = createResource(fileURI);
 			if (result != null)
 				return result;
 		}
 		throw new IllegalArgumentException("Couldn't create resource for input " + editorInput);
 	}
 
-	protected Resource createResource(URIEditorInput editorInput) {
+	protected Resource createResource(URI resourceURI) {
 		ResourceSet resourceSet = getDefaultResourceSet();
-		URI resourceURI = editorInput.getURI();
 		XtextResource resource = (XtextResource) resourceSet.getResource(resourceURI, true);
 		return resource;
 	}

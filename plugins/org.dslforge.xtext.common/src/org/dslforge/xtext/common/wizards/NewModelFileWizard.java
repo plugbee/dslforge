@@ -20,10 +20,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 
 import org.apache.log4j.Logger;
-import org.dslforge.styledtext.BasicText;
 import org.dslforge.workspace.WorkspaceManager;
 import org.dslforge.workspace.ui.wizards.AbstractNewResourceWizard;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
@@ -39,7 +39,7 @@ import org.eclipse.ui.PartInitException;
 
 public class NewModelFileWizard extends AbstractNewResourceWizard{
 
-	static final Logger logger = Logger.getLogger(BasicText.class);
+	static final Logger logger = Logger.getLogger(NewModelFileWizard.class);
 	
 	protected NewModelFileWizardPage page = null;
 
@@ -87,7 +87,7 @@ public class NewModelFileWizard extends AbstractNewResourceWizard{
 		IRunnableWithProgress operation = new IRunnableWithProgress() {
 			public void run(IProgressMonitor progressMonitor) {
 					try {
-						WorkspaceManager.INSTANCE.createResource(fileURI);
+						WorkspaceManager.INSTANCE.createResource(new Path(fileURI.devicePath()));
 					}
 					catch (Exception ex) {
 						logger.error(ex.getMessage(), ex);

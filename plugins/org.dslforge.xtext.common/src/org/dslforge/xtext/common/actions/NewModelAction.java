@@ -34,7 +34,8 @@ public class NewModelAction extends AbstractWorkspaceAction {
 			NewModelFileWizard wizard = new NewModelFileWizard((File)firstElement); 
 			wizard.init(getWindow().getWorkbench(), (IStructuredSelection)selection);
 			WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
-			wizardDialog.setPageSize(400, 400);
+			wizardDialog.create();
+			setSizeAndLocation(wizardDialog);
 			wizardDialog.open();
 		}
 	}

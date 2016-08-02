@@ -21,7 +21,7 @@
             nameFilter="*"
             objectClass="java.io.File">
         
-         <action
+    	  <action
                class="org.dslforge.xtext.common.actions.NewModelAction"
                enablesFor="*"
                icon="icons/model.png"
@@ -31,18 +31,51 @@
                style="push"
                tooltip="Create a new model file">
          </action>
-        
+   
          <action
                class="org.dslforge.xtext.common.actions.BasicGenerateAction"
                enablesFor="*"
                icon="icons/generate.png"
                id="org.dslforge.workspace.menu.generate"
                label="Generate"
+               menubarPath="group2"
                style="push">
          </action>
       </objectContribution>
    </extension>
-         
+ 
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.dslforge.xtext.common.commands.NewModelCommand"
+            description="Create a new model"
+            helpContextId="Create a new model"
+            id="org.dslforge.workspace.ui.commands.newModel"
+            name="CreateNewFile">
+      </command>
+  </extension>       
+  
+    <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="org.dslforge.workspace.ui.actionSet1"
+            label="label"
+            visible="true">
+         <action
+               class="org.dslforge.xtext.common.actions.NewModelAction"
+               definitionId="org.dslforge.workspace.ui.commands.newModel"
+               icon="icons/model.png"
+               id="org.dslforge.workspace.ui.actions.newModel"
+               label="New Model"
+               retarget="false"
+               style="push"
+               toolbarPath="main"
+               tooltip="Create a new model">
+         </action>
+      </actionSet>
+   </extension>
+  
+       
       <!-- @generated dslforge -->
       <!--
    <extension point="org.eclipse.ui.editors">

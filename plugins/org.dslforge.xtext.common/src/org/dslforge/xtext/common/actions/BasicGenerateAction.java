@@ -23,10 +23,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.dslforge.database.pu.tables.Folder;
 import org.dslforge.workspace.WorkspaceManager;
 import org.dslforge.workspace.ui.actions.AbstractWorkspaceAction;
 import org.dslforge.xtext.common.registry.LanguageRegistry;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -42,7 +42,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.Maps;
 import com.google.inject.ConfigurationException;
 import com.google.inject.Injector;
-
+ 
 public class BasicGenerateAction extends AbstractWorkspaceAction {
 	
 	private static final String DEFAULT_OUTPUT_FOLDER = "\\src-gen";
@@ -56,34 +56,31 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 	@Override
 	public void run(IAction action) {
 		if (!getSelection().isEmpty()) {
-			//get the resource uri
-			File file = (File) ((IStructuredSelection)getSelection()).getFirstElement();
+			// get the resource uri
+			File file = (File) ((IStructuredSelection) getSelection()).getFirstElement();
 			String fileName = file.getName();
-			String extension = fileName.substring(fileName.indexOf(".")+1, fileName.length());
+			String extension = fileName.substring(fileName.indexOf(".") + 1, fileName.length());
 			URI fileURI = URI.createFileURI(file.getAbsolutePath());
-			
-			//configure the generator output
+			// configure the generator output
 			String targetDirectory = getDefaultTargetDirectory(fileURI);
-			URI folderURI = URI.createFileURI(targetDirectory);
-			Folder folder = WorkspaceManager.INSTANCE.getFolder(folderURI);
-			if (folder==null)
-				WorkspaceManager.INSTANCE.createFolder(folderURI);
-			
-			//load the resource
+			// load the resource
 			String languageName = getLanguageName(extension);
-			if (languageName!=null) {
+			if (languageName != null) {
 				injector = LanguageRegistry.INSTANCE.getInjector(languageName);
 				XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
 				XtextResource resource = (XtextResource) resourceSet.getResource(fileURI, true);
-				//launch the generator
+				// launch the generator
 				outlets.put("DEFAULT_OUTPUT", targetDirectory);
 				IFileSystemAccess fsa = getConfiguredFileSystemAccess();
 				try {
-					 IGenerator generator = injector.getInstance(IGenerator.class);
-					 generator.doGenerate(resource, fsa);
-				} catch(ConfigurationException ex) {
-					// Xtext 2.10: cannot find or create IGenerator binding, try IGenerator2
-					GeneratorDelegate delegate= injector.getInstance(GeneratorDelegate.class);
+					//create the container if it doesn't exist yet
+					WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory));
+					IGenerator generator = injector.getInstance(IGenerator.class);
+					generator.doGenerate(resource, fsa);
+				} catch (ConfigurationException ex) {
+					// Xtext 2.10: cannot find or create IGenerator binding, try
+					// IGenerator2
+					GeneratorDelegate delegate = injector.getInstance(GeneratorDelegate.class);
 					delegate.doGenerate(resource, fsa);
 				}
 			}
@@ -103,7 +100,7 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 	}
 	
 	protected String getDefaultOutput() {
-		String output = WorkspaceManager.INSTANCE.getWorkspaceRoot();
+		String output = WorkspaceManager.INSTANCE.getWorkspaceRootStringPath();
 		Object firstElement = ((IStructuredSelection) getSelection()).getFirstElement();
 		if (firstElement instanceof File) {
 			String parent = ((File)firstElement).getParent();

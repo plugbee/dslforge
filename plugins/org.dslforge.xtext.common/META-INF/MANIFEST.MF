@@ -6,13 +6,13 @@ Bundle-Version: 0.9.0.qualifier
 Bundle-Activator: org.dslforge.xtext.common.internal.Activator
 Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.emf.rap.edit.ui,
- org.dslforge.texteditor,
- org.dslforge.styledtext,
- org.dslforge.workspace,
- org.dslforge.workspace.ui,
  org.eclipse.xtext,
  org.eclipse.xtend.lib,
- org.eclipse.xtext.xbase.lib
+ org.eclipse.xtext.xbase.lib,
+ org.dslforge.workspace.ui,
+ org.dslforge.workspace,
+ org.dslforge.styledtext,
+ org.dslforge.texteditor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.xtext.common,
@@ -27,6 +27,5 @@ Export-Package: org.dslforge.xtext.common,
  org.eclipse.xtext.ui.editor.contentassist.antlr,
  org.eclipse.xtext.ui.editor.contentassist.antlr.internal,
  org.eclipse.xtext.ui.guice
-Import-Package: javax.persistence,
- org.apache.log4j
+Import-Package: org.apache.log4j
 Bundle-Vendor: PlugBee
