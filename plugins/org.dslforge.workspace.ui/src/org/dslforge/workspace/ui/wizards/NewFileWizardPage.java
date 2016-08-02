@@ -15,18 +15,13 @@
  */
 package org.dslforge.workspace.ui.wizards;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -43,17 +38,25 @@ import org.eclipse.swt.widgets.Text;
 public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 	private static final long serialVersionUID = 1L;
-	public String defaultFileExtension = "txt";
-	public Collection<String> availableFileExtensions = Collections.singletonList(defaultFileExtension);
+	
 	private final Map<String, String> languageToFileExtension = new HashMap<String, String>();
 	private Text fileNameText;
 	private Combo languageNameCombo;
 	private String languageName = null;
 
-	private Collection<String> getAvailableExtensions() {
+	public static final Map<String, String> getAavailableFileExtensions() {
+		Map<String, String> availableFileExtensions = new HashMap<String, String>();
+		availableFileExtensions.put("Java", "java");
+		availableFileExtensions.put("JavaScript", "js");
+		availableFileExtensions.put("JSON", "json");
 		return availableFileExtensions;
 	}
+	
 
+	protected String getSelectedFileExtension() {
+		return getAavailableFileExtensions().get(languageNameCombo.getText());
+	}
+	
 	protected ModifyListener validator = new ModifyListener() {
 
 		private static final long serialVersionUID = 1L;
@@ -62,11 +65,9 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 			setPageComplete(validatePage());
 		}
 	};
-
+	
 	protected NewFileWizardPage(String pageName) {
 		super(pageName);
-		availableFileExtensions =getAvailableExtensions();
-		defaultFileExtension = availableFileExtensions.isEmpty() ? "NaN" : availableFileExtensions.iterator().next();
 	}
 
 	@Override
@@ -76,51 +77,28 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 	}
 
 	protected boolean validatePage() {
-		if(fileNameText.getText()==null)
+		String fileName = fileNameText.getText();
+		if (fileName.length()==0) {
+			setErrorMessage("File name cannot be empty.");
 			return false;
-		URI fileURI = getFileURI();
-		if (fileURI == null || fileURI.isEmpty()) {
-			setErrorMessage(null);
-			return false;
-		}
-		List<IStructuredSelection> initialElementSelections = getInitialElementSelections();
-		if (initialElementSelections == null) {
-			setErrorMessage("The file container is not specified, please select the file container");
-			return false;
-		}
-		ISelection iSelection = initialElementSelections.get(0);
-		if (iSelection instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) iSelection).getFirstElement();
-			File container = (File) firstElement;
-			if (!container.isDirectory()) {
-				setErrorMessage("The file container should be a folder or a project");
-				return false;
-			}
-		}
-		String extension = fileURI.fileExtension();
-		if (extension == null || !getSelectedFileExtension().equals(extension)) {
-			setErrorMessage("The file name must have the following extension: " + getSelectedFileExtension());
+		} 
+		IStructuredSelection iStructuredSelection = getInitialElementSelections().get(0);
+		IPath filePath = new Path(iStructuredSelection.getFirstElement().toString())
+				.append(fileNameText.getText() + "." + getSelectedFileExtension());
+		if (filePath.toFile().exists()) {
+			setErrorMessage("A file with equal name already exist.");
 			return false;
 		}
 		setErrorMessage(null);
 		return true;
 	}
 
-	protected String getSelectedFileExtension() {
-		return defaultFileExtension;
+	public IPath getFilePath() {
+		IStructuredSelection iStructuredSelection = getInitialElementSelections().get(0);
+		return new Path(iStructuredSelection.getFirstElement().toString())
+		.append(fileNameText.getText() + "." + getSelectedFileExtension());
 	}
-
-	protected Collection<String> getFileExtensions() {
-		return availableFileExtensions;
-	}
-
-	protected URI getFileURI() {
-		IStructuredSelection selection = (IStructuredSelection) getContainerViewer().getSelection();
-		String rootPath = selection.getFirstElement().toString();
-		String filePath = rootPath + "\\" + fileNameText.getText();
-		return URI.createFileURI(filePath);
-	}
-
+	
 	@Override
 	public void createControl(Composite parent) {
 		Composite workArea = new Composite(parent, SWT.NONE);
@@ -148,7 +126,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 		Label dslNameLabel = new Label(folderInfoComposite, SWT.NONE);
 		dslNameLabel.setLayoutData(new GridData(160, SWT.DEFAULT));
-		dslNameLabel.setText("&File Extension:");
+		dslNameLabel.setText("&Language:");
 
 		languageNameCombo = new Combo(folderInfoComposite, SWT.BORDER | SWT.READ_ONLY);
 		GridData data = new GridData();
@@ -162,19 +140,22 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Object source = e.getSource();
-				if (source instanceof Combo) {
-					defaultFileExtension = getLanguageToFileExtension().get(((Combo) source).getText());
-				}
+				String fileName = fileNameText.getText();
+				if (fileName.length()>0)
+					fileNameText.setText(recomputeFileName());
 				setPageComplete(validatePage());
+			}
+
+			private String recomputeFileName() {
+				String oldFileName = fileNameText.getText();
+				int extensionIndex = oldFileName.lastIndexOf(".");
+				if (extensionIndex>0)
+					oldFileName = oldFileName.substring(0, extensionIndex);
+				return oldFileName + "." + getSelectedFileExtension();
 			}
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				Object source = e.getSource();
-				if (source instanceof Combo) {
-					defaultFileExtension = getLanguageToFileExtension().get(((Combo) source).getText());
-				}
 			}
 		});
 
@@ -205,7 +186,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 	public void initializeLanguageCombo() {
 		if (languageName == null) {
-			for (String objectName : getAvailableExtensions()) {
+			for (String objectName : getAavailableFileExtensions().keySet()) {
 				languageNameCombo.add(objectName);
 			}
 			if (languageNameCombo.getItemCount() == 1) {

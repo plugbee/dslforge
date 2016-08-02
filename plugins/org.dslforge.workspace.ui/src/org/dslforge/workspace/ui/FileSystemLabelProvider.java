@@ -17,9 +17,11 @@ package org.dslforge.workspace.ui;
 
 import java.io.File;
 
-import org.dslforge.workspace.WorkspaceManager;
+import org.dslforge.workspace.internal.WorkspaceActivator;
 import org.dslforge.workspace.ui.internal.Activator;
 import org.dslforge.workspace.ui.internal.BasicWorkbenchImageProvider;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
@@ -28,11 +30,13 @@ public class FileSystemLabelProvider implements ILabelProvider {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
+	
 	@Override
 	public Image getImage(Object element){
 		if (element instanceof File){
 			File file = (File) element;
-			if (WorkspaceManager.INSTANCE.isProject(file)) {
+			if (isProject(file)) {
 				return Activator.getImageDescriptor(BasicWorkbenchImageProvider.PROJECT).createImage();
 			}
 			if (file.isDirectory()) {
@@ -56,6 +60,11 @@ public class FileSystemLabelProvider implements ILabelProvider {
 		return Activator.getImageDescriptor(BasicWorkbenchImageProvider.UNKNOWN).createImage();
 	}
 
+	public boolean isProject(final File file) {
+		String parent = file.getParent();
+		return (file.isDirectory() && parent!=null && new Path(parent).equals(rootPath));
+	}
+	
 	@Override
 	public String getText(Object element){
 		String label = null;

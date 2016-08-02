@@ -27,7 +27,8 @@ public class NewProjectAction extends AbstractWorkspaceAction {
 		NewProjectWizard wizard = new NewProjectWizard();
 		wizard.init(getWindow().getWorkbench(), StructuredSelection.EMPTY);
 		WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
-		wizardDialog.setPageSize(400, 400);
+		wizardDialog.create();
+		setSizeAndLocation(wizardDialog);
 		wizardDialog.open();
 	}
 }

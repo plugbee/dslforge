@@ -18,7 +18,7 @@ package org.dslforge.workspace.ui;
 import java.io.File;
 import java.util.Date;
 
-import org.dslforge.workspace.WorkspaceManager;
+import org.dslforge.workspace.internal.WorkspaceActivator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
@@ -26,6 +26,8 @@ import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 
 public class FilePropertySource implements IPropertySource {
+
+	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
 
 	private File file;
 	
@@ -80,8 +82,6 @@ public class FilePropertySource implements IPropertySource {
 	}
 
 	private Object computePath() {
-		String workspaceRoot = WorkspaceManager.INSTANCE.getWorkspaceRoot();
-		Path rootPath = new Path(workspaceRoot);
 		Path filePath = new Path(file.getPath());
 		IPath relativePath = filePath.makeRelativeTo(rootPath);
 		return "/" + relativePath;

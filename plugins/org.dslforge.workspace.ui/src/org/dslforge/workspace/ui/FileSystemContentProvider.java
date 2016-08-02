@@ -23,14 +23,12 @@ import org.eclipse.jface.viewers.Viewer;
 public class FileSystemContentProvider implements ITreeContentProvider {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private File rootDirectory;
 
 	@Override
-	public Object[] getElements(Object inputElement)
-	{
-		if (inputElement instanceof File)
-		{
+	public Object[] getElements(Object inputElement) {
+		if (inputElement instanceof File) {
 			rootDirectory = (File) inputElement;
 			return getChildren(rootDirectory);
 		}
@@ -38,13 +36,13 @@ public class FileSystemContentProvider implements ITreeContentProvider {
 	}
 
 	@Override
-	public void dispose(){
+	public void dispose() {
 	}
 
 	@Override
-	public void inputChanged(Viewer viewer, Object oldInput, Object newInput){
-		if (newInput instanceof File){
-			rootDirectory = (File)newInput;
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		if (newInput instanceof File) {
+			rootDirectory = (File) newInput;
 		}
 	}
 
@@ -53,14 +51,14 @@ public class FileSystemContentProvider implements ITreeContentProvider {
 	 * @return Object[]
 	 */
 	@Override
-	public Object[] getChildren(Object parentElement){
-		if (parentElement instanceof File){
+	public Object[] getChildren(Object parentElement) {
+		if (parentElement instanceof File) {
 			File file = (File) parentElement;
-			if (file.isDirectory()){
+			if (file.isDirectory()) {
 				return file.listFiles();
 			}
 		}
-		return new Object[]{};
+		return new Object[] {};
 	}
 
 	/**
@@ -68,11 +66,11 @@ public class FileSystemContentProvider implements ITreeContentProvider {
 	 * @return Object
 	 */
 	@Override
-	public Object getParent(Object element){
-		if (element instanceof File){
+	public Object getParent(Object element) {
+		if (element instanceof File) {
 			File file = (File) element;
 			if (file.getParent() != null)
-			return new File(file.getParent());
+				return new File(file.getParent());
 		}
 		return null;
 	}
@@ -82,10 +80,10 @@ public class FileSystemContentProvider implements ITreeContentProvider {
 	 * @return boolean
 	 */
 	@Override
-	public boolean hasChildren(Object element){
-		if (element instanceof File){
+	public boolean hasChildren(Object element) {
+		if (element instanceof File) {
 			File file = (File) element;
-			if (file.isDirectory()){
+			if (file.isDirectory()) {
 				if (file.list().length > 0)
 					return true;
 			}

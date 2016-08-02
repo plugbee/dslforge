@@ -17,6 +17,9 @@ package org.dslforge.workspace.ui.actions;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -53,5 +56,15 @@ public abstract class AbstractWorkspaceActionDelegate implements IViewActionDele
 
 	public void setWindow(IWorkbenchWindow window) {
 		this.window = window;
+	}
+	
+	public void setSizeAndLocation(WizardDialog wizardDialog) {
+		wizardDialog.getShell().setSize(600, 500);
+		Shell activeShell = this.window.getShell();
+		Rectangle bounds = activeShell.getBounds();
+		Rectangle rect = wizardDialog.getShell().getBounds();
+		int x = bounds.x + (bounds.width - rect.width) / 2;
+		int y = bounds.y + (bounds.height - rect.height) / 2;
+		wizardDialog.getShell().setLocation(x, y);
 	}
 }

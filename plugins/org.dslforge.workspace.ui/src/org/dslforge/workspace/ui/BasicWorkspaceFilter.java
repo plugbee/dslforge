@@ -24,7 +24,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public class BasicWorkspaceFilter extends ViewerFilter {
 
 	public BasicWorkspaceFilter() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

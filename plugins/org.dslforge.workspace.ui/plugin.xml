@@ -39,6 +39,30 @@
       </commonFilter>
    </extension>
    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.dslforge.workspace.ui.commands.NewFileCommand"
+            description="Create a new file"
+            helpContextId="Create a new file"
+            id="org.dslforge.workspace.ui.commands.newFile"
+            name="CreateNewFile">
+      </command>
+      <command
+            defaultHandler="org.dslforge.workspace.ui.commands.NewFolderCommand"
+            description="Create a new folder"
+            helpContextId="Create a new folder"
+            id="org.dslforge.workspace.ui.commands.newFolder"
+            name="CreateNewFolder">
+      </command>
+      <command
+            defaultHandler="org.dslforge.workspace.ui.commands.NewProjectCommand"
+            description="Create a new project"
+            helpContextId="Create a new project"
+            id="org.dslforge.workspace.ui.commands.NewProject"
+            name="CreateNewProject">
+      </command>
+   </extension>
+   <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
@@ -47,15 +71,18 @@
             objectClass="java.io.File">
          <menu
                id="org.dslforge.workspace.menu.new"
-               label="New"
-               path="main">
+               label="New">
             <separator
-                  name="group">
+                  name="group1">
+            </separator>
+            <separator
+                  name="group2">
             </separator>
          </menu>
       </objectContribution>
    </extension>
 
+   
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
@@ -69,7 +96,7 @@
                icon="icons/file.gif"
                id="org.dslforge.navigator.actions.new.file"
                label="File"
-               menubarPath="org.dslforge.workspace.menu.new/group"
+               menubarPath="org.dslforge.workspace.menu.new/group1"
                style="push"
                tooltip="Create a new file">
          </action>
@@ -79,26 +106,16 @@
                icon="icons/folder.png"
                id="org.dslforge.navigator.actions.new.folder"
                label="Folder"
-               menubarPath="org.dslforge.workspace.menu.new/group"
+               menubarPath="org.dslforge.workspace.menu.new/group1"
                style="push"
                tooltip="Create a new folder">
          </action>
-         <!--
-         <action
-               class="org.dslforge.workbench.actions.NewProjectAction"
-               icon="icons/project.png"
-               id="org.dslforge.navigator.actions.new.project"
-               label="Project"
-               menubarPath="org.dslforge.workspace.menu.new/group"
-               style="push">
-         </action>
-        --> 
          <menu
                id="org.dslforge.workspace.menu.new"
                label="New"
                path="main">
             <separator
-                  name="group">
+                  name="group1">
             </separator>
          </menu>
          
@@ -118,89 +135,95 @@
                icon="icons/delete.png"
                id="org.dslforge.workspace.menu.delete"
                label="Delete"
+               menubarPath="main"
                style="push">
          </action>
       </objectContribution>
    </extension>
- 
-<!--
-      <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.navigator.view.actions.contribution.compile"
-            nameFilter="*.java"
-            objectClass="java.io.File">
-         <action
-               class="org.dslforge.workbench.actions.CompileAction"
-               enablesFor="*"
-               icon="icons/compile.png"
-               id="org.dslforge.workspace.menu.compile"
-               label="Compile"
-               style="push">
-         </action>
-      </objectContribution>
-   </extension>
-     -->
-  <!--
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
-            id="org.dslforge.navigator.view.actions.contribution.run"
-            nameFilter="*.class"
+            id="org.dslforge.navigator.view.actions.contribution.open"
+            nameFilter="*"
             objectClass="java.io.File">
          <action
-               class="org.dslforge.workbench.actions.RunAction"
+               class="org.dslforge.workspace.ui.actions.OpenResourceAction"
                enablesFor="*"
-               icon="icons/run_exec.png"
-               id="org.dslforge.workspace.menu.run"
-               label="Run"
+               id="org.dslforge.workspace.menu.open"
+               label="Open"
+               menubarPath="main"
                style="push">
          </action>
       </objectContribution>
    </extension>
-  -->  
    <extension
          point="org.eclipse.ui.popupMenus">
       <viewerContribution
             id="org.dslforge.navigator.view.actions.contribution.another"
             targetID="org.dslforge.navigator.view">
-            <!--
          <action
-               class="org.dslforge.workbench.actions.NewModelAction"
-               icon="icons/model.png"
-               id="org.dslforge.navigator.actions.new.model"
-               label="Model"
-               menubarPath="org.dslforge.workspace.menu.new/group"
-               style="push">
-         </action>
-         <action
-               class="org.dslforge.workbench.actions.NewFolderAction"
-               icon="icons/folder.png"
-               id="org.dslforge.navigator.actions.new.folder"
-               label="Folder"
-               menubarPath="org.dslforge.workspace.menu.new/group"
-               style="push">
-         </action>
-         -->
-         <action
-               class="org.dslforge.workspace.ui.wizards.NewProjectDelegateAction"
+               class="org.dslforge.workspace.ui.actions.NewProjectDelegateAction"
+               definitionId="org.dslforge.workspace.ui.commands.NewProject"
                icon="icons/project.png"
                id="org.dslforge.navigator.actions.new.project"
                label="Project"
-               menubarPath="org.dslforge.workspace.menu.new/group"
+               menubarPath="org.dslforge.workspace.menu.new/group1"
                style="push"
-               tooltip="Create a new DSL Project">
+               tooltip="Create a new Project">
          </action>
          <menu
                id="org.dslforge.workspace.menu.new"
                label="New"
                path="main">
             <separator
-                  name="group">
+                  name="group1">
             </separator>
          </menu>
       </viewerContribution>
    </extension>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="org.dslforge.workspace.ui.actionSet2"
+            label="label"
+            visible="true">
+         <action
+               class="org.dslforge.workspace.ui.actions.NewFileAction"
+               definitionId="org.dslforge.workspace.ui.commands.newFile"
+               icon="icons/file_obj.gif"
+               id="org.dslforge.workspace.ui.actions.newFile"
+               label="New File"
+               retarget="false"
+               style="push"
+               toolbarPath="main"
+               tooltip="Create a new file">
+         </action>
+         <action
+               class="org.dslforge.workspace.ui.actions.NewFolderAction"
+               definitionId="org.dslforge.workspace.ui.commands.newFolder"
+               icon="icons/fldr_obj.png"
+               id="org.dslforge.workspace.ui.actions.newFolder"
+               label="New Folder"
+               retarget="false"
+               style="push"
+               toolbarPath="main"
+               tooltip="Create a new folder">
+         </action>
+         <action
+               class="org.dslforge.workspace.ui.actions.NewProjectAction"
+               definitionId="org.dslforge.workspace.ui.commands.NewProject"
+               icon="icons/prj_obj.png"
+               id="org.dslforge.workspace.ui.actions.newProject"
+               label="New Project"
+               retarget="false"
+               style="push"
+               toolbarPath="main"
+               tooltip="Create a new project">
+         </action>
+      </actionSet>
+   </extension>
+
+   
 </plugin>

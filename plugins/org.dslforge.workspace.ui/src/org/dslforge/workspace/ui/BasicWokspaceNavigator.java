@@ -23,14 +23,12 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.dslforge.workspace.IWorkspaceListener;
-import org.dslforge.workspace.WorkspaceEventWatcher;
-import org.dslforge.workspace.WorkspaceManager;
+import org.dslforge.workspace.internal.WorkspaceActivator;
+import org.dslforge.workspace.internal.WorkspaceEventWatcher;
+import org.dslforge.workspace.ui.util.EditorUtil;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.ui.URIEditorInput;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -39,33 +37,33 @@ import org.eclipse.rap.rwt.service.ServerPushSession;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IEditorDescriptor;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionGroup;
-import org.eclipse.ui.internal.registry.EditorRegistry;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-@SuppressWarnings("restriction")
+/**
+ * A basic implementation of the CNF based on java.io.File
+ *
+ */
 public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspaceListener, IPartListener {
 
 	static final Logger logger = Logger.getLogger(BasicWokspaceNavigator.class);
 	
+	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
+	
 	private List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 	private WorkspaceEventWatcher directoryWatcher;
 	private ServerPushSession pushSession;
-
+	
 	private ISelectionChangedListener selectionListener = new ISelectionChangedListener() {
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
@@ -95,6 +93,9 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 		partService.addPartListener(this);
 		getCommonViewer().addSelectionChangedListener(selectionListener);
 		getCommonViewer().addFilter(new BasicWorkspaceFilter());
+		getCommonViewer().setContentProvider(new FileSystemContentProvider());
+		getCommonViewer().setLabelProvider(new FileSystemLabelProvider());
+		getCommonViewer().setInput(new File(workspaceRoot));
 		serverPushSessionOn(workspaceRoot);
 	}
 
@@ -141,10 +142,10 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 			Object element = selection.getFirstElement();
 			if (element instanceof File) {
 				File file = (File) element;
-				if (file.exists()) {
+				if (file.exists() && !file.isDirectory()) {
 					String absolutePath = file.getAbsolutePath();
 					IWorkbench workbench = PlatformUI.getWorkbench();
-					if (openEditor(workbench, new Path(absolutePath)) != null) {
+					if (EditorUtil.openEditor(workbench, new Path(absolutePath)) != null) {
 						logger.info("Opened editor on file " + absolutePath);
 					}
 					workspaceChanged(null);
@@ -184,8 +185,7 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 	}
 
 	public String getWorkspaceRoot() {
-		String workspaceRoot = WorkspaceManager.INSTANCE.getWorkspaceRoot();
-		return workspaceRoot;
+		return rootPath.toString();
 	}
 
 	@Override
@@ -206,24 +206,5 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 
 	@Override
 	public void partOpened(IWorkbenchPart part) {
-	}
-
-	public IEditorPart openEditor(IWorkbench workbench, IPath path) {
-		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
-		IWorkbenchPage page = workbenchWindow.getActivePage();
-		IEditorDescriptor editorDescriptor = EditorRegistry.getInstance().getDefaultEditor(path.lastSegment());
-		if (editorDescriptor == null) {
-			MessageDialog.openError(workbenchWindow.getShell(), "Error",
-					"There is no editor registered for the file " + path.lastSegment());
-			return null;
-		} else {
-			try {
-				URI fileURI = URI.createFileURI(path.toString());
-				return page.openEditor(new URIEditorInput(fileURI), editorDescriptor.getId());
-			} catch (PartInitException exception) {
-				MessageDialog.openError(workbenchWindow.getShell(), "Open Editor", exception.getMessage());
-				return null;
-			}
-		}
 	}
 }

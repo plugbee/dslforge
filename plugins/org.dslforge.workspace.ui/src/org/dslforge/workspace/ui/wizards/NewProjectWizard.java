@@ -38,7 +38,7 @@ public class NewProjectWizard extends AbstractNewResourceWizard{
 	public void addPages() {
 		page = new NewProjectWizardPage("NewProject");
 		page.setTitle("New Project");
-		page.setDescription("Create a new project resource");
+		page.setDescription("Create a new project");
 		addPage(page);
 	}
 	

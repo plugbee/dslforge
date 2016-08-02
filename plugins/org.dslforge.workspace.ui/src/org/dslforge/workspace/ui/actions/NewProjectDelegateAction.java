@@ -13,20 +13,26 @@
  *
  * </copyright>
  */
-package org.dslforge.workspace.ui.wizards;
+package org.dslforge.workspace.ui.actions;
 
-import org.dslforge.workspace.ui.actions.AbstractWorkspaceActionDelegate;
+import org.dslforge.workspace.ui.wizards.NewProjectWizard;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 
 public class NewProjectDelegateAction extends AbstractWorkspaceActionDelegate {
 
+	public NewProjectDelegateAction() {
+		super();
+	}
+	
 	@Override
 	public void run(IAction action) {
 		NewProjectWizard wizard = new NewProjectWizard();
 		wizard.init(getWindow().getWorkbench(), StructuredSelection.EMPTY);
 		WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
+		wizardDialog.create();
+		setSizeAndLocation(wizardDialog);
 		wizardDialog.open();
 	}
 }

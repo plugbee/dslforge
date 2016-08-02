@@ -20,18 +20,20 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 
 import org.apache.log4j.Logger;
-import org.dslforge.workspace.WorkspaceManager;
+import org.dslforge.workspace.ui.util.EditorUtil;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.rap.rwt.RWT;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PlatformUI;
 
-public class DeleteResourceAction extends AbstractWorkspaceAction {
+public class OpenResourceAction extends AbstractWorkspaceAction {
 
-	static final Logger logger = Logger.getLogger(DeleteResourceAction.class);
-	
+	static final Logger logger = Logger.getLogger(OpenResourceAction.class);
+
 	@Override
 	public void run(IAction action) {
 		Iterator<?> iterator = ((StructuredSelection) getSelection()).iterator();
@@ -41,13 +43,12 @@ public class DeleteResourceAction extends AbstractWorkspaceAction {
 			IRunnableWithProgress operation = new IRunnableWithProgress() {
 				public void run(IProgressMonitor progressMonitor) {
 					try {
-						Path filePath = new Path(file.getAbsolutePath());
-						if (WorkspaceManager.INSTANCE.isProject(filePath)) {
-							WorkspaceManager.INSTANCE.deleteProject(filePath);
-						} else if (!file.isFile()) {
-							WorkspaceManager.INSTANCE.deleteFolder(filePath);
-						} else {
-							WorkspaceManager.INSTANCE.deleteResource(filePath);
+						if (file.exists() && !file.isDirectory()) {
+							String absolutePath = file.getAbsolutePath();
+							IWorkbench workbench = PlatformUI.getWorkbench();
+							if (EditorUtil.openEditor(workbench, new Path(absolutePath)) != null) {
+								logger.info("Opened editor on file " + absolutePath);
+							}
 						}
 					} catch (Exception ex) {
 						logger.error(ex.getMessage(), ex);
@@ -64,7 +65,7 @@ public class DeleteResourceAction extends AbstractWorkspaceAction {
 				logger.error(ex.getMessage(), ex);
 			}
 			final String currentUser = (String) RWT.getUISession().getAttribute("user");
-			logger.info(currentUser + " deleted resource: " + file.getAbsolutePath());
+			logger.info(currentUser + " opened resource: " + file.getAbsolutePath());
 		}
 	}
 }

@@ -21,10 +21,10 @@ import java.util.Collections;
 
 import org.apache.log4j.Logger;
 import org.dslforge.workspace.WorkspaceManager;
+import org.dslforge.workspace.ui.PathEditorInput;
+import org.dslforge.workspace.ui.util.EditorUtil;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.ui.URIEditorInput;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -38,7 +38,7 @@ import org.eclipse.ui.PartInitException;
 public class NewFileWizard extends AbstractNewResourceWizard{
 
 	static final Logger logger = Logger.getLogger(NewFileWizard.class);
-	
+
 	protected NewFileWizardPage page = null;
 
 	public NewFileWizard(File container) {
@@ -57,8 +57,7 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 
 	@Override
 	public boolean performFinish() {
-		// Get the URI of the model file.
-		final URI fileURI = computeFileURI();
+		final IPath filePath = computeFilePath();
 		IStructuredSelection selection = getSelection();
 		File container = new File(selection.toString());
 		if (container.exists() && !container.isDirectory()) {
@@ -70,13 +69,13 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 
 			return false;
 		}
-		if (new File(fileURI.devicePath()).exists()) {
+		if (filePath.toFile().exists()) {
 			if (!MessageDialog
 					.openQuestion(
 							getShell(),
 							"Question",
 							"The file "
-									+ fileURI.devicePath()
+									+ filePath
 									+ " already exists.  Do you want to replace the existing file?")) {
 				return false;
 			}
@@ -85,12 +84,12 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 		IRunnableWithProgress operation = new IRunnableWithProgress() {
 			public void run(IProgressMonitor progressMonitor) {
 					try {
-						WorkspaceManager.INSTANCE.createResource(fileURI);
+						WorkspaceManager.INSTANCE.createResource(filePath);
 					}
 					catch (Exception ex) {
 						logger.error(ex.getMessage(), ex);
 					}
-					finally {
+					finally {	
 						progressMonitor.done();
 					}
 				}
@@ -104,24 +103,23 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 			logger.error(ex.getMessage(), ex);
 		}
 		final String currentUser = (String) RWT.getUISession().getAttribute("user");
-		logger.info(currentUser + " created new model: " + fileURI);
-		return openEditor(getWorkbench(), fileURI);		
+		logger.info(currentUser + " created new model: " + filePath);
+		return openEditor(getWorkbench(), filePath);		
 	}
-	
-	public static boolean openEditor(IWorkbench workbench, URI uri) {
+
+	public static boolean openEditor(IWorkbench workbench, IPath path) {
 		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
 		IWorkbenchPage page = workbenchWindow.getActivePage();
-		
-		IEditorDescriptor editorDescriptor = EditUIUtil.getDefaultEditor(uri, null);
+		IEditorDescriptor editorDescriptor = EditorUtil.getDefaultEditor(path);
 		if (editorDescriptor == null) {
 			MessageDialog.openError(workbenchWindow.getShell()
 				,"Error"
-				,"There is no editor registered for the file " + uri.lastSegment());
+				,"There is no editor registered for the file " + path.lastSegment());
 			return false;
 		}
 		else {
 			try {
-				page.openEditor(new URIEditorInput(uri), editorDescriptor.getId());
+				page.openEditor(new PathEditorInput(path), editorDescriptor.getId());
 			}
 			catch (PartInitException exception) {
 				MessageDialog.openError(
@@ -134,8 +132,7 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 		return true;
 	}
 	
-	public URI computeFileURI() {
-		URI absoluteFileURI = page.getFileURI();
-		return absoluteFileURI;
+	private IPath computeFilePath() {
+		return page.getFilePath();
 	}
 }

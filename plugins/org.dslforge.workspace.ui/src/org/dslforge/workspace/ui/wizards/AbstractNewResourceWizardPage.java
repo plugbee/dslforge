@@ -64,7 +64,7 @@ public abstract class AbstractNewResourceWizardPage extends WizardPage {
 		treeViewer.setLabelProvider(new FileSystemLabelProvider());
 		treeViewer.setContentProvider(new FileSystemContentProvider());
 		treeViewer.addFilter(new BasicWorkspaceFilter());
-		treeViewer.setInput(WorkspaceManager.INSTANCE.getRootFoler());
+		treeViewer.setInput(WorkspaceManager.INSTANCE.getWorkspaceRootFolder());
 		return treeViewer;
 	}
 

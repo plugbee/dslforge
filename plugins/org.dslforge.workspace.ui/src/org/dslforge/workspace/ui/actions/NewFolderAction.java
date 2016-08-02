@@ -22,13 +22,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 
 public class NewFolderAction extends AbstractWorkspaceAction {
-	
-	@Override
-	public void selectionChanged(IAction action, ISelection selection) {
-		super.selectionChanged(action, selection);
-		//action.setEnabled(false);
-	}
-	
+
 	@Override
 	public void run(IAction action) {
 		ISelection selection = getSelection();
@@ -37,7 +31,8 @@ public class NewFolderAction extends AbstractWorkspaceAction {
 			NewFolderWizard wizard = new NewFolderWizard(firstElement.toString());
 			wizard.init(getWindow().getWorkbench(), (IStructuredSelection)selection);
 			WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
-			wizardDialog.setPageSize(400, 400);
+			wizardDialog.create();
+			setSizeAndLocation(wizardDialog);
 			wizardDialog.open();
 		}
 	}

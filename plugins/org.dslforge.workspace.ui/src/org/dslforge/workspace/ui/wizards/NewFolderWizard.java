@@ -21,8 +21,9 @@ import java.util.Collections;
 import org.apache.log4j.Logger;
 import org.dslforge.workspace.IWorkspaceConstants;
 import org.dslforge.workspace.WorkspaceManager;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.util.URI;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.rap.rwt.RWT;
 
@@ -55,8 +56,8 @@ public class NewFolderWizard extends AbstractNewResourceWizard {
 				IRunnableWithProgress operation = new IRunnableWithProgress() {
 					public void run(IProgressMonitor progressMonitor) {
 							try {
-								URI folderURI = URI.createFileURI(containerName + IWorkspaceConstants.PATH_SEPARATOR + folderName);
-								WorkspaceManager.INSTANCE.createFolder(folderURI);
+								IPath folderPath = new Path(containerName + IWorkspaceConstants.PATH_SEPARATOR + folderName);
+								WorkspaceManager.INSTANCE.createFolder(folderPath);
 							}
 							catch (Exception ex) {
 								logger.error(ex.getMessage(), ex);
