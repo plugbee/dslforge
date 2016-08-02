@@ -48,19 +48,18 @@ public abstract class AbstractWebProjectFactory implements IWebProjectFactory {
 
 	@Override
 	public IFolder createFolder(String folderName, IProgressMonitor monitor) {
-		SubMonitor progress = SubMonitor.convert(monitor, 10);
+		SubMonitor progress = SubMonitor.convert(monitor, 1);
 		IProject project = getProject();
 		IFolder folder = project.getFolder(folderName);
 		if (folder != null && !folder.exists()) {
 			try {
-				folder.create(true, true, progress);
+				folder.create(true, true, progress.newChild(1));
 			} catch (CoreException e) {
 				logger.error(e.getMessage(), e);
 			} finally {
-				progress.worked(10);
+				progress.worked(1);
 			}
 		}
-		progress.done();
 		return folder;
 	}
 	
@@ -102,8 +101,6 @@ public abstract class AbstractWebProjectFactory implements IWebProjectFactory {
 			stream.close();
 		} catch (Exception ex) {
 			logger.error(ex.getMessage(), ex);
-		} finally {
-			progress.done();
 		}
 		return file;
 	}

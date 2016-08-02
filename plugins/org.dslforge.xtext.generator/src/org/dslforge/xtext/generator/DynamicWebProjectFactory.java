@@ -159,7 +159,8 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 
 	@Override
 	public IProject createProject(IProgressMonitor monitor) {
-		final SubMonitor progress = SubMonitor.convert(monitor, 10);
+		final SubMonitor progress = SubMonitor.convert(monitor, 100);
+		progress.subTask("Generating Eclipse plugin");
 		final IProject project = this.configuration.getProject();
 		if (project.exists()) {
 			//project exists -> incremental mode
@@ -182,20 +183,20 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 					addProjectNature(XTEXT_NATURE_ID);
 				setImportedPackages(getDefaultImportedPackages());
 				final IProjectDescription description = createProjectDescription();
-				project.create(description, progress);
-				project.open(progress);
+				project.create(description, progress.newChild(1));
+				project.open(progress.newChild(1));
 
 				setImportedPackages(getImportedPackages());
 				List<String> requiredBundles = getProjectRequiredBundles();
 				setRequiredBundles(requiredBundles);
 				for (String folder : getDefaultFolders()) {
-					createFolder(folder, progress);
+					createFolder(folder, progress.newChild(1));
 				}
-				convertToJava(progress);
-				createManifest(project, progress);
-				createBuildProperties(project, progress);
-				createPluginXml(project, progress);
-				doGenerate(this, progress);
+				convertToJava(progress.newChild(1));
+				createManifest(project, progress.newChild(1));
+				createBuildProperties(project, progress.newChild(1));
+				createPluginXml(project, progress.newChild(1));
+				doGenerate(this, progress.newChild(100));
 				return project;
 			} catch (CoreException e) {
 				logger.error(e.getMessage(), e);
@@ -227,7 +228,7 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 	}
 	
 	public void convertToJava(IProgressMonitor monitor) {
-		SubMonitor progress = SubMonitor.convert(monitor, 1);
+		SubMonitor progress = SubMonitor.convert(monitor, 2);
 		try {
 			IProject project = this.configuration.getProject();
 			IJavaProject javaProject = JavaCore.create(project);
@@ -239,11 +240,9 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 			entries[2] = JavaCore.newSourceEntry(project.getFolder(SRC).getFullPath());
 			entries[3] = JavaCore.newSourceEntry(project.getFolder(SRC_GEN).getFullPath());
 			entries[4] = JavaCore.newSourceEntry(project.getFolder(SRC_JS).getFullPath());
-			javaProject.setRawClasspath(entries, progress);
+			javaProject.setRawClasspath(entries, progress.newChild(1));
 		} catch (CoreException e) {
 			logger.error(e.getMessage(), e);
-		} finally {
-			progress.worked(1);
 		}
 	}
 
@@ -270,7 +269,8 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 
 	@Override
 	public void doGenerate(IWebProjectFactory factory, IProgressMonitor monitor) {
-		SubMonitor progress = SubMonitor.convert(monitor, 17);
+		SubMonitor progress = SubMonitor.convert(monitor, 100);
+		progress.subTask("Generating language artefacts");
 		new GenWidget().doGenerate(factory, progress.newChild(1));
 		new GenWidgetResource().doGenerate(factory, progress.newChild(1));
 		new GenImageProvider().doGenerate(factory, progress.newChild(1));
@@ -278,7 +278,7 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 		new GenGlobalIndex().doGenerate(factory, progress.newChild(1));
 		if (this.isServerSideContentAssist){
 			new GenContentAssistEnabledEditor().doGenerate(factory, progress.newChild(1));
-			new GenContentAssistParser().doGenerate(factory, progress.newChild(1));
+			new GenContentAssistParser().doGenerate(factory, progress.newChild(100));
 		} else {
 			new GenBasicEditor().doGenerate(factory, progress.newChild(1));
 		}

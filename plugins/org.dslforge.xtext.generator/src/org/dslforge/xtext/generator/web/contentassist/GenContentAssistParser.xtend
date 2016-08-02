@@ -26,11 +26,12 @@ import org.dslforge.common.IWebProjectFactory
 import org.dslforge.xtext.generator.XtextGrammar
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.core.runtime.SubMonitor
 import org.eclipse.emf.mwe.core.WorkflowInterruptedException
 import org.eclipse.emf.mwe.core.issues.Issues
 import org.eclipse.emf.mwe.core.issues.IssuesImpl
-import org.eclipse.emf.mwe.core.monitor.NullProgressMonitor
 import org.eclipse.emf.mwe.core.monitor.ProgressMonitor
+import org.eclipse.emf.mwe.core.monitor.ProgressMonitorAdapter
 import org.eclipse.xpand2.XpandExecutionContext
 import org.eclipse.xpand2.XpandExecutionContextImpl
 import org.eclipse.xpand2.output.Outlet
@@ -61,7 +62,7 @@ import org.eclipse.xtext.validation.Issue
 class GenContentAssistParser extends AbstractGenerator {
 
 	static final Logger logger = Logger.getLogger(GenContentAssistParser);
-	
+
 	public static final String SRC_GEN_TEST = "SRC_GEN_TEST";
 	public static final String SRC_TEST = "SRC_TEST";
 	public static final String PLUGIN_TEST = "PLUGIN_TEST";
@@ -79,8 +80,11 @@ class GenContentAssistParser extends AbstractGenerator {
 	var XtextGrammar wrapped
 	var String workspaceRoot;
 	val List<PostProcessor> postProcessors = Lists.newArrayList();
-	
+
 	override doGenerate(IWebProjectFactory factory, IProgressMonitor monitor) {
+		var SubMonitor subMonitor = SubMonitor.convert(monitor, 100);
+		subMonitor.setWorkRemaining(100)
+		
 		val workspace = factory.project.location
 		workspaceRoot = workspace.removeLastSegments(1).toString
 		wrapped = factory.input as XtextGrammar
@@ -105,15 +109,40 @@ class GenContentAssistParser extends AbstractGenerator {
 		xtextGenerator.mergeManifest = false;
 		var Map<String, Variable> globalVars = Maps.newHashMap();
 		globalVars.put(Naming.GLOBAL_VAR_NAME, new Variable(Naming.GLOBAL_VAR_NAME, naming));
+	
 		try {
 			// invoke the workflow programmatically
 			val IssuesImpl issuesImpl = new IssuesImpl();
-			invokeInternal(naming, languageConfig, new NullProgressMonitor, issuesImpl)
+			subMonitor.subTask("Invoking Xtext workflow");
+			val progress = new ProgressMonitorAdapter(subMonitor.newChild(100));
+			invokeInternal(naming, languageConfig, progress, issuesImpl)
+
 		} catch (Exception ex) {
 			logger.error(ex.message, ex)
 		}
+
+//		println("Executing long running workflow component")
+
+//		// monitor.beginTask("Some long running task", 10);
+//		if (subMonitor.isCanceled()) {
+//			throw new OperationCanceledException();
+//		}
+//
+//		for (i : 1 .. 10) {
+//			subMonitor.subTask(i + "/10 done");
+//			subMonitor.worked(1)
+//			System.out.println(i + "/10 done")
+//		//	subMonitor.worked(1);
+//			// subMonitor.subTask(i  + "/10 done")
+//			Thread.sleep(100);
+//			
+//			if (subMonitor.isCanceled()) {
+//				throw new OperationCanceledException();
+//			}
+//		}
+
 	}
-	
+
 	def Naming createNaming() {
 		val Naming naming = new Naming()
 		naming.hasIde = false;
@@ -133,17 +162,17 @@ class GenContentAssistParser extends AbstractGenerator {
 		naming.setHasIde(false);
 		return naming
 	}
-	
+
 	def LanguageConfig createLanguageConfiguration(Naming naming) {
 		// the language config
 		val languageConfig = new LanguageConfig()
 		val grammar = wrapped.grammar
-		EcoreUtil2::resolveAll(grammar)		
+		EcoreUtil2::resolveAll(grammar)
 		// set the grammar handle
 		val xtextResource = wrapped.grammar.eResource as XtextResource
 		var resourceSet = xtextResource.resourceSet
 		// initialize resourceSet
-		languageConfig.setForcedResourceSet(resourceSet);		
+		languageConfig.setForcedResourceSet(resourceSet);
 		languageConfig.uri = xtextResource.URI.toString
 		languageConfig.fileExtensions = wrapped.getFileExtension();
 		languageConfig.addFragment(new WebContentAssistFragment(wrapped.grammar))
@@ -155,7 +184,7 @@ class GenContentAssistParser extends AbstractGenerator {
 		languageConfig.registerNaming(naming);
 		return languageConfig
 	}
-	
+
 	protected def void validateXtext(XtextResource xtextResource) {
 		val IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider().getResourceValidator();
 		try {
@@ -167,11 +196,11 @@ class GenContentAssistParser extends AbstractGenerator {
 			logger.error(ex.message, ex)
 		}
 	}
-	
+
 	def void invokeInternal(Naming naming, LanguageConfig config, ProgressMonitor monitor, Issues issues) {
 		new XtextStandaloneSetup().createInjectorAndDoEMFRegistration();
 		try {
-			val XpandExecutionContext exeCtx = createExecutionContext(naming);
+			val XpandExecutionContext exeCtx = createExecutionContext(naming, monitor);
 			generate(config, exeCtx, issues);
 		} catch (WorkflowInterruptedException ex) {
 			throw ex;
@@ -188,7 +217,7 @@ class GenContentAssistParser extends AbstractGenerator {
 		}
 	}
 
-	def XpandExecutionContext createExecutionContext(Naming naming) {
+	def XpandExecutionContext createExecutionContext(Naming naming, ProgressMonitor monitor) {
 		// configure outlets
 		var OutputImpl output = new OutputImpl();
 		output.addOutlet(createOutlet(false, getEncoding(), PLUGIN_RT, false, getPathRtProject()));
@@ -240,6 +269,7 @@ class GenContentAssistParser extends AbstractGenerator {
 		var XpandExecutionContextImpl execCtx = new XpandExecutionContextImpl(output, null, globalVars, null, null);
 		execCtx.getResourceManager().setFileEncoding("ISO-8859-1");
 		execCtx.registerMetaModel(new JavaBeansMetaModel());
+		execCtx.monitor = monitor
 		return execCtx;
 	}
 
@@ -293,7 +323,7 @@ class GenContentAssistParser extends AbstractGenerator {
 	def String getEncoding() {
 		return "UTF-8";
 	}
-	
+
 	def String getLineDelimiter() {
 		return "\n";
 	}
@@ -301,7 +331,7 @@ class GenContentAssistParser extends AbstractGenerator {
 	def String getPathTestProject() {
 		return null;
 	}
-	
+
 	def getPostProcessors() {
 		return postProcessors
 	}

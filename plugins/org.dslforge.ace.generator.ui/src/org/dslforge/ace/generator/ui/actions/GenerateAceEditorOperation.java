@@ -47,10 +47,10 @@ public class GenerateAceEditorOperation extends WorkspaceModifyOperation {
 
 	@Override
 	protected void execute(IProgressMonitor monitor) throws CoreException {
-		SubMonitor progress = SubMonitor.convert(monitor, 10);
+		SubMonitor progress = SubMonitor.convert(monitor, 100);
 		try {
 			IWebProjectFactory factory = createWebProjectFactory();
-			IProject project = factory.createProject(progress.newChild(1));
+			IProject project = factory.createProject(progress.newChild(100));
 			if (progress.isCanceled())
 				throw new OperationCanceledException();
 			project.refreshLocal(IResource.DEPTH_INFINITE, progress);

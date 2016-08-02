@@ -52,12 +52,14 @@ public abstract class AbstractDelegatingWebProjectFactory extends AbstractWebPro
 	
 	@Override
 	public List<IProject> createProjects(IProgressMonitor monitor) {
-		SubMonitor progress = SubMonitor.convert(monitor, (delegates.size()+1)*10);
-		createProject(progress.newChild(10));
+		SubMonitor progress = SubMonitor.convert(monitor, /*delegates.size() * 10 +*/ 110);
+		progress.subTask("Generating new web project");
+		createProject(progress.newChild(100));
 		List<IProject> result = new ArrayList<IProject>();
 		for (IWebProjectFactory factory : delegates) {
-			progress.subTask(Integer.toString(delegates.indexOf(factory)));
-			result.add(factory.createProject(progress.newChild(10)));
+			progress.subTask("Generating optional artefact (" + Integer.toString(delegates.indexOf(factory) + 1) + "/"
+					+ delegates.size() + ")");
+			result.add(factory.createProject(progress.newChild(5)));
 		}
 		return result;
 	}
