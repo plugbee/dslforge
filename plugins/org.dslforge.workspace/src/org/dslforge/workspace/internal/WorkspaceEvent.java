@@ -13,7 +13,7 @@
  *
  * </copyright>
  */
-package org.dslforge.workspace;
+package org.dslforge.workspace.internal;
 
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;

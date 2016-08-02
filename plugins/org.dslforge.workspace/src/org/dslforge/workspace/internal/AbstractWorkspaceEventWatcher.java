@@ -13,10 +13,12 @@
  *
  * </copyright>
  */
-package org.dslforge.workspace;
+package org.dslforge.workspace.internal;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.dslforge.workspace.IWorkspaceListener;
 
 public abstract class AbstractWorkspaceEventWatcher implements IWorkspaceEventWatcher {
 

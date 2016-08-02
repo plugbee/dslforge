@@ -13,16 +13,15 @@
  *
  * </copyright>
  */
-package org.dslforge.workspace;
+package org.dslforge.workspace.internal;
 
-import java.nio.file.Path;
-import java.util.List;
+import java.io.IOException;
 
-public interface IWorkspaceEventContext {
+public interface IWorkspaceEventWatcher {
+    
+	public void start() throws IOException;
 
-    public boolean isValid();
+    public boolean isRunning();
 
-    public Path getWatchedDirectory();
-
-    public List<WorkspaceEvent> getEvents();
+    public void stop();
 }

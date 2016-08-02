@@ -15,10 +15,14 @@
  */
 package org.dslforge.workspace.internal;
 
-public class DatabaseTester {
+import java.nio.file.Path;
+import java.util.List;
 
-	public static void main(String[] args) {
-	
-	}
+public interface IWorkspaceEventContext {
 
+    public boolean isValid();
+
+    public Path getWatchedDirectory();
+
+    public List<WorkspaceEvent> getEvents();
 }

@@ -16,8 +16,8 @@
 package org.dslforge.workspace;
 
 public interface IWorkspaceConstants {
-
-	public static final String PERSISTENCE_UNIT_NAME = "dslforge";
+	
+	public static final String PERSISTENCE_UNIT_NAME = "workspace";
 	public static final String JAVAX_PERSISTENCE_JDBC_URL = "javax.persistence.jdbc.url";
 	public static final String METADATA_FOLDER = ".metadata";
 	public static final String JDBC_PREFIX = "jdbc:derby:";
