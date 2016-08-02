@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Eclipse RAP Workspace Configuration
+Bundle-SymbolicName: org.dslforge.workspace.config;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.rap.jface
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.dslforge.workspace.config.internal.Activator
+Bundle-Vendor: PlugBee
+Export-Package: org.dslforge.workspace.config.internal
+Import-Package: org.apache.log4j;version="1.2.15"
