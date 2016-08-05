@@ -241,7 +241,6 @@ public class StaticWebProjectFactory extends AbstractWebProjectFactory implement
 	private String getProjectFacet() {
 		final StringBuilder content = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 		content.append("<faceted-project>\n");
-		content.append("	<runtime name=\"HTTP Preview\"/>\n");
 		content.append("	<fixed facet=\"wst.web\"/>\n");
 		content.append("	<fixed facet=\"wst.jsdt.web\"/>\n");
 		content.append("	<installed facet=\"wst.jsdt.web\" version=\"1.0\"/>\n");
