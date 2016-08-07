@@ -36,7 +36,12 @@ public class WorkspaceManager {
 	
 	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
 	
-	private WorkspaceManager() {}
+	private WorkspaceManager() {
+		IPersistencyService dbservice = DefaultPersistencyService.getInstance();
+		if (dbservice.isRunning()) {
+			logger.info("Database service notified with root path [" + rootPath + "]");
+		}
+	}
 
 	public String getWorkspaceRootStringPath() {
 		return rootPath.toString();
@@ -65,8 +70,8 @@ public class WorkspaceManager {
 			IPersistencyService dbservice = DefaultPersistencyService.getInstance();
 			if (dbservice.isRunning()) {
 				dbservice.createProject(projectName, description, projectPath.toString(), userId, visibility);
+				logger.info("Project created : " + file.getAbsolutePath());
 			}
-			logger.info("Project created : " + file.getAbsolutePath());
 		}
 		return file;
 	}

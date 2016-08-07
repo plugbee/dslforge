@@ -6,9 +6,9 @@ Bundle-Version: 0.9.0.qualifier
 Bundle-Activator: org.dslforge.texteditor.internal.Activator
 Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.rap.ui.views,
- org.dslforge.styledtext,
  org.eclipse.emf.common,
- org.eclipse.emf.rap.common.ui
+ org.eclipse.emf.rap.common.ui,
+ org.dslforge.styledtext
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.texteditor,

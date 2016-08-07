@@ -5,17 +5,7 @@ Bundle-Vendor: PlugBee
 Bundle-Version: 0.9.0.qualifier
 Bundle-SymbolicName: org.dslforge.texteditor.demo;singleton:=true
 Bundle-Activator: org.dslforge.texteditor.demo.internal.Activator
-Require-Bundle: com.google.inject,
- com.google.guava,
- org.eclipse.rap.jface,
- org.eclipse.rap.ui,
- org.eclipse.rap.ui.views,
- org.eclipse.core.jobs,
- org.eclipse.equinox.common,
- org.dslforge.styledtext,
- org.dslforge.texteditor,
- org.dslforge.workspace,
- org.dslforge.workspace.config
+Require-Bundle: org.eclipse.rap.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.dslforge.texteditor.demo,
  org.dslforge.texteditor.demo.actions,
@@ -23,5 +13,4 @@ Export-Package: org.dslforge.texteditor.demo,
  org.dslforge.texteditor.demo.internal,
  org.dslforge.texteditor.demo.parts
 Bundle-ActivationPolicy: lazy
-Import-Package: org.apache.log4j;version="1.2.15",
- org.osgi.service.jpa
+Import-Package: org.apache.log4j;version="1.2.15"

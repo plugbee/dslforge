@@ -17,6 +17,7 @@ package org.dslforge.workspace.ui.internal;
 
 import java.net.URL;
 
+import org.apache.log4j.Logger;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
@@ -34,6 +35,8 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 	
+	static final Logger logger = Logger.getLogger(Activator.class);
+	
 	/**
 	 * The constructor
 	 */
@@ -46,7 +49,7 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		plugin = this;
+		plugin = this;		
 	}
 
 
@@ -88,6 +91,7 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
+		logger.info(PLUGIN_ID + " stoppped!");
 		super.stop(context);
 	}
 

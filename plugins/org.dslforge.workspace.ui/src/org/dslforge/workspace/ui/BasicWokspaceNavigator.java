@@ -160,10 +160,11 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 		Control control = commonViewer.getControl();
 		if (!control.isDisposed()) {
 			Display display = control.getDisplay();
-			display.asyncExec(new Runnable() {
+			display.syncExec(new Runnable() {
 				@Override
 				public void run() {
-					commonViewer.refresh();
+					if (!commonViewer.isBusy())
+						commonViewer.refresh();
 				}
 			});
 		}
