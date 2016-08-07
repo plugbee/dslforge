@@ -7,11 +7,11 @@ Bundle-Activator: org.dslforge.common.internal.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  com.google.guava,
+ org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
- org.eclipse.jface
+ org.eclipse.xtend.lib.macro
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.common
 Import-Package: org.apache.log4j
 Bundle-Vendor: PlugBee
-
