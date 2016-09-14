@@ -10,7 +10,7 @@ The framework is composed of two features:
 ## Tooling
 The Tooling has two code generators which take Xtext grammar as input and generate two variants of editors.
 Two wizards are contributed:
-- _*Generate Web Editor from ANTLR*_ produces a text editor with JavaScript parsers and lexers from ANTLR v3. You get an ACE editor tailored for the language definition which runs entirely on the client.
+- _*Generate Web Editor from ANTLR*_ produces a text editor with JavaScript parser and lexer from ANTLR v3. You get an ACE editor tailored for the language definition which runs entirely on the client.
 - _*Generate Web Editor from Xtext*_ produces a plugin to be packaged with the original Xtext plugin into a workbench application enabling precise interaction between the client and the server.
 
 ## Runtime
