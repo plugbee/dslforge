@@ -72,16 +72,19 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 				// launch the generator
 				outlets.put("DEFAULT_OUTPUT", targetDirectory);
 				IFileSystemAccess fsa = getConfiguredFileSystemAccess();
+				IGenerator generator = null;
 				try {
-					//create the container if it doesn't exist yet
-					WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory));
-					IGenerator generator = injector.getInstance(IGenerator.class);
-					generator.doGenerate(resource, fsa);
+					generator = injector.getInstance(IGenerator.class);
 				} catch (ConfigurationException ex) {
-					// Xtext 2.10: cannot find or create IGenerator binding, try
-					// IGenerator2
-					GeneratorDelegate delegate = injector.getInstance(GeneratorDelegate.class);
-					delegate.doGenerate(resource, fsa);
+					// Xtext 2.10: cannot find or create binding, try IGenerator2
+					generator = injector.getInstance(GeneratorDelegate.class);
+				} finally {
+					if (generator!=null) {
+						//create the container if it doesn't exist yet
+						WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory));
+						//make it happen
+						generator.doGenerate(resource, fsa);
+					}
 				}
 			}
 		}
