@@ -42,7 +42,6 @@
       <plugin id="org.codingpark.piraterobot.play"/>
       <plugin id="org.codingpark.piraterobot.play.web"/>
       <plugin id="org.dslforge.common.logging" fragment="true"/>
-      <plugin id="org.dslforge.example.java.web"/>
       <plugin id="org.dslforge.styledtext"/>
       <plugin id="org.dslforge.texteditor"/>
       <plugin id="org.dslforge.texteditor.demo"/>
@@ -107,6 +106,9 @@
       <plugin id="org.eclipse.xtext.example.domainmodel.web"/>
       <plugin id="org.eclipse.xtext.example.fowlerdsl"/>
       <plugin id="org.eclipse.xtext.example.fowlerdsl.web"/>
+      <plugin id="org.eclipse.rap.addons.texteditor.json"/>
+      <plugin id="org.eclipse.rap.addons.texteditor.java"/>
+      <plugin id="org.eclipse.rap.addons.texteditor.javascript"/>
       <plugin id="org.eclipse.xtext.smap"/>
       <plugin id="org.eclipse.xtext.util"/>
       <plugin id="org.eclipse.xtext.xbase"/>
@@ -186,6 +188,8 @@
       <plugin id="org.eclipse.xtext.xbase.lib" autoStart="true" startLevel="5" />
       <plugin id="org.hamcrest.core" autoStart="true" startLevel="5" />
       <plugin id="org.objectweb.asm" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.xtext.example.domainmodel" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.xtext.example.domainmodel.web" autoStart="true" startLevel="5" />   
       <plugin id="org.eclipse.sphinx.examples.xtext.hummingbird" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.sphinx.examples.xtext.hummingbird.web" autoStart="true" startLevel="5" />      
       <plugin id="org.eclipse.xtext.example.arithmetics" autoStart="true" startLevel="5" />
@@ -194,7 +198,9 @@
       <plugin id="org.eclipse.xtext.example.fowlerdsl.web" autoStart="true" startLevel="5" />
       <plugin id="org.xtext.example.mydsl" autoStart="true" startLevel="5" />
       <plugin id="org.xtext.example.mydsl.web" autoStart="true" startLevel="5" />
-      <plugin id="org.dslforge.example.java.web" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.rap.addons.texteditor.json" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.rap.addons.texteditor.java" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.rap.addons.texteditor.javascript" autoStart="true" startLevel="5" />
       <plugin id="org.dslforge.styledtext" autoStart="true" startLevel="5" />
       <plugin id="org.dslforge.texteditor" autoStart="true" startLevel="5" />
       <plugin id="org.dslforge.texteditor.demo" autoStart="true" startLevel="5" />
