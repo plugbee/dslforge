@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IContributor;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.xtext.generator.GeneratorDelegate;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.osgi.framework.Bundle;
@@ -146,15 +147,18 @@ public class LanguageRegistry {
 									Binding<IGenerator> binding = injector.getBinding(IGenerator.class);
 									if (binding!=null) {
 										IGenerator generator = injector.getInstance(IGenerator.class);
-										//The list of generators
-										//IGenerator generator =(IGenerator) configElement.createExecutableExtension(WorkbenchContribution_class);
 										if (generator!=null) {
 											generators.add(generator);
 										}
 									}	
 								} catch (ConfigurationException ex) {
 									//do nothing, there is no generator contributed.
-									logger.info("There is no generator contributed");
+									logger.info("There is no generator contributed implementing IGenerator.");
+									// Xtext 2.10: try IGenerator2
+									GeneratorDelegate delegate = injector.getInstance(GeneratorDelegate.class);
+									if (delegate!=null) {
+										generators.add(delegate);
+									}
 								}
 								//Done.
 								LanguageContribution contribution = new LanguageContribution(xtextGrammarPath, fileExtension, injector, generators);	
