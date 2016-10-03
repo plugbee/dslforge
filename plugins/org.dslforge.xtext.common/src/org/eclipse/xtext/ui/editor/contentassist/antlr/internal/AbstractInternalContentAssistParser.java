@@ -38,7 +38,6 @@ import org.eclipse.xtext.ui.editor.contentassist.LookAheadTerminal;
 import org.eclipse.xtext.ui.editor.contentassist.LookAheadTerminalRuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.LookaheadKeyword;
 import org.eclipse.xtext.ui.editor.contentassist.ObservableXtextTokenStream;
-import org.eclipse.xtext.ui.editor.contentassist.ObservableXtextTokenStream.StreamListener;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 
 import com.google.common.collect.Iterators;
