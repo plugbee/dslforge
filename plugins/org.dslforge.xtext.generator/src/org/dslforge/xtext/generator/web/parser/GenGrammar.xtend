@@ -104,7 +104,12 @@ class GenGrammar extends AbstractGenerator {
 		parserRules = GrammarUtil::allParserRules(grammar);
 		for (ParserRule pr : parserRules) {
 			// rules on the client side are untyped
+			println(pr)
 			pr.setType(null)
+			//remove semantic predicates
+			var List<AbstractElement> elements = GrammarUtil::containedAbstractElements(pr)
+			for (AbstractElement e: elements)
+				e.predicated = false
 			// remove the actions (xtext-specific)
 			val alternatives = pr.alternatives
 			if (alternatives instanceof Group) {
@@ -112,6 +117,7 @@ class GenGrammar extends AbstractGenerator {
 				var Iterator<AbstractElement> i = objs.iterator();
 				while (i.hasNext()) {
 					var o = i.next()
+					//remove actions
 					if (o instanceof Action) {
 						if (o.feature!=null)
 							i.remove();
@@ -122,7 +128,7 @@ class GenGrammar extends AbstractGenerator {
 			val assignments = GrammarUtil::containedAssignments(pr)
 			for (Assignment a : assignments) {
 				val terminal = a.terminal
-				a.setFeature(a.feature.toLowerCase)
+				a.setFeature(a.feature.toLowerCase+ "_"+assignments.indexOf(a))
 				var operator = a.operator
 				if (operator.equals("?=")) {
 					a.setOperator("=")
