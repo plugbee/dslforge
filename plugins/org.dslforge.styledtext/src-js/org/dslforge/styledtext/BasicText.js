@@ -30,14 +30,14 @@
 			this.base(arguments);
 			bindAll(this, [ "layout", "onReady", "onSend", "onRender" ]);
 			this.parent = rap.getObject(properties.parent);
-			this.element = document.createElement( "pre" );
+			var area = this.parent.getClientArea();			
+			this.element = document.createElement("pre");
 			this.element.id = "editor";
 			this.element.style.position = "absolute";
-			var area = this.parent.getClientArea();
 			this.element.style.left = area[0] + "px";
-			this.element.style.top = (area[1]-10) + "px";
+			this.element.style.top = area[1] + "px";
 			this.element.style.width = area[2] + 'px';
-			this.element.style.height = (area[3]-5) + 'px';
+			this.element.style.height = area[3] + 'px';
 			this.parent.append(this.element);
 			this.flush();
 			this.parent.addListener("Resize", this.layout);	
@@ -67,7 +67,7 @@
 			
 			onReady : function() {
 				this.ready = true;
-				this.layout();
+				this.layout();				
 				if (this._url) {
 					this.setUrl(this._url);
 					delete this._url;
@@ -398,7 +398,7 @@
 			},
 			
 			createEditor : function() {
-				var editor = this.editor = ace.edit(this.element);
+				var editor = this.editor = ace.edit(this.element);				
 				var editable = this.editable;
 				if (editor != null) {
 					

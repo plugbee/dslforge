@@ -161,8 +161,8 @@ public class BasicText extends Composite {
 		addBaseResource(new Path("org/dslforge/styledtext/ace/snippets/language.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/theme-eclipse.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/global-index.js"));
-		registerJsResources(getBaseResources(), BasicText.class.getClassLoader());
-		loadJsResources(getBaseResources());
+		registerJsResources(getBaseResources(), BasicText.class.getClassLoader());	
+		loadJsResources(getBaseResources());		
 	}
 
 	protected void registerJsResources(List<IPath> resources, ClassLoader loader) {
@@ -805,7 +805,7 @@ public class BasicText extends Composite {
 	 * 
 	 * @param status
 	 */
-	public void setUrl(String url) {
+	public void setURL(String url) {
 		checkWidget();
 		if (url == null) {
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
@@ -978,6 +978,16 @@ public class BasicText extends Composite {
 		return content.getTextRange(0, getCharCount());
 	}
 
+	/**
+	 * Get the resource URL
+	 * 
+	 * @return the URL value
+	 */
+	public String getURL() {
+		checkWidget();
+		return url;
+	}
+	
 	/**
 	 * Get the validation status
 	 * 
