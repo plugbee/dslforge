@@ -120,27 +120,6 @@ class GenContentAssistParser extends AbstractGenerator {
 		} catch (Exception ex) {
 			logger.error(ex.message, ex)
 		}
-
-//		println("Executing long running workflow component")
-
-//		// monitor.beginTask("Some long running task", 10);
-//		if (subMonitor.isCanceled()) {
-//			throw new OperationCanceledException();
-//		}
-//
-//		for (i : 1 .. 10) {
-//			subMonitor.subTask(i + "/10 done");
-//			subMonitor.worked(1)
-//			System.out.println(i + "/10 done")
-//		//	subMonitor.worked(1);
-//			// subMonitor.subTask(i  + "/10 done")
-//			Thread.sleep(100);
-//			
-//			if (subMonitor.isCanceled()) {
-//				throw new OperationCanceledException();
-//			}
-//		}
-
 	}
 
 	def Naming createNaming() {

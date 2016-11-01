@@ -20,6 +20,7 @@ import org.dslforge.common.AbstractWebProjectFactory;
 import org.dslforge.common.IGrammar;
 import org.dslforge.common.IWebProjectDescriptor;
 import org.dslforge.common.IWebProjectDescriptor.EditorType;
+import org.dslforge.common.IWebProjectDescriptor.Mode;
 import org.dslforge.common.IWebProjectFactory;
 import org.dslforge.common.IWebProjectGenerator;
 import org.dslforge.xtext.generator.web.build.GenXtextPluginPomXml;
@@ -93,6 +94,11 @@ public class XtextPluginUpdaterFactory extends AbstractWebProjectFactory impleme
 	@Override
 	public EditorType getEditorType() {
 		return EditorType.RAP;
+	}
+
+	@Override
+	public Mode getMode() {
+		return this.configuration.getMode();
 	}
 
 	@Override

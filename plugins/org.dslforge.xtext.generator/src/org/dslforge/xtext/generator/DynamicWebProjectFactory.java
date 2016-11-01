@@ -26,6 +26,7 @@ import org.dslforge.ace.generator.web.parser.GenAntlrAll;
 import org.dslforge.common.IGrammar;
 import org.dslforge.common.IWebProjectDescriptor;
 import org.dslforge.common.IWebProjectDescriptor.EditorType;
+import org.dslforge.common.IWebProjectDescriptor.Mode;
 import org.dslforge.common.IWebProjectFactory;
 import org.dslforge.common.IWebProjectGenerator;
 import org.dslforge.xtext.generator.web.GenExecutableExtensionFactory;
@@ -84,9 +85,7 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 	private List<String> exportedPackages = Lists.newArrayList();
 	private List<String> projectNatures = Lists.newArrayList();
 	private List<String> builderIds = Lists.newArrayList();
-
 	private boolean isServerSideContentAssist = true;
-
 	private final IWebProjectDescriptor configuration;
 
 	public DynamicWebProjectFactory(IWebProjectDescriptor configuration) {
@@ -108,6 +107,11 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 		return this.configuration.getProject().getLocation();
 	}
 
+	@Override
+	public Mode getMode() {
+		return this.configuration.getMode();
+	}
+	
 	@Override
 	public EditorType getEditorType() {
 		return this.configuration.getEditorType();
@@ -164,16 +168,10 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 		final IProject project = this.configuration.getProject();
 		if (project.exists()) {
 			//project exists -> incremental mode
-			new GenMode().doGenerate(this, progress.newChild(1));
-			new GenWorker().doGenerate(this, progress.newChild(1));
-			if (this.isServerSideContentAssist){
-				new GenContentAssistParser().doGenerate(this, progress.newChild(1));
-				new GenExecutableExtensionFactory().doGenerate(this, progress.newChild(1));
-				new GenActivator().doGenerate(this, progress.newChild(1));	
-			}
-			new GenGrammar().doGenerate(this, progress.newChild(1));
+			this.configuration.setMode(Mode.Incremental);
+			doGenerate(this, progress.newChild(100));
 		} else {
-			//create new project
+			//create new project -> batch mode
 			try {
 				setBuilderIds(getDefaultBuilderIds());
 				if (this.isServerSideContentAssist)

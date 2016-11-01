@@ -30,9 +30,18 @@ public interface IWebProjectDescriptor {
 		RAP, 
 	}
 	
+	public static enum Mode {
+		Batch,
+		Incremental,
+	}
+	
 	public EditorType getEditorType();
 
 	public void setEditorType(EditorType editorType);
+	
+	public Mode getMode();
+	
+	public void setMode(Mode mode);
 	
 	public IProject getProject();
 	

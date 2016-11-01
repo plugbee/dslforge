@@ -16,6 +16,7 @@
 package org.dslforge.xtext.generator.web.editor
 
 import org.dslforge.common.AbstractGenerator
+import org.dslforge.common.IWebProjectDescriptor.Mode
 import org.dslforge.common.IWebProjectFactory
 import org.dslforge.xtext.generator.XtextGrammar
 import org.eclipse.core.runtime.IProgressMonitor
@@ -34,7 +35,8 @@ class GenActionBarContributor extends AbstractGenerator{
 		grammarShortName= grammar.getShortName()
 		basePath=grammar.getBasePath()
 		factory.generateFile("src-gen/" + basePath + relativePath, "Abstract" + grammarShortName + "ActionBarContributor.java", toJavaSrcGen(), monitor)
-		factory.generateFile("src/" + basePath + relativePath, grammarShortName + "ActionBarContributor.java", toJavaSrc(), monitor)
+		if(factory.mode == Mode.Batch)
+			factory.generateFile("src/" + basePath + relativePath, grammarShortName + "ActionBarContributor.java", toJavaSrc(), monitor)
 	}
 	
 	def toJavaSrcGen()'''

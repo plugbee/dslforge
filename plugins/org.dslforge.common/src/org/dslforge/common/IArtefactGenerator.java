@@ -13,10 +13,11 @@
 package org.dslforge.common;
 
 import org.dslforge.common.IWebProjectDescriptor.EditorType;
+import org.dslforge.common.IWebProjectDescriptor.Mode;
 import org.eclipse.core.resources.IProject;
 
 public interface IArtefactGenerator extends IWebProjectGenerator{
-
+	
 	void setEditorType(EditorType type);
 	EditorType getEditorType();
 	

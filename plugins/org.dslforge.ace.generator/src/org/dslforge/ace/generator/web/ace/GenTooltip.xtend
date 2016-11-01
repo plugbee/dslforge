@@ -17,9 +17,9 @@ package org.dslforge.ace.generator.web.ace
 
 import org.dslforge.common.AbstractGenerator
 import org.dslforge.common.IGrammar
+import org.dslforge.common.IWebProjectDescriptor.EditorType
 import org.dslforge.common.IWebProjectFactory
 import org.eclipse.core.runtime.IProgressMonitor
-import org.dslforge.common.IWebProjectDescriptor.EditorType
 
 class GenTooltip extends AbstractGenerator{
 	

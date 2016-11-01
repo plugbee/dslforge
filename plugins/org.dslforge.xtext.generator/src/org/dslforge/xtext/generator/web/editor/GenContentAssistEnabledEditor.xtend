@@ -16,6 +16,7 @@
 package org.dslforge.xtext.generator.web.editor
 
 import org.dslforge.common.AbstractGenerator
+import org.dslforge.common.IWebProjectDescriptor.Mode
 import org.dslforge.common.IWebProjectFactory
 import org.dslforge.xtext.generator.XtextGrammar
 import org.eclipse.core.runtime.IProgressMonitor
@@ -36,7 +37,8 @@ class GenContentAssistEnabledEditor extends AbstractGenerator {
 		basePath = grammar.getBasePath()
 		factory.generateFile("src-gen/" + basePath + relativePath, "Abstract" + grammarShortName + "Editor.java",
 			toXtextContentAssistEnabledEditor(), monitor)
-		factory.generateFile("src/"+ basePath + relativePath, grammarShortName + "Editor.java", toJavaSrc(), monitor)
+		if (factory.mode == Mode.Batch)
+			factory.generateFile("src/"+ basePath + relativePath, grammarShortName + "Editor.java", toJavaSrc(), monitor)
 	}
 
 	def toBasicXtextEditor() '''

@@ -15,6 +15,7 @@ package org.dslforge.common;
 import java.util.List;
 
 import org.dslforge.common.IWebProjectDescriptor.EditorType;
+import org.dslforge.common.IWebProjectDescriptor.Mode;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -36,6 +37,8 @@ public interface IWebProjectFactory {
 	public IPath getLocation();
 
 	public EditorType getEditorType();
+	
+	public Mode getMode();
 	
 	public List<String> getProjectNatures();
 	

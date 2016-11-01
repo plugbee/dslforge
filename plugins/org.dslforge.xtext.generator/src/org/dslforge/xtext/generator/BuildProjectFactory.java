@@ -22,6 +22,7 @@ import org.dslforge.common.AbstractWebProjectFactory;
 import org.dslforge.common.IGrammar;
 import org.dslforge.common.IWebProjectDescriptor;
 import org.dslforge.common.IWebProjectDescriptor.EditorType;
+import org.dslforge.common.IWebProjectDescriptor.Mode;
 import org.dslforge.common.IWebProjectFactory;
 import org.dslforge.common.IWebProjectGenerator;
 import org.dslforge.xtext.generator.web.build.GenAssembly;
@@ -164,5 +165,10 @@ public class BuildProjectFactory extends AbstractWebProjectFactory implements IW
 		if (!this.projectNatures.isEmpty())
 			projectDescription.setNatureIds(this.projectNatures.toArray(new String[this.projectNatures.size()]));
 		return projectDescription;
+	}
+
+	@Override
+	public Mode getMode() {
+		return this.configuration.getMode();
 	}
 }

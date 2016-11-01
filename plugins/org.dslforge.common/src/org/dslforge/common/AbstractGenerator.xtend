@@ -12,7 +12,6 @@
  */
 package org.dslforge.common
 
-import org.dslforge.common.IArtefactGenerator
 import org.dslforge.common.IWebProjectDescriptor.EditorType
 import org.eclipse.core.resources.IProject
 
@@ -26,6 +25,7 @@ abstract class AbstractGenerator implements IArtefactGenerator {
 	protected var String relativePath
 	protected var String fileName
 	protected var String projectName
+
 	
 	override setEditorType(EditorType type) {
 		this.type = type

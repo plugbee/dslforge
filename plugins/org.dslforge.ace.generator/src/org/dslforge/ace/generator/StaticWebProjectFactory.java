@@ -33,6 +33,7 @@ import org.dslforge.common.AbstractWebProjectFactory;
 import org.dslforge.common.IGrammar;
 import org.dslforge.common.IWebProjectDescriptor;
 import org.dslforge.common.IWebProjectDescriptor.EditorType;
+import org.dslforge.common.IWebProjectDescriptor.Mode;
 import org.dslforge.common.IWebProjectFactory;
 import org.dslforge.common.IWebProjectGenerator;
 import org.eclipse.core.resources.ICommand;
@@ -100,6 +101,12 @@ public class StaticWebProjectFactory extends AbstractWebProjectFactory implement
 	public EditorType getEditorType() {
 		return configuration.getEditorType();
 	}
+	
+	@Override
+	public Mode getMode() {
+		return configuration.getMode();
+	}
+	
 	
 	@Override
 	public List<String> getProjectNatures() {

@@ -16,6 +16,7 @@
 package org.dslforge.xtext.generator.web.module
 
 import org.dslforge.common.AbstractGenerator
+import org.dslforge.common.IWebProjectDescriptor.Mode
 import org.dslforge.common.IWebProjectFactory
 import org.dslforge.xtext.generator.XtextGrammar
 import org.eclipse.core.runtime.IProgressMonitor
@@ -34,8 +35,8 @@ class GenWebRuntimeModule extends AbstractGenerator{
 		projectName=grammar.getProjectName()
 		grammarShortName= grammar.getShortName()
 		factory.generateFile("src-gen/" + basePath + relativePath, "AbstractWeb" + grammarShortName.toFirstUpper + "RuntimeModule" + ".java", toJavaSrcGen(), monitor)
-		factory.generateFile("src/" + basePath + relativePath, "Web" + grammarShortName.toFirstUpper + "RuntimeModule" + ".java", toJavaSrc(), monitor)
-
+		if (factory.mode == Mode.Batch)
+			factory.generateFile("src/" + basePath + relativePath, "Web" + grammarShortName.toFirstUpper + "RuntimeModule" + ".java", toJavaSrc(), monitor)
 	}
 	def toJavaSrcGen()'''
 /**

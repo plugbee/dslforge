@@ -22,11 +22,13 @@ public class WebProjectDescriptor implements IWebProjectDescriptor {
 	private IProject project;
 	private IGrammar grammar;
 	private EditorType editorType;
+	private Mode mode;
 	private Map<String, Object> options;
 	
 	public WebProjectDescriptor(IProject project, IGrammar grammar) {
 		this.project = project;
 		this.grammar = grammar;
+		this.mode = Mode.Batch;
 		this.options = new HashMap<String, Object>();
 	}
 	
@@ -38,6 +40,15 @@ public class WebProjectDescriptor implements IWebProjectDescriptor {
 		this.editorType = editorType;
 	}
 
+	@Override
+	public Mode getMode() {
+		return this.mode;
+	}
+	
+	public void setMode(Mode mode) {
+		this.mode = mode;
+	}
+	
 	@Override
 	public IProject getProject() {
 		return this.project;
