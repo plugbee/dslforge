@@ -1,9 +1,25 @@
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2015 PlugBee. All rights reserved.
+ * 
+ * This program and the accompanying materials are made available 
+ * under the terms of the Eclipse Public License v1.0 which 
+ * accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Amine Lajmi - Initial API and implementation
+ *
+ * </copyright>
+ */
 package org.dslforge.xtext.generator.util;
 
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,7 +27,6 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 /**
  * <copyright>
  *
@@ -37,6 +52,7 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
@@ -51,20 +67,13 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.mwe.utils.GenModelHelper;
 import org.eclipse.emf.mwe2.language.mwe2.Assignment;
 import org.eclipse.emf.mwe2.language.mwe2.Component;
-import org.eclipse.emf.mwe2.language.mwe2.DeclaredProperty;
 import org.eclipse.emf.mwe2.language.mwe2.Module;
-import org.eclipse.emf.mwe2.language.mwe2.PlainString;
-import org.eclipse.emf.mwe2.language.mwe2.StringLiteral;
-import org.eclipse.emf.mwe2.language.mwe2.StringPart;
-import org.eclipse.emf.mwe2.language.mwe2.Value;
 import org.eclipse.emf.mwe2.language.mwe2.impl.ComponentImplCustom;
 import org.eclipse.emf.mwe2.language.resource.MweResourceSetProvider;
 import org.eclipse.emf.mwe2.language.scoping.Mwe2ScopeProvider;
@@ -73,7 +82,6 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.xtext.AbstractMetamodelDeclaration;
 import org.eclipse.xtext.AbstractRule;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.ParserRule;
@@ -128,38 +136,6 @@ public class GeneratorUtil {
 		return split[split.length - 1];
 	}
 
-	public static String getFileExtension(Grammar grammar) {
-		URI uri = EcoreUtil.getURI(grammar).trimFragment();
-		URI tailSegment = uri.trimSegments(1);
-		URI workflowFileURI = tailSegment.appendSegment("Generate" + getGrammarShortName(grammar) + ".mwe2");
-		ResourceSet resourceSet = new ResourceSetImpl();
-		Resource resource = null;
-		try {
-			resource = resourceSet.getResource(workflowFileURI, true);
-		} catch (Exception ex) {
-			if (resource == null) {
-				workflowFileURI = tailSegment.appendSegment(getGrammarShortName(grammar) + ".mwe2");
-				resource = resourceSet.getResource(workflowFileURI, true);
-			}
-		}
-		Module m = (Module) resource.getContents().get(0);
-		EList<DeclaredProperty> declaredProperties = m.getDeclaredProperties();
-		for (DeclaredProperty p : declaredProperties) {
-			String name = p.getName();
-			if (name.equals("fileExtensions")) {
-				Value v = p.getDefault();
-				if (v instanceof StringLiteral) {
-					StringPart stringPart = ((StringLiteral) v).getParts().get(0);
-					if (stringPart != null) {
-						String extension = ((PlainString) stringPart).getValue();
-						return extension;
-					}
-				}
-			}
-		}
-		throw new UnsupportedOperationException("[DSLFORGE] Could not localize file extensions.");
-	}
-
 	public static String getKeywords(Grammar grammar, String separator, boolean quoted) {
 		Set<String> allKeywords = GrammarUtil.getAllKeywords(grammar);
 		String result = "";
@@ -203,7 +179,7 @@ public class GeneratorUtil {
 					return pr.getName();
 			}
 		}
-		throw new UnsupportedOperationException("[DSLFORGE] Could not find entry rule in current grammar");
+		throw new RuntimeException("Could not find entry rule in current grammar");
 	}
 
 	public static String getVersionNumber(IProject project) {
@@ -332,8 +308,7 @@ public class GeneratorUtil {
 			}
 		}
 	}
-	
-	
+
 	public static void validateAllImports(Grammar grammar) {
 		for (AbstractMetamodelDeclaration declaration : GrammarUtil.allMetamodelDeclarations(grammar)) {
 			if (declaration instanceof ReferencedMetamodel)
@@ -350,6 +325,8 @@ public class GeneratorUtil {
 		Grammar grammar = (Grammar) eObject;
 		List<String> referencedResources = new ArrayList<String>();
 		Resource workflow = loadWorkflowResource(grammar);
+		if (workflow ==null)
+			throw new RuntimeException("Could not locate the grammar workflow file.");
 		Module m = (Module) workflow.getContents().get(0);
 		Injector injector = Mwe2Activator.getInstance().getInjector("org.eclipse.emf.mwe2.language.Mwe2");
 		Mwe2ScopeProvider scopeProvider = (Mwe2ScopeProvider) injector.getInstance(IScopeProvider.class);
@@ -392,35 +369,9 @@ public class GeneratorUtil {
 		List<INode> nodes = NodeModelUtils.findNodesForFeature(ref, eref);
 		String refName = (nodes.isEmpty()) ?"(unknown)": NodeModelUtils.getTokenText(nodes.get(0));
 		String grammarName = GrammarUtil.getGrammar(ref).getName();
-		String msg = "The EPackage " + refName + " in grammar " + grammarName + " could not be found. "
+		String message = "The EPackage " + refName + " in grammar " + grammarName + " could not be found. "
 			+ "You might want to register that EPackage in your workflow file.";
-		throw new IllegalStateException(msg);
-	}
-	
-	@SuppressWarnings("unused")
-	private static void registerReferencedMetamodels(XtextResourceSet instance, Grammar usedGrammar) {
-		EcoreUtil2.resolveAll(instance);
-		for (AbstractMetamodelDeclaration metamodelDeclaration : GrammarUtil.allMetamodelDeclarations(usedGrammar)) {
-			if (metamodelDeclaration instanceof ReferencedMetamodel) {
-				ReferencedMetamodel refMetamodel = (ReferencedMetamodel) metamodelDeclaration;
-				String alias = refMetamodel.getAlias();
-				if (alias!=null && alias.equals("ecore")) {
-					registerReferencedMetamodel(instance, refMetamodel);
-				}
-			}
-		}
-	}
-
-	private static void registerReferencedMetamodel(XtextResourceSet instance, ReferencedMetamodel refMetamodel) {
-		EPackage ePackage = refMetamodel.getEPackage();
-		EPackage ePackageRoot = loadEPackage("http://www.example.org/models2016", instance);
-		refMetamodel.setEPackage(ePackageRoot);
-		register(ePackageRoot, instance);
-		Map<String, URI> ePackageNsURIToGenModelLocationMap = EcorePlugin.getEPackageNsURIToGenModelLocationMap(false);
-		URI genModelURI = ePackageNsURIToGenModelLocationMap.get(ePackage.getNsURI());
-		Resource genModelResource = instance.getResource(genModelURI, true);
-		EObject genModel = genModelResource.getContents().get(0);
-		register((GenModel)genModel);
+		throw new RuntimeException(message);
 	}
 
 	public static EPackage loadEPackage(String resourceOrNsURI, ResourceSet resourceSet) {
@@ -459,8 +410,7 @@ public class GeneratorUtil {
 	public static void register(GenModel genModel) {
 		new GenModelHelper().registerGenModel(genModel);
 	}
-	
-	
+
 	public static String lookupFileExtension(Module m) {
 		Injector injector = Mwe2Activator.getInstance().getInjector("org.eclipse.emf.mwe2.language.Mwe2");
 		Mwe2ScopeProvider scopeProvider = (Mwe2ScopeProvider) injector.getInstance(IScopeProvider.class);
@@ -492,7 +442,7 @@ public class GeneratorUtil {
 				}
 			}
 		}
-		throw new UnsupportedOperationException("[DSLFORGE] Could not localize file extensions.");
+		throw new RuntimeException("Could not localize the gramar file extensions.");
 	}
 
 	public static Resource loadWorkflowResource(Grammar grammar) {
@@ -503,16 +453,28 @@ public class GeneratorUtil {
 		XtextResourceSet mwe2ResourceSet = casted.get();
 		mwe2ResourceSet.setClasspathURIContext(javaProject);
 		URI uri = EcoreUtil.getURI(grammar).trimFragment();
-		URI workflowFileURI = uri.trimSegments(1).appendSegment("Generate" + getGrammarShortName(grammar) + ".mwe2");
+		IFile grammarFile = uriToIFile(uri);		
 		Resource resource = null;
-		try {
-			resource = mwe2ResourceSet.getResource(workflowFileURI, true);
-		} catch (Exception ex) {
-			//fall back.
-		} finally {
-			if (resource == null) {
-				workflowFileURI = uri.trimSegments(1).appendSegment(getGrammarShortName(grammar) + ".mwe2");
+		IContainer parent = grammarFile.getParent();
+		File folder = parent.getLocation().toFile();
+		File[] candidateWorkflowFiles = folder.listFiles(new FilenameFilter() {	
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.endsWith("mwe2");
+			}
+		});
+		if (candidateWorkflowFiles.length==0) {
+			logger.error("Could not localize any workflow file inside in the folder where the grammar is located.\nFolder path: " + parent.getLocation());
+		}
+		else if (candidateWorkflowFiles.length>1) {
+			logger.error("Cannot proceed, multiple workflow files are found in the folder where the grammar is located.\nFolder path: " + parent.getLocation());
+		}
+		else {
+			URI workflowFileURI = URI.createFileURI(candidateWorkflowFiles[0].getPath());
+			try {
 				resource = mwe2ResourceSet.getResource(workflowFileURI, true);
+			} catch (Exception ex) {
+				logger.error(ex.getMessage(), ex);
 			}
 		}
 		return resource;
@@ -531,7 +493,7 @@ public class GeneratorUtil {
 				logger.error(ex.getMessage(), ex);
 			}
 		}
-		throw new RuntimeException("could not find plugin.xml file of project: " + project.getName());
+		throw new RuntimeException("Could not find plugin.xml file of project: " + project.getName());
 	}
 
 	private static String computeResourcePathFromXtextPlugin(final IFile file) {
@@ -586,8 +548,25 @@ public class GeneratorUtil {
 			dis.close();
 			return buff;
 		} else {
-			throw new RuntimeException("could not find plugin.xml file in: " + container.getName());
+			throw new RuntimeException("Could not find plugin.xml file in: " + container.getName());
 		}
+	}
+
+	public static IFile uriToIFile(URI uri) {
+		if (uri.isPlatformResource()) {
+			String platformString = uri.toPlatformString(true);
+			IResource resource = ResourcesPlugin.getWorkspace().getRoot().findMember(platformString);
+			if (resource instanceof IFile)
+				return (IFile) resource;
+		}
+		else if (uri.isFile()) {
+			String fileString = uri.toFileString();
+			IResource resource = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path(fileString));
+			if (resource instanceof IFile)
+				return (IFile) resource;
+		}
+		logger.error("Could not retrieve the grammar file from the grammar uri: " + uri);
+		return null;
 	}
 
 	public static String getFileContent(InputStream fis) {
