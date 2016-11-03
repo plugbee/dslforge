@@ -8,10 +8,12 @@ The framework is composed of two features:
 - **Runtime**, or Target Components.
 
 ## Tooling
-The Tooling has two code generators which take Xtext grammar as input and generate two variants of editors.
-Two wizards are contributed:
-- _*Generate Web Editor from ANTLR*_ produces a text editor with JavaScript parser and lexer from ANTLR v3. You get an ACE editor tailored for the language definition which runs entirely on the client.
-- _*Generate Web Editor from Xtext*_ produces a plugin to be packaged with the original Xtext plugin into a workbench application enabling precise interaction between the client and the server.
+The Tooling has two code generators which take language grammars expressed with Xtext or ANTLR and generate two variants of editors. 
+
+<a href="url"><img src="http://dslforge.org/wp-content/uploads/2016/01/dslforge-tooling-xtext-generator.png" align="middle" width="500" ></a>
+
+- _**Generate Web Editor from ANTLR**_ produces a text editor with JavaScript parser and lexer from ANTLR v3. You get an ACE editor tailored for the language definition which runs fully on the client side. This editor has no backend, use it for integration with JavaScript servers.
+- _**Generate Web Editor from Xtext**_ produces a plugin to be packaged with the original Xtext plugin into a workbench application enabling precise interaction between the client and the server.
 
 ## Runtime
 The Runtime is required if you develop against the Eclipse Remote Application Platform (RAP). It is a set of plugins providing services such as typed content assist, workspace management, persistency, etc. The plugins are built on top of the Basic Equinox RAP Target you can already download from the Eclipse RAP update sites.
@@ -33,11 +35,11 @@ Below the complete list of features bound by default in the generated editors:
 ## Installation
 
 1. **Install Eclipse**
-The current DSL Forge version is based on Eclipse Mars packages. The packages are available under http://www.eclipse.org/downloads/packages/
+The current DSL Forge version is based on Eclipse Neon packages. The packages are available under http://www.eclipse.org/downloads/packages/
 To know which package is the most appropriate for you, select one of the following alternatives.
- - *Eclipse IDE for Java EE Developers*
+ - **Eclipse IDE for Java EE Developers**
 In this scenario, users are interested in having a DSL editor shipped with HTML/JavaScript applications. The generator outputs a static web project ready to be debugged under Eclipse. The most appropriate distribution to use is Eclipse IDE for Java EE Developers as it comes with a simple HTTP Preview server easy to configure.
- - *Eclipse for RCP and RAP Developers*
+ - **Eclipse for RCP and RAP Developers**
 If you want a closer integration with Xtext and EMF, or if you want to integrate the editor with other Eclipse components, you’d better install Eclipse for RCP and RAP Developers. This makes it possible to integrate the editor with third party RWT (Remote Widget Toolkit, the web-based SWT) plugins and widgets.
 
 2. **Install the Xtext SDK**
