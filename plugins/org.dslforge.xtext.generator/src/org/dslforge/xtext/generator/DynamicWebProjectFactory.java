@@ -40,6 +40,7 @@ import org.dslforge.xtext.generator.web.editor.widget.GenWidget;
 import org.dslforge.xtext.generator.web.editor.widget.GenWidgetResource;
 import org.dslforge.xtext.generator.web.internal.GenActivator;
 import org.dslforge.xtext.generator.web.internal.GenImageProvider;
+import org.dslforge.xtext.generator.web.launch.GenLaunchConfig;
 import org.dslforge.xtext.generator.web.module.GenWebRuntimeModule;
 import org.dslforge.xtext.generator.web.module.GenWebStandaloneSetup;
 import org.dslforge.xtext.generator.web.parser.GenGrammar;
@@ -291,6 +292,7 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 		new GenWorker().doGenerate(factory, progress.newChild(1));
 		new GenAntlrAll().doGenerate(factory, progress.newChild(1));		
 		new GenWebPluginPomXml().doGenerate(factory, progress.newChild(1));
+		new GenLaunchConfig().doGenerate(factory, progress.newChild(1));
 	}
 
 	private void createPluginXml(IProject project, IProgressMonitor monitor) throws CoreException {
