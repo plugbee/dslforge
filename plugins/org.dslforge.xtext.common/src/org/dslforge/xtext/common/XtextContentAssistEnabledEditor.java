@@ -102,11 +102,9 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 	@Override
 	protected void createCompletionProposals() {
 		IDocument document = getViewer().getDocument();
-		if (document.get().length()>0) {
-			BasicText textWidget = getViewer().getTextWidget();
-			textWidget.setText(document.get(), false);
-			createCompletionProposals(textWidget.getOffsetAtCursorPosition());	
-		}
+		BasicText textWidget = getViewer().getTextWidget();
+		textWidget.setText(document.get(), false);
+		createCompletionProposals(textWidget.getOffsetAtCursorPosition());	
 	}
 	
 	@Override
