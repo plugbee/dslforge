@@ -265,16 +265,16 @@
 
 			setAnnotations : function(annotations) {
 				if (this.ready) {
-					if (annotations.length>0) {
-						this._annotations = [];
-						//keep client-side annotations
-						var editorAnnotations = this.editor.session.getAnnotations();
-						for (var i = 0; i < editorAnnotations.length; i++) {
-			   				if (!editorAnnotations[i].server) {
-			   					this._annotations.push(editorAnnotations[i])
-			   				}
-			   			}
-						//recompute server-side annotations
+					this._annotations = [];
+					//keep client-side annotations
+					var editorAnnotations = this.editor.session.getAnnotations();
+					for (var i = 0; i < editorAnnotations.length; i++) {
+		   				if (!editorAnnotations[i].server) {
+		   					this._annotations.push(editorAnnotations[i])
+		   				}
+		   			}
+					//recompute server-side annotations
+					if (annotations.length>0) {	
 						for (var i = annotations.length; i--;) {
 							var annotation = annotations[i];
 							for (var key in annotation) {
@@ -288,8 +288,6 @@
 							}	
 			           }
 						this.editor.session.setAnnotations(this._annotations);
-					} else {
-						 this.editor.session.clearAnnotations();
 					}
 				} else {
 					this._annotations = annotations;
