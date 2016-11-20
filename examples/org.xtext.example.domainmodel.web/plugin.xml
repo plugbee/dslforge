@@ -32,33 +32,9 @@
    <extension
          point="org.dslforge.xtext.common.contribution">
       <contribution
-            class="org.xtext.example.domainmodel.web.DomainmodelExecutableExtensionFactory"
-            extension="dmodel"
-            label="Domainmodel">
+            factory="org.xtext.example.domainmodel.web.DomainmodelExecutableExtensionFactory"
+            path="/org.xtext.example.domainmodel/src/org/xtext/example/Domainmodel.xtext"
+            extension="dmodel">
       </contribution>
    </extension>
-      <!-- @generated dslforge -->
-      <!--
-   <extension point="org.eclipse.ui.actionSets">
-      <actionSet
-            label="Domainmodel Action Set"
-            visible="true"
-            id="org.dslforge.core.ui.model.actionset">
-         <action
-               label="Domainmodel file"
-               class="org.xtext.example.domainmodel.web.actions.NewDomainmodelAction"
-              menubarPath="file/new/additions"
-               id="org.xtext.example.domainmodel.web.wizard.newDomainmodelAction"/>
-      </actionSet>
-   </extension>
-
-   <extension
-     point="org.dslforge.workbench.contribution">
-  <generator
-       class="org.xtext.example.domainmodel.web.DomainmodelExecutableExtensionFactory"
-         extension="dmodel"
-        label="org.xtext.example.Domainmodel">
-  </generator>
-</extension>
-   -->
 </plugin>

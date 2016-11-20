@@ -23,5 +23,6 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.xtext.example.ui.quickfix,
  org.xtext.example.ui.contentassist,
  org.xtext.example.ui.contentassist.antlr,
- org.xtext.example.ui.internal
+ org.xtext.example.ui.internal,
+ org.xtext.example.ui.contentassist.antlr.internal
 Bundle-Activator: org.xtext.example.ui.internal.DomainmodelActivator

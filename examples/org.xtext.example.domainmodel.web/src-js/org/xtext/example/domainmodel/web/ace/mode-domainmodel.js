@@ -42,6 +42,7 @@ var WorkerClient = require("../worker/worker_client").WorkerClient;
 var Mode = function() {
     this.HighlightRules = DomainmodelHighlightRules;
     this.$outdent = new MatchingBraceOutdent();
+    this.$behaviour = new CstyleBehaviour();
     this.foldingRules = new CStyleFoldMode();
 };
 oop.inherits(Mode, TextMode);
@@ -84,38 +85,36 @@ oop.inherits(Mode, TextMode);
         var worker = new WorkerClient(["ace"], "ace/mode/domainmodel_worker", "Worker");
         worker.attachToDocument(session.getDocument());
 
-       worker.on("error", function(e) {
-        	var annotations = session.getAnnotations();
-        	
-        	var filtered = [];
-            for (var i = 0; i < annotations.length; i++) {
-                var annotation = annotations[i];
-                var server = annotation.server;
-                if (server && server==true) {
-                	filtered.push(annotation)
-                }
-            }
-        	
-            filtered.push(e.data);
-            session.setAnnotations(filtered);
-        });
-        
-        worker.on("ok", function(e) {
-        	var annotations = session.getAnnotations();
-        	var filtered = [];
-            for (var i = 0; i < annotations.length; i++) {
-                var annotation = annotations[i];
-                var server = annotation.server;
-                if (server && server==true) {
-                	filtered.push(annotation)
-                }
-            }
-        	session.clearAnnotations();
-            session.setAnnotations(filtered);
-        });
+	worker.on("clear",function(e) {
+		session.clearAnnotations();
+	});
+	
+	worker.on("error", function(e) {
+		var filtered = [];
+		var annotations = session.getAnnotations();
+		for (var i = 0; i < annotations.length; i++) {
+			filtered.push(annotations[i]);
+		}
+		filtered.push(e.data);
+		session.setAnnotations(filtered);
+	});
 
-        return worker;
-    };
+	worker.on("ok", function(e) {
+		var annotations = session.getAnnotations();
+		var filtered = [];
+		for (var i = 0; i < annotations.length; i++) {
+			var annotation = annotations[i];
+			if (annotation.server
+					&& annotation.server == true) {
+				filtered.push(annotation);
+			}
+		}
+		session.clearAnnotations();
+		session.setAnnotations(filtered);
+	});
+			
+	return worker;
+	};
 
     this.$id = "ace/mode/domainmodel";
 

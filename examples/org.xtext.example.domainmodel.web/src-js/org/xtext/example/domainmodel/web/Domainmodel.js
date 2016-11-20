@@ -18,36 +18,7 @@
 		construct : function(properties) {
 			this.base(arguments, properties);
 		},
-		
 		members : {
-		
-			setScope : function(scope) {
-				this.base(arguments, scope);
-			},
-		
-			onCompletionRequest : function(pos, prefix, callback) {
-				if (this.isFocused) {
-					var remoteObject = rap.getRemoteObject(this);
-					if (remoteObject) {
-						remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
-					}	
-					var proposals = this._proposals==null?[]:this._proposals;		
-			        var wordList = Object.keys(proposals);
-			        callback(null, wordList.map(function(word) {
-			            return {
-			            	iconClass: " " + typeToIcon(word[0]),
-			                name: word,
-			                value: proposals[word],
-			                score: 1,
-			                meta: "[" + "keyword" + "]"
-			            };
-			        }));	
-				}
-			},
-			
-			setProposals : function(proposals) {
-				this._proposals = proposals;	
-			},
 			
 			createEditor : function() {
 				var basePath = 'rwt-resources/src-js/org/dslforge/styledtext/ace';
@@ -57,11 +28,11 @@
 				var themePath = 'rwt-resources/src-js/org/xtext/example/domainmodel/web/ace';
 				ace.require("ace/config").set("themePath", themePath);
 				var editor = this.editor = ace.edit(this.element);
-				var editable = this.editable;				
+				var editable = this.editable;
+				var self = this;
 				if (editor != null) {
-
 					//Set the Id of this editor
-					var guid = this._url;
+					var guid = this.url;
 					
 					//Set language mode
 					editor.getSession().setMode("ace/mode/domainmodel");	
@@ -74,45 +45,43 @@
 				    editor.getSession().setTabSize(4);
 				    editor.getSession().setUseSoftTabs(true);
 					editor.getSession().getUndoManager().reset();
-					editor.setShowPrintMargin(false);		 
-					editor.setReadOnly(!editable);		
+					editor.setShowPrintMargin(false);
+					editor.setBehavioursEnabled(true);
+					editor.setWrapBehavioursEnabled(true);
+					editor.setReadOnly(!editable);
 					editor.$blockScrolling = Infinity;
-					
-					//Load content assist module
+										
+					//Configure content assist feature
 					this.langTools = ace.require("ace/ext/language_tools");
-					
-					//Initialize the global index
-					if (this._scope==null) 
-						this._scope=[];
-					
-					//Initialize the completion proposals
-					if (this._proposals==null) 
-						this._proposals=[];
-					
-					var self = this;
-					this.globalScope = {	
-						getCompletions: function(editor, session, pos, prefix, callback) {
-							self.onCompletionRequest(pos, prefix, callback);	
-						}
-					}
-					
-					//Add completer and enable content assist
-					this.langTools.addCompleter(this.globalScope);
-					editor.setOptions({
+					this.editor.setOptions({
 					    enableBasicAutocompletion: true,
 					    enableSnippets: true
-					});	
-					this.completers = editor.completers;			
-	
-					//Add documentation hover
+					});
+					this.backendCompleter = {
+						getMode: function() {
+							return editor.getSession().getMode();
+						},
+						getCompletions: function(editor, session, pos, prefix, callback) {
+							self.onCompletionRequest(pos, prefix, callback);	
+						},
+						getDocTooltip: function(item) {
+						    item.docHTML = ["<b>", item.caption, "</b>", 
+						                    "<hr></hr>", 
+						                    item.meta.substring(1,item.meta.length-1)
+						                    ].join("");
+						}
+					}
+					this.completers = editor.completers;
+					
+					//Add text hover
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 					editor.tokenTooltip = new TokenTooltip(editor);		 	
 
 				 	//Initialize the index
-				 	index = this._scope;
+				 	index = this.scope;
 
 				 	//Initialize the completion proposals
-				 	proposals = this._proposals;
+				 	proposals = this.proposals;
 				 	
 					//Handle the global index
 				 	if (this.useSharedWorker) {
@@ -123,7 +92,8 @@
 							var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
 							var httpURL = computeWorkerPath(filePath);
 							var worker = this.worker = new SharedWorker(httpURL);		
-							editor.on("change", function(event) {					        
+							editor.on("change", function(event) {
+								self.onModify();
 								worker.port.postMessage({
 									message: editor.getValue(), 
 							        guid: guid, 
@@ -134,9 +104,8 @@
 							 	//update the index reference
 							 	index = e.data.index;
 						    };	
-
 						}	
-				 	}
+				 	} 
 
 				 	//On focus get event
 					editor.on("focus", function() {
@@ -178,9 +147,7 @@
 				 	
 				 	//On text change event
 					editor.on("change", function(event) {					        
-						if (self.ready) {
-							//customize
-						}							
+						// customize
 			        });	
 					
 					//Bind keyboard shorcuts
@@ -215,6 +182,9 @@
 		var cls = "ace-";
 		var suffix;
 		if (type == "?") suffix = "unknown";
+		else if (type == "keyword") suffix = type;
+		else if (type == "identifier") suffix = type;
+		else if (type == "snippet") suffix = "snippet";
 		else if (type == "number" || type == "string" || type == "bool") suffix = type;
 		else if (/^fn\(/.test(type)) suffix = "fn";
 		else if (/^\[/.test(type)) suffix = "array";
@@ -223,6 +193,3 @@
 	};
 	
 }());
-
-
-			
