@@ -33,7 +33,7 @@ public class AntlrErrorListener implements ANTLRErrorListener {
 	public AntlrErrorListener() {
 		output = new ArrayList<String>();
 	}
-
+	
 	@Override
 	public void info(String message) {
 		handleInfo(message);
@@ -65,29 +65,26 @@ public class AntlrErrorListener implements ANTLRErrorListener {
 
 	protected void handleError(Message message) {
 		String messageType = ErrorManager.getMessageType(message.msgID);
-		int line = message.line > 0 ? message.line : -1;
-		int column = message.column > 0 ? message.column : 0;
-		int id = message.msgID;
-		logger.info("ANTLR Error: [" + messageType + ", id=" + id + ", line=" + line + ", column=" + column + "] : "
-				+ message);
+		if( message.line!=-1) {
+			logger.info("ANTLR Error: [" + messageType + ", id=" + message.msgID + ", line=" + message.line + ", column=" + message.column + "] : "
+					+ message);	
+		}
 	}
 
 	protected void handleWarning(Message message) {
 		String messageType = ErrorManager.getMessageType(message.msgID);
-		int line = message.line > 0 ? message.line : -1;
-		int column = message.column > 0 ? message.column : 0;
-		int id = message.msgID;
-		logger.info("ANTLR Warning: [" + messageType + ", id=" + id + ", line=" + line + ", column=" + column + "] : "
-				+ message);
+		if( message.line!=-1) {
+			logger.info("ANTLR Warning: [" + messageType + ", id=" + message.msgID + ", line=" + message.line + ", column=" + message.column + "] : "
+					+ message);	
+		}
 	}
 
 	protected void handleToolError(ToolMessage message) {
 		String messageType = ErrorManager.getMessageType(message.msgID);
-		int line = message.line > 0 ? message.line : -1;
-		int column = message.column > 0 ? message.column : 0;
-		int id = message.msgID;
-		logger.info("ANTLR Tool Error: [" + messageType + ", id=" + id + ", line=" + line + ", column=" + column
-				+ "] : " + message);
+		if( message.line!=-1) {
+			logger.info("ANTLR Tool Error: [" + messageType + ", id=" + message.msgID + ", line=" + message.line + ", column=" + message.column + "] : "
+					+ message);	
+		}
 	}
 
 	List<String> getOutput() {

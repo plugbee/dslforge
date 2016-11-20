@@ -269,8 +269,8 @@
 					//keep client-side annotations
 					var editorAnnotations = this.editor.session.getAnnotations();
 					for (var i = 0; i < editorAnnotations.length; i++) {
-		   				if (!editorAnnotations[i].server) {
-		   					this._annotations.push(editorAnnotations[i])
+		   				if (editorAnnotations[i].server) {
+		   					editorAnnotations.pop(editorAnnotations[i])
 		   				}
 		   			}
 					//recompute server-side annotations

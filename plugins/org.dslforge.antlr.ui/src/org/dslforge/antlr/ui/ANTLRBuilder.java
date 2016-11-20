@@ -210,7 +210,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 		try {
 			inputStreamReader = new InputStreamReader(grammarFile.getContents());
 			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-			StringBuffer buffer = new StringBuffer(1000);
+			StringBuffer buffer = new StringBuffer(10000);
 			int c;
 			while ((c = bufferedReader.read()) != -1) {
 				buffer.append((char) c);
@@ -218,7 +218,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 			ANTLRv3Lexer lexer = new ANTLRv3Lexer(new ANTLRStringStream(buffer.toString())) {
 				@Override
 				public void emitErrorMessage(String msg) {
-					super.emitErrorMessage("[ERROR] - ANTLRv3Lexer: " + msg);
+					logger.error("ANTLR Lexer: " + msg);
 					output.add(msg);
 				}
 			};
@@ -226,7 +226,7 @@ public class ANTLRBuilder extends IncrementalProjectBuilder {
 			ANTLRv3Parser parser = new ANTLRv3Parser(tokens) {
 				@Override
 				public void emitErrorMessage(String msg) {
-					super.emitErrorMessage("[ERROR] - ANTLRv3Parser: " + msg);
+					logger.error("ANTLR Parser: " + msg);
 					output.add(msg);
 				}
 			};
