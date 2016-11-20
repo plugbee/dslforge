@@ -9,7 +9,7 @@
     <groupId>dslforge.example</groupId>
   </parent>
 	<groupId>dslforge.example</groupId>
-	<artifactId>mydsl</artifactId>
+	<artifactId>MyDsl</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>mydsl</name>
 	<packaging>eclipse-target-definition</packaging>
