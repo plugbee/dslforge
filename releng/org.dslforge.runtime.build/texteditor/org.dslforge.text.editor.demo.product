@@ -2,6 +2,7 @@
 <?pde version="3.5"?>
 
 <product name="DSL Forge Workbench Product" uid="org.dslforge.text.editor.demo.product" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="false">
+
    <configIni use="default">
    </configIni>
 
@@ -23,9 +24,6 @@
       <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
       <plugin id="com.ibm.icu.base"/>
-      <plugin id="fr.inria.diverse.models2016.dsl"/>
-      <plugin id="fr.inria.diverse.models2016.dsl.web"/>
-      <plugin id="fr.inria.diverse.models2016.model"/>
       <plugin id="javax.activation"/>
       <plugin id="javax.inject"/>
       <plugin id="javax.mail"/>
@@ -86,6 +84,9 @@
       <plugin id="org.eclipse.persistence.core"/>
       <plugin id="org.eclipse.persistence.jpa"/>
       <plugin id="org.eclipse.persistence.jpa.jpql"/>
+      <plugin id="org.eclipse.rap.incubator.texteditor.java"/>
+      <plugin id="org.eclipse.rap.incubator.texteditor.javascript"/>
+      <plugin id="org.eclipse.rap.incubator.texteditor.json"/>
       <plugin id="org.eclipse.rap.jface"/>
       <plugin id="org.eclipse.rap.jface.databinding"/>
       <plugin id="org.eclipse.rap.rwt"/>
@@ -106,9 +107,6 @@
       <plugin id="org.eclipse.xtext.example.domainmodel.web"/>
       <plugin id="org.eclipse.xtext.example.fowlerdsl"/>
       <plugin id="org.eclipse.xtext.example.fowlerdsl.web"/>
-      <plugin id="org.eclipse.rap.addons.texteditor.json"/>
-      <plugin id="org.eclipse.rap.addons.texteditor.java"/>
-      <plugin id="org.eclipse.rap.addons.texteditor.javascript"/>
       <plugin id="org.eclipse.xtext.smap"/>
       <plugin id="org.eclipse.xtext.util"/>
       <plugin id="org.eclipse.xtext.xbase"/>
@@ -137,6 +135,14 @@
       <plugin id="org.apache.felix.gogo.runtime" autoStart="true" startLevel="5" />
       <plugin id="org.apache.felix.gogo.shell" autoStart="true" startLevel="5" />
       <plugin id="org.apache.log4j" autoStart="true" startLevel="5" />
+      <plugin id="org.dslforge.styledtext" autoStart="true" startLevel="5" />
+      <plugin id="org.dslforge.texteditor" autoStart="true" startLevel="5" />
+      <plugin id="org.dslforge.texteditor.demo" autoStart="true" startLevel="5" />
+      <plugin id="org.dslforge.workspace" autoStart="true" startLevel="5" />
+      <plugin id="org.dslforge.workspace.config" autoStart="true" startLevel="5" />
+      <plugin id="org.dslforge.workspace.jpa" autoStart="true" startLevel="4" />
+      <plugin id="org.dslforge.workspace.ui" autoStart="true" startLevel="5" />
+      <plugin id="org.dslforge.xtext.common" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.core.commands" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.core.contenttype" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.core.databinding" autoStart="true" startLevel="5" />
@@ -163,6 +169,7 @@
       <plugin id="org.eclipse.equinox.registry" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.equinox.servletbridge" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.equinox.util" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.help" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
       <plugin id="org.eclipse.osgi.services" autoStart="true" startLevel="5" />
@@ -171,6 +178,9 @@
       <plugin id="org.eclipse.persistence.core" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.persistence.jpa" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.persistence.jpa.jpql" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.rap.incubator.texteditor.java" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.rap.incubator.texteditor.javascript" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.rap.incubator.texteditor.json" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.jface" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.jface.databinding" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.rwt" autoStart="true" startLevel="5" />
@@ -179,37 +189,25 @@
       <plugin id="org.eclipse.rap.ui.navigator" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.ui.views" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.ui.workbench" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.sphinx.examples.xtext.hummingbird" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.sphinx.examples.xtext.hummingbird.web" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.xtend.lib" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.xtend.lib.macro" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.xtend.typesystem.emf" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.xtext" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.xtext.common.types" autoStart="true" startLevel="5" />
-       <plugin id="org.eclipse.xtext.util" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.xtext.example.arithmetics" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.xtext.example.arithmetics.web" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.xtext.example.domainmodel" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.xtext.example.domainmodel.web" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.xtext.example.fowlerdsl" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.xtext.example.fowlerdsl.web" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.xtext.util" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.xtext.xbase.lib" autoStart="true" startLevel="5" />
       <plugin id="org.hamcrest.core" autoStart="true" startLevel="5" />
       <plugin id="org.objectweb.asm" autoStart="true" startLevel="5" />
-      <plugin id="org.eclipse.xtext.example.domainmodel" autoStart="true" startLevel="5" />
-      <plugin id="org.eclipse.xtext.example.domainmodel.web" autoStart="true" startLevel="5" />   
-      <plugin id="org.eclipse.sphinx.examples.xtext.hummingbird" autoStart="true" startLevel="5" />
-      <plugin id="org.eclipse.sphinx.examples.xtext.hummingbird.web" autoStart="true" startLevel="5" />      
-      <plugin id="org.eclipse.xtext.example.arithmetics" autoStart="true" startLevel="5" />
-      <plugin id="org.eclipse.xtext.example.arithmetics.web" autoStart="true" startLevel="5" />
-      <plugin id="org.eclipse.xtext.example.fowlerdsl" autoStart="true" startLevel="5" />
-      <plugin id="org.eclipse.xtext.example.fowlerdsl.web" autoStart="true" startLevel="5" />
       <plugin id="org.xtext.example.mydsl" autoStart="true" startLevel="5" />
       <plugin id="org.xtext.example.mydsl.web" autoStart="true" startLevel="5" />
-      <plugin id="org.eclipse.rap.addons.texteditor.json" autoStart="true" startLevel="5" />
-      <plugin id="org.eclipse.rap.addons.texteditor.java" autoStart="true" startLevel="5" />
-      <plugin id="org.eclipse.rap.addons.texteditor.javascript" autoStart="true" startLevel="5" />
-      <plugin id="org.dslforge.styledtext" autoStart="true" startLevel="5" />
-      <plugin id="org.dslforge.texteditor" autoStart="true" startLevel="5" />
-      <plugin id="org.dslforge.texteditor.demo" autoStart="true" startLevel="5" />
-      <plugin id="org.dslforge.workspace" autoStart="true" startLevel="5" />
-      <plugin id="org.dslforge.workspace.ui" autoStart="true" startLevel="5" />
-      <plugin id="org.dslforge.workspace.jpa" autoStart="true" startLevel="4" />
-      <plugin id="org.dslforge.workspace.config" autoStart="true" startLevel="5" />
-      <plugin id="org.dslforge.xtext.common" autoStart="true" startLevel="5" />
-      <plugin id="org.eclipse.gemini.jpa" autoStart="true" startLevel="2" />
       <plugin id="osgi.enterprise" autoStart="true" startLevel="1" />
    </configurations>
 
