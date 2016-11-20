@@ -47,8 +47,8 @@
 					editor.getSession().getUndoManager().reset();
 					editor.setShowPrintMargin(false);
 					editor.setBehavioursEnabled(true);
-					editor.setWrapBehavioursEnabled(true);	
-					editor.setReadOnly(!editable);		
+					editor.setWrapBehavioursEnabled(true);
+					editor.setReadOnly(!editable);
 					editor.$blockScrolling = Infinity;
 										
 					//Configure content assist feature
@@ -93,6 +93,7 @@
 							var httpURL = computeWorkerPath(filePath);
 							var worker = this.worker = new SharedWorker(httpURL);		
 							editor.on("change", function(event) {
+								self.onModify();
 								worker.port.postMessage({
 									message: editor.getValue(), 
 							        guid: guid, 
@@ -166,53 +167,6 @@
 			        this.onReady();
 				}
 			},
-			
-			setScope : function(scope) {
-				this.base(arguments, scope);
-			},
-		
-			onCompletionRequest : function(pos, prefix, callback) {
-				if (this.isFocused) {
-					var remoteObject = rap.getRemoteObject(this);
-					if (remoteObject) {
-						remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
-					}	
-					var proposals = this.proposals==null?[":"]:this.proposals;		
-			        var wordList = Object.keys(proposals);
-			        callback(null, wordList.map(function(word) {
-			            return {
-			            	iconClass: " " + typeToIcon(proposals[word].split(":")[1]),
-			                name: word,
-			                value: proposals[word].split(":")[0],
-			                score: 1,
-			                meta: "[" + proposals[word].split(":")[1] + "]"
-			            };
-			        }));	
-				}
-			},
-			
-			setProposals : function(proposals) {
-				this.proposals = proposals;	
-			},
-
-			onFocus: function() {
-				this.langTools.addCompleter(this.backendCompleter);
-				this.completers = this.editor.completers;
-				this.base(arguments);
-			},
-			
-			onBlur: function() {
-				this.langTools.removeCompleter(this.backendCompleter);
-				this.completers = this.editor.completers;
-				this.base(arguments);
-			},
-
-			destroy : function() {
-				this.langTools.disableSnippetCompleter();
-				this.langTools.removeCompleter(this.backendCompleter);
-				this.base(arguments);
-			},
-			
 		}
 	});
 	
