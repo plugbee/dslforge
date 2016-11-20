@@ -19,11 +19,9 @@ import org.dslforge.xtext.common.IXtextResourceFactory;
 import org.dslforge.xtext.common.IXtextResourceSetProvider;
 import org.dslforge.xtext.common.XtextResourceFactory;
 import org.dslforge.xtext.common.XtextResourceSetProvider;
-import org.dslforge.xtext.common.scoping.BasicTextContainerManager;
-import org.dslforge.xtext.common.scoping.BasicTextGlobalScopeProvider;
-import org.dslforge.xtext.common.scoping.BasicTextLinkingService;
+import org.dslforge.xtext.common.scoping.WebContainerManager;
+import org.dslforge.xtext.common.scoping.WebLinkingService;
 import org.eclipse.xtext.linking.ILinkingService;
-import org.eclipse.xtext.scoping.IGlobalScopeProvider;
 import org.eclipse.xtext.service.AbstractGenericModule;
 
 import com.google.inject.Binder;
@@ -40,15 +38,15 @@ public class SharedModule  extends AbstractGenericModule{
 	}
 	
 	protected void bindLinkingService(Binder binder) {
-		binder.bind(ILinkingService.class).to(BasicTextLinkingService.class);
+		binder.bind(ILinkingService.class).to(WebLinkingService.class);
 	}
 
 	protected void bindGlobalScopeProvider(Binder binder) {
-		binder.bind(IGlobalScopeProvider.class).to(BasicTextGlobalScopeProvider.class);
+//		binder.bind(IGlobalScopeProvider.class).to(WebGlobalScopeProvider.class);
 	}
 	
 	protected void bindContainerManager(Binder binder) {
-		binder.bind(org.eclipse.xtext.resource.IContainer.Manager.class).to(BasicTextContainerManager.class);
+		binder.bind(org.eclipse.xtext.resource.IContainer.Manager.class).to(WebContainerManager.class);
 	}
 	
 	protected void bindResourceFactory(Binder binder) {

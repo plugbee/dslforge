@@ -31,13 +31,13 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
-public class BasicTextMultimapBasedScope extends AbstractScope {
+public class ResourceSetAwareScope extends AbstractScope {
 
 	private Multimap<QualifiedName, IEObjectDescription> elements;
 	
 	private static List<URI> availableResourceURs;
 	
-	protected BasicTextMultimapBasedScope(IScope parent,
+	protected ResourceSetAwareScope(IScope parent,
 			Multimap<QualifiedName, IEObjectDescription> elements,
 			boolean ignoreCase) {
 		super(parent, ignoreCase);
@@ -58,7 +58,7 @@ public class BasicTextMultimapBasedScope extends AbstractScope {
 		if (map == null || map.isEmpty()) {
 			return parent;
 		}
-		return new BasicTextMultimapBasedScope(parent, map, ignoreCase);
+		return new ResourceSetAwareScope(parent, map, ignoreCase);
 	}
 	
 	@Override
