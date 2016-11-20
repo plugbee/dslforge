@@ -892,9 +892,9 @@ oop.inherits(Worker, Mirror);
     this.onUpdate = function() {
         var value = this.doc.getValue();
         
-        var msg_error=null;
+        var msg_errors=[];
 		org.antlr.runtime.BaseRecognizer.prototype.emitErrorMessage = function (msg) {
-			msg_error=msg;
+			msg_errors.push(msg);	
 		};
 		
 	    cstream = new org.antlr.runtime.ANTLRStringStream(value);
@@ -906,21 +906,34 @@ oop.inherits(Worker, Mirror);
 	    } catch(err) {
 	    	//recovery not enabled.
 	    }
-	    if (msg_error!=null) {
-	    	var splits = msg_error.split(/(\d+\:\d+ )/);
-            var positions = msg_error.match(/\d+/g);
-			var e = new SyntaxError("Parsing Error");	
-			if (splits.length>=3) {
-				msg_error = positions[0] + ":" + splits[2].charAt(0).toUpperCase() + splits[2].slice(1);
-			} 
-			this.sender.emit("error", {
-				row: Math.max(positions[0]-1,0),
-				column: positions[1],
-				text: msg_error,
-				type: "error"
-			});
+	    
+	    if (msg_errors.length>=1) {
+			this.sender.emit("clear");
+		    for (var i = 0; i < msg_errors.length; i++) {
+				var msg_error = msg_errors[i];
+				var splits = msg_error.split(" ");
+				var tail = splits.slice(2).join(" ");
+				var result = splits.slice(0,2);
+				result.push(tail);
+		    	var positions = result[1].match(/\d+/g);
+		    	var e = new SyntaxError("Parsing Error");	
+				if (result.length >= 3) {
+					msg_error = result[2].slice(1);
+				}
+				if (result[1].indexOf(":-") !== -1) {
+					positions[0] = this.doc.getLength();
+				}
+				this.sender.emit("error", {
+					row: positions[0] - 1,
+					column: positions[1],
+					text: result[2].charAt(0).toUpperCase() + result[2].slice(1),
+					type: "error"
+				});	
+				break;
+			}
 	    } else {
 	    	this.sender.emit("ok");
+			msg_errors = [];
 	    }
     };
 

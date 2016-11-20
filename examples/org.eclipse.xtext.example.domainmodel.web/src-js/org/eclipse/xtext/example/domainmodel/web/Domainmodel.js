@@ -35,7 +35,7 @@
 					var guid = this.url;
 					
 					//Set language mode
-					editor.getSession().setMode("ace/mode/domainmodel");	
+					editor.getSession().setMode("ace/mode/domainmodel");
 
 					//Set theme
 					editor.setTheme("ace/theme/eclipse");	
@@ -47,8 +47,8 @@
 					editor.getSession().getUndoManager().reset();
 					editor.setShowPrintMargin(false);
 					editor.setBehavioursEnabled(true);
-					editor.setWrapBehavioursEnabled(true);	
-					editor.setReadOnly(!editable);		
+					editor.setWrapBehavioursEnabled(true);
+					editor.setReadOnly(!editable);
 					editor.$blockScrolling = Infinity;
 										
 					//Configure content assist feature
@@ -93,6 +93,7 @@
 							var httpURL = computeWorkerPath(filePath);
 							var worker = this.worker = new SharedWorker(httpURL);		
 							editor.on("change", function(event) {
+								self.onModify();
 								worker.port.postMessage({
 									message: editor.getValue(), 
 							        guid: guid, 
