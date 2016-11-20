@@ -44,7 +44,7 @@ import com.google.inject.Provider;
  * @author Amine Lajmi
  * 
  */
-public class BasicTextGlobalScopeProvider extends DefaultGlobalScopeProvider {
+public class WebGlobalScopeProvider extends DefaultGlobalScopeProvider {
 
 	@Inject
 	IResourceServiceProvider.Registry registry;
@@ -61,11 +61,11 @@ public class BasicTextGlobalScopeProvider extends DefaultGlobalScopeProvider {
 		Iterator<IContainer> iter = containers.iterator();
 		while (iter.hasNext()) {
 			IContainer container = iter.next();
-			if (container instanceof BasicTextContainer) {
+			if (container instanceof WebContainer) {
 				result = createContainerScope(context, result, container, filter, type, ignoreCase);
 			}
 		}
-		return BasicTextMultimapBasedScope.createScope(result, exportedObjects,	ignoreCase, getAllResourceURs(resourceSet));
+		return ResourceSetAwareScope.createScope(result, exportedObjects,	ignoreCase, getAllResourceURs(resourceSet));
 	}
 
 	protected IScope createContainerScope(Resource eResource, IScope parent, IContainer container, Predicate<IEObjectDescription> filter, EClass type,
@@ -74,7 +74,7 @@ public class BasicTextGlobalScopeProvider extends DefaultGlobalScopeProvider {
 		ResourceSet resourceSet = eResource.getResourceSet();
 		exportedObjects = getExportedObjects(resourceSet,
 				exportedObjects);
-		return BasicTextMultimapBasedScope.createScope(parent, exportedObjects,	ignoreCase, getAllResourceURs(resourceSet));
+		return ResourceSetAwareScope.createScope(parent, exportedObjects,	ignoreCase, getAllResourceURs(resourceSet));
 	}
 
 	private List<URI> getAllResourceURs(ResourceSet resourceSet) {

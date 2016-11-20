@@ -26,13 +26,13 @@ import org.eclipse.xtext.resource.containers.IContainerState;
  * @author Amine Lajmi
  *
  */
-public class BasicTextContainerState implements IContainerState {
+public class WebContainerState implements IContainerState {
 
 	private final String root;
 	
 	private final IAllContainersState globalState;
 
-	protected BasicTextContainerState(String root, IAllContainersState globalState) {
+	protected WebContainerState(String root, IAllContainersState globalState) {
 		this.root = root;
 		this.globalState = globalState;
 	}

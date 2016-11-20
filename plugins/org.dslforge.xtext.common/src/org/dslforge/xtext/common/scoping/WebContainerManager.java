@@ -32,7 +32,7 @@ import com.google.common.collect.Lists;
  * @author Amine Lajmi
  *
  */
-public class BasicTextContainerManager extends StateBasedContainerManager {
+public class WebContainerManager extends StateBasedContainerManager {
 
 	private IResourceDescription description;
 	
@@ -54,8 +54,8 @@ public class BasicTextContainerManager extends StateBasedContainerManager {
 	
 	protected IContainer newContainer(String handle, IResourceDescriptions resourceDescriptions) {
 		IAllContainersState state = getState(resourceDescriptions);
-		IContainerState containerState = new BasicTextContainerState(handle, state);
-		BasicTextContainer result = new BasicTextContainer(resourceDescriptions, containerState);
+		IContainerState containerState = new WebContainerState(handle, state);
+		WebContainer result = new WebContainer(resourceDescriptions, containerState);
 		return result;
 	}
 }

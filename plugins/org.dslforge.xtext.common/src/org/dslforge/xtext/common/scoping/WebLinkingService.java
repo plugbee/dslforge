@@ -31,7 +31,7 @@ import org.eclipse.xtext.scoping.IScope;
 
 import com.google.inject.Inject;
 
-public class BasicTextLinkingService extends DefaultLinkingService {
+public class WebLinkingService extends DefaultLinkingService {
 
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;

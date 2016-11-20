@@ -24,9 +24,9 @@ import org.eclipse.xtext.resource.containers.StateBasedContainer;
  * @author Amine Lajmi
  *
  */
-public class BasicTextContainer extends StateBasedContainer {
+public class WebContainer extends StateBasedContainer {
 
-	public BasicTextContainer(IResourceDescriptions descriptions, IContainerState state) {
+	public WebContainer(IResourceDescriptions descriptions, IContainerState state) {
 		super(descriptions, state);
 	}
 }

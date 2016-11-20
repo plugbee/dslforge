@@ -25,7 +25,7 @@ import org.eclipse.xtext.scoping.impl.FilteringScope;
 import com.google.common.base.Predicate;
 
 
-public class BasicTextScopeProvider extends AbstractDeclarativeScopeProvider {
+public class WebScopeProvider extends AbstractDeclarativeScopeProvider {
 
 	IScope scope_A_B(EObject context, EReference reference) {
 		return new FilteringScope(delegateGetScope(context, reference),
