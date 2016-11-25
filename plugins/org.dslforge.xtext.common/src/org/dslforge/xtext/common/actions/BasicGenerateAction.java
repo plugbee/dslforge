@@ -23,10 +23,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.dslforge.workspace.WorkspaceManager;
-import org.dslforge.workspace.ui.actions.AbstractWorkspaceAction;
 import org.dslforge.xtext.common.registry.LanguageRegistry;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -58,6 +55,7 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 		if (!getSelection().isEmpty()) {
 			// get the resource uri
 			File file = (File) ((IStructuredSelection) getSelection()).getFirstElement();
+<<<<<<< Upstream, based on origin/master
 			String targetDirectory = getDefaultTargetDirectory();
 			doGenerate(file, new File(targetDirectory));
 		}
@@ -88,6 +86,35 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 					WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory.getAbsolutePath()));
 					// make it happen
 					generator.doGenerate(resource, fsa);
+=======
+			String fileName = file.getName();
+			String extension = fileName.substring(fileName.indexOf(".") + 1, fileName.length());
+			URI fileURI = URI.createFileURI(file.getAbsolutePath());
+			// configure the generator output
+			String targetDirectory = getDefaultTargetDirectory(fileURI);
+			// load the resource
+			String languageName = getLanguageName(extension);
+			if (languageName != null) {
+				injector = LanguageRegistry.INSTANCE.getInjector(languageName);
+				XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
+				XtextResource resource = (XtextResource) resourceSet.getResource(fileURI, true);
+				// launch the generator
+				outlets.put("DEFAULT_OUTPUT", targetDirectory);
+				IFileSystemAccess fsa = getConfiguredFileSystemAccess();
+				IGenerator generator = null;
+				try {
+					generator = injector.getInstance(IGenerator.class);
+				} catch (ConfigurationException ex) {
+					// Xtext 2.10: cannot find or create binding, try IGenerator2
+					generator = injector.getInstance(GeneratorDelegate.class);
+				} finally {
+					if (generator!=null) {
+						//create the container if it doesn't exist yet
+						//WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory));
+						//make it happen
+						generator.doGenerate(resource, fsa);
+					}
+>>>>>>> 4baff3a initial integration of dsl editors with dirigible
 				}
 			}
 		}
@@ -101,6 +128,7 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 		return null;
 	}
 
+<<<<<<< Upstream, based on origin/master
 	protected String getDefaultTargetDirectory() {
 		String output = WorkspaceManager.INSTANCE.getWorkspaceRootStringPath();
 		Object firstElement = ((IStructuredSelection) getSelection()).getFirstElement();
@@ -109,6 +137,21 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 			output = new File(parent, DEFAULT_OUTPUT_FOLDER).getAbsolutePath();
 		}
 		return output;
+=======
+	protected String getDefaultTargetDirectory(URI fileURI) {
+		return getDefaultOutput();
+	}
+	
+	protected String getDefaultOutput() {
+//		String output = WorkspaceManager.INSTANCE.getWorkspaceRootStringPath();
+//		Object firstElement = ((IStructuredSelection) getSelection()).getFirstElement();
+//		if (firstElement instanceof File) {
+//			String parent = ((File)firstElement).getParent();
+//			output = parent + DEFAULT_OUTPUT_FOLDER;
+//		}
+//		return output;
+		return null;
+>>>>>>> 4baff3a initial integration of dsl editors with dirigible
 	}
 
 	protected IFileSystemAccess getConfiguredFileSystemAccess() {

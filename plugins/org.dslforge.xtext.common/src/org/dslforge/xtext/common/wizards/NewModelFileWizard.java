@@ -20,10 +20,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 
 import org.apache.log4j.Logger;
-import org.dslforge.workspace.WorkspaceManager;
-import org.dslforge.workspace.ui.wizards.AbstractNewResourceWizard;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
@@ -87,7 +84,7 @@ public class NewModelFileWizard extends AbstractNewResourceWizard{
 		IRunnableWithProgress operation = new IRunnableWithProgress() {
 			public void run(IProgressMonitor progressMonitor) {
 					try {
-						WorkspaceManager.INSTANCE.createResource(new Path(fileURI.devicePath()));
+						//WorkspaceManager.INSTANCE.createResource(new Path(fileURI.devicePath()));
 					}
 					catch (Exception ex) {
 						logger.error(ex.getMessage(), ex);

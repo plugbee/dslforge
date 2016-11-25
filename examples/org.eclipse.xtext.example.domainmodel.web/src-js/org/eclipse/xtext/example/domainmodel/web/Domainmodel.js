@@ -128,7 +128,22 @@
 				//Done
 		        this.onReady();
 			},
+<<<<<<< Upstream, based on origin/master
 
+=======
+			
+			//'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro'
+			//font = 14px Verdana, "Lucida Sans", Arial, Helvetica, sans-serif
+			setFont : function(font) {
+				if (this.ready) {
+					this.editor.setFontSize(12);
+				}
+				else {
+			        this._font = font;
+			    }
+			},
+			
+>>>>>>> 4baff3a initial integration of dsl editors with dirigible
 			setScope : function(scope) {
 				this.base(arguments, scope);
 			},
