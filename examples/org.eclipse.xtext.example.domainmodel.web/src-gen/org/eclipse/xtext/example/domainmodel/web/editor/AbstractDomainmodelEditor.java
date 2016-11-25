@@ -18,7 +18,7 @@ public abstract class AbstractDomainmodelEditor extends XtextContentAssistEnable
 		setLanguageName(Activator.ORG_ECLIPSE_XTEXT_EXAMPLE_DOMAINMODEL_DOMAINMODEL);
 		setInjector(Activator.getInstance().getInjector(Activator.ORG_ECLIPSE_XTEXT_EXAMPLE_DOMAINMODEL_DOMAINMODEL));
 	}
-	
+	 
 	@Override
 	protected BasicText createTextWidget(Composite parent, int styles) {
 		Domainmodel domainmodelWidget = new Domainmodel(parent, styles);

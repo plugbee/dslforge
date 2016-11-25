@@ -15,8 +15,13 @@
  */
 package org.dslforge.xtext.common;
 
-import org.dslforge.workspace.ui.PathEditorInput;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.dirigible.ide.shared.editor.SourceFileEditorInput;
+import org.eclipse.dirigible.ide.workspace.dual.WorkspaceLocator;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -32,10 +37,16 @@ public class XtextResourceFactory implements IXtextResourceFactory {
 	protected IXtextResourceSetProvider resourceSetProvider;
 
 	public Resource createResource(IEditorInput editorInput) {
-		if (editorInput instanceof PathEditorInput) {
-			IPath path = ((PathEditorInput) editorInput).getPath();
-			URI fileURI = URI.createFileURI(path.toString());
-			Resource result = createResource(fileURI);
+		if (editorInput instanceof SourceFileEditorInput) {
+			IFile file = ((SourceFileEditorInput) editorInput).getFile();
+			IWorkspace workspace = WorkspaceLocator.getWorkspace();
+			IWorkspaceRoot root = workspace.getRoot();
+			IPath locationRoot = root.getLocation();
+			String ROOT = "D:/dev/sap/eclipse/dirigible_local/root";
+			IPath total = new Path(ROOT).append(locationRoot).append(file.getFullPath());
+			URI x = URI.createFileURI(total.toString());
+			ResourceSet resourceSet = getDefaultResourceSet();
+			XtextResource result = (XtextResource) resourceSet.getResource(x, true);
 			if (result != null)
 				return result;
 		}

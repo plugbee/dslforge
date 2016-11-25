@@ -15,18 +15,10 @@
  */
 package org.dslforge.texteditor;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 import org.dslforge.styledtext.Annotation;
@@ -48,9 +40,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.dirigible.ide.editor.text.editor.AbstractTextEditor;
+import org.eclipse.dirigible.ide.editor.text.editor.ContentProviderException;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IAction;
@@ -59,6 +52,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
@@ -82,6 +76,7 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IEditorActionBarContributor;
@@ -95,13 +90,12 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
 import org.eclipse.ui.actions.ActionFactory;
-import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBasicTextEditor {
+public class BasicTextEditor extends AbstractTextEditor implements ISaveablesSource, IBasicTextEditor {
 
 	static final Logger logger = Logger.getLogger(BasicTextEditor.class);
 	
@@ -367,8 +361,8 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	@Override
 	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
 		setSite(site);
-		setPartName(input.getName());
 		setInput(input);
+		setPartName(input.getName());
 		setDirty(false);
 	}
 
@@ -404,7 +398,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 			path = new Path(((URIEditorInput) input).getURI().toFileString());
 		else
 			throw new UnsupportedOperationException("Unsupported editor input type.");
-		loadContentFromFile();
+		loadContentFromFile(path);
 		setFilePath(path);
 		firePropertyChange(PROP_INPUT);
 	}
@@ -418,8 +412,9 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	
 	/**
 	 * Loads the editor text content from file
+	 * @param path 
 	 */
-	protected void loadContentFromFile() {		
+	protected void loadContentFromFile(IPath path) {		
 		Display display = Display.getCurrent();
 		if (display != null) {
 			display.asyncExec(new Runnable() {
@@ -427,8 +422,8 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 				public void run() {
 					String content = "";
 					try {
-						content = readFromFile();
-					} catch (IOException ex) {
+						content = getContentProvider(getEditorInput()).getContent(getEditorInput());
+					} catch (ContentProviderException ex) {
 						logger.error(ex.getMessage(), ex);
 					} finally {
 						setTextViewer(content);
@@ -444,18 +439,19 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		viewer.getTextWidget().setText(content);
 	}
 
-	protected String readFromFile() throws IOException {
+	protected String readFromFile(IPath path) throws IOException {
 		logger.info("Reading from file " + filePath);
 		StringBuilder text = new StringBuilder();
-		String NL = System.getProperty("line.separator");
 		long start = System.currentTimeMillis();
-		Scanner scanner = new Scanner(new FileInputStream(filePath.toFile()), "UTF-8");
 		try {
-			while (scanner.hasNextLine()) {
-				text.append(scanner.nextLine() + NL);
+			String content = getContentProvider(getEditorInput()).getContent(getEditorInput());
+			if (content == null || "".equals(content)) {
+				content = "entity";
 			}
-		} finally {
-			scanner.close();
+			text.append(content);
+		} catch (ContentProviderException e) {
+			logger.error("Cannot load document", e);
+			MessageDialog.openError(null, "ERROR", "CANNOT_LOAD_DOCUMENT");
 		}
 		long end = System.currentTimeMillis();
 		logger.info("Reading took: " + ((end - start) / 1000));
@@ -618,32 +614,33 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 
 	@Override
 	public void doSave(IProgressMonitor monitor) {
-		SubMonitor progress = SubMonitor.convert(monitor, 10);
-		Writer writer = null;
-		try {
-			if (progress.isCanceled())
-				throw new OperationCanceledException();
-			// actually save resource (save only read/write resources)
-			final File file = getFilePath().toFile();
-			if (file.exists() && file.canWrite()) {
-				try {
-					writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file.getAbsolutePath()),
-							Charset.availableCharsets().get("UTF-8")));
-					progress.worked(5);
-					writer.write(viewer.getTextWidget().getText());
-					progress.worked(5);
-					writer.close();
-				} catch (IOException ex) {
-					logger.error(ex.getMessage(), ex);
-				}
-			}
-
-		} catch (OperationCanceledException ex) {
-			// do noting for now, forbid propagating exception
-		} finally {
-			progress.done();
-			setDirty(false);
-		}
+		super.doSave(monitor);
+//		SubMonitor progress = SubMonitor.convert(monitor, 10);
+//		Writer writer = null;
+//		try {
+//			if (progress.isCanceled())
+//				throw new OperationCanceledException();
+//			// actually save resource (save only read/write resources)
+//			final File file = getFilePath().toFile();
+//			if (file.exists() && file.canWrite()) {
+//				try {
+//					writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file.getAbsolutePath()),
+//							Charset.availableCharsets().get("UTF-8")));
+//					progress.worked(5);
+//					writer.write(viewer.getTextWidget().getText());
+//					progress.worked(5);
+//					writer.close();
+//				} catch (IOException ex) {
+//					logger.error(ex.getMessage(), ex);
+//				}
+//			}
+//
+//		} catch (OperationCanceledException ex) {
+//			// do noting for now, forbid propagating exception
+//		} finally {
+//			progress.done();
+//			setDirty(false);
+//		}
 	}
 
 	@Override
@@ -807,5 +804,15 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	@Override
 	public ISelectionProvider getSelectionProvider() {
 		return viewer.getSelectionProvider();
+	}
+
+	@Override
+	protected String getEditorContents() {
+		return viewer.getTextWidget().getText();
+	}
+
+	@Override
+	protected Control getEditorControl() {
+		return viewer.getTextWidget();
 	}
 }

@@ -17,7 +17,6 @@ package org.dslforge.xtext.common.actions;
 
 import java.io.File;
 
-import org.dslforge.workspace.ui.actions.AbstractWorkspaceAction;
 import org.dslforge.xtext.common.wizards.NewModelFileWizard;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -30,13 +29,13 @@ public class NewModelAction extends AbstractWorkspaceAction {
 	public void run(IAction action) {
 		ISelection selection = getSelection();
 		if (!selection.isEmpty()) {
-			Object firstElement = ((IStructuredSelection)selection).getFirstElement();
-			NewModelFileWizard wizard = new NewModelFileWizard((File)firstElement); 
-			wizard.init(getWindow().getWorkbench(), (IStructuredSelection)selection);
-			WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
-			wizardDialog.create();
-			setSizeAndLocation(wizardDialog);
-			wizardDialog.open();
+//			Object firstElement = ((IStructuredSelection)selection).getFirstElement();
+//			NewModelFileWizard wizard = new NewModelFileWizard((File)firstElement); 
+//			wizard.init(getWindow().getWorkbench(), (IStructuredSelection)selection);
+//			WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
+//			wizardDialog.create();
+//			setSizeAndLocation(wizardDialog);
+//			wizardDialog.open();
 		}
 	}
 }

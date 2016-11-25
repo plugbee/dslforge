@@ -3,7 +3,6 @@ package org.dslforge.xtext.common.commands;
 import java.io.File;
 
 import org.apache.log4j.Logger;
-import org.dslforge.workspace.ui.commands.AbstractWorkspaceCommand;
 import org.dslforge.xtext.common.wizards.NewModelFileWizard;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -24,10 +23,11 @@ public class NewModelCommand extends AbstractWorkspaceCommand {
 		File file = unwrap(event, File.class);
 		StructuredSelection selection = new StructuredSelection(file);
 		NewModelFileWizard wizard = new NewModelFileWizard(file); 
-		wizard.init(getWindow().getWorkbench(), (IStructuredSelection)selection);
-		WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
-		wizardDialog.create();
-		setSizeAndLocation(wizardDialog);
-		return wizardDialog.open();
+//		wizard.init(getWindow().getWorkbench(), (IStructuredSelection)selection);
+//		WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
+//		wizardDialog.create();
+//		setSizeAndLocation(wizardDialog);
+//		return wizardDialog.open();
+		return null;
 	}
 }

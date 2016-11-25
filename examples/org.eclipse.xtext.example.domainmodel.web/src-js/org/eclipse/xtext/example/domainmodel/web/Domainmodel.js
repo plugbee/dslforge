@@ -168,6 +168,17 @@
 				}
 			},
 			
+			//'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro'
+			//font = 14px Verdana, "Lucida Sans", Arial, Helvetica, sans-serif
+			setFont : function(font) {
+				if (this.ready) {
+					this.editor.setFontSize(12);
+				}
+				else {
+			        this._font = font;
+			    }
+			},
+			
 			setScope : function(scope) {
 				this.base(arguments, scope);
 			},

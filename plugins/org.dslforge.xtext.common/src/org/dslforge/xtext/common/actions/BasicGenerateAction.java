@@ -23,10 +23,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.dslforge.workspace.WorkspaceManager;
-import org.dslforge.workspace.ui.actions.AbstractWorkspaceAction;
 import org.dslforge.xtext.common.registry.LanguageRegistry;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -81,7 +78,7 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 				} finally {
 					if (generator!=null) {
 						//create the container if it doesn't exist yet
-						WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory));
+						//WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory));
 						//make it happen
 						generator.doGenerate(resource, fsa);
 					}
@@ -103,13 +100,14 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 	}
 	
 	protected String getDefaultOutput() {
-		String output = WorkspaceManager.INSTANCE.getWorkspaceRootStringPath();
-		Object firstElement = ((IStructuredSelection) getSelection()).getFirstElement();
-		if (firstElement instanceof File) {
-			String parent = ((File)firstElement).getParent();
-			output = parent + DEFAULT_OUTPUT_FOLDER;
-		}
-		return output;
+//		String output = WorkspaceManager.INSTANCE.getWorkspaceRootStringPath();
+//		Object firstElement = ((IStructuredSelection) getSelection()).getFirstElement();
+//		if (firstElement instanceof File) {
+//			String parent = ((File)firstElement).getParent();
+//			output = parent + DEFAULT_OUTPUT_FOLDER;
+//		}
+//		return output;
+		return null;
 	}
 	
 	protected IFileSystemAccess getConfiguredFileSystemAccess() {

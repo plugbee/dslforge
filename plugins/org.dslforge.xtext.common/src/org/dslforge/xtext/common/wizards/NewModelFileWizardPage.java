@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.dslforge.workspace.ui.wizards.AbstractNewResourceWizardPage;
 import org.dslforge.xtext.common.registry.LanguageRegistry;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;

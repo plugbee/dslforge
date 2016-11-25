@@ -7,7 +7,6 @@ Bundle-SymbolicName: org.eclipse.xtext.example.domainmodel.web; singleton:=true
 Bundle-Activator: org.eclipse.xtext.example.domainmodel.web.internal.Activator
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.rap.ui,
- org.eclipse.rap.ui.navigator,
  org.eclipse.emf.rap.common.ui,
  org.eclipse.emf.rap.edit.ui,
  org.eclipse.emf.common,
@@ -15,10 +14,10 @@ Require-Bundle: org.eclipse.rap.ui,
  com.google.inject,
  org.eclipse.xtext,
  org.eclipse.xtend.lib,
- org.dslforge.workspace,
  org.dslforge.xtext.common,
  org.dslforge.texteditor,
  org.dslforge.styledtext,
- org.eclipse.xtext.example.domainmodel
+ org.eclipse.xtext.example.domainmodel,
+ org.eclipse.dirigible.ide.editor.text;bundle-version="2.3.160317"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
