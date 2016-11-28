@@ -131,9 +131,6 @@ public class «grammarShortName» extends BasicText {
 						//Set language mode
 						editor.getSession().setMode("ace/mode/«grammarShortName.toLowerCase»");
 	
-						//Set theme
-						editor.setTheme("ace/theme/eclipse");
-	
 						//Default settings
 						editor.getSession().setUseWrapMode(true);
 					    editor.getSession().setTabSize(4);
@@ -144,6 +141,9 @@ public class «grammarShortName» extends BasicText {
 						editor.setWrapBehavioursEnabled(true);
 						editor.setReadOnly(!editable);
 						editor.$blockScrolling = Infinity;
+
+						//Set theme
+						editor.setTheme("ace/theme/eclipse");
 
 						//Configure content assist feature
 						this.langTools = ace.require("ace/ext/language_tools");

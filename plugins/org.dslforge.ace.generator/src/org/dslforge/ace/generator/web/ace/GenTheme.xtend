@@ -213,6 +213,16 @@ background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZ
 .ace-completion-number:before { content:'1'; background: #999; }\
 .ace-completion-string:before { content:'S'; background: #999; }\
 .ace-completion-bool:before { content:'B'; background: #999; }\
+.ace_autocomplete {\
+    width: 340px;\
+    z-index: 200000;\
+    background: #ffffff;\
+    color: #444;\
+    border: 2px lightgray solid;\
+    position: fixed;\
+    box-shadow: 2px 3px 5px rgba(0,0,0,.2);\
+    line-height: 1.4;\
+}\
 ";
 
 

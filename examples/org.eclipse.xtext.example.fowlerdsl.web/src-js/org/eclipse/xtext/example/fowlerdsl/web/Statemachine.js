@@ -33,13 +33,10 @@
 				if (editor != null) {
 					//Set the Id of this editor
 					var guid = this.url;
-					
+															
 					//Set language mode
 					editor.getSession().setMode("ace/mode/statemachine");
-
-					//Set theme
-					editor.setTheme("ace/theme/eclipse");	
-
+					
 					//Default settings
 					editor.getSession().setUseWrapMode(true);
 				    editor.getSession().setTabSize(4);
@@ -57,6 +54,10 @@
 					    enableBasicAutocompletion: true,
 					    enableSnippets: true
 					});
+					
+					//Set theme
+					editor.setTheme("ace/theme/eclipse");	
+					
 					this.backendCompleter = {
 						getMode: function() {
 							return editor.getSession().getMode();
