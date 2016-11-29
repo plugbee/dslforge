@@ -48,7 +48,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 		Map<String, String> availableFileExtensions = new HashMap<String, String>();
 		availableFileExtensions.put("Java", "java");
 		availableFileExtensions.put("JavaScript", "js");
-		availableFileExtensions.put("JSON", "json");
+		availableFileExtensions.put("Json", "json");
 		return availableFileExtensions;
 	}
 	
@@ -81,7 +81,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 		if (fileName.length()==0) {
 			setErrorMessage("File name cannot be empty.");
 			return false;
-		} 
+		}
 		IStructuredSelection iStructuredSelection = getInitialElementSelections().get(0);
 		IPath filePath = new Path(iStructuredSelection.getFirstElement().toString())
 				.append(fileNameText.getText() + "." + getSelectedFileExtension());
@@ -89,8 +89,19 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 			setErrorMessage("A file with equal name already exist.");
 			return false;
 		}
-		setErrorMessage(null);
-		return true;
+		if (fileName.endsWith(".java")) {
+			languageNameCombo.select(0);
+			return true;
+		} else if (fileName.endsWith(".js")) {
+			languageNameCombo.select(1);
+			return true;
+		}
+		else if (fileName.endsWith(".json")) {
+			languageNameCombo.select(2);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public IPath getFilePath() {
@@ -123,11 +134,27 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 		layout.makeColumnsEqualWidth = false;
 		folderInfoComposite.setLayout(layout);
 		folderInfoComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		
+		Label projectNameLabel = new Label(folderInfoComposite, SWT.NONE);
+		projectNameLabel.setLayoutData(new GridData(160, SWT.DEFAULT));
+		projectNameLabel.setText("&File Name:");
+		
+		fileNameText = new Text(folderInfoComposite, SWT.BORDER);
+		GridData layoutData = new GridData();
+		layoutData.horizontalAlignment = GridData.FILL;
+		layoutData.grabExcessHorizontalSpace = true;
+		fileNameText.setLayoutData(layoutData);
+		fileNameText.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent event) {
+				updateWidgetEnablements();
+			}
+		});
 
 		Label dslNameLabel = new Label(folderInfoComposite, SWT.NONE);
 		dslNameLabel.setLayoutData(new GridData(160, SWT.DEFAULT));
 		dslNameLabel.setText("&Language:");
-
+		
 		languageNameCombo = new Combo(folderInfoComposite, SWT.BORDER | SWT.READ_ONLY);
 		GridData data = new GridData();
 		data.horizontalAlignment = GridData.FILL;
@@ -162,25 +189,10 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 		languageNameCombo.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent event) {
-				setPageComplete(validatePage());
+				//setPageComplete(validatePage());
 			}
 		});
 		
-		Label projectNameLabel = new Label(folderInfoComposite, SWT.NONE);
-		projectNameLabel.setLayoutData(new GridData(160, SWT.DEFAULT));
-		projectNameLabel.setText("&File Name:");
-
-		fileNameText = new Text(folderInfoComposite, SWT.BORDER);
-		GridData layoutData = new GridData();
-		layoutData.horizontalAlignment = GridData.FILL;
-		layoutData.grabExcessHorizontalSpace = true;
-		fileNameText.setLayoutData(layoutData);
-		fileNameText.addModifyListener(new ModifyListener() {
-			@Override
-			public void modifyText(ModifyEvent event) {
-				updateWidgetEnablements();
-			}
-		});
 		setPageComplete(validatePage());
 	}
 
