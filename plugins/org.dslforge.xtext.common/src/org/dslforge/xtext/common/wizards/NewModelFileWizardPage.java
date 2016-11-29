@@ -25,6 +25,7 @@ import java.util.Map;
 
 import org.dslforge.workspace.ui.wizards.AbstractNewResourceWizardPage;
 import org.dslforge.xtext.common.registry.LanguageRegistry;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.viewers.ISelection;
@@ -148,9 +149,9 @@ public class NewModelFileWizardPage extends AbstractNewResourceWizardPage {
 
 	protected URI getFileURI() {
 		IStructuredSelection selection = (IStructuredSelection) getContainerViewer().getSelection();
-		String rootPath = selection.getFirstElement().toString();
-		String filePath = rootPath + "\\" + fileNameText.getText();
-		return URI.createFileURI(filePath);
+		File file = (File) selection.getFirstElement();
+		IPath append = new Path(file.getAbsolutePath()).append(new Path(fileNameText.getText()));
+		return URI.createFileURI(append.toString());
 	}
 
 	@Override
