@@ -94,7 +94,6 @@
 							var httpURL = computeWorkerPath(filePath);
 							var worker = this.worker = new SharedWorker(httpURL);		
 							editor.on("change", function(event) {
-								self.onModify();
 								worker.port.postMessage({
 									message: editor.getValue(), 
 							        guid: guid, 
