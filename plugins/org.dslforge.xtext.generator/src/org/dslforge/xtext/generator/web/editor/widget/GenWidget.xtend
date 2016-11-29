@@ -186,13 +186,15 @@ public class «grammarShortName» extends BasicText {
 								var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
 								var httpURL = computeWorkerPath(filePath);
 								var worker = this.worker = new SharedWorker(httpURL);
-								editor.on("change", function(event) {
-									worker.port.postMessage({
-										message: editor.getValue(), 
-								        guid: guid, 
-								        index: index
+								if (this.ready) {
+									editor.on("change", function(event) {
+										worker.port.postMessage({
+											message: editor.getValue(),
+									        guid: guid, 
+									        index: index
+									    });
 								    });
-							    });
+								}
 								worker.port.onmessage = function(e) {
 								 	//update the index reference
 								 	index = e.data.index;
