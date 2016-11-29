@@ -123,11 +123,10 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 
 	@Override
 	protected void handleTextChanged(JsonObject object) {
-		int offset = object.get("offset") != null ? object.get("offset").asInt() : -1;
-		int length = object.get("length") != null ? object.get("length").asInt() : -1;
-		String text = object.get("text") != null ? object.get("text").asString() : null;
-		if (text != null) {
-			ReplaceRegion replaceRegionToBeProcessed = new ReplaceRegion(offset, length, text);
+		int offset = object.get("offset") != null ? object.get("offset").asInt() : 0;
+		String value = object.get("value") != null ? object.get("value").asString() : null;
+		if (value != null) {
+			ReplaceRegion replaceRegionToBeProcessed = new ReplaceRegion(offset, value.length(), value);
 			xtextResource.update(replaceRegionToBeProcessed.getOffset(), replaceRegionToBeProcessed.getLength(),
 					replaceRegionToBeProcessed.getText());
 		}

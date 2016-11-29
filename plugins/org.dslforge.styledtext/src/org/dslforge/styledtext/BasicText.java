@@ -180,16 +180,6 @@ public class BasicText extends Composite {
 	}
 
 	/**
-	 * Handles a text changed event.
-	 * 
-	 * @param event
-	 */
-	void handleTextChanged(Event event) {
-		notifyListeners(SWT.Modify, event);
-		notifyListeners(TextChanged, event);
-	}
-
-	/**
 	 * Adds event listeners
 	 */
 	void installListeners() {
@@ -274,6 +264,16 @@ public class BasicText extends Composite {
 		notifyListeners(TextChanged, event);
 	}
 
+	/**
+	 * Handles a text changed event.
+	 * 
+	 * @param event
+	 */
+	void handleTextChanged(Event event) {
+		notifyListeners(SWT.Modify, event);
+		notifyListeners(TextChanged, event);
+	}
+	
 	/**
 	 * Handles a text save event
 	 * 

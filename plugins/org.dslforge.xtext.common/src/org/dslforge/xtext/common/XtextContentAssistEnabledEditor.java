@@ -71,6 +71,7 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 				logger.error(ex.getMessage(), ex);
 			}
 		}
+		validateResource();
 		updateIndex();
 	}
 	

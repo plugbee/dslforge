@@ -3,19 +3,11 @@
  */
 package org.codingpark.piraterobot.play.web.editor;
 
-import org.eclipse.rap.json.JsonObject;
-
 public class PlayEditor extends AbstractPlayEditor {
 
 	static final String EDITOR_ID = "org.codingpark.piraterobot.play.web.editor";
 
 	public PlayEditor() {
 		super();
-	}
-	
-	@Override
-	protected void handleTextChanged(JsonObject object) {
-		super.handleTextChanged(object);
-		validateResource();
 	}
 }

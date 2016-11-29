@@ -16,7 +16,6 @@
 package org.dslforge.xtext.generator.web.editor
 
 import org.dslforge.common.AbstractGenerator
-import org.dslforge.common.IWebProjectDescriptor.Mode
 import org.dslforge.common.IWebProjectFactory
 import org.dslforge.xtext.generator.XtextGrammar
 import org.eclipse.core.runtime.IProgressMonitor
