@@ -1,2 +1,8 @@
 bin/
 target/
+xtend-gen/**/.*.java._trace
+xtend-gen/**/.*.xtendbin
+src-gen/**/Internal*Lexer.java
+src-gen/**/Internal*Parser.java
+src-js/**/*Lexer.js
+src-js/**/*Parser.js
