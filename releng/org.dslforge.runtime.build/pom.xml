@@ -4,37 +4,23 @@
     xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
     <artifactId>org.dslforge.runtime.build.parent</artifactId>
     <relativePath>parent</relativePath>
     <version>0.9.0-SNAPSHOT</version>
     <groupId>dslforge.releng</groupId>
   </parent>
-
   <artifactId>org.dslforge.runtime.build</artifactId>
   <packaging>pom</packaging>
-
   <name>org.dslforge.runtime.build</name>
   <modules>
   		<!-- Target platform -->
 		<module>../org.dslforge.runtime.target/neon</module>
-		
-		<!-- Plug-ins -->
-		<!-- 
-		<module>../../plugins/org.dslforge.texteditor.demo</module>
-		<module>../../plugins/org.dslforge.texteditor</module>
-		<module>../../plugins/org.dslforge.styledtext</module>
-		<module>../../plugins/org.dslforge.workspace</module>
-		<module>../../plugins/org.dslforge.workspace.ui</module>
-		<module>../../plugins/org.dslforge.xtext.common</module>
-		 -->
-
 		<!-- Examples -->
-		<module>../../examples/org.eclipse.xtext.example.domainmodel</module>
-		<module>../../examples/org.eclipse.xtext.example.domainmodel.web</module>
 		<module>../../examples/org.eclipse.xtext.example.arithmetics</module>
 		<module>../../examples/org.eclipse.xtext.example.arithmetics.web</module>
+		<module>../../examples/org.eclipse.xtext.example.domainmodel</module>
+		<module>../../examples/org.eclipse.xtext.example.domainmodel.web</module>	
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird</module>
 		<module>../../examples/org.eclipse.sphinx.examples.xtext.hummingbird.web</module>
 		<module>../../examples/org.eclipse.xtext.example.fowlerdsl</module>
@@ -42,10 +28,12 @@
 		<module>../../examples/org.xtext.example.mydsl</module>
 		<module>../../examples/org.xtext.example.mydsl.web</module>	
 		<module>../../examples/org.codingpark.piraterobot.play</module>
-		<module>../../examples/org.codingpark.piraterobot.play.web</module>					
+		<module>../../examples/org.codingpark.piraterobot.play.web</module>
+		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.json</module>	
+		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.java</module>
+		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.javascript</module>			
 		<!-- Product -->
-    	<module>texteditor</module>
-    	
+    	<module>texteditor</module>  	
   </modules>
 
   <groupId>dslforge.releng</groupId>
