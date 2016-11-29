@@ -1194,9 +1194,9 @@ var Autocomplete = function() {
     	// we have to check if activeElement is a child of popup because
         // on IE preventDefault doesn't stop scrollbar from being focussed
     	var el = document.activeElement;
-        if (el != this.editor.textInput.getElement() && el.parentNode != this.popup.container)
+        if (el != this.editor.textInput.getElement() && this.popup !=null && el.parentNode != this.popup.container)
         var text = this.editor.textInput.getElement();
-        if (el != text && el.parentNode != this.popup.container 
+        if (el != text && this.popup !=null && el.parentNode != this.popup.container 
         		&& el != this.tooltipNode && e.relatedTarget != this.tooltipNode
         		&& e.relatedTarget != text
         ) {

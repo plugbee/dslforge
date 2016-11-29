@@ -214,7 +214,7 @@ background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZ
 .ace-completion-string:before { content:'S'; background: #999; }\
 .ace-completion-bool:before { content:'B'; background: #999; }\
 .ace_autocomplete {\
-    width: 340px;\
+    width: 320px;\
     z-index: 200000;\
     background: #ffffff;\
     color: #444;\

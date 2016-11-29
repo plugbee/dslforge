@@ -167,6 +167,58 @@
 			        this.onReady();
 				}
 			},
+			
+			setScope : function(scope) {
+				this.base(arguments, scope);
+			},
+		
+			onCompletionRequest : function(pos, prefix, callback) {
+				if (this.isFocused) {
+					var remoteObject = rap.getRemoteObject(this);
+					if (remoteObject) {
+						remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
+					}	
+					var proposals = this.proposals==null?[":"]:this.proposals;		
+			        var wordList = Object.keys(proposals);
+			        callback(null, wordList.map(function(word) {
+			            return {
+			            	iconClass: " " + typeToIcon(proposals[word].split(":")[1]),
+			                name: word,
+			                value: proposals[word].split(":")[0],
+			                score: 1,
+			                meta: "[" + proposals[word].split(":")[1] + "]"
+			            };
+			        }));	
+				}
+			},
+			
+			setProposals : function(proposals) {
+				this.proposals = proposals;	
+			},
+
+			onFocus: function() {
+				if (typeof this.langTools.addCompleter !== "undefined") {
+					this.langTools.addCompleter(this.backendCompleter);
+					this.completers = this.editor.completers;
+				}
+				this.base(arguments);
+			},
+			
+			onBlur: function() {
+				if (typeof this.langTools.removeCompleter !== "undefined") {
+					this.langTools.removeCompleter(this.backendCompleter);
+					this.completers = this.editor.completers;
+				}
+				this.base(arguments);
+			},
+
+			destroy : function() {
+				if (typeof this.langTools.disableSnippetCompleter !== "undefined") {
+					this.langTools.disableSnippetCompleter();
+					this.langTools.removeCompleter(this.backendCompleter);	
+				}
+				this.base(arguments);
+			}
 		}
 	});
 	

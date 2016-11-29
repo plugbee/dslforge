@@ -290,23 +290,28 @@ public class «grammarShortName» extends BasicText {
 				},
 	
 				onFocus: function() {
-					this.langTools.addCompleter(this.backendCompleter);
-					this.completers = this.editor.completers;
+					if (typeof this.langTools.addCompleter !== "undefined") {
+						this.langTools.addCompleter(this.backendCompleter);
+						this.completers = this.editor.completers;
+					}
 					this.base(arguments);
 				},
-
+	
 				onBlur: function() {
-					this.langTools.removeCompleter(this.backendCompleter);
-					this.completers = this.editor.completers;
+					if (typeof this.langTools.removeCompleter !== "undefined") {
+						this.langTools.removeCompleter(this.backendCompleter);
+						this.completers = this.editor.completers;
+					}
 					this.base(arguments);
 				},
 	
 				destroy : function() {
-					this.langTools.disableSnippetCompleter();
-					this.langTools.removeCompleter(this.backendCompleter);
+					if (typeof this.langTools.disableSnippetCompleter !== "undefined") {
+						this.langTools.disableSnippetCompleter();
+						this.langTools.removeCompleter(this.backendCompleter);	
+					}
 					this.base(arguments);
-				},
-				
+				}
 			}
 		});
 
