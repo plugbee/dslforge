@@ -97,6 +97,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 		textLayoutData.grabExcessVerticalSpace = true;
 		textWidget.setLayoutData(textLayoutData);
 		textWidget.setEditable(true);
+		textWidget.setAnnotations(Collections.emptyList());
 		return textWidget;
 	}
 
@@ -194,7 +195,7 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 				IResourceValidator resourceValidator = xtextResource.getResourceServiceProvider()
 						.getResourceValidator();
 				try {
-					List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.FAST_ONLY,
+					List<Issue> issues = resourceValidator.validate(xtextResource, CheckMode.NORMAL_AND_FAST,
 							CancelIndicator.NullImpl);
 					createAnnotations(issues);
 				} catch (Exception ex) {
@@ -214,14 +215,14 @@ public class BasicXtextEditor extends BasicTextEditor implements IBasicXtextEdit
 	protected void createAnnotations(List<Issue> issues) {
 		List<Annotation> annotations = new ArrayList<Annotation>();
 		for (Issue issue : issues) {
-			if (!issue.isSyntaxError()) {
+			//if (!issue.isSyntaxError()) {
 				Integer offset = issue.getOffset();
 				Integer line = issue.getLineNumber();
 				int lineNumber = line.intValue();
 				String message = issue.getMessage();
 				Severity severity = issue.getSeverity();
 				annotations.add(new Annotation(convertSeverity(severity), lineNumber, offset, message));
-			}
+			//}
 		}
 		getViewer().getTextWidget().setAnnotations(annotations);
 	}

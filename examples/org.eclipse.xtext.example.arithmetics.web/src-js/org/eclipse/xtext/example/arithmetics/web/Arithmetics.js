@@ -78,6 +78,10 @@
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 					editor.tokenTooltip = new TokenTooltip(editor);		 	
 
+					//Initialize the annotations
+					if (this.annotations==null) 
+						this.annotations=[];
+					
 				 	//Initialize the index
 				 	index = this.scope;
 

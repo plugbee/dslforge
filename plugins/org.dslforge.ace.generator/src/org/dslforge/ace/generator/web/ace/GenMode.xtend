@@ -107,33 +107,37 @@ oop.inherits(Mode, TextMode);
         var worker = new WorkerClient(["ace"], "ace/mode/«grammarShortName.toLowerCase»_worker", "Worker");
         worker.attachToDocument(session.getDocument());
 
-	worker.on("clear",function(e) {
-		session.clearAnnotations();
-	});
-	
-	worker.on("error", function(e) {
-		var filtered = [];
-		var annotations = session.getAnnotations();
-		for (var i = 0; i < annotations.length; i++) {
-			filtered.push(annotations[i]);
-		}
-		filtered.push(e.data);
-		session.setAnnotations(filtered);
-	});
+    	worker.on("clear",function(e) {
+    		//remove old client annotations
+    		var annotations = session.getAnnotations();
+    		for (var i = annotations.length; i--;) {
+    			if (!annotations[i].server)
+    				annotations.pop(annotations[i]);
+    		}
+    		session.setAnnotations(annotations);
+    	});
+    	
+    	worker.on("error", function(e) {
+    		//remove old client annotations
+    		var annotations = session.getAnnotations();
+    		for (var i = annotations.length; i--;) {
+    			if (!annotations[i].server)
+    				annotations.pop(annotations[i]);
+    		}
+    		//add new client annotations
+    		annotations.push(e.data);
+    		session.setAnnotations(annotations);
+    	});
 
-	worker.on("ok", function(e) {
-		var annotations = session.getAnnotations();
-		var filtered = [];
-		for (var i = 0; i < annotations.length; i++) {
-			var annotation = annotations[i];
-			if (annotation.server
-					&& annotation.server == true) {
-				filtered.push(annotation);
-			}
-		}
-		session.clearAnnotations();
-		session.setAnnotations(filtered);
-	});
+    	worker.on("ok", function(e) {
+    		//remove old client annotations
+    		var annotations = session.getAnnotations();
+    		for (var i = annotations.length; i--;) {
+    			if (!annotations[i].server)
+    				annotations.pop(annotations[i]);
+    		}
+    		session.setAnnotations(annotations);
+    	});
 
         return worker;
     };

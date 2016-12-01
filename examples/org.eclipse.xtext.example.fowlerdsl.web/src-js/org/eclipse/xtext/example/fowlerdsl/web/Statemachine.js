@@ -33,7 +33,7 @@
 				if (editor != null) {
 					//Set the Id of this editor
 					var guid = this.url;
-															
+					
 					//Set language mode
 					editor.getSession().setMode("ace/mode/statemachine");
 					
@@ -77,6 +77,10 @@
 					//Add text hover
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
 					editor.tokenTooltip = new TokenTooltip(editor);		 	
+
+					//Initialize the annotations
+					if (this.annotations==null) 
+						this.annotations=[];
 
 				 	//Initialize the index
 				 	index = this.scope;

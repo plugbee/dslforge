@@ -57,6 +57,7 @@
 			isFocused: false,
 			initialContent: true,
 			langTools: null,
+			annotations: [],
 			scope: [],
 			completers: null,
 			backendCompleter: null,
@@ -68,43 +69,43 @@
 			onReady : function() {
 				this.ready = true;
 				this.layout();				
-				if (this._url) {
-					this.setUrl(this._url);
-					delete this._url;
+				if (this.url) {
+					this.setUrl(this.url);
+					delete this.url;
 				}
-				if (this._editable) {
-					this.setEditable(this._editable);
-					delete this._editable;
+				if (this.editable) {
+					this.setEditable(this.editable);
+					delete this.editable;
 				}
-				if (this._text) {
-					this.editor.setValue(this._text);
+				if (this.text) {
+					this.editor.setValue(this.text);
 					this.editor.clearSelection(); 
 					this.editor.getSelection().moveCursorFileStart();
-					delete this._text;
+					delete this.text;
 				}
-				if (this._font) {
-					this.setFont(this._font);
-					delete this._font;
+				if (this.font) {
+					this.setFont(this.font);
+					delete this.font;
 				}
-				if (this._status) {
-					this.setStatus(this._status);
-					delete this._status;
+				if (this.status) {
+					this.setStatus(this.status);
+					delete this.status;
 				}
-				if (this._annotations) {
-					this.setAnnotations(this._annotations);
-					delete this._annotations;
+				if (this.annotations) {
+					this.setAnnotations(this.annotations);
+					delete this.annotations;
 				}
-				if (this._markers) {
-					this.setMarkers(this._markers);
-					delete this._markers;
+				if (this.markers) {
+					this.setMarkers(this.markers);
+					delete this.markers;
 				}
-				if (this._backgroundColor) {
-					this.setBackground(this._backgroundColor);
-					delete this._backgroundColor;
+				if (this.backgroundColor) {
+					this.setBackground(this.backgroundColor);
+					delete this.backgroundColor;
 				}
-				if (this._scope) {
-					this.setScope(this._scope);
-					delete this._scope;
+				if (this.scope) {
+					this.setScope(this.scope);
+					delete this.scope;
 				}
 				if (this.proposals) {
 					this.setProposals(this.proposals);
@@ -220,7 +221,7 @@
 			},
 
 			setUrl : function(url) {
-				this._url = url;
+				this.url = url;
 			},	
 			
 			setText : function(text) {
@@ -230,22 +231,22 @@
 					this.editor.getSelection().moveCursorFileStart();
 				}
 				else {
-			        this._text = text;
+			        this.text = text;
 			    }
 			},
 		
 			setEditable : function(editable) {
 			   	if (this.ready) {
-			   		this._editable = editable;
+			   		this.editable = editable;
 			   		this.editor.setReadOnly(!editable);
 				} else {
-					this._editable = editable;
+					this.editable = editable;
 				}
 			},
 			
 			setStatus : function(status) {
 			   	if (this.ready) {
-			   		if (this._status=="invalid") {
+			   		if (this.status=="invalid") {
 			   			var annotations = this.editor.session.getAnnotations();
 			   			var filtered = [];
 			   			this.editor.session.clearAnnotations();
@@ -259,53 +260,52 @@
 			   			this.editor.session.setAnnotations(filtered);
 			   		}
 				} else {
-					this._status = status;
+					this.status = status;
 				}
 			},
 
-			setAnnotations : function(annotations) {
+			setAnnotations : function(newAnnotations) {
 				if (this.ready) {
-					this._annotations = [];
-					//keep client-side annotations
-					var editorAnnotations = this.editor.session.getAnnotations();
-					for (var i = 0; i < editorAnnotations.length; i++) {
-		   				if (editorAnnotations[i].server) {
-		   					editorAnnotations.pop(editorAnnotations[i])
-		   				}
-		   			}
-					//recompute server-side annotations
-					if (annotations.length>0) {	
-						for (var i = annotations.length; i--;) {
-							var annotation = annotations[i];
+					//remove old server annotations
+					//var annotations = this.annotations != null ? this.annotations : this.editor.session.getAnnotations();
+					
+					var annotations = this.editor.session.getAnnotations();
+					for (var i = annotations.length; i--;) {
+						annotations.pop(annotations[i]);
+					}
+					//add new server annotations
+					if (newAnnotations.length>0) {	
+						for (var i = newAnnotations.length; i--;) {
+							var annotation = newAnnotations[i];
 							for (var key in annotation) {
 								var positions = annotation[key].match(/\d+/g);
 								if (key=="ERROR")
-									this._annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"error", server: true});
+									annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"error", server: true});
 								else if (key=="WARNING")
-									this._annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"warning", server: true});
+									annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"warning", server: true});
 								else if (key=="INFO")
-									this._annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"info", server: true});
-							}	
-			           }
-						this.editor.session.setAnnotations(this._annotations);
+									annotations.push({row:Math.max(positions[0]-1,0) ,column: 0, text: annotation[key], type:"info", server: true});
+							}
+						}
+						this.editor.session.setAnnotations(annotations);
 					}
 				} else {
-					this._annotations = annotations;
+					this.annotations = newAnnotations;
 				}
 			},
 
 			setScope : function(scope) {
 				if (this.ready) {
-					this._scope = scope;	
+					this.scope = scope;	
 			    	if(this.worker!=null) {
 			        	this.worker.port.postMessage({
 			            	message: this.editor.getValue(), 
-			            	guid: this._url, 
-			            	index: this._scope
+			            	guid: this.url, 
+			            	index: this.scope
 			            });     
 			    	}	
 				} else {
-					 this._scope = scope;	
+					 this.scope = scope;	
 				}
 			},
 
@@ -321,25 +321,25 @@
 					this.editor.setFontSize(16);
 				}
 				else {
-			        this._font = font;
+			        this.font = font;
 			    }
 			},
 
 			setBackground : function(color) {
 				if (this.ready) {
-			        this._backgroundColor = color;
+			        this.backgroundColor = color;
 					ace.require("ace/lib/dom").importCssString('.ace-eclipse {\
 						    background-color: rgb('+color.R+', '+color.G+', '+color.B+');\
 						}');
 				}
 				else {
-			        this._backgroundColor = color;
+			        this.backgroundColor = color;
 			    }
 			},
 			
 			setDirty : function(dirty) {
 				if (this.ready) {
-					if (!dirty && this._editable) {
+					if (!dirty && this.editable) {
 						this.editor.getSession().getUndoManager().markClean();
 					}
 				}
@@ -347,9 +347,9 @@
 			
 			setMarkers : function(markers) {
 				if (this.ready) {
-					this._markers = markers;
-					for (var i = this._markers.length; i--;) {
-						var marker = this._markers[i];
+					this.markers = markers;
+					for (var i = this.markers.length; i--;) {
+						var marker = this.markers[i];
 						var Range = ace.require("ace/range").Range;
 						var range = new Range(marker.rowStart, marker.rowEnd, marker.columnStart, marker.columnEnd);
 						this.editor.getSession().addMarker(range, "ace_debug_line", "line");
@@ -360,7 +360,7 @@
 		           }
 				}
 				else {
-			        this._markers = markers;
+			        this.markers = markers;
 			    }
 			},
 			
@@ -424,15 +424,19 @@
 					});
 					
 					//Set the Id of this editor
-					var guid = this._url;
+					var guid = this.url;
+					
+					//Initialize the annotations
+					if (this.annotations==null) 
+						this.annotations=[];
 					
 					//Initialize the global index
-					if (this._scope==null)
-						this._scope=[];
+					if (this.scope==null)
+						this.scope=[];
 					
 					//Initialize the completion proposals
-					if (this._proposals==null) 
-						this._proposals=[":"];
+					if (this.proposals==null) 
+						this.proposals=[":"];
 					
 					var self = this;
 					this.backendCompleter = {	
@@ -454,7 +458,7 @@
 					editor.tokenTooltip = new TokenTooltip(editor);
 				 	
 				 	//Initialize the index
-				 	index = this._scope;
+				 	index = this.scope;
 
 				 	//Initialize the completion proposals
 				 	proposals = this.proposals;
@@ -482,7 +486,7 @@
 						    };		
 					 	}
 					}
-					
+			
 				 	//On focus get event
 					editor.on("focus", function() {
 				 		self.onFocus();
