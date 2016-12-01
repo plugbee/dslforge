@@ -23,7 +23,6 @@ public interface IWorkspaceConstants {
 	public static final String JDBC_PREFIX = "jdbc:derby:";
 	public static final String VISIBILITY_PRIVATE = "private";
 	public static final String VISIBILITY_PUBLIC = "public";
-	public static final String PATH_SEPARATOR = "\\";
 	public static final String LOCKED = "locked";
 	public static final String UNLOCKED = "unlocked";
 	public static final String WORKSPACE_DEFAULT_PATH = "D:/www/dslforge/workspace";

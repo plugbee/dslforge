@@ -8,7 +8,7 @@
 <stringAttribute key="checked" value="[NONE]"/>
 <booleanAttribute key="clearConfig" value="true"/>
 <booleanAttribute key="clearws" value="true"/>
-<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/RAP Text Editor Demo"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/Text Editor Workbench"/>
 <booleanAttribute key="default" value="true"/>
 <booleanAttribute key="default_auto_start" value="true"/>
 <intAttribute key="default_start_level" value="4"/>
@@ -20,7 +20,7 @@
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Declipse.ignoreApp=true -Dosgi.noShutdown=true&#13;&#10;-Dorg.eclipse.equinox.http.jetty.log.stderr.threshold=info&#13;&#10;-Dlog4j.debug=true"/>
 <stringAttribute key="org.eclipse.rap.launch.browserMode" value="EXTERNAL"/>
 <stringAttribute key="org.eclipse.rap.launch.contextpath" value="/"/>
-<stringAttribute key="org.eclipse.rap.launch.dataLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.rap.tools.launch/RAPTextEditorDemo"/>
+<stringAttribute key="org.eclipse.rap.launch.dataLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.rap.tools.launch/TextEditorWorkbench"/>
 <booleanAttribute key="org.eclipse.rap.launch.developmentMode" value="true"/>
 <booleanAttribute key="org.eclipse.rap.launch.openBrowser" value="true"/>
 <intAttribute key="org.eclipse.rap.launch.port" value="10080"/>
@@ -37,5 +37,5 @@
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfigArea" value="true"/>
-<stringAttribute key="workspace_bundles" value="org.codingpark.piraterobot.play.web@default:default,org.codingpark.piraterobot.play@default:default,org.dslforge.common.logging@default:false,org.dslforge.styledtext@5:default,org.dslforge.texteditor.demo@5:default,org.dslforge.texteditor@5:default,org.dslforge.workspace.config@3:default,org.dslforge.workspace.jpa@3:default,org.dslforge.workspace.ui@4:default,org.dslforge.workspace@3:default,org.dslforge.xtext.common@5:default,org.eclipse.rap.incubator.basictext@default:default,org.eclipse.rap.incubator.texteditor.java@default:default,org.eclipse.rap.incubator.texteditor.javascript@default:default,org.eclipse.rap.incubator.texteditor.json@default:default,org.eclipse.rap.incubator.texteditor@default:default,org.eclipse.sphinx.examples.xtext.hummingbird.web@default:default,org.eclipse.sphinx.examples.xtext.hummingbird@default:default,org.eclipse.xtext.example.arithmetics.web@default:default,org.eclipse.xtext.example.arithmetics@default:default,org.eclipse.xtext.example.domainmodel.web@default:default,org.eclipse.xtext.example.domainmodel@default:default,org.eclipse.xtext.example.fowlerdsl.web@5:default,org.eclipse.xtext.example.fowlerdsl@5:default,org.xtext.example.mydsl.web@5:default,org.xtext.example.mydsl@5:default"/>
+<stringAttribute key="workspace_bundles" value="org.codingpark.piraterobot.play.web@default:default,org.codingpark.piraterobot.play@default:default,org.dslforge.common.logging@default:default,org.dslforge.styledtext@5:default,org.dslforge.texteditor.demo@5:default,org.dslforge.texteditor@5:default,org.dslforge.workspace.config@3:default,org.dslforge.workspace.jpa@3:default,org.dslforge.workspace.ui@4:default,org.dslforge.workspace@3:default,org.dslforge.xtext.common@5:default,org.eclipse.rap.incubator.basictext@default:default,org.eclipse.rap.incubator.texteditor.java@default:default,org.eclipse.rap.incubator.texteditor.javascript@default:default,org.eclipse.rap.incubator.texteditor.json@default:default,org.eclipse.rap.incubator.texteditor@default:default,org.eclipse.sphinx.examples.xtext.hummingbird.web@default:default,org.eclipse.sphinx.examples.xtext.hummingbird@default:default,org.eclipse.xtext.example.arithmetics.web@default:default,org.eclipse.xtext.example.arithmetics@default:default,org.eclipse.xtext.example.domainmodel.web@default:default,org.eclipse.xtext.example.domainmodel@default:default,org.eclipse.xtext.example.fowlerdsl.web@5:default,org.eclipse.xtext.example.fowlerdsl@5:default,org.xtext.example.mydsl.web@5:default,org.xtext.example.mydsl@5:default"/>
 </launchConfiguration>

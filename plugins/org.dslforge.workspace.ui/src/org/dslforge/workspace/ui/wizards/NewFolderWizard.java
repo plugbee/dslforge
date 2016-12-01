@@ -56,7 +56,7 @@ public class NewFolderWizard extends AbstractNewResourceWizard {
 				IRunnableWithProgress operation = new IRunnableWithProgress() {
 					public void run(IProgressMonitor progressMonitor) {
 							try {
-								IPath folderPath = new Path(containerName + IWorkspaceConstants.PATH_SEPARATOR + folderName);
+								IPath folderPath = new Path(containerName).append(new Path(folderName));
 								WorkspaceManager.INSTANCE.createFolder(folderPath);
 							}
 							catch (Exception ex) {
