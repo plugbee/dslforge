@@ -106,8 +106,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 	public IPath getFilePath() {
 		IStructuredSelection iStructuredSelection = getInitialElementSelections().get(0);
-		return new Path(iStructuredSelection.getFirstElement().toString())
-		.append(fileNameText.getText() + "." + getSelectedFileExtension());
+		return new Path(iStructuredSelection.getFirstElement().toString()).append(fileNameText.getText());
 	}
 	
 	@Override
