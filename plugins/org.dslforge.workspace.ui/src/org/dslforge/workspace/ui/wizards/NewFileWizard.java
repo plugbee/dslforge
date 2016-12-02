@@ -21,19 +21,13 @@ import java.util.Collections;
 
 import org.apache.log4j.Logger;
 import org.dslforge.workspace.WorkspaceManager;
-import org.dslforge.workspace.ui.PathEditorInput;
-import org.dslforge.workspace.ui.util.EditorUtil;
+import org.dslforge.workspace.ui.actions.OpenResourceAction;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.rap.rwt.RWT;
-import org.eclipse.ui.IEditorDescriptor;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
 
 public class NewFileWizard extends AbstractNewResourceWizard{
 
@@ -104,32 +98,8 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 		}
 		final String currentUser = (String) RWT.getUISession().getAttribute("user");
 		logger.info(currentUser + " created new model: " + filePath);
-		return openEditor(getWorkbench(), filePath);		
-	}
-
-	public static boolean openEditor(IWorkbench workbench, IPath path) {
-		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
-		IWorkbenchPage page = workbenchWindow.getActivePage();
-		IEditorDescriptor editorDescriptor = EditorUtil.getDefaultEditor(path);
-		if (editorDescriptor == null) {
-			MessageDialog.openError(workbenchWindow.getShell()
-				,"Error"
-				,"There is no editor registered for the file " + path.lastSegment());
-			return false;
-		}
-		else {
-			try {
-				page.openEditor(new PathEditorInput(path), editorDescriptor.getId());
-			}
-			catch (PartInitException exception) {
-				MessageDialog.openError(
-					workbenchWindow.getShell()
-					,"Open Editor"
-					,exception.getMessage());
-				return false;
-			}
-		}
-		return true;
+		OpenResourceAction openResourceAction = new OpenResourceAction();
+		return openResourceAction.openWithEditor(filePath.toFile());	
 	}
 	
 	private IPath computeFilePath() {

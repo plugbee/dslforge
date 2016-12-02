@@ -40,32 +40,39 @@ public class OpenResourceAction extends AbstractWorkspaceAction {
 		Object object = iterator.next();
 		if (object instanceof File) {
 			final File file = (File) object;
-			IRunnableWithProgress operation = new IRunnableWithProgress() {
-				public void run(IProgressMonitor progressMonitor) {
-					try {
-						if (file.exists() && !file.isDirectory()) {
-							String absolutePath = file.getAbsolutePath();
-							IWorkbench workbench = PlatformUI.getWorkbench();
-							if (EditorUtil.openEditor(workbench, new Path(absolutePath)) != null) {
-								logger.info("Opened editor on file " + absolutePath);
-							}
-						}
-					} catch (Exception ex) {
-						logger.error(ex.getMessage(), ex);
-					} finally {
-						progressMonitor.done();
-					}
-				}
-			};
-			try {
-				getWindow().run(false, false, operation);
-			} catch (InvocationTargetException ex) {
-				logger.error(ex.getMessage(), ex);
-			} catch (InterruptedException ex) {
-				logger.error(ex.getMessage(), ex);
-			}
-			final String currentUser = (String) RWT.getUISession().getAttribute("user");
-			logger.info(currentUser + " opened resource: " + file.getAbsolutePath());
+			openWithEditor(file);
 		}
+	}
+
+	public boolean openWithEditor(final File file) {
+		IRunnableWithProgress operation = new IRunnableWithProgress() {
+			public void run(IProgressMonitor progressMonitor) {
+				try {
+					if (file.exists() && !file.isDirectory()) {
+						String absolutePath = file.getAbsolutePath();
+						IWorkbench workbench = PlatformUI.getWorkbench();
+						if (EditorUtil.openEditor(workbench, new Path(absolutePath)) != null) {
+							logger.info("Opened editor on file " + absolutePath);
+						}
+					}
+				} catch (Exception ex) {
+					logger.error(ex.getMessage(), ex);
+				} finally {
+					progressMonitor.done();
+				}
+			}
+		};
+		try {
+			PlatformUI.getWorkbench().getActiveWorkbenchWindow().run(false, false, operation);
+		} catch (InvocationTargetException ex) {
+			logger.error(ex.getMessage(), ex);
+			return false;
+		} catch (InterruptedException ex) {
+			logger.error(ex.getMessage(), ex);
+			return false;
+		}
+		final String currentUser = (String) RWT.getUISession().getAttribute("user");
+		logger.info(currentUser + " opened resource: " + file.getAbsolutePath());
+		return true;
 	}
 }
