@@ -44,7 +44,7 @@ public class OpenResourceAction extends AbstractWorkspaceAction {
 		}
 	}
 
-	public void openWithEditor(final File file) {
+	public boolean openWithEditor(final File file) {
 		IRunnableWithProgress operation = new IRunnableWithProgress() {
 			public void run(IProgressMonitor progressMonitor) {
 				try {
@@ -66,10 +66,13 @@ public class OpenResourceAction extends AbstractWorkspaceAction {
 			PlatformUI.getWorkbench().getActiveWorkbenchWindow().run(false, false, operation);
 		} catch (InvocationTargetException ex) {
 			logger.error(ex.getMessage(), ex);
+			return false;
 		} catch (InterruptedException ex) {
 			logger.error(ex.getMessage(), ex);
+			return false;
 		}
 		final String currentUser = (String) RWT.getUISession().getAttribute("user");
 		logger.info(currentUser + " opened resource: " + file.getAbsolutePath());
+		return true;
 	}
 }
