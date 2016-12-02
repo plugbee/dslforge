@@ -25,18 +25,20 @@ import org.apache.log4j.Logger;
 import org.dslforge.workspace.IWorkspaceListener;
 import org.dslforge.workspace.internal.WorkspaceActivator;
 import org.dslforge.workspace.internal.WorkspaceEventWatcher;
-import org.dslforge.workspace.ui.util.EditorUtil;
+import org.dslforge.workspace.ui.actions.OpenResourceAction;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.rap.rwt.service.ServerPushSession;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.IViewSite;
@@ -57,13 +59,13 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspaceListener, IPartListener {
 
 	static final Logger logger = Logger.getLogger(BasicWokspaceNavigator.class);
-	
+
 	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
-	
+
 	private List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 	private WorkspaceEventWatcher directoryWatcher;
 	private ServerPushSession pushSession;
-	
+
 	private ISelectionChangedListener selectionListener = new ISelectionChangedListener() {
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
@@ -141,14 +143,30 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 			IStructuredSelection selection = (IStructuredSelection) anEvent.getSelection();
 			Object element = selection.getFirstElement();
 			if (element instanceof File) {
-				File file = (File) element;
+				final File file = (File) element;
 				if (file.exists() && !file.isDirectory()) {
-					String absolutePath = file.getAbsolutePath();
-					IWorkbench workbench = PlatformUI.getWorkbench();
-					if (EditorUtil.openEditor(workbench, new Path(absolutePath)) != null) {
-						logger.info("Opened editor on file " + absolutePath);
-					}
+					// Double click a file
+					OpenResourceAction action = new OpenResourceAction();
+					action.openWithEditor(file);
 					workspaceChanged(null);
+				} else if (file.exists() && file.isDirectory()) {
+					// Double click a folder
+					Object eventSource = anEvent.getSource();
+					if (eventSource instanceof TreeViewer) {
+						TreeViewer treeViewer = (TreeViewer) eventSource;
+						Widget widget = treeViewer.testFindItem(file);
+						if (widget != null && widget instanceof TreeItem) {
+							TreeItem item = (TreeItem) widget;
+							boolean toExpand = !item.getExpanded();
+							item.setExpanded(toExpand);
+							if (toExpand) {
+								treeViewer.expandToLevel(item, 0);
+							} else {
+								treeViewer.collapseToLevel(item, 0);
+							}
+							treeViewer.refresh(item.getData());
+						}
+					}
 				}
 			}
 		}

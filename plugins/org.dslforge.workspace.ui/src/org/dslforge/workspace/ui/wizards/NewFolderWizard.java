@@ -19,7 +19,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 
 import org.apache.log4j.Logger;
-import org.dslforge.workspace.IWorkspaceConstants;
 import org.dslforge.workspace.WorkspaceManager;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
