@@ -42,10 +42,10 @@ import com.google.common.base.Function;
 import com.google.common.collect.Maps;
 import com.google.inject.ConfigurationException;
 import com.google.inject.Injector;
- 
+
 public class BasicGenerateAction extends AbstractWorkspaceAction {
-	
-	private static final String DEFAULT_OUTPUT_FOLDER = "\\src-gen";
+
+	private static final String DEFAULT_OUTPUT_FOLDER = "src-gen";
 	private Injector injector;
 	private Map<String, String> outlets = new HashMap<String, String>();
 
@@ -58,33 +58,36 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 		if (!getSelection().isEmpty()) {
 			// get the resource uri
 			File file = (File) ((IStructuredSelection) getSelection()).getFirstElement();
-			String fileName = file.getName();
-			String extension = fileName.substring(fileName.indexOf(".") + 1, fileName.length());
-			URI fileURI = URI.createFileURI(file.getAbsolutePath());
-			// configure the generator output
-			String targetDirectory = getDefaultTargetDirectory(fileURI);
-			// load the resource
-			String languageName = getLanguageName(extension);
-			if (languageName != null) {
-				injector = LanguageRegistry.INSTANCE.getInjector(languageName);
-				XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
-				XtextResource resource = (XtextResource) resourceSet.getResource(fileURI, true);
-				// launch the generator
-				outlets.put("DEFAULT_OUTPUT", targetDirectory);
-				IFileSystemAccess fsa = getConfiguredFileSystemAccess();
-				IGenerator generator = null;
-				try {
-					generator = injector.getInstance(IGenerator.class);
-				} catch (ConfigurationException ex) {
-					// Xtext 2.10: cannot find or create binding, try IGenerator2
-					generator = injector.getInstance(GeneratorDelegate.class);
-				} finally {
-					if (generator!=null) {
-						//create the container if it doesn't exist yet
-						WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory));
-						//make it happen
-						generator.doGenerate(resource, fsa);
-					}
+			String targetDirectory = getDefaultTargetDirectory();
+			doGenerate(file, new File(targetDirectory));
+		}
+	}
+
+	public void doGenerate(File file, File targetDirectory) {
+		String fileName = file.getName();
+		String extension = fileName.substring(fileName.lastIndexOf(".") + 1);
+		URI fileURI = URI.createFileURI(file.getAbsolutePath());
+		// load the resource
+		String languageName = getLanguageName(extension);
+		if (languageName != null) {
+			injector = LanguageRegistry.INSTANCE.getInjector(languageName);
+			XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet.class);
+			XtextResource resource = (XtextResource) resourceSet.getResource(fileURI, true);
+			// launch the generator
+			outlets.put("DEFAULT_OUTPUT", targetDirectory.getAbsolutePath());
+			IFileSystemAccess fsa = getConfiguredFileSystemAccess();
+			IGenerator generator = null;
+			try {
+				generator = injector.getInstance(IGenerator.class);
+			} catch (ConfigurationException ex) {
+				// Xtext 2.10: cannot find or create binding, try IGenerator2
+				generator = injector.getInstance(GeneratorDelegate.class);
+			} finally {
+				if (generator != null) {
+					// create the container if it doesn't exist yet
+					WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory.getAbsolutePath()));
+					// make it happen
+					generator.doGenerate(resource, fsa);
 				}
 			}
 		}
@@ -98,20 +101,16 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 		return null;
 	}
 
-	protected String getDefaultTargetDirectory(URI fileURI) {
-		return getDefaultOutput();
-	}
-	
-	protected String getDefaultOutput() {
+	protected String getDefaultTargetDirectory() {
 		String output = WorkspaceManager.INSTANCE.getWorkspaceRootStringPath();
 		Object firstElement = ((IStructuredSelection) getSelection()).getFirstElement();
 		if (firstElement instanceof File) {
-			String parent = ((File)firstElement).getParent();
-			output = parent + DEFAULT_OUTPUT_FOLDER;
+			File parent = ((File) firstElement).getParentFile();
+			output = new File(parent, DEFAULT_OUTPUT_FOLDER).getAbsolutePath();
 		}
 		return output;
 	}
-	
+
 	protected IFileSystemAccess getConfiguredFileSystemAccess() {
 		final JavaIoFileSystemAccess configuredFileSystemAccess = injector.getInstance(JavaIoFileSystemAccess.class);
 		configuredFileSystemAccess.setOutputConfigurations(getOutputConfigurations());
@@ -126,10 +125,10 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 		return Maps.uniqueIndex(configurations, new Function<OutputConfiguration, String>() {
 			public String apply(OutputConfiguration from) {
 				return from.getName();
-					}
+			}
 		});
 	}
-	
+
 	Set<OutputConfiguration> getDefaultOutputConfigurations() {
 		Set<OutputConfiguration> outputs = new HashSet<OutputConfiguration>();
 		OutputConfiguration defaultOutput = new OutputConfiguration(IFileSystemAccess.DEFAULT_OUTPUT);
@@ -139,7 +138,7 @@ public class BasicGenerateAction extends AbstractWorkspaceAction {
 		defaultOutput.setCreateOutputDirectory(true);
 		defaultOutput.setCleanUpDerivedResources(true);
 		defaultOutput.setSetDerivedProperty(true);
-		outputs.add(defaultOutput);		
+		outputs.add(defaultOutput);
 		return outputs;
 	}
 }

@@ -31,11 +31,11 @@ import org.eclipse.swt.widgets.Display;
 public class WorkspaceManager {
 
 	static final Logger logger = Logger.getLogger(WorkspaceManager.class);
-	
+
 	public static WorkspaceManager INSTANCE = new WorkspaceManager();
-	
+
 	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
-	
+
 	private WorkspaceManager() {
 		IPersistencyService dbservice = DefaultPersistencyService.getInstance();
 		if (dbservice.isRunning()) {
@@ -50,7 +50,7 @@ public class WorkspaceManager {
 	public IPath getWorkspaceRootPath() {
 		return rootPath;
 	}
-	
+
 	public File getWorkspaceRootFolder() {
 		return rootPath.toFile();
 	}
@@ -119,7 +119,8 @@ public class WorkspaceManager {
 	public boolean isProject(final IPath path) {
 		File file = path.toFile();
 		String parent = file.getParent();
-		return (file.isDirectory() && parent!=null && new Path(parent).equals(new Path(getWorkspaceRootStringPath())));
+		return (file.isDirectory() && parent != null
+				&& new Path(parent).equals(new Path(getWorkspaceRootStringPath())));
 	}
 
 	public boolean deleteProject(final IPath path) {
@@ -130,7 +131,7 @@ public class WorkspaceManager {
 					try {
 						delete(path);
 					} catch (IOException e) {
-						logger.error(e.getMessage(),e);
+						logger.error(e.getMessage(), e);
 					} finally {
 						IPersistencyService dbservice = DefaultPersistencyService.getInstance();
 						if (dbservice.isRunning()) {
@@ -144,26 +145,30 @@ public class WorkspaceManager {
 		}
 		return false;
 	}
-	
+
 	public boolean deleteFolder(final IPath path) {
 		final File file = path.toFile();
-		if (file.exists()) {
+		if (file.exists() && file.isDirectory()) {
 			Display.getCurrent().syncExec(new Runnable() {
 				@Override
 				public void run() {
-					file.delete();
+					try {
+						delete(path);
+					} catch (IOException e) {
+						logger.error(e.getMessage(), e);
+					} finally {
+						IPersistencyService dbservice = DefaultPersistencyService.getInstance();
+						if (dbservice.isRunning()) {
+							dbservice.deleteFolder(path);
+						}
+						logger.info("Folder deleted : " + path);
+					}
 				}
 			});
-			IPersistencyService dbservice = DefaultPersistencyService.getInstance();
-			if (dbservice.isRunning()) {
-				dbservice.deleteFolder(path);
-			}
-			logger.info("Folder deleted : " + file.getAbsolutePath());
-			return true;
 		}
 		return false;
 	}
-	
+
 	public boolean deleteResource(final IPath path) {
 		final File file = path.toFile();
 		if (file.exists()) {
@@ -192,15 +197,17 @@ public class WorkspaceManager {
 				file.delete();
 				logger.info("Directory deleted : " + file.getAbsolutePath());
 			} else {
-				String files[] = file.list();
-				for (String temp : files) {
-					File fileDelete = new File(file, temp);
-					delete(new Path(fileDelete.getAbsolutePath()));
+				// remove all content
+				File files[] = file.listFiles();
+				for (File temp : files) {
+					if (temp.isDirectory()) {
+						deleteFolder(new Path(temp.getAbsolutePath()));
+					} else {
+						deleteResource(new Path(temp.getAbsolutePath()));
+					}
 				}
-				if (file.list().length == 0) {
-					file.delete();
-					logger.info("Directory deleted : " + file.getAbsolutePath());
-				}
+				// delete the folder itself
+				delete(path);
 			}
 		} else {
 			file.delete();

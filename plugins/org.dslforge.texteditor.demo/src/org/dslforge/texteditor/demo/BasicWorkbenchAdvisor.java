@@ -26,8 +26,6 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
  */	
 public class BasicWorkbenchAdvisor extends WorkbenchAdvisor {
 
-	private static final String PERSPECTIVE_ID = "org.dslforge.texteditor.demo.ui.parts.perspective";
-
 	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
 		return new BasicWorkbenchWindowAdvisor(configurer);
 	}
@@ -39,6 +37,6 @@ public class BasicWorkbenchAdvisor extends WorkbenchAdvisor {
 	}
 
 	public String getInitialWindowPerspectiveId() {
-		return PERSPECTIVE_ID;
+		return IWorkbenchConstants.ID_PERSPECTIVE;
 	}
 }
