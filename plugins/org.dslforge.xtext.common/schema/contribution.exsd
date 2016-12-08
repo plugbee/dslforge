@@ -50,7 +50,7 @@
    <element name="contribution">
       <annotation>
          <documentation>
-            An editor contribution to the Text Editor Demo application.
+            An editor contribution to the Online Workbench.
          </documentation>
       </annotation>
       <complexType>

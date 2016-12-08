@@ -26,10 +26,10 @@
 	   <branding
 	         favicon="icons/dslforge.png"
 	         id="org.dslforge.texteditor.demo.branding"
-	         title="Text Editor Demo">
+	         title="Online Workbench Demo">
 	      <presentationFactory
              id="org.eclipse.ui.presentations.default"
-             name="Text Editor Demo"
+             name="Online Workbench Demo"
              viewActionsVisible="true">
 	      </presentationFactory>
 	   </branding>
@@ -41,7 +41,7 @@
         class="org.dslforge.texteditor.demo.parts.BasicWorkbenchPerspective"
         icon="icons/dslforge.png"
         id="org.dslforge.texteditor.demo.ui.parts.perspective"
-        name="Text Editor Demo">
+        name="Online Workbench Demo">
 		</perspective>
 	</extension>
 

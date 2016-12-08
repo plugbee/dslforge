@@ -35,7 +35,7 @@ public class AboutCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		String message = "Text Editor Demo - Built on Eclipse RAP\n\n"
+		String message = "Online Workbench- Built on Eclipse RAP\n\n"
 				+ "This program is made available under the terms of\n the Eclipse Public License v1.0 which is available at\n http://www.eclipse.org/legal/epl-v10.html\n";
 		Shell activeShell = Display.getCurrent().getActiveShell();
 		final AboutDialog loginDialog = new AboutDialog(activeShell, "About",
