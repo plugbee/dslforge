@@ -15,7 +15,10 @@
  */
 package org.dslforge.workspace.ui.wizards;
 
+import java.util.List;
+
 import org.dslforge.workspace.IWorkspaceConstants;
+import org.dslforge.workspace.WorkspaceManager;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -75,6 +78,7 @@ public class NewProjectWizardPage extends WizardPage {
 		layoutData.grabExcessHorizontalSpace = true;
 		layoutData.horizontalSpan = 2;
 		projectNameText.setLayoutData(layoutData);
+		projectNameText.setFocus();
 		projectNameText.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent event) {
@@ -140,11 +144,11 @@ public class NewProjectWizardPage extends WizardPage {
 
 	private boolean validateProjectInfo() {
 		boolean isValid = true;
-//		List<String> allExistingProjects = WorkspaceManager.INSTANCE.getAllProjectNames();
-//		if (!allExistingProjects.isEmpty() && allExistingProjects.contains(projectNameText.getText())) {
-//			setErrorMessage("A project with name " + projectNameText.getText() + " alread exists");
-//			isValid = false;
-//		}
+		List<String> allExistingProjects = WorkspaceManager.INSTANCE.getAllProjectNames();
+		if (!allExistingProjects.isEmpty() && allExistingProjects.contains(projectNameText.getText())) {
+			setErrorMessage("A project with name " + projectNameText.getText() + " alread exists");
+			isValid = false;
+		}
 		return isValid;
 	}
 

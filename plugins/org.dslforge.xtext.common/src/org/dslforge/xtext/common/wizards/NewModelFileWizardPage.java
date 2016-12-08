@@ -227,6 +227,7 @@ public class NewModelFileWizardPage extends AbstractNewResourceWizardPage {
 		layoutData.horizontalAlignment = GridData.FILL;
 		layoutData.grabExcessHorizontalSpace = true;
 		fileNameText.setLayoutData(layoutData);
+		fileNameText.setFocus();
 		fileNameText.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent event) {

@@ -70,6 +70,7 @@ public class NewFolderWizardPage extends AbstractNewResourceWizardPage {
 		layoutData.grabExcessHorizontalSpace=true;
 		layoutData.horizontalSpan=2;
 		folderNameText.setLayoutData(layoutData);
+		folderNameText.setFocus();
 		folderNameText.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent event) {
