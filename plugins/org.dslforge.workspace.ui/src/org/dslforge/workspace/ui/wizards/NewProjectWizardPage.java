@@ -146,7 +146,7 @@ public class NewProjectWizardPage extends WizardPage {
 		boolean isValid = true;
 		List<String> allExistingProjects = WorkspaceManager.INSTANCE.getAllProjectNames();
 		if (!allExistingProjects.isEmpty() && allExistingProjects.contains(projectNameText.getText())) {
-			setErrorMessage("A project with name " + projectNameText.getText() + " alread exists");
+			setErrorMessage("A project with name " + projectNameText.getText() + " already exists");
 			isValid = false;
 		}
 		return isValid;

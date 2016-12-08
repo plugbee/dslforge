@@ -82,6 +82,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 			setErrorMessage("File name cannot be empty.");
 			return false;
 		}
+		setErrorMessage(null);
 		IStructuredSelection iStructuredSelection = getInitialElementSelections().get(0);
 		IPath filePath = new Path(iStructuredSelection.getFirstElement().toString())
 				.append(fileNameText.getText() + "." + getSelectedFileExtension());
