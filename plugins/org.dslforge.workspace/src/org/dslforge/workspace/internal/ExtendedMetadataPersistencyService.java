@@ -106,6 +106,14 @@ public class ExtendedMetadataPersistencyService implements IPersistencyService{
 		deleteResource(computeProjectName(path), computeRelativePath(path));
 	}
 	
+	public List<String> getAllProjectNames() {
+		EntityManager em = getEmf().createEntityManager();
+		Query q = em.createQuery("select p.name from Project p");
+		List<String> projects = q.getResultList();
+		em.close();
+		return projects;
+	}
+	
 	private EntityManagerFactory getEmf() {
 		if (entityManagerFactory == null) {
 			entityManagerFactory = WorkspaceActivator.getEntityManagerFactory();

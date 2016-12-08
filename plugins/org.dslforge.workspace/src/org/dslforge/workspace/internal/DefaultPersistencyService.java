@@ -144,6 +144,15 @@ public class DefaultPersistencyService implements IPersistencyService{
 		deleteResource(computeProjectName(path), computeRelativePath(path));
 	}
 
+	public List<String> getAllProjectNames() {
+		EntityManager em = getEmf().createEntityManager();
+		Query q = em.createQuery("select p.name from Project p");
+		@SuppressWarnings("unchecked")
+		List<String> projects = q.getResultList();
+		em.close();
+		return projects;
+	}
+
 	private EntityManagerFactory getEmf() {
 		if (entityManagerFactory == null) {
 			entityManagerFactory = WorkspaceActivator.getEntityManagerFactory();
@@ -362,12 +371,10 @@ public class DefaultPersistencyService implements IPersistencyService{
 	}
 
 	private void dumpDatabase() {
-		dumpUsers();
-		dumpProjects();
-		dumpFolders();
-		dumpResources();
+		//deactivated.
 	}
-
+	
+	@SuppressWarnings("unused")
 	private void dumpUsers() {
 		List<User> users = getAllUsers();
 		for (User user : users) {
@@ -375,6 +382,7 @@ public class DefaultPersistencyService implements IPersistencyService{
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private void dumpProjects() {
 		List<Project> projectsList = getAllProjects();
 		for (Project project : projectsList) {
@@ -382,6 +390,7 @@ public class DefaultPersistencyService implements IPersistencyService{
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private void dumpFolders() {
 		List<Folder> folderList = getAllFolders();
 		for (Folder folder : folderList) {
@@ -389,6 +398,7 @@ public class DefaultPersistencyService implements IPersistencyService{
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private void dumpResources() {
 		List<Resource> resources = getAllResources();
 		for (Resource resource : resources) {

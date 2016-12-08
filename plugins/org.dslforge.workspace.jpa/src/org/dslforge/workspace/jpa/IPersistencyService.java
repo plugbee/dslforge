@@ -1,5 +1,7 @@
 package org.dslforge.workspace.jpa;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.IPath;
 
 public interface IPersistencyService {
@@ -27,5 +29,7 @@ public interface IPersistencyService {
 	void deleteFolder(IPath path);
 
 	void deleteResource(IPath path);
+
+	List<String> getAllProjectNames();
 
 }

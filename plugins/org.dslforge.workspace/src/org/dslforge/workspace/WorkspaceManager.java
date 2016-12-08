@@ -17,6 +17,9 @@ package org.dslforge.workspace;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Collections;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.dslforge.workspace.internal.DefaultPersistencyService;
@@ -24,7 +27,6 @@ import org.dslforge.workspace.internal.WorkspaceActivator;
 import org.dslforge.workspace.jpa.IPersistencyService;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.widgets.Display;
 
@@ -63,7 +65,12 @@ public class WorkspaceManager {
 			Display.getCurrent().syncExec(new Runnable() {
 				@Override
 				public void run() {
-					file.mkdir();
+					//file.mkdir();
+					try {
+						Files.createDirectory(file.toPath());
+					} catch (IOException e) {
+						logger.error(e,e.getCause());
+					}
 				}
 			});
 			String userId = (String) RWT.getUISession().getAttribute("user");
@@ -77,12 +84,16 @@ public class WorkspaceManager {
 	}
 
 	public File createFolder(final IPath path) {
-		final File file = path.toFile();
+		final File file = path.addTrailingSeparator().toFile();
 		if (!file.exists()) {
 			Display.getCurrent().syncExec(new Runnable() {
 				@Override
 				public void run() {
-					file.mkdir();
+					try {
+						Files.createDirectory(file.toPath());
+					} catch (IOException e) {
+						logger.error(e,e.getCause());
+					}
 				}
 			});
 			IPersistencyService dbservice = DefaultPersistencyService.getInstance();
@@ -101,7 +112,7 @@ public class WorkspaceManager {
 				@Override
 				public void run() {
 					try {
-						file.createNewFile();
+						Files.createFile(file.toPath());
 					} catch (IOException ex) {
 						logger.error(ex.getMessage(), ex);
 					}
@@ -185,8 +196,6 @@ public class WorkspaceManager {
 			logger.info("Resource deleted : " + file.getAbsolutePath());
 			return true;
 		}
-		MessageDialog.openInformation(null, "Forbidden Operation",
-				"File " + file.getPath() + " is currently locked. Please unlock file before deleting it.");
 		return false;
 	}
 
@@ -207,11 +216,20 @@ public class WorkspaceManager {
 					}
 				}
 				// delete the folder itself
-				delete(path);
+				if (file.list().length == 0) 
+					delete(path);
 			}
 		} else {
 			file.delete();
 			logger.info("File deleted : " + file.getAbsolutePath());
 		}
+	}
+
+	public List<String> getAllProjectNames() {
+		IPersistencyService dbservice = DefaultPersistencyService.getInstance();
+		if (dbservice.isRunning()) {
+			return dbservice.getAllProjectNames();
+		}
+		return Collections.emptyList();
 	}
 }
