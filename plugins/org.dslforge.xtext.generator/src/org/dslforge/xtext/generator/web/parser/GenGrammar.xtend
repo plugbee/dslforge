@@ -158,9 +158,9 @@ class GenGrammar extends AbstractGenerator {
 			val Pattern p = Pattern::compile("\\{(.+?)\\}")
 			val Matcher m = p.matcher(text)
 			while (m.find()) {
-			val group = m.group
-			if (!(group.substring(1, 2) == '\''))
-				text = text.replace(group, "")
+				val group = m.group
+				if (!(group.substring(1, 2) == '\''))
+					text = text.replace(group, "")
 			}			
 			//EOF
 			if (rules.get(0).equals(pr))
@@ -194,6 +194,13 @@ class GenGrammar extends AbstractGenerator {
 			if (!covered.contains(terminal.name)) {
 				var text = grammarDefinition.serializer.serialize(terminal, SaveOptions::defaultOptions)
 				text = text.replace("terminal ", "");
+				// ! => ~
+				val Pattern p = Pattern::compile("!\\(.+\\)")
+				val Matcher m = p.matcher(text)
+				while (m.find()) {
+					val group = m.group
+					text = text.replace(group, group.replaceFirst("!", "~"))
+				}
 				appendable.newLine.append(text + "\n");	
 			}
 		}
