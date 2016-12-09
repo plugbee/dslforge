@@ -142,15 +142,13 @@ public class «grammarShortName» extends BasicText {
 						editor.setReadOnly(!editable);
 						editor.$blockScrolling = Infinity;
 
-						//Set theme
-						editor.setTheme("ace/theme/eclipse");
-
 						//Configure content assist feature
 						this.langTools = ace.require("ace/ext/language_tools");
 						this.editor.setOptions({
 							enableBasicAutocompletion: true,
 							enableSnippets: true
 						});
+	
 						this.backendCompleter = {
 							getMode: function() {
 								return editor.getSession().getMode();
@@ -166,6 +164,9 @@ public class «grammarShortName» extends BasicText {
 							}
 						}
 						this.completers = editor.completers;
+
+						//Set theme
+						editor.setTheme("ace/theme/eclipse");
 
 						//Add text hover
 						var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;
