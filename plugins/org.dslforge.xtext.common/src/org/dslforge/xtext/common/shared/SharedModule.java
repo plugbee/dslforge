@@ -42,7 +42,7 @@ public class SharedModule  extends AbstractGenericModule{
 	}
 
 	protected void bindGlobalScopeProvider(Binder binder) {
-//		binder.bind(IGlobalScopeProvider.class).to(WebGlobalScopeProvider.class);
+		//binder.bind(IGlobalScopeProvider.class).to(WebGlobalScopeProvider.class);
 	}
 	
 	protected void bindContainerManager(Binder binder) {

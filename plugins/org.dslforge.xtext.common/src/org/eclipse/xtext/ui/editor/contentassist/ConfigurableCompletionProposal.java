@@ -1,6 +1,8 @@
 package org.eclipse.xtext.ui.editor.contentassist;
 
+import org.apache.log4j.Logger;
 import org.dslforge.styledtext.jface.ICompletionProposal;
+import org.dslforge.styledtext.jface.IDocument;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.swt.graphics.Image;
@@ -8,6 +10,8 @@ import org.eclipse.xtext.Keyword;
 
 public class ConfigurableCompletionProposal implements ICompletionProposal {
 
+	static final Logger logger = Logger.getLogger(ConfigurableCompletionProposal.class);
+	
 	private String replacementString;
 	private int replacementOffset;
 	private int replacementLength;
@@ -33,6 +37,16 @@ public class ConfigurableCompletionProposal implements ICompletionProposal {
 		this.additionalProposalInfo = additionalProposalInfo;
 	}
 
+	@Override
+	public void apply(IDocument document) {
+		String original = document.get();
+		try {
+			document.replace(getReplacementOffset(), getReplacementLength(), getReplacementString());
+		} catch (Exception ex) {
+			logger.error("Error applying completion proposal", ex);
+			document.set(original);
+		}
+	}
 	public int getReplacementOffset() {
 		return replacementOffset;
 	}

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 import org.dslforge.styledtext.BasicText;
 import org.dslforge.styledtext.jface.ICompletionProposal;
@@ -116,12 +115,7 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 				XtextContentAssistProcessor xtextContentAssistProcessor = (XtextContentAssistProcessor)contentAssistProcessor;
 				ICompletionProposal[] computedCompletionProposals = xtextContentAssistProcessor.computeCompletionProposals(getViewer(), xtextResource, offset);
 				if (computedCompletionProposals!=null) {
-					List<String> proposals = Lists.transform(Arrays.asList(computedCompletionProposals), new Function<ICompletionProposal, String>() {
-						public String apply(ICompletionProposal completionProposal) {
-							return completionProposal.getDisplayString() + ":" + completionProposal.getAdditionalProposalInfo();
-						}
-					});
-					setProposals(proposals);	
+					setProposals(Arrays.asList(computedCompletionProposals));	
 				}
 			}
 		});

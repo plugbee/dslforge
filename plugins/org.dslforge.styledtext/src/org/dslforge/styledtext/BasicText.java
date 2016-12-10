@@ -22,6 +22,7 @@ import java.util.EventListener;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.dslforge.styledtext.jface.ICompletionProposal;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.rap.json.JsonArray;
@@ -67,7 +68,7 @@ public class BasicText extends Composite {
 	private String status = "";
 	private List<Annotation> annotations = new ArrayList<Annotation>();
 	private List<String> scope = new ArrayList<String>();
-	private List<String> proposals = new ArrayList<String>();
+	private List<ICompletionProposal> proposals = new ArrayList<ICompletionProposal>();
 	private List<TextRange> markers = new ArrayList<TextRange>();
 	private int style;
 	private Listener listener;
@@ -869,17 +870,21 @@ public class BasicText extends Composite {
 	 * 
 	 * @param proposals
 	 */
-	public void setProposals(List<String> proposals) {
+	public void setProposals(List<ICompletionProposal> proposals) {
 		checkWidget();
 		if (proposals == null) {
 			SWT.error(SWT.ERROR_NULL_ARGUMENT);
 		}
 		this.proposals = proposals;
-		JsonArray array = new JsonArray();
-		for (String s : proposals) {
-			array.add(s);
+		JsonArray values = new JsonArray();
+		for (ICompletionProposal proposal : proposals) {
+			JsonObject value = new JsonObject();
+			value.add("display", proposal.getDisplayString());
+			value.add("replacement", proposal.getReplacementString());
+			value.add("type", proposal.getAdditionalProposalInfo());
+			values.add(value);
 		}
-		getRemoteObject().set("proposals", array);
+		getRemoteObject().set("proposals", values);
 	}
 	
 	/**
@@ -1013,7 +1018,7 @@ public class BasicText extends Composite {
 	 * 
 	 * @return the content assist proposals
 	 */
-	public List<String> getProposals() {
+	public List<ICompletionProposal> getProposals() {
 		checkWidget();
 		return proposals;
 	}

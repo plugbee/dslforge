@@ -3,7 +3,6 @@ package org.eclipse.xtext.ui.editor.contentassist;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
-import org.dslforge.styledtext.BasicText;
 import org.dslforge.styledtext.jface.ICompletionProposal;
 import org.dslforge.styledtext.jface.ITextViewer;
 import org.eclipse.xtext.resource.XtextResource;
@@ -17,7 +16,7 @@ public class CompletionProposalComputer implements ICompletionProposalAcceptor {
 	private final State state;
 	
 	private final Collection<ICompletionProposal> proposals;
-	
+
 	@Inject
 	private ContentAssistContext.Factory contextFactory;
 	

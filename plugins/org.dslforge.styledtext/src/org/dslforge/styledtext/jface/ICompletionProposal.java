@@ -78,7 +78,7 @@ public interface ICompletionProposal {
 	 *
 	 * @param document the document into which to insert the proposed completion
 	 */
-	//void apply(IDocument document);
+	void apply(IDocument document);
 
 	/**
 	 * Returns the new selection after the proposal has been applied to
@@ -116,6 +116,14 @@ public interface ICompletionProposal {
 	 */
 	String getDisplayString();
 
+	/**
+	 * Returns the string to be actually inserted in text.
+	 *
+	 * @return the string to be inserted
+	 *
+	 */
+	String getReplacementString();
+	
 	/**
 	 * Returns the image to be displayed in the list of completion proposals.
 	 * The image would typically be shown to the left of the display string.

@@ -112,6 +112,7 @@ public class «grammarShortName» extends BasicText {
 			construct : function(properties) {
 				this.base(arguments, properties);
 			},
+
 			members : {
 
 				createEditor : function() {
@@ -181,7 +182,7 @@ public class «grammarShortName» extends BasicText {
 	
 					 	//Initialize the completion proposals
 					 	proposals = this.proposals;
-					 	
+
 						//Handle the global index
 					 	if (this.useSharedWorker) {
 							if (typeof SharedWorker == 'undefined') {
@@ -189,7 +190,7 @@ public class «grammarShortName» extends BasicText {
 							} else {
 								//Compute worker's http URL
 								var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
-								var httpURL = computeWorkerPath(filePath);
+								var httpURL = this.computeWorkerPath(filePath);
 								var worker = this.worker = new SharedWorker(httpURL);
 								if (this.ready) {
 									editor.on("change", function(event) {
@@ -236,6 +237,7 @@ public class «grammarShortName» extends BasicText {
 					 	    // the cursor changed
 					 	    self.onChangeCursor();
 					 	});
+
 					 	editor.getSession().on('changeCursor', function() {
 					 	    if (editor.$mouseHandler.isMousePressed)  {
 					 	      // remove last stored values 
@@ -273,23 +275,7 @@ public class «grammarShortName» extends BasicText {
 				},
 
 				onCompletionRequest : function(pos, prefix, callback) {
-					if (this.isFocused) {
-						var remoteObject = rap.getRemoteObject(this);
-						if (remoteObject) {
-							remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
-						}
-						var proposals = this.proposals==null?[":"]:this.proposals;
-				        var wordList = Object.keys(proposals);
-				        callback(null, wordList.map(function(word) {
-				            return {
-				            	iconClass: " " + typeToIcon(proposals[word].split(":")[1]),
-				                name: word,
-				                value: proposals[word].split(":")[0],
-				                score: 1,
-				                meta: "[" + proposals[word].split(":")[1] + "]"
-				            };
-				        }));
-					}
+					this.base(arguments, pos, prefix, callback);
 				},
 
 				setProposals : function(proposals) {
@@ -322,27 +308,6 @@ public class «grammarShortName» extends BasicText {
 			}
 		});
 
-		var computeWorkerPath = function (path) {
-	        path = path.replace(/^[a-z]+:\/\/[^\/]+/, "");
-	        path = location.protocol + "//" + location.host
-	            + (path.charAt(0) == "/" ? "" : location.pathname.replace(/\/[^\/]*$/, ""))
-	            + "/" + path.replace(/^[\/]+/, "");
-	        return path;
-	    };
-
-		var typeToIcon = function(type) {
-			var cls = "ace-";
-			var suffix;
-			if (type == "?") suffix = "unknown";
-			else if (type == "keyword") suffix = type;
-			else if (type == "identifier") suffix = type;
-			else if (type == "snippet") suffix = "snippet";
-			else if (type == "number" || type == "string" || type == "bool") suffix = type;
-			else if (/^fn\(/.test(type)) suffix = "fn";
-			else if (/^\[/.test(type)) suffix = "array";
-			else suffix = "object";
-			return cls + "completion " + cls + "completion-" + suffix;
-		};
 	}());
 	'''
 }

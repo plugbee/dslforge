@@ -38,6 +38,7 @@ import org.dslforge.styledtext.ITextSaveListener;
 import org.dslforge.styledtext.TextChangedEvent;
 import org.dslforge.styledtext.TextSavedEvent;
 import org.dslforge.styledtext.TextSelection;
+import org.dslforge.styledtext.jface.ICompletionProposal;
 import org.dslforge.styledtext.jface.IDocument;
 import org.dslforge.styledtext.jface.ITextViewer;
 import org.dslforge.styledtext.jface.TextDocument;
@@ -595,7 +596,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		viewer.getTextWidget().setScope(scope);
 	}
 	
-	protected void setProposals(List<String> proposals) {
+	protected void setProposals(List<ICompletionProposal> proposals) {
 		viewer.getTextWidget().setProposals(proposals);
 	}
 

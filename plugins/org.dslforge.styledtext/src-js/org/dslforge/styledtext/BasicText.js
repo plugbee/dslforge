@@ -59,9 +59,9 @@
 			langTools: null,
 			annotations: [],
 			scope: [],
+			proposals: [],
 			completers: null,
 			backendCompleter: null,
-			proposals: [":"],
 			selectionStart:0,
 			selectionEnd:0,
 			useSharedWorker: true,
@@ -148,7 +148,7 @@
 					}
 				}
 				//clear proposals
-				this.proposals= [":"];
+				this.proposals= [];
 			},
 
 			onRender : function() {
@@ -168,22 +168,23 @@
 					remoteObject.notify("CaretEvent", { value : this.editor.getCursorPosition()});
 				}				
 			},
-			
+
 			onCompletionRequest : function(pos, prefix, callback) {
 				if (this.isFocused) {
 					var remoteObject = rap.getRemoteObject(this);
 					if (remoteObject) {
 						remoteObject.call("getProposals", { value : this.editor.getValue(), pos : pos, prefix : prefix});
 					}	
-					var proposals = this.proposals==null?[":"]:this.proposals;		
+					var proposals = this.proposals;		
 			        var wordList = Object.keys(proposals);
+			        var self = this;
 			        callback(null, wordList.map(function(word) {
 			            return {
-			            	iconClass: " " + typeToIcon(proposals[word].split(":")[1]),
+			            	iconClass: " " + self.typeToIcon(proposals[word].type),
 			                name: word,
-			                value: proposals[word].split(":")[0],
+			                value: proposals[word].replacement,
 			                score: 1,
-			                meta: "[" + proposals[word].split(":")[1] + "]"
+			                meta: "[" + proposals[word].type + "]"
 			            };
 			        }));	
 				}
@@ -267,8 +268,6 @@
 			setAnnotations : function(newAnnotations) {
 				if (this.ready) {
 					//remove old server annotations
-					//var annotations = this.annotations != null ? this.annotations : this.editor.session.getAnnotations();
-					
 					var annotations = this.editor.session.getAnnotations();
 					for (var i = annotations.length; i--;) {
 						annotations.pop(annotations[i]);
@@ -436,7 +435,7 @@
 					
 					//Initialize the completion proposals
 					if (this.proposals==null) 
-						this.proposals=[":"];
+						this.proposals=[];
 					
 					var self = this;
 					this.backendCompleter = {	
@@ -469,7 +468,7 @@
 						} else {
 							//create the shared worker
 							var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
-							var httpURL = computeWorkerPath(filePath);
+							var httpURL = this.computeWorkerPath(filePath);
 							var worker = this.worker = new SharedWorker(httpURL);	 			
 							if (this.ready) {
 								editor.on("change", function(event) {
@@ -505,7 +504,7 @@
 				 	
 				 	//On mouse down event
 				 	editor.on("mousedown", function() { 
-				 	    // Store the Row/column values 
+				 	    // Store the Row/column values
 				 	}) 
 
 				 	//On cursor move event
@@ -516,12 +515,6 @@
 				 	    // the cursor changed
 				 	    self.onChangeCursor();
 				 	});
-				 	editor.getSession().on('changeCursor', function() { 
-				 	    if (editor.$mouseHandler.isMousePressed)  {
-				 	      // remove last stored values 
-				 	    }
-				 	    // Store the Row/column values 
-				 	}); 
 
 				 	//On text change event
 					editor.on("change", function(event) {					        
@@ -565,23 +558,31 @@
 					this.element.style.height = (area[3]-5) + 'px';
 					this.editor.resize();
 				}
+			},
+			
+			computeWorkerPath : function (path) {
+		        path = path.replace(/^[a-z]+:\/\/[^\/]+/, ""); // Remove domain name and rebuild path
+		        path = location.protocol + "//" + location.host
+		            + (path.charAt(0) == "/" ? "" : location.pathname.replace(/\/[^\/]*$/, ""))
+		            + "/" + path.replace(/^[\/]+/, "");
+		        return path;
+		    },
+		    
+			typeToIcon : function(type) {
+				var cls = "ace-";
+				var suffix;
+				if (type == "?") suffix = "unknown";
+				else if (type == "keyword") suffix = type;
+				else if (type == "identifier") suffix = type;
+				else if (type == "snippet") suffix = "snippet";
+				else if (type == "number" || type == "string" || type == "bool") suffix = type;
+				else if (/^fn\(/.test(type)) suffix = "fn";
+				else if (/^\[/.test(type)) suffix = "array";
+				else suffix = "object";
+				return cls + "completion " + cls + "completion-" + suffix;
 			}
 		}
 	});
-
-	var typeToIcon = function(type) {
-		var cls = "ace-";
-		var suffix;
-		if (type == "?") suffix = "unknown";
-		else if (type == "keyword") suffix = type;
-		else if (type == "identifier") suffix = type;
-		else if (type == "snippet") suffix = "snippet";
-		else if (type == "number" || type == "string" || type == "bool") suffix = type;
-		else if (/^fn\(/.test(type)) suffix = "fn";
-		else if (/^\[/.test(type)) suffix = "array";
-		else suffix = "object";
-		return cls + "completion " + cls + "completion-" + suffix;
-	};
 
 	var bind = function(context, method) {
 		return function() {
@@ -601,13 +602,5 @@
 			func.apply(context);
 		}, 0);
 	};
-
-	var computeWorkerPath = function (path) {
-        path = path.replace(/^[a-z]+:\/\/[^\/]+/, ""); // Remove domain name and rebuild path
-        path = location.protocol + "//" + location.host
-            + (path.charAt(0) == "/" ? "" : location.pathname.replace(/\/[^\/]*$/, ""))
-            + "/" + path.replace(/^[\/]+/, "");
-        return path;
-    };
     
 }());
