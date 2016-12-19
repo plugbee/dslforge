@@ -16,15 +16,13 @@
 package org.dslforge.workspace.ui;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.dslforge.workspace.IWorkspaceListener;
+import org.dslforge.workspace.WorkspaceManager;
 import org.dslforge.workspace.internal.WorkspaceActivator;
-import org.dslforge.workspace.internal.WorkspaceEventWatcher;
 import org.dslforge.workspace.ui.actions.OpenResourceAction;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.action.IAction;
@@ -63,7 +61,7 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
 
 	private List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
-	private WorkspaceEventWatcher directoryWatcher;
+
 	private ServerPushSession pushSession;
 
 	private ISelectionChangedListener selectionListener = new ISelectionChangedListener() {
@@ -102,15 +100,11 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 	}
 
 	private void serverPushSessionOn(String workspaceRoot) {
-		directoryWatcher = new WorkspaceEventWatcher(Paths.get(workspaceRoot));
-		try {
-			directoryWatcher.start();
-		} catch (IOException ex) {
-			logger.error(ex.getMessage(), ex);
+		if (WorkspaceManager.INSTANCE.isRunning()) {
+			WorkspaceManager.INSTANCE.addWorkspaceListener(this);
+			pushSession = new ServerPushSession();
+			pushSession.start();	
 		}
-		directoryWatcher.addListener(this);
-		pushSession = new ServerPushSession();
-		pushSession.start();
 	}
 
 	@Override
@@ -199,11 +193,10 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 
 	private void serverPushSessionOff() {
 		pushSession.stop();
-		directoryWatcher.stop();
-		directoryWatcher.removeListener(this);
+		WorkspaceManager.INSTANCE.removeWorkspaceListener(this);
 	}
 
-	public String getWorkspaceRoot() {
+	public static String getWorkspaceRoot() {
 		return rootPath.toString();
 	}
 
