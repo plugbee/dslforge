@@ -17,11 +17,28 @@ package org.dslforge.workspace;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.ClosedWatchServiceException;
+import java.nio.file.FileSystems;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.dslforge.workspace.internal.AbstractWorkspaceEventWatcher;
 import org.dslforge.workspace.internal.DefaultPersistencyService;
 import org.dslforge.workspace.internal.WorkspaceActivator;
 import org.dslforge.workspace.jpa.IPersistencyService;
@@ -30,21 +47,44 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.widgets.Display;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+
 public class WorkspaceManager {
 
 	static final Logger logger = Logger.getLogger(WorkspaceManager.class);
 
 	public static WorkspaceManager INSTANCE = new WorkspaceManager();
 
-	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
+	private final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
 
+	private static WorkspaceEventWatcher directoryWatcher;
+	
 	private WorkspaceManager() {
+		directoryWatcher = new WorkspaceEventWatcher(Paths.get(getWorkspaceRoot()));
+		try {
+			directoryWatcher.start();
+		} catch (IOException ex) {
+			logger.error(ex.getMessage(), ex);
+		}
 		IPersistencyService dbservice = DefaultPersistencyService.getInstance();
 		if (dbservice.isRunning()) {
 			logger.info("Database service notified with root path [" + rootPath + "]");
 		}
 	}
 
+	public boolean isRunning() {
+		return directoryWatcher.isRunning();
+	}
+	
+	public void addWorkspaceListener(IWorkspaceListener listener) {
+		directoryWatcher.addListener(listener);
+	}
+
+	public void removeWorkspaceListener(IWorkspaceListener listener) {
+		directoryWatcher.removeListener(listener);
+	}
+	
 	public String getWorkspaceRootStringPath() {
 		return rootPath.toString();
 	}
@@ -232,4 +272,135 @@ public class WorkspaceManager {
 		}
 		return Collections.emptyList();
 	}
+	
+	public String getWorkspaceRoot() {
+		return rootPath.toString();
+	}
+	
+	public static class WorkspaceEventWatcher extends AbstractWorkspaceEventWatcher {
+
+	    private volatile FutureTask<Integer> watchTask;
+	    private volatile WatchService watchService;   
+	    private volatile BiMap<WatchKey, java.nio.file.Path> keys;
+	    
+	    private volatile boolean keepWatching = true;
+	    private final java.nio.file.Path startPath;
+	    
+	    public WorkspaceEventWatcher(java.nio.file.Path rootPath) {
+	        startPath = rootPath;
+	    }
+	    
+		@Override
+	    public void start() throws IOException {
+	        initWatchService();
+	        registerDirectory(startPath);
+	        
+	        watchTask = new FutureTask<Integer>(new Callable<Integer>() {
+
+	            @Override
+	            public Integer call() throws Exception {
+	                while (keepWatching) {
+	                	try {
+		                    WatchKey watchKey = watchService.poll(10, TimeUnit.SECONDS);
+		                    if(watchKey != null && keys.containsKey(watchKey)) {
+			                    List<WatchEvent<?>> events = watchKey.pollEvents();
+			                    for (WatchEvent<?> event : events) {
+			                		WatchEvent.Kind<?> kind = event.kind();
+			                        if (kind == StandardWatchEventKinds.OVERFLOW)
+			                            continue;
+			                		@SuppressWarnings("unchecked")
+			                		final WatchEvent<java.nio.file.Path> ev = (WatchEvent<java.nio.file.Path>) event;
+			                		java.nio.file.Path path = ev.context();
+			                		java.nio.file.Path parent = keys.get(watchKey);
+			                		java.nio.file.Path resolved = parent.resolve(path);
+			                		if(!resolved.toFile().exists()) {
+			                			if (kind.equals(StandardWatchEventKinds.ENTRY_DELETE)) {
+			                				if(keys.containsValue(resolved)) {
+			                					keys.inverse().remove(resolved);
+			                				}
+			                			}
+			                		}
+			                        boolean directory = Files.isDirectory(resolved, LinkOption.NOFOLLOW_LINKS);
+			                        if (directory) {
+			                    		if (kind.equals(StandardWatchEventKinds.ENTRY_CREATE))
+			                    			registerDirectory(resolved);
+			                        }
+			                        notifyListeners(event);
+			                    }
+			                    if (!watchKey.reset()) {
+			                    	logger.info("Watch key no longer valid: " + keys.get(watchKey).toString());
+			                    }
+		                    }
+	                	} catch (ClosedWatchServiceException ex) {
+	                		 logger.warn("The watch service has been closed, or it is closed while waiting for the next key");
+	                	} catch(InterruptedException ex) {
+	                		logger.warn("The watch service has been interrupted");
+	                	}
+	                }	
+	                return 1;
+	            }
+
+				@SuppressWarnings("unused")
+				private void dump() {
+					Set<Entry<java.nio.file.Path, WatchKey>> entrySet = keys.inverse().entrySet();
+					for (Entry<java.nio.file.Path, WatchKey> entry: entrySet)
+						logger.info("Workspace still watching: " + entry.getKey());
+				}
+	        });
+	        startWatching(watchTask);
+	    }
+
+	    @Override
+	    public boolean isRunning() {
+	        return watchTask != null && !watchTask.isDone();
+	    }
+
+	    @Override
+	    public void stop() {
+	    	keys.clear();
+	    	directoryWatcher.stop();
+	        keepWatching = false;
+	        watchTask = null;
+	    }
+
+	    private void startWatching(FutureTask<Integer> watchTask) {
+	        new Thread(watchTask).start();
+	    }
+	    
+	    private void registerDirectory(java.nio.file.Path path) throws IOException {
+	        WatchServiceRegisteringVisitor visitor = new WatchServiceRegisteringVisitor();
+	        try {
+	        	WatchKey key = path.register(watchService, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY); 	
+		        if (!keys.containsKey(key)) {
+					logger.info("Registering file path " + path.toString());
+					keys.put(key, path);
+					Files.walkFileTree(path, visitor);
+		        }
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			}
+	    }
+	    
+		private class WatchServiceRegisteringVisitor extends SimpleFileVisitor<java.nio.file.Path> {
+			@Override
+			public FileVisitResult preVisitDirectory(java.nio.file.Path dir, BasicFileAttributes attrs) throws IOException {
+				if (keys.containsKey(dir))
+					return FileVisitResult.CONTINUE;
+				if (dir.getFileName().toString().equals(IWorkspaceConstants.METADATA_FOLDER))
+					return FileVisitResult.SKIP_SUBTREE;
+				registerDirectory(dir);
+				return FileVisitResult.CONTINUE;
+			}
+		}
+	    
+
+	    private WatchService initWatchService() throws IOException {
+	        if (watchService == null) {
+	            watchService = FileSystems.getDefault().newWatchService();
+	            keys = HashBiMap.create();
+	        }
+	        return watchService;
+	    }
+	}
+
 }
