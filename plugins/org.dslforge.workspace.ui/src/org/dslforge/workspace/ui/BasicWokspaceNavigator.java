@@ -75,6 +75,7 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 	public void init(IViewSite site) throws PartInitException {
 		super.init(site);
 		site.getPage().addPartListener(this);
+		serverPushSessionOn(getWorkspaceRoot());
 	}
 
 	@Override
@@ -96,14 +97,14 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 		getCommonViewer().setContentProvider(new FileSystemContentProvider());
 		getCommonViewer().setLabelProvider(new FileSystemLabelProvider());
 		getCommonViewer().setInput(new File(workspaceRoot));
-		serverPushSessionOn(workspaceRoot);
 	}
 
 	private void serverPushSessionOn(String workspaceRoot) {
 		if (WorkspaceManager.INSTANCE.isRunning()) {
 			WorkspaceManager.INSTANCE.addWorkspaceListener(this);
 			pushSession = new ServerPushSession();
-			pushSession.start();	
+			pushSession.start();
+			logger.info("Starting server push session...");
 		}
 	}
 
@@ -192,8 +193,11 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 	}
 
 	private void serverPushSessionOff() {
-		pushSession.stop();
-		WorkspaceManager.INSTANCE.removeWorkspaceListener(this);
+		if (pushSession!=null) {
+			pushSession.stop();
+			WorkspaceManager.INSTANCE.removeWorkspaceListener(this);
+			logger.info("Stopping server push session.");
+		}
 	}
 
 	public static String getWorkspaceRoot() {
