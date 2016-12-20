@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>dslforge.releng</groupId>
 		<artifactId>org.dslforge.tooling.releng.parent</artifactId>
-		<version>0.9.0-SNAPSHOT</version>
+		<version>0.9.1-SNAPSHOT</version>
 		<relativePath>../../releng/org.dslforge.tooling.releng/parent/pom.xml</relativePath>
 	</parent>
 	<groupId>dslforge.plugins</groupId>
 	<artifactId>org.dslforge.antlr.ui</artifactId>
-	<version>0.9.0-SNAPSHOT</version>
+	<version>0.9.1-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 	<name>org.dslforge.antlr.ui</name>
 	<build>

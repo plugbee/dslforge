@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DSL Forge ANTLR Generator for ACE
 Bundle-SymbolicName: org.dslforge.ace.generator
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 0.9.1.qualifier
 Bundle-Activator: org.dslforge.ace.generator.internal.Activator
 Bundle-Vendor: PlugBee
 Require-Bundle: org.eclipse.core.runtime,
