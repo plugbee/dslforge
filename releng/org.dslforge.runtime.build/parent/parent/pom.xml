@@ -39,7 +39,7 @@
 						<artifact>
 							<groupId>dslforge.releng</groupId>
 							<artifactId>${platform.version.name}</artifactId>
-							<version>0.9.0-SNAPSHOT</version>
+							<version>0.9.1-SNAPSHOT</version>
 						</artifact>
 					</target>
 					<environments>
@@ -401,5 +401,5 @@
 			</build>
 		</profile>
 	</profiles>
-	<version>0.9.0-SNAPSHOT</version>
+	<version>0.9.1-SNAPSHOT</version>
 </project>

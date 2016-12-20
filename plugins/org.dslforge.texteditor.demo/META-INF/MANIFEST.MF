@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse RAP Text Editor Demo
 Bundle-Vendor: PlugBee
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 0.9.1.qualifier
 Bundle-SymbolicName: org.dslforge.texteditor.demo;singleton:=true
 Bundle-Activator: org.dslforge.texteditor.demo.internal.Activator
 Require-Bundle: org.eclipse.rap.ui

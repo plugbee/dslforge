@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>dslforge.releng</groupId>
 		<artifactId>org.dslforge.runtime.releng.parent</artifactId>
-		<version>0.9.0-SNAPSHOT</version>
+		<version>0.9.1-SNAPSHOT</version>
 		<relativePath>../../releng/org.dslforge.runtime.releng/parent/pom.xml</relativePath>
 	</parent>
 	<groupId>dslforge.plugins</groupId>
 	<artifactId>org.dslforge.workspace.jpa</artifactId>
-	<version>0.9.0-SNAPSHOT</version>
+	<version>0.9.1-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 	<name>org.dslforge.workspace.jpa</name>
 </project>
