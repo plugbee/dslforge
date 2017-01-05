@@ -21,7 +21,7 @@
 		destructor : "destroy",	 
 		properties : [ "url", "text", "editable", "status", "annotations", "scope", "proposals", "font", "dirty", "markers", "background"],
 		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut", "Selection", "CaretEvent", "ContentAssist"],
-		methods : ["addMarker", "insertText", "removeText", "setProposals"]
+		methods : ["addMarker", "removeMarker", "clearMarkers", "insertText", "removeText", "setProposals"]
 	});
 
 	rwt.qx.Class.define("org.dslforge.styledtext.BasicText", {
@@ -58,6 +58,7 @@
 			initialContent: true,
 			langTools: null,
 			annotations: [],
+			markers: [],
 			scope: [],
 			proposals: [],
 			completers: null,
@@ -137,7 +138,6 @@
 					remoteObject.notify("FocusOut", { value : this.editor.getValue()});					
 					var range = this.editor.getSelection().getRange();
 					if (range.start.row != range.end.row || range.start.column !=range.end.column) {
-						//there is a selection
 						remoteObject.notify("Selection", {
 							value: this.editor.getSession().doc.getTextRange(range),
 							rowStart: range.start.row, 
@@ -147,7 +147,6 @@
 						});
 					}
 				}
-				//clear proposals
 				this.proposals= [];
 			},
 
@@ -343,9 +342,19 @@
 					}
 				}
 			},
+
+			clearMarkers : function(markers) {
+				if (this.ready) {
+					var markers = this.editor.getSession().getMarkers(false);					 
+			        Object.keys(markers).forEach(function(key) {
+			        	if (markers[key].clazz ==="ace_debug_line")
+							this.editor.getSession().removeMarker(markers[key].id);
+			        }, this);
+				}
+			},
 			
 			setMarkers : function(markers) {
-				if (this.ready) {
+				if (this.ready) {					
 					this.markers = markers;
 					for (var i = this.markers.length; i--;) {
 						var marker = this.markers[i];
@@ -364,20 +373,30 @@
 			},
 			
 			addMarker : function(marker) {
-				if(this.editor) {
+				if(this.ready) {
 					var Range = ace.require("ace/range").Range;
 					var range = new Range(marker.rowStart,marker.rowEnd,marker.columnStart,marker.columnEnd);	
-					this.editor.getSession().addMarker(range,"ace_selected_word", "text");
-					//this.editor.getSession().addMarker(range, "ace_debug_line", "line");
+					//this.editor.getSession().addMarker(range,"ace_selected_word", "text");
+					this.editor.getSession().addMarker(range, "ace_debug_line", "line");
 					ace.require("ace/lib/dom").importCssString('.ace_debug_line {\
 					    background-color: aquamarine;\
 					    position: absolute;\
 					}');	
 				}
 			},
+			
+			removeMarker : function(marker) {
+				if (this.ready) {
+					var markers = this.editor.getSession().getMarkers(false);					 
+			        Object.keys(markers).forEach(function(key) {
+			        	if (markers[key].id === marker.id)
+			        		this.editor.getSession().removeMarker(markers[key].id);
+			        }, this);
+				}
+			},
 
 			insertText : function(properties) {
-				if (this.editor) {
+				if (this.ready) {
 					var position = { row:properties.rowStart, column:properties.columnStart};
 					var text = properties.text;
 					this.editor.getSession().insert(position, text); //where position is an object of the form {row:number, column:number}
@@ -385,7 +404,7 @@
 			},
 
 			removeText : function(properties) {
-				if (this.editor) {			        
+				if (this.ready) {			        
 					var range = this.editor.getSelectionRange();
 					if (range.start.row != range.end.row || range.start.column !=range.end.column) {
 			            this.editor.getSession().remove(range);

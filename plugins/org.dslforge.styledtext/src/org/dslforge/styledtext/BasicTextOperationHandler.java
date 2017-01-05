@@ -22,14 +22,6 @@ import org.eclipse.rap.rwt.internal.protocol.ControlOperationHandler;
 public class BasicTextOperationHandler extends ControlOperationHandler<BasicText> {
 
 	private static final long serialVersionUID = 9146615886023898621L;
-
-	static final String PROP_TEXT = "text";
-	static final String PROP_SELECTION = "selection";
-	static final String PROP_ISSUE= "issue";
-	static final String PROP_SCOPE = "scope";
-	static final String PROP_STATUS = "status";
-	static final String PROP_STATUS_VALID = "valid";
-	static final String PROP_STATUS_INVALID = "invalid";
 	
 	public BasicTextOperationHandler(BasicText control) {
 		super(control);

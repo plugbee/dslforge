@@ -888,6 +888,56 @@ public class BasicText extends Composite {
 	}
 	
 	/**
+	 * Adds a marker for the given text range
+	 * 
+	 * @param text range
+	 */
+	public void addMarker(TextRange range) {
+		checkWidget();
+		if (range == null) {
+			SWT.error(SWT.ERROR_NULL_ARGUMENT);
+		}
+		this.markers.add(range);
+		
+		JsonObject properties = new JsonObject();
+		properties.add("rowStart", range.rowStart);
+		properties.add("columnStart", range.columnStart);
+		properties.add("rowEnd", range.rowEnd);
+		properties.add("columnEnd", range.columnEnd);
+		getRemoteObject().call("addMarker", properties);
+	}
+	
+	/**
+	 * Removes a marker for the given text range
+	 * 
+	 * @param text range
+	 */
+	public void removeMarker(TextRange range) {
+		checkWidget();
+		if (range == null) {
+			SWT.error(SWT.ERROR_NULL_ARGUMENT);
+		}
+		this.markers.remove(range);
+		
+		JsonObject properties = new JsonObject();
+		properties.add("rowStart", range.rowStart);
+		properties.add("columnStart", range.columnStart);
+		properties.add("rowEnd", range.rowEnd);
+		properties.add("columnEnd", range.columnEnd);
+		getRemoteObject().call("removeMarker", properties);
+	}
+	
+	/**
+	 * Clears all the markers
+	 */
+	public void clearMarkers() {
+		checkWidget();
+		this.markers.clear();
+		JsonObject properties = new JsonObject();
+		getRemoteObject().call("clearMarkers", properties);
+	}
+
+	/**
 	 * Sets markers for the given text ranges
 	 * 
 	 * @param text ranges
