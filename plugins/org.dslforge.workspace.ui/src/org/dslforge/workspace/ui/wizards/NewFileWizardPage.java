@@ -15,6 +15,7 @@
  */
 package org.dslforge.workspace.ui.wizards;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,10 +83,8 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 			setErrorMessage("File name cannot be empty.");
 			return false;
 		}
-		setErrorMessage(null);
-		IStructuredSelection iStructuredSelection = getInitialElementSelections().get(0);
-		IPath filePath = new Path(iStructuredSelection.getFirstElement().toString())
-				.append(fileNameText.getText() + "." + getSelectedFileExtension());
+		setErrorMessage(null);			
+		IPath filePath = getFilePath();
 		if (filePath.toFile().exists()) {
 			setErrorMessage("A file with equal name already exist.");
 			return false;
@@ -107,7 +106,12 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 	public IPath getFilePath() {
 		IStructuredSelection iStructuredSelection = getInitialElementSelections().get(0);
-		return new Path(iStructuredSelection.getFirstElement().toString()).append(fileNameText.getText());
+		Path containerPath = new Path(iStructuredSelection.getFirstElement().toString());
+		if(!containerPath.toFile().isDirectory()) {
+			File parentFile = containerPath.toFile().getParentFile();
+			containerPath = new Path(parentFile.getAbsolutePath());
+		}
+		return containerPath.append(fileNameText.getText());
 	}
 	
 	@Override
