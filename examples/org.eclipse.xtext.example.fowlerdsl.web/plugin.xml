@@ -21,11 +21,12 @@
    </extension>
    <extension point="org.eclipse.ui.editors">
       <editor
+            class="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineEditor"
+            contributorClass="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineActionBarContributor"
+            extensions="statemachine"
+            icon="icons/model.png"
             id="org.eclipse.xtext.example.fowlerdsl.web.editor"
-            name="Statemachine Model Editor"
-		            extensions="statemachine"
-           class="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineEditor"
-            contributorClass="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineActionBarContributor">
+            name="Statemachine Model Editor">
       </editor>
    </extension>
    <extension

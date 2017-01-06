@@ -21,11 +21,12 @@
    </extension>
    <extension point="org.eclipse.ui.editors">
       <editor
+            class="org.xtext.example.mydsl.web.editor.MyDslEditor"
+            contributorClass="org.xtext.example.mydsl.web.editor.MyDslActionBarContributor"
+            extensions="mydsl"
+            icon="icons/model.png"
             id="org.xtext.example.mydsl.web.editor"
-            name="MyDsl Model Editor"
-		            extensions="mydsl"
-           class="org.xtext.example.mydsl.web.editor.MyDslEditor"
-            contributorClass="org.xtext.example.mydsl.web.editor.MyDslActionBarContributor">
+            name="MyDsl Model Editor">
       </editor>
    </extension>
    <extension

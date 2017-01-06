@@ -21,11 +21,12 @@
    </extension>
    <extension point="org.eclipse.ui.editors">
       <editor
+            class="org.eclipse.xtext.example.domainmodel.web.editor.DomainmodelEditor"
+            contributorClass="org.eclipse.xtext.example.domainmodel.web.editor.DomainmodelActionBarContributor"
+            extensions="dmodel"
+            icon="icons/model.png"
             id="org.eclipse.xtext.example.domainmodel.web.editor"
-            name="Domainmodel Model Editor"
-		            extensions="dmodel"
-           class="org.eclipse.xtext.example.domainmodel.web.editor.DomainmodelEditor"
-            contributorClass="org.eclipse.xtext.example.domainmodel.web.editor.DomainmodelActionBarContributor">
+            name="Domainmodel Model Editor">
       </editor>
    </extension>
    <extension

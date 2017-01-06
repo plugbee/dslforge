@@ -21,11 +21,12 @@
    </extension>
    <extension point="org.eclipse.ui.editors">
       <editor
+            class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdEditor"
+            contributorClass="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdActionBarContributor"
+            extensions="hbtext"
+            icon="icons/model.png"
             id="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor"
-            name="Hummingbird Model Editor"
-		            extensions="hbtext"
-           class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdEditor"
-            contributorClass="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdActionBarContributor">
+            name="Hummingbird Model Editor">
       </editor>
    </extension>
    <extension

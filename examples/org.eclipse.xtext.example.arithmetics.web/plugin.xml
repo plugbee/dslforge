@@ -21,11 +21,12 @@
    </extension>
    <extension point="org.eclipse.ui.editors">
       <editor
+            class="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsEditor"
+            contributorClass="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsActionBarContributor"
+            extensions="calc"
+            icon="icons/model.png"
             id="org.eclipse.xtext.example.arithmetics.web.editor"
-            name="Arithmetics Model Editor"
-		            extensions="calc"
-           class="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsEditor"
-            contributorClass="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsActionBarContributor">
+            name="Arithmetics Model Editor">
       </editor>
    </extension>
    <extension

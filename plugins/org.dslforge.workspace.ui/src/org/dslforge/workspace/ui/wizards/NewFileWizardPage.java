@@ -19,6 +19,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.dslforge.workspace.ui.internal.IFileExtensionHandler;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -45,17 +46,8 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 	private Combo languageNameCombo;
 	private String languageName = null;
 
-	public static final Map<String, String> getAavailableFileExtensions() {
-		Map<String, String> availableFileExtensions = new HashMap<String, String>();
-		availableFileExtensions.put("Java", "java");
-		availableFileExtensions.put("JavaScript", "js");
-		availableFileExtensions.put("Json", "json");
-		return availableFileExtensions;
-	}
-	
-
 	protected String getSelectedFileExtension() {
-		return getAavailableFileExtensions().get(languageNameCombo.getText());
+		return IFileExtensionHandler.getAavailableFileExtensions().get(languageNameCombo.getText());
 	}
 	
 	protected ModifyListener validator = new ModifyListener() {
@@ -89,14 +81,14 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 			setErrorMessage("A file with equal name already exist.");
 			return false;
 		}
-		if (fileName.endsWith(".java")) {
+		if (fileName.endsWith(IFileExtensionHandler.JAVA_EXTENSION)) {
 			languageNameCombo.select(0);
 			return true;
-		} else if (fileName.endsWith(".js")) {
+		} else if (fileName.endsWith(IFileExtensionHandler.JS_EXTENSION)) {
 			languageNameCombo.select(1);
 			return true;
 		}
-		else if (fileName.endsWith(".json")) {
+		else if (fileName.endsWith(IFileExtensionHandler.JSON_EXTENSION)) {
 			languageNameCombo.select(2);
 			return true;
 		} else {
@@ -203,7 +195,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 
 	public void initializeLanguageCombo() {
 		if (languageName == null) {
-			for (String objectName : getAavailableFileExtensions().keySet()) {
+			for (String objectName : IFileExtensionHandler.getAavailableFileExtensions().keySet()) {
 				languageNameCombo.add(objectName);
 			}
 			if (languageNameCombo.getItemCount() == 1) {

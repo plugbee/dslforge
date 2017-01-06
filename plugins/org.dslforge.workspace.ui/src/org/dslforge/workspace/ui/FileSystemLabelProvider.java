@@ -20,6 +20,7 @@ import java.io.File;
 import org.dslforge.workspace.internal.WorkspaceActivator;
 import org.dslforge.workspace.ui.internal.Activator;
 import org.dslforge.workspace.ui.internal.BasicWorkbenchImageProvider;
+import org.dslforge.workspace.ui.internal.IFileExtensionHandler;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -42,17 +43,23 @@ public class FileSystemLabelProvider implements ILabelProvider {
 			if (file.isDirectory()) {
 				return Activator.getImageDescriptor(BasicWorkbenchImageProvider.FOLDER).createImage();
 			}
-	
-			String fileName = file.getName();
-			int i = fileName.lastIndexOf('.');
-			if (i > 0) {
-			    String extension = fileName.substring(i+1);
-			    if (extension.equals("java")) {
+			int index = file.getName().lastIndexOf('.');
+			if (index > 0) {
+			    String extension = file.getName().substring(index+1);
+			    if (extension.equals(IFileExtensionHandler.JAVA_EXTENSION)) {
 			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.JAVA).createImage();
-			    } else if(extension.equals("class")) {
+			    } 
+			    else if(extension.equals(IFileExtensionHandler.BINARY_EXTENSION)) {
 			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.BINARY).createImage();	
-			    } else if (extension.equals("txt")) {
-			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.FILE).createImage();	 	
+			    } 
+			    else if (extension.equals(IFileExtensionHandler.JS_EXTENSION) || extension.equals(IFileExtensionHandler.JSON_EXTENSION)) {
+			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.JS).createImage();
+			    }
+			    else if (extension.equals(IFileExtensionHandler.TEXT_EXTENSION)) {
+			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.FILE).createImage();
+			    }
+			    else {
+			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.MODEL).createImage();	 	
 			    }
 			}
 			return Activator.getImageDescriptor(BasicWorkbenchImageProvider.MODEL).createImage();
