@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.log4j.Logger;
-import org.dslforge.workspace.ui.PathEditorInput;
+import org.dslforge.texteditor.PathEditorInput;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.content.IContentType;

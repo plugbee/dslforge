@@ -1,4 +1,4 @@
-package org.dslforge.workspace.ui;
+package org.dslforge.texteditor;
 
 import java.io.File;
 
@@ -10,7 +10,7 @@ import org.eclipse.ui.IPersistableElement;
 
 public class PathEditorInput implements IPathEditorInput {
 
-	private File file;
+	private final File file;
 
 	public PathEditorInput(File file) {
 		this.file = file;

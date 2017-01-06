@@ -78,7 +78,6 @@ public class FilePropertySource implements IPropertySource {
 		else if ("editable".equals(id))
 			return file.canWrite();
 		return null;
-
 	}
 
 	private Object computePath() {

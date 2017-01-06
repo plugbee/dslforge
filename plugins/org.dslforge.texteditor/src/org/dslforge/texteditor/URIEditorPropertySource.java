@@ -23,11 +23,11 @@ import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 
-public class BasicTextEditorPropertySource implements IPropertySource {
+public class URIEditorPropertySource implements IPropertySource {
 
 	private URIEditorInput editorInput;
 	
-	public BasicTextEditorPropertySource(URIEditorInput handle) {
+	public URIEditorPropertySource(URIEditorInput handle) {
 		this.editorInput = handle;
 	}
 	
@@ -41,7 +41,6 @@ public class BasicTextEditorPropertySource implements IPropertySource {
 			return new IPropertyDescriptor[] {
 					new PropertyDescriptor("name", "Name"),
 					new PropertyDescriptor("location", "Location"),
-					//new PropertyDescriptor("path", "Path"),
 					new PropertyDescriptor("size", "Size"),
 					new PropertyDescriptor("lastModified", "Last Modified"),
 					new PropertyDescriptor("editable", "Editable")

@@ -388,7 +388,9 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 			@Override
 			public IPropertySource getPropertySource(Object object) {
 				if (object instanceof URIEditorInput)
-					return new BasicTextEditorPropertySource((URIEditorInput) object);
+					return new URIEditorPropertySource((URIEditorInput) object);
+				if (object instanceof IPathEditorInput)
+					return new PathEditorPropertySource((IPathEditorInput) object);
 				return null;
 			}
 		});

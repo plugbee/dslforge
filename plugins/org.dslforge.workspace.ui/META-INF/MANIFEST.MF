@@ -7,7 +7,8 @@ Bundle-Activator: org.dslforge.workspace.ui.internal.Activator
 Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.rap.ui.views,
  org.eclipse.rap.ui.navigator,
- org.dslforge.workspace
+ org.dslforge.workspace,
+ org.dslforge.texteditor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.workspace.ui,
