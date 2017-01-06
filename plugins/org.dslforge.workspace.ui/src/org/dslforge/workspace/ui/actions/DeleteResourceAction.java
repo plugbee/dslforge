@@ -35,36 +35,38 @@ public class DeleteResourceAction extends AbstractWorkspaceAction {
 	@Override
 	public void run(IAction action) {
 		Iterator<?> iterator = ((StructuredSelection) getSelection()).iterator();
-		Object object = iterator.next();
-		if (object instanceof File) {
-			final File file = (File) object;
-			IRunnableWithProgress operation = new IRunnableWithProgress() {
-				public void run(IProgressMonitor progressMonitor) {
-					try {
-						Path filePath = new Path(file.getAbsolutePath());
-						if (WorkspaceManager.INSTANCE.isProject(filePath)) {
-							WorkspaceManager.INSTANCE.deleteProject(filePath);
-						} else if (!file.isFile()) {
-							WorkspaceManager.INSTANCE.deleteFolder(filePath);
-						} else {
-							WorkspaceManager.INSTANCE.deleteResource(filePath);
+		while (iterator.hasNext()) {
+			Object object = iterator.next();
+			if (object instanceof File) {
+				final File file = (File) object;
+				IRunnableWithProgress operation = new IRunnableWithProgress() {
+					public void run(IProgressMonitor progressMonitor) {
+						try {
+							Path filePath = new Path(file.getAbsolutePath());
+							if (WorkspaceManager.INSTANCE.isProject(filePath)) {
+								WorkspaceManager.INSTANCE.deleteProject(filePath);
+							} else if (!file.isFile()) {
+								WorkspaceManager.INSTANCE.deleteFolder(filePath);
+							} else {
+								WorkspaceManager.INSTANCE.deleteResource(filePath);
+							}
+						} catch (Exception ex) {
+							logger.error(ex.getMessage(), ex);
+						} finally {
+							progressMonitor.done();
 						}
-					} catch (Exception ex) {
-						logger.error(ex.getMessage(), ex);
-					} finally {
-						progressMonitor.done();
 					}
+				};
+				try {
+					getWindow().run(false, false, operation);
+				} catch (InvocationTargetException ex) {
+					logger.error(ex.getMessage(), ex);
+				} catch (InterruptedException ex) {
+					logger.error(ex.getMessage(), ex);
 				}
-			};
-			try {
-				getWindow().run(false, false, operation);
-			} catch (InvocationTargetException ex) {
-				logger.error(ex.getMessage(), ex);
-			} catch (InterruptedException ex) {
-				logger.error(ex.getMessage(), ex);
+				final String currentUser = (String) RWT.getUISession().getAttribute("user");
+				logger.info(currentUser + " deleted resource: " + file.getAbsolutePath());
 			}
-			final String currentUser = (String) RWT.getUISession().getAttribute("user");
-			logger.info(currentUser + " deleted resource: " + file.getAbsolutePath());
 		}
 	}
 }
