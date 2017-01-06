@@ -10,7 +10,7 @@
 		destructor : "destroy",	 
 		properties : [ "url", "text", "editable", "status", "annotations", "scope", "proposals", "font", "dirty", "markers", "background"],
 		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut", "Selection", "CaretEvent", "ContentAssist"],
-		methods : ["addMarker", "insertText", "removeText", "setProposals"]
+		methods : ["addMarker", "removeMarker", "clearMarkers", "insertText", "removeText", "setProposals"]
 	});
 
 	rwt.qx.Class.define("org.codingpark.piraterobot.play.web.editor.widget.Play", {
