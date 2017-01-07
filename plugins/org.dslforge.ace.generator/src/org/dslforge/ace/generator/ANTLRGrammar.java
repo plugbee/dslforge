@@ -95,8 +95,8 @@ public class ANTLRGrammar implements IGrammar {
 	private Grammar loadGrammarObject(IPath grammarPath) {
 		IFile grammarFile = ResourcesPlugin.getWorkspace().getRoot().getFile(grammarPath);
 		if (grammarFile.exists()) {
-			String grammaFullPath = grammarFile.getLocation().toOSString();
-			String workingDirectory = grammarFile.getParent().getLocation().toOSString();
+			String grammaFullPath = grammarFile.getLocation().toString();
+			String workingDirectory = grammarFile.getParent().getLocation().toString();
 			return AntlrTool.createGrammar(workingDirectory, grammaFullPath);
 		}
 		return null;

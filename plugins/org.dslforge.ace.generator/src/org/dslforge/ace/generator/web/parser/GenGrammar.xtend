@@ -32,7 +32,7 @@ class GenGrammar extends AbstractGenerator {
 	}
 	
 	override doGenerate(IWebProjectFactory factory, IProgressMonitor monitor) {
-		grammarShortName = factory.input.shortName.toLowerCase
+		grammarShortName = factory.input.shortName
 		factory.generateFile(defaultSlotName + basePath + relativePath, grammarShortName.toFirstUpper + ".g", translate(), monitor)
 	}
 
