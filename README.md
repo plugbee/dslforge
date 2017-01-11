@@ -3,6 +3,8 @@
 DSL Forge is a framework for the development of domain-specific language (DSL) editors for web applications and cloud IDEs. 
 It allows to get web-based textual editors automatically from ANTLR grammars. From the language grammar specification, JavaScript parser and lexer are automatically generated and embedded into Cloud9’s ACE editor.
 
+Check out the [live demo!](http://beeone.dslforge.org/texteditor)
+
 The framework is composed of two features:
 - **Tooling** for language development, and
 - **Runtime**, or Target Components.
@@ -35,7 +37,7 @@ Below the complete list of features bound by default in the generated editors:
 ## Installation
 
 1. **Install Eclipse**
-The current DSL Forge version is based on Eclipse Neon packages. The packages are available under http://www.eclipse.org/downloads/packages/
+The current DSL Forge version is based on Eclipse Neon [packages](http://www.eclipse.org/downloads/packages/).
 To know which package is the most appropriate for you, select one of the following alternatives.
  - **Eclipse IDE for Java EE Developers**
 In this scenario, users are interested in having a DSL editor shipped with HTML/JavaScript applications. The generator outputs a static web project ready to be debugged under Eclipse. The most appropriate distribution to use is Eclipse IDE for Java EE Developers as it comes with a simple HTTP Preview server easy to configure.
@@ -43,37 +45,35 @@ In this scenario, users are interested in having a DSL editor shipped with HTML/
 If you want a closer integration with Xtext and EMF, or if you want to integrate the editor with other Eclipse components, you’d better install Eclipse for RCP and RAP Developers. This makes it possible to integrate the editor with third party RWT (Remote Widget Toolkit, the web-based SWT) plugins and widgets.
 
 2. **Install the Xtext SDK**
-Install Xtext Complete SDK from Neon update site http://download.eclipse.org/releases/neon (Help>Install New Software).
+Install Xtext Complete SDK from Neon [update site](http://download.eclipse.org/releases/neon) (Help>Install New Software).
 
 3. **Install DSL Forge Tools**
-Use the update site http://dslforge.org/downloads/tooling/repository/
+Use the regular [update site](http://dslforge.org/downloads/tooling/repository/).
 
 ## Usage
 
 Two use cases are documented on the official websie:
-- Generate Web Editor from ANTLR: http://dslforge.org/getting-started-generate-ace-editor/
-- Generate Web Editor from Xtext: http://dslforge.org/getting-started-generate-xtext-rap-editor/
+- [Generate Web Editor from ANTLR](http://dslforge.org/getting-started-generate-ace-editor/)
+- [Generate Web Editor from Xtext](http://dslforge.org/getting-started-generate-xtext-rap-editor/)
 
 ### Generate Web Editor from Xtext
-- Step 1 - Generate Web Editor from Xtext https://youtu.be/vDGwmz4lU54
-- Step 2 - Set up Debug Configuration and Test Editor  https://youtu.be/aD-DsFIwo3I
-- Step 3 - Build Web Application Archive  https://youtu.be/FOnoayKri7E
-- Step 4 - Deploy Web Archive on Servlet Container  https://youtu.be/2u5agv8koAo
+- Step 1 - [Generate Web Editor from Xtext](https://youtu.be/vDGwmz4lU54)
+- Step 2 - [Set up Debug Configuration and Test Editor](https://youtu.be/aD-DsFIwo3I)
+- Step 3 - [Build Web Application Archive](https://youtu.be/FOnoayKri7E)
+- Step 4 - [Deploy Web Archive on Servlet Container](https://youtu.be/2u5agv8koAo)
 
 ### Generate Web Editor from ANTLR
-See tutorial on http://dslforge.org/getting-started-generate-ace-editor/
+See [tutorial](http://dslforge.org/getting-started-generate-ace-editor/)
 
 ## Documentation
 
-Additional usage informationn can be found on http://dslforge.org/documentation-2/.
+Additional usage informationn can be found [here](http://dslforge.org/documentation-2/)
 
-Also check out the live demo app http://beeone.dslforge.org/texteditor
-
-If you still need help, feel free to drop a mail to development@dslforge.org
+If you still need help, please open an [issue](https://github.com/plugbee/dslforge/issues/new), or drop an email to team@dslforge.org for professional support.
 
 ## Contributing
 
-We actively encourage and support contributions! DSL Forge is open source, feel free to fork the repository and enhance the tool the way you want. If you think the community can benefit from your changes, please open a pull request. 
+We actively encourage and support contributions! DSL Forge is open source, feel free to fork the repository and enhance the tool the way you want. 
 
 ## License
 
