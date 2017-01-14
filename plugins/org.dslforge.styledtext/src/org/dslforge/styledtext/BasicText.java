@@ -66,13 +66,13 @@ public class BasicText extends Composite {
 	private List<IPath> resources = new ArrayList<IPath>();
 	private String url = "";
 	private String status = "";
+	private ITextSelection selection = TextSelection.emptySelection();
 	private List<Annotation> annotations = new ArrayList<Annotation>();
 	private List<String> scope = new ArrayList<String>();
 	private List<ICompletionProposal> proposals = new ArrayList<ICompletionProposal>();
 	private List<TextRange> markers = new ArrayList<TextRange>();
 	private int style;
 	private Listener listener;
-	private TextSelection selection;
 	private String clipboard;
 	private Position cursorPosition;
 	private DefaultContent content;
@@ -985,12 +985,29 @@ public class BasicText extends Composite {
 		properties.add("B", color.getBlue());
 		getRemoteObject().set("background", properties);
 	}
-
+	
+	/**
+	 * Sets the selection to the specified text range.
+	 * 
+	 * @param offset
+	 * @param length
+	 */
 	public void setSelection(int offset, int length) {
 		checkWidget();
-		this.selection = new TextSelection(offset, length);
-		String selectedRange = content.getTextRange(offset, length);
-		getRemoteObject().set("selection", selectedRange);
+		this.selection = (offset >= 0 && length >= 0) ? new TextSelection(offset, length)
+				: TextSelection.emptySelection();
+		final int rowStart = getLineAtOffset(offset);
+		final int rowEnd = getOffsetAtLine(offset);
+		final int columnStart = getLineAtOffset(offset+length);
+		final int columnEnd = getOffsetAtLine(offset+length);
+		TextRange range = new TextRange(rowStart, columnStart,rowEnd, columnEnd);
+		JsonObject properties = new JsonObject();
+		properties.add("rowStart", range.rowStart);
+		properties.add("columnStart", range.columnStart);
+		properties.add("rowEnd", range.rowEnd);
+		properties.add("columnEnd", range.columnEnd);
+		getRemoteObject().call("setSelection", properties);
+		
 	}
 
 	/**
@@ -1239,6 +1256,17 @@ public class BasicText extends Composite {
 	}
 
 	/**
+	 * Returns the logical offset of the given line.
+	 * 
+	 * @param row index of line 
+	 */
+	public int getOffsetAtLine(int row) {
+		int offsetAtLine = content.getOffsetAtLine(row);
+		return offsetAtLine;
+	}
+
+	
+	/**
 	 * Returns the current cursor position as an offset
 	 * 
 	 * @return
@@ -1359,5 +1387,21 @@ public class BasicText extends Composite {
 		// delimiter is longer than one character and the offset is set
 		// in between parts of the line delimiter.
 		return offsetInLine > content.getLine(line).length();
+	}
+	
+	/**
+	 * Moves the caret in front of the first character of the widget content.
+	 */
+	public void doContentStart() {
+		JsonObject properties = new JsonObject();
+		getRemoteObject().call("moveCursorFileStart", properties);
+	}
+	
+	/**
+	 * Moves the caret after the last character of the widget content.
+	 */
+	public void doContentEnd() {
+		JsonObject properties = new JsonObject();
+		getRemoteObject().call("moveCursorFileEnd", properties);	
 	}
 }

@@ -21,7 +21,7 @@
 		destructor : "destroy",	 
 		properties : [ "url", "text", "editable", "status", "annotations", "scope", "proposals", "font", "dirty", "markers", "background"],
 		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut", "Selection", "CaretEvent", "ContentAssist"],
-		methods : ["addMarker", "removeMarker", "clearMarkers", "insertText", "removeText", "setProposals"]
+		methods : ["setSelection", "addMarker", "removeMarker", "clearMarkers", "insertText", "removeText", "setProposals", "moveCursorFileStart","moveCursorFileEnd"]
 	});
 
 	rwt.qx.Class.define("org.dslforge.styledtext.BasicText", {
@@ -54,6 +54,7 @@
 			ready: false,
 			editor: null,
 			editable: true,
+			selection: null,
 			isFocused: false,
 			initialContent: true,
 			langTools: null,
@@ -63,8 +64,6 @@
 			proposals: [],
 			completers: null,
 			backendCompleter: null,
-			selectionStart:0,
-			selectionEnd:0,
 			useSharedWorker: true,
 			
 			onReady : function() {
@@ -88,9 +87,13 @@
 					this.setFont(this.font);
 					delete this.font;
 				}
-				if (this.status) {
-					this.setStatus(this.status);
-					delete this.status;
+				if (this.url) {
+					this.setUrl(this.url);
+					delete this.url;
+				}
+				if (this.selection) {
+					this.setSelection(this.selection);
+					delete this.selection;
 				}
 				if (this.annotations) {
 					this.setAnnotations(this.annotations);
@@ -239,9 +242,19 @@
 			   	if (this.ready) {
 			   		this.editable = editable;
 			   		this.editor.setReadOnly(!editable);
-				} else {
 					this.editable = editable;
 				}
+			},
+			
+			setSelection : function(selection) {
+				if (this.ready) {
+					var Range = ace.require("ace/range").Range;		
+					var range = new Range(selection.rowStart, selection.rowEnd, selection.columnStart, selection.columnEnd);
+					this.editor.getSelection().setSelectionRange(range);
+				}
+				else {
+			        this.selection = selection;
+			    }
 			},
 			
 			setStatus : function(status) {
@@ -375,9 +388,8 @@
 			addMarker : function(marker) {
 				if(this.ready) {
 					var Range = ace.require("ace/range").Range;
-					var range = new Range(marker.rowStart,marker.rowEnd,marker.columnStart,marker.columnEnd);	
-					//this.editor.getSession().addMarker(range,"ace_selected_word", "text");
-					this.editor.getSession().addMarker(range, "ace_debug_line", "line");
+					var range = new Range(marker.rowStart,0,marker.columnStart,1);	
+					this.editor.getSession().addMarker(range, "ace_debug_line", "fullLine");					
 					ace.require("ace/lib/dom").importCssString('.ace_debug_line {\
 					    background-color: aquamarine;\
 					    position: absolute;\
@@ -410,6 +422,18 @@
 			            this.editor.getSession().remove(range);
 			            this.editor.clearSelection();
 			        }
+				}
+			},
+			
+			moveCursorFileStart : function(properties) {
+				if (this.ready) {		
+					this.editor.getSelection().moveCursorFileStart();
+				}
+			},
+			
+			moveCursorFileEnd : function(properties) {
+				if (this.ready) {		
+					this.editor.getSelection().moveCursorFileEnd();
 				}
 			},
 			
