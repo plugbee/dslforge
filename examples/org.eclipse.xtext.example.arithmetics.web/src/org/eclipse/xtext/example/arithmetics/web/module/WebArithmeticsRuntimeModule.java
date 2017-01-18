@@ -17,6 +17,6 @@ public class WebArithmeticsRuntimeModule extends AbstractWebArithmeticsRuntimeMo
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
-		logger.info("Configuring web module " + this.getClass().getName());
+		logger.info("Configuring language module " + this.getClass().getName());
 	}
 }

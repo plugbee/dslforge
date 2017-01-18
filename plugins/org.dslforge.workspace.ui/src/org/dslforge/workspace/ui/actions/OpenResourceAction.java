@@ -71,8 +71,6 @@ public class OpenResourceAction extends AbstractWorkspaceAction {
 			logger.error(ex.getMessage(), ex);
 			return false;
 		}
-		final String currentUser = (String) RWT.getUISession().getAttribute("user");
-		logger.info(currentUser + " opened resource: " + file.getAbsolutePath());
 		return true;
 	}
 }

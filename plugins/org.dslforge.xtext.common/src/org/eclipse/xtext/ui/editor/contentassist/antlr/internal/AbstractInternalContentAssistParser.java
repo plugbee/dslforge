@@ -61,7 +61,7 @@ public abstract class AbstractInternalContentAssistParser extends Parser impleme
 		@Override
 		public FollowElement createFollowElement(AbstractElement current, int lookAhead) {
 			if (logger.isDebugEnabled())
-				logger.debug("Creating FollowElement for: " + current);
+				logger.info("Creating FollowElement for: " + current);
 			FollowElement result = new FollowElement();
 			result.setLookAhead(lookAhead);
 			if (lookAhead != 1) {
@@ -95,8 +95,8 @@ public abstract class AbstractInternalContentAssistParser extends Parser impleme
 				}
 			}
 			if (logger.isDebugEnabled()) {
-				logger.debug("FollowElement is: " + current);
-				logger.debug("==================================");
+				logger.info("FollowElement is: " + current);
+				logger.info("==================================");
 			}
 			return result;
 		}
@@ -538,22 +538,22 @@ public abstract class AbstractInternalContentAssistParser extends Parser impleme
 	@Override
 	public void announceEof(int lookAhead) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Reached Eof with LA " + lookAhead);
-			logger.debug("Internal parser state is: ");
-			logger.debug("  current: " + getCurrentGrammarElement());
-			logger.debug("  failed: " + state.failed);
-			logger.debug("  errorRecovery: " + state.errorRecovery);
-			logger.debug("  resyncing: " + resyncing);
-			logger.debug("  marked: " + marked);
-			logger.debug("  firstMarker: " + firstMarker);
-			logger.debug("  currentMarker: " + currentMarker);
-			logger.debug("  lookAheadAddOn: " + lookAheadAddOn);
-			logger.debug("  predictionLevel: " + predictionLevel);
-			logger.debug("  stackSize: " + stackSize);
-			logger.debug("  backtracking: " + state.backtracking);
-			logger.debug("  syntaxErrors: " + state.syntaxErrors);
-			logger.debug("  token: " + state.token);
-			logger.debug("==================================");
+			logger.info("Reached Eof with LA " + lookAhead);
+			logger.info("Internal parser state is: ");
+			logger.info("  current: " + getCurrentGrammarElement());
+			logger.info("  failed: " + state.failed);
+			logger.info("  errorRecovery: " + state.errorRecovery);
+			logger.info("  resyncing: " + resyncing);
+			logger.info("  marked: " + marked);
+			logger.info("  firstMarker: " + firstMarker);
+			logger.info("  currentMarker: " + currentMarker);
+			logger.info("  lookAheadAddOn: " + lookAheadAddOn);
+			logger.info("  predictionLevel: " + predictionLevel);
+			logger.info("  stackSize: " + stackSize);
+			logger.info("  backtracking: " + state.backtracking);
+			logger.info("  syntaxErrors: " + state.syntaxErrors);
+			logger.info("  token: " + state.token);
+			logger.info("==================================");
 		}
 		if (delegate == null) {
 			selectEofStrategy(lookAhead);
@@ -637,7 +637,7 @@ public abstract class AbstractInternalContentAssistParser extends Parser impleme
 
 	public Set<FollowElement> getFollowElements() {
 		if (logger.isDebugEnabled()) {
-			logger.debug("getFollowElements()");
+			logger.info("getFollowElements()");
 		}
 		return followElements;
 	}

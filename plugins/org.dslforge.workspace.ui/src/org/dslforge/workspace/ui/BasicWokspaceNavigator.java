@@ -185,11 +185,11 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 
 	@Override
 	public void dispose() {
-		super.dispose();
 		serverPushSessionOff();
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IPartService partService = workbench.getActiveWorkbenchWindow().getPartService();
 		partService.removePartListener(this);
+		super.dispose();
 	}
 
 	private void serverPushSessionOff() {

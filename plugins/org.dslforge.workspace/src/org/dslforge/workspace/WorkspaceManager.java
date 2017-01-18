@@ -60,7 +60,7 @@ public class WorkspaceManager {
 
 	private static WorkspaceEventWatcher directoryWatcher;
 	
-	private WorkspaceManager() {
+	private WorkspaceManager() {		  
 		directoryWatcher = new WorkspaceEventWatcher(Paths.get(getWorkspaceRoot()));
 		try {
 			directoryWatcher.start();
@@ -105,7 +105,6 @@ public class WorkspaceManager {
 			Display.getCurrent().syncExec(new Runnable() {
 				@Override
 				public void run() {
-					//file.mkdir();
 					try {
 						Files.createDirectory(file.toPath());
 					} catch (IOException e) {
@@ -372,7 +371,7 @@ public class WorkspaceManager {
 	        try {
 	        	WatchKey key = path.register(watchService, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY); 	
 		        if (!keys.containsKey(key)) {
-					logger.info("Registering file path " + path.toString());
+					logger.info("Registering watch service for " + path.toString());
 					keys.put(key, path);
 					Files.walkFileTree(path, visitor);
 		        }
