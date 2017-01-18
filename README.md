@@ -52,7 +52,7 @@ Use the regular [update site](http://dslforge.org/downloads/tooling/repository/)
 
 ## Usage
 
-Two use cases are documented on the official websie:
+Two use cases are documented on the official website:
 - [Generate Web Editor from ANTLR](http://dslforge.org/getting-started-generate-ace-editor/)
 - [Generate Web Editor from Xtext](http://dslforge.org/getting-started-generate-xtext-rap-editor/)
 
