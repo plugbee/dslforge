@@ -448,7 +448,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	}
 
 	protected String readFromFile() throws IOException {
-		logger.info("Reading from file " + filePath);
+		logger.debug("Reading from file " + filePath);
 		StringBuilder text = new StringBuilder();
 		String NL = System.getProperty("line.separator");
 		long start = System.currentTimeMillis();
@@ -461,7 +461,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 			scanner.close();
 		}
 		long end = System.currentTimeMillis();
-		logger.info("Reading took: " + ((end - start) / 1000));
+		logger.debug("Reading took: " + ((end - start) / 1000));
 		return text.toString();
 	}
 

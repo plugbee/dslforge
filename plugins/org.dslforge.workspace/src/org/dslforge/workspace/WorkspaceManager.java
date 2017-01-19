@@ -371,7 +371,7 @@ public class WorkspaceManager {
 	        try {
 	        	WatchKey key = path.register(watchService, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY); 	
 		        if (!keys.containsKey(key)) {
-					logger.info("Registering watch service for " + path.toString());
+					logger.debug("Registering watch service for " + path.toString());
 					keys.put(key, path);
 					Files.walkFileTree(path, visitor);
 		        }

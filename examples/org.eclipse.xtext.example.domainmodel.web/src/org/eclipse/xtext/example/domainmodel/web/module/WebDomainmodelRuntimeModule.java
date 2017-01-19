@@ -17,6 +17,6 @@ public class WebDomainmodelRuntimeModule extends AbstractWebDomainmodelRuntimeMo
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
-		logger.info("Configuring language module " + this.getClass().getName());
+		logger.debug("Configuring language module " + this.getClass().getName());
 	}
 }

@@ -717,7 +717,7 @@ public class BasicText extends Composite {
 	 * @throws IOException
 	 */
 	private void registerResource(ResourceManager resourceManager, ClassLoader classLoader, String filePath) throws IOException {
-		logger.info("Registering file: " + filePath);
+		logger.debug("Registering file: " + filePath);
 		InputStream inputStream = classLoader.getResourceAsStream(filePath);
 		try {
 			resourceManager.register(filePath, inputStream);
@@ -987,19 +987,19 @@ public class BasicText extends Composite {
 	}
 	
 	/**
-	 * Sets the selection to the specified text range.
+	 * Sets the selection to the specified text range identified by offset/length
 	 * 
-	 * @param offset
-	 * @param length
+	 * @param offset the offset of the selection
+	 * @param length the length of the selection
 	 */
 	public void setSelection(int offset, int length) {
 		checkWidget();
 		this.selection = (offset >= 0 && length >= 0) ? new TextSelection(offset, length)
 				: TextSelection.emptySelection();
 		final int rowStart = getLineAtOffset(offset);
-		final int rowEnd = getOffsetAtLine(offset);
-		final int columnStart = getLineAtOffset(offset+length);
-		final int columnEnd = getOffsetAtLine(offset+length);
+		final int rowEnd = getLineAtOffset(offset+length);
+		final int columnStart = offset - getOffsetAtLine(rowStart);
+		final int columnEnd = (offset+length) - getOffsetAtLine(rowEnd);
 		TextRange range = new TextRange(rowStart, columnStart,rowEnd, columnEnd);
 		JsonObject properties = new JsonObject();
 		properties.add("rowStart", range.rowStart);
@@ -1007,7 +1007,6 @@ public class BasicText extends Composite {
 		properties.add("rowEnd", range.rowEnd);
 		properties.add("columnEnd", range.columnEnd);
 		getRemoteObject().call("setSelection", properties);
-		
 	}
 
 	/**
@@ -1018,7 +1017,7 @@ public class BasicText extends Composite {
 	public ITextSelection getSelection() {
 		checkWidget();
 		if (selection!=null)
-			return this.selection;
+			return selection;
 		return TextSelection.emptySelection();
 	}
 

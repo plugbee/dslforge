@@ -153,7 +153,7 @@ public class LanguageRegistry {
 									}	
 								} catch (ConfigurationException ex) {
 									//do nothing, there is no generator contributed.
-									logger.info("There is no generator contributed implementing IGenerator.");
+									logger.debug("There is no generator contributed implementing IGenerator.");
 									// Xtext 2.10: try IGenerator2
 									GeneratorDelegate delegate = injector.getInstance(GeneratorDelegate.class);
 									if (delegate!=null) {
