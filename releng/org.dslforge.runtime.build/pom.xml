@@ -29,6 +29,9 @@
 		<module>../../examples/org.xtext.example.mydsl.web</module>	
 		<module>../../examples/org.codingpark.piraterobot.play</module>
 		<module>../../examples/org.codingpark.piraterobot.play.web</module>
+		<!--RAP Styled Text (experimental)-->
+		<module>../../../org.eclipse.rap.incubator.texteditor/plugins/org.eclipse.rap.incubator.basictext</module>	
+		<module>../../../org.eclipse.rap.incubator.texteditor/plugins/org.eclipse.rap.incubator.texteditor</module>
 		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.json</module>	
 		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.java</module>
 		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.javascript</module>			

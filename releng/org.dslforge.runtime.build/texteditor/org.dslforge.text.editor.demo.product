@@ -84,6 +84,8 @@
       <plugin id="org.eclipse.persistence.core"/>
       <plugin id="org.eclipse.persistence.jpa"/>
       <plugin id="org.eclipse.persistence.jpa.jpql"/>
+      <plugin id="org.eclipse.rap.incubator.basictext"/>
+      <plugin id="org.eclipse.rap.incubator.texteditor"/>
       <plugin id="org.eclipse.rap.incubator.texteditor.java"/>
       <plugin id="org.eclipse.rap.incubator.texteditor.javascript"/>
       <plugin id="org.eclipse.rap.incubator.texteditor.json"/>
@@ -178,6 +180,8 @@
       <plugin id="org.eclipse.persistence.core" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.persistence.jpa" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.persistence.jpa.jpql" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.rap.incubator.basictext" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.rap.incubator.texteditor" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.incubator.texteditor.java" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.incubator.texteditor.javascript" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.incubator.texteditor.json" autoStart="true" startLevel="5" />

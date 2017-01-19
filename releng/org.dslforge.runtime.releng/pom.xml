@@ -18,8 +18,10 @@
 		<module>../../plugins/org.dslforge.workspace.ui</module>
 		<module>../../plugins/org.dslforge.xtext.common</module>
 		<module>../../plugins/org.dslforge.common.logging</module>
-		<!-- Examples -->
+		<!-- RAP Styled Text (experimental)-->
 		<module>../../../org.eclipse.rap.incubator.texteditor/releng/org.eclipse.rap.incubator.texteditor.feature</module>
+		<module>../../../org.eclipse.rap.incubator.texteditor/plugins/org.eclipse.rap.incubator.basictext</module>
+		<module>../../../org.eclipse.rap.incubator.texteditor/plugins/org.eclipse.rap.incubator.texteditor</module>
 		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.java</module>
 		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.javascript</module>
 		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.json</module>			
