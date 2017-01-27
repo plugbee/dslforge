@@ -15,6 +15,8 @@
  */
 package org.dslforge.styledtext;
 
+import static org.eclipse.rap.rwt.RWT.getClient;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ import org.eclipse.rap.json.JsonArray;
 import org.eclipse.rap.json.JsonObject;
 import org.eclipse.rap.json.JsonValue;
 import org.eclipse.rap.rwt.RWT;
-import org.eclipse.rap.rwt.client.service.JavaScriptLoader;
+import org.eclipse.rap.rwt.client.service.ClientFileLoader;
 import org.eclipse.rap.rwt.remote.Connection;
 import org.eclipse.rap.rwt.remote.RemoteObject;
 import org.eclipse.rap.rwt.service.ResourceManager;
@@ -52,14 +54,20 @@ import org.eclipse.swt.widgets.Listener;
  */
 public class BasicText extends Composite {
 
+	private static final long serialVersionUID = 131001464693386296L;
+
 	static final Logger logger = Logger.getLogger(BasicText.class);
 	
-	private static final long serialVersionUID = 1L;
 	private static final String REMOTE_TYPE = "org.dslforge.styledtext.BasicText";
 	private static final int TextChanged = 47;
 	private static final int Save = 48;
 	private static final int CaretEvent = 49;
 	private static final int ContentAssist = 50;
+	
+	private static final String ACE_LIBRARY_KEY = "org.eclipse.rap.incubator.basictext.ace";
+	private static final String ACE_LIBRARY_VALUE = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.4/ace.js";
+	private static final String ACE_SEARCHBOX_KEY = "org.eclipse.rap.incubator.basictext.ace.ext-searchbox";
+	private static final String ACE_SEARCHBOX_VALUE = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.4/ext-searchbox.js";
 	
 	private final BasicTextOperationHandler operationHandler = new BasicTextOperationHandler(this);
 	private RemoteObject remoteObject;
@@ -125,7 +133,7 @@ public class BasicText extends Composite {
 
 	/**
 	 * Creates a fresh Basic Text widget
-	 * 
+	 *
 	 * @param parent
 	 * @param style
 	 */
@@ -135,7 +143,7 @@ public class BasicText extends Composite {
 		this.style = style;
 		if ((style & SWT.READ_ONLY) != 0) {
 			setEditable(false);
-		}	
+		}
 		setupClient();
 		createRemoteObject();
 		installListeners();
@@ -146,24 +154,21 @@ public class BasicText extends Composite {
 		content = new DefaultContent();
 	}
 
-	@SuppressWarnings("deprecation")
 	protected void loadJsResources(List<IPath> resources) {
 		for (int i = 0; i < resources.size(); i++) {
-			getJavaScriptLoader().require(getResourceManager().getLocation(resources.get(i).toString()));
+			getJavaScriptLoader().requireJs(getResourceManager().getLocation(resources.get(i).toString()));
 		}
 	}
 
 	protected void setupClient() {
-		addBaseResource(new Path("org/dslforge/styledtext/ace/ace.js"));
+		getClient().getService(ClientFileLoader.class).requireJs(System.getProperty(ACE_LIBRARY_KEY, ACE_LIBRARY_VALUE));
+		getClient().getService(ClientFileLoader.class).requireJs(System.getProperty(ACE_SEARCHBOX_KEY, ACE_SEARCHBOX_VALUE)); 
 		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-language_tools.js"));
-		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-documentation.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-tooltip.js"));
-		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-searchbox.js"));
-		addBaseResource(new Path("org/dslforge/styledtext/ace/snippets/language.js"));
-		addBaseResource(new Path("org/dslforge/styledtext/ace/theme-eclipse.js"));
+		addBaseResource(new Path("org/dslforge/styledtext/ace/theme-basic.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/global-index.js"));
-		registerJsResources(getBaseResources(), BasicText.class.getClassLoader());	
-		loadJsResources(getBaseResources());		
+		registerJsResources(getBaseResources(), BasicText.class.getClassLoader());
+		loadJsResources(getBaseResources());
 	}
 
 	protected void registerJsResources(List<IPath> resources, ClassLoader loader) {
@@ -172,6 +177,7 @@ public class BasicText extends Composite {
 			for (IPath filePath : resources) {
 				boolean isRegistered = resourceManager.isRegistered(filePath.toString());
 				if (!isRegistered) {
+					logger.debug("Registering resource " + filePath.toString());
 					registerResource(resourceManager, loader, filePath.toString());
 				}
 			}
@@ -695,9 +701,8 @@ public class BasicText extends Composite {
 	 * 
 	 * @return the JavaScript loader
 	 */
-	@SuppressWarnings("deprecation")
-	private JavaScriptLoader getJavaScriptLoader() {
-		return RWT.getClient().getService(JavaScriptLoader.class);
+	private ClientFileLoader getJavaScriptLoader() {
+		return RWT.getClient().getService(ClientFileLoader.class);
 	}
 
 	/**
@@ -717,7 +722,7 @@ public class BasicText extends Composite {
 	 * @throws IOException
 	 */
 	private void registerResource(ResourceManager resourceManager, ClassLoader classLoader, String filePath) throws IOException {
-		logger.debug("Registering file: " + filePath);
+		logger.info("Registering file: " + filePath);
 		InputStream inputStream = classLoader.getResourceAsStream(filePath);
 		try {
 			resourceManager.register(filePath, inputStream);
@@ -768,8 +773,6 @@ public class BasicText extends Composite {
 
 	@Override
 	public void setFont(Font font) {
-		// super.setFont(font); //setting font from default won't work as the
-		// font which is displayed is hidden by the font of the client script
 		getRemoteObject().set("font", getCssFont());
 	}
 
@@ -977,8 +980,6 @@ public class BasicText extends Composite {
 	 *                </ul>
 	 */
 	public void setBackground(Color color) {
-		// super.setBackground(color); // This has no effect as the background
-		// will be hidden by the client script
 		JsonObject properties = new JsonObject();
 		properties.add("R", color.getRed());
 		properties.add("G", color.getGreen());
@@ -1257,7 +1258,7 @@ public class BasicText extends Composite {
 	/**
 	 * Returns the logical offset of the given line.
 	 * 
-	 * @param row index of line 
+	 * @param row index of line
 	 */
 	public int getOffsetAtLine(int row) {
 		int offsetAtLine = content.getOffsetAtLine(row);
@@ -1321,7 +1322,7 @@ public class BasicText extends Composite {
 	 * where 0 &lt; offset &lt; getCharCount() so that getLineAtOffset(getCharCount())
 	 * returns the line of the insert location.
 	 *
-	 * @param offset offset relative to the start of the content. 
+	 * @param offset offset relative to the start of the content.
 	 * 	0 <= offset <= getCharCount()
 	 * @return line at the specified offset in the text
 	 * @exception SWTException <ul>
@@ -1333,9 +1334,9 @@ public class BasicText extends Composite {
 	 * </ul>
 	 */
 	public int getLineAtOffset(int offset) {
-		checkWidget();	
+		checkWidget();
 		if (offset < 0 || offset > getCharCount()) {
-			SWT.error(SWT.ERROR_INVALID_RANGE);		
+			SWT.error(SWT.ERROR_INVALID_RANGE);
 		}
 		return content.getLineAtOffset(offset);
 	}
@@ -1401,6 +1402,6 @@ public class BasicText extends Composite {
 	 */
 	public void doContentEnd() {
 		JsonObject properties = new JsonObject();
-		getRemoteObject().call("moveCursorFileEnd", properties);	
+		getRemoteObject().call("moveCursorFileEnd", properties);
 	}
 }

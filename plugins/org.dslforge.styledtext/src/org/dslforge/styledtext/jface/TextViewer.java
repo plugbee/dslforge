@@ -148,8 +148,8 @@ public class TextViewer extends Viewer implements ITextViewer{
 	@Override
 	public void setSelection(ISelection selection) {
 		if (selection instanceof ITextSelection) {
-			ITextSelection s= (ITextSelection) selection;
-			fTextWidget.setSelection(s.getOffset(), s.getLength());
+			ITextSelection textSelection= (ITextSelection) selection;
+			fTextWidget.setSelection(textSelection.getOffset(), textSelection.getLength());
 		}
 	}
 
