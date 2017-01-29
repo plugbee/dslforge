@@ -146,8 +146,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 				JsonObject position = (JsonObject) data.get("pos");
 				int row = position.get("row").asInt();
 				int column = position.get("column").asInt();
-				int offset = viewer.getTextWidget().getOffsetAtPosition(row, column);					
-				viewer.setSelection(new TextSelection(offset, 0));
+				int offset = viewer.getTextWidget().getOffsetAtPosition(row, column);
 				createCompletionProposals(offset);
 				return true;
 			}

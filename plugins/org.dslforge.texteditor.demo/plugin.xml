@@ -3,7 +3,7 @@
 <plugin>
 <extension point="org.eclipse.rap.ui.entrypoint">
 	<entrypoint
-       brandingId="org.dslforge.texteditor.demo.branding"
+       brandingId="org.dslforge.workbench.branding"
        class="org.dslforge.texteditor.demo.BasicWorkbench"
        id="org.dslforge.texteditor.demo.entrypoint"
        path="/texteditor">
@@ -21,19 +21,6 @@
 			</run>
 		</application>
 	</extension>
-	<extension
-	      point="org.eclipse.rap.ui.branding">
-	   <branding
-	         favicon="icons/dslforge.png"
-	         id="org.dslforge.texteditor.demo.branding"
-	         title="Online Workbench Demo">
-	      <presentationFactory
-             id="org.eclipse.ui.presentations.default"
-             name="Online Workbench Demo"
-             viewActionsVisible="true">
-	      </presentationFactory>
-	   </branding>
-	</extension>
 	
 	<extension
 		point="org.eclipse.ui.perspectives">
@@ -41,7 +28,7 @@
         class="org.dslforge.texteditor.demo.parts.BasicWorkbenchPerspective"
         icon="icons/dslforge.png"
         id="org.dslforge.texteditor.demo.ui.parts.perspective"
-        name="Online Workbench Demo">
+        name="DSL Forge Workbench v0.9.1">
 		</perspective>
 	</extension>
 

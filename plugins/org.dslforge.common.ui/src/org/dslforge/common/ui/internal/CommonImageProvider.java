@@ -18,6 +18,6 @@ package org.dslforge.common.ui.internal;
  */
 public class CommonImageProvider {
 
-  public static final String DSLFORGE_IMG = "icons/dslforge_logo.png";
+  public static final String DSLFORGE_IMG = "icons/logo.png";
   
 }

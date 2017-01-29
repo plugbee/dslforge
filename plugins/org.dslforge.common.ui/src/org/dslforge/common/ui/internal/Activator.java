@@ -37,7 +37,7 @@ public class Activator extends AbstractUIPlugin {
 	public Activator() {
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
@@ -46,7 +46,7 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */

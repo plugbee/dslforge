@@ -45,22 +45,23 @@ public class FileSystemLabelProvider implements ILabelProvider {
 			}
 			int index = file.getName().lastIndexOf('.');
 			if (index > 0) {
-			    String extension = file.getName().substring(index+1);
-			    if (extension.equals(IFileExtensionHandler.JAVA_EXTENSION)) {
-			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.JAVA).createImage();
-			    } 
-			    else if(extension.equals(IFileExtensionHandler.BINARY_EXTENSION)) {
-			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.BINARY).createImage();	
-			    } 
-			    else if (extension.equals(IFileExtensionHandler.JS_EXTENSION) || extension.equals(IFileExtensionHandler.JSON_EXTENSION)) {
-			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.JS).createImage();
-			    }
-			    else if (extension.equals(IFileExtensionHandler.TEXT_EXTENSION)) {
-			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.FILE).createImage();
-			    }
-			    else {
-			    	return Activator.getImageDescriptor(BasicWorkbenchImageProvider.MODEL).createImage();	 	
-			    }
+				String extension = file.getName().substring(index + 1);
+				if (extension.equals(IFileExtensionHandler.JAVA_EXTENSION)) {
+					return Activator.getImageDescriptor(BasicWorkbenchImageProvider.JAVA).createImage();
+				} else if (extension.equals(IFileExtensionHandler.BINARY_EXTENSION)) {
+					return Activator.getImageDescriptor(BasicWorkbenchImageProvider.BINARY).createImage();
+				} else if (extension.equals(IFileExtensionHandler.JS_EXTENSION)
+						|| extension.equals(IFileExtensionHandler.JSON_EXTENSION)) {
+					return Activator.getImageDescriptor(BasicWorkbenchImageProvider.JS).createImage();
+				} else if (extension.equals(IFileExtensionHandler.HTML_EXTENSION)) {
+					return Activator.getImageDescriptor(BasicWorkbenchImageProvider.HTML).createImage();
+				} else if (extension.equals(IFileExtensionHandler.CSS_EXTENSION)) {
+					return Activator.getImageDescriptor(BasicWorkbenchImageProvider.CSS).createImage();
+				} else if (extension.equals(IFileExtensionHandler.TEXT_EXTENSION)) {
+					return Activator.getImageDescriptor(BasicWorkbenchImageProvider.FILE).createImage();
+				} else {
+					return Activator.getImageDescriptor(BasicWorkbenchImageProvider.MODEL).createImage();
+				}
 			}
 			return Activator.getImageDescriptor(BasicWorkbenchImageProvider.MODEL).createImage();
 		}

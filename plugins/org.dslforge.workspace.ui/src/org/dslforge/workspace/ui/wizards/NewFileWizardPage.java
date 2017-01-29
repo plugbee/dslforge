@@ -43,11 +43,11 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 	
 	private final Map<String, String> languageToFileExtension = new HashMap<String, String>();
 	private Text fileNameText;
-	private Combo languageNameCombo;
+	private Combo languageCombo;
 	private String languageName = null;
 
 	protected String getSelectedFileExtension() {
-		return IFileExtensionHandler.getAavailableFileExtensions().get(languageNameCombo.getText());
+		return IFileExtensionHandler.getAavailableFileExtensions().get(languageCombo.getText());
 	}
 	
 	protected ModifyListener validator = new ModifyListener() {
@@ -78,21 +78,28 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 		setErrorMessage(null);			
 		IPath filePath = getFilePath();
 		if (filePath.toFile().exists()) {
-			setErrorMessage("A file with equal name already exist.");
+			setErrorMessage("A file with equal name already exists in the workspace.");
 			return false;
 		}
-		if (fileName.endsWith(IFileExtensionHandler.JAVA_EXTENSION)) {
-			languageNameCombo.select(0);
-			return true;
-		} else if (fileName.endsWith(IFileExtensionHandler.JS_EXTENSION)) {
-			languageNameCombo.select(1);
+		final int selectionIndex = IFileExtensionHandler.getSelectionIndex(fileName);
+		if (selectionIndex >= 0) {
+			languageCombo.select(selectionIndex);
 			return true;
 		}
-		else if (fileName.endsWith(IFileExtensionHandler.JSON_EXTENSION)) {
-			languageNameCombo.select(2);
-			return true;
+		return false;
+	}
+
+	protected void initializeLanguageCombo() {
+		if (languageName == null) {
+			for (String fileExtension : IFileExtensionHandler.getAavailableFileExtensions().keySet()) {
+				languageCombo.add(IFileExtensionHandler.getLanguageName(fileExtension));
+			}
 		} else {
-			return false;
+			languageCombo.add(languageName);
+			languageCombo.setEnabled(false);
+		}
+		if (languageCombo.getItemCount() == 1) {
+			languageCombo.select(0);
 		}
 	}
 
@@ -152,15 +159,15 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 		dslNameLabel.setLayoutData(new GridData(160, SWT.DEFAULT));
 		dslNameLabel.setText("&Language:");
 		
-		languageNameCombo = new Combo(folderInfoComposite, SWT.BORDER | SWT.READ_ONLY);
+		languageCombo = new Combo(folderInfoComposite, SWT.BORDER | SWT.READ_ONLY);
 		GridData data = new GridData();
 		data.horizontalAlignment = GridData.FILL;
 		data.grabExcessHorizontalSpace = true;
-		languageNameCombo.setLayoutData(data);
-		languageNameCombo.setToolTipText("Select among the available languages.");
+		languageCombo.setLayoutData(data);
+		languageCombo.setToolTipText("Select the language");
 		initializeLanguageCombo();
 
-		languageNameCombo.addSelectionListener(new SelectionListener() {
+		languageCombo.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -183,7 +190,7 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 			}
 		});
 
-		languageNameCombo.addModifyListener(new ModifyListener() {
+		languageCombo.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent event) {
 				//setPageComplete(validatePage());
@@ -191,21 +198,6 @@ public class NewFileWizardPage extends AbstractNewResourceWizardPage {
 		});
 		
 		setPageComplete(validatePage());
-	}
-
-	public void initializeLanguageCombo() {
-		if (languageName == null) {
-			for (String objectName : IFileExtensionHandler.getAavailableFileExtensions().keySet()) {
-				languageNameCombo.add(objectName);
-			}
-			if (languageNameCombo.getItemCount() == 1) {
-				languageNameCombo.select(0);
-			}
-		} else {
-			languageNameCombo.add(languageName);
-			languageNameCombo.select(0);
-			languageNameCombo.setEnabled(false);
-		}
 	}
 
 	protected void updateWidgetEnablements() {

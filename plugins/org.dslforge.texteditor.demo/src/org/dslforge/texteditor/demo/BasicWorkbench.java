@@ -31,7 +31,7 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
  */
 public class BasicWorkbench implements EntryPoint {
 
-	private static final String DEMO_PRESENTATION = "org.dslforge.texteditor.demo.presentation";
+	private static final String DEMO_PRESENTATION = "org.dslforge.texteditor.demo.theme";
 
 	public int createUI() {
 	    RWT.getUISession().setAttribute("user", "default");

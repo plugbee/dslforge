@@ -35,7 +35,6 @@ import org.eclipse.xtext.ui.editor.contentassist.InfiniteRecursion;
 import org.eclipse.xtext.ui.editor.contentassist.LexerUIBindings;
 import org.eclipse.xtext.ui.editor.contentassist.LookAheadTerminal;
 import org.eclipse.xtext.ui.editor.contentassist.ObservableXtextTokenStream;
-import org.eclipse.xtext.ui.editor.contentassist.ObservableXtextTokenStream.StreamListener;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.Lexer;
 

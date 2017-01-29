@@ -66,6 +66,8 @@ public class Activator extends AbstractUIPlugin {
 		addImageFilePath(BasicWorkbenchImageProvider.COMPILE);
 		addImageFilePath(BasicWorkbenchImageProvider.JAVA);
 		addImageFilePath(BasicWorkbenchImageProvider.JS);
+		addImageFilePath(BasicWorkbenchImageProvider.HTML);
+		addImageFilePath(BasicWorkbenchImageProvider.CSS);
 		addImageFilePath(BasicWorkbenchImageProvider.BINARY);		
 	}
 

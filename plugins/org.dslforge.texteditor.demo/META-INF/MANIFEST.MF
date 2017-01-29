@@ -11,6 +11,7 @@ Export-Package: org.dslforge.texteditor.demo,
  org.dslforge.texteditor.demo.actions,
  org.dslforge.texteditor.demo.commands,
  org.dslforge.texteditor.demo.internal,
- org.dslforge.texteditor.demo.parts
+ org.dslforge.texteditor.demo.parts,
+ org.dslforge.texteditor.demo.presentation
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.log4j;version="1.2.15"

@@ -165,7 +165,7 @@
          <action
                class="org.dslforge.workspace.ui.actions.NewProjectDelegateAction"
                definitionId="org.dslforge.workspace.ui.commands.NewProject"
-               icon="icons/project.png"
+               icon="icons/prj_obj.png"
                id="org.dslforge.navigator.actions.new.project"
                label="Project"
                menubarPath="org.dslforge.workspace.menu.new/group1"
@@ -224,6 +224,5 @@
          </action>
       </actionSet>
    </extension>
-
    
 </plugin>

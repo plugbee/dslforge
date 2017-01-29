@@ -85,21 +85,17 @@ public class BasicWorkbenchActionBarAdvisor extends ActionBarAdvisor {
 	 */
 	protected IMenuManager createEditMenu(IWorkbenchWindow window) {
 		IMenuManager menu = new MenuManager("Edit",	IWorkbenchActionConstants.M_EDIT);
-
 		menu.add(new GroupMarker(IWorkbenchActionConstants.EDIT_START));
 		addToMenuAndRegister(menu, ActionFactory.UNDO.create(window));
 		addToMenuAndRegister(menu, ActionFactory.REDO.create(window));
 		menu.add(new GroupMarker(IWorkbenchActionConstants.UNDO_EXT));
 		menu.add(new Separator());
-
 		addToMenuAndRegister(menu, ActionFactory.CUT.create(window));
-		IWorkbenchAction copyAction = ActionFactory.COPY.create(window);
-		
+		IWorkbenchAction copyAction = ActionFactory.COPY.create(window);	
 		addToMenuAndRegister(menu, copyAction);
 		addToMenuAndRegister(menu, ActionFactory.PASTE.create(window));
 		menu.add(new GroupMarker(IWorkbenchActionConstants.CUT_EXT));
 		menu.add(new Separator());
-
 		addToMenuAndRegister(menu, ActionFactory.DELETE.create(window));
 		addToMenuAndRegister(menu, ActionFactory.SELECT_ALL.create(window));
 		menu.add(new Separator());

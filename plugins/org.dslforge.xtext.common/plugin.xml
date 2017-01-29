@@ -54,7 +54,7 @@
             name="CreateNewFile">
       </command>
   </extension>       
-  
+
     <extension
          point="org.eclipse.ui.actionSets">
       <actionSet
@@ -74,35 +74,4 @@
          </action>
       </actionSet>
    </extension>
-  
-       
-      <!-- @generated dslforge -->
-      <!--
-   <extension point="org.eclipse.ui.editors">
-      <editor
-            id="org.dslforge.xtext.common.web.editor"
-            name="Text Editor"
-	            icon="icons/file_obj.png"
-		            extensions="txt, html, xml, json"
-           class="org.dslforge.xtext.common.DefaultTextEditor">
-      </editor>
-   </extension>
-   -->
-   <!--
-      <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.xtext.common.compiler.java.contribution"
-            nameFilter="*.java"
-            objectClass="java.io.File">
-         <action
-               class="org.dslforge.xtext.common.compiler.DynamicCompiler"
-               icon="icons/run_exec.png"
-               id="org.dslforge.xtext.common.compiler.java.action"
-               label="Run">
-         </action>
-      </objectContribution>
-   </extension>
--->
 </plugin>
