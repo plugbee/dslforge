@@ -89,6 +89,8 @@
       <plugin id="org.eclipse.rap.incubator.texteditor.java"/>
       <plugin id="org.eclipse.rap.incubator.texteditor.javascript"/>
       <plugin id="org.eclipse.rap.incubator.texteditor.json"/>
+      <plugin id="org.eclipse.rap.incubator.texteditor.html"/>
+      <plugin id="org.eclipse.rap.incubator.texteditor.css"/>
       <plugin id="org.eclipse.rap.jface"/>
       <plugin id="org.eclipse.rap.jface.databinding"/>
       <plugin id="org.eclipse.rap.rwt"/>
@@ -185,6 +187,8 @@
       <plugin id="org.eclipse.rap.incubator.texteditor.java" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.incubator.texteditor.javascript" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.incubator.texteditor.json" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.rap.incubator.texteditor.html" autoStart="true" startLevel="5" />
+      <plugin id="org.eclipse.rap.incubator.texteditor.css" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.jface" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.jface.databinding" autoStart="true" startLevel="5" />
       <plugin id="org.eclipse.rap.rwt" autoStart="true" startLevel="5" />

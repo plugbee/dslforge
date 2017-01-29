@@ -24,7 +24,9 @@
 		<module>../../../org.eclipse.rap.incubator.texteditor/plugins/org.eclipse.rap.incubator.texteditor</module>
 		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.java</module>
 		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.javascript</module>
-		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.json</module>			
+		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.json</module>
+		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.html</module>
+		<module>../../../org.eclipse.rap.incubator.texteditor/examples/org.eclipse.rap.incubator.texteditor.css</module>			
 		<!-- Tests -->	
 		<!-- Documentation -->	
 		<!-- Features -->
