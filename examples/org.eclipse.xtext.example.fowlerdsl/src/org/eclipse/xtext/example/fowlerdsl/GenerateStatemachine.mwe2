@@ -5,19 +5,20 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-module org.eclipse.xtext.example.domainmodel.GenerateDomainmodel
+module org.eclipse.xtext.example.domainmodel.GenerateStatemachine
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/org/eclipse/xtext/example/fowlerdsl/Statemachine.xtext"
-var fileExtensions = "statemachine"
 var projectName = "org.eclipse.xtext.example.fowlerdsl"
+// grammarURI has to be platform:/resource as it is not on the classpath
+var grammarURI = "platform:/resource/${projectName}/src/org/eclipse/xtext/example/fowlerdsl/Statemachine.xtext"
+//var grammarURI = "classpath:/org/eclipse/xtext/example/fowlerdsl/Statemachine.xtext"
+var fileExtensions = "statemachine"
 var runtimeProject = "../${projectName}"
 var generateXtendStub = true
 var encoding = "UTF-8"
-var lineDelimiter = '\n'
 
 Workflow {
 
@@ -39,15 +40,10 @@ Workflow {
     component = DirectoryCleaner {
     	directory = "${runtimeProject}.ui/src-gen"
     }
-    
-//    component = DirectoryCleaner {
-//    	directory = "${runtimeProject}.tests/src-gen"
-//    }
-    
+
     component = Generator auto-inject {
     	pathRtProject = runtimeProject
     	pathUiProject = "${runtimeProject}.ui"
-//    	pathTestProject = "${runtimeProject}.tests"
     	projectNameRt = projectName
     	projectNameUi = "${projectName}.ui"
     	language = auto-inject {
@@ -71,17 +67,10 @@ Workflow {
     		fragment = resourceFactory.ResourceFactoryFragment auto-inject {}
     
     		// The antlr parser generator fragment.
-    		fragment = parser.antlr.XtextAntlrGeneratorFragment auto-inject {
-    		//  options = {
-    		//      backtrack = true
-    		//  }
-    		}
+    		fragment = parser.antlr.XtextAntlrGeneratorFragment auto-inject {}
     
     		// Xtend-based API for validation
-    		fragment = validation.ValidatorFragment auto-inject {
-    		//    composedCheck = "org.eclipse.xtext.validation.ImportUriValidator"
-    		//    composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
-    		}
+    		fragment = validation.ValidatorFragment auto-inject {}
     
     		// old scoping and exporting API
     		// fragment = scoping.ImportURIScopingFragment auto-inject {}
@@ -117,7 +106,7 @@ Workflow {
     		}
     
     		// generates junit test support classes into Generator#pathTestProject
-//    		fragment = junit.Junit4Fragment auto-inject {}
+			//fragment = junit.Junit4Fragment auto-inject {}
     
     		// rename refactoring
     		fragment = refactoring.RefactorElementNameFragment auto-inject {}
