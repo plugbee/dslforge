@@ -1310,22 +1310,42 @@ exports.getCompletionPrefix = function (editor) {
     return prefix || this.retrievePrecedingIdentifier(line, pos.column);
 };
 
-
 var typeToIcon = function(type) {
-	if (type.indexOf("[") ==0  && type.indexOf("]") == type.length-1)
-		type = type.substring(1, type.length-1);
 	var cls = "ace-";
 	var suffix;
-	if (type == "?") suffix = "unknown";
-	else if (type == "keyword") suffix = type;
-	else if (type == "identifier") suffix = type;
-	else if (type == "snippet") suffix = "snippet";
-	else if (type == "number" || type == "string" || type == "bool") suffix = type;
-	else if (/^fn\(/.test(type)) suffix = "fn";
-	else if (/^\[/.test(type)) suffix = "array";
-	else suffix = "object";
-	return cls + "completion " + cls + "completion-" + suffix;
-}
+	if (type.indexOf("[") ==0  && type.indexOf("]") == type.length-1)
+		type = type.substring(1, type.length-1);	
+	var typeToHex = function(type) {
+	    var hex = '';
+	    for(var i=0;i<type.length;i++) {
+	        hex += ''+type.charCodeAt(i).toString(16);
+	    }
+	    var color  = '#' + ("000000" + hex.slice(2, 8).toUpperCase()).slice(-6);
+	    return color;
+	};
+	var typeToColor = function(type) {
+		if (type==="keyword")
+			return "#78002D";
+		if (type==="identifier")
+			return "#c66";
+		if (type==="snippet")
+			return 	"#9ACD32";
+		var hash = 0;
+		for (var i = 0; i < type.length; i++) {
+			hash = type.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		var color = '#';
+		for (var i = 0; i < 3; i++) {
+			var value = (hash >> (i * 8)) & 0xFF;
+			color += ('00' + value.toString(16)).substr(-2);
+		}
+		return color;
+	};
+	var cssClass = ".ace-completion-" + type + ":before { content:'" + type.charAt(0).toUpperCase() + "'; background: " + typeToColor(type) + "; }";
+	ace.require("ace/lib/dom").importCssString(cssClass);
+	return cls + "completion " + cls + "completion-" + type;
+};
+
 exports.typeToIcon = typeToIcon;
 
 });

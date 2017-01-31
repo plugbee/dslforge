@@ -153,8 +153,7 @@ oop.inherits(TokenTooltip, Tooltip);
             session.removeMarker(this.marker);
             this.range = new Range(docPos.row, token.start, docPos.row, token.start + token.value.length);
             this.marker = session.addMarker(this.range, "ace_bracket", "text");       
-            this.show(null, this.x + lineHeight/2, this.y + lineHeight/2);
-            
+            this.show(null, this.x + lineHeight/2, this.y + lineHeight/2);            
         } else {
             this.hide();
             session.removeMarker(this.marker);
