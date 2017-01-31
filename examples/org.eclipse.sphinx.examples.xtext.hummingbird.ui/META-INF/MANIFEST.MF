@@ -21,5 +21,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.sphinx.examples.xtext.ui.quickfix,
  org.eclipse.sphinx.examples.xtext.ui.contentassist,
  org.eclipse.sphinx.examples.xtext.ui.internal,
- org.eclipse.sphinx.examples.xtext.ui.contentassist.antlr
+ org.eclipse.sphinx.examples.xtext.ui.contentassist.antlr,
+ org.eclipse.sphinx.examples.xtext.ui.contentassist.antlr.internal
 Bundle-Activator: org.eclipse.sphinx.examples.xtext.ui.internal.HummingbirdActivator
