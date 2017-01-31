@@ -30,7 +30,6 @@ import org.dslforge.common.IWebProjectDescriptor.Mode;
 import org.dslforge.common.IWebProjectFactory;
 import org.dslforge.common.IWebProjectGenerator;
 import org.dslforge.xtext.generator.web.GenExecutableExtensionFactory;
-import org.dslforge.xtext.generator.web.GenGlobalIndex;
 import org.dslforge.xtext.generator.web.build.GenWebPluginPomXml;
 import org.dslforge.xtext.generator.web.contentassist.GenContentAssistParser;
 import org.dslforge.xtext.generator.web.editor.GenActionBarContributor;
@@ -269,12 +268,13 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 	@Override
 	public void doGenerate(IWebProjectFactory factory, IProgressMonitor monitor) {
 		SubMonitor progress = SubMonitor.convert(monitor, 100);
-		progress.subTask("Generating language artefacts");
+		String message = "Generating language artefacts";
+		progress.subTask(message);
+		logger.debug(message);
 		new GenWidget().doGenerate(factory, progress.newChild(1));
 		new GenWidgetResource().doGenerate(factory, progress.newChild(1));
 		new GenImageProvider().doGenerate(factory, progress.newChild(1));
 		new GenActionBarContributor().doGenerate(factory, progress.newChild(1));
-		new GenGlobalIndex().doGenerate(factory, progress.newChild(1));
 		if (this.isServerSideContentAssist){
 			new GenContentAssistEnabledEditor().doGenerate(factory, progress.newChild(1));
 			new GenContentAssistParser().doGenerate(factory, progress.newChild(100));
