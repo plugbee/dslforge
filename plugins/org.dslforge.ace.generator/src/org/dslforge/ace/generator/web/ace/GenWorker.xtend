@@ -45,10 +45,7 @@ class GenWorker extends AbstractGenerator{
 	}
 	
 	def toJavaScript()'''
-/**
- * Generated
- */
-
+«fileHeader»
 "no use strict";
 ;(function(window) {
 if (typeof window.window != "undefined" && window.document) {
@@ -1367,20 +1364,20 @@ var Document = function(text) {
         return end;
     };
     this.applyDeltas = function(deltas) {
-         for (var i=0; i<deltas.length; i++) {
-             var delta = deltas[i];
-             if (delta.range) {
-                 var range = Range.fromPoints(delta.range.start, delta.range.end);
-                 if (delta.action == "insertLines")
-                     this.insertLines(range.start.row, delta.lines);
-                 else if (delta.action == "insertText")
-                     this.insert(range.start, delta.text);
-                 else if (delta.action == "removeLines")
-                     this._removeLines(range.start.row, range.end.row - 1);
-                 else if (delta.action == "removeText")
-            	     this.remove(range);
-        	}
-    	}
+        for (var i=0; i<deltas.length; i++) {
+            var delta = deltas[i];
+            if (delta.range) {
+                var range = Range.fromPoints(delta.range.start, delta.range.end);
+                if (delta.action == "insertLines")
+                    this.insertLines(range.start.row, delta.lines);
+                else if (delta.action == "insertText")
+                    this.insert(range.start, delta.text);
+                else if (delta.action == "removeLines")
+                    this._removeLines(range.start.row, range.end.row - 1);
+                else if (delta.action == "removeText")
+                    this.remove(range);
+            }
+        }
     };
     this.revertDeltas = function(deltas) {
         for (var i=deltas.length-1; i>=0; i--) {

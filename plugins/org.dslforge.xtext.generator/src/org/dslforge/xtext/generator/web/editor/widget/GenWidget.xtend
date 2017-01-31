@@ -38,63 +38,59 @@ class GenWidget extends AbstractGenerator {
 	}
 
 	def toJava() '''
-/**
- * @Generated
- */
-package «projectName».editor.widget;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.dslforge.styledtext.BasicText;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.rap.rwt.remote.Connection;
-import org.eclipse.rap.rwt.remote.RemoteObject;
-import org.eclipse.swt.widgets.Composite;
-
-public class «grammarShortName» extends BasicText {
+	«fileHeader»
+	package «projectName».editor.widget;
 	
-	private static final long serialVersionUID = 1L;
+	import java.util.ArrayList;
+	import java.util.List;
 	
-	private static final String REMOTE_TYPE = "«projectName».editor.widget.«grammarShortName»";
+	import org.dslforge.styledtext.BasicText;
+	import org.eclipse.core.runtime.IPath;
+	import org.eclipse.core.runtime.Path;
+	import org.eclipse.rap.rwt.remote.Connection;
+	import org.eclipse.rap.rwt.remote.RemoteObject;
+	import org.eclipse.swt.widgets.Composite;
 	
-	public «grammarShortName»(Composite parent, int style) {
-		super(parent, style);
+	public class «grammarShortName» extends BasicText {
+		
+		private static final long serialVersionUID = 1L;
+		
+		private static final String REMOTE_TYPE = "«projectName».editor.widget.«grammarShortName»";
+		
+		public «grammarShortName»(Composite parent, int style) {
+			super(parent, style);
+		}
+		
+		@Override
+		protected RemoteObject createRemoteObject(Connection connection) {
+			return connection.createRemoteObject(REMOTE_TYPE);
+		}
+		
+		@Override 
+		protected void setupClient() {
+			super.setupClient();
+			List<IPath> languageResources = new ArrayList<IPath>();
+			languageResources.add(new Path("src-js/«basePath»/ace/theme-«grammarShortName.toLowerCase».js"));
+			languageResources.add(new Path("src-js/«basePath»/ace/mode-«grammarShortName.toLowerCase».js"));
+			languageResources.add(new Path("src-js/«basePath»/ace/worker-«grammarShortName.toLowerCase».js"));
+			languageResources.add(new Path("src-js/«basePath»/ace/snippets/«grammarShortName.toLowerCase».js"));
+			languageResources.add(new Path("src-js/«basePath»/parser/antlr-all-min.js"));
+			languageResources.add(new Path("src-js/«basePath»/parser/«grammarShortName»Parser.js"));
+			languageResources.add(new Path("src-js/«basePath»/parser/«grammarShortName»Lexer.js"));
+			registerJsResources(languageResources, getClassLoader());
+			loadJsResources(languageResources);
+		}
+	
+		@Override
+		protected ClassLoader getClassLoader() {
+			ClassLoader classLoader = «grammarShortName».class.getClassLoader();
+			return classLoader;
+		}
 	}
-	
-	@Override
-	protected RemoteObject createRemoteObject(Connection connection) {
-		return connection.createRemoteObject(REMOTE_TYPE);
-	}
-	
-	@Override 
-	protected void setupClient() {
-		super.setupClient();
-		List<IPath> languageResources = new ArrayList<IPath>();
-		languageResources.add(new Path("src-js/«basePath»/ace/theme-«grammarShortName.toLowerCase».js"));
-		languageResources.add(new Path("src-js/«basePath»/ace/mode-«grammarShortName.toLowerCase».js"));
-		languageResources.add(new Path("src-js/«basePath»/ace/worker-«grammarShortName.toLowerCase».js"));
-		languageResources.add(new Path("src-js/«basePath»/ace/snippets/«grammarShortName.toLowerCase».js"));
-		languageResources.add(new Path("src-js/«basePath»/parser/antlr-all-min.js"));
-		languageResources.add(new Path("src-js/«basePath»/parser/«grammarShortName»Parser.js"));
-		languageResources.add(new Path("src-js/«basePath»/parser/«grammarShortName»Lexer.js"));
-		registerJsResources(languageResources, getClassLoader());
-		loadJsResources(languageResources);
-	}
-
-	@Override
-	protected ClassLoader getClassLoader() {
-		ClassLoader classLoader = «grammarShortName».class.getClassLoader();
-		return classLoader;
-	}
-}
 '''
 
 	def toJavaScript() '''
-	/**
-	 * @Generated
-	 */
+	«fileHeader»
 	(function() {
 		rap.registerTypeHandler("«projectName».editor.widget.«grammarShortName»", {
 			factory : function(properties) {

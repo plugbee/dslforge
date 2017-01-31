@@ -88,4 +88,13 @@ abstract class AbstractGenerator implements IArtefactGenerator {
 	override String getFileName() {
 		return this.fileName
 	}
+	
+	override getFileHeader() {
+		return '''
+		/**
+		 * @Generated
+		 */
+		'''
+	}
+	
 }

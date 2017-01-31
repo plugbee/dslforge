@@ -43,6 +43,7 @@ class GenSnippets extends AbstractGenerator{
 	}
 			
 	def toJavaScript()'''
+«fileHeader»
 define('ace/snippets/«grammarShortName.toLowerCase»', ['require', 'exports', 'module' ], function(require, exports, module) {
 
 exports.snippetText = ''
