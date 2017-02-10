@@ -47,7 +47,8 @@
 		destruct : function() {
 			rap.off("send", this.onSend);
 			this.editor.destroy();
-			this.element.parentNode.removeChild(this.element);
+			if(this.element.parentNode)
+				this.element.parentNode.removeChild(this.element);
 		},
 		
 		members : {
@@ -449,7 +450,6 @@
 				if (editor != null) {
 					var editable = this.editable;
 					var guid = this.url;	
-					//Language settings
 			        ace.config.loadModule("ace/ext/language_tools", function (module) {
 						editor.setTheme("ace/theme/basic");
 			        	editor.setOptions({
@@ -459,7 +459,6 @@
 						    useWorker: false
 			            });
 			        });
-					//General settings
 					editor.setShowPrintMargin(false);
 					editor.setBehavioursEnabled(true);
 					editor.setWrapBehavioursEnabled(true);
@@ -475,47 +474,9 @@
 					if (this.scope==null) this.scope=[];
 					if (this.proposals==null) this.proposals=[];
 					var self = this;
-					//Content assist
-					this.langTools = ace.require("ace/ext/language_tools");
-					this.backendCompleter = {	
-						getCompletions: function(editor, session, pos, prefix, callback) {
-							self.onCompletionRequest(pos, prefix, callback);	
-						},
-						getDocTooltip: function(item) {
-					    	item.docHTML = ["<div class=\"ace_line\" style=\"height:12px\"><span class=\"", self.typeToIcon(item.meta),"\">&nbsp;</span><span class=\"ace_\">","<b>", item.caption, "</b>","</span><span class=\"ace_rightAlignedText\"></span></div>", "<hr></hr>", item.meta].join("");
-						}
-					}
-					this.completers = editor.completers;
-					this.langTools.addCompleter(this.backendCompleter);
-					//Documentation
-					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;	
-					editor.tokenTooltip = new TokenTooltip(editor);			 	
 				 	//Index
 				 	index = this.scope;
 				 	proposals = this.proposals;	
-					if (this.useSharedWorker) {
-						if (typeof SharedWorker == 'undefined') {	
-							alert("Your browser does not support Javascript shared workers. "
-									+ "This feature enables multi-threading in the browser, it will be disabled with your navigator. "
-									+ "The following browsers are supported: Chrome, Firefox, Safari.");
-						} else {
-							var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
-							var httpURL = this.computeWorkerPath(filePath);
-							var worker = this.worker = new SharedWorker(httpURL);	 			
-							if (this.ready) {
-								editor.on("change", function(event) {
-									worker.port.postMessage({
-										message: editor.getValue(), 
-								        guid: guid, 
-								        index: index
-								    });
-							    });
-							}
-							worker.port.onmessage = function(e) {
-							 	index = e.data.index;
-						    };		
-					 	}
-					}
 					editor.on("focus", function() {
 				 		self.onFocus();
 				 	});

@@ -65,9 +65,9 @@ public class BasicText extends Composite {
 	private static final int ContentAssist = 50;
 	
 	private static final String ACE_LIBRARY_KEY = "org.eclipse.rap.incubator.basictext.ace";
-	private static final String ACE_LIBRARY_VALUE = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.4/ace.js";
+	private static final String ACE_LIBRARY_VALUE = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js";
 	private static final String ACE_SEARCHBOX_KEY = "org.eclipse.rap.incubator.basictext.ace.ext-searchbox";
-	private static final String ACE_SEARCHBOX_VALUE = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.4/ext-searchbox.js";
+	private static final String ACE_SEARCHBOX_VALUE = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ext-searchbox.js";
 	
 	private final BasicTextOperationHandler operationHandler = new BasicTextOperationHandler(this);
 	private RemoteObject remoteObject;
@@ -722,7 +722,7 @@ public class BasicText extends Composite {
 	 * @throws IOException
 	 */
 	private void registerResource(ResourceManager resourceManager, ClassLoader classLoader, String filePath) throws IOException {
-		logger.info("Registering file: " + filePath);
+		logger.debug("Registering file: " + filePath);
 		InputStream inputStream = classLoader.getResourceAsStream(filePath);
 		try {
 			resourceManager.register(filePath, inputStream);

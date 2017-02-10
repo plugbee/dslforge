@@ -3,7 +3,6 @@
  */
 define('ace/theme/mydsl', ['require', 'exports', 'module' , 'ace/lib/dom'], function(require, exports, module) {
 
-
 exports.isDark = false;
 exports.cssText = ".ace-mydsl .ace_gutter {\
 	background: #ebebeb;\

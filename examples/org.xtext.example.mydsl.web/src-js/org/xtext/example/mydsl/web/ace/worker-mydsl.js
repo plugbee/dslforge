@@ -1,3 +1,6 @@
+/**
+ * @Generated
+ */
 "no use strict";
 ;(function(window) {
 if (typeof window.window != "undefined" && window.document) {
@@ -888,15 +891,15 @@ var Worker = exports.Worker = function(sender) {
 oop.inherits(Worker, Mirror);
 
 (function() {
-	
+
     this.onUpdate = function() {
         var value = this.doc.getValue();
-        
+
         var msg_errors=[];
 		org.antlr.runtime.BaseRecognizer.prototype.emitErrorMessage = function (msg) {
-			msg_errors.push(msg);	
+			msg_errors.push(msg);
 		};
-		
+
 	    cstream = new org.antlr.runtime.ANTLRStringStream(value);
 	    lexer = new MyDslLexer(cstream);
 	    tstream = new org.antlr.runtime.CommonTokenStream(lexer);
@@ -906,7 +909,6 @@ oop.inherits(Worker, Mirror);
 	    } catch(err) {
 	    	//recovery not enabled.
 	    }
-	    
 	    if (msg_errors.length>=1) {
 			this.sender.emit("clear");
 		    for (var i = 0; i < msg_errors.length; i++) {
@@ -916,7 +918,7 @@ oop.inherits(Worker, Mirror);
 				var result = splits.slice(0,2);
 				result.push(tail);
 		    	var positions = result[1].match(/\d+/g);
-		    	var e = new SyntaxError("Parsing Error");	
+		    	var e = new SyntaxError("Parsing Error");
 				if (result.length >= 3) {
 					msg_error = result[2].slice(1);
 				}

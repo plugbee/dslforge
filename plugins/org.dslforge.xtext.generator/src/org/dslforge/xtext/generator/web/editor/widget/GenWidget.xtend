@@ -170,10 +170,9 @@ class GenWidget extends AbstractGenerator {
 					 	proposals = this.proposals;
 					 	if (this.useSharedWorker) {
 							if (typeof SharedWorker == 'undefined') {
-								alert("Your browser does not support Javascript shared workers. "
-										+ "This feature enables multi-threading in the browser, it will be disabled with your navigator. "
-										+ "The following browsers are supported: Chrome, Firefox, Safari.");
-							} else {
+									console.log("Your browser does not support Javascript shared workers, as a consequence some features will be disabled."
+									+ "For a full-featured user experience, the following browsers are supported: Chrome, Firefox, Safari.");
+								} else {
 								var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
 								var httpURL = this.computeWorkerPath(filePath);
 								var worker = this.worker = new SharedWorker(httpURL);

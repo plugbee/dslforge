@@ -106,7 +106,8 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 
 	static final Logger logger = Logger.getLogger(BasicTextEditor.class);
 	
-	private static final String DEFAULT_TEXT_FONT = "Tahoma, Geneva, sans-serif";
+	protected static final String DEFAULT_TEXT_FONT = "Tahoma, Geneva, sans-serif";
+	
 	/**
 	 * This editor's text viewer.
 	 */
@@ -158,7 +159,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	 * Creates completion proposals based on cursor position
 	 */
 	protected void createCompletionProposals() {
-		//override in subclass.
+		//override in subclasses.
 	}
 
 	/**
@@ -167,13 +168,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	 * @param offsetAtPosition
 	 */
 	protected void createCompletionProposals(int offsetAtPosition) {
-		//example
-//		List<String> proposalsExample = new ArrayList<String>();
-//		proposalsExample.add("my custom proposal 1");
-//		proposalsExample.add("my custom proposal 2");
-//		proposalsExample.add("my custom proposal 3");
-//		proposalsExample.add("my custom proposal 4");
-//		viewer.getTextWidget().setProposals(proposalsExample);
+		//override in subclasses.
 	}
 	
 	MenuDetectListener menuDetectListener = new MenuDetectListener() {
@@ -292,7 +287,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		parent.setLayout(gridLayout);
 		viewer = createTextViewer(parent, SWT.FILL);
 		viewer.setDocument(createEmptyDocument());
-		getSite().setSelectionProvider(		new ISelectionProvider() {
+		getSite().setSelectionProvider(new ISelectionProvider() {
 			@Override
 			public void addSelectionChangedListener(ISelectionChangedListener listener) {
 			}
@@ -318,8 +313,8 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	 * @return
 	 */
 	protected ITextViewer createTextViewer(Composite parent, int styles) {
-		BasicText textWidget = createTextWidget(parent, styles);
-		return new TextViewer(textWidget);
+		final BasicText textWidget = createTextWidget(parent, styles);
+		return new TextViewer(textWidget, parent, styles);
 	}
 
 	/**
@@ -333,33 +328,14 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 		textLayoutData.grabExcessHorizontalSpace = true;
 		textLayoutData.grabExcessVerticalSpace = true;
 		textWidget.setLayoutData(textLayoutData);
-
 		// set font
-	    Font font = new Font( Display.getCurrent(), new FontData( DEFAULT_TEXT_FONT, 14, SWT.NORMAL ) );
+		Font font = new Font(Display.getCurrent(), new FontData(DEFAULT_TEXT_FONT, 14, SWT.NORMAL));
 		textWidget.setFont(font);
-
 		// set background color
 		//Color color = new Color(parent.getDisplay(), new RGB(229, 242, 255));
 		//textWidget.setBackground(color);
-
 		// set read/write access
-		textWidget.setEditable(true);
-
-		// // add annotations
-		// List<Annotation> annotations = new ArrayList<Annotation>();
-		// annotations.add(new Annotation(AceSeverity.ERROR, 1, 3, "This is an
-		// error"));
-		// annotations.add(new Annotation(AceSeverity.WARNING, 3, 1, "This is a
-		// warning"));
-		// annotations.add(new Annotation(AceSeverity.INFO, 5, 1, "This is an
-		// info"));
-		// textWidget.setAnnotations(annotations);
-		//
-		// // highlight text ranges
-		// List<TextRange> ranges = new ArrayList<TextRange>();
-		// ranges.add(new TextRange(1, 0, 1, 40));
-		// textWidget.setMarkers(ranges);
-		
+		textWidget.setEditable(true);		
 		return textWidget;
 	}
 	

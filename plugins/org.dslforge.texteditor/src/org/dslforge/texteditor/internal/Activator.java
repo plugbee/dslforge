@@ -15,6 +15,11 @@
  */
 package org.dslforge.texteditor.internal;
 
+import java.net.URL;
+
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -55,12 +60,35 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns the shared instance
+	 * Returns the shared instance	
 	 *
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {
 		return plugin;
 	}
+	
+	@Override
+	protected void initializeImageRegistry(ImageRegistry reg) {
+		addImageFilePath(TextEditorImageProvider.FILE);		
+	}
+
+	private void addImageFilePath(String relativeURL) {
+		Image image = plugin.getImageRegistry().get(relativeURL);
+		if (image == null) {
+			URL imageURL = plugin.getBundle().getEntry(relativeURL);
+			ImageDescriptor descriptor = ImageDescriptor.createFromURL(imageURL);
+			image = descriptor.createImage();
+			plugin.getImageRegistry().put(relativeURL, image);
+		}
+	}
+
+	public static ImageDescriptor getImageDescriptor(String relativeURL) {
+		URL entry = plugin.getBundle().getEntry(relativeURL);
+		if (entry != null) {
+			return ImageDescriptor.createFromURL(entry);
+		}
+		return null;
+	} 
 	
 }

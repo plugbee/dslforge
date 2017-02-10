@@ -11,14 +11,12 @@
 		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut", "Selection", "CaretEvent", "ContentAssist"],
 		methods : ["setSelection", "addMarker", "removeMarker", "clearMarkers", "insertText", "removeText", "setProposals", "moveCursorFileStart","moveCursorFileEnd"]
 	});
-
 	rwt.qx.Class.define("org.xtext.example.mydsl.web.editor.widget.MyDsl", {
 		extend :org.dslforge.styledtext.BasicText,
 		construct : function(properties) {
 			this.base(arguments, properties);
 		},
 		members : {
-
 			createEditor : function() {
 				var basePath = 'rwt-resources/src-js/org/dslforge/styledtext/ace';
 				ace.require("ace/config").set("basePath", basePath);
@@ -61,7 +59,6 @@
 						self.completers = editor.completers;
 						editor.setTheme("ace/theme/mydsl");
 			        });
-			        
 					//Default settings
 					editor.getSession().setUseWrapMode(true);
 				    editor.getSession().setTabSize(4);
@@ -73,7 +70,6 @@
 					editor.setReadOnly(!editable);
 					editor.$blockScrolling = Infinity;
 					this.setFont(10);
-
 					//Text hover
 					var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;
 					editor.tokenTooltip = new TokenTooltip(editor);
@@ -84,9 +80,8 @@
 				 	proposals = this.proposals;
 				 	if (this.useSharedWorker) {
 						if (typeof SharedWorker == 'undefined') {
-							alert("Your browser does not support Javascript shared workers. "
-									+ "This feature enables multi-threading in the browser, it will be disabled with your navigator. "
-									+ "The following browsers are supported: Chrome, Firefox, Safari.");
+							console.log("Your browser does not support Javascript shared workers, as a consequence some features will be disabled."
+									+ "For a full-featured user experience, the following browsers are supported: Chrome, Firefox, Safari.");
 						} else {
 							var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
 							var httpURL = this.computeWorkerPath(filePath);
@@ -129,11 +124,9 @@
 				//Done
 		        this.onReady();
 			},
-
 			setScope : function(scope) {
 				this.base(arguments, scope);
 			},
-
 			onCompletionRequest : function(pos, prefix, callback) {
 				this.base(arguments, pos, prefix, callback);
 			},
@@ -141,20 +134,17 @@
 			setProposals : function(proposals) {
 				this.proposals = proposals;
 			},
-
 			onFocus: function() {
-				var editor = this.editor;
 				this.base(arguments);
 			},
-
+			
 			onBlur: function() {
 				this.base(arguments);
 			},
-
 			destroy : function() {
 				this.base(arguments);
+				this.langTools.resetOptions(this.editor);
 			}
 		}
 	});
-
 }());
