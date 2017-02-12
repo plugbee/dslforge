@@ -70,14 +70,37 @@ public class EditorUtil {
 	public static IEditorPart openEditor(IWorkbench workbench, IPath path) {
 		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
 		IWorkbenchPage page = workbenchWindow.getActivePage();
-		IEditorDescriptor editorDescriptor = EditorRegistry.getInstance().getDefaultEditor(path.lastSegment());
-		if (editorDescriptor == null) {
+		IEditorDescriptor[] editorDescriptors = EditorRegistry.getInstance().getEditors(path.lastSegment());
+		if (editorDescriptors == null) {
 			MessageDialog.openError(workbenchWindow.getShell(), "Error",
 					"There is no editor registered for the file " + path.lastSegment());
 			return null;
 		} else {
 			try {
-				return page.openEditor(new PathEditorInput(path), editorDescriptor.getId());
+				return page.openEditor(new PathEditorInput(path), editorDescriptors[0].getId());
+			} catch (PartInitException exception) {
+				MessageDialog.openError(workbenchWindow.getShell(), "Open Editor", exception.getMessage());
+				return null;
+			}
+		}
+	}
+	
+	public static IEditorPart openFormEditor(IWorkbench workbench, IPath path) {
+		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
+		IWorkbenchPage page = workbenchWindow.getActivePage();
+		IEditorDescriptor[] editorDescriptors = EditorRegistry.getInstance().getEditors(path.lastSegment());
+		if (editorDescriptors == null) {
+			MessageDialog.openError(workbenchWindow.getShell(), "Error",
+					"There is no editor registered for the file " + path.lastSegment());
+			return null;
+		} else {
+			try {
+				if (editorDescriptors.length==2) {
+					return page.openEditor(new PathEditorInput(path), editorDescriptors[1].getId());
+				}
+				MessageDialog.openError(workbenchWindow.getShell(), "Info",
+						"There is no form editor registered for the file " + path.lastSegment());
+				return page.openEditor(new PathEditorInput(path), editorDescriptors[0].getId());
 			} catch (PartInitException exception) {
 				MessageDialog.openError(workbenchWindow.getShell(), "Open Editor", exception.getMessage());
 				return null;

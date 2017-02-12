@@ -17,6 +17,7 @@ public interface IFileExtensionHandler {
 	
 	@SuppressWarnings("serial")
 	static final LinkedHashMap<String, String> AVAILABLE_FILE_EXTENSIONS = new LinkedHashMap<String,String>(){{
+		put(TEXT_EXTENSION, "Plain text");
 		put(JAVA_EXTENSION, "Java");
 		put(JS_EXTENSION, "JavaScript");
 		put(JSON_EXTENSION, "Json");
