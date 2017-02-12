@@ -25,5 +25,5 @@ public interface IWorkspaceConstants {
 	public static final String VISIBILITY_PUBLIC = "public";
 	public static final String LOCKED = "locked";
 	public static final String UNLOCKED = "unlocked";
-	public static final String WORKSPACE_DEFAULT_PATH = "D:/www/dslforge/workspace";
+	public static final String WORKSPACE_DEFAULT_PATH = "D:/www/dslforge/workbench";
 }
