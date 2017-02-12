@@ -19,6 +19,12 @@ Require-Bundle: org.eclipse.rap.ui,
  org.dslforge.xtext.common,
  org.dslforge.texteditor,
  org.dslforge.styledtext,
- org.codingpark.piraterobot.play
+ org.codingpark.piraterobot.play,
+ org.eclipse.rap.ui.forms,
+ org.codingpark.piraterobot.widget
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.codingpark.piraterobot.play.web.contentassist,
+ org.codingpark.piraterobot.play.web.editor,
+ org.codingpark.piraterobot.play.web.editor.widget,
+ org.codingpark.piraterobot.play.web.module

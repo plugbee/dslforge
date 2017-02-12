@@ -39,6 +39,12 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 	}
 
 	@Override
+	public void createPartControl(Composite parent) {
+		super.createPartControl(parent);
+		validateResource();
+	}
+
+	@Override
 	protected BasicText createTextWidget(Composite parent, int styles) {
 		BasicText textWidget = new BasicText(parent, SWT.FILL);
 		GridData textLayoutData = new GridData();
@@ -49,12 +55,6 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 		textWidget.setLayoutData(textLayoutData);
 		textWidget.setEditable(true);
 		return textWidget;
-	}
-
-	@Override
-	public void createPartControl(Composite parent) {
-		super.createPartControl(parent);
-		validateResource();
 	}
 
 	@Override

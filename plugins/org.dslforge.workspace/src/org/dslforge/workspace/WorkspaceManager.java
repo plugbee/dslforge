@@ -327,7 +327,7 @@ public class WorkspaceManager {
 			                        notifyListeners(event);
 			                    }
 			                    if (!watchKey.reset()) {
-			                    	logger.info("Watch key no longer valid: " + keys.get(watchKey).toString());
+			                    	logger.warn("Watch key no longer valid: " + keys.get(watchKey).toString());
 			                    }
 		                    }
 	                	} catch (ClosedWatchServiceException ex) {

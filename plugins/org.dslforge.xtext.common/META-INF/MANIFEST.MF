@@ -12,11 +12,14 @@ Require-Bundle: org.eclipse.rap.ui,
  org.dslforge.workspace.ui,
  org.dslforge.workspace,
  org.dslforge.styledtext,
- org.dslforge.texteditor
+ org.dslforge.texteditor,
+ org.eclipse.rap.ui.forms
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.xtext.common,
  org.dslforge.xtext.common.actions,
+ org.dslforge.xtext.common.commands,
+ org.dslforge.xtext.common.forms,
  org.dslforge.xtext.common.guice,
  org.dslforge.xtext.common.internal,
  org.dslforge.xtext.common.registry,

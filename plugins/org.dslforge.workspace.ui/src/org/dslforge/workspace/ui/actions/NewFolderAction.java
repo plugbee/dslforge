@@ -36,5 +36,4 @@ public class NewFolderAction extends AbstractWorkspaceAction {
 			wizardDialog.open();
 		}
 	}
-	
 }

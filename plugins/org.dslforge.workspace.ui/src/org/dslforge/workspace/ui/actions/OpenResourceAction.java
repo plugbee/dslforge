@@ -26,7 +26,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.rap.rwt.RWT;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 

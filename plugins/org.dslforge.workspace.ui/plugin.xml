@@ -61,6 +61,13 @@
             id="org.dslforge.workspace.ui.commands.NewProject"
             name="CreateNewProject">
       </command>
+      <command
+            defaultHandler="org.dslforge.workspace.ui.commands.OpenResourceCommand"
+            description="Open file"
+            helpContextId="Open file"
+            id="org.dslforge.workspace.ui.commands.OpenResource"
+            name="OpenResource">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.popupMenus">
@@ -108,8 +115,8 @@
                label="Folder"
                menubarPath="org.dslforge.workspace.menu.new/group1"
                style="push"
-               tooltip="Create a new folder">
-         </action>
+               tooltip="Open with default editor">
+         </action>              
          <menu
                id="org.dslforge.workspace.menu.new"
                label="New"
@@ -126,24 +133,6 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
-            id="org.dslforge.navigator.view.actions.contribution.delete"
-            nameFilter="*"
-            objectClass="java.io.File">
-         <action
-               class="org.dslforge.workspace.ui.actions.DeleteResourceAction"
-               enablesFor="*"
-               icon="icons/delete.png"
-               id="org.dslforge.workspace.menu.delete"
-               label="Delete"
-               menubarPath="main"
-               style="push">
-         </action>
-      </objectContribution>
-   </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
             id="org.dslforge.navigator.view.actions.contribution.open"
             nameFilter="*"
             objectClass="java.io.File">
@@ -155,6 +144,40 @@
                menubarPath="main"
                style="push">
          </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.navigator.view.actions.contribution.openwith"
+            nameFilter="*"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workspace.ui.actions.OpenResourceAction"
+               enablesFor="*"
+               icon="icons/file.gif"
+               id="org.dslforge.workspace.menu.openwith.default"
+			   label="Text Editor (default)"
+               menubarPath="org.dslforge.workspace.menu.openwith/additions"
+               style="push"
+               tooltip="Open with default editor">
+         </action>
+         <action
+               class="org.dslforge.workspace.ui.actions.OpenResourceInFormAction"
+               enablesFor="*"
+               icon="icons/model.png"
+               id="org.dslforge.workspace.menu.openwith.form"
+               label="Form Editor"
+               menubarPath="org.dslforge.workspace.menu.openwith/additions"
+               style="push"
+               tooltip="Open with form editor">
+         </action>
+         <menu
+               id="org.dslforge.workspace.menu.openwith"
+               label="Open With"
+               path="main">
+            <separator
+                  name="group2">
+            </separator>
+         </menu>
       </objectContribution>
    </extension>
    <extension
@@ -182,6 +205,24 @@
          </menu>
       </viewerContribution>
    </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.dslforge.navigator.view.actions.contribution.delete"
+            nameFilter="*"
+            objectClass="java.io.File">
+         <action
+               class="org.dslforge.workspace.ui.actions.DeleteResourceAction"
+               enablesFor="*"
+               icon="icons/delete.png"
+               id="org.dslforge.workspace.menu.delete"
+               label="Delete"
+               menubarPath="group1"
+               style="push">
+         </action>
+      </objectContribution>
+   </extension>
 
    <extension
          point="org.eclipse.ui.actionSets">
@@ -194,7 +235,8 @@
                definitionId="org.dslforge.workspace.ui.commands.newFile"
                icon="icons/file_obj.gif"
                id="org.dslforge.workspace.ui.actions.newFile"
-               label="New File"
+               label="File"
+               menubarPath="file/new/additions"
                retarget="false"
                style="push"
                toolbarPath="main"
@@ -205,7 +247,8 @@
                definitionId="org.dslforge.workspace.ui.commands.newFolder"
                icon="icons/fldr_obj.png"
                id="org.dslforge.workspace.ui.actions.newFolder"
-               label="New Folder"
+               label="Folder"
+               menubarPath="file/new/additions"
                retarget="false"
                style="push"
                toolbarPath="main"
@@ -216,7 +259,8 @@
                definitionId="org.dslforge.workspace.ui.commands.NewProject"
                icon="icons/prj_obj.png"
                id="org.dslforge.workspace.ui.actions.newProject"
-               label="New Project"
+               label="Project"
+               menubarPath="file/new/additions"
                retarget="false"
                style="push"
                toolbarPath="main"

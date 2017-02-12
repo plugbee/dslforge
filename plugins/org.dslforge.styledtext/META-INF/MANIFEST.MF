@@ -11,4 +11,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.styledtext,
  org.dslforge.styledtext.jface
 Bundle-ClassPath: .
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.eclipse.ui.forms.widgets

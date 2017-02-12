@@ -17,52 +17,37 @@ import org.eclipse.swt.widgets.Control;
 
 public class TextViewer extends Viewer implements ITextViewer{
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5997421207828153511L;
+	
 	private BasicText fTextWidget;
 	private IDocument fDocument;
 	private Control fDisposedControl;
-
-	protected TextViewer() {
-		super();
-	}
-
+	
 	/**
-	 * Create a new text viewer with the given SWT style bits.
-	 *
-	 * @param parent the parent of the viewer's control
-	 * @param styles the SWT style bits for the viewer's control
+	 * Create a new text viewer with the given style bits.
 	 */
 	public TextViewer(Composite parent, int styles) {
 		createControl(parent, styles);
 	}
 
 	/**
-	 * Create a new text viewer based on the text widget given as input
-	 *
-	 * @param textWidget the available text widget
+	 * Create a new text viewer with the given style bits.
 	 */
-	public TextViewer(BasicText textWidget) {
+	public TextViewer(BasicText textWidget, Composite parent, int styles) {
 		fTextWidget = textWidget;
-		configureTextWidget(textWidget.getParent());
+		configure();
 	}
 	
 	/**
-	 * Creates the viewer's SWT control. The viewer's text widget either is
+	 * Creates the viewer's control. The viewer's text widget either is
 	 * the control or is a child of the control.
-	 *
-	 * @param parent the parent of the viewer's control
-	 * @param styles the SWT style bits for the viewer's control
 	 */
 	protected void createControl(Composite parent, int styles) {
-		fTextWidget= createTextWidget(parent, styles);
-		configureTextWidget(parent);
+		fTextWidget = createTextWidget(parent, styles);
+		configure();
 	}
 
-	/**
-	 * Configures the editor's text widget
-	 */
-	@SuppressWarnings("serial")
-	private void configureTextWidget(Composite parent) {
+	private void configure() {
 		GridData textLayoutData = new GridData();
 		textLayoutData.horizontalAlignment = SWT.FILL;
 		textLayoutData.verticalAlignment = SWT.FILL;
@@ -70,21 +55,20 @@ public class TextViewer extends Viewer implements ITextViewer{
 		textLayoutData.grabExcessVerticalSpace = true;
 		fTextWidget.setLayoutData(textLayoutData);
 		
-		fTextWidget.addDisposeListener(
-			new DisposeListener() {
-				public void widgetDisposed(DisposeEvent e) {
-					fDisposedControl= getControl();
-					handleDispose();
-				}
-			}
-		);
-
-		fTextWidget.setFont(parent.getFont());
-
 		fTextWidget.addTraverseListener(new TraverseListener() {
+			private static final long serialVersionUID = 1L;
+
 			public void keyTraversed(TraverseEvent e) {
 				if ((SWT.SHIFT == e.stateMask) && ('\t' == e.character))
 					e.doit= !fTextWidget.getEditable();
+			}
+		});
+		fTextWidget.addDisposeListener(new DisposeListener() {
+			private static final long serialVersionUID = 1L;
+
+			public void widgetDisposed(DisposeEvent e) {
+				fDisposedControl = getControl();
+				handleDispose();
 			}
 		});
 	}
@@ -97,28 +81,16 @@ public class TextViewer extends Viewer implements ITextViewer{
 	 * @return the text widget to be used
 	 */
 	protected BasicText createTextWidget(Composite parent, int styles) {
-		BasicText textWidget= new BasicText(parent, styles);
-		return textWidget;
+		BasicText styledText= new BasicText(parent, styles);
+		return styledText;
 	}
-	
-	/**
-	 * @see Viewer#getControl()
-	 */
+
+	@Override
 	public Control getControl() {
 		return fTextWidget != null ? fTextWidget : fDisposedControl;
 	}
-	
-	/**
-	 * Frees all resources allocated by this viewer. Internally called when the viewer's
-	 * control has been disposed.
-	 */
-	protected void handleDispose() {
-		fTextWidget= null;
-	}
 
-	/**
-	 * @see Viewer#getInput()
-	 */
+	@Override
 	public Object getInput() {
 		return getDocument();
 	}
@@ -168,25 +140,19 @@ public class TextViewer extends Viewer implements ITextViewer{
 		fDocument.set(text);
 	}
 
-	/**
-	 * @see ITextViewer#getDocument()
-	 */
+	@Override
 	public IDocument getDocument() {
 		return fDocument;
 	}
 
-	/**
-	 * @see ITextViewer#isEditable()
-	 */
+	@Override
 	public boolean isEditable() {
 		if (fTextWidget == null)
 			return false;
 		return fTextWidget.getEditable();
 	}
 
-	/**
-	 * @see ITextViewer#setEditable(boolean)
-	 */
+	@Override
 	public void setEditable(boolean editable) {
 		if (fTextWidget != null)
 			fTextWidget.setEditable(editable);
@@ -201,5 +167,12 @@ public class TextViewer extends Viewer implements ITextViewer{
 	public void setSelection(ISelection selection, boolean reveal) {
 		if (reveal)
 			setSelection(selection);
+	}
+	
+	/**
+	 * Frees all resources allocated by this viewer.
+	 */
+	protected void handleDispose() {
+		fTextWidget= null;
 	}
 }

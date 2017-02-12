@@ -18,7 +18,6 @@
             parentId="org.eclipse.ui.textEditorScope">
       </context>
    </extension>
-      <!-- @generated dslforge -->
    <extension point="org.eclipse.ui.editors">
       <editor
             class="org.dslforge.texteditor.BasicTextEditor"
@@ -26,25 +25,8 @@
             default="false"
             extensions="txt"
             icon="icons/file_obj.png"
-            id="org.dslforge.xtext.common.web.editor"
+            id="org.dslforge.texteditor.default"
             name="Text Editor">
       </editor>
    </extension>
-   <!--
-      <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.xtext.common.compiler.java.contribution"
-            nameFilter="*.java"
-            objectClass="java.io.File">
-         <action
-               class="org.dslforge.xtext.common.compiler.DynamicCompiler"
-               icon="icons/run_exec.png"
-               id="org.dslforge.xtext.common.compiler.java.action"
-               label="Run">
-         </action>
-      </objectContribution>
-   </extension>
--->
 </plugin>
