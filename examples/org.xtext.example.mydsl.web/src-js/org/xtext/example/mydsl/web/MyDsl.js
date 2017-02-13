@@ -80,9 +80,9 @@
 				 	proposals = this.proposals;
 				 	if (this.useSharedWorker) {
 						if (typeof SharedWorker == 'undefined') {
-							console.log("Your browser does not support Javascript shared workers, as a consequence some features will be disabled."
-									+ "For a full-featured user experience, the following browsers are supported: Chrome, Firefox, Safari.");
-						} else {
+								console.log("Your browser does not support Javascript shared workers, as a consequence some features will be disabled."
+								+ "For a full-featured user experience, the following browsers are supported: Chrome, Firefox, Safari.");
+							} else {
 							var filePath = 'rwt-resources/src-js/org/dslforge/styledtext/global-index.js';
 							var httpURL = this.computeWorkerPath(filePath);
 							var worker = this.worker = new SharedWorker(httpURL);
