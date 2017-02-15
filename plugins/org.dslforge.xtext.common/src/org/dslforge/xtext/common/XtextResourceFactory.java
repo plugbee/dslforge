@@ -15,13 +15,12 @@
  */
 package org.dslforge.xtext.common;
 
-<<<<<<< Upstream, based on origin/master
+import java.rmi.server.UnicastRemoteObject;
+
 import org.dslforge.texteditor.PathEditorInput;
-=======
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
->>>>>>> 4baff3a initial integration of dsl editors with dirigible
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.dirigible.ide.shared.editor.SourceFileEditorInput;
@@ -43,14 +42,21 @@ public class XtextResourceFactory implements IXtextResourceFactory {
 	public Resource createResource(IEditorInput editorInput) {
 		if (editorInput instanceof SourceFileEditorInput) {
 			IFile file = ((SourceFileEditorInput) editorInput).getFile();
-			IWorkspace workspace = WorkspaceLocator.getWorkspace();
-			IWorkspaceRoot root = workspace.getRoot();
-			IPath locationRoot = root.getLocation();
-			String ROOT = "D:/dev/sap/eclipse/dirigible_local/root";
-			IPath total = new Path(ROOT).append(locationRoot).append(file.getFullPath());
-			URI x = URI.createFileURI(total.toString());
-			ResourceSet resourceSet = getDefaultResourceSet();
-			XtextResource result = (XtextResource) resourceSet.getResource(x, true);
+//			IWorkspace workspace = WorkspaceLocator.getWorkspace();
+//			IWorkspaceRoot root = workspace.getRoot();
+//			IPath locationRoot = root.getLocation();
+//			String ROOT = "D:/dev/sap/eclipse/dirigible_local/root";
+//			IPath total = new Path(ROOT).append(locationRoot).append(file.getFullPath());
+//			URI x = URI.createFileURI(total.toString());
+			URI platformResourceURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+			Resource result = createResource(platformResourceURI);
+			if (result != null)
+				return result;
+		}
+		if (editorInput instanceof PathEditorInput) {
+			IPath path = ((PathEditorInput) editorInput).getPath();
+			URI fileURI = URI.createFileURI(path.toString());
+			Resource result = createResource(fileURI);
 			if (result != null)
 				return result;
 		}
@@ -65,6 +71,7 @@ public class XtextResourceFactory implements IXtextResourceFactory {
 
 	protected Resource createResource(URI resourceURI) {
 		ResourceSet resourceSet = getDefaultResourceSet();
+		resourceSet.setURIConverter(new DirigibleURIConverter());
 		XtextResource resource = (XtextResource) resourceSet.getResource(resourceURI, true);
 		return resource;
 	}
