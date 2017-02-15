@@ -128,7 +128,7 @@
 				//Done
 		        this.onReady();
 			},
-
+			
 			setScope : function(scope) {
 				this.base(arguments, scope);
 			},

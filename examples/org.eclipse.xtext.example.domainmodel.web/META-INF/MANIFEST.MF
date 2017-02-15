@@ -14,10 +14,10 @@ Require-Bundle: org.eclipse.rap.ui,
  com.google.inject,
  org.eclipse.xtext,
  org.eclipse.xtend.lib,
- org.dslforge.xtext.common,
  org.dslforge.texteditor,
  org.dslforge.styledtext,
+ org.dslforge.xtext.common,
  org.eclipse.xtext.example.domainmodel,
- org.eclipse.dirigible.ide.editor.text;bundle-version="2.3.160317"
+ org.eclipse.dirigible.ide.editor.text
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

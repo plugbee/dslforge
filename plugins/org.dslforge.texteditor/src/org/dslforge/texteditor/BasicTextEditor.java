@@ -337,8 +337,8 @@ public class BasicTextEditor extends AbstractTextEditor implements ISaveablesSou
 	@Override
 	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
 		setSite(site);
-		setPartName(input.getName());
 		setInput(input);
+		setPartName(input.getName());
 		setDirty(false);
 	}
 
@@ -376,7 +376,7 @@ public class BasicTextEditor extends AbstractTextEditor implements ISaveablesSou
 			path = new Path(((URIEditorInput) input).getURI().toFileString());
 		else
 			throw new UnsupportedOperationException("Unsupported editor input type.");
-		loadContentFromFile();
+		loadContentFromFile(path);
 		setFilePath(path);
 		firePropertyChange(PROP_INPUT);
 	}
@@ -390,8 +390,9 @@ public class BasicTextEditor extends AbstractTextEditor implements ISaveablesSou
 	
 	/**
 	 * Loads the editor text content from file
+	 * @param path 
 	 */
-	protected void loadContentFromFile() {		
+	protected void loadContentFromFile(IPath path) {		
 		Display display = Display.getCurrent();
 		if (display != null) {
 			display.asyncExec(new Runnable() {
