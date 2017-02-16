@@ -3,7 +3,7 @@
 DSL Forge is a framework for the development of domain-specific language (DSL) editors for web applications and cloud IDEs. 
 It allows to get web-based textual editors automatically from ANTLR grammars. From the language grammar specification, JavaScript parser and lexer are automatically generated and embedded into Cloud9’s ACE editor.
 
-Check out the [live demo!](http://beeone.dslforge.org/texteditor)
+Check out the [live demo!](http://beeone.dslforge.org/workbench)
 
 The framework is composed of two features:
 - **Tooling** for language development, and
