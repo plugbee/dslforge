@@ -38,6 +38,7 @@
 			        	var session = editor.getSession();
 			        	session.id = self.url;
 						session.setMode("ace/mode/play");
+						editor.setValue(self.text);
 			        	editor.setOptions({
 				            enableBasicAutocompletion: true,
 				            enableTextCompleter: false,

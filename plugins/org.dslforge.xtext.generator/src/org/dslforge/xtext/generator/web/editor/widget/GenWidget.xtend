@@ -126,6 +126,7 @@ class GenWidget extends AbstractGenerator {
 				        	var session = editor.getSession();
 				        	session.id = self.url;
 							session.setMode("ace/mode/«grammarShortName.toLowerCase»");
+							editor.setValue(self.text);
 				        	editor.setOptions({
 					            enableBasicAutocompletion: true,
 					            enableTextCompleter: false,

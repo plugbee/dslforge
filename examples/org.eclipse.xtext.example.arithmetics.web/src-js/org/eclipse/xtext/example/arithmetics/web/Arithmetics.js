@@ -35,10 +35,11 @@
 					var self = this;
 					//Language settings
 			        ace.config.loadModule("ace/ext/language_tools", function (module) {
+						editor.setValue(self.text);
 			        	var session = editor.getSession();
 			        	session.id = self.url;
 						session.setMode("ace/mode/arithmetics");
-			        	editor.setOptions({
+						editor.setOptions({
 				            enableBasicAutocompletion: true,
 				            enableTextCompleter: false,
 				            enableKeyWordCompleter: true,
