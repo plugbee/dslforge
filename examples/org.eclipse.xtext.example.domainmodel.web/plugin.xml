@@ -23,6 +23,7 @@
       <editor
             class="org.eclipse.xtext.example.domainmodel.web.editor.DomainmodelEditor"
             contributorClass="org.eclipse.xtext.example.domainmodel.web.editor.DomainmodelActionBarContributor"
+            default="true"
             extensions="dmodel"
             icon="icons/model.png"
             id="org.eclipse.xtext.example.domainmodel.web.editor"

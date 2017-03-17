@@ -23,6 +23,7 @@
       <editor
             class="org.xtext.example.mydsl.web.editor.MyDslEditor"
             contributorClass="org.xtext.example.mydsl.web.editor.MyDslActionBarContributor"
+            default="true"
             extensions="mydsl"
             icon="icons/model.png"
             id="org.xtext.example.mydsl.web.editor"

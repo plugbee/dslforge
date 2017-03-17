@@ -532,16 +532,18 @@
 		        return path;
 		    },
 		    
-			typeToIcon : function(type) {
+			typeToIcon : function(item) {
+				var type = item;
+				if (item.type) type = item.type;
+				if (item.meta) type = item.meta;
 				var cls = "ace-";
 				var suffix;
 				if (type.indexOf("[") ==0  && type.indexOf("]") == type.length-1)
 					type = type.substring(1, type.length-1);	
 				var typeToHex = function(type) {
 				    var hex = '';
-				    for(var i=0;i<type.length;i++) {
+				    for(var i=0;i<type.length;i++)
 				        hex += ''+type.charCodeAt(i).toString(16);
-				    }
 				    var color  = '#' + ("000000" + hex.slice(2, 8).toUpperCase()).slice(-6);
 				    return color;
 				};
@@ -553,9 +555,8 @@
 					if (type==="snippet")
 						return 	"#9ACD32";
 					var hash = 0;
-					for (var i = 0; i < type.length; i++) {
+					for (var i = 0; i < type.length; i++)
 						hash = type.charCodeAt(i) + ((hash << 5) - hash);
-					}
 					var color = '#';
 					for (var i = 0; i < 3; i++) {
 						var value = (hash >> (i * 8)) & 0xFF;

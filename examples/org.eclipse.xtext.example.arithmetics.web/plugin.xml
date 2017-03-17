@@ -23,6 +23,7 @@
       <editor
             class="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsEditor"
             contributorClass="org.eclipse.xtext.example.arithmetics.web.editor.ArithmeticsActionBarContributor"
+            default="true"
             extensions="calc"
             icon="icons/model.png"
             id="org.eclipse.xtext.example.arithmetics.web.editor"

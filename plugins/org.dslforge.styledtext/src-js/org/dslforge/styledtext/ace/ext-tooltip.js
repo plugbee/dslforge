@@ -88,76 +88,78 @@ oop.inherits(TokenTooltip, Tooltip);
             this.hide();
             return;
 		}
-        
-        var tokens = session.getTokens(docPos.row);        
-        var token = session.getTokenAt(docPos.row, docPos.column);
-        var before =null;
-		for (var i = 0; i < tokens.length; i++) {
-			if (tokens[i].value == token.value) {
-				if (i >= 1)
-					before = tokens[i-1];
-				if (i >= 2 && before.value==" ")
-					before = tokens[i-2];
-				break;
-		   }     
-	    }
-        
-		if (before==null) {
-            session.removeMarker(this.marker);
-            this.hide();
-            return;
-		}
-        if (!token && !session.getLine(docPos.row)) {
-            token = {
-                type: "",
-                value: "",
-                state: session.bgTokenizer.getState(0)
-            };
-        }
-        if (!token) {
-            session.removeMarker(this.marker);
-            this.hide();
-            return;
-        }
-
-        var tokenTypes = [
-                "paren.lparen", 
-        		"paren.rparen", 
-        		"text", 
-        		"string", 
-        		"identifier", 
-        		"comment", 
-        		"comment.doc", 
-        		"support.type", 
-        		"punctuation.operator"];
-        var tokenText = token.type;
-        if (tokenText=="identifier") {
-        	tokenText = getDocumentation(token, before);
-        	if (tokenText=="") {
+        //session still alive?
+        if (session!=null) {
+            var tokens = session.getTokens(docPos.row);        
+            var token = session.getTokenAt(docPos.row, docPos.column);
+            var before =null;
+    		for (var i = 0; i < tokens.length; i++) {
+    			if (tokens[i].value == token.value) {
+    				if (i >= 1)
+    					before = tokens[i-1];
+    				if (i >= 2 && before.value==" ")
+    					before = tokens[i-2];
+    				break;
+    		   }     
+    	    }
+            
+    		if (before==null) {
                 session.removeMarker(this.marker);
                 this.hide();
                 return;
-        	}
-            if (this.tokenText != tokenText) {
-                this.setText(tokenText);
-                this.tokenText = tokenText;
-                this.width = this.getWidth();
-                this.height = this.getHeight();
+    		}
+            if (!token && !session.getLine(docPos.row)) {
+                token = {
+                    type: "",
+                    value: "",
+                    state: session.bgTokenizer.getState(0)
+                };
+            }
+            if (!token) {
+                session.removeMarker(this.marker);
+                this.hide();
+                return;
             }
 
-            var lineHeight = renderer.layerConfig.lineHeight;
-            var pos = renderer.$cursorLayer.getPixelPosition(this.base, true);             
-            this.setHtml(getHtmlDocumentation(token, before));
-            
-            this.token = token; 
-            session.removeMarker(this.marker);
-            this.range = new Range(docPos.row, token.start, docPos.row, token.start + token.value.length);
-            this.marker = session.addMarker(this.range, "ace_bracket", "text");       
-            this.show(null, this.x + lineHeight/2, this.y + lineHeight/2);            
-        } else {
-            this.hide();
-            session.removeMarker(this.marker);
-            return;	
+            var tokenTypes = [
+                    "paren.lparen", 
+            		"paren.rparen", 
+            		"text", 
+            		"string", 
+            		"identifier", 
+            		"comment", 
+            		"comment.doc", 
+            		"support.type", 
+            		"punctuation.operator"];
+            var tokenText = token.type;
+            if (tokenText=="identifier") {
+            	tokenText = getDocumentation(token, before);
+            	if (tokenText=="") {
+                    session.removeMarker(this.marker);
+                    this.hide();
+                    return;
+            	}
+                if (this.tokenText != tokenText) {
+                    this.setText(tokenText);
+                    this.tokenText = tokenText;
+                    this.width = this.getWidth();
+                    this.height = this.getHeight();
+                }
+
+                var lineHeight = renderer.layerConfig.lineHeight;
+                var pos = renderer.$cursorLayer.getPixelPosition(this.base, true);             
+                this.setHtml(getHtmlDocumentation(token, before));
+                
+                this.token = token; 
+                session.removeMarker(this.marker);
+                this.range = new Range(docPos.row, token.start, docPos.row, token.start + token.value.length);
+                this.marker = session.addMarker(this.range, "ace_bracket", "text");       
+                this.show(null, this.x + lineHeight/2, this.y + lineHeight/2);            
+            } else {
+                this.hide();
+                session.removeMarker(this.marker);
+                return;	
+            }	
         }
     };
   

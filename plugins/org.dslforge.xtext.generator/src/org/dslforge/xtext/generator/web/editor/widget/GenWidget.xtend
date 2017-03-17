@@ -120,21 +120,18 @@ class GenWidget extends AbstractGenerator {
 					if (editor != null) {
 						var editable = this.editable;
 						var guid = this.url;
-						var self = this;
-						//Language settings
-				        ace.config.loadModule("ace/ext/language_tools", function (module) {
-				        	var session = editor.getSession();
-				        	session.id = self.url;
-							session.setMode("ace/mode/«grammarShortName.toLowerCase»");
-							editor.setValue(self.text);
+			        	var self = this;
+						ace.config.loadModule("ace/ext/language_tools", function (module) {
+							editor.getSession().setMode("ace/mode/«grammarShortName.toLowerCase»");
+							editor.getSession().id = self.url;	
 				        	editor.setOptions({
 					            enableBasicAutocompletion: true,
 					            enableTextCompleter: false,
-					            enableKeyWordCompleter: true,
+					            enableKeyWordCompleter: false,
 					            enableSnippets: false,
 							    useWorker: true,
-				            });
-							self.langTools = ace.require("ace/ext/language_tools");
+				            });	
+				        	self.langTools = ace.require("ace/ext/language_tools");
 							self.serverCompleter = {
 								getMode: function() {
 									return editor.getSession().getMode();
@@ -146,21 +143,22 @@ class GenWidget extends AbstractGenerator {
 							    	item.docHTML = ["<div class=\"ace_line\" style=\"height:12px\"><span class=\"", self.typeToIcon(item.meta),"\">&nbsp;</span><span class=\"ace_\">","<b>", item.caption, "</b>","</span><span class=\"ace_rightAlignedText\"></span></div>", "<hr></hr>", item.meta].join("");
 								}
 							};
-							editor.setOption("enableServerCompleter", self.serverCompleter);
-							self.completers = editor.completers;
+				        	editor.setOption("enableServerCompleter", self.serverCompleter);
+				        	self.completers = editor.completers;
 							editor.setTheme("ace/theme/«grammarShortName.toLowerCase»");
+							editor.setShowPrintMargin(false);
+							editor.setBehavioursEnabled(true);
+							editor.setWrapBehavioursEnabled(true);
+							editor.setReadOnly(!editable);
+							editor.setFontSize(12);
+							editor.$blockScrolling = Infinity;
 				        });
-						//Default settings
+						//Session settings
+						var session = editor.getSession();
 						editor.getSession().setUseWrapMode(true);
 					    editor.getSession().setTabSize(4);
 					    editor.getSession().setUseSoftTabs(true);
 						editor.getSession().getUndoManager().reset();
-						editor.setShowPrintMargin(false);
-						editor.setBehavioursEnabled(true);
-						editor.setWrapBehavioursEnabled(true);
-						editor.setReadOnly(!editable);
-						editor.$blockScrolling = Infinity;
-						this.setFont(10);
 						//Text hover
 						var TokenTooltip = ace.require("ace/ext/tooltip").TokenTooltip;
 						editor.tokenTooltip = new TokenTooltip(editor);
@@ -221,14 +219,12 @@ class GenWidget extends AbstractGenerator {
 				onCompletionRequest : function(pos, prefix, callback) {
 					this.base(arguments, pos, prefix, callback);
 				},
-				
 				setProposals : function(proposals) {
 					this.proposals = proposals;
 				},
 				onFocus: function() {
 					this.base(arguments);
 				},
-				
 				onBlur: function() {
 					this.base(arguments);
 				},

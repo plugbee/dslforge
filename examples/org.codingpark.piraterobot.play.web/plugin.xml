@@ -23,6 +23,7 @@
       <editor
             class="org.codingpark.piraterobot.play.web.editor.PlayEditor"
             contributorClass="org.codingpark.piraterobot.play.web.editor.PlayActionBarContributor"
+            default="true"
             extensions="play"
             icon="icons/model.png"
             id="org.codingpark.piraterobot.play.web.editor"

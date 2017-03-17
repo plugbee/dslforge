@@ -90,7 +90,7 @@ oop.inherits(Mode, TextMode);
     		session.setAnnotations(annotations);
     	});
 
-        return worker;
+    return worker;
     };
 
     this.$id = "ace/mode/mydsl";

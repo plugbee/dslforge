@@ -1356,8 +1356,8 @@ var typeToIcon = function(type) {
 		}
 		return color;
 	};
-	var cssClass = ".ace-completion-" + type + ":before { content:'" + type.charAt(0).toUpperCase() + "'; background: " + typeToColor(type) + "; }";
-	ace.require("ace/lib/dom").importCssString(cssClass);
+	//var cssClass = ".ace-completion-" + type + ":before { content:'" + type.charAt(0).toUpperCase() + "'; background: " + typeToColor(type) + "; }";
+	//ace.require("ace/lib/dom").importCssString(cssClass);
 	return cls + "completion " + cls + "completion-" + type;
 };
 
@@ -1689,6 +1689,7 @@ var Autocomplete = function() {
             this.tooltipNode.style.margin = 4;
             this.tooltipNode.style.pointerEvents = "auto";
             this.tooltipNode.style.display = "none";
+            this.tooltipNode.style.wordWrap = "break-word";
             this.tooltipNode.tabIndex = -1;
             this.tooltipNode.onblur = this.blurListener.bind(this);
         }
@@ -1870,7 +1871,15 @@ define("ace/autocomplete/text_completer",["require","exports","module","ace/rang
     }
     
     exports.getDocTooltip = function(item) {
-    	item.docHTML = ["<div class=\"ace_line\" style=\"height:12px\"><span class=\"", util.typeToIcon(item.meta), "\">&nbsp;</span><span class=\"ace_\">","<b>", item.caption, "</b>","</span><span class=\"ace_rightAlignedText\"></span></div>", "<hr></hr>", item.meta].join("");
+    	item.docHTML = ["<div class=\"ace_line\" style=\"height:12px\"><span class=\"", 
+    	                util.typeToIcon(item.meta), 
+    	                "\">&nbsp;</span><span class=\"ace_\">",
+    	                "<b>", 
+    	                item.caption, 
+    	                "</b>",
+    	                "</span><span class=\"ace_rightAlignedText\"></span></div>",
+    	                "<hr></hr>", 
+    	                item.meta].join("");
 	}
 });
 
@@ -1910,7 +1919,15 @@ var keyWordCompleter = {
     },
 	
     getDocTooltip: function(item) {
-    	item.docHTML = ["<div class=\"ace_line\" style=\"height:12px\"><span class=\"", util.typeToIcon(item.meta), "\">&nbsp;</span><span class=\"ace_\">","<b>", item.caption, "</b>","</span><span class=\"ace_rightAlignedText\"></span></div>", "<hr></hr>", item.meta].join("");
+    	item.docHTML = ["<div class=\"ace_line\" style=\"height:12px\"><span class=\"", 
+    	                util.typeToIcon(item.meta), 
+    	                "\">&nbsp;</span><span class=\"ace_\">",
+    	                "<b>", 
+    	                item.caption, 
+    	                "</b>",
+    	                "</span><span class=\"ace_rightAlignedText\"></span></div>", 
+    	                "<hr></hr>", 
+    	                item.meta].join("");
 	}
 };
 
@@ -1940,7 +1957,15 @@ var snippetCompleter = {
 	    
 	    getDocTooltip: function(item) {
 	        if (item.type == "snippet" && !item.docHTML) {
-	         	item.docHTML = ["<div class=\"ace_line\" style=\"height:12px\"><span class=\"", util.typeToIcon(item.meta), "\">&nbsp;</span><span class=\"ace_\">","<b>", item.caption, "</b>","</span><span class=\"ace_rightAlignedText\"></span></div>", "<hr></hr>", item.meta].join("");
+	         	item.docHTML = ["<div class=\"ace_line\" style=\"height:12px\"><span class=\"", 
+	         	                util.typeToIcon(item.meta), 
+	         	                "\">&nbsp;</span><span class=\"ace_\">",
+	         	                "<b>", 
+	         	                item.caption, 
+	         	                "</b>",
+	         	                "</span><span class=\"ace_rightAlignedText\"></span></div>", 
+	         	                "<hr></hr>", 
+	         	                item.meta].join("");
 	        }
 	     }
 	 };
@@ -2067,6 +2092,8 @@ require("../config").defineOptions(Editor.prototype, "editor", {
         set: function(val) {
         	var scope = this.session.id;
             if (val) {
+                if (!this.completers)
+                    this.completers = Array.isArray(val)? val: completers;
             	completers[scope].push(snippetCompleter);
                 this.commands.addCommand(expandSnippet);
                 this.on("changeMode", onChangeMode);
@@ -2083,6 +2110,8 @@ require("../config").defineOptions(Editor.prototype, "editor", {
     	set: function(val) {
 			var scope = this.session.id;
     		if (val) {
+                if (!this.completers)
+                    this.completers = Array.isArray(val)? val: completers;
     			completers[scope].push(textCompleter);
     		} else {
             	completers[scope].pop(textCompleter);
@@ -2094,6 +2123,8 @@ require("../config").defineOptions(Editor.prototype, "editor", {
     	set: function(val) {
 			var scope = this.session.id;
     		if (val) {
+                if (!this.completers)
+                    this.completers = Array.isArray(val)? val: completers;
     			completers[scope].push(keyWordCompleter);
     		} else {
             	completers[scope].pop(keyWordCompleter);
@@ -2105,6 +2136,8 @@ require("../config").defineOptions(Editor.prototype, "editor", {
     	set: function(val) {
     		var scope = this.session.id;
     		if (val) {
+                if (!this.completers)
+                    this.completers = Array.isArray(val)? val: completers;
     			serverCompleter = val;
     			completers[scope].push(val);
     		} else {

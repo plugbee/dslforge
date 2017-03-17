@@ -23,6 +23,7 @@
       <editor
             class="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdEditor"
             contributorClass="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor.HummingbirdActionBarContributor"
+            default="true"
             extensions="hbtext"
             icon="icons/model.png"
             id="org.eclipse.sphinx.examples.xtext.hummingbird.web.editor"

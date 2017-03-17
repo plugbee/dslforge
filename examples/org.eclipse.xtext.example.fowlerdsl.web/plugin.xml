@@ -23,6 +23,7 @@
       <editor
             class="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineEditor"
             contributorClass="org.eclipse.xtext.example.fowlerdsl.web.editor.StatemachineActionBarContributor"
+            default="true"
             extensions="statemachine"
             icon="icons/model.png"
             id="org.eclipse.xtext.example.fowlerdsl.web.editor"
