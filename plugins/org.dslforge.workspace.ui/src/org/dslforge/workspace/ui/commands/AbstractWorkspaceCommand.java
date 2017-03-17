@@ -14,6 +14,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 public abstract class AbstractWorkspaceCommand extends AbstractHandler {
 
 	protected AbstractWorkspaceCommand() {
+		super();
 	}
 	
 	@Override

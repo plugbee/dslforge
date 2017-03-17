@@ -4,9 +4,11 @@ import java.io.File;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IPathEditorInput;
 import org.eclipse.ui.IPersistableElement;
+import org.eclipse.ui.model.IWorkbenchAdapter;
 
 public class PathEditorInput implements IPathEditorInput {
 
@@ -20,9 +22,13 @@ public class PathEditorInput implements IPathEditorInput {
 		this.file = path.toFile();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getAdapter(Class<T> adapter) {
-		return null;
+		if (IWorkbenchAdapter.class.equals(adapter)) {
+			return (T) new WorkbenchAdapter();
+		}
+		return Platform.getAdapterManager().getAdapter(this, adapter);
 	}
 
 	@Override
@@ -55,5 +61,28 @@ public class PathEditorInput implements IPathEditorInput {
 		return new Path(file.getAbsolutePath());
 	}
 
-	
+	/**
+	 * The workbench adapter which simply provides the label.
+	 */
+	private static class WorkbenchAdapter implements IWorkbenchAdapter {
+		@Override
+		public Object[] getChildren(Object o) {
+			return null;
+		}
+
+		@Override
+		public ImageDescriptor getImageDescriptor(Object object) {
+			return null;
+		}
+
+		@Override
+		public String getLabel(Object o) {
+			return ((PathEditorInput) o).getName();
+		}
+
+		@Override
+		public Object getParent(Object o) {
+			return null;
+		}
+	}
 }

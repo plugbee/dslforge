@@ -70,18 +70,17 @@ public class EditorUtil {
 	public static IEditorPart openEditor(IWorkbench workbench, IPath path) {
 		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
 		IWorkbenchPage page = workbenchWindow.getActivePage();
-		IEditorDescriptor[] editorDescriptors = EditorRegistry.getInstance().getEditors(path.lastSegment());
-		if (editorDescriptors == null) {
+		final IEditorDescriptor descriptor = getDefaultEditor(path);
+		if (descriptor == null) {
 			MessageDialog.openError(workbenchWindow.getShell(), "Error",
 					"There is no editor registered for the file " + path.lastSegment());
 			return null;
-		} else {
-			try {
-				return page.openEditor(new PathEditorInput(path), editorDescriptors[0].getId());
-			} catch (PartInitException exception) {
-				MessageDialog.openError(workbenchWindow.getShell(), "Open Editor", exception.getMessage());
-				return null;
-			}
+		}
+		try {
+			return page.openEditor(new PathEditorInput(path), descriptor.getId());
+		} catch (PartInitException exception) {
+			MessageDialog.openError(workbenchWindow.getShell(), "Open Editor", exception.getMessage());
+			return null;
 		}
 	}
 	
@@ -95,11 +94,11 @@ public class EditorUtil {
 			return null;
 		} else {
 			try {
-				if (editorDescriptors.length==2) {
-					return page.openEditor(new PathEditorInput(path), editorDescriptors[1].getId());
+				for (IEditorDescriptor desc : editorDescriptors) {
+					// lookup any form editor contributed by default
+					if (desc.getId().contains("web.form"))
+						return page.openEditor(new PathEditorInput(path), desc.getId());
 				}
-				MessageDialog.openError(workbenchWindow.getShell(), "Info",
-						"There is no form editor registered for the file " + path.lastSegment());
 				return page.openEditor(new PathEditorInput(path), editorDescriptors[0].getId());
 			} catch (PartInitException exception) {
 				MessageDialog.openError(workbenchWindow.getShell(), "Open Editor", exception.getMessage());

@@ -59,33 +59,49 @@ import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 
 public class BasicTextFormEditorPage extends FormPage {
 
+	private static final String FORM_EDITOR_SECTION_TITLE = "Section";
 	private static final String FORM_EDITOR_SECTION_DESCRIPTION = "Write the code below then press the Run button.";
 
 	static final Logger logger = Logger.getLogger(BasicTextFormEditorPage.class);
 
 	public static final String FORM_EDITOR_PAGE_ID = "org.dslforge.texteditor.form.page";
 	public static final String FORM_EDITOR_PAGE_TITLE = "Content";
-	public static final String FORM_EDITOR_SECTION_TITLE = "Section";
 	public static final String FORM_EDITOR_FORM_TITLE = "Form";
 	protected static final int SECTION_HEADER_VERTICAL_SPACING = 6;
-
+	private static final int EDITOR_WIDTH = 360;
+	
 	protected ITextViewer viewer;
 	protected IPath filePath;
 
 	public BasicTextFormEditorPage(FormEditor editor, String id, String title) {
 		super(editor, id, title);
 	}
-
-	public BasicTextFormEditorPage(BasicTextFormEditor editor) {
-		super(editor, FORM_EDITOR_PAGE_ID, FORM_EDITOR_PAGE_TITLE);
+	
+	public BasicTextFormEditorPage(FormEditor editor, String title) {
+		super(editor, FORM_EDITOR_PAGE_ID, title);
 	}
 
+	public BasicTextFormEditorPage(BasicTextFormEditor editor) {
+		super(editor, FORM_EDITOR_PAGE_ID, FORM_EDITOR_SECTION_TITLE);
+	}
+
+	protected String getFormTitle() {
+		return FORM_EDITOR_PAGE_TITLE;
+	}
+	
+	protected String getSectionTitle() {
+		return FORM_EDITOR_SECTION_TITLE;
+	}
+	
+	protected String getSectionDescription() {
+		return FORM_EDITOR_SECTION_DESCRIPTION;
+	}
+	
 	@Override
 	public void init(IEditorSite site, IEditorInput input) {
 		super.init(site, input);
@@ -151,7 +167,7 @@ public class BasicTextFormEditorPage extends FormPage {
 		super.createFormContent(managedForm);		
 		ScrolledForm form = managedForm.getForm();
 		FormToolkit toolkit = managedForm.getToolkit();
-		form.setText(FORM_EDITOR_FORM_TITLE);
+		form.setText(getFormTitle());
 		form.setImage(Activator.getImageDescriptor(TextEditorImageProvider.FILE).createImage());
 		toolkit.decorateFormHeading(form.getForm());
 		fillBody(managedForm, toolkit);
@@ -173,10 +189,10 @@ public class BasicTextFormEditorPage extends FormPage {
 		Section section = toolkit.createSection(parent, Section.TITLE_BAR | Section.DESCRIPTION);
 		final GridData layoutData = new GridData(SWT.BORDER | GridData.FILL_BOTH);
 		layoutData.grabExcessHorizontalSpace = false;
-		layoutData.widthHint = 400;
+		layoutData.widthHint = EDITOR_WIDTH;
 		section.setLayoutData(layoutData);
-		section.setText(FORM_EDITOR_SECTION_TITLE);
-		section.setDescription(FORM_EDITOR_SECTION_DESCRIPTION);
+		section.setText(getSectionTitle());
+		section.setDescription(getSectionDescription());
 		
 		viewer = createTextViewer(section, toolkit);
 		viewer.setDocument(createEmptyDocument());
@@ -302,7 +318,8 @@ public class BasicTextFormEditorPage extends FormPage {
 				@Override
 				public void keyPressed(KeyEvent e) {
 					if ((e.stateMask & SWT.CTRL) == SWT.CTRL) {
-						//createCompletionProposals();
+						if ((e.stateMask & SWT.ALT) == 0);
+							createCompletionProposals();
 					}
 				}
 			};
@@ -353,6 +370,13 @@ public class BasicTextFormEditorPage extends FormPage {
 		}
 	}
 	
+	protected void createCompletionProposals() {
+		IDocument document = getViewer().getDocument();
+		BasicText textWidget = getViewer().getTextWidget();
+		textWidget.setText(document.get(), false);
+		createCompletionProposals(textWidget.getOffsetAtCursorPosition());	
+	}
+
 	public ITextViewer getViewer() {
 		return viewer;
 	}

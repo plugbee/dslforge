@@ -21,13 +21,16 @@ import java.util.Collections;
 
 import org.apache.log4j.Logger;
 import org.dslforge.workspace.WorkspaceManager;
-import org.dslforge.workspace.ui.actions.OpenResourceAction;
+import org.dslforge.workspace.ui.util.EditorUtil;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.rap.rwt.RWT;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PlatformUI;
 
 public class NewFileWizard extends AbstractNewResourceWizard{
 
@@ -98,8 +101,14 @@ public class NewFileWizard extends AbstractNewResourceWizard{
 		}
 		final String currentUser = (String) RWT.getUISession().getAttribute("user");
 		logger.info(currentUser + " created new model: " + filePath);
-		OpenResourceAction openResourceAction = new OpenResourceAction();
-		return openResourceAction.openWithEditor(filePath.toFile());	
+		
+		String absolutePath = filePath.toFile().getAbsolutePath();
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		if (EditorUtil.openEditor(workbench, new Path(absolutePath)) != null) {
+			logger.info("Opened editor on file " + absolutePath);
+			return true;
+		}
+		return false;
 	}
 	
 	private IPath computeFilePath() {

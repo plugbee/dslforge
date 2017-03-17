@@ -8,12 +8,14 @@ Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.rap.ui.views,
  org.eclipse.rap.ui.navigator,
  org.dslforge.workspace,
- org.dslforge.texteditor
+ org.dslforge.texteditor,
+ org.eclipse.core.expressions
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.workspace.ui,
  org.dslforge.workspace.ui.actions,
  org.dslforge.workspace.ui.commands,
+ org.dslforge.workspace.ui.util,
  org.dslforge.workspace.ui.wizards
 Bundle-Vendor: PlugBee
 Import-Package: org.apache.log4j;version="1.2.15"

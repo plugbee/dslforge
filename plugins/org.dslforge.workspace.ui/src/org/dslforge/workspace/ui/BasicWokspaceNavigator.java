@@ -23,8 +23,9 @@ import org.apache.log4j.Logger;
 import org.dslforge.workspace.IWorkspaceListener;
 import org.dslforge.workspace.WorkspaceManager;
 import org.dslforge.workspace.internal.WorkspaceActivator;
-import org.dslforge.workspace.ui.actions.OpenResourceAction;
+import org.dslforge.workspace.ui.util.EditorUtil;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -140,10 +141,20 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 			if (element instanceof File) {
 				final File file = (File) element;
 				if (file.exists() && !file.isDirectory()) {
-					// Double click a file
-					OpenResourceAction action = new OpenResourceAction();
-					action.openWithEditor(file);
-					workspaceChanged(null);
+					final Display display = PlatformUI.getWorkbench().getDisplay();
+					display.asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							// Double click a file
+							String absolutePath = file.getAbsolutePath();
+							IWorkbench workbench = PlatformUI.getWorkbench();
+							if (EditorUtil.openEditor(workbench, new Path(absolutePath)) != null) {
+								logger.info("Double click on file " + absolutePath);
+							}
+							workspaceChanged(null);
+						}
+					});
+
 				} else if (file.exists() && file.isDirectory()) {
 					// Double click a folder
 					Object eventSource = anEvent.getSource();

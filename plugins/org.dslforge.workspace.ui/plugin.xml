@@ -1,16 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
+   
    <extension
-         point="org.eclipse.ui.views">
-      <view
-            class="org.dslforge.workspace.ui.BasicWokspaceNavigator"
-            icon="icons/earth_view.png"
-            id="org.dslforge.navigator.view"
-            name="Project Explorer"
-            restorable="true">
-      </view>
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.ui.category.file"
+            defaultHandler="org.dslforge.workspace.ui.commands.NewProjectCommand"
+            description="Create a new project"
+            helpContextId="CreateNewProject"
+            id="org.dslforge.workspace.ui.commands.newProject"
+            name="CreateNewProject">
+      </command>
+      <command
+            categoryId="org.eclipse.ui.category.file"
+            defaultHandler="org.dslforge.workspace.ui.commands.NewFolderCommand"
+            description="Create a new folder"
+            helpContextId="CreateNewFolder"
+            id="org.dslforge.workspace.ui.commands.newFolder"
+            name="CreateNewFolder">
+      </command>
+      <command
+            categoryId="org.eclipse.ui.category.file"
+            defaultHandler="org.dslforge.workspace.ui.commands.NewFileCommand"
+            description="Create a new file"
+            helpContextId="CreateNewFile"
+            id="org.dslforge.workspace.ui.commands.newFile"
+            name="CreateNewFile">
+      </command>
+      <command
+            defaultHandler="org.dslforge.workspace.ui.commands.OpenResourceCommand"
+            description="Open file"
+            helpContextId="OpenFile"
+            id="org.dslforge.workspace.ui.commands.openResource"
+            name="OpenResource">
+      </command>
+      <command
+            defaultHandler="org.dslforge.workspace.ui.commands.OpenFormCommand"
+            description="Open form"
+            helpContextId="OpenForm"
+            id="org.dslforge.workspace.ui.commands.openForm"
+            name="OpenForm">
+      </command>
+      <command
+            defaultHandler="org.dslforge.workspace.ui.commands.DeleteResourceCommand"
+            description="Delete file"
+            helpContextId="DeleteFile"
+            id="org.dslforge.workspace.ui.commands.deleteFile"
+            name="Delete file">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
@@ -21,13 +59,11 @@
             labelProvider="org.dslforge.workspace.ui.FileSystemLabelProvider"
             name="Workspace Content"
             priority="high">
-
          <triggerPoints>
             <instanceof
                   value="java.io.File">
             </instanceof>
          </triggerPoints>
-
       </navigatorContent>
       <commonFilter
             activeByDefault="false"
@@ -38,235 +74,174 @@
             visibleInUI="true">
       </commonFilter>
    </extension>
-   <extension
-         point="org.eclipse.ui.commands">
-      <command
-            defaultHandler="org.dslforge.workspace.ui.commands.NewFileCommand"
-            description="Create a new file"
-            helpContextId="Create a new file"
-            id="org.dslforge.workspace.ui.commands.newFile"
-            name="CreateNewFile">
-      </command>
-      <command
-            defaultHandler="org.dslforge.workspace.ui.commands.NewFolderCommand"
-            description="Create a new folder"
-            helpContextId="Create a new folder"
-            id="org.dslforge.workspace.ui.commands.newFolder"
-            name="CreateNewFolder">
-      </command>
-      <command
-            defaultHandler="org.dslforge.workspace.ui.commands.NewProjectCommand"
-            description="Create a new project"
-            helpContextId="Create a new project"
-            id="org.dslforge.workspace.ui.commands.NewProject"
-            name="CreateNewProject">
-      </command>
-      <command
-            defaultHandler="org.dslforge.workspace.ui.commands.OpenResourceCommand"
-            description="Open file"
-            helpContextId="Open file"
-            id="org.dslforge.workspace.ui.commands.OpenResource"
-            name="OpenResource">
-      </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.navigator.view.actions.contribution.new"
-            nameFilter="*"
-            objectClass="java.io.File">
-         <menu
-               id="org.dslforge.workspace.menu.new"
-               label="New">
-            <separator
-                  name="group1">
-            </separator>
-            <separator
-                  name="group2">
-            </separator>
-         </menu>
-      </objectContribution>
-   </extension>
 
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="org.dslforge.workspace.ui.BasicWokspaceNavigator"
+            icon="icons/earth_view.png"
+            id="org.dslforge.navigator.view"
+            name="Project Explorer"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.dslforge.workspace.ui.context">
+         <with
+               variable="activeWorkbenchWindow.activePerspective">
+            <or>
+               <equals
+                     value="org.dslforge.workbench.ui.parts.perspective">
+               </equals>
+               <equals
+                     value="org.dslforge.texteditor.demo.ui.parts.perspective">
+               </equals>
+            </or>
+         </with>
+      </definition>
+   </extension>
+   
    
    <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.navigator.view.actions.contribution.new"
-            nameFilter="*"
-            objectClass="java.io.File">
-          <action
-               class="org.dslforge.workspace.ui.actions.NewFileAction"
-               enablesFor="*"
-               icon="icons/file.gif"
-               id="org.dslforge.navigator.actions.new.file"
-               label="File"
-               menubarPath="org.dslforge.workspace.menu.new/group1"
-               style="push"
-               tooltip="Create a new file">
-         </action>
-         <action
-               class="org.dslforge.workspace.ui.actions.NewFolderAction"
-               enablesFor="*"
-               icon="icons/folder.png"
-               id="org.dslforge.navigator.actions.new.folder"
-               label="Folder"
-               menubarPath="org.dslforge.workspace.menu.new/group1"
-               style="push"
-               tooltip="Open with default editor">
-         </action>              
-         <menu
-               id="org.dslforge.workspace.menu.new"
-               label="New"
-               path="main">
-            <separator
-                  name="group1">
-            </separator>
-         </menu>
-         
-      </objectContribution>
-   </extension>
-
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.navigator.view.actions.contribution.open"
-            nameFilter="*"
-            objectClass="java.io.File">
-         <action
-               class="org.dslforge.workspace.ui.actions.OpenResourceAction"
-               enablesFor="*"
-               id="org.dslforge.workspace.menu.open"
-               label="Open"
-               menubarPath="main"
-               style="push">
-         </action>
-      </objectContribution>
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.navigator.view.actions.contribution.openwith"
-            nameFilter="*"
-            objectClass="java.io.File">
-         <action
-               class="org.dslforge.workspace.ui.actions.OpenResourceAction"
-               enablesFor="*"
-               icon="icons/file.gif"
-               id="org.dslforge.workspace.menu.openwith.default"
-			   label="Text Editor (default)"
-               menubarPath="org.dslforge.workspace.menu.openwith/additions"
-               style="push"
-               tooltip="Open with default editor">
-         </action>
-         <action
-               class="org.dslforge.workspace.ui.actions.OpenResourceInFormAction"
-               enablesFor="*"
-               icon="icons/model.png"
-               id="org.dslforge.workspace.menu.openwith.form"
-               label="Form Editor"
-               menubarPath="org.dslforge.workspace.menu.openwith/additions"
-               style="push"
-               tooltip="Open with form editor">
-         </action>
-         <menu
-               id="org.dslforge.workspace.menu.openwith"
-               label="Open With"
-               path="main">
-            <separator
-                  name="group2">
-            </separator>
-         </menu>
-      </objectContribution>
-   </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <viewerContribution
-            id="org.dslforge.navigator.view.actions.contribution.another"
-            targetID="org.dslforge.navigator.view">
-         <action
-               class="org.dslforge.workspace.ui.actions.NewProjectDelegateAction"
-               definitionId="org.dslforge.workspace.ui.commands.NewProject"
-               icon="icons/prj_obj.png"
-               id="org.dslforge.navigator.actions.new.project"
-               label="Project"
-               menubarPath="org.dslforge.workspace.menu.new/group1"
-               style="push"
-               tooltip="Create a new Project">
-         </action>
-         <menu
-               id="org.dslforge.workspace.menu.new"
-               label="New"
-               path="main">
-            <separator
-                  name="group1">
-            </separator>
-         </menu>
-      </viewerContribution>
-   </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.navigator.view.actions.contribution.delete"
-            nameFilter="*"
-            objectClass="java.io.File">
-         <action
-               class="org.dslforge.workspace.ui.actions.DeleteResourceAction"
-               enablesFor="*"
-               icon="icons/delete.png"
-               id="org.dslforge.workspace.menu.delete"
-               label="Delete"
-               menubarPath="group1"
-               style="push">
-         </action>
-      </objectContribution>
-   </extension>
-
-   <extension
-         point="org.eclipse.ui.actionSets">
-      <actionSet
-            id="org.dslforge.workspace.ui.actionSet2"
-            label="label"
-            visible="true">
-         <action
-               class="org.dslforge.workspace.ui.actions.NewFileAction"
-               definitionId="org.dslforge.workspace.ui.commands.newFile"
-               icon="icons/file_obj.gif"
-               id="org.dslforge.workspace.ui.actions.newFile"
-               label="File"
-               menubarPath="file/new/additions"
-               retarget="false"
-               style="push"
-               toolbarPath="main"
-               tooltip="Create a new file">
-         </action>
-         <action
-               class="org.dslforge.workspace.ui.actions.NewFolderAction"
-               definitionId="org.dslforge.workspace.ui.commands.newFolder"
-               icon="icons/fldr_obj.png"
-               id="org.dslforge.workspace.ui.actions.newFolder"
-               label="Folder"
-               menubarPath="file/new/additions"
-               retarget="false"
-               style="push"
-               toolbarPath="main"
-               tooltip="Create a new folder">
-         </action>
-         <action
-               class="org.dslforge.workspace.ui.actions.NewProjectAction"
-               definitionId="org.dslforge.workspace.ui.commands.NewProject"
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:new">
+         <command
+               commandId="org.dslforge.workspace.ui.commands.newProject"
                icon="icons/prj_obj.png"
                id="org.dslforge.workspace.ui.actions.newProject"
                label="Project"
-               menubarPath="file/new/additions"
-               retarget="false"
                style="push"
-               toolbarPath="main"
                tooltip="Create a new project">
-         </action>
-      </actionSet>
-   </extension>
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="org.dslforge.workspace.ui.context">
+               </reference>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.dslforge.workspace.ui.commands.newFolder"
+               helpContextId="Create a new folder"
+               icon="icons/fldr_obj.png"
+               id="org.dslforge.workspace.ui.actions.newProject"
+               label="Folder"
+               style="push"
+               tooltip="Create a new folder">
+         </command>
+         <command
+               commandId="org.dslforge.workspace.ui.commands.newFile"
+               helpContextId="Create a new file"
+               icon="icons/file_obj.png"
+               id="org.dslforge.workspace.ui.actions.newFile"
+               label="File"
+               style="push"
+               tooltip="Create a new file">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:org.dslforge.navigator.view">
+         <menu
+               id="org.dslforge.workspace.menu.new"
+               label="New">
+            <command
+                  commandId="org.dslforge.workspace.ui.commands.newProject"
+                  helpContextId="CreateNewProject"
+                  icon="icons/prj_obj.png"
+                  id="org.dslforge.workspace.menu.new.project"
+                  label="Project"
+                  style="push"
+                  tooltip="Create new project">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.dslforge.workspace.ui.context">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.dslforge.workspace.ui.commands.newFolder"
+                  helpContextId="CreateNewFolder"
+                  icon="icons/fldr_obj.png"
+                  id="org.dslforge.workspace.menu.new.folder"
+                  label="Folder"
+                  style="push"
+                  tooltip="Create new folder">
+            </command>
+            <command
+                  commandId="org.dslforge.workspace.ui.commands.newFile"
+                  helpContextId="CreateNewFile"
+                  icon="icons/file_obj.png"
+                  id="dslforge.workspace.menu.new.file"
+                  label="File"
+                  org.dslforge.workspace.ui.commands.openResourceyle="push"
+                  tooltip="Create new file">
+            </command>
+         </menu>
+         <separator
+               name="separator1"
+               visible="true">
+         </separator>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.dslforge.navigator.view?after=separator1">
+         <command
+               commandId="org.dslforge.workspace.ui.commands.openResource"
+               helpContextId="OpenFile"
+               id="org.dslforge.workspace.menu.openfile"
+               label="Open"
+               style="push"
+               tooltip="Open file">
+         </command>
+         <menu
+               id="org.dslforge.workspace.menu.openwith"
+               label="Open With"
+               path="main"
+               tooltip="Open with">
+            <command
+                  commandId="org.dslforge.workspace.ui.commands.openResource"
+                  helpContextId="OpenDefaultEditor"
+                  icon="icons/model.png"
+                  id="org.dslforge.workspace.menu.open.file"
+                  label="Text Editor (default)"
+                  style="push"
+                  tooltip="Open with default editor">
+            </command>
+            <command
+                  commandId="org.dslforge.workspace.ui.commands.openForm"
+                  helpContextId="OpenFormEditor"
+                  icon="icons/model.png"
+                  id="org.dslforge.workspace.menu.open.form"
+                  label="Form Editor"
+                  style="push"
+                  tooltip="Open with form editor">
+            </command>
+         </menu>
+         <separator
+               name="separator2"
+               visible="true">
+         </separator>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.dslforge.navigator.view?after=separator3">
+         <command
+               commandId="org.dslforge.workspace.ui.commands.deleteFile"
+               helpContextId="DeleteFile"
+               icon="icons/delete_obj.png"
+               id="org.dslforge.workspace.menu.deleteFile"
+               label="Delete"
+               style="push"
+               tooltip="Delete file">
+         </command>
+      </menuContribution>
+   	</extension>
+
    
 </plugin>

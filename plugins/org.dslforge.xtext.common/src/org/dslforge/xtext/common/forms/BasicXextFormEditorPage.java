@@ -15,7 +15,9 @@
  */
 package org.dslforge.xtext.common.forms;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -24,9 +26,12 @@ import org.apache.log4j.Logger;
 import org.dslforge.styledtext.Annotation;
 import org.dslforge.styledtext.Annotation.AceSeverity;
 import org.dslforge.styledtext.BasicText;
+import org.dslforge.styledtext.jface.ICompletionProposal;
+import org.dslforge.styledtext.jface.IContentAssistProcessor;
 import org.dslforge.texteditor.form.BasicTextFormEditorPage;
 import org.dslforge.xtext.common.IBasicXtextEditor;
 import org.dslforge.xtext.common.IXtextResourceFactory;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.util.SafeRunnable;
@@ -43,6 +48,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
 import org.eclipse.xtext.resource.IResourceDescription.Manager;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.util.ReplaceRegion;
 import org.eclipse.xtext.validation.CheckMode;
@@ -68,11 +74,17 @@ public class BasicXextFormEditorPage extends BasicTextFormEditorPage implements 
 	protected String languageName;
 	@Inject
 	protected IResourceDescription.Manager descriptionManager;
+	@Inject
+	protected IContentAssistProcessor contentAssistProcessor;
 	
 	public BasicXextFormEditorPage(FormEditor editor, String id, String title) {
 		super(editor, id, title);
 	}
 
+	public BasicXextFormEditorPage(BasicXextFormEditor editor, String title) {
+		super(editor, FORM_EDITOR_PAGE_ID,  title);
+	}
+	
 	public BasicXextFormEditorPage(BasicXextFormEditor editor) {
 		super(editor, FORM_EDITOR_PAGE_ID, FORM_EDITOR_PAGE_TITLE);
 	}
@@ -105,9 +117,25 @@ public class BasicXextFormEditorPage extends BasicTextFormEditorPage implements 
 			xtextResource.update(replaceRegionToBeProcessed.getOffset(), replaceRegionToBeProcessed.getLength(),
 					replaceRegionToBeProcessed.getText());
 		}
+		validateResource();
 		updateIndex();
 	}
 
+	@Override
+	public void doSave(IProgressMonitor monitor) {
+		super.doSave(monitor);
+		try {
+			if (!xtextResource.getContents().isEmpty())
+				if (validateSyntax(xtextResource.getContents().get(0), xtextResource)) {
+					String text = getViewer().getDocument().get();
+					xtextResource.reparse(text);
+				}
+		} catch (IOException ex) {
+			logger.error(ex.getMessage(), ex);
+		}
+		validateResource();
+	}
+	
 	@Override
 	public void validateResource() {
 		SafeRunnable.run(new SafeRunnable() {
@@ -128,6 +156,19 @@ public class BasicXextFormEditorPage extends BasicTextFormEditorPage implements 
 		});
 	}
 
+	@Override
+	public void createCompletionProposals(final int offset) {
+		SafeRunnable.run(new SafeRunnable() {
+			private static final long serialVersionUID = 1L;
+			public void run() {
+				XtextContentAssistProcessor xtextContentAssistProcessor = (XtextContentAssistProcessor)contentAssistProcessor;
+				ICompletionProposal[] computedCompletionProposals = xtextContentAssistProcessor.computeCompletionProposals(getViewer(), xtextResource, offset);
+				if (computedCompletionProposals!=null) {
+					getViewer().getTextWidget().setProposals(Arrays.asList(computedCompletionProposals));	
+				}
+			}
+		});
+	}
 	@Override
 	public void updateIndex() {
 		SafeRunnable.run(new SafeRunnable() {

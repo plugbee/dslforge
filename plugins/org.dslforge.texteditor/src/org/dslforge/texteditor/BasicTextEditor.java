@@ -456,7 +456,8 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 				@Override
 				public void keyPressed(KeyEvent e) {
 					if ((e.stateMask & SWT.CTRL) == SWT.CTRL) {
-						createCompletionProposals();
+						if ((e.stateMask & SWT.ALT) == 0);
+							createCompletionProposals();
 					}
 				}
 			};

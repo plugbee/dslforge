@@ -63,7 +63,6 @@ public class XtextContentAssistEnabledEditor extends BasicXtextEditor {
 		String value = object.get("value") != null ? object.get("value").asString() : null;	
 		if (value != null) {
 			try {
-				setText(value);
 				ReplaceRegion replaceRegionToBeProcessed = new ReplaceRegion(offset, value.length(), value);
 				xtextResource.reparse(replaceRegionToBeProcessed.getText());
 			} catch (IOException ex) {

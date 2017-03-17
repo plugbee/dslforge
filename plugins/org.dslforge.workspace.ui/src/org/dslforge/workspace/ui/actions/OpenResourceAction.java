@@ -16,16 +16,14 @@
 package org.dslforge.workspace.ui.actions;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 import org.dslforge.workspace.ui.util.EditorUtil;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
@@ -33,6 +31,10 @@ public class OpenResourceAction extends AbstractWorkspaceAction {
 
 	static final Logger logger = Logger.getLogger(OpenResourceAction.class);
 
+	public OpenResourceAction() {
+		super();
+	}
+	
 	@Override
 	public void run(IAction action) {
 		Iterator<?> iterator = ((StructuredSelection) getSelection()).iterator();
@@ -44,8 +46,10 @@ public class OpenResourceAction extends AbstractWorkspaceAction {
 	}
 
 	public boolean openWithEditor(final File file) {
-		IRunnableWithProgress operation = new IRunnableWithProgress() {
-			public void run(IProgressMonitor progressMonitor) {
+		final Display display = PlatformUI.getWorkbench().getDisplay();
+		display.asyncExec(new Runnable() {
+			@Override
+			public void run() {
 				try {
 					if (file.exists() && !file.isDirectory()) {
 						String absolutePath = file.getAbsolutePath();
@@ -56,20 +60,9 @@ public class OpenResourceAction extends AbstractWorkspaceAction {
 					}
 				} catch (Exception ex) {
 					logger.error(ex.getMessage(), ex);
-				} finally {
-					progressMonitor.done();
 				}
 			}
-		};
-		try {
-			PlatformUI.getWorkbench().getActiveWorkbenchWindow().run(false, false, operation);
-		} catch (InvocationTargetException ex) {
-			logger.error(ex.getMessage(), ex);
-			return false;
-		} catch (InterruptedException ex) {
-			logger.error(ex.getMessage(), ex);
-			return false;
-		}
+		});
 		return true;
 	}
 }

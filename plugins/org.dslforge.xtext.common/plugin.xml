@@ -12,38 +12,6 @@
             sequence="M1+S">
       </key>
    </extension>
-   
-      <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="org.dslforge.navigator.view.actions.contribution.generate"
-            nameFilter="*"
-            objectClass="java.io.File">
-        
-    	  <action
-               class="org.dslforge.xtext.common.actions.NewModelAction"
-               enablesFor="*"
-               icon="icons/model.png"
-               id="org.dslforge.navigator.actions.new.model"
-               label="Model"
-               menubarPath="org.dslforge.workspace.menu.new/group"
-               style="push"
-               tooltip="Create a new model file">
-         </action>
-   
-         <action
-               class="org.dslforge.xtext.common.actions.BasicGenerateAction"
-               enablesFor="*"
-               icon="icons/generate.png"
-               id="org.dslforge.workspace.menu.generate"
-               label="Generate"
-               menubarPath="group2"
-               style="push">
-         </action>
-      </objectContribution>
-   </extension>
- 
    <extension
          point="org.eclipse.ui.commands">
       <command
@@ -53,26 +21,74 @@
             id="org.dslforge.workspace.ui.commands.newModel"
             name="CreateNewFile">
       </command>
-  </extension>       
+      <command
+            defaultHandler="org.dslforge.xtext.common.commands.BasicGenerateCommand"
+            description="Generate artefacts"
+            helpContextId="GenerateArtefacts"
+            id="org.dslforge.workspace.ui.commands.generate"
+            name="Generate">
+      </command>
+   </extension>
+   
+ 
 
     <extension
-         point="org.eclipse.ui.actionSets">
-      <actionSet
-            id="org.dslforge.workspace.ui.actionSet1"
-            label="label"
-            visible="true">
-         <action
-               class="org.dslforge.xtext.common.actions.NewModelAction"
-               definitionId="org.dslforge.workspace.ui.commands.newModel"
-               icon="icons/model.png"
-               id="org.dslforge.workspace.ui.actions.newModel"
-               label="Model"
-               menubarPath="file/new/group1"
-               retarget="false"
-               style="push"
-               toolbarPath="main"
-               tooltip="Create a new model">
-         </action>
-      </actionSet>
-   </extension>
+          point="org.eclipse.ui.menus">
+       <menuContribution
+             allPopups="false"
+             locationURI="menu:new">
+          <command
+                commandId="org.dslforge.workspace.ui.commands.newModel"
+                helpContextId="CreateNewModel"
+                icon="icons/model.png"
+                label="Model">
+             <visibleWhen
+                   checkEnabled="false">
+                <reference
+                      definitionId="org.dslforge.workspace.ui.context">
+                </reference>
+             </visibleWhen>
+          </command>
+       </menuContribution>
+       <menuContribution
+             allPopups="true"
+             locationURI="popup:org.dslforge.navigator.view">
+          <menu
+                id="org.dslforge.workspace.menu.new"
+                label="New">
+             <command
+                   commandId="org.dslforge.workspace.ui.commands.newModel"
+                   helpContextId="CreateNewModel"
+                   icon="icons/model.png"
+                   id="org.dslforge.workspace.menu.newModel"
+                   label="Model"
+                   tooltip="Create new model">
+                <visibleWhen
+                      checkEnabled="false">
+                   <reference
+                         definitionId="org.dslforge.workspace.ui.context">
+                   </reference>
+                </visibleWhen>
+             </command>
+            
+          </menu>
+       </menuContribution>
+       <menuContribution
+             allPopups="true"
+             locationURI="popup:org.dslforge.navigator.view?after=separator2">
+          <command
+                commandId="org.dslforge.workspace.ui.commands.generate"
+                helpContextId="GenerateArtefacts"
+                icon="icons/generate.png"
+                id="org.dslforge.workspace.menu.generate"
+                label="Generate"
+                style="push"
+                tooltip="Generate Artefacts">
+          </command>
+          <separator
+                name="separator3"
+                visible="true">
+          </separator>
+       </menuContribution>
+    </extension>
 </plugin>

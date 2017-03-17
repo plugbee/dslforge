@@ -134,7 +134,7 @@ public class NewProjectWizardPage extends WizardPage {
 		}
 	}
 
-	private boolean determinePageCompletion() {
+	protected boolean determinePageCompletion() {
 		boolean complete = validateProjectInfo();
 		if (complete) {
 			setErrorMessage(null);
