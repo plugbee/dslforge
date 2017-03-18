@@ -85,4 +85,12 @@ public class PathEditorInput implements IPathEditorInput {
 			return null;
 		}
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof PathEditorInput) {
+			return ((PathEditorInput) obj).getPath().equals(getPath());
+		}
+		return super.equals(obj);
+	}
 }

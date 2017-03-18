@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.content.IContentType;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IEditorRegistry;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -26,7 +27,8 @@ import org.eclipse.ui.internal.registry.EditorRegistry;
 public class EditorUtil {
 
 	static final Logger logger = Logger.getLogger(EditorUtil.class);
-
+	static final String WEB_FORM_ID_SUFFIX = "web.form";
+	
 	public static IEditorDescriptor getDefaultEditor(String fileName) {
 		return fileName != null && fileName.length() != 0
 				? getDefaultEditor(fileName, Platform.getContentTypeManager().findContentTypesFor(fileName)) : null;
@@ -77,13 +79,19 @@ public class EditorUtil {
 			return null;
 		}
 		try {
-			return page.openEditor(new PathEditorInput(path), descriptor.getId());
+			PathEditorInput editorInput = new PathEditorInput(path);
+			IEditorPart editor = page.findEditor(editorInput);
+			if (editor == null)
+				editor = page.openEditor(editorInput, descriptor.getId());
+			else
+				page.activate(editor);
+			return editor;
 		} catch (PartInitException exception) {
 			MessageDialog.openError(workbenchWindow.getShell(), "Open Editor", exception.getMessage());
 			return null;
 		}
 	}
-	
+	  
 	public static IEditorPart openFormEditor(IWorkbench workbench, IPath path) {
 		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
 		IWorkbenchPage page = workbenchWindow.getActivePage();
@@ -96,8 +104,15 @@ public class EditorUtil {
 			try {
 				for (IEditorDescriptor desc : editorDescriptors) {
 					// lookup any form editor contributed by default
-					if (desc.getId().contains("web.form"))
-						return page.openEditor(new PathEditorInput(path), desc.getId());
+					if (desc.getId().contains(WEB_FORM_ID_SUFFIX)) {
+						PathEditorInput editorInput = new PathEditorInput(path);
+						IEditorPart editor = page.findEditor(editorInput);
+						if (editor == null)
+							editor = page.openEditor(editorInput, desc.getId());
+						else
+							page.activate(editor);
+						return editor;
+					}
 				}
 				return page.openEditor(new PathEditorInput(path), editorDescriptors[0].getId());
 			} catch (PartInitException exception) {
