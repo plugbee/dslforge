@@ -2234,7 +2234,5 @@ define('ace/mode/«grammarShortName.toLowerCase»/«grammarShortName.toLowerCase»pa
 
 });
 
-});
-
 	'''
 }

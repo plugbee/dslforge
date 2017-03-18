@@ -3,7 +3,6 @@
 <plugin>
 <extension point="org.eclipse.rap.ui.entrypoint">
 	<entrypoint
-       brandingId="org.dslforge.workbench.branding"
        class="org.dslforge.texteditor.demo.BasicWorkbench"
        id="org.dslforge.texteditor.demo.entrypoint"
        path="/texteditor">
