@@ -7,7 +7,9 @@ Check out the [live demo!](http://beeone.dslforge.org/workbench)
 
 The Tooling comes with two code generators which take the grammars expressed with Xtext or ANTLR and generate two variants of editors. 
 
-<a href="url"><img src="http://dslforge.org/wp-content/uploads/2016/01/dslforge-tooling-xtext-generator.png" align="middle" width="500" ></a>
+<p align="center">
+  <img src="http://dslforge.org/wp-content/uploads/2016/01/dslforge-tooling-xtext-generator.png?raw=true" width="460"/>
+</p>
 
 - _**Generate Web Editor from ANTLR**_ produces a text editor with JavaScript parser and lexer from ANTLR v3. You get an ACE editor tailored for the language definition which runs fully on the client side. This editor has no backend, use it for integration with JavaScript servers.
 - _**Generate Web Editor from Xtext**_ produces a plugin to be packaged with the original Xtext plugin into a workbench application enabling precise interaction between the client and the server.
