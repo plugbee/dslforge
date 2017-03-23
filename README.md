@@ -47,7 +47,7 @@ Below some examples of use cases showing how the generated editors can be embedd
   <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/piraterobot-form-editor.png?raw=true" width="600"/>
 </p>
 
- - The following example is an ANTLR v4 web editor embedded in the [live demo](http://beeone.dslforge.org/workbench), it demonstrates the integration of the editor with guiders based on the [Guider.js](https://github.com/pickhardt/Guiders-JS) framework.
+ - The following example is an ANTLR v4 web editor embedded in the [live demo](http://beeone.dslforge.org/workbench), it demonstrates the integration of the editor with guiders based on the [Guiders.js](https://github.com/pickhardt/Guiders-JS) framework.
  
  <p align="center">
   <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/antlr-v4-editor.png?raw=true" width="400"/>
