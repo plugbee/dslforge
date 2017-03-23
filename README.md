@@ -6,7 +6,7 @@ It allows to get web-based textual editors automatically from ANTLR grammars. Fr
 Check out the [live demo!](http://beeone.dslforge.org/workbench)
 
 <p align="center">
-  <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/online-workbench.png?raw=true" width="600"/>
+  <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/online-workbench.png?raw=true" width="860"/>
 </p>
 
 The framework comes with two code generators which take the grammars expressed with Xtext or ANTLR and generate two variants of editors. 
@@ -33,21 +33,25 @@ Below the complete list of features bound by default in the generated editors:
 - Brace Matching.
 
 # Use Cases
-Below some examples of use cases where DSL Forge has been used to deploy online editors embedded into webapps.
+Below some examples of use cases showing how the generated editors can be embedded into web IDEs, online games, cloud-based platforms, together with popular JavaScript frameworks.
 
- - The following use case is a petrinet form made up of an embedded textual editor integrated with D3.js framework. The form is available in the  [live demo](http://beeone.dslforge.org/workbench), open the petrinet project folder, right click on a petrinet model file, and select "Open with form editor".
+ - The following use case is a petrinet form made up of an embedded textual editor integrated with [D3.js](https://d3js.org/) framework. The form is available in the  [live demo](http://beeone.dslforge.org/workbench), open the petrinet project folder, right click on a petrinet model file, and select "Open with form editor".
  
 <p align="center">
   <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/petrinet-form-editor.png?raw=true" width="620"/>
 </p>
 
- - The following use case is an online coding game made with DSL Forge. It comes with a domain-specific language for specifying the actions of a robot, a remote debugger, next to a canvas animation made with Phaser.js. The game is free and publicly available on [CodingPark](http://www.codingpark.org).
+ - The following use case is an online coding game made with DSL Forge. It comes with a domain-specific language for specifying the actions of a robot, a remote debugger, next to a canvas animation made with [Phaser.js](https://phaser.io/). The game is free and publicly available on [CodingPark](http://www.codingpark.org).
  
 <p align="center">
   <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/piraterobot-form-editor.png?raw=true" width="600"/>
 </p>
 
- - OpenPMF a cloud-based security policy automation is an online platform based on DSL Forge, check it out
+ - The following example is an ANTLR v4 web editor embedded in the [live demo](http://beeone.dslforge.org/workbench), it demonstrates the integration of the editor with guiders based on the [Guider.js](https://github.com/pickhardt/Guiders-JS) framework.
+ 
+ <p align="center">
+  <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/antlr-v4-editor.png?raw=true" width="400"/>
+</p>
 
 ## Installation
 
