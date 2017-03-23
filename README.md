@@ -33,7 +33,7 @@ Below the complete list of features bound by default in the generated editors:
 - Brace Matching.
 
 # Use Cases
-Below some examples of use cases showing how the generated editors can be embedded into web IDEs, online games, cloud-based platforms, together with popular JavaScript frameworks.
+Below some examples of use cases showing how the generated editors can be embedded into Web IDEs, forms, HTML5 canvas, guiders, and other JavaScript frameworks.
 
  - The following use case is a petrinet form made up of an embedded textual editor integrated with [D3.js](https://d3js.org/) framework. The form is available in the  [live demo](http://beeone.dslforge.org/workbench), open the petrinet project folder, right click on a petrinet model file, and select "Open with form editor".
  
