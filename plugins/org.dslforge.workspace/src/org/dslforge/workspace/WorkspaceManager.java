@@ -38,10 +38,10 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.dslforge.workspace.config.IPersistencyService;
 import org.dslforge.workspace.internal.AbstractWorkspaceEventWatcher;
 import org.dslforge.workspace.internal.DefaultPersistencyService;
 import org.dslforge.workspace.internal.WorkspaceActivator;
-import org.dslforge.workspace.jpa.IPersistencyService;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.rap.rwt.RWT;
@@ -56,7 +56,7 @@ public class WorkspaceManager {
 
 	public static WorkspaceManager INSTANCE = new WorkspaceManager();
 
-	private final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
+	private final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getWorkspaceRootPath();
 
 	private static WorkspaceEventWatcher directoryWatcher;
 	

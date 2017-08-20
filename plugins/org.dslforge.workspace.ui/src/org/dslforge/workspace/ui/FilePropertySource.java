@@ -27,7 +27,7 @@ import org.eclipse.ui.views.properties.PropertyDescriptor;
 
 public class FilePropertySource implements IPropertySource {
 
-	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
+	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getWorkspaceRootPath();
 
 	private File file;
 	

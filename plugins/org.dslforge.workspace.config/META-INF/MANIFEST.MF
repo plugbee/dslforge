@@ -10,5 +10,6 @@ Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.dslforge.workspace.config.internal.Activator
 Bundle-Vendor: PlugBee
-Export-Package: org.dslforge.workspace.config.internal
+Export-Package: org.dslforge.workspace.config,
+ org.dslforge.workspace.config.internal
 Import-Package: org.apache.log4j;version="1.2.15"

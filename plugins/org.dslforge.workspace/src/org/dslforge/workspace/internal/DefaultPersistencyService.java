@@ -25,7 +25,7 @@ import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
-import org.dslforge.workspace.jpa.IPersistencyService;
+import org.dslforge.workspace.config.IPersistencyService;
 import org.dslforge.workspace.jpa.database.Folder;
 import org.dslforge.workspace.jpa.database.Project;
 import org.dslforge.workspace.jpa.database.Resource;
@@ -161,7 +161,7 @@ public class DefaultPersistencyService implements IPersistencyService{
 	}
 
 	private DefaultPersistencyService() {
-		rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
+		rootPath = WorkspaceActivator.getDefault().getWorkspace().getWorkspaceRootPath();
 		logger.info("Starting Database Service...");
 	}
 

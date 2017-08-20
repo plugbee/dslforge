@@ -1,4 +1,4 @@
-package org.dslforge.workspace;
+package org.dslforge.workspace.config;
 
 import org.eclipse.core.runtime.IPath;
 

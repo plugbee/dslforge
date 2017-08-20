@@ -59,7 +59,7 @@ public class BasicWokspaceNavigator extends CommonNavigator implements IWorkspac
 
 	static final Logger logger = Logger.getLogger(BasicWokspaceNavigator.class);
 
-	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
+	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getWorkspaceRootPath();
 
 	private List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 

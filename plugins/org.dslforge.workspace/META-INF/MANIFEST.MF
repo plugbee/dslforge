@@ -5,8 +5,8 @@ Bundle-SymbolicName: org.dslforge.workspace;singleton:=true
 Bundle-Version: 0.9.1.qualifier
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.rap.jface,
- org.dslforge.workspace.config,
- com.google.guava
+ com.google.guava,
+ org.dslforge.workspace.config
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.dslforge.workspace,
  org.dslforge.workspace.config,
@@ -17,7 +17,6 @@ Bundle-Activator: org.dslforge.workspace.internal.WorkspaceActivator
 Bundle-Vendor: PlugBee
 Import-Package: javax.persistence;version="2.1.0",
  org.apache.log4j;version="1.2.15",
- org.dslforge.workspace.config,
  org.dslforge.workspace.jpa,
  org.dslforge.workspace.jpa.database,
  org.eclipse.persistence.config;version="2.5.2",

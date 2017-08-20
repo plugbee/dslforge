@@ -31,7 +31,7 @@ public class FileSystemLabelProvider implements ILabelProvider {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
+	private static final IPath rootPath = WorkspaceActivator.getDefault().getWorkspace().getWorkspaceRootPath();
 	
 	@Override
 	public Image getImage(Object element){

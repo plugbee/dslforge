@@ -98,7 +98,7 @@ public class WorkspaceActivator implements BundleActivator, ServiceTrackerCustom
 
 	@SuppressWarnings("unchecked")
 	public Object addingService(ServiceReference ref) {
-		IPath workspaceRootPath = getWorkspace().getRootPath();
+		IPath workspaceRootPath = getWorkspace().getWorkspaceRootPath();
 		Bundle bundle = ref.getBundle();
 		final Object service = bundle.getBundleContext().getService(ref);
 		String unitName = (String) ref.getProperty(EntityManagerFactoryBuilder.JPA_UNIT_NAME);

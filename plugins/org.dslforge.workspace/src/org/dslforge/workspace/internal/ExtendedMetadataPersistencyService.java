@@ -24,7 +24,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
-import org.dslforge.workspace.jpa.IPersistencyService;
+import org.dslforge.workspace.config.IPersistencyService;
 import org.dslforge.workspace.jpa.database.Folder;
 import org.dslforge.workspace.jpa.database.Project;
 import org.dslforge.workspace.jpa.database.Resource;
@@ -50,7 +50,7 @@ public class ExtendedMetadataPersistencyService implements IPersistencyService{
 	}
 
 	private ExtendedMetadataPersistencyService() {
-		rootPath = WorkspaceActivator.getDefault().getWorkspace().getRootPath();
+		rootPath = WorkspaceActivator.getDefault().getWorkspace().getWorkspaceRootPath();
 		logger.info("Starting Database Service...");
 	}
 	

@@ -29,5 +29,4 @@ public class Activator implements BundleActivator {
 		logger.info(PLUGIN_ID + " stopping!");
 		plugin = null;
 	}
-
 }
