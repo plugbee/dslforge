@@ -1,10 +1,10 @@
-package org.dslforge.xtext.common.commands;
+package org.dslforge.workspace.ui.commands;
 
 import java.io.File;
 
 import org.apache.log4j.Logger;
 import org.dslforge.workspace.ui.commands.AbstractWorkspaceCommand;
-import org.dslforge.xtext.common.wizards.NewModelFileWizard;
+import org.dslforge.workspace.ui.wizards.NewModelFileWizard;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -22,12 +22,15 @@ public class NewModelCommand extends AbstractWorkspaceCommand {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		File file = unwrap(event, File.class);
-		StructuredSelection selection = new StructuredSelection(file);
-		NewModelFileWizard wizard = new NewModelFileWizard(file); 
-		wizard.init(getWindow().getWorkbench(), (IStructuredSelection)selection);
-		WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
-		wizardDialog.create();
-		setSizeAndLocation(wizardDialog);
-		return wizardDialog.open();
+		if (file!=null) {
+			StructuredSelection selection = new StructuredSelection(file);
+			NewModelFileWizard wizard = new NewModelFileWizard(file); 
+			wizard.init(getWindow().getWorkbench(), (IStructuredSelection)selection);
+			WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
+			wizardDialog.create();
+			setSizeAndLocation(wizardDialog);
+			return wizardDialog.open();	
+		}
+		return null;
 	}
 }

@@ -66,7 +66,7 @@ abstract class AbstractGenerator implements IArtefactGenerator {
 	override String getBasePath() {
 		return this.basePath
 	}
-	
+	 
 	override setProject(IProject project) {
 		this.project = project
 		this.projectName=project.name

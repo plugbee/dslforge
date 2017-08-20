@@ -376,13 +376,17 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	protected void setInput(IEditorInput input) {
 		super.setInput(input);
 		IPath path=null;
-		if (input instanceof IPathEditorInput)
+		if (input instanceof IPathEditorInput) {
 			path = ((IPathEditorInput) input).getPath();
-		else if (input instanceof URIEditorInput)
-			path = new Path(((URIEditorInput) input).getURI().toFileString());
-		else
-			throw new UnsupportedOperationException("Unsupported editor input type.");
-		loadContentFromFile();
+			loadContentFromFile();
+		} else if (input instanceof URIEditorInput) {
+			if (((URIEditorInput) input).getURI().isFile())
+				path = new Path(((URIEditorInput) input).getURI().toFileString());
+			else
+				path = new Path(((URIEditorInput) input).getURI().toString());
+		} else {
+			throw new UnsupportedOperationException("Unsupported editor input type.");	
+		}
 		setFilePath(path);
 		firePropertyChange(PROP_INPUT);
 	}

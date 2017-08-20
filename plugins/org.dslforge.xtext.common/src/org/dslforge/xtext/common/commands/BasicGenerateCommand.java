@@ -23,16 +23,21 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.dslforge.workspace.WorkspaceManager;
-import org.dslforge.workspace.ui.commands.AbstractWorkspaceCommand;
 import org.dslforge.xtext.common.registry.LanguageRegistry;
+import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.xtext.generator.GeneratorContext;
-import org.eclipse.xtext.generator.GeneratorDelegate;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGenerator;
@@ -47,16 +52,15 @@ import com.google.common.collect.Maps;
 import com.google.inject.ConfigurationException;
 import com.google.inject.Injector;
 
-public class BasicGenerateCommand extends AbstractWorkspaceCommand {
+public class BasicGenerateCommand extends AbstractHandler {
 
-	private static final String DEFAULT_OUTPUT_FOLDER = "src-gen";
+	public static final String DEFAULT_OUTPUT_FOLDER = "src-gen";
 	private Injector injector;
 	private Map<String, String> outlets = new HashMap<String, String>();
 
 	public BasicGenerateCommand() {
 		super();
 	}
-
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -68,6 +72,36 @@ public class BasicGenerateCommand extends AbstractWorkspaceCommand {
 			doGenerate(file, new File(output));
 		}
 		return null;
+	}
+	
+	public static <T> T unwrap(Object object, Class<T> type) {
+		if (object instanceof ExecutionEvent) {
+			object = HandlerUtil.getCurrentSelection((ExecutionEvent) object);
+		}
+		if (object instanceof IStructuredSelection) {
+			object = ((IStructuredSelection) object).getFirstElement();
+		}
+		if (object instanceof IAdaptable) {
+			object = ((IAdaptable) object).getAdapter(type);
+		}
+		if (type.isInstance(object)) {
+			return type.cast(object);
+		}
+		return null;
+	}
+	
+	public void setSizeAndLocation(WizardDialog wizardDialog) {
+		wizardDialog.getShell().setSize(600, 500);
+		Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+		Rectangle bounds = activeShell.getBounds();
+		Rectangle rect = wizardDialog.getShell().getBounds();
+		int x = bounds.x + (bounds.width - rect.width) / 2;
+		int y = bounds.y + (bounds.height - rect.height) / 2;
+		wizardDialog.getShell().setLocation(x, y);
+	}
+	
+	public IWorkbenchWindow getWindow() {
+		return PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 	}
 
 	public void doGenerate(File file, File targetDirectory) {
@@ -86,16 +120,12 @@ public class BasicGenerateCommand extends AbstractWorkspaceCommand {
 			IGenerator generator = null;
 			try {
 				generator = injector.getInstance(IGenerator.class);
-				// create the container if it doesn't exist yet
-				WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory.getAbsolutePath()));
 				// make it happen
 				generator.doGenerate(resource, fsa);
 			} catch (ConfigurationException ex) {
 				// Xtext 2.10: cannot find or create binding, try IGenerator2
 				IGenerator2 generator2 = injector.getInstance(IGenerator2.class);
 				if (generator2 != null) {
-					// create the container if it doesn't exist yet
-					WorkspaceManager.INSTANCE.createFolder(new Path(targetDirectory.getAbsolutePath()));
 					// make it happen
 					generator2.doGenerate(resource, (IFileSystemAccess2) fsa, new GeneratorContext());
 				}

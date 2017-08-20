@@ -13,7 +13,7 @@
  *
  * </copyright>
  */
-package org.dslforge.xtext.common.wizards;
+package org.dslforge.workspace.ui.wizards;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;

@@ -13,7 +13,7 @@
  *
  * </copyright>
  */
-package org.dslforge.xtext.common.wizards;
+package org.dslforge.workspace.ui.wizards;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.dslforge.workspace.ui.wizards.AbstractNewResourceWizardPage;
 import org.dslforge.xtext.common.registry.LanguageRegistry;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;

@@ -23,12 +23,15 @@ public class NewFileCommand extends AbstractWorkspaceCommand {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 		File file = unwrap(event, File.class);
-		NewFileWizard wizard = new NewFileWizard(file);
-		StructuredSelection selection = new StructuredSelection(file);
-		wizard.init(PlatformUI.getWorkbench(), selection);
-		WizardDialog wizardDialog = new WizardDialog(activeShell, wizard);
-		wizardDialog.create();
-		setSizeAndLocation(wizardDialog);
-		return wizardDialog.open();
+		if (file != null) {
+			NewFileWizard wizard = new NewFileWizard(file);
+			StructuredSelection selection = new StructuredSelection(file);
+			wizard.init(PlatformUI.getWorkbench(), selection);
+			WizardDialog wizardDialog = new WizardDialog(activeShell, wizard);
+			wizardDialog.create();
+			setSizeAndLocation(wizardDialog);
+			return wizardDialog.open();
+		}
+		return null;
 	}
 }

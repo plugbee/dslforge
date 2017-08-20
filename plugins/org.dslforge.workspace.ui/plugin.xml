@@ -29,6 +29,13 @@
             name="CreateNewFile">
       </command>
       <command
+            defaultHandler="org.dslforge.workspace.ui.commands.NewModelCommand"
+            description="Create a new model"
+            helpContextId="Create a new model"
+            id="org.dslforge.workspace.ui.commands.newModel"
+            name="CreateNewModel">
+      </command>
+      <command
             defaultHandler="org.dslforge.workspace.ui.commands.OpenResourceCommand"
             description="Open file"
             helpContextId="OpenFile"
@@ -128,7 +135,7 @@
                commandId="org.dslforge.workspace.ui.commands.newFolder"
                helpContextId="Create a new folder"
                icon="icons/fldr_obj.png"
-               id="org.dslforge.workspace.ui.actions.newProject"
+               id="org.dslforge.workspace.ui.commands.newProject"
                label="Folder"
                style="push"
                tooltip="Create a new folder">
@@ -137,11 +144,20 @@
                commandId="org.dslforge.workspace.ui.commands.newFile"
                helpContextId="Create a new file"
                icon="icons/file_obj.png"
-               id="org.dslforge.workspace.ui.actions.newFile"
+               id="org.dslforge.workspace.ui.commands.newFile"
                label="File"
                style="push"
                tooltip="Create a new file">
          </command>
+         <command
+	            commandId="org.dslforge.workspace.ui.commands.newModel"
+	           	helpContextId="Create a new model"
+                icon="icons/file_obj.png"
+                id="org.dslforge.workspace.ui.commands.newModel"
+                label="Model"
+                style="push"
+                tooltip="Create a new model">
+      </command>
       </menuContribution>
       <menuContribution
             allPopups="true"
@@ -179,7 +195,7 @@
                   icon="icons/file_obj.png"
                   id="dslforge.workspace.menu.new.file"
                   label="File"
-                  org.dslforge.workspace.ui.commands.openResourceyle="push"
+                  style="push"
                   tooltip="Create new file">
             </command>
          </menu>
@@ -202,7 +218,6 @@
          <menu
                id="org.dslforge.workspace.menu.openwith"
                label="Open With"
-               path="main"
                tooltip="Open with">
             <command
                   commandId="org.dslforge.workspace.ui.commands.openResource"

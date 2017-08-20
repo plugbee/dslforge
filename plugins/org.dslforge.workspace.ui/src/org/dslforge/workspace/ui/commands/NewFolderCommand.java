@@ -23,12 +23,15 @@ public class NewFolderCommand extends AbstractWorkspaceCommand {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Shell activeShell = getWindow().getShell();
 		File file = unwrap(event, File.class);
-		StructuredSelection selection = new StructuredSelection(file);
-		NewFolderWizard wizard = new NewFolderWizard(selection.toString());
-		wizard.init(getWindow().getWorkbench(), (IStructuredSelection)selection);
-		WizardDialog wizardDialog = new WizardDialog(activeShell, wizard);
-		wizardDialog.create();
-		setSizeAndLocation(wizardDialog);
-		return wizardDialog.open();
+		if (file != null) {
+			StructuredSelection selection = new StructuredSelection(file);
+			NewFolderWizard wizard = new NewFolderWizard(selection.getFirstElement().toString());
+			wizard.init(getWindow().getWorkbench(), (IStructuredSelection) selection);
+			WizardDialog wizardDialog = new WizardDialog(activeShell, wizard);
+			wizardDialog.create();
+			setSizeAndLocation(wizardDialog);
+			return wizardDialog.open();
+		}
+		return null;
 	}
 }
