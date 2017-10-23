@@ -1715,12 +1715,8 @@ var Autocomplete = function() {
             tooltipNode.style.left = (rect.right + 1) + "px";
             tooltipNode.style.right = "";
         }
-        
-        var tooltipMinLines = 3;
         var renderer = this.editor.renderer;
         var lineHeight = renderer.layerConfig.lineHeight;
-        tooltipNode.style.height = Math.max(tooltipMinLines*lineHeight, rect.height) + "px";
-        tooltipNode.style.width =  rect.width + "px";
         tooltipNode.style.display = "block";
     };
 

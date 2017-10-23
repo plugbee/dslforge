@@ -1251,7 +1251,7 @@ public class BasicText extends Composite {
 	public int getOffsetAtPosition(int row, int column) {
 		int offsetAtLine = content.getOffsetAtLine(row);
 		int offset=offsetAtLine + column;
-		logger.info("getOffsetAtPosition [row: " + row + ", column : " + column + "] => offset: "+ offset);
+		logger.debug("getOffsetAtPosition [row: " + row + ", column : " + column + "] => offset: "+ offset);
 		return offset;
 	}
 

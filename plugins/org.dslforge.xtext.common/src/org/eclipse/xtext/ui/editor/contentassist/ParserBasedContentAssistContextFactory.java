@@ -22,6 +22,7 @@ import org.dslforge.styledtext.ITextSelection;
 import org.dslforge.styledtext.jface.BadLocationException;
 import org.dslforge.styledtext.jface.ITextViewer;
 import org.dslforge.styledtext.jface.Region;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.AbstractElement;
 import org.eclipse.xtext.AbstractRule;
@@ -650,7 +651,7 @@ public class ParserBasedContentAssistContextFactory extends AbstractContentAssis
 		try {
 			return statefulFactoryProvider.get().create(viewer, offset, resource);
 		} catch (BadLocationException e) {
-			throw new RuntimeException(e);
+			throw new WrappedException(e);
 		}
 	}
 

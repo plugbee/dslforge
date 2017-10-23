@@ -38,6 +38,7 @@ import org.dslforge.styledtext.ITextSaveListener;
 import org.dslforge.styledtext.TextChangedEvent;
 import org.dslforge.styledtext.TextSavedEvent;
 import org.dslforge.styledtext.TextSelection;
+import org.dslforge.styledtext.jface.BadLocationException;
 import org.dslforge.styledtext.jface.ICompletionProposal;
 import org.dslforge.styledtext.jface.IDocument;
 import org.dslforge.styledtext.jface.ITextViewer;
@@ -53,6 +54,7 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.ui.URIEditorInput;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuListener;
@@ -147,8 +149,17 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 				JsonObject position = (JsonObject) data.get("pos");
 				int row = position.get("row").asInt();
 				int column = position.get("column").asInt();
-				int offset = viewer.getTextWidget().getOffsetAtPosition(row, column);
-				createCompletionProposals(offset);
+				String text = data.get("value").asString();
+				try{
+					int offset = viewer.getTextWidget().getOffsetAtPosition(row, column);
+					viewer.getDocument().set(text);
+					createCompletionProposals(offset);
+				} catch (Exception ex) {
+					// FIXME: live completer too fast
+					viewer.getTextWidget().setText(text, false);
+					if (ex instanceof BadLocationException || ex instanceof WrappedException)
+						return false;
+				}
 				return true;
 			}
 			return false;
@@ -459,10 +470,10 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 
 				@Override
 				public void keyPressed(KeyEvent e) {
-					if ((e.stateMask & SWT.CTRL) == SWT.CTRL) {
-						if ((e.stateMask & SWT.ALT) == 0);
-							createCompletionProposals();
-					}
+					// if ((e.stateMask & SWT.CTRL) == SWT.CTRL) {
+					// if ((e.stateMask & SWT.ALT) == 0);
+					// createCompletionProposals();
+					// }
 				}
 			};
 			textWidget.addKeyListener(iKeyListener);

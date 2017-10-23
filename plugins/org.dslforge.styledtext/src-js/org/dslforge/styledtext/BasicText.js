@@ -242,6 +242,7 @@
 			   	if (this.ready) {
 			   		this.editable = editable;
 			   		this.editor.setReadOnly(!editable);
+				} else {
 					this.editable = editable;
 				}
 			},
