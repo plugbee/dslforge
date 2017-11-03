@@ -3,7 +3,7 @@
 DSL Forge is a framework for the development of domain-specific language (DSL) editors for web applications and cloud IDEs. 
 It allows to get web-based textual editors automatically from ANTLR grammars. From the language grammar specification, JavaScript parser and lexer are automatically generated and embedded into Cloud9’s ACE editor.
 
-Check out the [live demo!](http://beeone.dslforge.org/workbench)
+Check out the [live demo!](https://beeone.plugbee.com/workbench)
 
 <p align="center">
   <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/online-workbench.png?raw=true" width="860"/>
@@ -35,13 +35,13 @@ Below the complete list of features bound by default in the generated editors.
 # Use Cases
 Below some examples of use cases showing how the generated editors can be integrated with Web IDEs, forms, HTML5 canvas, guiders, and many other popular JavaScript frameworks.
 
- - The following use case is a petrinet form made up of an embedded textual editor integrated with [D3.js](https://d3js.org/) framework. The form is available in the  [live demo](http://beeone.dslforge.org/workbench), open the petrinet project folder, right click on a petrinet model file, and select "Open with form editor".
+ - The following use case is a petrinet form made up of an embedded textual editor integrated with [D3.js](https://d3js.org/) framework. The form is available in the  [live demo](https://beeone.plugbee.com/workbench), open the petrinet project folder, right click on a petrinet model file, and select "Open with form editor".
  
 <p align="center">
   <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/petrinet-form-editor.png?raw=true" width="620"/>
 </p>
 
- - The following use case is an online coding game made with DSL Forge. It comes with a domain-specific language for specifying the actions of a robot, a remote debugger, next to a canvas animation made with [Phaser.js](https://phaser.io/). The game is free and publicly available on [CodingPark](http://www.codingpark.org).
+ - The following use case is an online coding game made with DSL Forge. It comes with a domain-specific language for specifying the actions of a robot, a remote debugger, next to a canvas animation made with [Phaser.js](https://phaser.io/). The game is free and publicly available on [CodingPark](http://www.codingpark.io).
  
 <p align="center">
   <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/piraterobot-form-editor.png?raw=true" width="600"/>
@@ -70,9 +70,9 @@ Use the regular [update site](http://dslforge.org/downloads/tooling/repository/)
 
 ## Usage
 
-The two usage scenarios are documented on the [website](http://www.dslforge.org).
-- [Generate Web Editor from ANTLR](http://dslforge.org/getting-started-generate-ace-editor/)
-- [Generate Web Editor from Xtext](http://dslforge.org/getting-started-generate-xtext-rap-editor/)
+The two usage scenarios are documented on the [website](https://www.dslforge.org).
+- [Generate Web Editor from ANTLR](https://dslforge.org/getting-started-generate-ace-editor/)
+- [Generate Web Editor from Xtext](https://dslforge.org/getting-started-generate-xtext-rap-editor/)
 
 ### Generate Web Editor from Xtext
 - Step 1 - [Generate Web Editor from Xtext](https://youtu.be/vDGwmz4lU54)
@@ -86,7 +86,7 @@ See [tutorial](http://dslforge.org/getting-started-generate-ace-editor/)
 ## Documentation
 
 Additional usage informationn and technical details can be found below:
- - [Online Documentation](http://dslforge.org/documentation-2/)
+ - [Online Documentation](https://dslforge.org/documentation-2/)
  - [Modeling-Languages.com](http://modeling-languages.com/modeling-browser-dsl-forge/)
  - [EclipseCon France 2016](https://www.youtube.com/watch?v=PMiFgcwg3po)
  - [MoDELS 2014](http://ceur-ws.org/Vol-1255/paper5.pdf)
