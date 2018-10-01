@@ -7,14 +7,14 @@
 	</prerequisites>
 
 	<properties>
-		<tycho.version>0.25.0</tycho.version>
-		<xtext.version>2.10.0</xtext.version>
+		<tycho.version>1.2.0</tycho.version>
+		<xtext.version>2.14.0</xtext.version>
 		<xtend.maven.version>2.9.2</xtend.maven.version>
 	</properties>
 	
 	<groupId>dslforge.releng</groupId>
 	<artifactId>org.dslforge.tooling.releng.parent</artifactId>
-	<version>0.9.1-SNAPSHOT</version>
+	<version>0.9.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<url>http://www.dslforge.org</url>
@@ -36,11 +36,12 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho.version}</version>
 				<configuration>
+					<executionEnvironment>JavaSE-1.8</executionEnvironment>  
 					<target>
 						<artifact>
 							<groupId>dslforge.releng</groupId>
 							<artifactId>${platform.version.name}</artifactId>
-							<version>0.9.1-SNAPSHOT</version>
+							<version>0.9.2-SNAPSHOT</version>
 						</artifact>
 					</target>
 					<environments>
@@ -54,13 +55,6 @@
 							<ws>win32</ws>
 							<arch>x86_64</arch>
 						</environment>
-						<!-- 
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86</arch>
-						</environment>
-						-->
 						<environment>
 							<os>macosx</os>
 							<ws>cocoa</ws>
@@ -77,6 +71,7 @@
 							<arch>x86_64</arch>
 						</environment>
 					</environments>
+					
 				</configuration>
 			</plugin>
 			<plugin>
@@ -318,7 +313,7 @@
 		<repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/neon/</url>
+			<url>http://download.eclipse.org/releases/photon/</url>
 		</repository>
 		<!-- 
 		<repository>
@@ -364,6 +359,12 @@
 			<id>platform-neon</id>
 			<properties>
 				<platform.version.name>neon</platform.version.name>
+			</properties>
+		</profile>
+		<profile>
+			<id>platform-photon</id>
+			<properties>
+				<platform.version.name>photon</platform.version.name>
 			</properties>
 		</profile>
 		<profile>

@@ -7,7 +7,7 @@
 	</prerequisites>
 	<groupId>dslforge.releng</groupId>
 	<artifactId>org.dslforge.runtime.releng.parent</artifactId>
-	<version>0.9.1-SNAPSHOT</version>
+	<version>0.9.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<description>Integrated modeling tool platform that eases the development of IDE-like tool support for developing web-based IDEs</description>
 	<licenses>
@@ -25,11 +25,11 @@
 	</licenses>
 	<organization>
 		<name>DSLFORGE</name>
-		<url>http://www.dslforge.org</url>
+		<url>https://www.dslforge.org</url>
 	</organization>
 	<properties>
-		<tycho.version>0.25.0</tycho.version>
-		<xtext.version>2.10.0</xtext.version>
+		<tycho.version>1.2.0</tycho.version>
+		<xtext.version>2.14.0</xtext.version>
 		<xtend.maven.version>2.9.2</xtend.maven.version>
 	</properties>
 	<build>
@@ -50,7 +50,7 @@
 						<artifact>
 							<groupId>dslforge.releng</groupId>
 							<artifactId>${platform.version.name}</artifactId>
-							<version>0.9.1-SNAPSHOT</version>
+							<version>0.9.2-SNAPSHOT</version>
 						</artifact>
 					</target>
 					<environments>
@@ -64,7 +64,7 @@
 							<ws>win32</ws>
 							<arch>x86_64</arch>
 						</environment>
-						<!-- 
+						<!--
 						<environment>
 							<os>macosx</os>
 							<ws>cocoa</ws>
@@ -342,6 +342,12 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>platform-photon</id>
+			<properties>
+				<platform.version.name>photon</platform.version.name>
+			</properties>
+		</profile>
+		<profile>
 			<id>os-macosx</id>
 			<activation>
 				<os>
@@ -385,6 +391,7 @@
 						<artifactId>target-platform-configuration</artifactId>
 						<version>${tycho.version}</version>
 						<configuration>
+							<executionEnvironment>JavaSE-1.8</executionEnvironment>  
 							<includePackedArtifacts>true</includePackedArtifacts>
 						</configuration>
 					</plugin>
@@ -448,5 +455,5 @@
 			</build>
 		</profile>
 	</profiles>
-	<url>http://www.dslforge.org</url>
+	<url>https://www.dslforge.org</url>
 </project>

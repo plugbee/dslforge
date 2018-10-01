@@ -162,6 +162,7 @@ public class BasicText extends Composite {
 
 	protected void setupClient() {
 		getClient().getService(ClientFileLoader.class).requireJs(System.getProperty(ACE_LIBRARY_KEY, ACE_LIBRARY_VALUE));
+//		addBaseResource(new Path("org/dslforge/styledtext/ace/ace.js"));
 		getClient().getService(ClientFileLoader.class).requireJs(System.getProperty(ACE_SEARCHBOX_KEY, ACE_SEARCHBOX_VALUE)); 
 		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-language_tools.js"));
 		addBaseResource(new Path("org/dslforge/styledtext/ace/ext-tooltip.js"));

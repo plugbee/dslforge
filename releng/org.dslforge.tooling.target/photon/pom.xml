@@ -6,11 +6,11 @@
 		<groupId>dslforge.releng</groupId>
 		<artifactId>org.dslforge.tooling.releng.parent</artifactId>
 		<version>0.9.2-SNAPSHOT</version>
-		<relativePath>../../releng/org.dslforge.tooling.releng/parent/pom.xml</relativePath>
+		<relativePath>../../org.dslforge.tooling.releng/parent/pom.xml</relativePath>
 	</parent>
-	<groupId>dslforge.plugins</groupId>
-	<artifactId>org.dslforge.common.logging</artifactId>
+	<groupId>dslforge.releng</groupId>
+	<artifactId>photon</artifactId>
 	<version>0.9.2-SNAPSHOT</version>
-	<packaging>eclipse-plugin</packaging>
-	<name>org.dslforge.common.logging</name>
+	<name>photon</name>
+	<packaging>eclipse-target-definition</packaging>
 </project>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DSL Forge Xtext Generator for RAP
 Bundle-SymbolicName: org.dslforge.xtext.generator
-Bundle-Version: 0.9.1.qualifier
+Bundle-Version: 0.9.2.qualifier
 Bundle-Activator: org.dslforge.xtext.generator.internal.Activator
 Require-Bundle: org.eclipse.xtext.generator,
  org.eclipse.xtend.ide,
@@ -33,4 +33,5 @@ Bundle-ClassPath: xtend-gen/,
  .
 Bundle-Vendor: PlugBee
 Import-Package: org.apache.log4j
+Automatic-Module-Name: org.dslforge.xtext.generator
 

@@ -24,6 +24,7 @@
 <unit id="com.google.inject" version="3.0.0.v201605172100"/>
 <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
 <unit id="javax.inject" version="1.0.0.v20091030"/>
+<unit id="javax.activation" version="0.0.0"/>
 <unit id="org.apache.commons.logging" version="1.0.4.v201101211617"/>
 <unit id="org.objectweb.asm" version="5.0.1.v201404251740"/>
 <unit id="osgi.enterprise" version="4.2.0.v201108120515"/>
@@ -81,8 +82,6 @@
 <plugin id="jaxb-core"/>
 <plugin id="jaxb-xjc"/>
 <plugin id="org.antlr.runtime" version="3.2.0.v201101311130"/>
-<plugin id="org.antlr.runtime" version="3.2.0.v201101311130"/>
-<plugin id="org.antlr.runtime.source" version="3.2.0.v201101311130"/>
 <plugin id="org.antlr.runtime.source" version="3.2.0.v201101311130"/>
 <plugin id="org.apache.commons.cli"/>
 <plugin id="org.apache.commons.cli.source"/>
@@ -100,9 +99,16 @@
 <plugin id="org.apache.felix.gogo.shell"/>
 <plugin id="org.apache.felix.gogo.shell.source"/>
 <plugin id="org.apache.log4j" version="1.2.15.v201012070815"/>
-<plugin id="org.apache.log4j" version="1.2.15.v201012070815"/>
 <plugin id="org.apache.log4j.source" version="1.2.15.v201012070815"/>
-<plugin id="org.apache.log4j.source" version="1.2.15.v201012070815"/>
+<plugin id="org.dslforge.common.logging"/>
+<plugin id="org.dslforge.styledtext"/>
+<plugin id="org.dslforge.texteditor"/>
+<plugin id="org.dslforge.texteditor.demo"/>
+<plugin id="org.dslforge.workspace"/>
+<plugin id="org.dslforge.workspace.config"/>
+<plugin id="org.dslforge.workspace.jpa"/>
+<plugin id="org.dslforge.workspace.ui"/>
+<plugin id="org.dslforge.xtext.common"/>
 <plugin id="org.eclipse.core.commands"/>
 <plugin id="org.eclipse.core.commands.source"/>
 <plugin id="org.eclipse.core.contenttype"/>

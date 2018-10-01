@@ -66,7 +66,7 @@ public class DynamicWebProjectFactory extends AbstractDelegatingWebProjectFactor
 
 	static final Logger logger = Logger.getLogger(DynamicWebProjectFactory.class);
 
-	private static final String JRE_VERSION = "JavaSE-1.7";
+	private static final String JRE_VERSION = "JavaSE-1.8";
 	private static final String XTEXT_BUILDER_ID = "org.eclipse.xtext.ui.shared.xtextBuilder";
 	private static final String SRC = "src";
 	private static final String SRC_GEN = "src-gen";

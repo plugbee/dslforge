@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DSL Forge ANTLR Tool
 Bundle-SymbolicName: org.dslforge.antlr;singleton:=true
-Bundle-Version: 0.9.1.qualifier
+Bundle-Version: 0.9.2.qualifier
 Bundle-Activator: org.dslforge.antlr.internal.Activator
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/antlr-complete-3.3.jar
@@ -45,3 +45,4 @@ Export-Package: antlr,
  org.dslforge.antlr,
  org.dslforge.antlr.internal
 Import-Package: org.apache.log4j
+Automatic-Module-Name: org.dslforge.antlr

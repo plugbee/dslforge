@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.dslforge.runtime.releng</artifactId>
-	<version>0.9.1-SNAPSHOT</version>
+	<version>0.9.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>./parent</module>
@@ -59,13 +59,19 @@
 				<platform.version.name>neon</platform.version.name>
 			</properties>
 		</profile>
+		<profile>
+			<id>platform-photon</id>
+			<properties>
+				<platform.version.name>photon</platform.version.name>
+			</properties>
+		</profile>
 	</profiles>
 	<groupId>dslforge.releng</groupId>
 	<name>org.dslforge.runtime.releng</name>
 	<parent>
 		<groupId>dslforge.releng</groupId>
 		<artifactId>org.dslforge.runtime.releng.parent</artifactId>
-		<version>0.9.1-SNAPSHOT</version>
+		<version>0.9.2-SNAPSHOT</version>
 		<relativePath>./parent/pom.xml</relativePath>
 	</parent>
 </project>

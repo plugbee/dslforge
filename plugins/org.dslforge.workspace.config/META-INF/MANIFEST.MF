@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse RAP Workspace Configuration
 Bundle-SymbolicName: org.dslforge.workspace.config;singleton:=true
-Bundle-Version: 0.9.1.qualifier
+Bundle-Version: 0.9.2.qualifier
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.rap.jface
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
@@ -13,3 +13,4 @@ Bundle-Vendor: PlugBee
 Export-Package: org.dslforge.workspace.config,
  org.dslforge.workspace.config.internal
 Import-Package: org.apache.log4j;version="1.2.15"
+Automatic-Module-Name: org.dslforge.workspace.config

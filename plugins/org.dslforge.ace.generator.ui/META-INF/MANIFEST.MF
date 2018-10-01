@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DSL Forge ANTLR Generator for ACE UI
 Bundle-SymbolicName: org.dslforge.ace.generator.ui;singleton:=true
-Bundle-Version: 0.9.1.qualifier
+Bundle-Version: 0.9.2.qualifier
 Bundle-Activator: org.dslforge.ace.generator.ui.internal.Activator
 Bundle-Vendor: PlugBee
 Require-Bundle: org.eclipse.ui,
@@ -17,3 +17,4 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.ace.generator.ui.actions,
  org.dslforge.ace.generator.ui.wizard
 Import-Package: org.apache.log4j
+Automatic-Module-Name: org.dslforge.ace.generator.ui

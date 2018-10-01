@@ -56,7 +56,7 @@ class GenPomXml extends AbstractGenerator {
 
   <name>«projectName»</name>
   <modules>
-		<module>../«projectName.replace(".build", ".target")»/neon</module>
+		<module>../«projectName.replace(".build", ".target")»/photon</module>
 		<module>../«projectName.replace(".build", "")»</module>	
 		<module>../«projectName.replace(".web.build", "")»</module> 
     	<module>./«grammarShortName.toLowerCase»</module>

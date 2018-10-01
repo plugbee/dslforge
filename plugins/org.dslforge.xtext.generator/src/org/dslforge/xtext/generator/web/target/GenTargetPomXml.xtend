@@ -26,7 +26,7 @@ class GenTargetPomXml extends AbstractGenerator {
 
 	new() {
 		relativePath = "/"
-		basePath = "neon/"
+		basePath = "photon/"
 	}
 
 	override doGenerate(IWebProjectFactory factory, IProgressMonitor monitor) {

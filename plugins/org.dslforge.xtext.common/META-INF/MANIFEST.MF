@@ -2,12 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse RAP Xtext Integration
 Bundle-SymbolicName: org.dslforge.xtext.common;singleton:=true
-Bundle-Version: 0.9.1.qualifier
+Bundle-Version: 0.9.2.qualifier
 Bundle-Activator: org.dslforge.xtext.common.internal.Activator
 Require-Bundle: org.eclipse.rap.ui,
  org.eclipse.emf.rap.edit.ui,
  org.eclipse.xtext,
- org.eclipse.xtend.lib,
  org.eclipse.xtext.xbase.lib,
  org.dslforge.styledtext,
  org.dslforge.texteditor,
@@ -29,3 +28,4 @@ Export-Package: org.dslforge.xtext.common,
  org.eclipse.xtext.ui.guice
 Import-Package: org.apache.log4j
 Bundle-Vendor: PlugBee
+Automatic-Module-Name: org.dslforge.xtext.common

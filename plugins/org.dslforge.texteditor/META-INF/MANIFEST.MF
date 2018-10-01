@@ -2,14 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse RAP Text Editor
 Bundle-SymbolicName: org.dslforge.texteditor;singleton:=true
-Bundle-Version: 0.9.1.qualifier
+Bundle-Version: 0.9.2.qualifier
 Bundle-Activator: org.dslforge.texteditor.internal.Activator
-Require-Bundle: org.eclipse.rap.ui,
- org.eclipse.rap.ui.views,
- org.eclipse.rap.ui.forms,
- org.eclipse.emf.common,
+Require-Bundle: org.eclipse.emf.common,
  org.eclipse.emf.rap.common.ui,
- org.dslforge.styledtext
+ org.dslforge.styledtext,
+ org.eclipse.rap.rwt,
+ org.eclipse.rap.ui,
+ org.eclipse.rap.ui.forms,
+ org.eclipse.rap.ui.views
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.texteditor,
@@ -18,3 +19,4 @@ Export-Package: org.dslforge.texteditor,
  org.dslforge.texteditor.internal
 Bundle-Vendor: PlugBee
 Import-Package: org.apache.log4j
+Automatic-Module-Name: org.dslforge.texteditor

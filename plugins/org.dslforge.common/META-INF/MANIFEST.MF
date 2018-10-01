@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DSL Forge Common
 Bundle-SymbolicName: org.dslforge.common
-Bundle-Version: 0.9.1.qualifier
+Bundle-Version: 0.9.2.qualifier
 Bundle-Activator: org.dslforge.common.internal.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
@@ -15,3 +15,4 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.dslforge.common
 Import-Package: org.apache.log4j
 Bundle-Vendor: PlugBee
+Automatic-Module-Name: org.dslforge.common
