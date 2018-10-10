@@ -2,7 +2,7 @@
 <feature
       id="org.dslforge.runtime.feature"
       label="DSL Forge Runtime Feature"
-      version="0.9.1.qualifier"
+      version="0.9.2.qualifier"
       provider-name="PlugBee">
 
    <description url="http://www.dslforge.org">

@@ -72,8 +72,6 @@ import org.eclipse.rap.json.JsonObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MenuDetectEvent;
 import org.eclipse.swt.events.MenuDetectListener;
 import org.eclipse.swt.events.ModifyEvent;
@@ -459,24 +457,7 @@ public class BasicTextEditor extends EditorPart implements ISaveablesSource, IBa
 	protected void addListeners() {
 		BasicText textWidget = viewer.getTextWidget();
 		if (textWidget!= null && !textWidget.isDisposed()) {
-			textWidget.addTextChangeListener(iTextChangeListener);	
-			
-			KeyListener iKeyListener = new KeyListener() {
-
-				@Override
-				public void keyReleased(KeyEvent e) {
-					//customize in subclasses
-				}
-
-				@Override
-				public void keyPressed(KeyEvent e) {
-					// if ((e.stateMask & SWT.CTRL) == SWT.CTRL) {
-					// if ((e.stateMask & SWT.ALT) == 0);
-					// createCompletionProposals();
-					// }
-				}
-			};
-			textWidget.addKeyListener(iKeyListener);
+			textWidget.addTextChangeListener(iTextChangeListener);
 			
 			textWidget.addTextModifyListener(new ITextModifyListener() {
 

@@ -38,7 +38,7 @@ public class BasicWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		getWindowConfigurer().setShowStatusLine(true);
 		getWindowConfigurer().setShowMenuBar( true );
 		getWindowConfigurer().setShowCoolBar( true );	
-		getWindowConfigurer().setTitle("DSL Forge Workbench v0.9.1");
+		getWindowConfigurer().setTitle("DSL Forge Workbench v0.9.2");
 		getWindowConfigurer().setShellStyle(SWT.TITLE | SWT.MAX);
 		Rectangle bounds = Display.getCurrent().getBounds();
 		getWindowConfigurer().setInitialSize(new Point(bounds.width, bounds.height));

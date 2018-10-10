@@ -27,7 +27,7 @@
         class="org.dslforge.texteditor.demo.parts.BasicWorkbenchPerspective"
         icon="icons/dslforge.png"
         id="org.dslforge.texteditor.demo.ui.parts.perspective"
-        name="DSL Forge Workbench v0.9.1">
+        name="DSL Forge Workbench v0.9.2">
 		</perspective>
 	</extension>
 

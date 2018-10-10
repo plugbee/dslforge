@@ -36,7 +36,7 @@ public class AboutCommand extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		String message = "DSL Forge Workbench v0.9.1\n\n"
+		String message = "DSL Forge Workbench v0.9.2\n\n"
 				+ "Copyright (c) 2016 PlugBee and others.\n\n"
 				+ "This program is made available under the terms of\n "
 				+ "the Eclipse Public License v1.0 which is available at\n"
