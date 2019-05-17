@@ -439,13 +439,13 @@
 			},
 			
 			createEditor : function() {
-				var basePath = 'rwt-resources/src-js/org/dslforge/styledtext/ace';
+				var basePath = 'rwt-resources/org/dslforge/styledtext/ace';
 				ace.require("ace/config").set("basePath", basePath);
-				var workerPath = 'rwt-resources/src-js/org/dslforge/styledtext/ace';
+				var workerPath = 'rwt-resources/org/dslforge/styledtext/ace';
 				ace.require("ace/config").set("workerPath", workerPath);
-				var themePath = 'rwt-resources/src-js/org/dslforge/styledtext/ace';
+				var themePath = 'rwt-resources/org/dslforge/styledtext/ace';
 				ace.require("ace/config").set("themePath", themePath);
-				var modePath = 'rwt-resources/src-js/org/dslforge/styledtext/ace';
+				var modePath = 'rwt-resources/org/dslforge/styledtext/ace';
 				ace.require("ace/config").set("modePath", modePath);
 				var editor = this.editor = ace.edit(this.element);
 				if (editor != null) {
@@ -539,35 +539,37 @@
 				if (item.meta) type = item.meta;
 				var cls = "ace-";
 				var suffix;
-				if (type.indexOf("[") ==0  && type.indexOf("]") == type.length-1)
-					type = type.substring(1, type.length-1);	
-				var typeToHex = function(type) {
-				    var hex = '';
-				    for(var i=0;i<type.length;i++)
-				        hex += ''+type.charCodeAt(i).toString(16);
-				    var color  = '#' + ("000000" + hex.slice(2, 8).toUpperCase()).slice(-6);
-				    return color;
-				};
-				var typeToColor = function(type) {
-					if (type==="keyword")
-						return "#78002D";
-					if (type==="identifier")
-						return "#c66";
-					if (type==="snippet")
-						return 	"#9ACD32";
-					var hash = 0;
-					for (var i = 0; i < type.length; i++)
-						hash = type.charCodeAt(i) + ((hash << 5) - hash);
-					var color = '#';
-					for (var i = 0; i < 3; i++) {
-						var value = (hash >> (i * 8)) & 0xFF;
-						color += ('00' + value.toString(16)).substr(-2);
-					}
-					return color;
-				};
-				var cssClass = ".ace-completion-" + type + ":before { content:'" + type.charAt(0).toUpperCase() + "'; background: " + typeToColor(type) + "; }";
-				ace.require("ace/lib/dom").importCssString(cssClass);
-				return cls + "completion " + cls + "completion-" + type;
+				if(type.indexOf != undefined ) {
+					if (type.indexOf("[") ==0  && type.indexOf("]") == type.length-1)
+						type = type.substring(1, type.length-1);
+					var typeToHex = function(type) {
+					    var hex = '';
+					    for(var i=0;i<type.length;i++)
+					        hex += ''+type.charCodeAt(i).toString(16);
+					    var color  = '#' + ("000000" + hex.slice(2, 8).toUpperCase()).slice(-6);
+					    return color;
+					};
+					var typeToColor = function(type) {
+						if (type==="keyword")
+							return "#78002D";
+						if (type==="identifier")
+							return "#c66";
+						if (type==="snippet")
+							return 	"#9ACD32";
+						var hash = 0;
+						for (var i = 0; i < type.length; i++)
+							hash = type.charCodeAt(i) + ((hash << 5) - hash);
+						var color = '#';
+						for (var i = 0; i < 3; i++) {
+							var value = (hash >> (i * 8)) & 0xFF;
+							color += ('00' + value.toString(16)).substr(-2);
+						}
+						return color;
+					};
+					var cssClass = ".ace-completion-" + type + ":before { content:'" + type.charAt(0).toUpperCase() + "'; background: " + typeToColor(type) + "; }";
+					ace.require("ace/lib/dom").importCssString(cssClass);
+					return cls + "completion " + cls + "completion-" + type;
+				}
 			}
 		}
 	});
