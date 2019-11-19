@@ -144,10 +144,10 @@ public class BasicText extends Composite {
 		if ((style & SWT.READ_ONLY) != 0) {
 			setEditable(false);
 		}
-		setupClient();
 		createRemoteObject();
 		installListeners();
 		installDefaultContent();
+		setupClient();
 	}
 
 	private void installDefaultContent() {
@@ -1010,6 +1010,17 @@ public class BasicText extends Composite {
 		properties.add("columnEnd", range.columnEnd);
 		getRemoteObject().call("setSelection", properties);
 	}
+	
+	public void setSelection(int rowStart, int rowEnd, int columnStart,  int columnEnd) {
+		checkWidget();
+		TextRange range = new TextRange(rowStart, columnStart,rowEnd, columnEnd);
+		JsonObject properties = new JsonObject();
+		properties.add("rowStart", range.rowStart);
+		properties.add("columnStart", range.columnStart);
+		properties.add("rowEnd", range.rowEnd);
+		properties.add("columnEnd", range.columnEnd);
+		getRemoteObject().call("setSelection", properties);
+	}
 
 	/**
 	 * Returns the current text selection
@@ -1132,7 +1143,7 @@ public class BasicText extends Composite {
 	 * 
 	 * @return the remote object
 	 */
-	private RemoteObject getRemoteObject() {
+	protected RemoteObject getRemoteObject() {
 		return remoteObject;
 	}
 
@@ -1141,7 +1152,7 @@ public class BasicText extends Composite {
 	 * 
 	 * @param remoteObject
 	 */
-	private void setRemoteObject(RemoteObject remoteObject) {
+	protected void setRemoteObject(RemoteObject remoteObject) {
 		this.remoteObject = remoteObject;
 	}
 

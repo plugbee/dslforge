@@ -25,10 +25,11 @@
 
     <extension
           point="org.eclipse.ui.menus">
+ <!--
        <menuContribution
              allPopups="false"
              locationURI="menu:new">
-          <command
+         <command
                 commandId="org.dslforge.workspace.ui.commands.newModel"
                 helpContextId="CreateNewModel"
                 icon="icons/model.png"
@@ -41,6 +42,7 @@
              </visibleWhen>
           </command>
        </menuContribution>
+
        <menuContribution
              allPopups="true"
              locationURI="popup:org.dslforge.navigator.view">
@@ -64,6 +66,8 @@
             
           </menu>
        </menuContribution>
+-->
+
        <menuContribution
              allPopups="true"
              locationURI="popup:org.dslforge.navigator.view?after=separator2">
