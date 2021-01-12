@@ -21,7 +21,7 @@
 		destructor : "destroy",	 
 		properties : [ "url", "text", "editable", "status", "annotations", "scope", "proposals", "font", "dirty", "markers", "background"],
 		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut", "Selection", "CaretEvent", "ContentAssist"],
-		methods : ["setSelection", "addMarker", "removeMarker", "clearMarkers", "insertText", "removeText", "setProposals", "moveCursorFileStart","moveCursorFileEnd"]
+		methods : ["setSelection", "selectAll", "addMarker", "removeMarker", "clearMarkers", "insertText", "removeText", "setProposals", "moveCursorFileStart","moveCursorFileEnd"]
 	});
 
 	rwt.qx.Class.define("org.dslforge.styledtext.BasicText", {
@@ -74,15 +74,15 @@
 					this.setUrl(this.url);
 					delete this.url;
 				}
-				if (this.editable) {
-					this.setEditable(this.editable);
-					delete this.editable;
-				}
 				if (this.text) {
 					this.editor.setValue(this.text);
 					this.editor.clearSelection(); 
 					this.editor.getSelection().moveCursorFileStart();
 					delete this.text;
+				}
+				if (this.editable) {
+					this.setEditable(this.editable);
+					delete this.editable;
 				}
 				if (this.font) {
 					this.setFont(this.font);
@@ -244,6 +244,12 @@
 			   		this.editor.setReadOnly(!editable);
 				} else {
 					this.editable = editable;
+				}
+			},
+			
+			selectAll : function() {
+				if (this.ready) {
+					this.editor.getSelection().selectAll();
 				}
 			},
 			

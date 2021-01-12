@@ -242,9 +242,11 @@ public class BasicText extends Composite {
 		JsonObject data = (JsonObject) event.data;
 		if (data != null && data instanceof JsonObject) {
 			JsonObject position = (JsonObject) data.get("value");
-			int row = position.get("row").asInt();
-			int column = position.get("column").asInt();
-			this.cursorPosition = new Position(row, column);
+			if (position.get("row") != null) {
+				int row = position.get("row").asInt();
+				int column = position.get("column").asInt();
+				this.cursorPosition = new Position(row, column);
+			}
 		}
 	}
 
@@ -1021,6 +1023,19 @@ public class BasicText extends Composite {
 		properties.add("columnEnd", range.columnEnd);
 		getRemoteObject().call("setSelection", properties);
 	}
+	
+	public void selectAll() {
+		checkWidget();
+		
+//		TextRange range = new TextRange(0, 0,100, 100);
+//		JsonObject properties = new JsonObject();
+//		properties.add("rowStart", range.rowStart);
+//		properties.add("columnStart", range.columnStart);
+//		properties.add("rowEnd", range.rowEnd);
+//		properties.add("columnEnd", range.columnEnd);
+		getRemoteObject().call("selectAll", new JsonObject());
+	}
+
 
 	/**
 	 * Returns the current text selection
