@@ -5,7 +5,7 @@
     modelPluginID="org.eclipse.sphinx.examples.xtext.hummingbird" forceOverwrite="true"
     modelName="Hummingbird" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="6.0" copyrightFields="false" editPluginID="org.eclipse.sphinx.examples.xtext.hummingbird.edit"
-    editorPluginID="org.eclipse.sphinx.examples.xtext.hummingbird.editor" runtimeVersion="2.11">
+    editorPluginID="org.eclipse.sphinx.examples.xtext.hummingbird.editor" runtimeVersion="2.14">
   <genPackages prefix="Hummingbird" basePackage="org.eclipse.sphinx.examples.xtext"
       disposableProviderFactory="true" fileExtensions="hbtext" ecorePackage="Hummingbird.ecore#/">
     <genClasses ecoreClass="Hummingbird.ecore#//EntryPoint">

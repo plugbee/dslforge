@@ -9,7 +9,7 @@ package org.eclipse.xtext.example.arithmetics.ui.tests;
 
 import com.google.inject.Injector;
 import org.eclipse.xtext.example.arithmetics.ui.internal.ArithmeticsActivator;
-import org.eclipse.xtext.junit4.IInjectorProvider;
+import org.eclipse.xtext.testing.IInjectorProvider;
 
 public class ArithmeticsUiInjectorProvider implements IInjectorProvider {
 

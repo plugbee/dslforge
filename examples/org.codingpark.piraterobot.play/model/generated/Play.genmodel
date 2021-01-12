@@ -4,7 +4,7 @@
     editorDirectory="/org.codingpark.piraterobot.play.editor/src" modelPluginID="org.codingpark.piraterobot.play"
     forceOverwrite="true" modelName="Play" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="6.0" copyrightFields="false" editPluginID="org.codingpark.piraterobot.play.edit"
-    editorPluginID="org.codingpark.piraterobot.play.editor" runtimeVersion="2.11">
+    editorPluginID="org.codingpark.piraterobot.play.editor" runtimeVersion="2.14">
   <genPackages prefix="Play" basePackage="org.codingpark.piraterobot" disposableProviderFactory="true"
       fileExtensions="play" ecorePackage="Play.ecore#/">
     <genClasses ecoreClass="Play.ecore#//PlayModel">

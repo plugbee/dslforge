@@ -1,4 +1,4 @@
-// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-gen\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\contentassist\\antlr\\internal\\InternalHummingbird.g 2016-05-18 22:01:57
+// $ANTLR 3.3 avr. 19, 2016 01:13:22 D:\\git\\dslforge\\examples\\org.eclipse.sphinx.examples.xtext.hummingbird.web\\src-gen\\org\\eclipse\\sphinx\\examples\\xtext\\hummingbird\\web\\contentassist\\antlr\\internal\\InternalHummingbird.g 2021-01-12 14:06:57
 
 package org.eclipse.sphinx.examples.xtext.hummingbird.web.contentassist.antlr.internal; 
 
