@@ -17,7 +17,7 @@ package org.dslforge.workspace;
 
 public interface IWorkspaceConstants {
 	
-	static final MODE RUNNING_MODE = MODE.PRODUCTION;
+	static final MODE RUNNING_MODE = MODE.DEBUG;
 	
 	public static final String PERSISTENCE_UNIT_NAME = "workspace";
 	public static final String JAVAX_PERSISTENCE_JDBC_URL = "javax.persistence.jdbc.url";
