@@ -11,7 +11,7 @@
 	<artifactId>org.eclipse.xtext.example.arithmetics.web.build.parent.parent</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-		<tycho.version>0.25.0</tycho.version>
+		<tycho.version>1.2.0</tycho.version>
 		<tycho.showEclipseLog>true</tycho.showEclipseLog>
 		<assembly-version>2.4</assembly-version>
 		<replacer-version>1.4.1</replacer-version>

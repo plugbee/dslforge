@@ -17,6 +17,8 @@ package org.dslforge.workspace;
 
 public interface IWorkspaceConstants {
 	
+	static final MODE RUNNING_MODE = MODE.PRODUCTION;
+	
 	public static final String PERSISTENCE_UNIT_NAME = "workspace";
 	public static final String JAVAX_PERSISTENCE_JDBC_URL = "javax.persistence.jdbc.url";
 	public static final String METADATA_FOLDER = ".metadata";
@@ -25,5 +27,14 @@ public interface IWorkspaceConstants {
 	public static final String VISIBILITY_PUBLIC = "public";
 	public static final String LOCKED = "locked";
 	public static final String UNLOCKED = "unlocked";
-	public static final String WORKSPACE_DEFAULT_PATH = "D:/www/dslforge/workbench";
+	public static final String WORKSPACE_DEFAULT_PATH = getWorkspaceDefaultPath();
+	
+	static String getWorkspaceDefaultPath() {
+		return RUNNING_MODE.equals(MODE.DEBUG) ? "D:/www/dslforge/workbench" : "/var/www/dslforge/workbench";
+	}
+	
+	static enum MODE {
+		DEBUG,
+		PRODUCTION
+	}
 }
