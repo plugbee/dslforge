@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><?pde version="3.8"?><target name="DSL Forge Tools Target for Photon" sequenceNumber="50">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
-<unit id="epp.package.rcp" version="0.0.0"/>
-<unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.mwe.sdk.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.egit.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.rap.tools.feature.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.wst.jsdt.feature.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.14.0.v20180523-0937"/>
+<unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.3.21.201705291011"/>
+<unit id="org.eclipse.egit.feature.group" version="5.0.0.201806131550-r"/>
+<unit id="org.eclipse.rap.tools.feature.feature.group" version="3.5.0.20180613-1200"/>
+<unit id="org.eclipse.wst.jsdt.feature.feature.group" version="2.1.1.v201804042202"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.14.0.v20180529-1157"/>
 <repository location="http://download.eclipse.org/releases/photon"/>
+	<unit id="org.eclipse.m2e.feature.feature.group" version="1.9.0.20180606-2036"/>
+	<unit id="org.eclipse.jgit.lfs.feature.group" version="5.0.0.201806131550-r"/>
+	<unit id="epp.package.rcp" version="4.8.0.20180619-1200"/>
 </location>
 </locations>
 	<targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>

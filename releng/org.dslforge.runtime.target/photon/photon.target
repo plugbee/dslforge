@@ -1,16 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="Photon" sequenceNumber="20">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?pde version="3.8"?><target name="Photon" sequenceNumber="25">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.dslforge.runtime.feature.feature.group" version="0.0.0"/>
-<repository location="http://dslforge.org/downloads/runtime/repository"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <repository location="http://download.eclipse.org/rt/eclipselink/updates/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.persistence.sdk.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/rt/eclipselink/updates/"/>
+	<unit id="org.eclipse.persistence.sdk.feature.group" version="2.6.0.v20150309-bf26070"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.rap.tabbed-properties.feature.feature.group" version="0.0.0"/>
@@ -28,6 +20,7 @@
 <unit id="org.apache.log4j" version="0.0.0"/>
 <unit id="javax.inject" version="0.0.0"/>
 <unit id="javax.activation" version="0.0.0"/>
+<unit id="javax.persistence" version="0.0.0"/>
 <unit id="org.apache.commons.logging" version="0.0.0"/>
 <unit id="org.objectweb.asm" version="0.0.0"/>
 <unit id="osgi.enterprise" version="0.0.0"/>
@@ -54,6 +47,7 @@
 <unit id="org.eclipse.emf.codegen.ecore" version="0.0.0"/>
 <unit id="org.eclipse.xtext.junit4" version="0.0.0"/>
 <unit id="org.eclipse.xtext.xbase.junit" version="0.0.0"/>
+<unit id="org.eclipse.jst.enterprise_ui.feature.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/releases/photon"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
