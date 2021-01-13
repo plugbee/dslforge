@@ -3,7 +3,7 @@
 DSL Forge is a framework for the development of domain-specific language (DSL) editors for web applications and cloud IDEs. 
 It allows to get web-based textual editors automatically from ANTLR grammars. From the language grammar specification, JavaScript parser and lexer are automatically generated and embedded into Cloud9’s ACE editor.
 
-Check out the [live demo!](https://beeone.plugbee.com/workbench)
+Check out the [live demo!](https://app.dslforge.org/workbench)
 
 <p align="center">
   <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/online-workbench.png?raw=true" width="860"/>
@@ -35,7 +35,7 @@ Below the complete list of features bound by default in the generated editors.
 # Use Cases
 Below some examples of use cases showing how the generated editors can be integrated with Web IDEs, forms, HTML5 canvas, guiders, and many other popular JavaScript frameworks.
 
- - The following use case is a petrinet form made up of an embedded textual editor integrated with [D3.js](https://d3js.org/) framework. The form is available in the  [live demo](https://beeone.plugbee.com/workbench), open the petrinet project folder, right click on a petrinet model file, and select "Open with form editor".
+ - The following use case is a petrinet form made up of an embedded textual editor integrated with [D3.js](https://d3js.org/) framework. The form is available in the  [live demo](https://app.dslforge.org/workbench), open the petrinet project folder, right click on a petrinet model file, and select "Open with form editor".
  
 <p align="center">
   <img src="https://github.com/plugbee/dslforge/blob/master/plugins/org.dslforge.resources/petrinet-form-editor.png?raw=true" width="620"/>
