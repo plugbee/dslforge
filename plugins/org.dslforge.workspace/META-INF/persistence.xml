@@ -13,7 +13,7 @@
 		<properties>
 		    <property name="eclipselink.target-database" value="Derby"/>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:derby:D:/www/dslforge/workspace/.metadata;create=true" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:/var/www/dslforge/workbench/.metadata;create=true" />
 			<property name="javax.persistence.jdbc.user" value="admin" />
 			<property name="javax.persistence.jdbc.password" value="admin" />
 			<!-- EclipseLink should create the database schema automatically -->
