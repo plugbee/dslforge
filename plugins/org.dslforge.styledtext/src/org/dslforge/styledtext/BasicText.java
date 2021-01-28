@@ -983,11 +983,23 @@ public class BasicText extends Composite {
 	 *                </ul>
 	 */
 	public void setBackground(Color color) {
+		checkWidget();
 		JsonObject properties = new JsonObject();
 		properties.add("R", color.getRed());
 		properties.add("G", color.getGreen());
 		properties.add("B", color.getBlue());
 		getRemoteObject().set("background", properties);
+	}
+	
+	/**
+	 * Set the maximum content length 
+	 * 
+	 * @param maxContentLength
+	 */
+	public void setMaxLength(int maxContentLength) {
+		checkWidget();
+		JsonValue object = JsonValue.valueOf(maxContentLength);
+		getRemoteObject().set("maxLength", object);
 	}
 	
 	/**
@@ -1012,7 +1024,14 @@ public class BasicText extends Composite {
 		properties.add("columnEnd", range.columnEnd);
 		getRemoteObject().call("setSelection", properties);
 	}
-	
+	/**
+	 * Sets the selection to the specified text range identified by row/column
+	 * 
+	 * @param rowStart
+	 * @param rowEnd
+	 * @param columnStart
+	 * @param columnEnd
+	 */
 	public void setSelection(int rowStart, int rowEnd, int columnStart,  int columnEnd) {
 		checkWidget();
 		TextRange range = new TextRange(rowStart, columnStart,rowEnd, columnEnd);
@@ -1024,15 +1043,11 @@ public class BasicText extends Composite {
 		getRemoteObject().call("setSelection", properties);
 	}
 	
+	/**
+	 * Selects all the text in the widget.
+	 */
 	public void selectAll() {
-		checkWidget();
-		
-//		TextRange range = new TextRange(0, 0,100, 100);
-//		JsonObject properties = new JsonObject();
-//		properties.add("rowStart", range.rowStart);
-//		properties.add("columnStart", range.columnStart);
-//		properties.add("rowEnd", range.rowEnd);
-//		properties.add("columnEnd", range.columnEnd);
+		checkWidget();		
 		getRemoteObject().call("selectAll", new JsonObject());
 	}
 

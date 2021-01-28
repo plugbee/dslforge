@@ -19,7 +19,7 @@
 			return new org.dslforge.styledtext.BasicText(properties);
 		},
 		destructor : "destroy",	 
-		properties : [ "url", "text", "editable", "status", "annotations", "scope", "proposals", "font", "dirty", "markers", "background"],
+		properties : [ "url", "text", "editable", "maxLength", "status", "annotations", "scope", "proposals", "font", "dirty", "markers", "background"],
 		events : ["Modify", "TextChanged", "Save", "FocusIn", "FocusOut", "Selection", "CaretEvent", "ContentAssist"],
 		methods : ["setSelection", "selectAll", "addMarker", "removeMarker", "clearMarkers", "insertText", "removeText", "setProposals", "moveCursorFileStart","moveCursorFileEnd"]
 	});
@@ -58,6 +58,7 @@
 			selection: null,
 			isFocused: false,
 			initialContent: true,
+			maxLength: 0,
 			langTools: null,
 			annotations: [],
 			markers: [],
@@ -79,6 +80,10 @@
 					this.editor.clearSelection(); 
 					this.editor.getSelection().moveCursorFileStart();
 					delete this.text;
+				}
+				if (this.maxLength) {
+					this.setMaxLength(this.maxLength);
+					delete this.maxLength;
 				}
 				if (this.editable) {
 					this.setEditable(this.editable);
@@ -235,6 +240,39 @@
 				}
 				else {
 			        this.text = text;
+			    }
+			},
+			
+			setMaxLength : function (maxLength) {
+				if (this.ready) {
+					var doc = this.editor.session.doc;
+					doc.applyAnyDelta = doc.applyAnyDelta || doc.applyDelta;
+					doc.applyDelta = function(delta) {
+					    let joinedLines = delta.lines.join("\n")
+					    if (delta.action == "insert" && this.$maxLength
+					        && this.getValue().length + joinedLines.length > this.$maxLength) {
+					        let newPasteLength = this.$maxLength - this.getValue().length
+					        if(newPasteLength > 0) {
+					            delta.lines = joinedLines.substr(0, newPasteLength).split("\n")
+					            if(delta.lines.length == 1 && delta.start.row == delta.end.row) {
+					                delta.end = {
+					                    row: delta.start.row,
+					                    column: delta.start.column + newPasteLength
+					                }
+					            } else {
+					                delta.end = {
+					                    row: delta.start.row+delta.lines.length,
+					                    column: delta.lines[delta.lines.length - 1].length
+					                }
+					            }
+					        } else return false;
+					    }
+					    return this.applyAnyDelta(delta);
+					}
+					doc.$maxLength = maxLength;
+				}
+				else {
+			        this.maxLength = maxLength;
 			    }
 			},
 		
